@@ -1,4 +1,4 @@
-##ADS1115 Pin connection list:
+## ADS1115 Pin connection list:
     *VDD - Pin 1
     *SDA - Pin 3
     *SCL - Pin 5
@@ -7,7 +7,7 @@
     *GND - GND
     *ALRT - positive piezo
 
-##Piezo pin connection 
+## Piezo pin connection 
     *Negative - GND
     *Positive - ALRT
     *Both - connect to resistor 
