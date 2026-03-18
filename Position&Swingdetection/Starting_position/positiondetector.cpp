@@ -28,19 +28,19 @@ void PositionDetector::CheckPosition(
 {
 
     const bool accelOK =
-        (std::fabs(ax - 8.1f) < 0.8f) &&
-        (std::fabs(ay + 5.2f) < 0.8f) &&
-        (std::fabs(az - 2.6f) < 0.7f);
+        (std::fabs(ax + 7.8f) < 9.8f) &&
+        (std::fabs(ay - 5.4f) < -3.0f) &&
+        (std::fabs(az + 1.6f) < 1.0f);
 
     const bool gyroStable =
-        (std::fabs(gx) < 0.3f) &&
-        (std::fabs(gy) < 0.3f) &&
-        (std::fabs(gz) < 0.3f);
+        (std::fabs(gx - 0.1f) < 1.0f) &&
+        (std::fabs(gy - 0.5f) < 0.05f) &&
+        (std::fabs(gz - 0.2f) < 0.3f);
 
     const bool magnetOK =
-        (std::fabs(mx + 35.0f) < 3.0f) &&
-        (std::fabs(my - 11.0f) < 3.0f) &&
-        (std::fabs(mz - 26.5f) < 3.0f);
+        (std::fabs(mx - 38.5f) < -27.1f) &&
+        (std::fabs(my + 6.3f) < 16.5f) &&
+        (std::fabs(mz + 19.9f) < 28.5f);
 
     const bool isUpright = accelOK && gyroStable && magnetOK;
 
