@@ -19,7 +19,7 @@ void ADS1115rpi::start(ADS1115settings settings)
     char i2cPath[32];
     snprintf(i2cPath, sizeof(i2cPath), "/dev/i2c-%d", settings.i2c_bus);
 
-    fd_i2c = open(i2cPath, O_RDWR);
+    fd_i2c = open(i2cPath, O_RDWR); // open the I2C device
     if (fd_i2c < 0)
         throw std::invalid_argument("Could not open I2C.");
 
@@ -88,7 +88,7 @@ void ADS1115rpi::setMux(ADS1115settings::Mux mux)
     ads1115settings.mux = mux;
 }
 
-void ADS1115rpi::dataReady()
+void ADS1115rpi::dataReady()    // This runs when the ADC says a new conversion is available
 {
     const int16_t raw = i2c_readConversion();
     float v = (static_cast<float>(raw) / 32768.0f) * fullScaleVoltage();
