@@ -1,240 +1,118 @@
-#ifndef __ADS1115RPI_H
-#define __ADS1115RPI_H
+#pragma once
 
-/*
- * ADS1115 class to read data at a given sampling rate
- *
- * Copyright (c) 2007  MontaVista Software, Inc.
- * Copyright (c) 2007  Anton Vorontsov <avorontsov@ru.mvista.com>
- * Copyright (c) 2013-2025  Bernd Porr <mail@berndporr.me.uk>
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License.
- *
- */
-#include <stdint.h>
-#include <unistd.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <assert.h>
-#include <linux/i2c-dev.h>
-#include <thread>
-#include <gpiod.hpp>
+#include <cstdint>
 #include <functional>
+#include <memory>
+#include <thread>
 
-// enable debug messages and error messages to stderr
-#ifndef NDEBUG
-#define DEBUG
-#endif
+#include <gpiod.hpp>
 
-/**
- * ADS1115 initial settings when starting the device.
- **/
-struct ADS1115settings
+class ADS1115settings
 {
+public:
+    enum Mux : unsigned
+    {
+        AIN0_GND = 0b100,
+        AIN1_GND = 0b101,
+        AIN2_GND = 0b110,
+        AIN3_GND = 0b111,
+        // (add other mux modes if you have them)
+    };
 
-    /**
-     * I2C bus used (99% always set to one)
-     **/
+    enum SamplingRate : unsigned
+    {
+        FS8HZ   = 0b000,
+        FS16HZ  = 0b001,
+        FS32HZ  = 0b010,
+        FS64HZ  = 0b011,
+        FS128HZ = 0b100,
+        FS250HZ = 0b101,
+        FS475HZ = 0b110,
+        FS860HZ = 0b111
+    };
+
+    enum PgaGain : unsigned
+    {
+        FSR6_144 = 0b000,
+        FSR4_096 = 0b001,
+        FSR2_048 = 0b010,
+        FSR1_024 = 0b011,
+        FSR0_512 = 0b100,
+        FSR0_256 = 0b101
+    };
+
+    // ---- defaults ----
     int i2c_bus = 1;
+    uint8_t address = 0x48;
 
-    /**
-     * The default address of the ADS1115.
-     * 48H is the address of the ADS1115 if the ADR pin is pulled to GND
-     * and taken here as the default address.
-     */
-    static constexpr uint8_t DEFAULT_ADS1115_ADDRESS = 0x48;
+    Mux mux = AIN0_GND;
+    SamplingRate samplingRate = FS250HZ;
+    PgaGain pgaGain = FSR2_048;
 
-    /**
-     * I2C address of the ads1115
-     **/
-    uint8_t address = DEFAULT_ADS1115_ADDRESS;
-
-    /**
-     * Sampling rates
-     **/
-    enum SamplingRates
-    {
-        FS8HZ = 0,
-        FS16HZ = 1,
-        FS32HZ = 2,
-        FS64HZ = 3,
-        FS128HZ = 4,
-        FS250HZ = 5,
-        FS475HZ = 6,
-        FS860HZ = 7
-    };
-
-    /**
-     * Get the sampling rate in Hz
-     **/
-    inline unsigned getSamplingRate() const
-    {
-        const unsigned SamplingRateEnum2Value[8] =
-            {8, 16, 32, 64, 128, 250, 475, 860};
-        return SamplingRateEnum2Value[samplingRate];
-    }
-
-    /**
-     * Sampling rate requested
-     **/
-    SamplingRates samplingRate = FS8HZ;
-
-    /**
-     * Full scale range: 2.048V, 1.024V, 0.512V or 0.256V.
-     **/
-    enum PGA
-    {
-        FSR2_048 = 2,
-        FSR1_024 = 3,
-        FSR0_512 = 4,
-        FSR0_256 = 5
-    };
-
-    /**
-     * Requested full scale range
-     **/
-    PGA pgaGain = FSR2_048;
-
-    /**
-     * Channel indices
-     **/
-    enum Input
-    {
-        AIN0 = 0,
-        AIN1 = 1,
-        AIN2 = 2,
-        AIN3 = 3
-    };
-
-    /**
-     * Requested input channel (AIN0..AIN3)
-     **/
-    Input channel = AIN0;
-
-    /**
-     * GPIO Chip number which receives the Data Ready signal.
-     **/
+    // DRDY / ALERT-RDY (optional)
+    bool use_drdy = true;     // <<< ADD THIS
     int drdy_chip = 0;
-
-    /**
-     * Default GPIO pin for the ALRT/DRY signal.
-     **/
-    static constexpr int DEFAULT_ALERT_RDY_TO_GPIO = 17;
-
-    /**
-     * GPIO pin connected to ALERT/RDY
-     **/
-    int drdy_gpio = DEFAULT_ALERT_RDY_TO_GPIO;
+    unsigned drdy_gpio = 17;
 };
 
-/**
- * This class reads data from the ADS1115 in the background (separate
- * thread) and calls a callback function whenever data is available.
- **/
 class ADS1115rpi
 {
-
 public:
-    /**
-     * Destructor which makes sure the data acquisition
-     * stops on exit.
-     **/
-    ~ADS1115rpi()
-    {
-        stop();
-    }
+    using Callback = std::function<void(float)>;
 
-    /**
-     * Callback function type when a new sample is available. Callback value is in volt.
-     **/
-    using ADSCallbackInterface = std::function<void(float)>;
+    ADS1115rpi() = default;
+    ~ADS1115rpi() { stop(); }
 
-    /**
-     * Registers callback with this class.
-     *
-     * \param ci Callback method and needs to be of type ADSCallbackInterface.
-     */
-    void registerCallback(ADSCallbackInterface ci)
-    {
-        adsCallbackInterface = ci;
-    }
-
-    /**
-     * Selects a different channel at the multiplexer
-     * while running.
-     * Call this in the callback handler hasSample()
-     * to cycle through different channels.
-     * \param channel Sets the channel from A0..A3.
-     **/
-    void setChannel(ADS1115settings::Input channel);
-
-    /**
-     * Starts the data acquisition in the background and the
-     * callback is called with new samples.
-     * \param settings A struct with the settings.
-     **/
-    void start(ADS1115settings settings = ADS1115settings());
-
-    /**
-     * Returns the current settings
-     **/
-    ADS1115settings getADS1115settings() const
-    {
-        return ads1115settings;
-    }
-
-    /**
-     * Stops the data acquistion
-     **/
+    void start(ADS1115settings settings);
     void stop();
 
+    void setMux(ADS1115settings::Mux mux);
+
+    void registerCallback(Callback cb) { adsCallbackInterface = std::move(cb); }
+
+    float readVoltageOnce();
+
 private:
-    ADS1115settings ads1115settings;
-
-    void dataReady();
-
     void worker();
+    void dataReady();
 
     void i2c_writeWord(uint8_t reg, unsigned data);
     unsigned i2c_readWord(uint8_t reg);
-    int i2c_readConversion();
+    int16_t i2c_readConversion();
 
-    const uint8_t reg_config = 1;
-    const uint8_t reg_lo_thres = 2;
-    const uint8_t reg_hi_thres = 3;
-
-    float fullScaleVoltage()
+    float fullScaleVoltage() const
     {
+        // Convert PGA setting to full scale (approx). ADS1115 is ±FSR.
         switch (ads1115settings.pgaGain)
         {
-        case ADS1115settings::FSR2_048:
-            return 2.048f;
-        case ADS1115settings::FSR1_024:
-            return 1.024f;
-        case ADS1115settings::FSR0_512:
-            return 0.512f;
-        case ADS1115settings::FSR0_256:
-            return 0.256f;
+        case ADS1115settings::FSR6_144: return 6.144f;
+        case ADS1115settings::FSR4_096: return 4.096f;
+        case ADS1115settings::FSR2_048: return 2.048f;
+        case ADS1115settings::FSR1_024: return 1.024f;
+        case ADS1115settings::FSR0_512: return 0.512f;
+        case ADS1115settings::FSR0_256: return 0.256f;
+        default: return 2.048f;
         }
-        assert(1 == 0);
-        return 0;
     }
+
+private:
+    ADS1115settings ads1115settings{};
+    bool use_drdy_ = true; // <<< remember mode used at start()
+
+    int fd_i2c = -1;
 
     std::shared_ptr<gpiod::chip> chip;
     std::shared_ptr<gpiod::line_request> request;
 
+    bool running = false;
     std::thread thr;
 
-    int fd_i2c = -1;
+    Callback adsCallbackInterface;
 
-    bool running = false;
+    // registers (match your existing values if different)
+    static constexpr uint8_t reg_config    = 0x01;
+    static constexpr uint8_t reg_lo_thres  = 0x02;
+    static constexpr uint8_t reg_hi_thres  = 0x03;
 
-    ADSCallbackInterface adsCallbackInterface;
-
-    // timeout if no DATA READY has been received
-    static constexpr int64_t ISR_TIMEOUT_MS = 500;
+    static constexpr int ISR_TIMEOUT_MS = 2000;
 };
-
-#endif

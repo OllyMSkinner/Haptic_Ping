@@ -1,45 +1,27 @@
-#include <iostream>
-#include <stdexcept>
-
 #include "ads1115rpi.h"
-#include "event_detector.h"
+#include <iostream>
+#include <thread>
+#include <chrono>
 
 int main()
 {
-    try
+    ADS1115rpi ads;
+
+    ADS1115settings s;
+    s.i2c_bus = 1;
+    s.address = 0x48;
+    s.mux = ADS1115settings::AIN0_GND;
+    s.samplingRate = ADS1115settings::FS250HZ;
+    s.pgaGain = ADS1115settings::FSR2_048;
+
+    // IMPORTANT: polling mode (no ALERT/RDY GPIO needed)
+    s.use_drdy = false;
+
+    ads.start(s);
+
+    while (true)
     {
-        constexpr float DIP_THRESHOLD  = 0.5f;
-        constexpr float PEAK_THRESHOLD =  4.5f;
-
-        PiezoEventDetector detector(DIP_THRESHOLD, PEAK_THRESHOLD);
-
-        ADS1115rpi ads1115rpi;
-
-        ads1115rpi.registerCallback([&](float v)
-        {
-            std::cout << v << std::endl;
-            detector.processSample(v);
-        });
-
-
-        ADS1115settings s;
-        s.i2c_bus = 1;
-        s.address = 0x48;
-        s.samplingRate = ADS1115settings::FS128HZ;
-
-        std::cout << "Starting ADS1115..." << std::endl;
-        ads1115rpi.start(s);
-
-        std::cout << "Running. Press Enter to stop." << std::endl;
-        std::cin.get();
-
-        ads1115rpi.stop();
+        std::cout << ads.readVoltageOnce() << "\n"; // numbers only for plotting
+        std::this_thread::sleep_for(std::chrono::milliseconds(100));
     }
-    catch (const std::exception& e)
-    {
-        std::cerr << "Error: " << e.what() << std::endl;
-        return -1;
-    }
-
-    return 0;
 }

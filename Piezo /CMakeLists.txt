@@ -3,11 +3,12 @@ cmake_minimum_required(VERSION 3.31)
 set(CMAKE_CXX_STANDARD 20)
 
 if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
-    set(CMAKE_BUILD_TYPE "RelWithDebInfo")
+	set(CMAKE_BUILD_TYPE "RelWithDebInfo")
 endif()
 
 project(ADS1115_RaspberryPi_Library VERSION 1.1.0 LANGUAGES CXX)
 include(GNUInstallDirs)
+
 
 add_compile_options(-Wall -Wconversion -Wextra -pedantic)
 
@@ -17,7 +18,7 @@ set(LIBINCLUDE ads1115rpi.h)
 add_library(ads1115rpi
   SHARED
   ${LIBSRC}
-)
+  )
 
 set_target_properties(ads1115rpi PROPERTIES
   SOVERSION 1
@@ -30,10 +31,12 @@ install(TARGETS ads1115rpi EXPORT ads1115rpi-targets
   ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
   PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
 
+
+
 add_library(ads1115rpi_static
   STATIC
   ${LIBSRC}
-)
+  )
 
 set_target_properties(ads1115rpi_static PROPERTIES
   PUBLIC_HEADER "${LIBINCLUDE}")
@@ -45,17 +48,12 @@ install(TARGETS ads1115rpi_static EXPORT ads1115rpi_static-targets
   ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
   PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
 
-find_package(Threads REQUIRED)
-
 # ---- demo executable ----
-add_executable(ads1115_demo
-    main.cpp
-    event_detector.cpp
-    led_controller.cpp
-)
+add_executable(ads1115_demo main.cpp)
+target_link_libraries(ads1115_demo PRIVATE ads1115rpi)
 
-target_link_libraries(ads1115_demo
-    PRIVATE
-    ads1115rpi
-    Threads::Threads
-)
+# (often needed for std::thread on Linux)
+find_package(Threads REQUIRED)
+target_link_libraries(ads1115_demo PRIVATE Threads::Threads)
+
+
