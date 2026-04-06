@@ -1,21 +1,28 @@
 cmake_minimum_required(VERSION 3.10)
-project(rtes_main_project)
+project(PI5Receiver LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# Position Detector
-add_library(position_detector
-    Starting_position/positiondetector.cpp
+find_package(PkgConfig REQUIRED)
+pkg_check_modules(GPIOD REQUIRED libgpiodcxx)
+
+add_executable(rtes_main
+    main.cpp
+    positiondetector.cpp
+    ledcallback.cpp
+    samplereceiver.cpp
 )
 
-target_include_directories(position_detector PUBLIC
-    Starting_position
+target_include_directories(rtes_main PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}
+    ${GPIOD_INCLUDE_DIRS}
 )
 
-# Executable
-add_executable(rtes_main main.cpp)
-
-target_link_libraries(rtes_main
-    position_detector
-    pthread
+target_link_directories(rtes_main PRIVATE
+    ${GPIOD_LIBRARY_DIRS}
 )
+
+target_link_libraries(rtes_main PRIVATE
+    ${GPIOD_LIBRARIES}
+    pthread)
