@@ -1,0 +1,36 @@
+# Build output
+Debug/
+Release/
+x64/
+x86/
+*.exe
+*.dll
+*.lib
+*.obj
+*.pdb
+*.ilk
+*.exp
+
+# Visual Studio files
+.vs/
+*.user
+*.suo
+*.aps
+*.ncb
+*.sdf
+*.opensdf
+*.vcxproj.filters   # optional — keep if you want consistent filters
+ipch/
+*.ipch
+
+# CMake (if used)
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+build/
+out/
+RTES_Table_Tennis/junk/
+
+# Precompiled headers
+*.gch
+*.pch
