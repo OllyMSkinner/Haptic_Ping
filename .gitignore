@@ -19,7 +19,8 @@ x86/
 *.ncb
 *.sdf
 *.opensdf
-*.vcxproj.filters   # optional — keep if you want consistent filters
+# optional — keep if you want consistent filters
+*.vcxproj.filters   
 ipch/
 *.ipch
 
@@ -29,7 +30,7 @@ CMakeCache.txt
 cmake_install.cmake
 build/
 out/
-RTES_Table_Tennis/junk/
+junk/
 
 # Precompiled headers
 *.gch
