@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/accel_pwm.dir/accel_pwm.cpp.o -o accel_pwm  libimu_publisher.a -lpthread -lgpiod -lmraa -lyaml-cpp

@@ -1,0 +1,1 @@
+/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/imu_coords.dir/link.d CMakeFiles/imu_coords.dir/main.cpp.o CMakeFiles/imu_coords.dir/icm20948_i2c.cpp.o CMakeFiles/imu_coords.dir/icm20948_utils.cpp.o -o imu_coords  -lmraa -lyaml-cpp

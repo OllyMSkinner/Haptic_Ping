@@ -1,0 +1,3 @@
+/home/group5/icm20948_i2c/CMakeFiles/imu_coords.dir
+/home/group5/icm20948_i2c/CMakeFiles/edit_cache.dir
+/home/group5/icm20948_i2c/CMakeFiles/rebuild_cache.dir
