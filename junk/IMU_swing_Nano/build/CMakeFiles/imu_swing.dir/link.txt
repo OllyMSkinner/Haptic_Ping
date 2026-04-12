@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -DNDEBUG -Wl,--dependency-file=CMakeFiles/imu_swing.dir/link.d CMakeFiles/imu_swing.dir/main.cpp.o CMakeFiles/imu_swing.dir/IMU_library/Icm20948driver.cpp.o CMakeFiles/imu_swing.dir/positiondetector.cpp.o -o imu_swing   -L/usr/local/lib  -Wl,-rpath,/usr/local/lib -lgpiod -lmraa -lyaml-cpp -lpthread
