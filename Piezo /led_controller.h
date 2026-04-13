@@ -1,26 +1,48 @@
-#ifndef EVENT_DETECTOR_H
-#define EVENT_DETECTOR_H
+#ifndef LED_CONTROLLER_H
+#define LED_CONTROLLER_H
 
-class LEDController;
+#include <gpiod.hpp>
+#include <memory>
+#include <chrono>
 
-class PiezoEventDetector
+struct LEDControllerSettings
+{
+    int chipNumber = 0;
+    unsigned int redGpio = 17;
+    unsigned int greenGpio = 27;
+};
+
+class LEDController
 {
 public:
-    PiezoEventDetector(LEDController& ledRef,
-                       float dipThreshold,
-                       float peakThreshold,
-                       int flashMs = 100);
+    LEDController(LEDControllerSettings settings = LEDControllerSettings());
+    ~LEDController();
 
-    void processSample(float v);
+    void redOn();
+    void redOff();
+    void greenOn();
+    void greenOff();
+    void allOff();
+
+    void flashRed(int flashMs);
+    void flashGreen(int flashMs);
+
+    void service();
 
 private:
-    LEDController& led_;
-    float dipThreshold_;
-    float peakThreshold_;
-    int flashMs_;
+    void updateOutputs();
 
-    bool dipTriggered_;
-    bool peakTriggered_;
+    unsigned int redGpio_;
+    unsigned int greenGpio_;
+
+    std::shared_ptr<gpiod::chip> chip_;
+    std::shared_ptr<gpiod::line_request> request_;
+
+    bool redActive_ = false;
+    bool greenActive_ = false;
+
+    std::chrono::steady_clock::time_point redOffTime_{};
+    std::chrono::steady_clock::time_point greenOffTime_{};
 };
 
 #endif
