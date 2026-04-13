@@ -121,7 +121,7 @@ struct ADS1115settings
     /**
      * Default GPIO pin for the ALRT/DRY signal.
      **/
-    static constexpr int DEFAULT_ALERT_RDY_TO_GPIO = 17;
+    static constexpr int DEFAULT_ALERT_RDY_TO_GPIO = 26;
 
     /**
      * GPIO pin connected to ALERT/RDY
