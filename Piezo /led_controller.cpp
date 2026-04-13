@@ -1,40 +1,90 @@
-#include "event_detector.h"
 #include "led_controller.h"
-#include <iostream>
 
-PiezoEventDetector::PiezoEventDetector(LEDController& ledRef,
-                                       float dipThreshold,
-                                       float peakThreshold,
-                                       int flashMs)
-    : led_(ledRef),
-      dipThreshold_(dipThreshold),
-      peakThreshold_(peakThreshold),
-      flashMs_(flashMs),
-      dipTriggered_(false),
-      peakTriggered_(false)
+#include <chrono>
+#include <stdexcept>
+#include <string>
+#include <thread>
+
+LEDController::LEDController(int chipNumber, unsigned int redGpio, unsigned int greenGpio)
+    : redGpio_(redGpio),
+      greenGpio_(greenGpio)
 {
+    const std::string chipPath = "/dev/gpiochip" + std::to_string(chipNumber);
+
+    chip_ = std::make_shared<gpiod::chip>(chipPath);
+
+    gpiod::line_config line_cfg;
+
+    line_cfg.add_line_settings(
+        redGpio_,
+        gpiod::line_settings()
+            .set_direction(gpiod::line::direction::OUTPUT)
+            .set_output_value(gpiod::line::value::INACTIVE));
+
+    line_cfg.add_line_settings(
+        greenGpio_,
+        gpiod::line_settings()
+            .set_direction(gpiod::line::direction::OUTPUT)
+            .set_output_value(gpiod::line::value::INACTIVE));
+
+    auto builder = chip_->prepare_request();
+    builder.set_consumer("led_controller");
+    builder.set_line_config(line_cfg);
+
+    request_ = std::make_shared<gpiod::line_request>(builder.do_request());
 }
 
-void PiezoEventDetector::processSample(float v)
+LEDController::~LEDController()
 {
-    std::cout << "processSample running, v = " << v << std::endl;
+    try
+    {
+        allOff();
+        if (request_)
+            request_->release();
+        if (chip_)
+            chip_->close();
+    }
+    catch (...)
+    {
+    }
+}
 
-    if (!dipTriggered_ && v <= dipThreshold_)
-    {
-        std::cout << "GREEN FLASH" << std::endl;
-        led_.flashGreen(flashMs_);
-        dipTriggered_ = true;
-        peakTriggered_ = false;
-    }
-    else if (dipTriggered_ && !peakTriggered_ && v >= peakThreshold_)
-    {
-        std::cout << "RED FLASH" << std::endl;
-        led_.flashRed(flashMs_);
-        peakTriggered_ = true;
-    }
-    else if (v > dipThreshold_ && v < peakThreshold_)
-    {
-        dipTriggered_ = false;
-        peakTriggered_ = false;
-    }
+void LEDController::redOn()
+{
+    request_->set_value(redGpio_, gpiod::line::value::ACTIVE);
+}
+
+void LEDController::redOff()
+{
+    request_->set_value(redGpio_, gpiod::line::value::INACTIVE);
+}
+
+void LEDController::greenOn()
+{
+    request_->set_value(greenGpio_, gpiod::line::value::ACTIVE);
+}
+
+void LEDController::greenOff()
+{
+    request_->set_value(greenGpio_, gpiod::line::value::INACTIVE);
+}
+
+void LEDController::allOff()
+{
+    redOff();
+    greenOff();
+}
+
+void LEDController::flashRed(int flashMs)
+{
+    redOn();
+    std::this_thread::sleep_for(std::chrono::milliseconds(flashMs));
+    redOff();
+}
+
+void LEDController::flashGreen(int flashMs)
+{
+    greenOn();
+    std::this_thread::sleep_for(std::chrono::milliseconds(flashMs));
+    greenOff();
 }
