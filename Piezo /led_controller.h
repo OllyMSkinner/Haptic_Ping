@@ -8,7 +8,7 @@
 struct LEDControllerSettings
 {
     int chipNumber = 0;
-    unsigned int greenGpio = 27;
+    unsigned int greenGpio = 25;
 };
 
 class LEDController
