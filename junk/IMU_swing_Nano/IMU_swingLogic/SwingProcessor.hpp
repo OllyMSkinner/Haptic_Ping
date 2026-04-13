@@ -5,6 +5,11 @@
 
 #include <functional>
 
+static constexpr unsigned I2C_BUS = 1;
+static constexpr int CALIB_SAMPLES = 200;
+static constexpr int RECAL_SAMPLES = 50;
+static constexpr float ACCEL_DEADBAND = 0.05f;
+
 // Processes every IMU sample: calibrates gravity bias, detects start position,
 // prints linear acceleration magnitude and angular velocity magnitude.
 // Also fires an optional magnitude callback so SwingDetector can be wired in
