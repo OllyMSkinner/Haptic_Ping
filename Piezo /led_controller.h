@@ -1,26 +1,32 @@
-#ifndef EVENT_DETECTOR_H
-#define EVENT_DETECTOR_H
+#ifndef LED_CONTROLLER_H
+#define LED_CONTROLLER_H
 
-class LEDController;
+#include <gpiod.hpp>
+#include <memory>
 
-class PiezoEventDetector
+class LEDController
 {
 public:
-    PiezoEventDetector(LEDController& ledRef,
-                       float dipThreshold,
-                       float peakThreshold,
-                       int flashMs = 100);
+    LEDController(int chipNumber = 0,
+                  unsigned int redGpio = 17,
+                  unsigned int greenGpio = 27);
+    ~LEDController();
 
-    void processSample(float v);
+    void redOn();
+    void redOff();
+    void greenOn();
+    void greenOff();
+    void allOff();
+
+    void flashRed(int flashMs);
+    void flashGreen(int flashMs);
 
 private:
-    LEDController& led_;
-    float dipThreshold_;
-    float peakThreshold_;
-    int flashMs_;
+    unsigned int redGpio_;
+    unsigned int greenGpio_;
 
-    bool dipTriggered_;
-    bool peakTriggered_;
+    std::shared_ptr<gpiod::chip> chip_;
+    std::shared_ptr<gpiod::line_request> request_;
 };
 
 #endif
