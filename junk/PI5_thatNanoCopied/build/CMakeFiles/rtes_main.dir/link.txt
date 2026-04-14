@@ -1,1 +1,0 @@
-/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/rtes_main.dir/link.d CMakeFiles/rtes_main.dir/main.cpp.o CMakeFiles/rtes_main.dir/positiondetector.cpp.o CMakeFiles/rtes_main.dir/ledcallback.cpp.o CMakeFiles/rtes_main.dir/samplereceiver.cpp.o -o rtes_main  -lgpiodcxx -lpthread

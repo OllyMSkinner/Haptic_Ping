@@ -1,1 +1,0 @@
-/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/accel_pwm.dir/link.d CMakeFiles/accel_pwm.dir/accel_pwm.cpp.o -o accel_pwm  libimu_publisher.a -lgpiod -lmraa -lyaml-cpp

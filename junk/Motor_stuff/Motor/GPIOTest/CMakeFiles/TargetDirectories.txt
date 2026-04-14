@@ -1,3 +1,0 @@
-/home/group5/RTES_Table_Tennis/junk/Motor/GPIOTest/CMakeFiles/gpio_blink.dir
-/home/group5/RTES_Table_Tennis/junk/Motor/GPIOTest/CMakeFiles/edit_cache.dir
-/home/group5/RTES_Table_Tennis/junk/Motor/GPIOTest/CMakeFiles/rebuild_cache.dir

@@ -1,4 +1,0 @@
-/home/group5/NatTrial/RTES_Table_Tennis/Despina/Despina/CMakeFiles/imu_publisher.dir
-/home/group5/NatTrial/RTES_Table_Tennis/Despina/Despina/CMakeFiles/accel_pwm.dir
-/home/group5/NatTrial/RTES_Table_Tennis/Despina/Despina/CMakeFiles/edit_cache.dir
-/home/group5/NatTrial/RTES_Table_Tennis/Despina/Despina/CMakeFiles/rebuild_cache.dir

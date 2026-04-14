@@ -1,3 +1,0 @@
-/home/group5/RTES_Table_Tennis/junk/Motor_stuff/Motor/thresholds_test/build/CMakeFiles/thresholds.dir
-/home/group5/RTES_Table_Tennis/junk/Motor_stuff/Motor/thresholds_test/build/CMakeFiles/edit_cache.dir
-/home/group5/RTES_Table_Tennis/junk/Motor_stuff/Motor/thresholds_test/build/CMakeFiles/rebuild_cache.dir

@@ -1,2 +1,0 @@
-/usr/bin/ar qc libimu_publisher.a CMakeFiles/imu_publisher.dir/IMU_processing/IMUPublisher/IMUPublisher.cpp.o CMakeFiles/imu_publisher.dir/IMU_processing/imudriver/icm20948_i2c.cpp.o CMakeFiles/imu_publisher.dir/IMU_processing/imu_settings/icm20948_utils.cpp.o
-/usr/bin/ranlib libimu_publisher.a

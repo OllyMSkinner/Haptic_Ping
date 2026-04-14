@@ -1,1 +1,0 @@
-/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/thresholds.dir/link.d CMakeFiles/thresholds.dir/main.cpp.o CMakeFiles/thresholds.dir/imureader.cpp.o CMakeFiles/thresholds.dir/Icm20948driver.cpp.o CMakeFiles/thresholds.dir/positiondetector.cpp.o -o thresholds  -lgpiod -lmraa -lyaml-cpp

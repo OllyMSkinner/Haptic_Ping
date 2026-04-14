@@ -1,1 +1,0 @@
-/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/gpio_blink.dir/link.d CMakeFiles/gpio_blink.dir/main.cpp.o -o gpio_blink  /usr/lib/aarch64-linux-gnu/libgpiod.so

@@ -1,2 +1,0 @@
-/usr/bin/ar qc libposition_detector.a CMakeFiles/position_detector.dir/Starting_position/positiondetector.cpp.o
-/usr/bin/ranlib libposition_detector.a

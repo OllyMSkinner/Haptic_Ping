@@ -1,1 +1,0 @@
-/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/rtes_main.dir/link.d CMakeFiles/rtes_main.dir/main.cpp.o -o rtes_main  libposition_detector.a -lpthread

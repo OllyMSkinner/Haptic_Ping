@@ -1,3 +1,0 @@
-/home/group5/PI5/build/CMakeFiles/rtes_main.dir
-/home/group5/PI5/build/CMakeFiles/edit_cache.dir
-/home/group5/PI5/build/CMakeFiles/rebuild_cache.dir

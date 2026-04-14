@@ -1,4 +1,0 @@
-/home/group5/NatTrial/RTES_Table_Tennis/build/CMakeFiles/position_detector.dir
-/home/group5/NatTrial/RTES_Table_Tennis/build/CMakeFiles/rtes_main.dir
-/home/group5/NatTrial/RTES_Table_Tennis/build/CMakeFiles/edit_cache.dir
-/home/group5/NatTrial/RTES_Table_Tennis/build/CMakeFiles/rebuild_cache.dir
