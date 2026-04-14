@@ -3,7 +3,7 @@
 Haptic Ping combines table tennis shadow practice with haptic feedback to simulate a training expeerinece that mroe closely resembles real play. Shadow practice is a widely used technique where table tennis players practice their strokes and form, but in the absence of a coach it can be difficult for players to know whether their position and movements are correct. Therefore, our prototype addresses this limitation by providing real-time haptic feedback, allowing players to practice effectively without the need for a coach or any additional table tennis equipment.  
 Haptic Ping uses an inertial measurement unit (IMU), eccentric rotating mass (ERM) and a piezoelectric sensor to monitor motion, detect impact, and deliver responsive feedback to the user.  
 
-A project from ENG 5220 Real-Time Embedded Programming
+A project from ENG 5220 Real-Time Embedded Programming  
 University of Glasgow, 2026
 
 ## Description
@@ -12,7 +12,7 @@ An in-depth paragraph about your project and overview of use.
 
 ## Getting Started
 The following components were used to build the Haptic Ping prototype:  
-[Raspberry Pi](https://uk.rs-online.com/web/p/raspberry-pi/0219255/) (1x)
+[Raspberry Pi](https://uk.rs-online.com/web/p/raspberry-pi/0219255/) (1x)  
 [IMU](https://uk.rs-online.com/web/p/sensor-development-tools/2836590) (1x)  
 [ERM](https://thepihut.com/products/vibrating-mini-motor-disc) (1x)  
 [ADS 1115](https://thepihut.com/products/adafruit-drv2605l-haptic-motor-controller?srsltid=AfmBOor9hL8GBIkbBknmkgmD5isfLFcB0laND6bchnF5WGKlw_JkHqm7) (1x)  
@@ -47,11 +47,11 @@ command to run if program contains helper info
 ```
 
 ## Authors
-Despina Charalambous (2689332C)
-Najaree Janjerdsak (2717383J)
-Natalia McCoy (2661134M)
-Olivia Skinner (2671612S)
-Wiktoria Smolarek (2619869S)
+Despina Charalambous (2689332C)  
+Najaree Janjerdsak (2717383J)  
+Natalia McCoy (2661134M)  
+Olivia Skinner (2671612S)  
+Wiktoria Smolarek (2619869S)  
 
 <!-- ex. [@DomPizzie](https://twitter.com/dompizzie) -->
 
