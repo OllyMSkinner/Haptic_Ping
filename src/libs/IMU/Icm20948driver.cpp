@@ -484,13 +484,24 @@ namespace icm20948
 
     bool ICM20948_I2C::_read_byte(uint8_t bank, uint8_t reg, uint8_t& byte)
     {
-        bool ok = _set_bank(bank);
-        if (!ok) return false;
+        if (!_set_bank(bank)) return false;
 
-        uint8_t reg_buf = reg;
-        if (::write(_i2c_fd, &reg_buf, 1) != 1) return false;
-        if (::read(_i2c_fd, &byte, 1) != 1) return false;
-        return true;
+        struct i2c_msg msgs[2];
+        msgs[0].addr  = static_cast<__u16>(_i2c_address);
+        msgs[0].flags = 0;
+        msgs[0].len   = 1;
+        msgs[0].buf   = &reg;
+
+        msgs[1].addr  = static_cast<__u16>(_i2c_address);
+        msgs[1].flags = I2C_M_RD;
+        msgs[1].len   = 1;
+        msgs[1].buf   = &byte;
+
+        struct i2c_rdwr_ioctl_data txn;
+        txn.msgs  = msgs;
+        txn.nmsgs = 2;
+
+        return ::ioctl(_i2c_fd, I2C_RDWR, &txn) == 2;
     }
 
     bool ICM20948_I2C::_write_bit(uint8_t bank, uint8_t reg,
@@ -520,9 +531,23 @@ namespace icm20948
                                          uint8_t* bytes, int length)
     {
         if (!_set_bank(bank)) return false;
-        uint8_t reg_buf = start_reg;
-        if (::write(_i2c_fd, &reg_buf, 1) != 1) return false;
-        return ::read(_i2c_fd, bytes, length) == length;
+
+        struct i2c_msg msgs[2];
+        msgs[0].addr  = static_cast<__u16>(_i2c_address);
+        msgs[0].flags = 0;
+        msgs[0].len   = 1;
+        msgs[0].buf   = &start_reg;
+
+        msgs[1].addr  = static_cast<__u16>(_i2c_address);
+        msgs[1].flags = I2C_M_RD;
+        msgs[1].len   = static_cast<__u16>(length);
+        msgs[1].buf   = bytes;
+
+        struct i2c_rdwr_ioctl_data txn;
+        txn.msgs  = msgs;
+        txn.nmsgs = 2;
+
+        return ::ioctl(_i2c_fd, I2C_RDWR, &txn) == 2;
     }
 
     bool ICM20948_I2C::_write_mag_byte(uint8_t mag_reg, uint8_t byte)
@@ -583,7 +608,7 @@ namespace icm20948
             return false;
         }
 
-        return (int_status & 0x20) != 0;
+        return (int_status & 0x01) != 0;
     }
 
 } // namespace icm20948

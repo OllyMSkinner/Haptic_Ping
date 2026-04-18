@@ -136,7 +136,7 @@ void IMUReader::worker()
                         std::lock_guard<std::mutex> lk(i2c1_mutex());
                         ok = imu_.read_sample(sample);
 
-                        imu_.check_DRDY_INT();
+                        if (ok) imu_.check_DRDY_INT();
                     }
 
                     if (ok && callback_) {
