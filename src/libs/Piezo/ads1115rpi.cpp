@@ -1,3 +1,10 @@
+/*
+    This file sets up and manages the ADS1115 ADC on a Raspberry Pi.
+    It initializes I2C and GPIO interrupt handling, reads conversion data
+    when the device signals it is ready, and passes the converted voltage
+    to a callback.
+*/
+
 #include "ads1115rpi.h"
 #include "i2c_mutex.hpp"
 
@@ -14,6 +21,7 @@
 #include <chrono>
 #include <mutex>
 
+// Creates and returns the default ADS1115 settings.
 ADS1115settings makeDefaultADS1115Settings()
 {
     ADS1115settings s{};
@@ -27,6 +35,7 @@ ADS1115settings makeDefaultADS1115Settings()
     return s;
 }
 
+// Opens I2C, configures the ADS1115, sets up the GPIO ready pin, and starts the worker thread.
 void ADS1115rpi::start(ADS1115settings settings)
 {
     if (running) {
@@ -106,6 +115,7 @@ void ADS1115rpi::start(ADS1115settings settings)
     }
 }
 
+// Updates the input channel used by the ADS1115.
 void ADS1115rpi::setChannel(ADS1115settings::Input channel)
 {
     unsigned r = i2c_readWord(reg_config);
@@ -115,11 +125,12 @@ void ADS1115rpi::setChannel(ADS1115settings::Input channel)
     ads1115settings.channel = channel;
 }
 
+// Reads the latest conversion result, converts it to a voltage, and sends it to the callback.
 void ADS1115rpi::dataReady()
 {
     int ret = i2c_readConversion();
     if (ret < 0) {
-        return;
+        return;   // silent skip — retries already logged inside i2c_readConversion
     }
 
     float v = static_cast<float>(ret) / static_cast<float>(0x7fff)
@@ -130,6 +141,7 @@ void ADS1115rpi::dataReady()
     }
 }
 
+// Waits for ready interrupts and triggers a read when conversion data is available.
 void ADS1115rpi::worker()
 {
     static constexpr int WARN_EVERY = 10;
@@ -162,6 +174,7 @@ void ADS1115rpi::worker()
     }
 }
 
+// Stops the worker thread and releases GPIO and I2C resources.
 void ADS1115rpi::stop()
 {
     if (!running) return;
@@ -188,6 +201,7 @@ void ADS1115rpi::stop()
     }
 }
 
+// Selects the ADS1115 device on the I2C bus.
 void ADS1115rpi::i2c_selectDevice()
 {
     if (ioctl(fd_i2c, I2C_SLAVE, ads1115settings.address) < 0) {
@@ -195,6 +209,7 @@ void ADS1115rpi::i2c_selectDevice()
     }
 }
 
+// Writes a 16-bit value to the specified ADS1115 register.
 void ADS1115rpi::i2c_writeWord(uint8_t reg, unsigned data)
 {
     std::lock_guard<std::mutex> lk(i2c1_mutex());
@@ -211,6 +226,7 @@ void ADS1115rpi::i2c_writeWord(uint8_t reg, unsigned data)
     }
 }
 
+// Reads a 16-bit value from the specified ADS1115 register.
 unsigned ADS1115rpi::i2c_readWord(uint8_t reg)
 {
     std::lock_guard<std::mutex> lk(i2c1_mutex());
@@ -232,6 +248,7 @@ unsigned ADS1115rpi::i2c_readWord(uint8_t reg)
            | static_cast<unsigned>(tmp[1]);
 }
 
+// Reads the latest conversion value using an atomic I2C transaction, with retries on failure.
 int ADS1115rpi::i2c_readConversion()
 {
     static constexpr int MAX_RETRIES = 5;
