@@ -1,3 +1,17 @@
+// IMUReader provides a threaded, event-driven wrapper around the low-level
+// ICM-20948 driver.
+
+// SOLID principles:
+//   S - This class is responsible for coordinating asynchronous IMU sample
+//       acquisition from the data-ready GPIO and forwarding decoded samples to
+//       client code.
+//   O - New behaviours can be attached through the callback interface without
+//       changing the reader logic itself.
+//   D - The low-level register and I2C interaction remain inside the IMU driver,
+//       while this class focuses on threading and sample dispatch.
+//
+// Threaded IMU reader driven by the data-ready GPIO.
+
 #pragma once
 
 #include <atomic>
@@ -7,26 +21,6 @@
 #include "Icm20948driver.hpp"
 #include <gpiod.h>
 #include <future>
-
-// IMUReader provides a threaded, event-driven wrapper around the low-level
-// ICM-20948 driver.
-
-// Design intention:
-// - Single Responsibility:
-//   This class is responsible for coordinating asynchronous IMU sample
-//   acquisition from the data-ready GPIO and forwarding decoded samples to
-//   client code.
-// - Open/Closed:
-//   New behaviours can be attached through the callback interface without
-//   changing the reader logic itself.
-// - Encapsulation:
-//   Thread management, GPIO handles, and event-loop details are hidden behind
-//   a small public API.
-// - Dependency control:
-//   The low-level register and I2C interaction remain inside the IMU driver,
-//   while this class focuses on threading and sample dispatch.
-//
-// Threaded IMU reader driven by the data-ready GPIO.
 
 class IMUReader
 {
