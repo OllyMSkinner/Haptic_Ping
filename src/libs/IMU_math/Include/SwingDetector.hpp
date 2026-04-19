@@ -35,9 +35,14 @@ public:
 private:
     enum class Level { NONE, LOW, MEDIUM, HIGH };
 
+    // Convert accel magnitude to a duty-cycle band.
     static Level    classify(float accel_mag);
+
+    // Convert enum value to callback label.
     static const char* label(Level level);
 
+    // Last emitted band.
     Level         last_level_;
+
     EventCallback callback_;
 };
