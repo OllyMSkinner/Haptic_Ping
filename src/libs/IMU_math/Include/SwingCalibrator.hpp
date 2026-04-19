@@ -54,10 +54,15 @@ private:
     int   recal_samples_;
     State state_;
     int   count_;
+
+    // Running sums for the current calibration window.
     float sum_x_, sum_y_, sum_z_;
+
+    // Latest completed bias estimate.
     float bias_x_, bias_y_, bias_z_;
 
     DoneCallback callback_;
 
+    // Accumulate one sample and finalise when target samples are reached.
     void accumulate(float ax, float ay, float az, int target, bool initial);
 };
