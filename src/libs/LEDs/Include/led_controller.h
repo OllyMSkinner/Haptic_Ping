@@ -1,6 +1,17 @@
-    // This header declares the LED controller settings and class.
-    // It manages the green LED output, supports timed flashing,
-    // and updates the LED state through the inherited controller interface
+// This header declares the LED controller settings and class.
+// It manages green LED output, supports timed flashing, and exposes
+// a small LED-facing interface through the inherited controller.
+//
+// SOLID principles:
+//   S - This class is responsible for LED-specific behaviour only.
+//   O - Client code can request LED actions through the public interface
+//       without modifying the internal output logic.
+//   L - The concrete LEDController builds on the simpler base controller so
+//       it can be substituted wherever that LED abstraction is expected.
+//   I - Client code uses a small LED-facing interface rather than dealing
+//       with GPIO details or unrelated hardware operations.
+//   D - Higher-level code can depend on the simpler SimpleLEDController
+//       abstraction rather than this concrete GPIO-backed implementation.
 
 #ifndef LED_CONTROLLER_H
 #define LED_CONTROLLER_H
