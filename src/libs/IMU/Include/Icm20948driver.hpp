@@ -6,6 +6,8 @@
 #include <linux/i2c.h>
 #include "yaml-cpp/yaml.h"
 
+// Register addresses and constants for the ICM-20948 IMU and onboard magnetometer.
+
 // ─────────────────────────────────────────────
 //  Register map
 // ─────────────────────────────────────────────
@@ -13,6 +15,7 @@
 #define ICM20948_I2C_ADDR       0x69
 #define ICM20948_MAGN_I2C_ADDR  0x0C
 
+// Bank-select register and encoded bank values.
 #define ICM20948_REG_BANK_SEL_ADDR          0x7F
 #define ICM20948_REG_BANK_SEL_BANK0_VALUE   0x00
 #define ICM20948_REG_BANK_SEL_BANK1_VALUE   0x10
@@ -42,6 +45,7 @@
 #define ICM20948_TEMP_OUT_L_ADDR            0x3A
 #define ICM20948_EXT_SLV_SENS_DATA_00_ADDR  0x3B
 
+// Bank IDs for the corresponding registers above.
 #define ICM20948_WHO_AM_I_BANK              0
 #define ICM20948_USER_CTRL_BANK             0
 #define ICM20948_PWR_MGMT_1_BANK            0
@@ -59,6 +63,7 @@
 #define ICM20948_ACCEL_SMPLRT_DIV_2_ADDR    0x11
 #define ICM20948_ACCEL_CONFIG_1_ADDR        0x14
 
+// Bank IDs for accel/gyro configuration registers.
 #define ICM20948_GYRO_SMPLRT_DIV_BANK       2
 #define ICM20948_GYRO_CONFIG_1_BANK         2
 #define ICM20948_ACCEL_SMPLRT_DIV_1_BANK    2
@@ -76,6 +81,7 @@
 #define ICM20948_I2C_SLV4_DO_ADDR           0x16
 #define ICM20948_I2C_SLV4_DI_ADDR           0x17
 
+// Bank IDs for the internal I2C master interface.
 #define ICM20948_I2C_MST_CTRL_BANK          3
 #define ICM20948_I2C_SLV0_ADDR_BANK         3
 #define ICM20948_I2C_SLV0_REG_BANK          3
@@ -86,11 +92,12 @@
 #define ICM20948_I2C_SLV4_DO_BANK           3
 #define ICM20948_I2C_SLV4_DI_BANK           3
 
+// AK09916 magnetometer control register and expected WHO_AM_I value.
 #define AK09916_CNTL2_ADDR                  0x31
 #define ICM20948_BANK0_WHO_AM_I_VALUE       0xEA
 
 
-//Interrupt Addresses
+// Interrupt status registers.
 #define ICM20948_INT_STATUS_BANK            0
 #define ICM20948_INT_STATUS_1_BANK          0
 
@@ -104,6 +111,7 @@
 
 namespace icm20948
 {
+    // Accelerometer full-scale range.
     typedef enum {
         ACCEL_2G  = 0,
         ACCEL_4G,
@@ -111,6 +119,7 @@ namespace icm20948
         ACCEL_16G
     } accel_scale;
 
+    // Accelerometer digital low-pass filter config.
     typedef enum {
         ACCEL_DLPF_246HZ   = 0,
         ACCEL_DLPF_246HZ_2,
@@ -122,6 +131,7 @@ namespace icm20948
         ACCEL_DLPF_473HZ
     } accel_dlpf_config;
 
+    // Accelerometer runtime configuration.
     typedef struct accel_settings {
         uint16_t          sample_rate_div;
         accel_scale       scale;
@@ -136,6 +146,7 @@ namespace icm20948
               dlpf_enable(dlpf_enable), dlpf_config(dlpf_config) {}
     } accel_settings;
 
+    // Gyroscope full-scale range.
     typedef enum {
         GYRO_250DPS  = 0,
         GYRO_500DPS,
@@ -143,6 +154,7 @@ namespace icm20948
         GYRO_2000DPS
     } gyro_scale;
 
+    // Gyroscope digital low-pass filter config.
     typedef enum {
         GYRO_DLPF_196_6HZ = 0,
         GYRO_DLPF_151_8HZ,
@@ -154,6 +166,7 @@ namespace icm20948
         GYRO_DLPF_361_4HZ
     } gyro_dlpf_config;
 
+    // Gyroscope runtime configuration.
     typedef struct gyro_settings {
         uint8_t          sample_rate_div;
         gyro_scale       scale;
@@ -168,6 +181,7 @@ namespace icm20948
               dlpf_enable(dlpf_enable), dlpf_config(dlpf_config) {}
     } gyro_settings;
 
+    // Magnetometer operating mode.
     typedef enum {
         MAGN_SHUTDOWN  = 0,
         MAGN_SINGLE    = 1,
@@ -178,11 +192,13 @@ namespace icm20948
         MAGN_SELF_TEST = 16
     } magn_mode;
 
+    // Magnetometer runtime configuration.
     typedef struct magn_settings {
         magn_mode mode;
         explicit magn_settings(magn_mode mode = MAGN_100HZ) : mode(mode) {}
     } magn_settings;
 
+    // Aggregate device configuration.
     typedef struct settings {
         accel_settings accel;
         gyro_settings  gyro;
@@ -193,9 +209,11 @@ namespace icm20948
                  magn_settings  magn  = magn_settings())
             : accel(accel), gyro(gyro), magn(magn) {}
 
+        // Construct settings from a YAML config node.
         explicit settings(YAML::Node config_file_node);
     } settings;
 
+    // Helpers for converting config enums to scale factors / readable strings.
     float       accel_scale_factor(accel_scale scale);
     std::string accel_scale_to_str(accel_scale scale);
     std::string accel_dlpf_config_to_str(accel_dlpf_config config);
@@ -206,6 +224,7 @@ namespace icm20948
 
     std::string magn_mode_to_str(magn_mode mode);
 
+    // One fully decoded IMU sample.
     struct IMUSample {
         float ax, ay, az;
         float gx, gy, gz;
@@ -215,10 +234,12 @@ namespace icm20948
     class ICM20948_I2C
     {
     public:
+        // Most recent decoded sensor values.
         float accel[3];
         float gyro[3];
         float magn[3];
 
+        // Active driver settings.
         icm20948::settings settings;
 
         ICM20948_I2C(unsigned           i2c_bus,
@@ -235,14 +256,20 @@ namespace icm20948
         bool check_DRDY_INT();
 
     private:
+        // Linux I2C file descriptor and device identity.
         int       _i2c_fd;
         unsigned  _i2c_bus;
         unsigned  _i2c_address;
+
+        // Cached register bank to avoid redundant bank switches.
         uint8_t   _current_bank;
+
+        // Cached conversion factors from raw counts to physical units.
         float     _accel_scale_factor;
         float     _gyro_scale_factor;
         float     _magn_scale_factor;
 
+        // Device setup helpers.
         bool _enable_data_ready_interrupt();
         bool _set_bank(uint8_t bank);
         bool _set_accel_sample_rate_div();
@@ -250,6 +277,7 @@ namespace icm20948
         bool _set_gyro_sample_rate_div();
         bool _set_gyro_range_dlpf();
 
+        // Magnetometer setup via the ICM-20948 internal I2C master.
         bool _magnetometer_init();
         bool _magnetometer_enable();
         bool _magnetometer_set_mode();
@@ -257,6 +285,7 @@ namespace icm20948
         bool _magnetometer_set_readout();
         bool _chip_i2c_master_reset();
 
+        // Low-level register access helpers.
         bool _write_byte(uint8_t bank, uint8_t reg, uint8_t byte);
         bool _read_byte(uint8_t bank, uint8_t reg, uint8_t& byte);
         bool _write_bit(uint8_t bank, uint8_t reg, uint8_t bit_pos, bool bit);
