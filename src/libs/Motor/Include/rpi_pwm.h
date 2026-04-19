@@ -8,13 +8,62 @@
 #include <thread>
 #include <unistd.h>
 
+//Fixed hardware/software config forPWM output
+//Keeping these constant avoids mageic numbers and 
+//makes the class behaviour easier to maintain and reason with.
 static constexpr unsigned int PWM_GPIO_LINE = 18;
 static constexpr int PWM_FREQ_HZ = 30;
 
+/*
+ * RPI_PWM
+ * -------
+ * This class uses a dedicated worker thread and lipgiod to provide 
+ * a software PWM output on the Rapsberry Pi GPIO pin.
+ * 
+ * Main Responsibility:
+ *  - provides a safe interface to start and stop PWM generation
+ *  - to allow the client code to update the duty cycle without needing to know 
+ *     any GPIO or timing details.
+ *  - manage internally the GPIO line request and time loop.
+ *  
+ * SOLID principles:
+ *  - S - this class his only responsible for generating PWM on one GPIO line. Higher
+ *   level classification decides when feedback should happen and why the duty cycle changes.
+ * 
+ *  - O - Client code can reuse this class for different duty cycle values without the 
+ *        internal logic being modified itself. This behaviour is extended by calling its public interface rather than rewriting the timing logic 
+ *        
+ *
+ *  Realtime design: PWM generation runs in its own thread and uses timerfd-based waits rather than a crude busy loop, 
+ *  giving more predictable timing.
+ *
+ * Encapsulation: all GPIO handles, thread state, and timing details are private.
+ *
+ * Reliability and resource management: resources are acquired in start() and released in stop()/destructor().
+ */
 class RPI_PWM {
 public:
+ /*
+     * Constructor
+     * -----------
+     * Initialises the class into a safe default state:
+     * - 0% duty cycle
+     * - not running
+     * - no GPIO chip or line request acquired yet
+     *
+     * (This is safer than leaving pointers uninitialised).
+     */
     RPI_PWM() : duty_(0.0f), running_(false), chip_(nullptr), request_(nullptr) {}
-
+/*
+ * start()
+ * -------
+ * Initialises the GPIO line for output and starts the PWM worker thread.
+ *
+ * Returns true if setup succeeds, or false if the GPIO cannot be configured.
+ *
+ * All low-level GPIO setup is handled internally so the caller only needs
+ * to start the PWM without dealing with libgpiod directly.
+ */
     bool start() {
         chip_ = gpiod_chip_open("/dev/gpiochip0");
         if (!chip_) return false;
@@ -39,13 +88,19 @@ public:
             gpiod_chip_close(chip_);
             return false;
         }
-
+        // Mark the PWM engine as active and launch the worker thread.
         running_ = true;
         thread_ = std::thread(&RPI_PWM::loop, this);
         std::cout << "Software PWM started on GPIO " << PWM_GPIO_LINE << "\n";
         return true;
     }
 
+/*
+     * stop()
+     * ------
+     * Safely stops PWM generation, joins the worker thread,
+     * sets the output low, and releases GPIO resources.
+     */
     void stop() {
         running_ = false;
         if (thread_.joinable()) thread_.join();
@@ -66,7 +121,20 @@ public:
         duty_ = percent;
     }
 
+    /*
+     * getDutyCycle()
+     * --------------
+     * Returns the current duty cycle request.
+     *
+     * A getter is provided instead of exposing the variable publicly.
+     */
     float getDutyCycle() const { return duty_.load(); }
+    /*
+     * Destructor
+     * ----------
+     * Ensures that resources are released automatically if the object
+     * goes out of scope.
+     */
 
     ~RPI_PWM() { stop(); }
 
