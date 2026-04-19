@@ -27,7 +27,7 @@ public:
     void setCallback(SampleCallback cb);
     bool start();
     void stop();
-
+    icm20948::ICM20948_I2C& getIMU();
 private:
     void worker();
 
@@ -43,3 +43,7 @@ private:
     int                 gpio_fd_;
     int                 stop_fd_;
 };
+icm20948::ICM20948_I2C& IMUReader::getIMU()
+{
+    return imu_;
+}

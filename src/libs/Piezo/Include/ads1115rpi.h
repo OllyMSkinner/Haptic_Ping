@@ -90,12 +90,38 @@ public:
     }
 
     void setChannel(ADS1115settings::Input channel);
-    void start(ADS1115settings settings = ADS1115settings());
+
+    // spawn_worker=false lets you use the ADC from a single shared I2C owner loop
+    void start(ADS1115settings settings = ADS1115settings(),
+               bool spawn_worker = true);
+
     ADS1115settings getADS1115settings() const
     {
         return ads1115settings;
     }
+
     void stop();
+
+    // One-shot conversion register read for single-thread/shared-bus mode
+    int readOnce();
+
+    // Public because main.cpp needs it to convert raw ADC counts to volts
+    float fullScaleVoltage() const
+    {
+        switch (ads1115settings.pgaGain)
+        {
+        case ADS1115settings::FSR2_048:
+            return 2.048f;
+        case ADS1115settings::FSR1_024:
+            return 1.024f;
+        case ADS1115settings::FSR0_512:
+            return 0.512f;
+        case ADS1115settings::FSR0_256:
+            return 0.256f;
+        }
+        assert(1 == 0);
+        return 0.0f;
+    }
 
     // Enable retries on I2C read failure. Safe to call from any thread.
     // Default: disabled. Enable only when highest duty cycle is active.
@@ -115,23 +141,6 @@ private:
     const uint8_t reg_config = 1;
     const uint8_t reg_lo_thres = 2;
     const uint8_t reg_hi_thres = 3;
-
-    float fullScaleVoltage()
-    {
-        switch (ads1115settings.pgaGain)
-        {
-        case ADS1115settings::FSR2_048:
-            return 2.048f;
-        case ADS1115settings::FSR1_024:
-            return 1.024f;
-        case ADS1115settings::FSR0_512:
-            return 0.512f;
-        case ADS1115settings::FSR0_256:
-            return 0.256f;
-        }
-        assert(1 == 0);
-        return 0.0f;
-    }
 
     std::shared_ptr<gpiod::chip> chip;
     std::shared_ptr<gpiod::line_request> request;

@@ -1,5 +1,6 @@
 #include "ads1115rpi.h"
 #include "i2c_mutex.hpp"
+#include <mutex>
 
 #include <stdio.h>
 #include <fcntl.h>
@@ -23,53 +24,86 @@ ADS1115settings makeDefaultADS1115Settings()
     return s;
 }
 
-void ADS1115rpi::start(ADS1115settings settings)
+void ADS1115rpi::start(ADS1115settings settings, bool spawn_worker)
 {
+    if (running) {
+        throw std::runtime_error("ADS1115: start() called while already running.");
+    }
+
     ads1115settings = settings;
 
     char gpioFilename[20];
-    snprintf(gpioFilename, 19, "/dev/i2c-%d", settings.i2c_bus);
+    snprintf(gpioFilename, sizeof(gpioFilename), "/dev/i2c-%d", settings.i2c_bus);
+
     fd_i2c = open(gpioFilename, O_RDWR);
-    if (fd_i2c < 0)
+    if (fd_i2c < 0) {
         throw std::invalid_argument("Could not open I2C.");
+    }
 
-    if (ioctl(fd_i2c, I2C_SLAVE, settings.address) < 0)
-        throw std::invalid_argument("Could not access I2C address.");
+    try {
+        {
+            std::lock_guard<std::mutex> lk(i2c1_mutex());
 
-    i2c_writeWord(reg_lo_thres, 0x0000);
-    i2c_writeWord(reg_hi_thres, 0x8000);
+            if (ioctl(fd_i2c, I2C_SLAVE, settings.address) < 0) {
+                throw std::invalid_argument("Could not access I2C address.");
+            }
+        }
 
-    unsigned r = (0b10000000 << 8);
-    r = r | (1 << 2) | (1 << 3);
-    r = r | (settings.samplingRate << 5);
-    r = r | (settings.pgaGain << 9);
-    r = r | (settings.channel << 12) | 1 << 14;
-    i2c_writeWord(reg_config, r);
+        i2c_writeWord(reg_lo_thres, 0x0000);
+        i2c_writeWord(reg_hi_thres, 0x8000);
 
-    const std::string chipPath =
-        "/dev/gpiochip" + std::to_string(settings.drdy_chip);
-    const std::string consumername =
-        "gpioconsumer_" + std::to_string(settings.drdy_chip)
-        + "_" + std::to_string(settings.drdy_gpio);
+        unsigned r = (0b10000000 << 8);
+        r = r | (1 << 2) | (1 << 3);
+        r = r | (settings.samplingRate << 5);
+        r = r | (settings.pgaGain << 9);
+        r = r | (settings.channel << 12) | (1 << 14);
+        i2c_writeWord(reg_config, r);
 
-    gpiod::line_config line_cfg;
-    line_cfg.add_line_settings(
-        settings.drdy_gpio,
-        gpiod::line_settings()
-            .set_direction(gpiod::line::direction::INPUT)
-            .set_edge_detection(gpiod::line::edge::RISING)
-            .set_bias(gpiod::line::bias::PULL_UP));
+        if (spawn_worker) {
+            const std::string chipPath =
+                "/dev/gpiochip" + std::to_string(settings.drdy_chip);
+            const std::string consumername =
+                "gpioconsumer_" + std::to_string(settings.drdy_chip)
+                + "_" + std::to_string(settings.drdy_gpio);
 
-    chip    = std::make_shared<gpiod::chip>(chipPath);
-    auto builder = chip->prepare_request();
-    builder.set_consumer(consumername);
-    builder.set_line_config(line_cfg);
-    request = std::make_shared<gpiod::line_request>(builder.do_request());
+            gpiod::line_config line_cfg;
+            line_cfg.add_line_settings(
+                settings.drdy_gpio,
+                gpiod::line_settings()
+                    .set_direction(gpiod::line::direction::INPUT)
+                    .set_edge_detection(gpiod::line::edge::RISING)
+                    .set_bias(gpiod::line::bias::PULL_UP));
 
-    running = true;
-    thr     = std::thread(&ADS1115rpi::worker, this);
+            chip = std::make_shared<gpiod::chip>(chipPath);
+            auto builder = chip->prepare_request();
+            builder.set_consumer(consumername);
+            builder.set_line_config(line_cfg);
+            request = std::make_shared<gpiod::line_request>(builder.do_request());
+
+            running = true;
+            thr = std::thread(&ADS1115rpi::worker, this);
+        }
+    } catch (...) {
+        running = false;
+
+        if (request) {
+            request->release();
+            request.reset();
+        }
+
+        if (chip) {
+            chip->close();
+            chip.reset();
+        }
+
+        if (fd_i2c >= 0) {
+            close(fd_i2c);
+            fd_i2c = -1;
+        }
+
+        throw;
+    }
 }
-
 void ADS1115rpi::setChannel(ADS1115settings::Input channel)
 {
     unsigned r = i2c_readWord(reg_config);
@@ -188,10 +222,15 @@ int ADS1115rpi::i2c_readConversion()
     txn.msgs  = msgs;
     txn.nmsgs = 2;
 
+
     for (int attempt = 0; attempt < MAX_RETRIES; ++attempt) {
         if (ioctl(fd_i2c, I2C_RDWR, &txn) == 2)
             return (static_cast<int>(buf[0]) << 8) | static_cast<int>(buf[1]);
     }
 
     return -1;  // caller skips silently
+}
+int ADS1115rpi::readOnce()
+{
+    return i2c_readConversion();
 }
