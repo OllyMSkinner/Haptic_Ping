@@ -1,3 +1,9 @@
+/*
+    This header declares a simple software PWM class for the Raspberry Pi.
+    It controls a GPIO output using a timed loop, allows the duty cycle
+    to be updated, and manages the resources needed to run the PWM signal.
+*/
+
 #pragma once
 
 #include <atomic>
@@ -8,9 +14,11 @@
 #include <thread>
 #include <unistd.h>
 
+// Defines the GPIO line and PWM frequency used by the software PWM output.
 static constexpr unsigned int PWM_GPIO_LINE = 18;
 static constexpr int PWM_FREQ_HZ = 30;
 
+// Declares the PWM class and its main functions for starting, stopping, and updating the duty cycle.
 class RPI_PWM {
 public:
     RPI_PWM() : duty_(0.0f), running_(false), chip_(nullptr), request_(nullptr) {}
@@ -71,6 +79,7 @@ public:
     ~RPI_PWM() { stop(); }
 
 private:
+    // Declares the helper functions and private members used for timing, GPIO control, thread handling, and PWM state.
     static itimerspec usToTimerspec(long us) {
         itimerspec ts{};
         ts.it_value.tv_sec     = us / 1000000;

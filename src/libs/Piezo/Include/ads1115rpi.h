@@ -77,12 +77,12 @@ ADS1115settings makeDefaultADS1115Settings();
 class ADS1115rpi
 {
 public:
+    using ADSCallbackInterface = std::function<void(float)>;
+
     ~ADS1115rpi()
     {
         stop();
     }
-
-    using ADSCallbackInterface = std::function<void(float)>;
 
     void registerCallback(ADSCallbackInterface ci)
     {
@@ -91,7 +91,6 @@ public:
 
     void setChannel(ADS1115settings::Input channel);
 
-    // spawn_worker=false lets you use the ADC from a single shared I2C owner loop
     void start(ADS1115settings settings = ADS1115settings(),
                bool spawn_worker = true);
 
@@ -102,10 +101,8 @@ public:
 
     void stop();
 
-    // One-shot conversion register read for single-thread/shared-bus mode
     int readOnce();
 
-    // Public because main.cpp needs it to convert raw ADC counts to volts
     float fullScaleVoltage() const
     {
         switch (ads1115settings.pgaGain)
@@ -119,13 +116,14 @@ public:
         case ADS1115settings::FSR0_256:
             return 0.256f;
         }
-        assert(1 == 0);
+        assert(false);
         return 0.0f;
     }
 
-    // Enable retries on I2C read failure. Safe to call from any thread.
-    // Default: disabled. Enable only when highest duty cycle is active.
-    void setRetryEnabled(bool enabled) { retry_enabled_.store(enabled); }
+    void setRetryEnabled(bool enabled)
+    {
+        retry_enabled_.store(enabled);
+    }
 
 private:
     ADS1115settings ads1115settings;
@@ -138,7 +136,7 @@ private:
     unsigned i2c_readWord(uint8_t reg);
     int i2c_readConversion();
 
-    const uint8_t reg_config = 1;
+    const uint8_t reg_config   = 1;
     const uint8_t reg_lo_thres = 2;
     const uint8_t reg_hi_thres = 3;
 

@@ -5,7 +5,6 @@
 #include "swingfeedback.h"
 #include "rpi_pwm.h"
 
-#include <iostream>
 #include <cstdlib>
 #include <csignal>
 #include <unistd.h>
@@ -53,23 +52,22 @@ int main()
         imuLed.set(upright);
     });
 
-    // ===== IMU (NO THREAD) =====
     IMUReader reader(I2C_BUS);
 
     if (!reader.init()) {
-        std::cerr << "IMU init failed\n";
+        feedback.forceOff();
+        pwm.setDutyCycle(0.0f);
         return EXIT_FAILURE;
     }
 
-    // ===== PIEZO =====
     PiezoEventDetector piezoDetector(piezoLed, PiezoEventDetectorSettings{});
 
     ADS1115rpi ads;
-
     try {
-        ads.start();  // will init device, but we won't rely on its worker thread
+        ads.start(makeDefaultADS1115Settings(), false);
     } catch (...) {
-        std::cerr << "ADS init failed\n";
+        feedback.forceOff();
+        pwm.setDutyCycle(0.0f);
         return EXIT_FAILURE;
     }
 
@@ -85,26 +83,33 @@ int main()
         processor.onForceReady(true);
     });
 
-    // ===== MAIN LOOP (SINGLE I²C OWNER) =====
     while (running)
     {
+        icm20948::IMUSample sample{};
+        if (reader.getIMU().read_sample(sample))
+        {
+            feedback.checkTimeout();
 
-        
-        // ---- ADS READ ----
-        int raw = ads.readOnce();  // <-- YOU NEED THIS METHOD (see below)
+            processor(sample.ax, sample.ay, sample.az,
+                      sample.gx, sample.gy, sample.gz,
+                      sample.mx, sample.my);
+        }
+
+        int raw = ads.readOnce();
         if (raw >= 0)
         {
             float v = static_cast<float>(raw) / 32767.0f * ads.fullScaleVoltage();
 
-            if (!processor.isActive())
+            if (!processor.isActive()) {
                 piezoDetector.processSample(v);
+            }
         }
 
-        // small sleep to prevent bus hammering
         std::this_thread::sleep_for(std::chrono::milliseconds(2));
     }
 
     ads.stop();
+    reader.stop();
     feedback.forceOff();
     pwm.setDutyCycle(0.0f);
 
