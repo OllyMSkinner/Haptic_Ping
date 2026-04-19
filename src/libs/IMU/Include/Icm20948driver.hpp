@@ -1,3 +1,16 @@
+// This header defines the register map, configuration types, and public driver
+// interface for the ICM-20948 IMU and its onboard magnetometer.
+//
+// SOLID principles:
+//   S - This file centralises device-specific constants, configuration structures,
+//       and the public interface for the IMU driver in one place.
+//   O - Configuration is represented through settings types, allowing the driver to
+//       be reconfigured without changing client code that uses the interface.
+//   I - Configuration is grouped into smaller settings types (accelerometer,
+//       gyroscope, magnetometer) so callers interact with the parts of the
+//       device configuration they actually need
+
+
 #pragma once
 
 #include <cstdint>
@@ -6,27 +19,9 @@
 #include <linux/i2c.h>
 #include "yaml-cpp/yaml.h"
 
-// This header defines the register map, configuration types, and public driver
-// interface for the ICM-20948 IMU and its onboard magnetometer.
-//
-// Design intention:
-// - Single Responsibility:
-//   This file centralises device-specific constants, configuration structures,
-//   and the public interface for the IMU driver in one place.
-// - Encapsulation:
-//   Low-level register access details are hidden behind helper methods and a
-//   compact public API so higher-level code does not manipulate registers directly.
-// - Open/Closed:
-//   Configuration is represented through settings types, allowing the driver to
-//   be reconfigured without changing client code that uses the interface.
-// - Maintainability:
-//   Register addresses, bank IDs, and conversion helpers are grouped here to
-//   make the hardware mapping easier to understand and update consistently.
 
 // Register addresses and constants for the ICM-20948 IMU and onboard magnetometer.
-
 //  Register map
-
 
 #define ICM20948_I2C_ADDR       0x69
 #define ICM20948_MAGN_I2C_ADDR  0x0C
