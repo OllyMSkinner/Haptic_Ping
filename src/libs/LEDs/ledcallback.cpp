@@ -1,8 +1,15 @@
+/*
+    This file implements the simple LED controller class.
+    It sets up the GPIO line for LED output, releases the GPIO resources
+    when finished, and allows the LED state to be switched on or off.
+*/
+
 #include "ledcallback.hpp"
 
 #include <stdexcept>
 #include <string>
 
+// Initialises the LED controller by setting up the GPIO chip, output line, and line request for the selected pin.
 SimpleLEDController::SimpleLEDController(int pinNo, int chipNo)
     : pin(pinNo), chipNumber(chipNo)
 {
@@ -28,6 +35,7 @@ SimpleLEDController::SimpleLEDController(int pinNo, int chipNo)
     request = std::make_shared<gpiod::line_request>(builder.do_request());
 }
 
+// Releases the GPIO resources and makes sure the LED is turned off before closing.
 SimpleLEDController::~SimpleLEDController()
 {
     try {
@@ -44,6 +52,7 @@ SimpleLEDController::~SimpleLEDController()
     }
 }
 
+// Sets the LED output state to on or off.
 void SimpleLEDController::set(bool on)
 {
     if (!request) {

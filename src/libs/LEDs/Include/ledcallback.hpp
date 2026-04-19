@@ -1,9 +1,16 @@
+/*
+    This header declares a simple LED controller class.
+    It provides basic LED control functions, optional flash and service
+    functions, and stores the GPIO resources needed to control the LED.
+*/
+
 #ifndef LEDCALLBACK_HPP
 #define LEDCALLBACK_HPP
 
 #include <gpiod.hpp>
 #include <memory>
 
+// Declares the LED controller class and its main functions for setting the LED state, flashing, and servicing updates.
 class SimpleLEDController
 {
 public:
@@ -11,15 +18,11 @@ public:
     virtual ~SimpleLEDController();
 
     virtual void set(bool on);
-
-    // Flash + service interface — overridden by LEDController.
-    // No-ops here so the base can be used standalone and test stubs
-    // only override what they need.
     virtual void flashGreen(int /*flashMs*/) {}
     virtual void service()                   {}
 
 protected:
-    // No-hardware constructor for unit-test stubs.
+    // Declares the default constructor and the private members used to store GPIO pin, chip, and request data. 
     SimpleLEDController() = default;
 
     int pin        = -1;

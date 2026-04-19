@@ -1,8 +1,16 @@
+/*
+    This header declares the position detector class.
+    It stores the configuration for detecting an upright position,
+    processes sensor samples, tracks stability, and uses a callback
+    when the required position has been confirmed.
+*/
+
 #pragma once
 
 #include <cmath>
 #include <functional>
 
+// Declares the position detector class, including its callback type, configuration settings, and main functions for processing samples and resetting state.
 class PositionDetector {
 public:
     using StateCallback = std::function<void(bool upright)>;
@@ -33,6 +41,7 @@ public:
     void resetState();
 
 private:
+    // Declares the helper function and private members used to store configuration, reference values, stability count, state, and callback data.
     static float wrapAngleDeg(float a);
 
     Config cfg;

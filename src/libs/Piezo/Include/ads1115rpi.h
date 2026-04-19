@@ -1,3 +1,9 @@
+/*
+    This header defines the ADS1115 settings and the Raspberry Pi interface class.
+    It sets up the available configuration options, callback handling, channel control,
+    and the functions used to start, stop, and manage ADC readings.
+*/
+
 #ifndef __ADS1115RPI_H
 #define __ADS1115RPI_H
 
@@ -18,6 +24,7 @@
 #define DEBUG
 #endif
 
+// Stores the ADS1115 configuration values, including I2C settings, sampling rate, gain, input channel, and GPIO settings.
 struct ADS1115settings
 {
     int i2c_bus = 1;
@@ -37,6 +44,7 @@ struct ADS1115settings
         FS860HZ = 7
     };
 
+    // Returns the sampling rate value that matches the selected enum setting.
     inline unsigned getSamplingRate() const
     {
         const unsigned SamplingRateEnum2Value[8] =
@@ -72,8 +80,10 @@ struct ADS1115settings
     int drdy_gpio = DEFAULT_ALERT_RDY_TO_GPIO;
 };
 
+// Creates and returns the default ADS1115 settings.
 ADS1115settings makeDefaultADS1115Settings();
 
+// Declares the ADS1115 Raspberry Pi interface, including callback support and the main functions for starting, stopping, configuring, and reading the device.
 class ADS1115rpi
 {
 public:
@@ -97,8 +107,7 @@ public:
     }
     void stop();
 
-    // Enable retries on I2C read failure. Safe to call from any thread.
-    // Default: disabled. Enable only when highest duty cycle is active.
+    // Enables or disables retry handling for I2C read failures.
     void setRetryEnabled(bool enabled) { retry_enabled_.store(enabled); }
 
 private:
@@ -116,6 +125,7 @@ private:
     const uint8_t reg_lo_thres = 2;
     const uint8_t reg_hi_thres = 3;
 
+    // Returns the full-scale voltage based on the selected gain setting.
     float fullScaleVoltage()
     {
         switch (ads1115settings.pgaGain)

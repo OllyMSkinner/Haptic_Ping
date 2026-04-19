@@ -1,3 +1,9 @@
+/*
+    This header declares the swing feedback class.
+    It manages PWM feedback output, handles level changes,
+    checks for time-outs, and supports a reset callback.
+*/
+
 #pragma once
 
 #include "rpi_pwm.h"
@@ -6,6 +12,7 @@
 #include <chrono>
 #include <functional>
 
+// Declares the swing feedback class, including its callback type and main functions for handling feedback, time-outs, and reset behaviour.
 class SwingFeedback {
 public:
     using ResetCallback = std::function<void()>;
@@ -18,6 +25,7 @@ public:
     void forceOff();
 
 private:
+    // Declares the internal worker function and the private members used to track PWM output, callback state, pending level, and timeout timing.
     void worker();
 
     RPI_PWM&           pwm_;
