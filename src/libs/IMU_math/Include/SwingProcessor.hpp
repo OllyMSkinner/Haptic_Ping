@@ -1,5 +1,8 @@
 #pragma once
 
+// SOLID Principles:
+// D - MagnitudeCallback and PositionStateCallback are std::function output abstractions.
+
 #include "SwingCalibrator.hpp"
 #include "positiondetector.hpp"
 
