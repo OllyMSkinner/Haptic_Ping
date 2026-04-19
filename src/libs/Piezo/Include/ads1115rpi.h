@@ -1,8 +1,19 @@
-/*
-    This header defines the ADS1115 settings and the Raspberry Pi interface class.
-    It sets up the available configuration options, callback handling, channel control,
-    and the functions used to start, stop, and manage ADC readings.
-*/
+//  This header defines the ADS1115 configuration data and the Raspberry Pi
+//  interface used to communicate with the ADS1115 device.
+//  It provides the available setup options, callback registration, channel
+//  control, and the functions used to start, stop, and manage ADC readings.
+//
+//
+// SOLID principles:
+//   S -   The settings struct is responsible only for configuration data, while the
+//         ADS1115rpi class is responsible for managing ADC communication and sample
+//         delivery.
+//   O -   Client behaviour can be extended through the callback interface without
+//         changing the ADC reading logic itself.
+//   I/D - Client code interacts with this class through a small public API and a
+//         narrow callback interface rather than depending on low-level I2C or GPIO
+//         operations directly.
+
 
 #ifndef __ADS1115RPI_H
 #define __ADS1115RPI_H

@@ -1,8 +1,16 @@
-/*
-    This header defines the piezo event detector and its settings.
-    The detector processes sensor samples, tracks press/release state,
-    and can trigger a callback while controlling an LED.
-*/
+// This header defines the piezo event detector and its settings.
+// The detector is responsible for interpreting sensor samples from the ADC,
+// tracking press/release state, and exposing higher-level event behaviour
+// through a callback while also providing direct LED feedback.
+
+
+// SOLID principle:
+//   S -   The main responsibility of this class is to interpret piezo samples using
+//         filtering and threshold logic.
+//   O -   New behaviours can be attached through the callback without changing the
+//         detector logic itself.
+//   L/D - The detector depends on a simpler LED abstraction and a callback rather than
+//         on broader application logic, helping to reduce coupling.
 
 #pragma once
 

@@ -1,8 +1,20 @@
-/*
-    This file implements the LED controller class.
-    It manages the green LED state, supports timed flashing,
-    and updates the LED output through the base controller.
-*/
+// This file implements the LED controller class for the piezo events.
+// It keeps LED-specific behaviour in one place by managing the green LED
+// state, supporting timed flashing, and updating the output through the
+// base controller so the rest of the application does not deal directly
+// with GPIO output details or timing state.
+//
+// SOLID principles:
+//   S - This file is focused on LED output behaviour only: storing LED state,
+//       applying timed flashing, and updating the hardware-facing base controller.
+//   O - Client code can request LED actions through the public interface without
+//       modifying the internal output logic.
+//   L - The concrete LEDController builds on the simpler base controller so client
+//       code can depend on a narrower LED abstraction rather than GPIO details.
+//   I - Client code can use the small LED-facing interface instead of dealing with
+//       GPIO details or unrelated hardware operations.
+//   D - Higher-level code can depend on the simpler SimpleLEDController abstraction
+//       rather than this concrete GPIO-backed implementation.
 
 #include "led_controller.h"
 
