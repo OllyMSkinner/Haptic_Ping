@@ -194,7 +194,7 @@ ctest --test-dir build --output-on-failure
 ---
 
 ## Documentation
-The documentation for this project can be found here: 
+Complete documentation for this project can be found in [__HapticPingDocumentation.pdf__](../../../HapticPingDocumentation.pdf).
 
 ## Project Structure
 ```
