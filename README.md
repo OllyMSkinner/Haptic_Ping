@@ -47,7 +47,7 @@ IMU I2C address: `0x69`, ADS1115 I2C address: `0x48`, I2C bus: `1`
 
 ## Wiring Diagram
 
-![Wiring Diagram](images/Diagram_wLabel2.png)
+![Wiring Diagram](images/Diagram_fixed_wLabel.png)
 
 ---
 
