@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="images/LOGO_EXT.jpeg" alt="Haptic Ping Logo" width="350"/>
+  <img src="images/LOGO_EXT.jpeg" alt="Haptic Ping Logo" width="650"/>
 </p>
 
 # Haptic Ping
@@ -163,6 +163,9 @@ The system will:
 
 Press `Ctrl+C` or `SIGHUP` to stop cleanly.
 
+A demo video is linked below (only accessible to UofG staff and students)
+[Usage Video - Haptic Ping](https://gla-my.sharepoint.com/my?id=%2Fpersonal%2F2661134m%5Fstudent%5Fgla%5Fac%5Fuk%2FDocuments%2FUsage%20Video%20%2D%20Haptic%20Ping)
+
 ---
 
 ## Running Tests
@@ -242,4 +245,6 @@ This project is licensed under the MIT License — see the [LICENSE](LICENSE) fi
 - [libgpiod](https://git.kernel.org/pub/scm/libs/libgpiod/libgpiod.git/)
 - [yaml-cpp](https://github.com/jbeder/yaml-cpp)
 - [Google Test](https://github.com/google/googletest)
-- University of Glasgow ENG 5220 teaching team
+- University of Glasgow ENG 5220 teaching team  
+
+We would like to thank the lecturers for the course Real time Embedded Systems, Bernd Porr and Chongfeng Wei, for all their help. We would also like to expresss our gratitude to Thomas O'Hara for all his guidance and support.
