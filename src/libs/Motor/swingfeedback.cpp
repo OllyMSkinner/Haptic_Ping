@@ -1,15 +1,6 @@
-<<<<<<< HEAD
-/*
-    This file implements the swing feedback class.
-    It converts feedback levels into PWM output patterns,
-    manages timing and time-outs, and resets the output when needed.
-*/
-
-=======
     /** This file implements the swing feedback class.
     * It converts feedback levels into PWM output patterns,
     * manages timing and time-outs, and resets the output when needed. */
->>>>>>> BeforeSubmission
 
 #include "swingfeedback.h"
 
@@ -23,22 +14,12 @@
 
 namespace {
 
-<<<<<<< HEAD
-/* 
-Maximum duty cycle is capped at 80% to reduce peak back-EMF spike.
-Crashes were observed predominantly at 100% duty cycle and once at 66%,
-so 80% sits below the most problematic threshold while retaining
-meaningful haptic feedback strength.
-*/
-// Defines the maximum duty cycle and helper functions used to rank levels, wait for timed delays, ramp the PWM output, and play each feedback pattern.
-=======
 /** Maximum duty cycle is capped at 80% to reduce peak back-EMF spike.
 * Crashes were observed predominantly at 100% duty cycle and once at 66%,
 * so 80% sits below the most problematic threshold while retaining
 * meaningful haptic feedback strength.
 * Defines the maximum duty cycle and helper functions used to rank levels, wait for timed delays, ramp the PWM output, and play each feedback pattern. */
 
->>>>>>> BeforeSubmission
 static constexpr float MAX_DUTY = 80.0f;
 
 int levelRank(std::string_view level)
@@ -59,19 +40,11 @@ void waitMs(int tfd, int ms)
     ::read(tfd, &exp, sizeof(exp));
 }
 
-<<<<<<< HEAD
-/* 
-   Ramp duty cycle up from 0 -> 33% -> 66% -> MAX_DUTY.
-   Each step uses a timerfd wait so the thread stays event-driven and non-blocking throughout.
-   This spreads the magnetic field build-up over ~90ms, reducing inrush current spikes.
-*/
-=======
 
    /** Ramp duty cycle up from 0 -> 33% -> 66% -> MAX_DUTY.
    * Each step uses a timerfd wait so the thread stays event-driven and non-blocking throughout.
    * This spreads the magnetic field build-up over ~90ms, reducing inrush current spikes. */
 
->>>>>>> BeforeSubmission
 void rampUp(RPI_PWM& pwm, int tfd)
 {
     pwm.setDutyCycle(MAX_DUTY * 0.33f); waitMs(tfd, 30);
@@ -79,16 +52,9 @@ void rampUp(RPI_PWM& pwm, int tfd)
     pwm.setDutyCycle(MAX_DUTY);         waitMs(tfd, 30);
 }
 
-<<<<<<< HEAD
-/* 
-   Ramp duty cycle down from MAX_DUTY -> 66% -> 33% -> 0.
-   Spreading the field collapse over ~60ms significantly reduces the peak back-EMF spike that was causing the Pi to crash.
-*/
-=======
    /// Ramp duty cycle down from MAX_DUTY -> 66% -> 33% -> 0.
    /// Spreading the field collapse over ~60ms significantly reduces the peak back-EMF spike that was causing the Pi to crash.
 
->>>>>>> BeforeSubmission
 void rampDown(RPI_PWM& pwm, int tfd)
 {
     pwm.setDutyCycle(MAX_DUTY * 0.66f); waitMs(tfd, 30);
@@ -125,43 +91,26 @@ void playRank(RPI_PWM& pwm, int rank)
 
 } 
 
-<<<<<<< HEAD
-// Returns the current time in milliseconds for timeout tracking.
-=======
 /// Returns the current time in milliseconds for timeout tracking.
->>>>>>> BeforeSubmission
 static int64_t nowMs()
 {
     return std::chrono::duration_cast<std::chrono::milliseconds>(
         std::chrono::steady_clock::now().time_since_epoch()).count();
 }
 
-<<<<<<< HEAD
-// Initialises the feedback object and sets the PWM output to off.
-=======
 /// Initialises the feedback object and sets the PWM output to off.
->>>>>>> BeforeSubmission
 SwingFeedback::SwingFeedback(RPI_PWM& pwm)
     : pwm_(pwm)
 {
     pwm_.setDutyCycle(0.0f);
 }
 
-<<<<<<< HEAD
-// Stores the callback used when the feedback state is reset.
-=======
 /// Stores the callback used when the feedback state is reset.
->>>>>>> BeforeSubmission
 void SwingFeedback::setResetCallback(ResetCallback cb)
 {
     reset_cb_ = std::move(cb);
 }
-<<<<<<< HEAD
-
-// Checks whether the feedback has been active for too long and forces it off if needed.
-=======
 /// Checks whether the feedback has been active for too long and forces it off if needed.
->>>>>>> BeforeSubmission
 void SwingFeedback::checkTimeout()
 {
     int64_t start = busy_since_ms_.load();
@@ -172,11 +121,7 @@ void SwingFeedback::checkTimeout()
     }
 }
 
-<<<<<<< HEAD
-// Runs the feedback output, updates the busy state, and calls the reset callback when finished.
-=======
 /// Runs the feedback output, updates the busy state, and calls the reset callback when finished.
->>>>>>> BeforeSubmission
 void SwingFeedback::worker()
 {
     if (busy_.exchange(true)) return;
@@ -200,11 +145,7 @@ void SwingFeedback::worker()
     pending_level_.store(0);
 }
 
-<<<<<<< HEAD
-// Receives a feedback level, stores the highest pending level, and starts the worker if needed.
-=======
 /// Receives a feedback level, stores the highest pending level, and starts the worker if needed.
->>>>>>> BeforeSubmission
 void SwingFeedback::onLevel(const char* level)
 {
     if (!level) return;
@@ -227,11 +168,7 @@ void SwingFeedback::onLevel(const char* level)
     }
 }
 
-<<<<<<< HEAD
-// Forces the PWM output off, clears the busy state, and triggers the reset callback.
-=======
 /// Forces the PWM output off, clears the busy state, and triggers the reset callback.
->>>>>>> BeforeSubmission
 void SwingFeedback::forceOff()
 {
     busy_since_ms_.store(0);

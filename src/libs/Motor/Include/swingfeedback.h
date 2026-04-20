@@ -12,12 +12,8 @@
 #include <chrono>
 #include <functional>
 
-<<<<<<< HEAD
-// Declares the swing feedback class, including its callback type and main functions for handling feedback, time-outs, and reset behaviour.
-=======
 /// Drives PWM feedback from detected swing levels.
 
->>>>>>> BeforeSubmission
 class SwingFeedback {
 public:
     /// Fired when the feedback cycle times out and needs a reset.
@@ -31,11 +27,7 @@ public:
     void forceOff();
 
 private:
-<<<<<<< HEAD
-    // Declares the internal worker function and the private members used to track PWM output, callback state, pending level, and timeout timing.
-=======
     /// Internal worker for applying queued feedback updates.
->>>>>>> BeforeSubmission
     void worker();
 
     /// PWM output owned externally.
