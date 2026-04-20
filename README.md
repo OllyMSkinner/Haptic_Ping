@@ -129,7 +129,10 @@ sudo apt install -y libgpiod-dev libgpiod2 libi2c-dev i2c-tools libyaml-cpp-dev 
 Used for all GPIO control on the Raspberry Pi via the Linux character device interface. In this project it is used in three places: the IMU reader configures the data-ready line (GPIO 27) as a rising-edge input and uses `epoll` on the GPIO file descriptor to wake the reader thread; the ADS1115 driver configures the ALERT/RDY line (GPIO 26) as a rising-edge input and blocks on `wait_edge_events`; and the LED controllers and PWM driver configure output lines to drive the LEDs and ERM motor.
 
 ### Linux I2C
-Used to communicate with both the ICM-20948 IMU (address `0x69`) and the ADS1115 ADC (address `0x48`) over I2C bus 1. The IMU driver uses raw `ioctl(I2C_SLAVE)` and register-level read/write to initialise the sensor, configure accelerometer, gyroscope and magnetometer settings, and read decoded samples. The ADS1115 driver uses atomic `I2C_RDWR` transactions with retry logic to read conversion results. A shared `i2c1_mutex` coordinates access between the two threads to prevent interleaved bus transactions.
+Used to communicate with both the ICM-20948 IMU (address `0x69`) and the ADS1115 ADC (address `0x48`) over I2C bus 1. The IMU driver uses raw `ioctl(I2C_SLAVE)` and register-level read/write to initialise the sensor, configure accelerometer, gyroscope and magnetometer settings, and read decoded samples. The ADS1115 driver uses atomic `I2C_RDWR` transactions with retry logic to read conversion results. A shared `i2c1_mutex` coordinates access between the two threads to prevent overloaded bus transactions.
+
+### PWM
+RPI_PWM is a software PWM library for the Raspberry Pi that drives GPIO 18 at 30 Hz using a dedicated worker thread and timerfd-based waits. It exposes a simple setDutyCycle() interface, clamps output to a maximum of 80% to reduce back-EMF spikes, and cleanly acquires and releases the GPIO line through libgpiod.
 
 ### yaml-cpp
 Used by the ICM-20948 driver settings class to load sensor configuration parameters — accelerometer scale, gyroscope scale, sample rate divider, and digital low-pass filter settings — from a YAML file. This allows sensor tuning without recompiling.
@@ -188,6 +191,9 @@ ctest --test-dir build --output-on-failure
 | `SwingProcessor` | Gate logic, force/position interaction, magnitude output |
 
 ---
+
+## Documentation
+The documentation for this project can be found here: 
 
 ## Project Structure
 ```
