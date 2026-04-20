@@ -1,28 +1,26 @@
-/*
-    This class processes piezo sensor samples to detect press and release events.
-    It smooths the input signal, compares it against press/release thresholds,
-    updates the LED state, and triggers a callback when the state changes.
-*/
+/**  This class processes piezo sensor samples to detect press and release events.
+  *  It smooths the input signal, compares it against press/release thresholds,
+  *  updates the LED state, and triggers a callback when the state changes. */
 
 #include "event_detector.h"
 
 #include <cstdio>
 #include <utility>
 
-// Stores the LED reference and detector settings.
+/// Stores the LED reference and detector settings.
 PiezoEventDetector::PiezoEventDetector(SimpleLEDController& ledRef,
                                        PiezoEventDetectorSettings settings)
     : led_(ledRef), settings_(settings)
 {
 }
 
-// Sets the callback used when the press state changes.
+/// Sets the callback used when the press state changes.
 void PiezoEventDetector::setForceCallback(ForceCallback cb)
 {
     forceCallback_ = std::move(cb);
 }
 
-// Resets the detector state and turns the LED off.
+/// Resets the detector state and turns the LED off.
 void PiezoEventDetector::reset()
 {
     pressed_     = false;
@@ -31,7 +29,7 @@ void PiezoEventDetector::reset()
     led_.set(false);
 }
 
-// Filters the sample, checks thresholds, updates state, and triggers outputs.
+/// Filters the sample, checks thresholds, updates state, and triggers outputs.
 void PiezoEventDetector::processSample(float v)
 {
     if (!filter_init_) {

@@ -1,3 +1,19 @@
+/**  This header defines the ADS1115 configuration data and the Raspberry Pi
+  * interface used to communicate with the ADS1115 device.
+  * It provides the available setup options, callback registration, channel
+  * control, and the functions used to start, stop, and manage ADC readings.
+*
+*
+* SOLID principles:
+*   S -   The settings struct is responsible only for configuration data, while the
+*         ADS1115rpi class is responsible for managing ADC communication and sample
+*         delivery.
+*   O -   Client behaviour can be extended through the callback interface without
+*         changing the ADC reading logic itself.
+*   I/D - Client code interacts with this class through a small public API and a
+*         narrow callback interface rather than depending on low-level I2C or GPIO
+*         operations directly.*/
+
 #ifndef __ADS1115RPI_H
 #define __ADS1115RPI_H
 
@@ -18,6 +34,7 @@
 #define DEBUG
 #endif
 
+/// Stores the ADS1115 configuration values, including I2C settings, sampling rate, gain, input channel, and GPIO settings.
 struct ADS1115settings
 {
     int i2c_bus = 1;
@@ -36,7 +53,7 @@ struct ADS1115settings
         FS475HZ = 6,
         FS860HZ = 7
     };
-
+    /// Returns the sampling rate value that matches the selected enum setting.
     inline unsigned getSamplingRate() const
     {
         const unsigned SamplingRateEnum2Value[8] =
@@ -72,8 +89,10 @@ struct ADS1115settings
     int drdy_gpio = DEFAULT_ALERT_RDY_TO_GPIO;
 };
 
+/// Creates and returns the default ADS1115 settings.
 ADS1115settings makeDefaultADS1115Settings();
 
+/// Declares the ADS1115 Raspberry Pi interface, including callback support and the main functions for starting, stopping, configuring, and reading the device.
 class ADS1115rpi
 {
 public:
@@ -101,9 +120,27 @@ public:
 
     void stop();
 
-    int readOnce();
+    /// Enable retries on I2C read failure. Safe to call from any thread.
+    /// Default: disabled. Enable only when highest duty cycle is active.
+    void setRetryEnabled(bool enabled) { retry_enabled_.store(enabled); }
 
-    float fullScaleVoltage() const
+private:
+    ADS1115settings ads1115settings;
+
+    void dataReady();
+    void worker();
+
+    void i2c_selectDevice();
+    void i2c_writeWord(uint8_t reg, unsigned data);
+    unsigned i2c_readWord(uint8_t reg);
+    int i2c_readConversion();
+
+    const uint8_t reg_config = 1;
+    const uint8_t reg_lo_thres = 2;
+    const uint8_t reg_hi_thres = 3;
+
+    /// Returns the full-scale voltage based on the selected gain setting.
+    float fullScaleVoltage()
     {
         switch (ads1115settings.pgaGain)
         {

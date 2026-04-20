@@ -1,26 +1,45 @@
 #pragma once
 
+/** SOLID Principles:
+* S - This file has exactly one function - to remove the gravitational bias from the 
+* acceleration value of each axis.
+* I - The accumulate() is kept private as it is only used for moving average calibration, 
+* other caller doesn't need it. 
+* D - The std::function, which is an abstraction, allows the SwingCalibrator to do 
+* its job without needing to know the caller or the results. */
+
+
 #include <functional>
 
-/** Gravity-bias calibrator for the swing detector. Feed IMU samples continuously; 
- * while calibrating, feed() returns true. Once ready, biasX/Y/Z() hold the current 
- * bias estimate. triggerRecal() starts a short recalibration window.*/
+/** Manages gravity-bias calibration for the swing detector.
+*
+* Usage:
+*   1. Construct and set a callback.
+*   2. Call feed() on every IMU sample.
+*      - While calibrating, feed() returns true (caller should skip measurement).
+*      - Once done, feed() returns false and the bias is ready via biasX/Y/Z().
+*   3. Call triggerRecal() whenever the position detector confirms the start
+*      position. The next RECAL_SAMPLES samples will be used to refresh the bias. */
 
 class SwingCalibrator {
 public:
-    /// Called when a calibration pass completes.
-    /// initial == true for startup calibration, false for recalibration.
+
+    /** Fired when a calibration phase completes.
+    * bx/by/bz  – new gravity bias (m/s²)
+    * initial   – true for the first calibration, false for recalibrations */
     using DoneCallback = std::function<void(float bx, float by, float bz, bool initial)>;
 
     explicit SwingCalibrator(int initial_samples = 200, int recal_samples = 50);
 
     void setCallback(DoneCallback cb);
 
-    /// Push one accel sample.
-    /// Returns true if the sample was consumed for calibration.
+    /** Feed one raw accel sample (m/s²).
+    * Returns true  → sample was consumed for calibration; skip measurement output.
+    * Returns false → calibration is idle; use biasX/Y/Z() to correct the sample. */
     bool feed(float ax, float ay, float az);
 
-    /// Start a recalibration pass if not already calibrating.
+    /// Request a recalibration burst (e.g. triggered by the position detector).
+    /// Ignored if a calibration phase is already in progress.
     void triggerRecal();
 
     bool isReady() const;

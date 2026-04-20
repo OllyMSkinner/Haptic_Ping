@@ -20,9 +20,9 @@ TEST(test_swingdetector, checkno_callback_when_level_unchanged)
     int count = 0;
     det.setCallback([&](const char*) { ++count; });
 
-    det.detect(25.f);
-    det.detect(22.f);
-    det.detect(21.f);
+    det.detect(25.f);  // HIGH
+    det.detect(26.f);  // still HIGH
+    det.detect(30.f);  // still HIGH
     EXPECT_EQ(count, 1);
 }
 
@@ -32,16 +32,14 @@ TEST(test_swingdetector, checklevel_transitions_each_fire_callback)
     std::vector<std::string> levels;
     det.setCallback([&](const char* l) { levels.push_back(l); });
 
-    det.detect(25.f);
-    det.detect(12.f);
-    det.detect(6.f);
-    det.detect(1.f);
+    det.detect(25.f);   // HIGH
+    det.detect(12.f);   // LOW (skips MEDIUM since 12 < 15)
+    det.detect(1.f);    // NONE
 
-    EXPECT_EQ(levels.size(), 4u);
+    EXPECT_EQ(levels.size(), 3u);
     EXPECT_EQ(levels[0], "Highest Duty Cycle");
-    EXPECT_EQ(levels[1], "Medium Duty Cycle");
-    EXPECT_EQ(levels[2], "Low Duty Cycle");
-    EXPECT_EQ(levels[3], "No Duty Cycle");
+    EXPECT_EQ(levels[1], "Low Duty Cycle");
+    EXPECT_EQ(levels[2], "No Duty Cycle");
 }
 
 TEST(test_swingdetector, checkreset_allows_same_level_to_refire)
@@ -64,11 +62,11 @@ TEST(test_swingdetector, checkthreshold_boundary_values)
     std::string last;
     det.setCallback([&](const char* l) { last = l; });
 
-    det.detect(5.0f);  EXPECT_EQ(last, "Low Duty Cycle");
-    det.detect(4.9f);  EXPECT_EQ(last, "No Duty Cycle");
+    det.detect(10.0f);  EXPECT_EQ(last, "Low Duty Cycle");
+    det.detect(9.9f);   EXPECT_EQ(last, "No Duty Cycle");
 
-    det.reset(); det.detect(9.9f);  EXPECT_EQ(last, "Low Duty Cycle");
-    det.reset(); det.detect(10.0f); EXPECT_EQ(last, "Medium Duty Cycle");
-    det.reset(); det.detect(19.9f); EXPECT_EQ(last, "Medium Duty Cycle");
-    det.reset(); det.detect(20.0f); EXPECT_EQ(last, "Highest Duty Cycle");
+    det.reset(); det.detect(14.9f); EXPECT_EQ(last, "Low Duty Cycle");
+    det.reset(); det.detect(15.0f); EXPECT_EQ(last, "Medium Duty Cycle");
+    det.reset(); det.detect(24.9f); EXPECT_EQ(last, "Medium Duty Cycle");
+    det.reset(); det.detect(25.0f); EXPECT_EQ(last, "Highest Duty Cycle");
 }

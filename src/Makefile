@@ -129,269 +129,70 @@ rtes_main/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rtes_main.dir/build.make CMakeFiles/rtes_main.dir/build
 .PHONY : rtes_main/fast
 
-libs/IMU/Icm20948driver.o: libs/IMU/Icm20948driver.cpp.o
-.PHONY : libs/IMU/Icm20948driver.o
-
-# target to build an object file
-libs/IMU/Icm20948driver.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rtes_main.dir/build.make CMakeFiles/rtes_main.dir/libs/IMU/Icm20948driver.cpp.o
-.PHONY : libs/IMU/Icm20948driver.cpp.o
-
-libs/IMU/Icm20948driver.i: libs/IMU/Icm20948driver.cpp.i
-.PHONY : libs/IMU/Icm20948driver.i
-
-# target to preprocess a source file
-libs/IMU/Icm20948driver.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rtes_main.dir/build.make CMakeFiles/rtes_main.dir/libs/IMU/Icm20948driver.cpp.i
-.PHONY : libs/IMU/Icm20948driver.cpp.i
-
-libs/IMU/Icm20948driver.s: libs/IMU/Icm20948driver.cpp.s
-.PHONY : libs/IMU/Icm20948driver.s
-
-# target to generate assembly for a file
-libs/IMU/Icm20948driver.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rtes_main.dir/build.make CMakeFiles/rtes_main.dir/libs/IMU/Icm20948driver.cpp.s
-.PHONY : libs/IMU/Icm20948driver.cpp.s
-
-libs/IMU/imureader.o: libs/IMU/imureader.cpp.o
-.PHONY : libs/IMU/imureader.o
-
-# target to build an object file
-libs/IMU/imureader.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rtes_main.dir/build.make CMakeFiles/rtes_main.dir/libs/IMU/imureader.cpp.o
-.PHONY : libs/IMU/imureader.cpp.o
-
-libs/IMU/imureader.i: libs/IMU/imureader.cpp.i
-.PHONY : libs/IMU/imureader.i
-
-# target to preprocess a source file
-libs/IMU/imureader.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rtes_main.dir/build.make CMakeFiles/rtes_main.dir/libs/IMU/imureader.cpp.i
-.PHONY : libs/IMU/imureader.cpp.i
-
-libs/IMU/imureader.s: libs/IMU/imureader.cpp.s
-.PHONY : libs/IMU/imureader.s
-
-# target to generate assembly for a file
-libs/IMU/imureader.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rtes_main.dir/build.make CMakeFiles/rtes_main.dir/libs/IMU/imureader.cpp.s
-.PHONY : libs/IMU/imureader.cpp.s
-
-libs/IMU_math/SwingCalibrator.o: libs/IMU_math/SwingCalibrator.cpp.o
-.PHONY : libs/IMU_math/SwingCalibrator.o
-
-# target to build an object file
-libs/IMU_math/SwingCalibrator.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rtes_main.dir/build.make CMakeFiles/rtes_main.dir/libs/IMU_math/SwingCalibrator.cpp.o
-.PHONY : libs/IMU_math/SwingCalibrator.cpp.o
-
-libs/IMU_math/SwingCalibrator.i: libs/IMU_math/SwingCalibrator.cpp.i
-.PHONY : libs/IMU_math/SwingCalibrator.i
-
-# target to preprocess a source file
-libs/IMU_math/SwingCalibrator.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rtes_main.dir/build.make CMakeFiles/rtes_main.dir/libs/IMU_math/SwingCalibrator.cpp.i
-.PHONY : libs/IMU_math/SwingCalibrator.cpp.i
-
-libs/IMU_math/SwingCalibrator.s: libs/IMU_math/SwingCalibrator.cpp.s
-.PHONY : libs/IMU_math/SwingCalibrator.s
-
-# target to generate assembly for a file
-libs/IMU_math/SwingCalibrator.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rtes_main.dir/build.make CMakeFiles/rtes_main.dir/libs/IMU_math/SwingCalibrator.cpp.s
-.PHONY : libs/IMU_math/SwingCalibrator.cpp.s
-
-libs/IMU_math/SwingDetector.o: libs/IMU_math/SwingDetector.cpp.o
-.PHONY : libs/IMU_math/SwingDetector.o
-
-# target to build an object file
-libs/IMU_math/SwingDetector.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rtes_main.dir/build.make CMakeFiles/rtes_main.dir/libs/IMU_math/SwingDetector.cpp.o
-.PHONY : libs/IMU_math/SwingDetector.cpp.o
-
-libs/IMU_math/SwingDetector.i: libs/IMU_math/SwingDetector.cpp.i
-.PHONY : libs/IMU_math/SwingDetector.i
-
-# target to preprocess a source file
-libs/IMU_math/SwingDetector.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rtes_main.dir/build.make CMakeFiles/rtes_main.dir/libs/IMU_math/SwingDetector.cpp.i
-.PHONY : libs/IMU_math/SwingDetector.cpp.i
-
-libs/IMU_math/SwingDetector.s: libs/IMU_math/SwingDetector.cpp.s
-.PHONY : libs/IMU_math/SwingDetector.s
-
-# target to generate assembly for a file
-libs/IMU_math/SwingDetector.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rtes_main.dir/build.make CMakeFiles/rtes_main.dir/libs/IMU_math/SwingDetector.cpp.s
-.PHONY : libs/IMU_math/SwingDetector.cpp.s
-
-libs/IMU_math/SwingProcessor.o: libs/IMU_math/SwingProcessor.cpp.o
-.PHONY : libs/IMU_math/SwingProcessor.o
-
-# target to build an object file
-libs/IMU_math/SwingProcessor.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rtes_main.dir/build.make CMakeFiles/rtes_main.dir/libs/IMU_math/SwingProcessor.cpp.o
-.PHONY : libs/IMU_math/SwingProcessor.cpp.o
-
-libs/IMU_math/SwingProcessor.i: libs/IMU_math/SwingProcessor.cpp.i
-.PHONY : libs/IMU_math/SwingProcessor.i
-
-# target to preprocess a source file
-libs/IMU_math/SwingProcessor.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rtes_main.dir/build.make CMakeFiles/rtes_main.dir/libs/IMU_math/SwingProcessor.cpp.i
-.PHONY : libs/IMU_math/SwingProcessor.cpp.i
-
-libs/IMU_math/SwingProcessor.s: libs/IMU_math/SwingProcessor.cpp.s
-.PHONY : libs/IMU_math/SwingProcessor.s
-
-# target to generate assembly for a file
-libs/IMU_math/SwingProcessor.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rtes_main.dir/build.make CMakeFiles/rtes_main.dir/libs/IMU_math/SwingProcessor.cpp.s
-.PHONY : libs/IMU_math/SwingProcessor.cpp.s
-
-libs/IMU_math/positiondetector.o: libs/IMU_math/positiondetector.cpp.o
-.PHONY : libs/IMU_math/positiondetector.o
-
-# target to build an object file
-libs/IMU_math/positiondetector.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rtes_main.dir/build.make CMakeFiles/rtes_main.dir/libs/IMU_math/positiondetector.cpp.o
-.PHONY : libs/IMU_math/positiondetector.cpp.o
-
-libs/IMU_math/positiondetector.i: libs/IMU_math/positiondetector.cpp.i
-.PHONY : libs/IMU_math/positiondetector.i
-
-# target to preprocess a source file
-libs/IMU_math/positiondetector.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rtes_main.dir/build.make CMakeFiles/rtes_main.dir/libs/IMU_math/positiondetector.cpp.i
-.PHONY : libs/IMU_math/positiondetector.cpp.i
-
-libs/IMU_math/positiondetector.s: libs/IMU_math/positiondetector.cpp.s
-.PHONY : libs/IMU_math/positiondetector.s
-
-# target to generate assembly for a file
-libs/IMU_math/positiondetector.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rtes_main.dir/build.make CMakeFiles/rtes_main.dir/libs/IMU_math/positiondetector.cpp.s
-.PHONY : libs/IMU_math/positiondetector.cpp.s
-
-libs/LEDs/led_controller.o: libs/LEDs/led_controller.cpp.o
-.PHONY : libs/LEDs/led_controller.o
-
-# target to build an object file
-libs/LEDs/led_controller.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rtes_main.dir/build.make CMakeFiles/rtes_main.dir/libs/LEDs/led_controller.cpp.o
-.PHONY : libs/LEDs/led_controller.cpp.o
-
-libs/LEDs/led_controller.i: libs/LEDs/led_controller.cpp.i
-.PHONY : libs/LEDs/led_controller.i
-
-# target to preprocess a source file
-libs/LEDs/led_controller.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rtes_main.dir/build.make CMakeFiles/rtes_main.dir/libs/LEDs/led_controller.cpp.i
-.PHONY : libs/LEDs/led_controller.cpp.i
-
-libs/LEDs/led_controller.s: libs/LEDs/led_controller.cpp.s
-.PHONY : libs/LEDs/led_controller.s
-
-# target to generate assembly for a file
-libs/LEDs/led_controller.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rtes_main.dir/build.make CMakeFiles/rtes_main.dir/libs/LEDs/led_controller.cpp.s
-.PHONY : libs/LEDs/led_controller.cpp.s
-
-libs/LEDs/ledcallback.o: libs/LEDs/ledcallback.cpp.o
-.PHONY : libs/LEDs/ledcallback.o
-
-# target to build an object file
-libs/LEDs/ledcallback.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rtes_main.dir/build.make CMakeFiles/rtes_main.dir/libs/LEDs/ledcallback.cpp.o
-.PHONY : libs/LEDs/ledcallback.cpp.o
-
-libs/LEDs/ledcallback.i: libs/LEDs/ledcallback.cpp.i
-.PHONY : libs/LEDs/ledcallback.i
-
-# target to preprocess a source file
-libs/LEDs/ledcallback.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rtes_main.dir/build.make CMakeFiles/rtes_main.dir/libs/LEDs/ledcallback.cpp.i
-.PHONY : libs/LEDs/ledcallback.cpp.i
-
-libs/LEDs/ledcallback.s: libs/LEDs/ledcallback.cpp.s
-.PHONY : libs/LEDs/ledcallback.s
-
-# target to generate assembly for a file
-libs/LEDs/ledcallback.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rtes_main.dir/build.make CMakeFiles/rtes_main.dir/libs/LEDs/ledcallback.cpp.s
-.PHONY : libs/LEDs/ledcallback.cpp.s
-
-libs/Motor/swingfeedback.o: libs/Motor/swingfeedback.cpp.o
-.PHONY : libs/Motor/swingfeedback.o
-
-# target to build an object file
-libs/Motor/swingfeedback.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rtes_main.dir/build.make CMakeFiles/rtes_main.dir/libs/Motor/swingfeedback.cpp.o
-.PHONY : libs/Motor/swingfeedback.cpp.o
-
-libs/Motor/swingfeedback.i: libs/Motor/swingfeedback.cpp.i
-.PHONY : libs/Motor/swingfeedback.i
-
-# target to preprocess a source file
-libs/Motor/swingfeedback.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rtes_main.dir/build.make CMakeFiles/rtes_main.dir/libs/Motor/swingfeedback.cpp.i
-.PHONY : libs/Motor/swingfeedback.cpp.i
-
-libs/Motor/swingfeedback.s: libs/Motor/swingfeedback.cpp.s
-.PHONY : libs/Motor/swingfeedback.s
-
-# target to generate assembly for a file
-libs/Motor/swingfeedback.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rtes_main.dir/build.make CMakeFiles/rtes_main.dir/libs/Motor/swingfeedback.cpp.s
-.PHONY : libs/Motor/swingfeedback.cpp.s
-
-libs/Piezo/ads1115rpi.o: libs/Piezo/ads1115rpi.cpp.o
-.PHONY : libs/Piezo/ads1115rpi.o
-
-# target to build an object file
-libs/Piezo/ads1115rpi.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rtes_main.dir/build.make CMakeFiles/rtes_main.dir/libs/Piezo/ads1115rpi.cpp.o
-.PHONY : libs/Piezo/ads1115rpi.cpp.o
-
-libs/Piezo/ads1115rpi.i: libs/Piezo/ads1115rpi.cpp.i
-.PHONY : libs/Piezo/ads1115rpi.i
-
-# target to preprocess a source file
-libs/Piezo/ads1115rpi.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rtes_main.dir/build.make CMakeFiles/rtes_main.dir/libs/Piezo/ads1115rpi.cpp.i
-.PHONY : libs/Piezo/ads1115rpi.cpp.i
-
-libs/Piezo/ads1115rpi.s: libs/Piezo/ads1115rpi.cpp.s
-.PHONY : libs/Piezo/ads1115rpi.s
-
-# target to generate assembly for a file
-libs/Piezo/ads1115rpi.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rtes_main.dir/build.make CMakeFiles/rtes_main.dir/libs/Piezo/ads1115rpi.cpp.s
-.PHONY : libs/Piezo/ads1115rpi.cpp.s
-
-libs/Piezo/event_detector.o: libs/Piezo/event_detector.cpp.o
-.PHONY : libs/Piezo/event_detector.o
-
-# target to build an object file
-libs/Piezo/event_detector.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rtes_main.dir/build.make CMakeFiles/rtes_main.dir/libs/Piezo/event_detector.cpp.o
-.PHONY : libs/Piezo/event_detector.cpp.o
-
-libs/Piezo/event_detector.i: libs/Piezo/event_detector.cpp.i
-.PHONY : libs/Piezo/event_detector.i
-
-# target to preprocess a source file
-libs/Piezo/event_detector.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rtes_main.dir/build.make CMakeFiles/rtes_main.dir/libs/Piezo/event_detector.cpp.i
-.PHONY : libs/Piezo/event_detector.cpp.i
-
-libs/Piezo/event_detector.s: libs/Piezo/event_detector.cpp.s
-.PHONY : libs/Piezo/event_detector.s
-
-# target to generate assembly for a file
-libs/Piezo/event_detector.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rtes_main.dir/build.make CMakeFiles/rtes_main.dir/libs/Piezo/event_detector.cpp.s
-.PHONY : libs/Piezo/event_detector.cpp.s
+#=============================================================================
+# Target rules for targets named leds_lib
+
+# Build rule for target.
+leds_lib: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 leds_lib
+.PHONY : leds_lib
+
+# fast build rule for target.
+leds_lib/fast:
+	$(MAKE) $(MAKESILENT) -f libs/LEDs/CMakeFiles/leds_lib.dir/build.make libs/LEDs/CMakeFiles/leds_lib.dir/build
+.PHONY : leds_lib/fast
+
+#=============================================================================
+# Target rules for targets named imu_lib
+
+# Build rule for target.
+imu_lib: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 imu_lib
+.PHONY : imu_lib
+
+# fast build rule for target.
+imu_lib/fast:
+	$(MAKE) $(MAKESILENT) -f libs/IMU/CMakeFiles/imu_lib.dir/build.make libs/IMU/CMakeFiles/imu_lib.dir/build
+.PHONY : imu_lib/fast
+
+#=============================================================================
+# Target rules for targets named imu_math_lib
+
+# Build rule for target.
+imu_math_lib: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 imu_math_lib
+.PHONY : imu_math_lib
+
+# fast build rule for target.
+imu_math_lib/fast:
+	$(MAKE) $(MAKESILENT) -f libs/IMU_math/CMakeFiles/imu_math_lib.dir/build.make libs/IMU_math/CMakeFiles/imu_math_lib.dir/build
+.PHONY : imu_math_lib/fast
+
+#=============================================================================
+# Target rules for targets named motor_lib
+
+# Build rule for target.
+motor_lib: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 motor_lib
+.PHONY : motor_lib
+
+# fast build rule for target.
+motor_lib/fast:
+	$(MAKE) $(MAKESILENT) -f libs/Motor/CMakeFiles/motor_lib.dir/build.make libs/Motor/CMakeFiles/motor_lib.dir/build
+.PHONY : motor_lib/fast
+
+#=============================================================================
+# Target rules for targets named piezo_lib
+
+# Build rule for target.
+piezo_lib: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 piezo_lib
+.PHONY : piezo_lib
+
+# fast build rule for target.
+piezo_lib/fast:
+	$(MAKE) $(MAKESILENT) -f libs/Piezo/CMakeFiles/piezo_lib.dir/build.make libs/Piezo/CMakeFiles/piezo_lib.dir/build
+.PHONY : piezo_lib/fast
 
 main.o: main.cpp.o
 .PHONY : main.o
@@ -425,40 +226,12 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... imu_lib"
+	@echo "... imu_math_lib"
+	@echo "... leds_lib"
+	@echo "... motor_lib"
+	@echo "... piezo_lib"
 	@echo "... rtes_main"
-	@echo "... libs/IMU/Icm20948driver.o"
-	@echo "... libs/IMU/Icm20948driver.i"
-	@echo "... libs/IMU/Icm20948driver.s"
-	@echo "... libs/IMU/imureader.o"
-	@echo "... libs/IMU/imureader.i"
-	@echo "... libs/IMU/imureader.s"
-	@echo "... libs/IMU_math/SwingCalibrator.o"
-	@echo "... libs/IMU_math/SwingCalibrator.i"
-	@echo "... libs/IMU_math/SwingCalibrator.s"
-	@echo "... libs/IMU_math/SwingDetector.o"
-	@echo "... libs/IMU_math/SwingDetector.i"
-	@echo "... libs/IMU_math/SwingDetector.s"
-	@echo "... libs/IMU_math/SwingProcessor.o"
-	@echo "... libs/IMU_math/SwingProcessor.i"
-	@echo "... libs/IMU_math/SwingProcessor.s"
-	@echo "... libs/IMU_math/positiondetector.o"
-	@echo "... libs/IMU_math/positiondetector.i"
-	@echo "... libs/IMU_math/positiondetector.s"
-	@echo "... libs/LEDs/led_controller.o"
-	@echo "... libs/LEDs/led_controller.i"
-	@echo "... libs/LEDs/led_controller.s"
-	@echo "... libs/LEDs/ledcallback.o"
-	@echo "... libs/LEDs/ledcallback.i"
-	@echo "... libs/LEDs/ledcallback.s"
-	@echo "... libs/Motor/swingfeedback.o"
-	@echo "... libs/Motor/swingfeedback.i"
-	@echo "... libs/Motor/swingfeedback.s"
-	@echo "... libs/Piezo/ads1115rpi.o"
-	@echo "... libs/Piezo/ads1115rpi.i"
-	@echo "... libs/Piezo/ads1115rpi.s"
-	@echo "... libs/Piezo/event_detector.o"
-	@echo "... libs/Piezo/event_detector.i"
-	@echo "... libs/Piezo/event_detector.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

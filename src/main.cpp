@@ -52,7 +52,15 @@ int main()
         imuLed.set(upright);
     });
 
-    IMUReader reader(I2C_BUS);
+    /// Latency test for IMU
+    int16_t sample_rate_div = 0;        /// change this to test for latency
+    
+    icm20948::settings imuSettings(
+        icm20948::accel_settings(sample_rate_div),                          /// 12-bit divider
+        icm20948::gyro_settings(static_cast<uint8_t>(sample_rate_div))      /// 8-bit divider
+    );
+
+    IMUReader reader(I2C_BUS, ICM20948_I2C_ADDR, "/dev/gpiochip0", 27, imuSettings);
 
     if (!reader.init()) {
         feedback.forceOff();
@@ -81,34 +89,62 @@ int main()
         if (!pressed) return;
         if (processor.isActive()) return;
         processor.onForceReady(true);
+        (void)wasActive;
     });
 
-    while (running)
-    {
-        icm20948::IMUSample sample{};
-        if (reader.getIMU().read_sample(sample))
-        {
-            feedback.checkTimeout();
+    ADS1115rpi ads1115rpi;
+    ads1115rpi.registerCallback([&](float v) {
+        if (processor.isActive()) return;
+        piezoDetector.processSample(v);
+    });
 
-            processor(sample.ax, sample.ay, sample.az,
-                      sample.gx, sample.gy, sample.gz,
-                      sample.mx, sample.my);
-        }
+    // try {
+    //     ads1115rpi.start();
+    // } catch (const std::exception&) {}
 
-        int raw = ads.readOnce();
-        if (raw >= 0)
-        {
-            float v = static_cast<float>(raw) / 32767.0f * ads.fullScaleVoltage();
+    /// Latency test for Piezo
+    ADS1115settings piezoSettings;
+    piezoSettings.samplingRate = ADS1115settings::FS128HZ;
+    // available rates: 8, 16, 32, 64, 128 (default), 250, 475, 860 
 
-            if (!processor.isActive()) {
-                piezoDetector.processSample(v);
-            }
-        }
+    try {
+        ads1115rpi.start(piezoSettings);
+    } catch (const std::exception&) {}
 
-        std::this_thread::sleep_for(std::chrono::milliseconds(2));
+    sigset_t mask;
+    sigemptyset(&mask);
+    sigaddset(&mask, SIGINT);
+    sigaddset(&mask, SIGHUP);
+
+    if (sigprocmask(SIG_BLOCK, &mask, nullptr) == -1) {
+        reader.stop();
+        ads1115rpi.stop();
+        feedback.forceOff();
+        pwm.setDutyCycle(0.0f);
+        return EXIT_FAILURE;
     }
 
-    ads.stop();
+    int sfd = signalfd(-1, &mask, 0);
+    if (sfd == -1) {
+        reader.stop();
+        ads1115rpi.stop();
+        feedback.forceOff();
+        pwm.setDutyCycle(0.0f);
+        return EXIT_FAILURE;
+    }
+
+    bool running = true;
+    while (running) {
+        signalfd_siginfo fdsi;
+        ssize_t s = ::read(sfd, &fdsi, sizeof(fdsi));
+        if (s != static_cast<ssize_t>(sizeof(fdsi))) break;
+
+        if (fdsi.ssi_signo == SIGINT || fdsi.ssi_signo == SIGHUP) {
+            running = false;
+        }
+    }
+
+    ::close(sfd);
     reader.stop();
     feedback.forceOff();
     pwm.setDutyCycle(0.0f);

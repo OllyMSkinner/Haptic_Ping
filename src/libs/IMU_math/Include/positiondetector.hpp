@@ -36,8 +36,8 @@ public:
 
     virtual void onSample(float ax, float ay, float az, float mx, float my);
     void setCallback(StateCallback cb) { callback = std::move(cb); }
-    // Clears stability count and confirmed state so the callback can re-fire
-    // after a cycle reset while the device stays at the same position.
+    /** Clears stability count and confirmed state so the callback can re-fire
+    * after a cycle reset while the device stays at the same position. */
     void resetState();
 
 private:
@@ -45,7 +45,7 @@ private:
     static float wrapAngleDeg(float a);
 
     Config cfg;
-    float nRefX, nRefY, nRefZ;   // normalised ref vector, computed from cfg
+    float nRefX, nRefY, nRefZ;   /// normalised ref vector, computed from cfg
     int stableCount;
     bool confirmed;
     StateCallback callback;

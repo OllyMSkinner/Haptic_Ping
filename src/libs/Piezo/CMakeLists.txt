@@ -1,59 +1,15 @@
-cmake_minimum_required(VERSION 3.31)
+add_library(piezo_lib STATIC
+    ads1115rpi.cpp
+    event_detector.cpp
+)
 
-set(CMAKE_CXX_STANDARD 20)
+target_include_directories(piezo_lib PUBLIC
+    ${CMAKE_CURRENT_SOURCE_DIR}/Include
+)
 
-if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
-	set(CMAKE_BUILD_TYPE "RelWithDebInfo")
-endif()
-
-project(ADS1115_RaspberryPi_Library VERSION 1.1.0 LANGUAGES CXX)
-include(GNUInstallDirs)
-
-
-add_compile_options(-Wall -Wconversion -Wextra -pedantic)
-
-set(LIBSRC ads1115rpi.cpp)
-set(LIBINCLUDE ads1115rpi.h)
-
-add_library(ads1115rpi
-  SHARED
-  ${LIBSRC}
-  )
-
-set_target_properties(ads1115rpi PROPERTIES
-  SOVERSION 1
-  PUBLIC_HEADER "${LIBINCLUDE}")
-
-target_link_libraries(ads1115rpi gpiodcxx)
-
-install(TARGETS ads1115rpi EXPORT ads1115rpi-targets
-  LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-  ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
-  PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
-
-
-
-add_library(ads1115rpi_static
-  STATIC
-  ${LIBSRC}
-  )
-
-set_target_properties(ads1115rpi_static PROPERTIES
-  PUBLIC_HEADER "${LIBINCLUDE}")
-
-target_link_libraries(ads1115rpi_static gpiodcxx)
-
-install(TARGETS ads1115rpi_static EXPORT ads1115rpi_static-targets
-  LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-  ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
-  PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
-
-# ---- demo executable ----
-add_executable(ads1115_demo main.cpp)
-target_link_libraries(ads1115_demo PRIVATE ads1115rpi)
-
-# (often needed for std::thread on Linux)
-find_package(Threads REQUIRED)
-target_link_libraries(ads1115_demo PRIVATE Threads::Threads)
-
-
+target_link_libraries(piezo_lib
+    PUBLIC  PkgConfig::GPIOD    # ads1115rpi.h and event_detector.h expose gpiod types
+    PUBLIC  leds_lib            # event_detector.h includes led_controller.h
+    PRIVATE imu_lib             # ads1115rpi.cpp uses i2c_mutex.hpp from IMU/Include
+    PRIVATE pthread
+)
