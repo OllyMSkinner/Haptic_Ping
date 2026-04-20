@@ -1,0 +1,70 @@
+\doxysection{src/libs/\+IMU/\+Icm20948driver.cpp File Reference}
+\hypertarget{Icm20948driver_8cpp}{}\label{Icm20948driver_8cpp}\index{src/libs/IMU/Icm20948driver.cpp@{src/libs/IMU/Icm20948driver.cpp}}
+{\ttfamily \#include "{}Icm20948driver.\+hpp"{}}\newline
+{\ttfamily \#include $<$chrono$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$stdexcept$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$thread$>$}\newline
+{\ttfamily \#include $<$linux/i2c-\/dev.\+h$>$}\newline
+{\ttfamily \#include $<$linux/i2c.\+h$>$}\newline
+{\ttfamily \#include $<$fcntl.\+h$>$}\newline
+{\ttfamily \#include $<$sys/ioctl.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$cerrno$>$}\newline
+{\ttfamily \#include $<$cstdio$>$}\newline
+{\ttfamily \#include $<$cstring$>$}\newline
+Include dependency graph for Icm20948driver.\+cpp\+:
+% FIG 0
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespaceicm20948}{icm20948}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{Icm20948driver_8cpp_acc8ed5566f624d9841e18d81987b13c5}{G2\+MSQR}}~9.\+80665f
+\item 
+\#define \mbox{\hyperlink{Icm20948driver_8cpp_af7e8592d0a634bd3642e9fd508ea8022}{DEG2\+RAD}}~0.\+017453293f
+\item 
+\#define \mbox{\hyperlink{Icm20948driver_8cpp_af824acbd5aa2637ee7ebca6dbedc217f}{MAGN\+\_\+\+SCALE\+\_\+\+FACTOR}}~0.\+149975574f
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+float \mbox{\hyperlink{namespaceicm20948_af14221b01595095e63c2b6da92461546}{icm20948\+::accel\+\_\+scale\+\_\+factor}} (\mbox{\hyperlink{namespaceicm20948_a270e710b092b62b0a289753093c2a673}{accel\+\_\+scale}} scale)
+\item 
+std\+::string \mbox{\hyperlink{namespaceicm20948_a4946bab7910d89f8bfd507e564872e96}{icm20948\+::accel\+\_\+scale\+\_\+to\+\_\+str}} (\mbox{\hyperlink{namespaceicm20948_a270e710b092b62b0a289753093c2a673}{accel\+\_\+scale}} scale)
+\item 
+std\+::string \mbox{\hyperlink{namespaceicm20948_a4a26038ff1fca8a832393f87ff9ed235}{icm20948\+::accel\+\_\+dlpf\+\_\+config\+\_\+to\+\_\+str}} (\mbox{\hyperlink{namespaceicm20948_a11320e5ffc65dc1997d850a2747b1857}{accel\+\_\+dlpf\+\_\+config}} config)
+\item 
+float \mbox{\hyperlink{namespaceicm20948_ab5aff64efdfa42700724773154b88241}{icm20948\+::gyro\+\_\+scale\+\_\+factor}} (\mbox{\hyperlink{namespaceicm20948_ab4ed127a0673926c94b3419379774950}{gyro\+\_\+scale}} scale)
+\item 
+std\+::string \mbox{\hyperlink{namespaceicm20948_a7ceffdb0c86d118f1852b4a67c119517}{icm20948\+::gyro\+\_\+scale\+\_\+to\+\_\+str}} (\mbox{\hyperlink{namespaceicm20948_ab4ed127a0673926c94b3419379774950}{gyro\+\_\+scale}} scale)
+\item 
+std\+::string \mbox{\hyperlink{namespaceicm20948_a37feed00f9178e9a6733f1f0db39e468}{icm20948\+::gyro\+\_\+dlpf\+\_\+config\+\_\+to\+\_\+str}} (\mbox{\hyperlink{namespaceicm20948_ab21febc613fcda495faedf1fadf8da01}{gyro\+\_\+dlpf\+\_\+config}} config)
+\item 
+std\+::string \mbox{\hyperlink{namespaceicm20948_a4e2db8332ee3f51602d9032468ec2b34}{icm20948\+::magn\+\_\+mode\+\_\+to\+\_\+str}} (\mbox{\hyperlink{namespaceicm20948_a52f2b76d3ebd33c9147b45c09ed3d02c}{magn\+\_\+mode}} mode)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{Icm20948driver_8cpp_af7e8592d0a634bd3642e9fd508ea8022}\label{Icm20948driver_8cpp_af7e8592d0a634bd3642e9fd508ea8022} 
+\index{Icm20948driver.cpp@{Icm20948driver.cpp}!DEG2RAD@{DEG2RAD}}
+\index{DEG2RAD@{DEG2RAD}!Icm20948driver.cpp@{Icm20948driver.cpp}}
+\doxysubsubsection{\texorpdfstring{DEG2RAD}{DEG2RAD}}
+{\footnotesize\ttfamily \#define DEG2\+RAD~0.\+017453293f}
+
+\Hypertarget{Icm20948driver_8cpp_acc8ed5566f624d9841e18d81987b13c5}\label{Icm20948driver_8cpp_acc8ed5566f624d9841e18d81987b13c5} 
+\index{Icm20948driver.cpp@{Icm20948driver.cpp}!G2MSQR@{G2MSQR}}
+\index{G2MSQR@{G2MSQR}!Icm20948driver.cpp@{Icm20948driver.cpp}}
+\doxysubsubsection{\texorpdfstring{G2MSQR}{G2MSQR}}
+{\footnotesize\ttfamily \#define G2\+MSQR~9.\+80665f}
+
+\Hypertarget{Icm20948driver_8cpp_af824acbd5aa2637ee7ebca6dbedc217f}\label{Icm20948driver_8cpp_af824acbd5aa2637ee7ebca6dbedc217f} 
+\index{Icm20948driver.cpp@{Icm20948driver.cpp}!MAGN\_SCALE\_FACTOR@{MAGN\_SCALE\_FACTOR}}
+\index{MAGN\_SCALE\_FACTOR@{MAGN\_SCALE\_FACTOR}!Icm20948driver.cpp@{Icm20948driver.cpp}}
+\doxysubsubsection{\texorpdfstring{MAGN\_SCALE\_FACTOR}{MAGN\_SCALE\_FACTOR}}
+{\footnotesize\ttfamily \#define MAGN\+\_\+\+SCALE\+\_\+\+FACTOR~0.\+149975574f}
+

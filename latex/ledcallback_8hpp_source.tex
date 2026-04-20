@@ -1,0 +1,41 @@
+\doxysection{ledcallback.\+hpp}
+\hypertarget{ledcallback_8hpp_source}{}\label{ledcallback_8hpp_source}\index{src/libs/LEDs/Include/ledcallback.hpp@{src/libs/LEDs/Include/ledcallback.hpp}}
+\mbox{\hyperlink{ledcallback_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#ifndef\ LEDCALLBACK\_HPP}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#define\ LEDCALLBACK\_HPP}}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#include\ <gpiod.hpp>}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00032\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classSimpleLEDController}{SimpleLEDController}}}
+\DoxyCodeLine{00033\ \{}
+\DoxyCodeLine{00034\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00038\ \ \ \ \ \mbox{\hyperlink{classSimpleLEDController_a16a2cc8c3c64d7fa8ed5a25c1a984b8d}{SimpleLEDController}}(\textcolor{keywordtype}{int}\ pinNo,\ \textcolor{keywordtype}{int}\ chipNo\ =\ 0);}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classSimpleLEDController_acb0b223d05c094f61268ac6a78c09f64}{\string~SimpleLEDController}}();}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSimpleLEDController_a933d9c68e4769be331bf5bd6c8064ce0}{set}}(\textcolor{keywordtype}{bool}\ on);}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSimpleLEDController_a0cae5e551cb10191b7bcfb3eb265b18c}{flashGreen}}(\textcolor{keywordtype}{int}\ \textcolor{comment}{/*flashMs*/})\ \{\}}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSimpleLEDController_a7bb1839d59cbb6d197b9d8b8b73653d8}{service}}()\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\}}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00060\ \ \ \ \ \mbox{\hyperlink{classSimpleLEDController_a16a2cc8c3c64d7fa8ed5a25c1a984b8d}{SimpleLEDController}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classSimpleLEDController_a0f35cdd654d87ca8768f0b6578a2a666}{pin}}\ \ \ \ \ \ \ \ =\ -\/1;}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classSimpleLEDController_a04da236eaee57bee7865528889bd9187}{chipNumber}}\ =\ -\/1;}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00069\ \ \ \ \ std::shared\_ptr<gpiod::chip>\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSimpleLEDController_ae5b61a04957b520b67bf97c55d8d32e1}{chip}};}
+\DoxyCodeLine{00070\ \ \ \ \ std::shared\_ptr<gpiod::line\_request>\ \mbox{\hyperlink{classSimpleLEDController_adc10c786dc6bedf433556217f78cc384}{request}};}
+\DoxyCodeLine{00071\ \};}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

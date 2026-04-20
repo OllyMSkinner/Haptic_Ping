@@ -1,0 +1,173 @@
+\doxysection{Position\+Detector Class Reference}
+\hypertarget{classPositionDetector}{}\label{classPositionDetector}\index{PositionDetector@{PositionDetector}}
+
+
+{\ttfamily \#include $<$positiondetector.\+hpp$>$}
+
+
+
+Inheritance diagram for Position\+Detector\+:
+% FIG 0
+
+
+Collaboration diagram for Position\+Detector\+:
+% FIG 1
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structPositionDetector_1_1Config}{Config}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{classPositionDetector_a6cecc4adffa3f995348529f94c1db498}{State\+Callback}} = std\+::function$<$ void(bool upright)$>$
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classPositionDetector_a14b40be880ad02568135c29134a62e56}{Position\+Detector}} ()
+\item 
+\mbox{\hyperlink{classPositionDetector_ab0e54c6126a4a687ee54da1488b1a6ca}{Position\+Detector}} (const \mbox{\hyperlink{structPositionDetector_1_1Config}{Config}} \&c)
+\item 
+virtual \mbox{\hyperlink{classPositionDetector_a46e8f76935189768ed661b5aa868490c}{\texorpdfstring{$\sim$}{\string~}\+Position\+Detector}} ()=default
+\item 
+virtual void \mbox{\hyperlink{classPositionDetector_aff71ff748fddc6e18c1303a0aafc9dcf}{on\+Sample}} (float ax, float ay, float az, float mx, float my)
+\item 
+void \mbox{\hyperlink{classPositionDetector_a3ed3cfa3dee1eb220ca7d99849bfd226}{set\+Callback}} (\mbox{\hyperlink{classPositionDetector_a6cecc4adffa3f995348529f94c1db498}{State\+Callback}} cb)
+\item 
+void \mbox{\hyperlink{classPositionDetector_aa1219497239de86b59d8c88f6a60c876}{reset\+State}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static float \mbox{\hyperlink{classPositionDetector_a346d2194b0515bc47f4e03d186339ff9}{wrap\+Angle\+Deg}} (float a)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structPositionDetector_1_1Config}{Config}} \mbox{\hyperlink{classPositionDetector_a3d1ce96b906dab1b6b43d7fe71dab89e}{cfg}}
+\item 
+float \mbox{\hyperlink{classPositionDetector_a938a212e42e110a7344429f2a65fe40f}{n\+RefX}}
+\item 
+float \mbox{\hyperlink{classPositionDetector_ad1083c445fd76423838c90fed341a590}{n\+RefY}}
+\item 
+float \mbox{\hyperlink{classPositionDetector_a6303a331e34b61b49b7b3c6681355111}{n\+RefZ}}
+\item 
+int \mbox{\hyperlink{classPositionDetector_af56e669264fd7441de6ae3343d8e5245}{stable\+Count}}
+\item 
+bool \mbox{\hyperlink{classPositionDetector_a890b67cd6046e11042bd7ba0214571cb}{confirmed}}
+\item 
+\mbox{\hyperlink{classPositionDetector_a6cecc4adffa3f995348529f94c1db498}{State\+Callback}} \mbox{\hyperlink{classPositionDetector_aae56d9e61b2afb80a07003ba59fbb318}{callback}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Typedef Documentation}
+\Hypertarget{classPositionDetector_a6cecc4adffa3f995348529f94c1db498}\label{classPositionDetector_a6cecc4adffa3f995348529f94c1db498} 
+\index{PositionDetector@{PositionDetector}!StateCallback@{StateCallback}}
+\index{StateCallback@{StateCallback}!PositionDetector@{PositionDetector}}
+\doxysubsubsection{\texorpdfstring{StateCallback}{StateCallback}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{classPositionDetector_a6cecc4adffa3f995348529f94c1db498}{Position\+Detector\+::\+State\+Callback}} =  std\+::function$<$void(bool upright)$>$}
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classPositionDetector_a14b40be880ad02568135c29134a62e56}\label{classPositionDetector_a14b40be880ad02568135c29134a62e56} 
+\index{PositionDetector@{PositionDetector}!PositionDetector@{PositionDetector}}
+\index{PositionDetector@{PositionDetector}!PositionDetector@{PositionDetector}}
+\doxysubsubsection{\texorpdfstring{PositionDetector()}{PositionDetector()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Position\+Detector\+::\+Position\+Detector (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{classPositionDetector_ab0e54c6126a4a687ee54da1488b1a6ca}\label{classPositionDetector_ab0e54c6126a4a687ee54da1488b1a6ca} 
+\index{PositionDetector@{PositionDetector}!PositionDetector@{PositionDetector}}
+\index{PositionDetector@{PositionDetector}!PositionDetector@{PositionDetector}}
+\doxysubsubsection{\texorpdfstring{PositionDetector()}{PositionDetector()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Position\+Detector\+::\+Position\+Detector (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structPositionDetector_1_1Config}{Config}} \&}]{c }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+\Hypertarget{classPositionDetector_a46e8f76935189768ed661b5aa868490c}\label{classPositionDetector_a46e8f76935189768ed661b5aa868490c} 
+\index{PositionDetector@{PositionDetector}!````~PositionDetector@{\texorpdfstring{$\sim$}{\string~}PositionDetector}}
+\index{````~PositionDetector@{\texorpdfstring{$\sim$}{\string~}PositionDetector}!PositionDetector@{PositionDetector}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}PositionDetector()}{\string~PositionDetector()}}
+{\footnotesize\ttfamily virtual Position\+Detector\+::\texorpdfstring{$\sim$}{\string~}\+Position\+Detector (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classPositionDetector_aff71ff748fddc6e18c1303a0aafc9dcf}\label{classPositionDetector_aff71ff748fddc6e18c1303a0aafc9dcf} 
+\index{PositionDetector@{PositionDetector}!onSample@{onSample}}
+\index{onSample@{onSample}!PositionDetector@{PositionDetector}}
+\doxysubsubsection{\texorpdfstring{onSample()}{onSample()}}
+{\footnotesize\ttfamily void Position\+Detector\+::on\+Sample (\begin{DoxyParamCaption}\item[{float}]{ax,  }\item[{float}]{ay,  }\item[{float}]{az,  }\item[{float}]{mx,  }\item[{float}]{my }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented in \mbox{\hyperlink{classSwingProcessor_a8e4fbc5ebea519acf8744fefa8f64baa}{Swing\+Processor}}.
+
+\Hypertarget{classPositionDetector_aa1219497239de86b59d8c88f6a60c876}\label{classPositionDetector_aa1219497239de86b59d8c88f6a60c876} 
+\index{PositionDetector@{PositionDetector}!resetState@{resetState}}
+\index{resetState@{resetState}!PositionDetector@{PositionDetector}}
+\doxysubsubsection{\texorpdfstring{resetState()}{resetState()}}
+{\footnotesize\ttfamily void Position\+Detector\+::reset\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{classPositionDetector_a3ed3cfa3dee1eb220ca7d99849bfd226}\label{classPositionDetector_a3ed3cfa3dee1eb220ca7d99849bfd226} 
+\index{PositionDetector@{PositionDetector}!setCallback@{setCallback}}
+\index{setCallback@{setCallback}!PositionDetector@{PositionDetector}}
+\doxysubsubsection{\texorpdfstring{setCallback()}{setCallback()}}
+{\footnotesize\ttfamily void Position\+Detector\+::set\+Callback (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classPositionDetector_a6cecc4adffa3f995348529f94c1db498}{State\+Callback}}}]{cb }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classPositionDetector_a346d2194b0515bc47f4e03d186339ff9}\label{classPositionDetector_a346d2194b0515bc47f4e03d186339ff9} 
+\index{PositionDetector@{PositionDetector}!wrapAngleDeg@{wrapAngleDeg}}
+\index{wrapAngleDeg@{wrapAngleDeg}!PositionDetector@{PositionDetector}}
+\doxysubsubsection{\texorpdfstring{wrapAngleDeg()}{wrapAngleDeg()}}
+{\footnotesize\ttfamily float Position\+Detector\+::wrap\+Angle\+Deg (\begin{DoxyParamCaption}\item[{float}]{a }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classPositionDetector_aae56d9e61b2afb80a07003ba59fbb318}\label{classPositionDetector_aae56d9e61b2afb80a07003ba59fbb318} 
+\index{PositionDetector@{PositionDetector}!callback@{callback}}
+\index{callback@{callback}!PositionDetector@{PositionDetector}}
+\doxysubsubsection{\texorpdfstring{callback}{callback}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classPositionDetector_a6cecc4adffa3f995348529f94c1db498}{State\+Callback}} Position\+Detector\+::callback\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classPositionDetector_a3d1ce96b906dab1b6b43d7fe71dab89e}\label{classPositionDetector_a3d1ce96b906dab1b6b43d7fe71dab89e} 
+\index{PositionDetector@{PositionDetector}!cfg@{cfg}}
+\index{cfg@{cfg}!PositionDetector@{PositionDetector}}
+\doxysubsubsection{\texorpdfstring{cfg}{cfg}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structPositionDetector_1_1Config}{Config}} Position\+Detector\+::cfg\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classPositionDetector_a890b67cd6046e11042bd7ba0214571cb}\label{classPositionDetector_a890b67cd6046e11042bd7ba0214571cb} 
+\index{PositionDetector@{PositionDetector}!confirmed@{confirmed}}
+\index{confirmed@{confirmed}!PositionDetector@{PositionDetector}}
+\doxysubsubsection{\texorpdfstring{confirmed}{confirmed}}
+{\footnotesize\ttfamily bool Position\+Detector\+::confirmed\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classPositionDetector_a938a212e42e110a7344429f2a65fe40f}\label{classPositionDetector_a938a212e42e110a7344429f2a65fe40f} 
+\index{PositionDetector@{PositionDetector}!nRefX@{nRefX}}
+\index{nRefX@{nRefX}!PositionDetector@{PositionDetector}}
+\doxysubsubsection{\texorpdfstring{nRefX}{nRefX}}
+{\footnotesize\ttfamily float Position\+Detector\+::n\+RefX\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classPositionDetector_ad1083c445fd76423838c90fed341a590}\label{classPositionDetector_ad1083c445fd76423838c90fed341a590} 
+\index{PositionDetector@{PositionDetector}!nRefY@{nRefY}}
+\index{nRefY@{nRefY}!PositionDetector@{PositionDetector}}
+\doxysubsubsection{\texorpdfstring{nRefY}{nRefY}}
+{\footnotesize\ttfamily float Position\+Detector\+::n\+RefY\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classPositionDetector_a6303a331e34b61b49b7b3c6681355111}\label{classPositionDetector_a6303a331e34b61b49b7b3c6681355111} 
+\index{PositionDetector@{PositionDetector}!nRefZ@{nRefZ}}
+\index{nRefZ@{nRefZ}!PositionDetector@{PositionDetector}}
+\doxysubsubsection{\texorpdfstring{nRefZ}{nRefZ}}
+{\footnotesize\ttfamily float Position\+Detector\+::n\+RefZ\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classPositionDetector_af56e669264fd7441de6ae3343d8e5245}\label{classPositionDetector_af56e669264fd7441de6ae3343d8e5245} 
+\index{PositionDetector@{PositionDetector}!stableCount@{stableCount}}
+\index{stableCount@{stableCount}!PositionDetector@{PositionDetector}}
+\doxysubsubsection{\texorpdfstring{stableCount}{stableCount}}
+{\footnotesize\ttfamily int Position\+Detector\+::stable\+Count\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/libs/\+IMU\+\_\+math/\+Include/\mbox{\hyperlink{positiondetector_8hpp}{positiondetector.\+hpp}}\item 
+src/libs/\+IMU\+\_\+math/\mbox{\hyperlink{positiondetector_8cpp}{positiondetector.\+cpp}}\end{DoxyCompactItemize}

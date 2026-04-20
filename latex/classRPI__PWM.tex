@@ -1,0 +1,144 @@
+\doxysection{RPI\+\_\+\+PWM Class Reference}
+\hypertarget{classRPI__PWM}{}\label{classRPI__PWM}\index{RPI\_PWM@{RPI\_PWM}}
+
+
+{\ttfamily \#include $<$rpi\+\_\+pwm.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classRPI__PWM_aab77efba6b8ca65496a9b76695564476}{RPI\+\_\+\+PWM}} ()
+\item 
+bool \mbox{\hyperlink{classRPI__PWM_a8fafd8227f58258c61449af83c466d20}{start}} ()
+\item 
+void \mbox{\hyperlink{classRPI__PWM_a1ca02994ab743f3397bce2ebc2b745ed}{stop}} ()
+\item 
+void \mbox{\hyperlink{classRPI__PWM_ae58a56579ae4abb9207cdfc8ee360906}{set\+Duty\+Cycle}} (float percent)
+\item 
+float \mbox{\hyperlink{classRPI__PWM_a5491fa126da09d08cc08f8fa713d129b}{get\+Duty\+Cycle}} () const
+\item 
+\mbox{\hyperlink{classRPI__PWM_a48018f0627c5c22a313a2d69b0bb3301}{\texorpdfstring{$\sim$}{\string~}\+RPI\+\_\+\+PWM}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classRPI__PWM_ad083942c5b03431c6574cb77e5311760}{wait\+Us}} (int tfd, int us)
+\item 
+void \mbox{\hyperlink{classRPI__PWM_ad3c2649079790966a48c1fe13575ab3e}{loop}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static itimerspec \mbox{\hyperlink{classRPI__PWM_a7ed4b2d6274a00cd33676d4dd82df7d8}{us\+To\+Timerspec}} (long us)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::atomic$<$ float $>$ \mbox{\hyperlink{classRPI__PWM_a6c3a800d79b3eea98aee231f817e1bae}{duty\+\_\+}}
+\item 
+std\+::atomic$<$ bool $>$ \mbox{\hyperlink{classRPI__PWM_aea441885ff26f125cf06d38655903dcf}{running\+\_\+}}
+\item 
+std\+::thread \mbox{\hyperlink{classRPI__PWM_a8079b97600d1fd50512504433a6faebb}{thread\+\_\+}}
+\item 
+gpiod\+\_\+chip \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classRPI__PWM_a7545b1c1fd69bacfb8bd9494de9bec72}{chip\+\_\+}}
+\item 
+gpiod\+\_\+line\+\_\+request \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classRPI__PWM_a166b5fdc6a68035efb310a930f6b39ec}{request\+\_\+}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classRPI__PWM_aab77efba6b8ca65496a9b76695564476}\label{classRPI__PWM_aab77efba6b8ca65496a9b76695564476} 
+\index{RPI\_PWM@{RPI\_PWM}!RPI\_PWM@{RPI\_PWM}}
+\index{RPI\_PWM@{RPI\_PWM}!RPI\_PWM@{RPI\_PWM}}
+\doxysubsubsection{\texorpdfstring{RPI\_PWM()}{RPI\_PWM()}}
+{\footnotesize\ttfamily RPI\+\_\+\+PWM\+::\+RPI\+\_\+\+PWM (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classRPI__PWM_a48018f0627c5c22a313a2d69b0bb3301}\label{classRPI__PWM_a48018f0627c5c22a313a2d69b0bb3301} 
+\index{RPI\_PWM@{RPI\_PWM}!````~RPI\_PWM@{\texorpdfstring{$\sim$}{\string~}RPI\_PWM}}
+\index{````~RPI\_PWM@{\texorpdfstring{$\sim$}{\string~}RPI\_PWM}!RPI\_PWM@{RPI\_PWM}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}RPI\_PWM()}{\string~RPI\_PWM()}}
+{\footnotesize\ttfamily RPI\+\_\+\+PWM\+::\texorpdfstring{$\sim$}{\string~}\+RPI\+\_\+\+PWM (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classRPI__PWM_a5491fa126da09d08cc08f8fa713d129b}\label{classRPI__PWM_a5491fa126da09d08cc08f8fa713d129b} 
+\index{RPI\_PWM@{RPI\_PWM}!getDutyCycle@{getDutyCycle}}
+\index{getDutyCycle@{getDutyCycle}!RPI\_PWM@{RPI\_PWM}}
+\doxysubsubsection{\texorpdfstring{getDutyCycle()}{getDutyCycle()}}
+{\footnotesize\ttfamily float RPI\+\_\+\+PWM\+::get\+Duty\+Cycle (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classRPI__PWM_ad3c2649079790966a48c1fe13575ab3e}\label{classRPI__PWM_ad3c2649079790966a48c1fe13575ab3e} 
+\index{RPI\_PWM@{RPI\_PWM}!loop@{loop}}
+\index{loop@{loop}!RPI\_PWM@{RPI\_PWM}}
+\doxysubsubsection{\texorpdfstring{loop()}{loop()}}
+{\footnotesize\ttfamily void RPI\+\_\+\+PWM\+::loop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{classRPI__PWM_ae58a56579ae4abb9207cdfc8ee360906}\label{classRPI__PWM_ae58a56579ae4abb9207cdfc8ee360906} 
+\index{RPI\_PWM@{RPI\_PWM}!setDutyCycle@{setDutyCycle}}
+\index{setDutyCycle@{setDutyCycle}!RPI\_PWM@{RPI\_PWM}}
+\doxysubsubsection{\texorpdfstring{setDutyCycle()}{setDutyCycle()}}
+{\footnotesize\ttfamily void RPI\+\_\+\+PWM\+::set\+Duty\+Cycle (\begin{DoxyParamCaption}\item[{float}]{percent }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classRPI__PWM_a8fafd8227f58258c61449af83c466d20}\label{classRPI__PWM_a8fafd8227f58258c61449af83c466d20} 
+\index{RPI\_PWM@{RPI\_PWM}!start@{start}}
+\index{start@{start}!RPI\_PWM@{RPI\_PWM}}
+\doxysubsubsection{\texorpdfstring{start()}{start()}}
+{\footnotesize\ttfamily bool RPI\+\_\+\+PWM\+::start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classRPI__PWM_a1ca02994ab743f3397bce2ebc2b745ed}\label{classRPI__PWM_a1ca02994ab743f3397bce2ebc2b745ed} 
+\index{RPI\_PWM@{RPI\_PWM}!stop@{stop}}
+\index{stop@{stop}!RPI\_PWM@{RPI\_PWM}}
+\doxysubsubsection{\texorpdfstring{stop()}{stop()}}
+{\footnotesize\ttfamily void RPI\+\_\+\+PWM\+::stop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classRPI__PWM_a7ed4b2d6274a00cd33676d4dd82df7d8}\label{classRPI__PWM_a7ed4b2d6274a00cd33676d4dd82df7d8} 
+\index{RPI\_PWM@{RPI\_PWM}!usToTimerspec@{usToTimerspec}}
+\index{usToTimerspec@{usToTimerspec}!RPI\_PWM@{RPI\_PWM}}
+\doxysubsubsection{\texorpdfstring{usToTimerspec()}{usToTimerspec()}}
+{\footnotesize\ttfamily static itimerspec RPI\+\_\+\+PWM\+::us\+To\+Timerspec (\begin{DoxyParamCaption}\item[{long}]{us }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}}
+
+\Hypertarget{classRPI__PWM_ad083942c5b03431c6574cb77e5311760}\label{classRPI__PWM_ad083942c5b03431c6574cb77e5311760} 
+\index{RPI\_PWM@{RPI\_PWM}!waitUs@{waitUs}}
+\index{waitUs@{waitUs}!RPI\_PWM@{RPI\_PWM}}
+\doxysubsubsection{\texorpdfstring{waitUs()}{waitUs()}}
+{\footnotesize\ttfamily void RPI\+\_\+\+PWM\+::wait\+Us (\begin{DoxyParamCaption}\item[{int}]{tfd,  }\item[{int}]{us }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classRPI__PWM_a7545b1c1fd69bacfb8bd9494de9bec72}\label{classRPI__PWM_a7545b1c1fd69bacfb8bd9494de9bec72} 
+\index{RPI\_PWM@{RPI\_PWM}!chip\_@{chip\_}}
+\index{chip\_@{chip\_}!RPI\_PWM@{RPI\_PWM}}
+\doxysubsubsection{\texorpdfstring{chip\_}{chip\_}}
+{\footnotesize\ttfamily gpiod\+\_\+chip\texorpdfstring{$\ast$}{*} RPI\+\_\+\+PWM\+::chip\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classRPI__PWM_a6c3a800d79b3eea98aee231f817e1bae}\label{classRPI__PWM_a6c3a800d79b3eea98aee231f817e1bae} 
+\index{RPI\_PWM@{RPI\_PWM}!duty\_@{duty\_}}
+\index{duty\_@{duty\_}!RPI\_PWM@{RPI\_PWM}}
+\doxysubsubsection{\texorpdfstring{duty\_}{duty\_}}
+{\footnotesize\ttfamily std\+::atomic$<$float$>$ RPI\+\_\+\+PWM\+::duty\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classRPI__PWM_a166b5fdc6a68035efb310a930f6b39ec}\label{classRPI__PWM_a166b5fdc6a68035efb310a930f6b39ec} 
+\index{RPI\_PWM@{RPI\_PWM}!request\_@{request\_}}
+\index{request\_@{request\_}!RPI\_PWM@{RPI\_PWM}}
+\doxysubsubsection{\texorpdfstring{request\_}{request\_}}
+{\footnotesize\ttfamily gpiod\+\_\+line\+\_\+request\texorpdfstring{$\ast$}{*} RPI\+\_\+\+PWM\+::request\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classRPI__PWM_aea441885ff26f125cf06d38655903dcf}\label{classRPI__PWM_aea441885ff26f125cf06d38655903dcf} 
+\index{RPI\_PWM@{RPI\_PWM}!running\_@{running\_}}
+\index{running\_@{running\_}!RPI\_PWM@{RPI\_PWM}}
+\doxysubsubsection{\texorpdfstring{running\_}{running\_}}
+{\footnotesize\ttfamily std\+::atomic$<$bool$>$ RPI\+\_\+\+PWM\+::running\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classRPI__PWM_a8079b97600d1fd50512504433a6faebb}\label{classRPI__PWM_a8079b97600d1fd50512504433a6faebb} 
+\index{RPI\_PWM@{RPI\_PWM}!thread\_@{thread\_}}
+\index{thread\_@{thread\_}!RPI\_PWM@{RPI\_PWM}}
+\doxysubsubsection{\texorpdfstring{thread\_}{thread\_}}
+{\footnotesize\ttfamily std\+::thread RPI\+\_\+\+PWM\+::thread\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/libs/\+Motor/\+Include/\mbox{\hyperlink{rpi__pwm_8h}{rpi\+\_\+pwm.\+h}}\end{DoxyCompactItemize}

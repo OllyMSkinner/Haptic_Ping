@@ -1,0 +1,192 @@
+\doxysection{IMUReader Class Reference}
+\hypertarget{classIMUReader}{}\label{classIMUReader}\index{IMUReader@{IMUReader}}
+
+
+{\ttfamily \#include $<$imureader.\+hpp$>$}
+
+
+
+Collaboration diagram for IMUReader\+:
+% FIG 0
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{classIMUReader_a6d87e7661de8325bf78fcd4f5a102de7}{Sample\+Callback}} = std\+::function$<$ void(float ax, float ay, float az, float gx, float gy, float gz, float mx, float my)$>$
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classIMUReader_aca24d4697bfbe14b6f4cf55a47829117}{IMUReader}} (unsigned i2c\+\_\+bus, unsigned i2c\+\_\+address=\mbox{\hyperlink{Icm20948driver_8hpp_ad2332082f2390f86f6d6ee09acf1e259}{ICM20948\+\_\+\+I2\+C\+\_\+\+ADDR}}, const char \texorpdfstring{$\ast$}{*}gpiochip="{}/dev/gpiochip0"{}, unsigned rdy\+\_\+line=27, \mbox{\hyperlink{structicm20948_1_1settings}{icm20948\+::settings}} settings=\mbox{\hyperlink{structicm20948_1_1settings}{icm20948\+::settings}}())
+\item 
+\mbox{\hyperlink{classIMUReader_a6e5ef4ece5cb263ae22232c5663bd2bd}{\texorpdfstring{$\sim$}{\string~}\+IMUReader}} ()
+\item 
+bool \mbox{\hyperlink{classIMUReader_a24ab7b7e245e69c9c80504fe7742709c}{init}} ()
+\item 
+void \mbox{\hyperlink{classIMUReader_ae64c4dd5d68588f2e2bcee026d0d36d6}{set\+Callback}} (\mbox{\hyperlink{classIMUReader_a6d87e7661de8325bf78fcd4f5a102de7}{Sample\+Callback}} cb)
+\item 
+bool \mbox{\hyperlink{classIMUReader_a90708a193abfcb088d7375eb0cecb767}{start}} ()
+\item 
+void \mbox{\hyperlink{classIMUReader_a67813c8a075b3924f31a252a640e5835}{stop}} ()
+\item 
+\mbox{\hyperlink{classicm20948_1_1ICM20948__I2C}{icm20948\+::\+ICM20948\+\_\+\+I2C}} \& \mbox{\hyperlink{classIMUReader_a485530ce689d8e7c952d70c69818eb6e}{get\+IMU}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classIMUReader_a9334b3420c3d2d1e790dbfb753f7a8cb}{worker}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classicm20948_1_1ICM20948__I2C}{icm20948\+::\+ICM20948\+\_\+\+I2C}} \mbox{\hyperlink{classIMUReader_ae49e6fb530bf32e8f641cdde9bd8ae07}{imu\+\_\+}}
+\item 
+\mbox{\hyperlink{classIMUReader_a6d87e7661de8325bf78fcd4f5a102de7}{Sample\+Callback}} \mbox{\hyperlink{classIMUReader_ac86aa179a0fa60ead4562ba9ffbd7a0a}{callback\+\_\+}}
+\item 
+std\+::thread \mbox{\hyperlink{classIMUReader_a1a69762ebad2714b8a1d884e961210d8}{worker\+\_\+thread\+\_\+}}
+\item 
+std\+::atomic\+\_\+bool \mbox{\hyperlink{classIMUReader_afc74b0a28841ad9481a55af987222c6c}{running\+\_\+}}
+\item 
+const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classIMUReader_aa9b451f364d559feb317c891d26435f3}{gpiochip\+\_\+path\+\_\+}}
+\item 
+unsigned \mbox{\hyperlink{classIMUReader_a629839d6a645c8b3f8ccaee606974488}{rdy\+\_\+line\+\_\+}}
+\item 
+gpiod\+\_\+chip \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classIMUReader_aca9a855e11f4f753eb219e2318e57160}{chip\+\_\+}}
+\item 
+gpiod\+\_\+line\+\_\+request \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classIMUReader_a90da6413c5913a16c4cfec1752f8ec4e}{request\+\_\+}}
+\item 
+int \mbox{\hyperlink{classIMUReader_a5561cf166a78419f1c0c3dd0a50d32b5}{gpio\+\_\+fd\+\_\+}}
+\item 
+int \mbox{\hyperlink{classIMUReader_acc882703f542a2e3118462178388b3bb}{stop\+\_\+fd\+\_\+}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Typedef Documentation}
+\Hypertarget{classIMUReader_a6d87e7661de8325bf78fcd4f5a102de7}\label{classIMUReader_a6d87e7661de8325bf78fcd4f5a102de7} 
+\index{IMUReader@{IMUReader}!SampleCallback@{SampleCallback}}
+\index{SampleCallback@{SampleCallback}!IMUReader@{IMUReader}}
+\doxysubsubsection{\texorpdfstring{SampleCallback}{SampleCallback}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{classIMUReader_a6d87e7661de8325bf78fcd4f5a102de7}{IMUReader\+::\+Sample\+Callback}} =  std\+::function$<$void(float ax, float ay, float az, float gx, float gy, float gz, float mx, float my)$>$}
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classIMUReader_aca24d4697bfbe14b6f4cf55a47829117}\label{classIMUReader_aca24d4697bfbe14b6f4cf55a47829117} 
+\index{IMUReader@{IMUReader}!IMUReader@{IMUReader}}
+\index{IMUReader@{IMUReader}!IMUReader@{IMUReader}}
+\doxysubsubsection{\texorpdfstring{IMUReader()}{IMUReader()}}
+{\footnotesize\ttfamily IMUReader\+::\+IMUReader (\begin{DoxyParamCaption}\item[{unsigned}]{i2c\+\_\+bus,  }\item[{unsigned}]{i2c\+\_\+address = {\ttfamily \mbox{\hyperlink{Icm20948driver_8hpp_ad2332082f2390f86f6d6ee09acf1e259}{ICM20948\+\_\+\+I2\+C\+\_\+\+ADDR}}},  }\item[{const char \texorpdfstring{$\ast$}{*}}]{gpiochip = {\ttfamily "{}/dev/gpiochip0"{}},  }\item[{unsigned}]{rdy\+\_\+line = {\ttfamily 27},  }\item[{\mbox{\hyperlink{structicm20948_1_1settings}{icm20948\+::settings}}}]{settings = {\ttfamily \mbox{\hyperlink{structicm20948_1_1settings}{icm20948\+::settings}}()} }\end{DoxyParamCaption})}
+
+\Hypertarget{classIMUReader_a6e5ef4ece5cb263ae22232c5663bd2bd}\label{classIMUReader_a6e5ef4ece5cb263ae22232c5663bd2bd} 
+\index{IMUReader@{IMUReader}!````~IMUReader@{\texorpdfstring{$\sim$}{\string~}IMUReader}}
+\index{````~IMUReader@{\texorpdfstring{$\sim$}{\string~}IMUReader}!IMUReader@{IMUReader}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}IMUReader()}{\string~IMUReader()}}
+{\footnotesize\ttfamily IMUReader\+::\texorpdfstring{$\sim$}{\string~}\+IMUReader (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classIMUReader_a485530ce689d8e7c952d70c69818eb6e}\label{classIMUReader_a485530ce689d8e7c952d70c69818eb6e} 
+\index{IMUReader@{IMUReader}!getIMU@{getIMU}}
+\index{getIMU@{getIMU}!IMUReader@{IMUReader}}
+\doxysubsubsection{\texorpdfstring{getIMU()}{getIMU()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C}{icm20948\+::\+ICM20948\+\_\+\+I2C}} \& IMUReader\+::get\+IMU (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{classIMUReader_a24ab7b7e245e69c9c80504fe7742709c}\label{classIMUReader_a24ab7b7e245e69c9c80504fe7742709c} 
+\index{IMUReader@{IMUReader}!init@{init}}
+\index{init@{init}!IMUReader@{IMUReader}}
+\doxysubsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily bool IMUReader\+::init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{classIMUReader_ae64c4dd5d68588f2e2bcee026d0d36d6}\label{classIMUReader_ae64c4dd5d68588f2e2bcee026d0d36d6} 
+\index{IMUReader@{IMUReader}!setCallback@{setCallback}}
+\index{setCallback@{setCallback}!IMUReader@{IMUReader}}
+\doxysubsubsection{\texorpdfstring{setCallback()}{setCallback()}}
+{\footnotesize\ttfamily void IMUReader\+::set\+Callback (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classIMUReader_a6d87e7661de8325bf78fcd4f5a102de7}{Sample\+Callback}}}]{cb }\end{DoxyParamCaption})}
+
+\Hypertarget{classIMUReader_a90708a193abfcb088d7375eb0cecb767}\label{classIMUReader_a90708a193abfcb088d7375eb0cecb767} 
+\index{IMUReader@{IMUReader}!start@{start}}
+\index{start@{start}!IMUReader@{IMUReader}}
+\doxysubsubsection{\texorpdfstring{start()}{start()}}
+{\footnotesize\ttfamily bool IMUReader\+::start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{classIMUReader_a67813c8a075b3924f31a252a640e5835}\label{classIMUReader_a67813c8a075b3924f31a252a640e5835} 
+\index{IMUReader@{IMUReader}!stop@{stop}}
+\index{stop@{stop}!IMUReader@{IMUReader}}
+\doxysubsubsection{\texorpdfstring{stop()}{stop()}}
+{\footnotesize\ttfamily void IMUReader\+::stop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{classIMUReader_a9334b3420c3d2d1e790dbfb753f7a8cb}\label{classIMUReader_a9334b3420c3d2d1e790dbfb753f7a8cb} 
+\index{IMUReader@{IMUReader}!worker@{worker}}
+\index{worker@{worker}!IMUReader@{IMUReader}}
+\doxysubsubsection{\texorpdfstring{worker()}{worker()}}
+{\footnotesize\ttfamily void IMUReader\+::worker (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classIMUReader_ac86aa179a0fa60ead4562ba9ffbd7a0a}\label{classIMUReader_ac86aa179a0fa60ead4562ba9ffbd7a0a} 
+\index{IMUReader@{IMUReader}!callback\_@{callback\_}}
+\index{callback\_@{callback\_}!IMUReader@{IMUReader}}
+\doxysubsubsection{\texorpdfstring{callback\_}{callback\_}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classIMUReader_a6d87e7661de8325bf78fcd4f5a102de7}{Sample\+Callback}} IMUReader\+::callback\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classIMUReader_aca9a855e11f4f753eb219e2318e57160}\label{classIMUReader_aca9a855e11f4f753eb219e2318e57160} 
+\index{IMUReader@{IMUReader}!chip\_@{chip\_}}
+\index{chip\_@{chip\_}!IMUReader@{IMUReader}}
+\doxysubsubsection{\texorpdfstring{chip\_}{chip\_}}
+{\footnotesize\ttfamily gpiod\+\_\+chip\texorpdfstring{$\ast$}{*} IMUReader\+::chip\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classIMUReader_a5561cf166a78419f1c0c3dd0a50d32b5}\label{classIMUReader_a5561cf166a78419f1c0c3dd0a50d32b5} 
+\index{IMUReader@{IMUReader}!gpio\_fd\_@{gpio\_fd\_}}
+\index{gpio\_fd\_@{gpio\_fd\_}!IMUReader@{IMUReader}}
+\doxysubsubsection{\texorpdfstring{gpio\_fd\_}{gpio\_fd\_}}
+{\footnotesize\ttfamily int IMUReader\+::gpio\+\_\+fd\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classIMUReader_aa9b451f364d559feb317c891d26435f3}\label{classIMUReader_aa9b451f364d559feb317c891d26435f3} 
+\index{IMUReader@{IMUReader}!gpiochip\_path\_@{gpiochip\_path\_}}
+\index{gpiochip\_path\_@{gpiochip\_path\_}!IMUReader@{IMUReader}}
+\doxysubsubsection{\texorpdfstring{gpiochip\_path\_}{gpiochip\_path\_}}
+{\footnotesize\ttfamily const char\texorpdfstring{$\ast$}{*} IMUReader\+::gpiochip\+\_\+path\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classIMUReader_ae49e6fb530bf32e8f641cdde9bd8ae07}\label{classIMUReader_ae49e6fb530bf32e8f641cdde9bd8ae07} 
+\index{IMUReader@{IMUReader}!imu\_@{imu\_}}
+\index{imu\_@{imu\_}!IMUReader@{IMUReader}}
+\doxysubsubsection{\texorpdfstring{imu\_}{imu\_}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C}{icm20948\+::\+ICM20948\+\_\+\+I2C}} IMUReader\+::imu\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classIMUReader_a629839d6a645c8b3f8ccaee606974488}\label{classIMUReader_a629839d6a645c8b3f8ccaee606974488} 
+\index{IMUReader@{IMUReader}!rdy\_line\_@{rdy\_line\_}}
+\index{rdy\_line\_@{rdy\_line\_}!IMUReader@{IMUReader}}
+\doxysubsubsection{\texorpdfstring{rdy\_line\_}{rdy\_line\_}}
+{\footnotesize\ttfamily unsigned IMUReader\+::rdy\+\_\+line\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classIMUReader_a90da6413c5913a16c4cfec1752f8ec4e}\label{classIMUReader_a90da6413c5913a16c4cfec1752f8ec4e} 
+\index{IMUReader@{IMUReader}!request\_@{request\_}}
+\index{request\_@{request\_}!IMUReader@{IMUReader}}
+\doxysubsubsection{\texorpdfstring{request\_}{request\_}}
+{\footnotesize\ttfamily gpiod\+\_\+line\+\_\+request\texorpdfstring{$\ast$}{*} IMUReader\+::request\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classIMUReader_afc74b0a28841ad9481a55af987222c6c}\label{classIMUReader_afc74b0a28841ad9481a55af987222c6c} 
+\index{IMUReader@{IMUReader}!running\_@{running\_}}
+\index{running\_@{running\_}!IMUReader@{IMUReader}}
+\doxysubsubsection{\texorpdfstring{running\_}{running\_}}
+{\footnotesize\ttfamily std\+::atomic\+\_\+bool IMUReader\+::running\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classIMUReader_acc882703f542a2e3118462178388b3bb}\label{classIMUReader_acc882703f542a2e3118462178388b3bb} 
+\index{IMUReader@{IMUReader}!stop\_fd\_@{stop\_fd\_}}
+\index{stop\_fd\_@{stop\_fd\_}!IMUReader@{IMUReader}}
+\doxysubsubsection{\texorpdfstring{stop\_fd\_}{stop\_fd\_}}
+{\footnotesize\ttfamily int IMUReader\+::stop\+\_\+fd\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classIMUReader_a1a69762ebad2714b8a1d884e961210d8}\label{classIMUReader_a1a69762ebad2714b8a1d884e961210d8} 
+\index{IMUReader@{IMUReader}!worker\_thread\_@{worker\_thread\_}}
+\index{worker\_thread\_@{worker\_thread\_}!IMUReader@{IMUReader}}
+\doxysubsubsection{\texorpdfstring{worker\_thread\_}{worker\_thread\_}}
+{\footnotesize\ttfamily std\+::thread IMUReader\+::worker\+\_\+thread\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/libs/\+IMU/\+Include/\mbox{\hyperlink{imureader_8hpp}{imureader.\+hpp}}\item 
+src/libs/\+IMU/\mbox{\hyperlink{imureader_8cpp}{imureader.\+cpp}}\end{DoxyCompactItemize}

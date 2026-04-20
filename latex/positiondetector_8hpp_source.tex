@@ -1,0 +1,58 @@
+\doxysection{positiondetector.\+hpp}
+\hypertarget{positiondetector_8hpp_source}{}\label{positiondetector_8hpp_source}\index{src/libs/IMU\_math/Include/positiondetector.hpp@{src/libs/IMU\_math/Include/positiondetector.hpp}}
+\mbox{\hyperlink{positiondetector_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ \ \ \ This\ header\ declares\ the\ position\ detector\ class.}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ \ \ \ It\ stores\ the\ configuration\ for\ detecting\ an\ upright\ position,}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ \ \ \ processes\ sensor\ samples,\ tracks\ stability,\ and\ uses\ a\ callback}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ \ \ \ when\ the\ required\ position\ has\ been\ confirmed.}}
+\DoxyCodeLine{00006\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <cmath>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <functional>}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{comment}{//\ Declares\ the\ position\ detector\ class,\ including\ its\ callback\ type,\ configuration\ settings,\ and\ main\ functions\ for\ processing\ samples\ and\ resetting\ state.}}
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classPositionDetector}{PositionDetector}}\ \{}
+\DoxyCodeLine{00015\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{classPositionDetector_a6cecc4adffa3f995348529f94c1db498}{StateCallback}}\ =\ std::function<void(\textcolor{keywordtype}{bool}\ upright)>;}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structPositionDetector_1_1Config}{Config}}\ \{}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{structPositionDetector_1_1Config_a063553abb0586e69dcdbb6d1128d554d}{refX}}\ =\ \ 9.88f;}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{structPositionDetector_1_1Config_a609d2613543493c696721702a04573b5}{refY}}\ =\ -\/0.87f;}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{structPositionDetector_1_1Config_aa5aa39c8e4b9a73c99b70a985d01624d}{refZ}}\ =\ \ 0.10f;}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{structPositionDetector_1_1Config_a5bc3ba0437fcbee5fbbc074033763558}{minG}}\ =\ 7.0f;}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{structPositionDetector_1_1Config_a7b5fc9c011fe6d3e1a17ed4501da1abf}{maxG}}\ =\ 12.5f;}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{structPositionDetector_1_1Config_a6d8656fb0bde8819a205e8f967fe65f0}{minDot}}\ =\ 0.90f;}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{structPositionDetector_1_1Config_afb6e988d2a360f24dc814494cbb4eac3}{refHeadingDeg}}\ =\ 25.0f;}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{structPositionDetector_1_1Config_a8c4fcea4449a9db770d2d5bf4a654107}{headingToleranceDeg}}\ =\ 180.0f;}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structPositionDetector_1_1Config_aa40d0403625f7ed84ad15bedaa16048b}{stabilitySamples}}\ =\ 10;}
+\DoxyCodeLine{00031\ \ \ \ \ \};}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \mbox{\hyperlink{classPositionDetector_a14b40be880ad02568135c29134a62e56}{PositionDetector}}();}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{classPositionDetector_a14b40be880ad02568135c29134a62e56}{PositionDetector}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structPositionDetector_1_1Config}{Config}}\&\ c);}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classPositionDetector_a46e8f76935189768ed661b5aa868490c}{\string~PositionDetector}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classPositionDetector_aff71ff748fddc6e18c1303a0aafc9dcf}{onSample}}(\textcolor{keywordtype}{float}\ ax,\ \textcolor{keywordtype}{float}\ ay,\ \textcolor{keywordtype}{float}\ az,\ \textcolor{keywordtype}{float}\ mx,\ \textcolor{keywordtype}{float}\ my);}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classPositionDetector_a3ed3cfa3dee1eb220ca7d99849bfd226}{setCallback}}(\mbox{\hyperlink{classPositionDetector_a6cecc4adffa3f995348529f94c1db498}{StateCallback}}\ cb)\ \{\ \mbox{\hyperlink{classPositionDetector_aae56d9e61b2afb80a07003ba59fbb318}{callback}}\ =\ std::move(cb);\ \}}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{comment}{//\ Clears\ stability\ count\ and\ confirmed\ state\ so\ the\ callback\ can\ re-\/fire}}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{comment}{//\ after\ a\ cycle\ reset\ while\ the\ device\ stays\ at\ the\ same\ position.}}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classPositionDetector_aa1219497239de86b59d8c88f6a60c876}{resetState}}();}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{comment}{//\ Declares\ the\ helper\ function\ and\ private\ members\ used\ to\ store\ configuration,\ reference\ values,\ stability\ count,\ state,\ and\ callback\ data.}}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classPositionDetector_a346d2194b0515bc47f4e03d186339ff9}{wrapAngleDeg}}(\textcolor{keywordtype}{float}\ a);}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ \mbox{\hyperlink{structPositionDetector_1_1Config}{Config}}\ \mbox{\hyperlink{classPositionDetector_a3d1ce96b906dab1b6b43d7fe71dab89e}{cfg}};}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classPositionDetector_a938a212e42e110a7344429f2a65fe40f}{nRefX}},\ \mbox{\hyperlink{classPositionDetector_ad1083c445fd76423838c90fed341a590}{nRefY}},\ \mbox{\hyperlink{classPositionDetector_a6303a331e34b61b49b7b3c6681355111}{nRefZ}};\ \ \ \textcolor{comment}{//\ normalised\ ref\ vector,\ computed\ from\ cfg}}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classPositionDetector_af56e669264fd7441de6ae3343d8e5245}{stableCount}};}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classPositionDetector_a890b67cd6046e11042bd7ba0214571cb}{confirmed}};}
+\DoxyCodeLine{00051\ \ \ \ \ \mbox{\hyperlink{classPositionDetector_a6cecc4adffa3f995348529f94c1db498}{StateCallback}}\ \mbox{\hyperlink{classPositionDetector_aae56d9e61b2afb80a07003ba59fbb318}{callback}};}
+\DoxyCodeLine{00052\ \};}
+
+\end{DoxyCode}

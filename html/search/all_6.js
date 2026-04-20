@@ -1,4 +1,24 @@
 var searchData=
 [
-  ['installing_0',['Installing',['../md_README.html#autotoc_md6',1,'']]]
+  ['fd_5fi2c_0',['fd_i2c',['../classADS1115rpi.html#aeff3281ccb623732a77361bcc6baa1d7',1,'ADS1115rpi']]],
+  ['feed_1',['feed',['../classSwingCalibrator.html#a763b2ac04244cc6246a8b011e6727754',1,'SwingCalibrator']]],
+  ['filter_5finit_5f_2',['filter_init_',['../classPiezoEventDetector.html#a901691233dfad6c7c0d9e867f71871ec',1,'PiezoEventDetector']]],
+  ['filtered_5fv_5f_3',['filtered_v_',['../classPiezoEventDetector.html#a47e4ed983ad88f90de6842fe8d15746d',1,'PiezoEventDetector']]],
+  ['flashgreen_4',['flashgreen',['../classLEDController.html#a065f173ff5e3eb0bc8b1a522eb6e41ff',1,'LEDController::flashGreen()'],['../classSimpleLEDController.html#a0cae5e551cb10191b7bcfb3eb265b18c',1,'SimpleLEDController::flashGreen()']]],
+  ['forcecallback_5',['ForceCallback',['../classPiezoEventDetector.html#a6654a5fee70b051fa4a469ed25a53fd1',1,'PiezoEventDetector']]],
+  ['forcecallback_5f_6',['forceCallback_',['../classPiezoEventDetector.html#a60a16063c0cf74b5a18e726cbe1f9c64',1,'PiezoEventDetector']]],
+  ['forceoff_7',['forceOff',['../classSwingFeedback.html#a966b6904fc774204125e5e5dc07fc322',1,'SwingFeedback']]],
+  ['fs128hz_8',['FS128HZ',['../structADS1115settings.html#aa3a33d5f6c7f14bb708a70499a225357a3265d07f32b61328f3ded165f8cb8fbc',1,'ADS1115settings']]],
+  ['fs16hz_9',['FS16HZ',['../structADS1115settings.html#aa3a33d5f6c7f14bb708a70499a225357a2f16253b2ddb36688da0d2c9d6c37e73',1,'ADS1115settings']]],
+  ['fs250hz_10',['FS250HZ',['../structADS1115settings.html#aa3a33d5f6c7f14bb708a70499a225357a6a05f905cc2f142d9855ae13a925e296',1,'ADS1115settings']]],
+  ['fs32hz_11',['FS32HZ',['../structADS1115settings.html#aa3a33d5f6c7f14bb708a70499a225357afc33391b2dd7bb507a840155c6cfbd95',1,'ADS1115settings']]],
+  ['fs475hz_12',['FS475HZ',['../structADS1115settings.html#aa3a33d5f6c7f14bb708a70499a225357a7fea2393497d03736ca6bf96b3ae55b2',1,'ADS1115settings']]],
+  ['fs64hz_13',['FS64HZ',['../structADS1115settings.html#aa3a33d5f6c7f14bb708a70499a225357aaa99d6e592baaa5d271f24908249c0a7',1,'ADS1115settings']]],
+  ['fs860hz_14',['FS860HZ',['../structADS1115settings.html#aa3a33d5f6c7f14bb708a70499a225357a84398c434b3b9427990fafb9fae98093',1,'ADS1115settings']]],
+  ['fs8hz_15',['FS8HZ',['../structADS1115settings.html#aa3a33d5f6c7f14bb708a70499a225357a571876b8fe1fcbf0ca6d5f7c22a86ec1',1,'ADS1115settings']]],
+  ['fsr0_5f256_16',['FSR0_256',['../structADS1115settings.html#a831970032a15754ead970931dd25ac5fa66050b0b2dfa108d0fe262c156ee12dc',1,'ADS1115settings']]],
+  ['fsr0_5f512_17',['FSR0_512',['../structADS1115settings.html#a831970032a15754ead970931dd25ac5faa52ee8e28cfbc6882b5fb52fcfaf049b',1,'ADS1115settings']]],
+  ['fsr1_5f024_18',['FSR1_024',['../structADS1115settings.html#a831970032a15754ead970931dd25ac5fa54314fc0ed922c14c11f8a62beec0fe4',1,'ADS1115settings']]],
+  ['fsr2_5f048_19',['FSR2_048',['../structADS1115settings.html#a831970032a15754ead970931dd25ac5fa219c056740c23deafea320ee522d56cf',1,'ADS1115settings']]],
+  ['fullscalevoltage_20',['fullScaleVoltage',['../classADS1115rpi.html#a8ceeb0356792ea4bce69a4c4297779bb',1,'ADS1115rpi']]]
 ];

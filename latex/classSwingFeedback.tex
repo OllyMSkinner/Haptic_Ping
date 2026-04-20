@@ -1,0 +1,147 @@
+\doxysection{Swing\+Feedback Class Reference}
+\hypertarget{classSwingFeedback}{}\label{classSwingFeedback}\index{SwingFeedback@{SwingFeedback}}
+
+
+{\ttfamily \#include $<$swingfeedback.\+h$>$}
+
+
+
+Collaboration diagram for Swing\+Feedback\+:
+% FIG 0
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{classSwingFeedback_afe26c04487150b3d6d458e06b0a1742e}{Reset\+Callback}} = std\+::function$<$ void()$>$
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classSwingFeedback_aa020d3d8547ba16c5c2e7b6f3169f189}{Swing\+Feedback}} (\mbox{\hyperlink{classRPI__PWM}{RPI\+\_\+\+PWM}} \&pwm)
+\item 
+void \mbox{\hyperlink{classSwingFeedback_ad1acada36c94a13292b71c4495ce7474}{set\+Reset\+Callback}} (\mbox{\hyperlink{classSwingFeedback_afe26c04487150b3d6d458e06b0a1742e}{Reset\+Callback}} cb)
+\item 
+void \mbox{\hyperlink{classSwingFeedback_af26c1985c1eac2d9031958c46ec13f39}{check\+Timeout}} ()
+\item 
+void \mbox{\hyperlink{classSwingFeedback_a869d9a4be1e27ce382e6f95d6a11f989}{on\+Level}} (const char \texorpdfstring{$\ast$}{*}level)
+\item 
+void \mbox{\hyperlink{classSwingFeedback_a966b6904fc774204125e5e5dc07fc322}{force\+Off}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classSwingFeedback_a2f0ecec3b79f40207b84fa9d34680b19}{worker}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classRPI__PWM}{RPI\+\_\+\+PWM}} \& \mbox{\hyperlink{classSwingFeedback_add2ef007e5a95f4b59f1941a272ee0ca}{pwm\+\_\+}}
+\item 
+\mbox{\hyperlink{classSwingFeedback_afe26c04487150b3d6d458e06b0a1742e}{Reset\+Callback}} \mbox{\hyperlink{classSwingFeedback_abdce37fdb856ee889bc17d7a1b488016}{reset\+\_\+cb\+\_\+}}
+\item 
+std\+::atomic$<$ bool $>$ \mbox{\hyperlink{classSwingFeedback_a34091e66500508702fa74af4cd013f39}{busy\+\_\+}} \{false\}
+\item 
+std\+::atomic$<$ int $>$ \mbox{\hyperlink{classSwingFeedback_a18a0795df67442f2281435e4ce818205}{pending\+\_\+level\+\_\+}} \{0\}
+\item 
+std\+::atomic$<$ int64\+\_\+t $>$ \mbox{\hyperlink{classSwingFeedback_a956a5e871448c96876a9c4e4dd7f1ae8}{busy\+\_\+since\+\_\+ms\+\_\+}} \{0\}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static constexpr int64\+\_\+t \mbox{\hyperlink{classSwingFeedback_a8e1ebec717fb857ec33b5d0bd5a9a539}{TIMEOUT\+\_\+\+MS}} = 3000
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Typedef Documentation}
+\Hypertarget{classSwingFeedback_afe26c04487150b3d6d458e06b0a1742e}\label{classSwingFeedback_afe26c04487150b3d6d458e06b0a1742e} 
+\index{SwingFeedback@{SwingFeedback}!ResetCallback@{ResetCallback}}
+\index{ResetCallback@{ResetCallback}!SwingFeedback@{SwingFeedback}}
+\doxysubsubsection{\texorpdfstring{ResetCallback}{ResetCallback}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{classSwingFeedback_afe26c04487150b3d6d458e06b0a1742e}{Swing\+Feedback\+::\+Reset\+Callback}} =  std\+::function$<$void()$>$}
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classSwingFeedback_aa020d3d8547ba16c5c2e7b6f3169f189}\label{classSwingFeedback_aa020d3d8547ba16c5c2e7b6f3169f189} 
+\index{SwingFeedback@{SwingFeedback}!SwingFeedback@{SwingFeedback}}
+\index{SwingFeedback@{SwingFeedback}!SwingFeedback@{SwingFeedback}}
+\doxysubsubsection{\texorpdfstring{SwingFeedback()}{SwingFeedback()}}
+{\footnotesize\ttfamily Swing\+Feedback\+::\+Swing\+Feedback (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classRPI__PWM}{RPI\+\_\+\+PWM}} \&}]{pwm }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classSwingFeedback_af26c1985c1eac2d9031958c46ec13f39}\label{classSwingFeedback_af26c1985c1eac2d9031958c46ec13f39} 
+\index{SwingFeedback@{SwingFeedback}!checkTimeout@{checkTimeout}}
+\index{checkTimeout@{checkTimeout}!SwingFeedback@{SwingFeedback}}
+\doxysubsubsection{\texorpdfstring{checkTimeout()}{checkTimeout()}}
+{\footnotesize\ttfamily void Swing\+Feedback\+::check\+Timeout (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{classSwingFeedback_a966b6904fc774204125e5e5dc07fc322}\label{classSwingFeedback_a966b6904fc774204125e5e5dc07fc322} 
+\index{SwingFeedback@{SwingFeedback}!forceOff@{forceOff}}
+\index{forceOff@{forceOff}!SwingFeedback@{SwingFeedback}}
+\doxysubsubsection{\texorpdfstring{forceOff()}{forceOff()}}
+{\footnotesize\ttfamily void Swing\+Feedback\+::force\+Off (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{classSwingFeedback_a869d9a4be1e27ce382e6f95d6a11f989}\label{classSwingFeedback_a869d9a4be1e27ce382e6f95d6a11f989} 
+\index{SwingFeedback@{SwingFeedback}!onLevel@{onLevel}}
+\index{onLevel@{onLevel}!SwingFeedback@{SwingFeedback}}
+\doxysubsubsection{\texorpdfstring{onLevel()}{onLevel()}}
+{\footnotesize\ttfamily void Swing\+Feedback\+::on\+Level (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{level }\end{DoxyParamCaption})}
+
+\Hypertarget{classSwingFeedback_ad1acada36c94a13292b71c4495ce7474}\label{classSwingFeedback_ad1acada36c94a13292b71c4495ce7474} 
+\index{SwingFeedback@{SwingFeedback}!setResetCallback@{setResetCallback}}
+\index{setResetCallback@{setResetCallback}!SwingFeedback@{SwingFeedback}}
+\doxysubsubsection{\texorpdfstring{setResetCallback()}{setResetCallback()}}
+{\footnotesize\ttfamily void Swing\+Feedback\+::set\+Reset\+Callback (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSwingFeedback_afe26c04487150b3d6d458e06b0a1742e}{Reset\+Callback}}}]{cb }\end{DoxyParamCaption})}
+
+\Hypertarget{classSwingFeedback_a2f0ecec3b79f40207b84fa9d34680b19}\label{classSwingFeedback_a2f0ecec3b79f40207b84fa9d34680b19} 
+\index{SwingFeedback@{SwingFeedback}!worker@{worker}}
+\index{worker@{worker}!SwingFeedback@{SwingFeedback}}
+\doxysubsubsection{\texorpdfstring{worker()}{worker()}}
+{\footnotesize\ttfamily void Swing\+Feedback\+::worker (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classSwingFeedback_a34091e66500508702fa74af4cd013f39}\label{classSwingFeedback_a34091e66500508702fa74af4cd013f39} 
+\index{SwingFeedback@{SwingFeedback}!busy\_@{busy\_}}
+\index{busy\_@{busy\_}!SwingFeedback@{SwingFeedback}}
+\doxysubsubsection{\texorpdfstring{busy\_}{busy\_}}
+{\footnotesize\ttfamily std\+::atomic$<$bool$>$ Swing\+Feedback\+::busy\+\_\+ \{false\}\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classSwingFeedback_a956a5e871448c96876a9c4e4dd7f1ae8}\label{classSwingFeedback_a956a5e871448c96876a9c4e4dd7f1ae8} 
+\index{SwingFeedback@{SwingFeedback}!busy\_since\_ms\_@{busy\_since\_ms\_}}
+\index{busy\_since\_ms\_@{busy\_since\_ms\_}!SwingFeedback@{SwingFeedback}}
+\doxysubsubsection{\texorpdfstring{busy\_since\_ms\_}{busy\_since\_ms\_}}
+{\footnotesize\ttfamily std\+::atomic$<$int64\+\_\+t$>$ Swing\+Feedback\+::busy\+\_\+since\+\_\+ms\+\_\+ \{0\}\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classSwingFeedback_a18a0795df67442f2281435e4ce818205}\label{classSwingFeedback_a18a0795df67442f2281435e4ce818205} 
+\index{SwingFeedback@{SwingFeedback}!pending\_level\_@{pending\_level\_}}
+\index{pending\_level\_@{pending\_level\_}!SwingFeedback@{SwingFeedback}}
+\doxysubsubsection{\texorpdfstring{pending\_level\_}{pending\_level\_}}
+{\footnotesize\ttfamily std\+::atomic$<$int$>$ Swing\+Feedback\+::pending\+\_\+level\+\_\+ \{0\}\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classSwingFeedback_add2ef007e5a95f4b59f1941a272ee0ca}\label{classSwingFeedback_add2ef007e5a95f4b59f1941a272ee0ca} 
+\index{SwingFeedback@{SwingFeedback}!pwm\_@{pwm\_}}
+\index{pwm\_@{pwm\_}!SwingFeedback@{SwingFeedback}}
+\doxysubsubsection{\texorpdfstring{pwm\_}{pwm\_}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRPI__PWM}{RPI\+\_\+\+PWM}}\& Swing\+Feedback\+::pwm\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classSwingFeedback_abdce37fdb856ee889bc17d7a1b488016}\label{classSwingFeedback_abdce37fdb856ee889bc17d7a1b488016} 
+\index{SwingFeedback@{SwingFeedback}!reset\_cb\_@{reset\_cb\_}}
+\index{reset\_cb\_@{reset\_cb\_}!SwingFeedback@{SwingFeedback}}
+\doxysubsubsection{\texorpdfstring{reset\_cb\_}{reset\_cb\_}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classSwingFeedback_afe26c04487150b3d6d458e06b0a1742e}{Reset\+Callback}} Swing\+Feedback\+::reset\+\_\+cb\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classSwingFeedback_a8e1ebec717fb857ec33b5d0bd5a9a539}\label{classSwingFeedback_a8e1ebec717fb857ec33b5d0bd5a9a539} 
+\index{SwingFeedback@{SwingFeedback}!TIMEOUT\_MS@{TIMEOUT\_MS}}
+\index{TIMEOUT\_MS@{TIMEOUT\_MS}!SwingFeedback@{SwingFeedback}}
+\doxysubsubsection{\texorpdfstring{TIMEOUT\_MS}{TIMEOUT\_MS}}
+{\footnotesize\ttfamily constexpr int64\+\_\+t Swing\+Feedback\+::\+TIMEOUT\+\_\+\+MS = 3000\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/libs/\+Motor/\+Include/\mbox{\hyperlink{swingfeedback_8h}{swingfeedback.\+h}}\item 
+src/libs/\+Motor/\mbox{\hyperlink{swingfeedback_8cpp}{swingfeedback.\+cpp}}\end{DoxyCompactItemize}

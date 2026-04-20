@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['readme_0',['README',['../md_README.html',1,'']]]
+  ['ads1115_20pin_20connection_20list_3a_0',['ADS1115 Pin connection list:',['../md_src_2libs_2Piezo_2ReadMe.html',1,'']]]
 ];

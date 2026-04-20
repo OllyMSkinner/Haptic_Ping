@@ -1,0 +1,160 @@
+\doxysection{ads1115rpi.\+h}
+\hypertarget{ads1115rpi_8h_source}{}\label{ads1115rpi_8h_source}\index{src/libs/Piezo/Include/ads1115rpi.h@{src/libs/Piezo/Include/ads1115rpi.h}}
+\mbox{\hyperlink{ads1115rpi_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ \_\_ADS1115RPI\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ \_\_ADS1115RPI\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <unistd.h>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <assert.h>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <linux/i2c.h>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <linux/i2c-\/dev.h>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <atomic>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <thread>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <gpiod.hpp>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <functional>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#ifndef\ NDEBUG}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#define\ DEBUG}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structADS1115settings}{ADS1115settings}}}
+\DoxyCodeLine{00022\ \{}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structADS1115settings_ae0f3b1d6ef8068fed5e580fd4d7123b3}{i2c\_bus}}\ =\ 1;}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint8\_t\ \mbox{\hyperlink{structADS1115settings_a9e6e2fdcded026f0b1fcc9099f361ffa}{DEFAULT\_ADS1115\_ADDRESS}}\ =\ 0x48;}
+\DoxyCodeLine{00026\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{structADS1115settings_a5aac9fb517c9665aeca60f1a9b0bbbe2}{address}}\ =\ \mbox{\hyperlink{structADS1115settings_a9e6e2fdcded026f0b1fcc9099f361ffa}{DEFAULT\_ADS1115\_ADDRESS}};}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keyword}{enum}\ \mbox{\hyperlink{structADS1115settings_aa3a33d5f6c7f14bb708a70499a225357}{SamplingRates}}}
+\DoxyCodeLine{00029\ \ \ \ \ \{}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structADS1115settings_aa3a33d5f6c7f14bb708a70499a225357a571876b8fe1fcbf0ca6d5f7c22a86ec1}{FS8HZ}}\ =\ 0,}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structADS1115settings_aa3a33d5f6c7f14bb708a70499a225357a2f16253b2ddb36688da0d2c9d6c37e73}{FS16HZ}}\ =\ 1,}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structADS1115settings_aa3a33d5f6c7f14bb708a70499a225357afc33391b2dd7bb507a840155c6cfbd95}{FS32HZ}}\ =\ 2,}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structADS1115settings_aa3a33d5f6c7f14bb708a70499a225357aaa99d6e592baaa5d271f24908249c0a7}{FS64HZ}}\ =\ 3,}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structADS1115settings_aa3a33d5f6c7f14bb708a70499a225357a3265d07f32b61328f3ded165f8cb8fbc}{FS128HZ}}\ =\ 4,}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structADS1115settings_aa3a33d5f6c7f14bb708a70499a225357a6a05f905cc2f142d9855ae13a925e296}{FS250HZ}}\ =\ 5,}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structADS1115settings_aa3a33d5f6c7f14bb708a70499a225357a7fea2393497d03736ca6bf96b3ae55b2}{FS475HZ}}\ =\ 6,}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structADS1115settings_aa3a33d5f6c7f14bb708a70499a225357a84398c434b3b9427990fafb9fae98093}{FS860HZ}}\ =\ 7}
+\DoxyCodeLine{00038\ \ \ \ \ \};}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{structADS1115settings_ab4314bdcd3638815129e97458ca43950}{getSamplingRate}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00041\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ SamplingRateEnum2Value[8]\ =}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \{8,\ 16,\ 32,\ 64,\ 128,\ 250,\ 475,\ 860\};}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ SamplingRateEnum2Value[\mbox{\hyperlink{structADS1115settings_aab5ef57bb9aef08aac7a7fd7de33a451}{samplingRate}}];}
+\DoxyCodeLine{00045\ \ \ \ \ \}}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ \mbox{\hyperlink{structADS1115settings_aa3a33d5f6c7f14bb708a70499a225357}{SamplingRates}}\ \mbox{\hyperlink{structADS1115settings_aab5ef57bb9aef08aac7a7fd7de33a451}{samplingRate}}\ =\ \mbox{\hyperlink{structADS1115settings_aa3a33d5f6c7f14bb708a70499a225357a3265d07f32b61328f3ded165f8cb8fbc}{FS128HZ}};}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keyword}{enum}\ \mbox{\hyperlink{structADS1115settings_a831970032a15754ead970931dd25ac5f}{PGA}}}
+\DoxyCodeLine{00050\ \ \ \ \ \{}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structADS1115settings_a831970032a15754ead970931dd25ac5fa219c056740c23deafea320ee522d56cf}{FSR2\_048}}\ =\ 2,}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structADS1115settings_a831970032a15754ead970931dd25ac5fa54314fc0ed922c14c11f8a62beec0fe4}{FSR1\_024}}\ =\ 3,}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structADS1115settings_a831970032a15754ead970931dd25ac5faa52ee8e28cfbc6882b5fb52fcfaf049b}{FSR0\_512}}\ =\ 4,}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structADS1115settings_a831970032a15754ead970931dd25ac5fa66050b0b2dfa108d0fe262c156ee12dc}{FSR0\_256}}\ =\ 5}
+\DoxyCodeLine{00055\ \ \ \ \ \};}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \ \ \mbox{\hyperlink{structADS1115settings_a831970032a15754ead970931dd25ac5f}{PGA}}\ \mbox{\hyperlink{structADS1115settings_a9c5013fdbef7376faec2df49d123e67e}{pgaGain}}\ =\ \mbox{\hyperlink{structADS1115settings_a831970032a15754ead970931dd25ac5fa219c056740c23deafea320ee522d56cf}{FSR2\_048}};}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keyword}{enum}\ \mbox{\hyperlink{structADS1115settings_a17845a1a94f94bb7d2406dbe13bc560d}{Input}}}
+\DoxyCodeLine{00060\ \ \ \ \ \{}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structADS1115settings_a17845a1a94f94bb7d2406dbe13bc560daa087ea46f630c382cfbe6b9e74a93956}{AIN0}}\ =\ 0,}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structADS1115settings_a17845a1a94f94bb7d2406dbe13bc560dabce94db830ae8bd98155120296d43187}{AIN1}}\ =\ 1,}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structADS1115settings_a17845a1a94f94bb7d2406dbe13bc560dab4ed82e9f524b9cd347fa8878afcf49c}{AIN2}}\ =\ 2,}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structADS1115settings_a17845a1a94f94bb7d2406dbe13bc560daf41398bedce7b5ce208abf29e788ba92}{AIN3}}\ =\ 3}
+\DoxyCodeLine{00065\ \ \ \ \ \};}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \ \ \ \ \mbox{\hyperlink{structADS1115settings_a17845a1a94f94bb7d2406dbe13bc560d}{Input}}\ \mbox{\hyperlink{structADS1115settings_a3f4f9b2d8b6f0ef724bd4e4a68b75245}{channel}}\ =\ \mbox{\hyperlink{structADS1115settings_a17845a1a94f94bb7d2406dbe13bc560daa087ea46f630c382cfbe6b9e74a93956}{AIN0}};}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structADS1115settings_a5b764c1300798718106d83bf76bd2608}{drdy\_chip}}\ =\ 0;}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structADS1115settings_a2d2bfcac34bf116790df8b08001dcb66}{DEFAULT\_ALERT\_RDY\_TO\_GPIO}}\ =\ 26;}
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structADS1115settings_a2ec35347e84e5165a35191e670c05b79}{drdy\_gpio}}\ =\ \mbox{\hyperlink{structADS1115settings_a2d2bfcac34bf116790df8b08001dcb66}{DEFAULT\_ALERT\_RDY\_TO\_GPIO}};}
+\DoxyCodeLine{00073\ \};}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \mbox{\hyperlink{structADS1115settings}{ADS1115settings}}\ \mbox{\hyperlink{ads1115rpi_8h_ab93a510bf73672786d210a79f41be1aa}{makeDefaultADS1115Settings}}();}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classADS1115rpi}{ADS1115rpi}}}
+\DoxyCodeLine{00078\ \{}
+\DoxyCodeLine{00079\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{classADS1115rpi_a69806d343269487c97e5d34c9c13902c}{ADSCallbackInterface}}\ =\ std::function<void(\textcolor{keywordtype}{float})>;}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ \ \ \ \ \mbox{\hyperlink{classADS1115rpi_a3dec47dc3242290468f21396df0d71a5}{\string~ADS1115rpi}}()}
+\DoxyCodeLine{00083\ \ \ \ \ \{}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classADS1115rpi_a910b9735f8bef69a0844a821fda06baf}{stop}}();}
+\DoxyCodeLine{00085\ \ \ \ \ \}}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classADS1115rpi_a720c2d3b7151367221af969ab436f299}{registerCallback}}(\mbox{\hyperlink{classADS1115rpi_a69806d343269487c97e5d34c9c13902c}{ADSCallbackInterface}}\ ci)}
+\DoxyCodeLine{00088\ \ \ \ \ \{}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classADS1115rpi_a2efd347497b549a84e7c2ccc624883c4}{adsCallbackInterface}}\ =\ ci;}
+\DoxyCodeLine{00090\ \ \ \ \ \}}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classADS1115rpi_a4f36d0cca6cbec106b5a626d9973e091}{setChannel}}(\mbox{\hyperlink{structADS1115settings_a17845a1a94f94bb7d2406dbe13bc560d}{ADS1115settings::Input}}\ channel);}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classADS1115rpi_a827e9df153aee3522f1d2c90eed9eb64}{start}}(\mbox{\hyperlink{structADS1115settings}{ADS1115settings}}\ settings\ =\ \mbox{\hyperlink{structADS1115settings}{ADS1115settings}}(),}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ spawn\_worker\ =\ \textcolor{keyword}{true});}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00097\ \ \ \ \ \mbox{\hyperlink{structADS1115settings}{ADS1115settings}}\ \mbox{\hyperlink{classADS1115rpi_ad8f096a3061f19cda469efe0eee60510}{getADS1115settings}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00098\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classADS1115rpi_a7d5f3ea300a9d094766d1120e653bf71}{ads1115settings}};}
+\DoxyCodeLine{00100\ \ \ \ \ \}}
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00102\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classADS1115rpi_a910b9735f8bef69a0844a821fda06baf}{stop}}();}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00104\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classADS1115rpi_aaaa6d9f5f8e527a3c75d9fa4226fe2d3}{readOnce}}();}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00106\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classADS1115rpi_a8ceeb0356792ea4bce69a4c4297779bb}{fullScaleVoltage}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00107\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (\mbox{\hyperlink{classADS1115rpi_a7d5f3ea300a9d094766d1120e653bf71}{ads1115settings}}.\mbox{\hyperlink{structADS1115settings_a9c5013fdbef7376faec2df49d123e67e}{pgaGain}})}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{structADS1115settings_a831970032a15754ead970931dd25ac5fa219c056740c23deafea320ee522d56cf}{ADS1115settings::FSR2\_048}}:}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 2.048f;}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{structADS1115settings_a831970032a15754ead970931dd25ac5fa54314fc0ed922c14c11f8a62beec0fe4}{ADS1115settings::FSR1\_024}}:}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1.024f;}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{structADS1115settings_a831970032a15754ead970931dd25ac5faa52ee8e28cfbc6882b5fb52fcfaf049b}{ADS1115settings::FSR0\_512}}:}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0.512f;}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{structADS1115settings_a831970032a15754ead970931dd25ac5fa66050b0b2dfa108d0fe262c156ee12dc}{ADS1115settings::FSR0\_256}}:}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0.256f;}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ assert(\textcolor{keyword}{false});}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0.0f;}
+\DoxyCodeLine{00121\ \ \ \ \ \}}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00123\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classADS1115rpi_a8251b174905f14917414cef510122aae}{setRetryEnabled}}(\textcolor{keywordtype}{bool}\ enabled)}
+\DoxyCodeLine{00124\ \ \ \ \ \{}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classADS1115rpi_a6ecd0d8a5c01b199263021de625fb8f0}{retry\_enabled\_}}.store(enabled);}
+\DoxyCodeLine{00126\ \ \ \ \ \}}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00128\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00129\ \ \ \ \ \mbox{\hyperlink{structADS1115settings}{ADS1115settings}}\ \mbox{\hyperlink{classADS1115rpi_a7d5f3ea300a9d094766d1120e653bf71}{ads1115settings}};}
+\DoxyCodeLine{00130\ }
+\DoxyCodeLine{00131\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classADS1115rpi_a6121577f14b54e21777281cbb56d3e91}{dataReady}}();}
+\DoxyCodeLine{00132\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classADS1115rpi_a0c68300f73409f5ad0645ec727cb5699}{worker}}();}
+\DoxyCodeLine{00133\ }
+\DoxyCodeLine{00134\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classADS1115rpi_ac055ed01593f326bfa1c8804a6d0808a}{i2c\_selectDevice}}();}
+\DoxyCodeLine{00135\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classADS1115rpi_acb305bcbf5e54a803e2b3b81b9a7b014}{i2c\_writeWord}}(uint8\_t\ reg,\ \textcolor{keywordtype}{unsigned}\ data);}
+\DoxyCodeLine{00136\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{classADS1115rpi_afa0cee2d3c8219ef5414e36d9f24c84a}{i2c\_readWord}}(uint8\_t\ reg);}
+\DoxyCodeLine{00137\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classADS1115rpi_a18336fb9a3fde4cc379e2a7474aeceab}{i2c\_readConversion}}();}
+\DoxyCodeLine{00138\ }
+\DoxyCodeLine{00139\ \ \ \ \ \textcolor{keyword}{const}\ uint8\_t\ \mbox{\hyperlink{classADS1115rpi_a7800b618e5fef37f4d8a8ce1e13a094f}{reg\_config}}\ \ \ =\ 1;}
+\DoxyCodeLine{00140\ \ \ \ \ \textcolor{keyword}{const}\ uint8\_t\ \mbox{\hyperlink{classADS1115rpi_ab80533eb7df95e3117857507a3fcdd55}{reg\_lo\_thres}}\ =\ 2;}
+\DoxyCodeLine{00141\ \ \ \ \ \textcolor{keyword}{const}\ uint8\_t\ \mbox{\hyperlink{classADS1115rpi_ae3ad38da9ef6d6209cd93bfc2dbefce1}{reg\_hi\_thres}}\ =\ 3;}
+\DoxyCodeLine{00142\ }
+\DoxyCodeLine{00143\ \ \ \ \ std::shared\_ptr<gpiod::chip>\ \mbox{\hyperlink{classADS1115rpi_a336ed29444dd42202752a240e296be16}{chip}};}
+\DoxyCodeLine{00144\ \ \ \ \ std::shared\_ptr<gpiod::line\_request>\ \mbox{\hyperlink{classADS1115rpi_a0be8d6d272e95ae6fcb02d4f1000f68d}{request}};}
+\DoxyCodeLine{00145\ \ \ \ \ std::thread\ \mbox{\hyperlink{classADS1115rpi_af49796d06bc0556073bae758f21029b5}{thr}};}
+\DoxyCodeLine{00146\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classADS1115rpi_aeff3281ccb623732a77361bcc6baa1d7}{fd\_i2c}}\ =\ -\/1;}
+\DoxyCodeLine{00147\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classADS1115rpi_a4d52bfdaf8f2695e3fdbc94e385e5be2}{running}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00148\ \ \ \ \ \mbox{\hyperlink{classADS1115rpi_a69806d343269487c97e5d34c9c13902c}{ADSCallbackInterface}}\ \mbox{\hyperlink{classADS1115rpi_a2efd347497b549a84e7c2ccc624883c4}{adsCallbackInterface}};}
+\DoxyCodeLine{00149\ \ \ \ \ std::atomic<bool>\ \mbox{\hyperlink{classADS1115rpi_a6ecd0d8a5c01b199263021de625fb8f0}{retry\_enabled\_}}\{\textcolor{keyword}{false}\};}
+\DoxyCodeLine{00150\ }
+\DoxyCodeLine{00151\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ int64\_t\ \mbox{\hyperlink{classADS1115rpi_a32ead9aea16fe6867b8c61938c3e5a59}{ISR\_TIMEOUT\_MS}}\ =\ 500;}
+\DoxyCodeLine{00152\ \};}
+\DoxyCodeLine{00153\ }
+\DoxyCodeLine{00154\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

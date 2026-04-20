@@ -1,0 +1,110 @@
+\doxysection{imureader.\+hpp}
+\hypertarget{imureader_8hpp_source}{}\label{imureader_8hpp_source}\index{src/libs/IMU/Include/imureader.hpp@{src/libs/IMU/Include/imureader.hpp}}
+\mbox{\hyperlink{imureader_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ IMUReader\ provides\ a\ threaded,\ event-\/driven\ wrapper\ around\ the\ low-\/level}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ ICM-\/20948\ driver.}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ SOLID\ principles:}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ \ \ S\ -\/\ This\ class\ is\ responsible\ for\ coordinating\ asynchronous\ IMU\ sample}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ \ \ \ \ \ \ acquisition\ from\ the\ data-\/ready\ GPIO\ and\ forwarding\ decoded\ samples\ to}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ \ \ \ \ \ \ client\ code.}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//\ \ \ O\ -\/\ New\ behaviours\ can\ be\ attached\ through\ the\ callback\ interface\ without}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ \ \ \ \ \ \ changing\ the\ reader\ logic\ itself.}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//\ \ \ D\ -\/\ The\ low-\/level\ register\ and\ I2C\ interaction\ remain\ inside\ the\ IMU\ driver,}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//\ \ \ \ \ \ \ while\ this\ class\ focuses\ on\ threading\ and\ sample\ dispatch.}}
+\DoxyCodeLine{00012\ \textcolor{comment}{//}}
+\DoxyCodeLine{00013\ \textcolor{comment}{//\ Threaded\ IMU\ reader\ driven\ by\ the\ data-\/ready\ GPIO.}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <atomic>}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <functional>}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ <thread>}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Icm20948driver_8hpp}{Icm20948driver.hpp}}"{}}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ <gpiod.h>}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ <future>}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classIMUReader}{IMUReader}}}
+\DoxyCodeLine{00026\ \{}
+\DoxyCodeLine{00027\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{comment}{//\ Callback\ invoked\ for\ each\ decoded\ IMU\ sample.}}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{comment}{//\ Using\ a\ callback\ keeps\ the\ class\ open\ for\ extension:\ logging,\ filtering,}}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{comment}{//\ fusion,\ motion\ detection,\ or\ UI\ updates\ can\ be\ added\ without\ modifying}}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{comment}{//\ the\ reader\ implementation.}}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{classIMUReader_a6d87e7661de8325bf78fcd4f5a102de7}{SampleCallback}}\ =\ std::function<void(\textcolor{keywordtype}{float}\ ax,\ \textcolor{keywordtype}{float}\ ay,\ \textcolor{keywordtype}{float}\ az,}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ gx,\ \textcolor{keywordtype}{float}\ gy,\ \textcolor{keywordtype}{float}\ gz,}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ mx,\ \textcolor{keywordtype}{float}\ my)>;}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{comment}{//\ Construct\ the\ reader\ with\ its\ hardware\ configuration\ and\ runtime\ settings.}}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{comment}{//\ The\ IMU\ configuration\ is\ injected\ from\ outside\ so\ the\ reader\ can\ be}}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{comment}{//\ reused\ with\ different\ buses,\ addresses,\ and\ sensor\ settings.}}
+\DoxyCodeLine{00039\ \ \ \ \ \mbox{\hyperlink{classIMUReader}{IMUReader}}(\textcolor{keywordtype}{unsigned}\ \ \ \ \ \ \ \ \ \ \ i2c\_bus,}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \ \ \ \ \ \ \ \ \ \ i2c\_address\ =\ \mbox{\hyperlink{Icm20948driver_8hpp_ad2332082f2390f86f6d6ee09acf1e259}{ICM20948\_I2C\_ADDR}},}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \ \ \ \ \ \ \ gpiochip\ \ \ \ =\ \textcolor{stringliteral}{"{}/dev/gpiochip0"{}},}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \ \ \ \ \ \ \ \ \ \ rdy\_line\ \ \ \ =\ 27,}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structicm20948_1_1settings}{icm20948::settings}}\ settings\ \ \ \ =\ \mbox{\hyperlink{structicm20948_1_1settings}{icm20948::settings}}());}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{comment}{//\ Destructor\ ensures\ the\ threaded\ reader\ can\ clean\ up\ safely\ through\ the}}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{comment}{//\ class\ interface.}}
+\DoxyCodeLine{00047\ \ \ \ \ \mbox{\hyperlink{classIMUReader_a6e5ef4ece5cb263ae22232c5663bd2bd}{\string~IMUReader}}();}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{comment}{//\ Initialise\ the\ underlying\ IMU\ device\ before\ starting\ the\ worker\ thread.}}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classIMUReader_a24ab7b7e245e69c9c80504fe7742709c}{init}}();}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{comment}{//\ Register\ client\ code\ to\ receive\ new\ IMU\ samples.}}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{comment}{//\ This\ keeps\ sample\ processing\ outside\ the\ reader\ itself,\ improving}}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{comment}{//\ flexibility\ and\ separation\ of\ concerns.}}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classIMUReader_ae64c4dd5d68588f2e2bcee026d0d36d6}{setCallback}}(\mbox{\hyperlink{classIMUReader_a6d87e7661de8325bf78fcd4f5a102de7}{SampleCallback}}\ cb);}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{comment}{//\ Start\ the\ background\ reader\ thread\ and\ GPIO-\/driven\ event\ loop.}}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classIMUReader_a90708a193abfcb088d7375eb0cecb767}{start}}();}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{comment}{//\ Stop\ the\ worker\ thread\ and\ release\ runtime\ resources\ cleanly.}}
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classIMUReader_a67813c8a075b3924f31a252a640e5835}{stop}}();}
+\DoxyCodeLine{00062\ \ \ \ \ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C}{icm20948::ICM20948\_I2C}}\&\ \mbox{\hyperlink{classIMUReader_a485530ce689d8e7c952d70c69818eb6e}{getIMU}}();}
+\DoxyCodeLine{00063\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{comment}{//\ Background\ worker\ loop\ waiting\ for\ DRDY\ events\ and\ dispatching\ samples.}}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{comment}{//\ This\ keeps\ blocking/event-\/loop\ behaviour\ internal\ to\ the\ class\ so\ client}}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{comment}{//\ code\ does\ not\ need\ to\ manage\ low-\/level\ synchronisation\ details.}}
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classIMUReader_a9334b3420c3d2d1e790dbfb753f7a8cb}{worker}}();}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{comment}{//\ Low-\/level\ IMU\ driver\ instance.}}
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{comment}{//\ Hardware-\/specific\ register\ access\ is\ delegated\ to\ the\ driver\ so\ this}}
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{comment}{//\ class\ can\ focus\ on\ threaded\ sample\ acquisition\ and\ dispatch.}}
+\DoxyCodeLine{00072\ \ \ \ \ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C}{icm20948::ICM20948\_I2C}}\ \mbox{\hyperlink{classIMUReader_ae49e6fb530bf32e8f641cdde9bd8ae07}{imu\_}};}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{comment}{//\ Client\ callback\ for\ newly\ acquired\ samples.}}
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{comment}{//\ Stored\ privately\ so\ callback\ ownership\ and\ invocation\ remain\ controlled}}
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{comment}{//\ by\ the\ reader.}}
+\DoxyCodeLine{00077\ \ \ \ \ \mbox{\hyperlink{classIMUReader_a6d87e7661de8325bf78fcd4f5a102de7}{SampleCallback}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classIMUReader_ac86aa179a0fa60ead4562ba9ffbd7a0a}{callback\_}};}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{comment}{//\ Background\ reader\ thread.}}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{comment}{//\ Thread\ lifetime\ is\ encapsulated\ inside\ the\ class\ rather\ than\ exposed\ to}}
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{comment}{//\ higher-\/level\ application\ code.}}
+\DoxyCodeLine{00082\ \ \ \ \ std::thread\ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classIMUReader_a1a69762ebad2714b8a1d884e961210d8}{worker\_thread\_}};}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{comment}{//\ Run\ flag\ shared\ with\ the\ worker\ thread.}}
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{comment}{//\ Atomic\ state\ allows\ safe\ coordination\ between\ start/stop\ and\ the\ worker.}}
+\DoxyCodeLine{00086\ \ \ \ \ std::atomic\_bool\ \ \ \ \ \ \ \mbox{\hyperlink{classIMUReader_afc74b0a28841ad9481a55af987222c6c}{running\_}};}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{comment}{//\ GPIO\ chip\ path\ and\ DRDY\ line\ number.}}
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{comment}{//\ These\ hardware\ configuration\ details\ are\ stored\ with\ the\ reader\ instance}}
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{comment}{//\ so\ callers\ only\ configure\ them\ once\ during\ construction.}}
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classIMUReader_aa9b451f364d559feb317c891d26435f3}{gpiochip\_path\_}};}
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classIMUReader_a629839d6a645c8b3f8ccaee606974488}{rdy\_line\_}};}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{comment}{//\ libgpiod\ handles\ for\ the\ DRDY\ line.}}
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{comment}{//\ These\ low-\/level\ resources\ are\ kept\ private\ to\ preserve\ encapsulation.}}
+\DoxyCodeLine{00096\ \ \ \ \ gpiod\_chip*\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classIMUReader_aca9a855e11f4f753eb219e2318e57160}{chip\_}};}
+\DoxyCodeLine{00097\ \ \ \ \ gpiod\_line\_request*\ \mbox{\hyperlink{classIMUReader_a90da6413c5913a16c4cfec1752f8ec4e}{request\_}};}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{comment}{//\ File\ descriptors\ used\ by\ the\ event\ loop.}}
+\DoxyCodeLine{00100\ \ \ \ \ \textcolor{comment}{//\ Internal\ event-\/loop\ state\ is\ hidden\ so\ callers\ interact\ only\ through\ the}}
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{comment}{//\ public\ start/stop\ interface.}}
+\DoxyCodeLine{00102\ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classIMUReader_a5561cf166a78419f1c0c3dd0a50d32b5}{gpio\_fd\_}};}
+\DoxyCodeLine{00103\ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classIMUReader_acc882703f542a2e3118462178388b3bb}{stop\_fd\_}};}
+\DoxyCodeLine{00104\ \};}
+
+\end{DoxyCode}

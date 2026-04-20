@@ -1,0 +1,334 @@
+\doxysection{icm20948 Namespace Reference}
+\hypertarget{namespaceicm20948}{}\label{namespaceicm20948}\index{icm20948@{icm20948}}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structicm20948_1_1accel__settings}{accel\+\_\+settings}}
+\item 
+struct \mbox{\hyperlink{structicm20948_1_1gyro__settings}{gyro\+\_\+settings}}
+\item 
+class \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C}{ICM20948\+\_\+\+I2C}}
+\item 
+struct \mbox{\hyperlink{structicm20948_1_1IMUSample}{IMUSample}}
+\item 
+struct \mbox{\hyperlink{structicm20948_1_1magn__settings}{magn\+\_\+settings}}
+\item 
+struct \mbox{\hyperlink{structicm20948_1_1settings}{settings}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \mbox{\hyperlink{structicm20948_1_1accel__settings}{icm20948\+::accel\+\_\+settings}} \mbox{\hyperlink{namespaceicm20948_a4604c05a67dc8537a1f4780eccec81b7}{accel\+\_\+settings}}
+\item 
+typedef struct \mbox{\hyperlink{structicm20948_1_1gyro__settings}{icm20948\+::gyro\+\_\+settings}} \mbox{\hyperlink{namespaceicm20948_a305679615d047d722f18ccbb13b5dff8}{gyro\+\_\+settings}}
+\item 
+typedef struct \mbox{\hyperlink{structicm20948_1_1magn__settings}{icm20948\+::magn\+\_\+settings}} \mbox{\hyperlink{namespaceicm20948_ab8718ad937a784bdb91b1f8ae23e2c6a}{magn\+\_\+settings}}
+\item 
+typedef struct \mbox{\hyperlink{structicm20948_1_1settings}{icm20948\+::settings}} \mbox{\hyperlink{namespaceicm20948_af58f34f9f5f028d1ebc80a98fbebf3f4}{settings}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{namespaceicm20948_a270e710b092b62b0a289753093c2a673}{accel\+\_\+scale}} \{ \mbox{\hyperlink{namespaceicm20948_a270e710b092b62b0a289753093c2a673a10962c0378d54e76d00fca0435c5eed5}{ACCEL\+\_\+2G}} = 0
+, \mbox{\hyperlink{namespaceicm20948_a270e710b092b62b0a289753093c2a673af2a264922f360e04817e77765b80978b}{ACCEL\+\_\+4G}}
+, \mbox{\hyperlink{namespaceicm20948_a270e710b092b62b0a289753093c2a673a3795f5faff7839b7fbb08f22fe80d907}{ACCEL\+\_\+8G}}
+, \mbox{\hyperlink{namespaceicm20948_a270e710b092b62b0a289753093c2a673a2c5998799a8fab32e9f3569957311b88}{ACCEL\+\_\+16G}}
+ \}
+\item 
+enum \mbox{\hyperlink{namespaceicm20948_a11320e5ffc65dc1997d850a2747b1857}{accel\+\_\+dlpf\+\_\+config}} \{ \newline
+\mbox{\hyperlink{namespaceicm20948_a11320e5ffc65dc1997d850a2747b1857ad576f91386994ed878db4b7dee32bcae}{ACCEL\+\_\+\+DLPF\+\_\+246\+HZ}} = 0
+, \mbox{\hyperlink{namespaceicm20948_a11320e5ffc65dc1997d850a2747b1857a439d5f4636f81ae51d01a1e4f0eac85f}{ACCEL\+\_\+\+DLPF\+\_\+246\+HZ\+\_\+2}}
+, \mbox{\hyperlink{namespaceicm20948_a11320e5ffc65dc1997d850a2747b1857a26cb85d4b765d07a462b0463ed720775}{ACCEL\+\_\+\+DLPF\+\_\+111\+\_\+4\+HZ}}
+, \mbox{\hyperlink{namespaceicm20948_a11320e5ffc65dc1997d850a2747b1857a90657a417f142990ecf234018082a3a6}{ACCEL\+\_\+\+DLPF\+\_\+50\+\_\+4\+HZ}}
+, \newline
+\mbox{\hyperlink{namespaceicm20948_a11320e5ffc65dc1997d850a2747b1857af97490556aeb64d4bf2cc3d3387f4029}{ACCEL\+\_\+\+DLPF\+\_\+23\+\_\+9\+HZ}}
+, \mbox{\hyperlink{namespaceicm20948_a11320e5ffc65dc1997d850a2747b1857a754f26fbba29b3056442f3e2abc5e2ff}{ACCEL\+\_\+\+DLPF\+\_\+11\+\_\+5\+HZ}}
+, \mbox{\hyperlink{namespaceicm20948_a11320e5ffc65dc1997d850a2747b1857aad38873c989e80fa60860b2ec48205a3}{ACCEL\+\_\+\+DLPF\+\_\+5\+\_\+7\+HZ}}
+, \mbox{\hyperlink{namespaceicm20948_a11320e5ffc65dc1997d850a2747b1857a54a59d3f305828db07e8b11f6db49f70}{ACCEL\+\_\+\+DLPF\+\_\+473\+HZ}}
+ \}
+\item 
+enum \mbox{\hyperlink{namespaceicm20948_ab4ed127a0673926c94b3419379774950}{gyro\+\_\+scale}} \{ \mbox{\hyperlink{namespaceicm20948_ab4ed127a0673926c94b3419379774950aabd72e9c7237ef6ac1483378c37db628}{GYRO\+\_\+250\+DPS}} = 0
+, \mbox{\hyperlink{namespaceicm20948_ab4ed127a0673926c94b3419379774950a549d7b9c4b2bbf75a2c70c96f121cfe0}{GYRO\+\_\+500\+DPS}}
+, \mbox{\hyperlink{namespaceicm20948_ab4ed127a0673926c94b3419379774950ae2d68a647e8a6ef753561ee9fe15fcd9}{GYRO\+\_\+1000\+DPS}}
+, \mbox{\hyperlink{namespaceicm20948_ab4ed127a0673926c94b3419379774950a87d8034a32d15681a2811fd897f0ef94}{GYRO\+\_\+2000\+DPS}}
+ \}
+\item 
+enum \mbox{\hyperlink{namespaceicm20948_ab21febc613fcda495faedf1fadf8da01}{gyro\+\_\+dlpf\+\_\+config}} \{ \newline
+\mbox{\hyperlink{namespaceicm20948_ab21febc613fcda495faedf1fadf8da01a3d4b8dc9e1511d7d42e031f4cc04fd44}{GYRO\+\_\+\+DLPF\+\_\+196\+\_\+6\+HZ}} = 0
+, \mbox{\hyperlink{namespaceicm20948_ab21febc613fcda495faedf1fadf8da01ac3aa6b2e10ac763342844ce203cedeb9}{GYRO\+\_\+\+DLPF\+\_\+151\+\_\+8\+HZ}}
+, \mbox{\hyperlink{namespaceicm20948_ab21febc613fcda495faedf1fadf8da01a8a05f80bd6e2edae852b4f9b13b605f1}{GYRO\+\_\+\+DLPF\+\_\+119\+\_\+5\+HZ}}
+, \mbox{\hyperlink{namespaceicm20948_ab21febc613fcda495faedf1fadf8da01a915166c0d2c456d42828e64331a7ddc7}{GYRO\+\_\+\+DLPF\+\_\+51\+\_\+2\+HZ}}
+, \newline
+\mbox{\hyperlink{namespaceicm20948_ab21febc613fcda495faedf1fadf8da01a2ec4f20881ca82d990d67c5b325e378d}{GYRO\+\_\+\+DLPF\+\_\+23\+\_\+9\+HZ}}
+, \mbox{\hyperlink{namespaceicm20948_ab21febc613fcda495faedf1fadf8da01a6d136718830bbce7a90cbac74ecefc1e}{GYRO\+\_\+\+DLPF\+\_\+11\+\_\+6\+HZ}}
+, \mbox{\hyperlink{namespaceicm20948_ab21febc613fcda495faedf1fadf8da01ac729d419c805e6e8b0e4c5b7a979eef9}{GYRO\+\_\+\+DLPF\+\_\+5\+\_\+7\+HZ}}
+, \mbox{\hyperlink{namespaceicm20948_ab21febc613fcda495faedf1fadf8da01abfd46a43efe7108d44c1cd85123d8275}{GYRO\+\_\+\+DLPF\+\_\+361\+\_\+4\+HZ}}
+ \}
+\item 
+enum \mbox{\hyperlink{namespaceicm20948_a52f2b76d3ebd33c9147b45c09ed3d02c}{magn\+\_\+mode}} \{ \newline
+\mbox{\hyperlink{namespaceicm20948_a52f2b76d3ebd33c9147b45c09ed3d02caf7a1f55f16854e842b04e2d311525a7a}{MAGN\+\_\+\+SHUTDOWN}} = 0
+, \mbox{\hyperlink{namespaceicm20948_a52f2b76d3ebd33c9147b45c09ed3d02ca4696e7df486d4c8527ec94a02a9aaa96}{MAGN\+\_\+\+SINGLE}} = 1
+, \mbox{\hyperlink{namespaceicm20948_a52f2b76d3ebd33c9147b45c09ed3d02cad54782be844575b7d7eeff6f6afde888}{MAGN\+\_\+10\+HZ}} = 2
+, \mbox{\hyperlink{namespaceicm20948_a52f2b76d3ebd33c9147b45c09ed3d02cada7064494b2cdab263d8a919bdfb3c49}{MAGN\+\_\+20\+HZ}} = 4
+, \newline
+\mbox{\hyperlink{namespaceicm20948_a52f2b76d3ebd33c9147b45c09ed3d02ca20c2ccacb7d16752e55197c2ae202087}{MAGN\+\_\+50\+HZ}} = 6
+, \mbox{\hyperlink{namespaceicm20948_a52f2b76d3ebd33c9147b45c09ed3d02caaa091f0f880adfe061f828e771680137}{MAGN\+\_\+100\+HZ}} = 8
+, \mbox{\hyperlink{namespaceicm20948_a52f2b76d3ebd33c9147b45c09ed3d02cad20e2222b9521644cdccdeb39f3c3f6e}{MAGN\+\_\+\+SELF\+\_\+\+TEST}} = 16
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+float \mbox{\hyperlink{namespaceicm20948_af14221b01595095e63c2b6da92461546}{accel\+\_\+scale\+\_\+factor}} (\mbox{\hyperlink{namespaceicm20948_a270e710b092b62b0a289753093c2a673}{accel\+\_\+scale}} scale)
+\item 
+std\+::string \mbox{\hyperlink{namespaceicm20948_a4946bab7910d89f8bfd507e564872e96}{accel\+\_\+scale\+\_\+to\+\_\+str}} (\mbox{\hyperlink{namespaceicm20948_a270e710b092b62b0a289753093c2a673}{accel\+\_\+scale}} scale)
+\item 
+std\+::string \mbox{\hyperlink{namespaceicm20948_a4a26038ff1fca8a832393f87ff9ed235}{accel\+\_\+dlpf\+\_\+config\+\_\+to\+\_\+str}} (\mbox{\hyperlink{namespaceicm20948_a11320e5ffc65dc1997d850a2747b1857}{accel\+\_\+dlpf\+\_\+config}} config)
+\item 
+float \mbox{\hyperlink{namespaceicm20948_ab5aff64efdfa42700724773154b88241}{gyro\+\_\+scale\+\_\+factor}} (\mbox{\hyperlink{namespaceicm20948_ab4ed127a0673926c94b3419379774950}{gyro\+\_\+scale}} scale)
+\item 
+std\+::string \mbox{\hyperlink{namespaceicm20948_a7ceffdb0c86d118f1852b4a67c119517}{gyro\+\_\+scale\+\_\+to\+\_\+str}} (\mbox{\hyperlink{namespaceicm20948_ab4ed127a0673926c94b3419379774950}{gyro\+\_\+scale}} scale)
+\item 
+std\+::string \mbox{\hyperlink{namespaceicm20948_a37feed00f9178e9a6733f1f0db39e468}{gyro\+\_\+dlpf\+\_\+config\+\_\+to\+\_\+str}} (\mbox{\hyperlink{namespaceicm20948_ab21febc613fcda495faedf1fadf8da01}{gyro\+\_\+dlpf\+\_\+config}} config)
+\item 
+std\+::string \mbox{\hyperlink{namespaceicm20948_a4e2db8332ee3f51602d9032468ec2b34}{magn\+\_\+mode\+\_\+to\+\_\+str}} (\mbox{\hyperlink{namespaceicm20948_a52f2b76d3ebd33c9147b45c09ed3d02c}{magn\+\_\+mode}} mode)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{namespaceicm20948_a4604c05a67dc8537a1f4780eccec81b7}\label{namespaceicm20948_a4604c05a67dc8537a1f4780eccec81b7} 
+\index{icm20948@{icm20948}!accel\_settings@{accel\_settings}}
+\index{accel\_settings@{accel\_settings}!icm20948@{icm20948}}
+\doxysubsubsection{\texorpdfstring{accel\_settings}{accel\_settings}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structicm20948_1_1accel__settings}{icm20948\+::accel\+\_\+settings}} \mbox{\hyperlink{structicm20948_1_1accel__settings}{icm20948\+::accel\+\_\+settings}}}
+
+\Hypertarget{namespaceicm20948_a305679615d047d722f18ccbb13b5dff8}\label{namespaceicm20948_a305679615d047d722f18ccbb13b5dff8} 
+\index{icm20948@{icm20948}!gyro\_settings@{gyro\_settings}}
+\index{gyro\_settings@{gyro\_settings}!icm20948@{icm20948}}
+\doxysubsubsection{\texorpdfstring{gyro\_settings}{gyro\_settings}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structicm20948_1_1gyro__settings}{icm20948\+::gyro\+\_\+settings}} \mbox{\hyperlink{structicm20948_1_1gyro__settings}{icm20948\+::gyro\+\_\+settings}}}
+
+\Hypertarget{namespaceicm20948_ab8718ad937a784bdb91b1f8ae23e2c6a}\label{namespaceicm20948_ab8718ad937a784bdb91b1f8ae23e2c6a} 
+\index{icm20948@{icm20948}!magn\_settings@{magn\_settings}}
+\index{magn\_settings@{magn\_settings}!icm20948@{icm20948}}
+\doxysubsubsection{\texorpdfstring{magn\_settings}{magn\_settings}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structicm20948_1_1magn__settings}{icm20948\+::magn\+\_\+settings}} \mbox{\hyperlink{structicm20948_1_1magn__settings}{icm20948\+::magn\+\_\+settings}}}
+
+\Hypertarget{namespaceicm20948_af58f34f9f5f028d1ebc80a98fbebf3f4}\label{namespaceicm20948_af58f34f9f5f028d1ebc80a98fbebf3f4} 
+\index{icm20948@{icm20948}!settings@{settings}}
+\index{settings@{settings}!icm20948@{icm20948}}
+\doxysubsubsection{\texorpdfstring{settings}{settings}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structicm20948_1_1settings}{icm20948\+::settings}} \mbox{\hyperlink{structicm20948_1_1settings}{icm20948\+::settings}}}
+
+
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{namespaceicm20948_a11320e5ffc65dc1997d850a2747b1857}\label{namespaceicm20948_a11320e5ffc65dc1997d850a2747b1857} 
+\index{icm20948@{icm20948}!accel\_dlpf\_config@{accel\_dlpf\_config}}
+\index{accel\_dlpf\_config@{accel\_dlpf\_config}!icm20948@{icm20948}}
+\doxysubsubsection{\texorpdfstring{accel\_dlpf\_config}{accel\_dlpf\_config}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespaceicm20948_a11320e5ffc65dc1997d850a2747b1857}{icm20948\+::accel\+\_\+dlpf\+\_\+config}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ACCEL\_DLPF\_246HZ@{ACCEL\_DLPF\_246HZ}!icm20948@{icm20948}}\index{icm20948@{icm20948}!ACCEL\_DLPF\_246HZ@{ACCEL\_DLPF\_246HZ}}}\Hypertarget{namespaceicm20948_a11320e5ffc65dc1997d850a2747b1857ad576f91386994ed878db4b7dee32bcae}\label{namespaceicm20948_a11320e5ffc65dc1997d850a2747b1857ad576f91386994ed878db4b7dee32bcae} 
+ACCEL\+\_\+\+DLPF\+\_\+246\+HZ&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ACCEL\_DLPF\_246HZ\_2@{ACCEL\_DLPF\_246HZ\_2}!icm20948@{icm20948}}\index{icm20948@{icm20948}!ACCEL\_DLPF\_246HZ\_2@{ACCEL\_DLPF\_246HZ\_2}}}\Hypertarget{namespaceicm20948_a11320e5ffc65dc1997d850a2747b1857a439d5f4636f81ae51d01a1e4f0eac85f}\label{namespaceicm20948_a11320e5ffc65dc1997d850a2747b1857a439d5f4636f81ae51d01a1e4f0eac85f} 
+ACCEL\+\_\+\+DLPF\+\_\+246\+HZ\+\_\+2&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ACCEL\_DLPF\_111\_4HZ@{ACCEL\_DLPF\_111\_4HZ}!icm20948@{icm20948}}\index{icm20948@{icm20948}!ACCEL\_DLPF\_111\_4HZ@{ACCEL\_DLPF\_111\_4HZ}}}\Hypertarget{namespaceicm20948_a11320e5ffc65dc1997d850a2747b1857a26cb85d4b765d07a462b0463ed720775}\label{namespaceicm20948_a11320e5ffc65dc1997d850a2747b1857a26cb85d4b765d07a462b0463ed720775} 
+ACCEL\+\_\+\+DLPF\+\_\+111\+\_\+4\+HZ&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ACCEL\_DLPF\_50\_4HZ@{ACCEL\_DLPF\_50\_4HZ}!icm20948@{icm20948}}\index{icm20948@{icm20948}!ACCEL\_DLPF\_50\_4HZ@{ACCEL\_DLPF\_50\_4HZ}}}\Hypertarget{namespaceicm20948_a11320e5ffc65dc1997d850a2747b1857a90657a417f142990ecf234018082a3a6}\label{namespaceicm20948_a11320e5ffc65dc1997d850a2747b1857a90657a417f142990ecf234018082a3a6} 
+ACCEL\+\_\+\+DLPF\+\_\+50\+\_\+4\+HZ&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ACCEL\_DLPF\_23\_9HZ@{ACCEL\_DLPF\_23\_9HZ}!icm20948@{icm20948}}\index{icm20948@{icm20948}!ACCEL\_DLPF\_23\_9HZ@{ACCEL\_DLPF\_23\_9HZ}}}\Hypertarget{namespaceicm20948_a11320e5ffc65dc1997d850a2747b1857af97490556aeb64d4bf2cc3d3387f4029}\label{namespaceicm20948_a11320e5ffc65dc1997d850a2747b1857af97490556aeb64d4bf2cc3d3387f4029} 
+ACCEL\+\_\+\+DLPF\+\_\+23\+\_\+9\+HZ&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ACCEL\_DLPF\_11\_5HZ@{ACCEL\_DLPF\_11\_5HZ}!icm20948@{icm20948}}\index{icm20948@{icm20948}!ACCEL\_DLPF\_11\_5HZ@{ACCEL\_DLPF\_11\_5HZ}}}\Hypertarget{namespaceicm20948_a11320e5ffc65dc1997d850a2747b1857a754f26fbba29b3056442f3e2abc5e2ff}\label{namespaceicm20948_a11320e5ffc65dc1997d850a2747b1857a754f26fbba29b3056442f3e2abc5e2ff} 
+ACCEL\+\_\+\+DLPF\+\_\+11\+\_\+5\+HZ&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ACCEL\_DLPF\_5\_7HZ@{ACCEL\_DLPF\_5\_7HZ}!icm20948@{icm20948}}\index{icm20948@{icm20948}!ACCEL\_DLPF\_5\_7HZ@{ACCEL\_DLPF\_5\_7HZ}}}\Hypertarget{namespaceicm20948_a11320e5ffc65dc1997d850a2747b1857aad38873c989e80fa60860b2ec48205a3}\label{namespaceicm20948_a11320e5ffc65dc1997d850a2747b1857aad38873c989e80fa60860b2ec48205a3} 
+ACCEL\+\_\+\+DLPF\+\_\+5\+\_\+7\+HZ&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ACCEL\_DLPF\_473HZ@{ACCEL\_DLPF\_473HZ}!icm20948@{icm20948}}\index{icm20948@{icm20948}!ACCEL\_DLPF\_473HZ@{ACCEL\_DLPF\_473HZ}}}\Hypertarget{namespaceicm20948_a11320e5ffc65dc1997d850a2747b1857a54a59d3f305828db07e8b11f6db49f70}\label{namespaceicm20948_a11320e5ffc65dc1997d850a2747b1857a54a59d3f305828db07e8b11f6db49f70} 
+ACCEL\+\_\+\+DLPF\+\_\+473\+HZ&\\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{namespaceicm20948_a270e710b092b62b0a289753093c2a673}\label{namespaceicm20948_a270e710b092b62b0a289753093c2a673} 
+\index{icm20948@{icm20948}!accel\_scale@{accel\_scale}}
+\index{accel\_scale@{accel\_scale}!icm20948@{icm20948}}
+\doxysubsubsection{\texorpdfstring{accel\_scale}{accel\_scale}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespaceicm20948_a270e710b092b62b0a289753093c2a673}{icm20948\+::accel\+\_\+scale}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ACCEL\_2G@{ACCEL\_2G}!icm20948@{icm20948}}\index{icm20948@{icm20948}!ACCEL\_2G@{ACCEL\_2G}}}\Hypertarget{namespaceicm20948_a270e710b092b62b0a289753093c2a673a10962c0378d54e76d00fca0435c5eed5}\label{namespaceicm20948_a270e710b092b62b0a289753093c2a673a10962c0378d54e76d00fca0435c5eed5} 
+ACCEL\+\_\+2G&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ACCEL\_4G@{ACCEL\_4G}!icm20948@{icm20948}}\index{icm20948@{icm20948}!ACCEL\_4G@{ACCEL\_4G}}}\Hypertarget{namespaceicm20948_a270e710b092b62b0a289753093c2a673af2a264922f360e04817e77765b80978b}\label{namespaceicm20948_a270e710b092b62b0a289753093c2a673af2a264922f360e04817e77765b80978b} 
+ACCEL\+\_\+4G&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ACCEL\_8G@{ACCEL\_8G}!icm20948@{icm20948}}\index{icm20948@{icm20948}!ACCEL\_8G@{ACCEL\_8G}}}\Hypertarget{namespaceicm20948_a270e710b092b62b0a289753093c2a673a3795f5faff7839b7fbb08f22fe80d907}\label{namespaceicm20948_a270e710b092b62b0a289753093c2a673a3795f5faff7839b7fbb08f22fe80d907} 
+ACCEL\+\_\+8G&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ACCEL\_16G@{ACCEL\_16G}!icm20948@{icm20948}}\index{icm20948@{icm20948}!ACCEL\_16G@{ACCEL\_16G}}}\Hypertarget{namespaceicm20948_a270e710b092b62b0a289753093c2a673a2c5998799a8fab32e9f3569957311b88}\label{namespaceicm20948_a270e710b092b62b0a289753093c2a673a2c5998799a8fab32e9f3569957311b88} 
+ACCEL\+\_\+16G&\\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{namespaceicm20948_ab21febc613fcda495faedf1fadf8da01}\label{namespaceicm20948_ab21febc613fcda495faedf1fadf8da01} 
+\index{icm20948@{icm20948}!gyro\_dlpf\_config@{gyro\_dlpf\_config}}
+\index{gyro\_dlpf\_config@{gyro\_dlpf\_config}!icm20948@{icm20948}}
+\doxysubsubsection{\texorpdfstring{gyro\_dlpf\_config}{gyro\_dlpf\_config}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespaceicm20948_ab21febc613fcda495faedf1fadf8da01}{icm20948\+::gyro\+\_\+dlpf\+\_\+config}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GYRO\_DLPF\_196\_6HZ@{GYRO\_DLPF\_196\_6HZ}!icm20948@{icm20948}}\index{icm20948@{icm20948}!GYRO\_DLPF\_196\_6HZ@{GYRO\_DLPF\_196\_6HZ}}}\Hypertarget{namespaceicm20948_ab21febc613fcda495faedf1fadf8da01a3d4b8dc9e1511d7d42e031f4cc04fd44}\label{namespaceicm20948_ab21febc613fcda495faedf1fadf8da01a3d4b8dc9e1511d7d42e031f4cc04fd44} 
+GYRO\+\_\+\+DLPF\+\_\+196\+\_\+6\+HZ&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GYRO\_DLPF\_151\_8HZ@{GYRO\_DLPF\_151\_8HZ}!icm20948@{icm20948}}\index{icm20948@{icm20948}!GYRO\_DLPF\_151\_8HZ@{GYRO\_DLPF\_151\_8HZ}}}\Hypertarget{namespaceicm20948_ab21febc613fcda495faedf1fadf8da01ac3aa6b2e10ac763342844ce203cedeb9}\label{namespaceicm20948_ab21febc613fcda495faedf1fadf8da01ac3aa6b2e10ac763342844ce203cedeb9} 
+GYRO\+\_\+\+DLPF\+\_\+151\+\_\+8\+HZ&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GYRO\_DLPF\_119\_5HZ@{GYRO\_DLPF\_119\_5HZ}!icm20948@{icm20948}}\index{icm20948@{icm20948}!GYRO\_DLPF\_119\_5HZ@{GYRO\_DLPF\_119\_5HZ}}}\Hypertarget{namespaceicm20948_ab21febc613fcda495faedf1fadf8da01a8a05f80bd6e2edae852b4f9b13b605f1}\label{namespaceicm20948_ab21febc613fcda495faedf1fadf8da01a8a05f80bd6e2edae852b4f9b13b605f1} 
+GYRO\+\_\+\+DLPF\+\_\+119\+\_\+5\+HZ&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GYRO\_DLPF\_51\_2HZ@{GYRO\_DLPF\_51\_2HZ}!icm20948@{icm20948}}\index{icm20948@{icm20948}!GYRO\_DLPF\_51\_2HZ@{GYRO\_DLPF\_51\_2HZ}}}\Hypertarget{namespaceicm20948_ab21febc613fcda495faedf1fadf8da01a915166c0d2c456d42828e64331a7ddc7}\label{namespaceicm20948_ab21febc613fcda495faedf1fadf8da01a915166c0d2c456d42828e64331a7ddc7} 
+GYRO\+\_\+\+DLPF\+\_\+51\+\_\+2\+HZ&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GYRO\_DLPF\_23\_9HZ@{GYRO\_DLPF\_23\_9HZ}!icm20948@{icm20948}}\index{icm20948@{icm20948}!GYRO\_DLPF\_23\_9HZ@{GYRO\_DLPF\_23\_9HZ}}}\Hypertarget{namespaceicm20948_ab21febc613fcda495faedf1fadf8da01a2ec4f20881ca82d990d67c5b325e378d}\label{namespaceicm20948_ab21febc613fcda495faedf1fadf8da01a2ec4f20881ca82d990d67c5b325e378d} 
+GYRO\+\_\+\+DLPF\+\_\+23\+\_\+9\+HZ&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GYRO\_DLPF\_11\_6HZ@{GYRO\_DLPF\_11\_6HZ}!icm20948@{icm20948}}\index{icm20948@{icm20948}!GYRO\_DLPF\_11\_6HZ@{GYRO\_DLPF\_11\_6HZ}}}\Hypertarget{namespaceicm20948_ab21febc613fcda495faedf1fadf8da01a6d136718830bbce7a90cbac74ecefc1e}\label{namespaceicm20948_ab21febc613fcda495faedf1fadf8da01a6d136718830bbce7a90cbac74ecefc1e} 
+GYRO\+\_\+\+DLPF\+\_\+11\+\_\+6\+HZ&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GYRO\_DLPF\_5\_7HZ@{GYRO\_DLPF\_5\_7HZ}!icm20948@{icm20948}}\index{icm20948@{icm20948}!GYRO\_DLPF\_5\_7HZ@{GYRO\_DLPF\_5\_7HZ}}}\Hypertarget{namespaceicm20948_ab21febc613fcda495faedf1fadf8da01ac729d419c805e6e8b0e4c5b7a979eef9}\label{namespaceicm20948_ab21febc613fcda495faedf1fadf8da01ac729d419c805e6e8b0e4c5b7a979eef9} 
+GYRO\+\_\+\+DLPF\+\_\+5\+\_\+7\+HZ&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GYRO\_DLPF\_361\_4HZ@{GYRO\_DLPF\_361\_4HZ}!icm20948@{icm20948}}\index{icm20948@{icm20948}!GYRO\_DLPF\_361\_4HZ@{GYRO\_DLPF\_361\_4HZ}}}\Hypertarget{namespaceicm20948_ab21febc613fcda495faedf1fadf8da01abfd46a43efe7108d44c1cd85123d8275}\label{namespaceicm20948_ab21febc613fcda495faedf1fadf8da01abfd46a43efe7108d44c1cd85123d8275} 
+GYRO\+\_\+\+DLPF\+\_\+361\+\_\+4\+HZ&\\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{namespaceicm20948_ab4ed127a0673926c94b3419379774950}\label{namespaceicm20948_ab4ed127a0673926c94b3419379774950} 
+\index{icm20948@{icm20948}!gyro\_scale@{gyro\_scale}}
+\index{gyro\_scale@{gyro\_scale}!icm20948@{icm20948}}
+\doxysubsubsection{\texorpdfstring{gyro\_scale}{gyro\_scale}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespaceicm20948_ab4ed127a0673926c94b3419379774950}{icm20948\+::gyro\+\_\+scale}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GYRO\_250DPS@{GYRO\_250DPS}!icm20948@{icm20948}}\index{icm20948@{icm20948}!GYRO\_250DPS@{GYRO\_250DPS}}}\Hypertarget{namespaceicm20948_ab4ed127a0673926c94b3419379774950aabd72e9c7237ef6ac1483378c37db628}\label{namespaceicm20948_ab4ed127a0673926c94b3419379774950aabd72e9c7237ef6ac1483378c37db628} 
+GYRO\+\_\+250\+DPS&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GYRO\_500DPS@{GYRO\_500DPS}!icm20948@{icm20948}}\index{icm20948@{icm20948}!GYRO\_500DPS@{GYRO\_500DPS}}}\Hypertarget{namespaceicm20948_ab4ed127a0673926c94b3419379774950a549d7b9c4b2bbf75a2c70c96f121cfe0}\label{namespaceicm20948_ab4ed127a0673926c94b3419379774950a549d7b9c4b2bbf75a2c70c96f121cfe0} 
+GYRO\+\_\+500\+DPS&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GYRO\_1000DPS@{GYRO\_1000DPS}!icm20948@{icm20948}}\index{icm20948@{icm20948}!GYRO\_1000DPS@{GYRO\_1000DPS}}}\Hypertarget{namespaceicm20948_ab4ed127a0673926c94b3419379774950ae2d68a647e8a6ef753561ee9fe15fcd9}\label{namespaceicm20948_ab4ed127a0673926c94b3419379774950ae2d68a647e8a6ef753561ee9fe15fcd9} 
+GYRO\+\_\+1000\+DPS&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GYRO\_2000DPS@{GYRO\_2000DPS}!icm20948@{icm20948}}\index{icm20948@{icm20948}!GYRO\_2000DPS@{GYRO\_2000DPS}}}\Hypertarget{namespaceicm20948_ab4ed127a0673926c94b3419379774950a87d8034a32d15681a2811fd897f0ef94}\label{namespaceicm20948_ab4ed127a0673926c94b3419379774950a87d8034a32d15681a2811fd897f0ef94} 
+GYRO\+\_\+2000\+DPS&\\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{namespaceicm20948_a52f2b76d3ebd33c9147b45c09ed3d02c}\label{namespaceicm20948_a52f2b76d3ebd33c9147b45c09ed3d02c} 
+\index{icm20948@{icm20948}!magn\_mode@{magn\_mode}}
+\index{magn\_mode@{magn\_mode}!icm20948@{icm20948}}
+\doxysubsubsection{\texorpdfstring{magn\_mode}{magn\_mode}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespaceicm20948_a52f2b76d3ebd33c9147b45c09ed3d02c}{icm20948\+::magn\+\_\+mode}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MAGN\_SHUTDOWN@{MAGN\_SHUTDOWN}!icm20948@{icm20948}}\index{icm20948@{icm20948}!MAGN\_SHUTDOWN@{MAGN\_SHUTDOWN}}}\Hypertarget{namespaceicm20948_a52f2b76d3ebd33c9147b45c09ed3d02caf7a1f55f16854e842b04e2d311525a7a}\label{namespaceicm20948_a52f2b76d3ebd33c9147b45c09ed3d02caf7a1f55f16854e842b04e2d311525a7a} 
+MAGN\+\_\+\+SHUTDOWN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MAGN\_SINGLE@{MAGN\_SINGLE}!icm20948@{icm20948}}\index{icm20948@{icm20948}!MAGN\_SINGLE@{MAGN\_SINGLE}}}\Hypertarget{namespaceicm20948_a52f2b76d3ebd33c9147b45c09ed3d02ca4696e7df486d4c8527ec94a02a9aaa96}\label{namespaceicm20948_a52f2b76d3ebd33c9147b45c09ed3d02ca4696e7df486d4c8527ec94a02a9aaa96} 
+MAGN\+\_\+\+SINGLE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MAGN\_10HZ@{MAGN\_10HZ}!icm20948@{icm20948}}\index{icm20948@{icm20948}!MAGN\_10HZ@{MAGN\_10HZ}}}\Hypertarget{namespaceicm20948_a52f2b76d3ebd33c9147b45c09ed3d02cad54782be844575b7d7eeff6f6afde888}\label{namespaceicm20948_a52f2b76d3ebd33c9147b45c09ed3d02cad54782be844575b7d7eeff6f6afde888} 
+MAGN\+\_\+10\+HZ&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MAGN\_20HZ@{MAGN\_20HZ}!icm20948@{icm20948}}\index{icm20948@{icm20948}!MAGN\_20HZ@{MAGN\_20HZ}}}\Hypertarget{namespaceicm20948_a52f2b76d3ebd33c9147b45c09ed3d02cada7064494b2cdab263d8a919bdfb3c49}\label{namespaceicm20948_a52f2b76d3ebd33c9147b45c09ed3d02cada7064494b2cdab263d8a919bdfb3c49} 
+MAGN\+\_\+20\+HZ&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MAGN\_50HZ@{MAGN\_50HZ}!icm20948@{icm20948}}\index{icm20948@{icm20948}!MAGN\_50HZ@{MAGN\_50HZ}}}\Hypertarget{namespaceicm20948_a52f2b76d3ebd33c9147b45c09ed3d02ca20c2ccacb7d16752e55197c2ae202087}\label{namespaceicm20948_a52f2b76d3ebd33c9147b45c09ed3d02ca20c2ccacb7d16752e55197c2ae202087} 
+MAGN\+\_\+50\+HZ&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MAGN\_100HZ@{MAGN\_100HZ}!icm20948@{icm20948}}\index{icm20948@{icm20948}!MAGN\_100HZ@{MAGN\_100HZ}}}\Hypertarget{namespaceicm20948_a52f2b76d3ebd33c9147b45c09ed3d02caaa091f0f880adfe061f828e771680137}\label{namespaceicm20948_a52f2b76d3ebd33c9147b45c09ed3d02caaa091f0f880adfe061f828e771680137} 
+MAGN\+\_\+100\+HZ&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MAGN\_SELF\_TEST@{MAGN\_SELF\_TEST}!icm20948@{icm20948}}\index{icm20948@{icm20948}!MAGN\_SELF\_TEST@{MAGN\_SELF\_TEST}}}\Hypertarget{namespaceicm20948_a52f2b76d3ebd33c9147b45c09ed3d02cad20e2222b9521644cdccdeb39f3c3f6e}\label{namespaceicm20948_a52f2b76d3ebd33c9147b45c09ed3d02cad20e2222b9521644cdccdeb39f3c3f6e} 
+MAGN\+\_\+\+SELF\+\_\+\+TEST&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespaceicm20948_a4a26038ff1fca8a832393f87ff9ed235}\label{namespaceicm20948_a4a26038ff1fca8a832393f87ff9ed235} 
+\index{icm20948@{icm20948}!accel\_dlpf\_config\_to\_str@{accel\_dlpf\_config\_to\_str}}
+\index{accel\_dlpf\_config\_to\_str@{accel\_dlpf\_config\_to\_str}!icm20948@{icm20948}}
+\doxysubsubsection{\texorpdfstring{accel\_dlpf\_config\_to\_str()}{accel\_dlpf\_config\_to\_str()}}
+{\footnotesize\ttfamily std\+::string icm20948\+::accel\+\_\+dlpf\+\_\+config\+\_\+to\+\_\+str (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespaceicm20948_a11320e5ffc65dc1997d850a2747b1857}{accel\+\_\+dlpf\+\_\+config}}}]{config }\end{DoxyParamCaption})}
+
+\Hypertarget{namespaceicm20948_af14221b01595095e63c2b6da92461546}\label{namespaceicm20948_af14221b01595095e63c2b6da92461546} 
+\index{icm20948@{icm20948}!accel\_scale\_factor@{accel\_scale\_factor}}
+\index{accel\_scale\_factor@{accel\_scale\_factor}!icm20948@{icm20948}}
+\doxysubsubsection{\texorpdfstring{accel\_scale\_factor()}{accel\_scale\_factor()}}
+{\footnotesize\ttfamily float icm20948\+::accel\+\_\+scale\+\_\+factor (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespaceicm20948_a270e710b092b62b0a289753093c2a673}{accel\+\_\+scale}}}]{scale }\end{DoxyParamCaption})}
+
+\Hypertarget{namespaceicm20948_a4946bab7910d89f8bfd507e564872e96}\label{namespaceicm20948_a4946bab7910d89f8bfd507e564872e96} 
+\index{icm20948@{icm20948}!accel\_scale\_to\_str@{accel\_scale\_to\_str}}
+\index{accel\_scale\_to\_str@{accel\_scale\_to\_str}!icm20948@{icm20948}}
+\doxysubsubsection{\texorpdfstring{accel\_scale\_to\_str()}{accel\_scale\_to\_str()}}
+{\footnotesize\ttfamily std\+::string icm20948\+::accel\+\_\+scale\+\_\+to\+\_\+str (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespaceicm20948_a270e710b092b62b0a289753093c2a673}{accel\+\_\+scale}}}]{scale }\end{DoxyParamCaption})}
+
+\Hypertarget{namespaceicm20948_a37feed00f9178e9a6733f1f0db39e468}\label{namespaceicm20948_a37feed00f9178e9a6733f1f0db39e468} 
+\index{icm20948@{icm20948}!gyro\_dlpf\_config\_to\_str@{gyro\_dlpf\_config\_to\_str}}
+\index{gyro\_dlpf\_config\_to\_str@{gyro\_dlpf\_config\_to\_str}!icm20948@{icm20948}}
+\doxysubsubsection{\texorpdfstring{gyro\_dlpf\_config\_to\_str()}{gyro\_dlpf\_config\_to\_str()}}
+{\footnotesize\ttfamily std\+::string icm20948\+::gyro\+\_\+dlpf\+\_\+config\+\_\+to\+\_\+str (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespaceicm20948_ab21febc613fcda495faedf1fadf8da01}{gyro\+\_\+dlpf\+\_\+config}}}]{config }\end{DoxyParamCaption})}
+
+\Hypertarget{namespaceicm20948_ab5aff64efdfa42700724773154b88241}\label{namespaceicm20948_ab5aff64efdfa42700724773154b88241} 
+\index{icm20948@{icm20948}!gyro\_scale\_factor@{gyro\_scale\_factor}}
+\index{gyro\_scale\_factor@{gyro\_scale\_factor}!icm20948@{icm20948}}
+\doxysubsubsection{\texorpdfstring{gyro\_scale\_factor()}{gyro\_scale\_factor()}}
+{\footnotesize\ttfamily float icm20948\+::gyro\+\_\+scale\+\_\+factor (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespaceicm20948_ab4ed127a0673926c94b3419379774950}{gyro\+\_\+scale}}}]{scale }\end{DoxyParamCaption})}
+
+\Hypertarget{namespaceicm20948_a7ceffdb0c86d118f1852b4a67c119517}\label{namespaceicm20948_a7ceffdb0c86d118f1852b4a67c119517} 
+\index{icm20948@{icm20948}!gyro\_scale\_to\_str@{gyro\_scale\_to\_str}}
+\index{gyro\_scale\_to\_str@{gyro\_scale\_to\_str}!icm20948@{icm20948}}
+\doxysubsubsection{\texorpdfstring{gyro\_scale\_to\_str()}{gyro\_scale\_to\_str()}}
+{\footnotesize\ttfamily std\+::string icm20948\+::gyro\+\_\+scale\+\_\+to\+\_\+str (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespaceicm20948_ab4ed127a0673926c94b3419379774950}{gyro\+\_\+scale}}}]{scale }\end{DoxyParamCaption})}
+
+\Hypertarget{namespaceicm20948_a4e2db8332ee3f51602d9032468ec2b34}\label{namespaceicm20948_a4e2db8332ee3f51602d9032468ec2b34} 
+\index{icm20948@{icm20948}!magn\_mode\_to\_str@{magn\_mode\_to\_str}}
+\index{magn\_mode\_to\_str@{magn\_mode\_to\_str}!icm20948@{icm20948}}
+\doxysubsubsection{\texorpdfstring{magn\_mode\_to\_str()}{magn\_mode\_to\_str()}}
+{\footnotesize\ttfamily std\+::string icm20948\+::magn\+\_\+mode\+\_\+to\+\_\+str (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespaceicm20948_a52f2b76d3ebd33c9147b45c09ed3d02c}{magn\+\_\+mode}}}]{mode }\end{DoxyParamCaption})}
+

@@ -34,6 +34,11 @@ bool IMUReader::init()
     return imu_.init();
 }
 
+icm20948::ICM20948_I2C& IMUReader::getIMU()
+{
+    return imu_;
+}
+
 void IMUReader::setCallback(SampleCallback cb)
 {
     // Register the callback for decoded IMU samples.

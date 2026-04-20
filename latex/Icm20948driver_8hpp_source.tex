@@ -1,0 +1,370 @@
+\doxysection{Icm20948driver.\+hpp}
+\hypertarget{Icm20948driver_8hpp_source}{}\label{Icm20948driver_8hpp_source}\index{src/libs/IMU/Include/Icm20948driver.hpp@{src/libs/IMU/Include/Icm20948driver.hpp}}
+\mbox{\hyperlink{Icm20948driver_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ This\ header\ defines\ the\ register\ map,\ configuration\ types,\ and\ public\ driver}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ interface\ for\ the\ ICM-\/20948\ IMU\ and\ its\ onboard\ magnetometer.}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ SOLID\ principles:}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ \ \ S\ -\/\ This\ file\ centralises\ device-\/specific\ constants,\ configuration\ structures,}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ \ \ \ \ \ \ and\ the\ public\ interface\ for\ the\ IMU\ driver\ in\ one\ place.}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ \ \ O\ -\/\ Configuration\ is\ represented\ through\ settings\ types,\ allowing\ the\ driver\ to}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//\ \ \ \ \ \ \ be\ reconfigured\ without\ changing\ client\ code\ that\ uses\ the\ interface.}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ \ \ I\ -\/\ Configuration\ is\ grouped\ into\ smaller\ settings\ types\ (accelerometer,}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//\ \ \ \ \ \ \ gyroscope,\ magnetometer)\ so\ callers\ interact\ with\ the\ parts\ of\ the}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//\ \ \ \ \ \ \ device\ configuration\ they\ actually\ need}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <cstdint>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <linux/i2c-\/dev.h>}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ <linux/i2c.h>}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ "{}yaml-\/cpp/yaml.h"{}}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{comment}{//\ Register\ addresses\ and\ constants\ for\ the\ ICM-\/20948\ IMU\ and\ onboard\ magnetometer.}}
+\DoxyCodeLine{00024\ \textcolor{comment}{//\ \ Register\ map}}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#define\ ICM20948\_I2C\_ADDR\ \ \ \ \ \ \ 0x69}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#define\ ICM20948\_MAGN\_I2C\_ADDR\ \ 0x0C}}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{comment}{//\ Bank-\/select\ register\ and\ encoded\ bank\ values.}}
+\DoxyCodeLine{00030\ \textcolor{comment}{//\ These\ constants\ isolate\ device-\/specific\ magic\ numbers\ from\ the\ driver\ logic.}}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#define\ ICM20948\_REG\_BANK\_SEL\_ADDR\ \ \ \ \ \ \ \ \ \ 0x7F}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#define\ ICM20948\_REG\_BANK\_SEL\_BANK0\_VALUE\ \ \ 0x00}}
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#define\ ICM20948\_REG\_BANK\_SEL\_BANK1\_VALUE\ \ \ 0x10}}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#define\ ICM20948\_REG\_BANK\_SEL\_BANK2\_VALUE\ \ \ 0x20}}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#define\ ICM20948\_REG\_BANK\_SEL\_BANK3\_VALUE\ \ \ 0x30}}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \textcolor{comment}{//\ Bank\ 0}}
+\DoxyCodeLine{00038\ \textcolor{comment}{//\ Output\ and\ control\ registers\ used\ for\ identity,\ power,\ interrupts,}}
+\DoxyCodeLine{00039\ \textcolor{comment}{//\ and\ reading\ decoded\ sensor\ data.}}
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#define\ ICM20948\_WHO\_AM\_I\_ADDR\ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00}}
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#define\ ICM20948\_USER\_CTRL\_ADDR\ \ \ \ \ \ \ \ \ \ \ \ \ 0x03}}
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#define\ ICM20948\_PWR\_MGMT\_1\_ADDR\ \ \ \ \ \ \ \ \ \ \ \ 0x06}}
+\DoxyCodeLine{00043\ \textcolor{preprocessor}{\#define\ ICM20948\_INT\_PIN\_CFG\_ADDR\ \ \ \ \ \ \ \ \ \ \ 0x0F}}
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#define\ ICM20948\_INT\_ENABLE\_1\_ADDR\ \ \ \ \ \ \ \ \ \ 0x11}}
+\DoxyCodeLine{00045\ \textcolor{preprocessor}{\#define\ ICM20948\_I2C\_MST\_STATUS\_ADDR\ \ \ \ \ \ \ \ 0x17}}
+\DoxyCodeLine{00046\ \textcolor{preprocessor}{\#define\ ICM20948\_ACCEL\_XOUT\_H\_ADDR\ \ \ \ \ \ \ \ \ \ 0x2D}}
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\#define\ ICM20948\_ACCEL\_XOUT\_L\_ADDR\ \ \ \ \ \ \ \ \ \ 0x2E}}
+\DoxyCodeLine{00048\ \textcolor{preprocessor}{\#define\ ICM20948\_ACCEL\_YOUT\_H\_ADDR\ \ \ \ \ \ \ \ \ \ 0x2F}}
+\DoxyCodeLine{00049\ \textcolor{preprocessor}{\#define\ ICM20948\_ACCEL\_YOUT\_L\_ADDR\ \ \ \ \ \ \ \ \ \ 0x30}}
+\DoxyCodeLine{00050\ \textcolor{preprocessor}{\#define\ ICM20948\_ACCEL\_ZOUT\_H\_ADDR\ \ \ \ \ \ \ \ \ \ 0x31}}
+\DoxyCodeLine{00051\ \textcolor{preprocessor}{\#define\ ICM20948\_ACCEL\_ZOUT\_L\_ADDR\ \ \ \ \ \ \ \ \ \ 0x32}}
+\DoxyCodeLine{00052\ \textcolor{preprocessor}{\#define\ ICM20948\_GYRO\_XOUT\_H\_ADDR\ \ \ \ \ \ \ \ \ \ \ 0x33}}
+\DoxyCodeLine{00053\ \textcolor{preprocessor}{\#define\ ICM20948\_GYRO\_XOUT\_L\_ADDR\ \ \ \ \ \ \ \ \ \ \ 0x34}}
+\DoxyCodeLine{00054\ \textcolor{preprocessor}{\#define\ ICM20948\_GYRO\_YOUT\_H\_ADDR\ \ \ \ \ \ \ \ \ \ \ 0x35}}
+\DoxyCodeLine{00055\ \textcolor{preprocessor}{\#define\ ICM20948\_GYRO\_YOUT\_L\_ADDR\ \ \ \ \ \ \ \ \ \ \ 0x36}}
+\DoxyCodeLine{00056\ \textcolor{preprocessor}{\#define\ ICM20948\_GYRO\_ZOUT\_H\_ADDR\ \ \ \ \ \ \ \ \ \ \ 0x37}}
+\DoxyCodeLine{00057\ \textcolor{preprocessor}{\#define\ ICM20948\_GYRO\_ZOUT\_L\_ADDR\ \ \ \ \ \ \ \ \ \ \ 0x38}}
+\DoxyCodeLine{00058\ \textcolor{preprocessor}{\#define\ ICM20948\_TEMP\_OUT\_H\_ADDR\ \ \ \ \ \ \ \ \ \ \ \ 0x39}}
+\DoxyCodeLine{00059\ \textcolor{preprocessor}{\#define\ ICM20948\_TEMP\_OUT\_L\_ADDR\ \ \ \ \ \ \ \ \ \ \ \ 0x3A}}
+\DoxyCodeLine{00060\ \textcolor{preprocessor}{\#define\ ICM20948\_EXT\_SLV\_SENS\_DATA\_00\_ADDR\ \ 0x3B}}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \textcolor{comment}{//\ Bank\ IDs\ for\ the\ corresponding\ registers\ above.}}
+\DoxyCodeLine{00063\ \textcolor{comment}{//\ Keeping\ bank\ IDs\ alongside\ register\ definitions\ reduces\ the\ chance\ of}}
+\DoxyCodeLine{00064\ \textcolor{comment}{//\ mismatched\ bank/register\ access\ in\ the\ implementation.}}
+\DoxyCodeLine{00065\ \textcolor{preprocessor}{\#define\ ICM20948\_WHO\_AM\_I\_BANK\ \ \ \ \ \ \ \ \ \ \ \ \ \ 0}}
+\DoxyCodeLine{00066\ \textcolor{preprocessor}{\#define\ ICM20948\_USER\_CTRL\_BANK\ \ \ \ \ \ \ \ \ \ \ \ \ 0}}
+\DoxyCodeLine{00067\ \textcolor{preprocessor}{\#define\ ICM20948\_PWR\_MGMT\_1\_BANK\ \ \ \ \ \ \ \ \ \ \ \ 0}}
+\DoxyCodeLine{00068\ \textcolor{preprocessor}{\#define\ ICM20948\_INT\_PIN\_CFG\_BANK\ \ \ \ \ \ \ \ \ \ \ 0}}
+\DoxyCodeLine{00069\ \textcolor{preprocessor}{\#define\ ICM20948\_INT\_ENABLE\_1\_BANK\ \ \ \ \ \ \ \ \ \ 0}}
+\DoxyCodeLine{00070\ \textcolor{preprocessor}{\#define\ ICM20948\_I2C\_MST\_STATUS\_BANK\ \ \ \ \ \ \ \ 0}}
+\DoxyCodeLine{00071\ \textcolor{preprocessor}{\#define\ ICM20948\_ACCEL\_OUT\_BANK\ \ \ \ \ \ \ \ \ \ \ \ \ 0}}
+\DoxyCodeLine{00072\ \textcolor{preprocessor}{\#define\ ICM20948\_GYRO\_OUT\_BANK\ \ \ \ \ \ \ \ \ \ \ \ \ \ 0}}
+\DoxyCodeLine{00073\ \textcolor{preprocessor}{\#define\ ICM20948\_EXT\_SLV\_SENS\_DATA\_00\_BANK\ \ 0}}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \textcolor{comment}{//\ Bank\ 2}}
+\DoxyCodeLine{00076\ \textcolor{comment}{//\ Configuration\ registers\ for\ sample\ rate,\ scale,\ and\ digital\ filtering.}}
+\DoxyCodeLine{00077\ \textcolor{preprocessor}{\#define\ ICM20948\_GYRO\_SMPLRT\_DIV\_ADDR\ \ \ \ \ \ \ 0x00}}
+\DoxyCodeLine{00078\ \textcolor{preprocessor}{\#define\ ICM20948\_GYRO\_CONFIG\_1\_ADDR\ \ \ \ \ \ \ \ \ 0x01}}
+\DoxyCodeLine{00079\ \textcolor{preprocessor}{\#define\ ICM20948\_ACCEL\_SMPLRT\_DIV\_1\_ADDR\ \ \ \ 0x10}}
+\DoxyCodeLine{00080\ \textcolor{preprocessor}{\#define\ ICM20948\_ACCEL\_SMPLRT\_DIV\_2\_ADDR\ \ \ \ 0x11}}
+\DoxyCodeLine{00081\ \textcolor{preprocessor}{\#define\ ICM20948\_ACCEL\_CONFIG\_1\_ADDR\ \ \ \ \ \ \ \ 0x14}}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \textcolor{comment}{//\ Bank\ IDs\ for\ accel/gyro\ configuration\ registers.}}
+\DoxyCodeLine{00084\ \textcolor{preprocessor}{\#define\ ICM20948\_GYRO\_SMPLRT\_DIV\_BANK\ \ \ \ \ \ \ 2}}
+\DoxyCodeLine{00085\ \textcolor{preprocessor}{\#define\ ICM20948\_GYRO\_CONFIG\_1\_BANK\ \ \ \ \ \ \ \ \ 2}}
+\DoxyCodeLine{00086\ \textcolor{preprocessor}{\#define\ ICM20948\_ACCEL\_SMPLRT\_DIV\_1\_BANK\ \ \ \ 2}}
+\DoxyCodeLine{00087\ \textcolor{preprocessor}{\#define\ ICM20948\_ACCEL\_SMPLRT\_DIV\_2\_BANK\ \ \ \ 2}}
+\DoxyCodeLine{00088\ \textcolor{preprocessor}{\#define\ ICM20948\_ACCEL\_CONFIG\_1\_BANK\ \ \ \ \ \ \ \ 2}}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ \textcolor{comment}{//\ Bank\ 3}}
+\DoxyCodeLine{00091\ \textcolor{comment}{//\ Registers\ for\ the\ internal\ I2C\ master\ used\ to\ communicate\ with\ the}}
+\DoxyCodeLine{00092\ \textcolor{comment}{//\ onboard\ magnetometer\ through\ the\ main\ IMU\ device.}}
+\DoxyCodeLine{00093\ \textcolor{preprocessor}{\#define\ ICM20948\_I2C\_MST\_CTRL\_ADDR\ \ \ \ \ \ \ \ \ \ 0x01}}
+\DoxyCodeLine{00094\ \textcolor{preprocessor}{\#define\ ICM20948\_I2C\_SLV0\_ADDR\_ADDR\ \ \ \ \ \ \ \ \ 0x03}}
+\DoxyCodeLine{00095\ \textcolor{preprocessor}{\#define\ ICM20948\_I2C\_SLV0\_REG\_ADDR\ \ \ \ \ \ \ \ \ \ 0x04}}
+\DoxyCodeLine{00096\ \textcolor{preprocessor}{\#define\ ICM20948\_I2C\_SLV0\_CTRL\_ADDR\ \ \ \ \ \ \ \ \ 0x05}}
+\DoxyCodeLine{00097\ \textcolor{preprocessor}{\#define\ ICM20948\_I2C\_SLV4\_ADDR\_ADDR\ \ \ \ \ \ \ \ \ 0x13}}
+\DoxyCodeLine{00098\ \textcolor{preprocessor}{\#define\ ICM20948\_I2C\_SLV4\_REG\_ADDR\ \ \ \ \ \ \ \ \ \ 0x14}}
+\DoxyCodeLine{00099\ \textcolor{preprocessor}{\#define\ ICM20948\_I2C\_SLV4\_CTRL\_ADDR\ \ \ \ \ \ \ \ \ 0x15}}
+\DoxyCodeLine{00100\ \textcolor{preprocessor}{\#define\ ICM20948\_I2C\_SLV4\_DO\_ADDR\ \ \ \ \ \ \ \ \ \ \ 0x16}}
+\DoxyCodeLine{00101\ \textcolor{preprocessor}{\#define\ ICM20948\_I2C\_SLV4\_DI\_ADDR\ \ \ \ \ \ \ \ \ \ \ 0x17}}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00103\ \textcolor{comment}{//\ Bank\ IDs\ for\ the\ internal\ I2C\ master\ interface.}}
+\DoxyCodeLine{00104\ \textcolor{preprocessor}{\#define\ ICM20948\_I2C\_MST\_CTRL\_BANK\ \ \ \ \ \ \ \ \ \ 3}}
+\DoxyCodeLine{00105\ \textcolor{preprocessor}{\#define\ ICM20948\_I2C\_SLV0\_ADDR\_BANK\ \ \ \ \ \ \ \ \ 3}}
+\DoxyCodeLine{00106\ \textcolor{preprocessor}{\#define\ ICM20948\_I2C\_SLV0\_REG\_BANK\ \ \ \ \ \ \ \ \ \ 3}}
+\DoxyCodeLine{00107\ \textcolor{preprocessor}{\#define\ ICM20948\_I2C\_SLV0\_CTRL\_BANK\ \ \ \ \ \ \ \ \ 3}}
+\DoxyCodeLine{00108\ \textcolor{preprocessor}{\#define\ ICM20948\_I2C\_SLV4\_ADDR\_BANK\ \ \ \ \ \ \ \ \ 3}}
+\DoxyCodeLine{00109\ \textcolor{preprocessor}{\#define\ ICM20948\_I2C\_SLV4\_REG\_BANK\ \ \ \ \ \ \ \ \ \ 3}}
+\DoxyCodeLine{00110\ \textcolor{preprocessor}{\#define\ ICM20948\_I2C\_SLV4\_CTRL\_BANK\ \ \ \ \ \ \ \ \ 3}}
+\DoxyCodeLine{00111\ \textcolor{preprocessor}{\#define\ ICM20948\_I2C\_SLV4\_DO\_BANK\ \ \ \ \ \ \ \ \ \ \ 3}}
+\DoxyCodeLine{00112\ \textcolor{preprocessor}{\#define\ ICM20948\_I2C\_SLV4\_DI\_BANK\ \ \ \ \ \ \ \ \ \ \ 3}}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00114\ \textcolor{comment}{//\ AK09916\ magnetometer\ control\ register\ and\ expected\ WHO\_AM\_I\ value.}}
+\DoxyCodeLine{00115\ \textcolor{preprocessor}{\#define\ AK09916\_CNTL2\_ADDR\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x31}}
+\DoxyCodeLine{00116\ \textcolor{preprocessor}{\#define\ ICM20948\_BANK0\_WHO\_AM\_I\_VALUE\ \ \ \ \ \ \ 0xEA}}
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00119\ \textcolor{comment}{//\ Interrupt\ status\ registers.}}
+\DoxyCodeLine{00120\ \textcolor{comment}{//\ These\ support\ event-\/driven\ sampling\ by\ allowing\ higher-\/level\ code\ to}}
+\DoxyCodeLine{00121\ \textcolor{comment}{//\ check\ whether\ new\ data\ is\ ready\ before\ attempting\ a\ read.}}
+\DoxyCodeLine{00122\ \textcolor{preprocessor}{\#define\ ICM20948\_INT\_STATUS\_BANK\ \ \ \ \ \ \ \ \ \ \ \ 0}}
+\DoxyCodeLine{00123\ \textcolor{preprocessor}{\#define\ ICM20948\_INT\_STATUS\_1\_BANK\ \ \ \ \ \ \ \ \ \ 0}}
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00125\ \textcolor{preprocessor}{\#define\ ICM20948\_INT\_STATUS\_ADDR\ \ \ \ \ \ \ \ \ \ \ \ 0x19}}
+\DoxyCodeLine{00126\ \textcolor{preprocessor}{\#define\ ICM20948\_INT\_STATUS\_1\_ADDR\ \ \ \ \ \ \ \ \ \ 0x1A}}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00129\ \textcolor{comment}{//\ \ Settings\ types}}
+\DoxyCodeLine{00130\ }
+\DoxyCodeLine{00131\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceicm20948}{icm20948}}}
+\DoxyCodeLine{00132\ \{}
+\DoxyCodeLine{00133\ \ \ \ \ \textcolor{comment}{//\ Accelerometer\ full-\/scale\ range.}}
+\DoxyCodeLine{00134\ \ \ \ \ \textcolor{comment}{//\ Using\ an\ enum\ keeps\ configuration\ values\ readable\ and\ avoids\ scattering}}
+\DoxyCodeLine{00135\ \ \ \ \ \textcolor{comment}{//\ raw\ register\ meanings\ through\ application\ code.}}
+\DoxyCodeLine{00136\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceicm20948_a270e710b092b62b0a289753093c2a673a10962c0378d54e76d00fca0435c5eed5}{ACCEL\_2G}}\ \ =\ 0,}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceicm20948_a270e710b092b62b0a289753093c2a673af2a264922f360e04817e77765b80978b}{ACCEL\_4G}},}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceicm20948_a270e710b092b62b0a289753093c2a673a3795f5faff7839b7fbb08f22fe80d907}{ACCEL\_8G}},}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceicm20948_a270e710b092b62b0a289753093c2a673a2c5998799a8fab32e9f3569957311b88}{ACCEL\_16G}}}
+\DoxyCodeLine{00141\ \ \ \ \ \}\ \mbox{\hyperlink{namespaceicm20948_a270e710b092b62b0a289753093c2a673}{accel\_scale}};}
+\DoxyCodeLine{00142\ }
+\DoxyCodeLine{00143\ \ \ \ \ \textcolor{comment}{//\ Accelerometer\ digital\ low-\/pass\ filter\ config.}}
+\DoxyCodeLine{00144\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceicm20948_a11320e5ffc65dc1997d850a2747b1857ad576f91386994ed878db4b7dee32bcae}{ACCEL\_DLPF\_246HZ}}\ \ \ =\ 0,}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceicm20948_a11320e5ffc65dc1997d850a2747b1857a439d5f4636f81ae51d01a1e4f0eac85f}{ACCEL\_DLPF\_246HZ\_2}},}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceicm20948_a11320e5ffc65dc1997d850a2747b1857a26cb85d4b765d07a462b0463ed720775}{ACCEL\_DLPF\_111\_4HZ}},}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceicm20948_a11320e5ffc65dc1997d850a2747b1857a90657a417f142990ecf234018082a3a6}{ACCEL\_DLPF\_50\_4HZ}},}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceicm20948_a11320e5ffc65dc1997d850a2747b1857af97490556aeb64d4bf2cc3d3387f4029}{ACCEL\_DLPF\_23\_9HZ}},}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceicm20948_a11320e5ffc65dc1997d850a2747b1857a754f26fbba29b3056442f3e2abc5e2ff}{ACCEL\_DLPF\_11\_5HZ}},}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceicm20948_a11320e5ffc65dc1997d850a2747b1857aad38873c989e80fa60860b2ec48205a3}{ACCEL\_DLPF\_5\_7HZ}},}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceicm20948_a11320e5ffc65dc1997d850a2747b1857a54a59d3f305828db07e8b11f6db49f70}{ACCEL\_DLPF\_473HZ}}}
+\DoxyCodeLine{00153\ \ \ \ \ \}\ \mbox{\hyperlink{namespaceicm20948_a11320e5ffc65dc1997d850a2747b1857}{accel\_dlpf\_config}};}
+\DoxyCodeLine{00154\ }
+\DoxyCodeLine{00155\ \ \ \ \ \textcolor{comment}{//\ Accelerometer\ runtime\ configuration.}}
+\DoxyCodeLine{00156\ \ \ \ \ \textcolor{comment}{//\ Grouping\ these\ parameters\ in\ one\ struct\ improves\ clarity\ and\ keeps\ the}}
+\DoxyCodeLine{00157\ \ \ \ \ \textcolor{comment}{//\ public\ interface\ cleaner\ than\ passing\ many\ separate\ constructor\ arguments.}}
+\DoxyCodeLine{00158\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structicm20948_1_1accel__settings}{accel\_settings}}\ \{}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ uint16\_t\ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structicm20948_1_1accel__settings_a64dfd5b27e84b62d329e4408a4df23b4}{sample\_rate\_div}};}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceicm20948_a270e710b092b62b0a289753093c2a673}{accel\_scale}}\ \ \ \ \ \ \ \mbox{\hyperlink{structicm20948_1_1accel__settings_ad649bd2496bb26f58e3029b47c30cbd7}{scale}};}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structicm20948_1_1accel__settings_aa421055550715ec1c62cb3305bd546ac}{dlpf\_enable}};}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceicm20948_a11320e5ffc65dc1997d850a2747b1857}{accel\_dlpf\_config}}\ \mbox{\hyperlink{structicm20948_1_1accel__settings_a765cb2b3456544a528091f19babc1201}{dlpf\_config}};}
+\DoxyCodeLine{00163\ }
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structicm20948_1_1accel__settings_a18d375204f26a158788ed59920e3ab52}{accel\_settings}}(uint16\_t\ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structicm20948_1_1accel__settings_a64dfd5b27e84b62d329e4408a4df23b4}{sample\_rate\_div}}\ =\ 0,}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceicm20948_a270e710b092b62b0a289753093c2a673}{accel\_scale}}\ \ \ \ \ \ \ \mbox{\hyperlink{structicm20948_1_1accel__settings_ad649bd2496bb26f58e3029b47c30cbd7}{scale}}\ \ \ \ \ \ \ \ \ \ \ =\ \mbox{\hyperlink{namespaceicm20948_a270e710b092b62b0a289753093c2a673a10962c0378d54e76d00fca0435c5eed5}{ACCEL\_2G}},}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structicm20948_1_1accel__settings_aa421055550715ec1c62cb3305bd546ac}{dlpf\_enable}}\ \ \ \ \ =\ \textcolor{keyword}{true},}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceicm20948_a11320e5ffc65dc1997d850a2747b1857}{accel\_dlpf\_config}}\ \mbox{\hyperlink{structicm20948_1_1accel__settings_a765cb2b3456544a528091f19babc1201}{dlpf\_config}}\ \ \ \ \ =\ \mbox{\hyperlink{namespaceicm20948_a11320e5ffc65dc1997d850a2747b1857ad576f91386994ed878db4b7dee32bcae}{ACCEL\_DLPF\_246HZ}})}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \ \ \ \ :\ \mbox{\hyperlink{structicm20948_1_1accel__settings_a64dfd5b27e84b62d329e4408a4df23b4}{sample\_rate\_div}}(\mbox{\hyperlink{structicm20948_1_1accel__settings_a64dfd5b27e84b62d329e4408a4df23b4}{sample\_rate\_div}}),\ \mbox{\hyperlink{structicm20948_1_1accel__settings_ad649bd2496bb26f58e3029b47c30cbd7}{scale}}(\mbox{\hyperlink{structicm20948_1_1accel__settings_ad649bd2496bb26f58e3029b47c30cbd7}{scale}}),}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structicm20948_1_1accel__settings_aa421055550715ec1c62cb3305bd546ac}{dlpf\_enable}}(\mbox{\hyperlink{structicm20948_1_1accel__settings_aa421055550715ec1c62cb3305bd546ac}{dlpf\_enable}}),\ \mbox{\hyperlink{structicm20948_1_1accel__settings_a765cb2b3456544a528091f19babc1201}{dlpf\_config}}(\mbox{\hyperlink{structicm20948_1_1accel__settings_a765cb2b3456544a528091f19babc1201}{dlpf\_config}})\ \{\}}
+\DoxyCodeLine{00170\ \ \ \ \ \}\ accel\_settings;}
+\DoxyCodeLine{00171\ }
+\DoxyCodeLine{00172\ \ \ \ \ \textcolor{comment}{//\ Gyroscope\ full-\/scale\ range.}}
+\DoxyCodeLine{00173\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceicm20948_ab4ed127a0673926c94b3419379774950aabd72e9c7237ef6ac1483378c37db628}{GYRO\_250DPS}}\ \ =\ 0,}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceicm20948_ab4ed127a0673926c94b3419379774950a549d7b9c4b2bbf75a2c70c96f121cfe0}{GYRO\_500DPS}},}
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceicm20948_ab4ed127a0673926c94b3419379774950ae2d68a647e8a6ef753561ee9fe15fcd9}{GYRO\_1000DPS}},}
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceicm20948_ab4ed127a0673926c94b3419379774950a87d8034a32d15681a2811fd897f0ef94}{GYRO\_2000DPS}}}
+\DoxyCodeLine{00178\ \ \ \ \ \}\ \mbox{\hyperlink{namespaceicm20948_ab4ed127a0673926c94b3419379774950}{gyro\_scale}};}
+\DoxyCodeLine{00179\ }
+\DoxyCodeLine{00180\ \ \ \ \ \textcolor{comment}{//\ Gyroscope\ digital\ low-\/pass\ filter\ config.}}
+\DoxyCodeLine{00181\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceicm20948_ab21febc613fcda495faedf1fadf8da01a3d4b8dc9e1511d7d42e031f4cc04fd44}{GYRO\_DLPF\_196\_6HZ}}\ =\ 0,}
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceicm20948_ab21febc613fcda495faedf1fadf8da01ac3aa6b2e10ac763342844ce203cedeb9}{GYRO\_DLPF\_151\_8HZ}},}
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceicm20948_ab21febc613fcda495faedf1fadf8da01a8a05f80bd6e2edae852b4f9b13b605f1}{GYRO\_DLPF\_119\_5HZ}},}
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceicm20948_ab21febc613fcda495faedf1fadf8da01a915166c0d2c456d42828e64331a7ddc7}{GYRO\_DLPF\_51\_2HZ}},}
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceicm20948_ab21febc613fcda495faedf1fadf8da01a2ec4f20881ca82d990d67c5b325e378d}{GYRO\_DLPF\_23\_9HZ}},}
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceicm20948_ab21febc613fcda495faedf1fadf8da01a6d136718830bbce7a90cbac74ecefc1e}{GYRO\_DLPF\_11\_6HZ}},}
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceicm20948_ab21febc613fcda495faedf1fadf8da01ac729d419c805e6e8b0e4c5b7a979eef9}{GYRO\_DLPF\_5\_7HZ}},}
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceicm20948_ab21febc613fcda495faedf1fadf8da01abfd46a43efe7108d44c1cd85123d8275}{GYRO\_DLPF\_361\_4HZ}}}
+\DoxyCodeLine{00190\ \ \ \ \ \}\ \mbox{\hyperlink{namespaceicm20948_ab21febc613fcda495faedf1fadf8da01}{gyro\_dlpf\_config}};}
+\DoxyCodeLine{00191\ }
+\DoxyCodeLine{00192\ \ \ \ \ \textcolor{comment}{//\ Gyroscope\ runtime\ configuration.}}
+\DoxyCodeLine{00193\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structicm20948_1_1gyro__settings}{gyro\_settings}}\ \{}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ uint8\_t\ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structicm20948_1_1gyro__settings_a2cf7df75b4a09485192659cd07bb594c}{sample\_rate\_div}};}
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceicm20948_ab4ed127a0673926c94b3419379774950}{gyro\_scale}}\ \ \ \ \ \ \ \mbox{\hyperlink{structicm20948_1_1gyro__settings_a829959828518829a0a27879e520b3285}{scale}};}
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structicm20948_1_1gyro__settings_a97a692e938acb12c3202c790d0c3b9e1}{dlpf\_enable}};}
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceicm20948_ab21febc613fcda495faedf1fadf8da01}{gyro\_dlpf\_config}}\ \mbox{\hyperlink{structicm20948_1_1gyro__settings_a12430b9b2460efbb25ebeb8d691feb3a}{dlpf\_config}};}
+\DoxyCodeLine{00198\ }
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structicm20948_1_1gyro__settings_aaab8efac19bdb29981862e97bf67ad8e}{gyro\_settings}}(uint8\_t\ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structicm20948_1_1gyro__settings_a2cf7df75b4a09485192659cd07bb594c}{sample\_rate\_div}}\ =\ 0,}
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceicm20948_ab4ed127a0673926c94b3419379774950}{gyro\_scale}}\ \ \ \ \ \ \ \mbox{\hyperlink{structicm20948_1_1gyro__settings_a829959828518829a0a27879e520b3285}{scale}}\ \ \ \ \ \ \ \ \ \ \ =\ \mbox{\hyperlink{namespaceicm20948_ab4ed127a0673926c94b3419379774950aabd72e9c7237ef6ac1483378c37db628}{GYRO\_250DPS}},}
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structicm20948_1_1gyro__settings_a97a692e938acb12c3202c790d0c3b9e1}{dlpf\_enable}}\ \ \ \ \ =\ \textcolor{keyword}{true},}
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceicm20948_ab21febc613fcda495faedf1fadf8da01}{gyro\_dlpf\_config}}\ \mbox{\hyperlink{structicm20948_1_1gyro__settings_a12430b9b2460efbb25ebeb8d691feb3a}{dlpf\_config}}\ \ \ \ \ =\ \mbox{\hyperlink{namespaceicm20948_ab21febc613fcda495faedf1fadf8da01a3d4b8dc9e1511d7d42e031f4cc04fd44}{GYRO\_DLPF\_196\_6HZ}})}
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \ \ \ \ :\ \mbox{\hyperlink{structicm20948_1_1gyro__settings_a2cf7df75b4a09485192659cd07bb594c}{sample\_rate\_div}}(\mbox{\hyperlink{structicm20948_1_1gyro__settings_a2cf7df75b4a09485192659cd07bb594c}{sample\_rate\_div}}),\ \mbox{\hyperlink{structicm20948_1_1gyro__settings_a829959828518829a0a27879e520b3285}{scale}}(\mbox{\hyperlink{structicm20948_1_1gyro__settings_a829959828518829a0a27879e520b3285}{scale}}),}
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structicm20948_1_1gyro__settings_a97a692e938acb12c3202c790d0c3b9e1}{dlpf\_enable}}(\mbox{\hyperlink{structicm20948_1_1gyro__settings_a97a692e938acb12c3202c790d0c3b9e1}{dlpf\_enable}}),\ \mbox{\hyperlink{structicm20948_1_1gyro__settings_a12430b9b2460efbb25ebeb8d691feb3a}{dlpf\_config}}(\mbox{\hyperlink{structicm20948_1_1gyro__settings_a12430b9b2460efbb25ebeb8d691feb3a}{dlpf\_config}})\ \{\}}
+\DoxyCodeLine{00205\ \ \ \ \ \}\ gyro\_settings;}
+\DoxyCodeLine{00206\ }
+\DoxyCodeLine{00207\ \ \ \ \ \textcolor{comment}{//\ Magnetometer\ operating\ mode.}}
+\DoxyCodeLine{00208\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceicm20948_a52f2b76d3ebd33c9147b45c09ed3d02caf7a1f55f16854e842b04e2d311525a7a}{MAGN\_SHUTDOWN}}\ \ =\ 0,}
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceicm20948_a52f2b76d3ebd33c9147b45c09ed3d02ca4696e7df486d4c8527ec94a02a9aaa96}{MAGN\_SINGLE}}\ \ \ \ =\ 1,}
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceicm20948_a52f2b76d3ebd33c9147b45c09ed3d02cad54782be844575b7d7eeff6f6afde888}{MAGN\_10HZ}}\ \ \ \ \ \ =\ 2,}
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceicm20948_a52f2b76d3ebd33c9147b45c09ed3d02cada7064494b2cdab263d8a919bdfb3c49}{MAGN\_20HZ}}\ \ \ \ \ \ =\ 4,}
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceicm20948_a52f2b76d3ebd33c9147b45c09ed3d02ca20c2ccacb7d16752e55197c2ae202087}{MAGN\_50HZ}}\ \ \ \ \ \ =\ 6,}
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceicm20948_a52f2b76d3ebd33c9147b45c09ed3d02caaa091f0f880adfe061f828e771680137}{MAGN\_100HZ}}\ \ \ \ \ =\ 8,}
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceicm20948_a52f2b76d3ebd33c9147b45c09ed3d02cad20e2222b9521644cdccdeb39f3c3f6e}{MAGN\_SELF\_TEST}}\ =\ 16}
+\DoxyCodeLine{00216\ \ \ \ \ \}\ \mbox{\hyperlink{namespaceicm20948_a52f2b76d3ebd33c9147b45c09ed3d02c}{magn\_mode}};}
+\DoxyCodeLine{00217\ }
+\DoxyCodeLine{00218\ \ \ \ \ \textcolor{comment}{//\ Magnetometer\ runtime\ configuration.}}
+\DoxyCodeLine{00219\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structicm20948_1_1magn__settings}{magn\_settings}}\ \{}
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceicm20948_a52f2b76d3ebd33c9147b45c09ed3d02c}{magn\_mode}}\ \mbox{\hyperlink{structicm20948_1_1magn__settings_a9dafcbd7b44a43a2910781b42c788905}{mode}};}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{structicm20948_1_1magn__settings_a4a8042e4a839f077a832f4035f5b1d2f}{magn\_settings}}(\mbox{\hyperlink{namespaceicm20948_a52f2b76d3ebd33c9147b45c09ed3d02c}{magn\_mode}}\ \mbox{\hyperlink{structicm20948_1_1magn__settings_a9dafcbd7b44a43a2910781b42c788905}{mode}}\ =\ \mbox{\hyperlink{namespaceicm20948_a52f2b76d3ebd33c9147b45c09ed3d02caaa091f0f880adfe061f828e771680137}{MAGN\_100HZ}})\ :\ \mbox{\hyperlink{structicm20948_1_1magn__settings_a9dafcbd7b44a43a2910781b42c788905}{mode}}(\mbox{\hyperlink{structicm20948_1_1magn__settings_a9dafcbd7b44a43a2910781b42c788905}{mode}})\ \{\}}
+\DoxyCodeLine{00222\ \ \ \ \ \}\ magn\_settings;}
+\DoxyCodeLine{00223\ }
+\DoxyCodeLine{00224\ \ \ \ \ \textcolor{comment}{//\ Aggregate\ device\ configuration.}}
+\DoxyCodeLine{00225\ \ \ \ \ \textcolor{comment}{//\ This\ gives\ client\ code\ a\ single\ configuration\ object,\ which\ improves}}
+\DoxyCodeLine{00226\ \ \ \ \ \textcolor{comment}{//\ readability\ and\ makes\ the\ driver\ easier\ to\ construct\ and\ reconfigure.}}
+\DoxyCodeLine{00227\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structicm20948_1_1settings}{settings}}\ \{}
+\DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structicm20948_1_1accel__settings}{accel\_settings}}\ \mbox{\hyperlink{structicm20948_1_1settings_ab4b40ef5ec0c6cd305df73dcb17ea781}{accel}};}
+\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structicm20948_1_1gyro__settings}{gyro\_settings}}\ \ \mbox{\hyperlink{structicm20948_1_1settings_a0c2485a146323219f03a06177ced80d9}{gyro}};}
+\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structicm20948_1_1magn__settings}{magn\_settings}}\ \ \mbox{\hyperlink{structicm20948_1_1settings_a1e7c191c05324ae009daa9edca4b5b86}{magn}};}
+\DoxyCodeLine{00231\ }
+\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structicm20948_1_1settings_a10a11e4c131120c7d473aa97376505df}{settings}}(\mbox{\hyperlink{structicm20948_1_1accel__settings}{accel\_settings}}\ \mbox{\hyperlink{structicm20948_1_1settings_ab4b40ef5ec0c6cd305df73dcb17ea781}{accel}}\ =\ \mbox{\hyperlink{structicm20948_1_1accel__settings}{accel\_settings}}(),}
+\DoxyCodeLine{00233\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structicm20948_1_1gyro__settings}{gyro\_settings}}\ \ \mbox{\hyperlink{structicm20948_1_1settings_a0c2485a146323219f03a06177ced80d9}{gyro}}\ \ =\ \mbox{\hyperlink{structicm20948_1_1gyro__settings}{gyro\_settings}}(),}
+\DoxyCodeLine{00234\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structicm20948_1_1magn__settings}{magn\_settings}}\ \ \mbox{\hyperlink{structicm20948_1_1settings_a1e7c191c05324ae009daa9edca4b5b86}{magn}}\ \ =\ \mbox{\hyperlink{structicm20948_1_1magn__settings}{magn\_settings}}())}
+\DoxyCodeLine{00235\ \ \ \ \ \ \ \ \ \ \ \ \ :\ \mbox{\hyperlink{structicm20948_1_1settings_ab4b40ef5ec0c6cd305df73dcb17ea781}{accel}}(\mbox{\hyperlink{structicm20948_1_1settings_ab4b40ef5ec0c6cd305df73dcb17ea781}{accel}}),\ \mbox{\hyperlink{structicm20948_1_1settings_a0c2485a146323219f03a06177ced80d9}{gyro}}(\mbox{\hyperlink{structicm20948_1_1settings_a0c2485a146323219f03a06177ced80d9}{gyro}}),\ \mbox{\hyperlink{structicm20948_1_1settings_a1e7c191c05324ae009daa9edca4b5b86}{magn}}(\mbox{\hyperlink{structicm20948_1_1settings_a1e7c191c05324ae009daa9edca4b5b86}{magn}})\ \{\}}
+\DoxyCodeLine{00236\ }
+\DoxyCodeLine{00237\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Construct\ settings\ from\ a\ YAML\ config\ node.}}
+\DoxyCodeLine{00238\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ This\ supports\ configuration-\/driven\ setup\ without\ hard-\/coding\ all}}
+\DoxyCodeLine{00239\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ parameters\ in\ application\ code.}}
+\DoxyCodeLine{00240\ \ \ \ \ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{structicm20948_1_1settings}{settings}}(YAML::Node\ config\_file\_node);}
+\DoxyCodeLine{00241\ \ \ \ \ \}\ settings;}
+\DoxyCodeLine{00242\ }
+\DoxyCodeLine{00243\ \ \ \ \ \textcolor{comment}{//\ Helpers\ for\ converting\ config\ enums\ to\ scale\ factors\ /\ readable\ strings.}}
+\DoxyCodeLine{00244\ \ \ \ \ \textcolor{comment}{//\ These\ utility\ functions\ separate\ presentation\ and\ conversion\ logic\ from}}
+\DoxyCodeLine{00245\ \ \ \ \ \textcolor{comment}{//\ the\ main\ driver\ code,\ improving\ maintainability.}}
+\DoxyCodeLine{00246\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \mbox{\hyperlink{namespaceicm20948_af14221b01595095e63c2b6da92461546}{accel\_scale\_factor}}(\mbox{\hyperlink{namespaceicm20948_a270e710b092b62b0a289753093c2a673}{accel\_scale}}\ scale);}
+\DoxyCodeLine{00247\ \ \ \ \ std::string\ \mbox{\hyperlink{namespaceicm20948_a4946bab7910d89f8bfd507e564872e96}{accel\_scale\_to\_str}}(\mbox{\hyperlink{namespaceicm20948_a270e710b092b62b0a289753093c2a673}{accel\_scale}}\ scale);}
+\DoxyCodeLine{00248\ \ \ \ \ std::string\ \mbox{\hyperlink{namespaceicm20948_a4a26038ff1fca8a832393f87ff9ed235}{accel\_dlpf\_config\_to\_str}}(\mbox{\hyperlink{namespaceicm20948_a11320e5ffc65dc1997d850a2747b1857}{accel\_dlpf\_config}}\ config);}
+\DoxyCodeLine{00249\ }
+\DoxyCodeLine{00250\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \mbox{\hyperlink{namespaceicm20948_ab5aff64efdfa42700724773154b88241}{gyro\_scale\_factor}}(\mbox{\hyperlink{namespaceicm20948_ab4ed127a0673926c94b3419379774950}{gyro\_scale}}\ scale);}
+\DoxyCodeLine{00251\ \ \ \ \ std::string\ \mbox{\hyperlink{namespaceicm20948_a7ceffdb0c86d118f1852b4a67c119517}{gyro\_scale\_to\_str}}(\mbox{\hyperlink{namespaceicm20948_ab4ed127a0673926c94b3419379774950}{gyro\_scale}}\ scale);}
+\DoxyCodeLine{00252\ \ \ \ \ std::string\ \mbox{\hyperlink{namespaceicm20948_a37feed00f9178e9a6733f1f0db39e468}{gyro\_dlpf\_config\_to\_str}}(\mbox{\hyperlink{namespaceicm20948_ab21febc613fcda495faedf1fadf8da01}{gyro\_dlpf\_config}}\ config);}
+\DoxyCodeLine{00253\ }
+\DoxyCodeLine{00254\ \ \ \ \ std::string\ \mbox{\hyperlink{namespaceicm20948_a4e2db8332ee3f51602d9032468ec2b34}{magn\_mode\_to\_str}}(\mbox{\hyperlink{namespaceicm20948_a52f2b76d3ebd33c9147b45c09ed3d02c}{magn\_mode}}\ mode);}
+\DoxyCodeLine{00255\ }
+\DoxyCodeLine{00256\ \ \ \ \ \textcolor{comment}{//\ One\ fully\ decoded\ IMU\ sample.}}
+\DoxyCodeLine{00257\ \ \ \ \ \textcolor{comment}{//\ This\ struct\ provides\ a\ clean\ data-\/transfer\ object\ so\ callers\ can\ work}}
+\DoxyCodeLine{00258\ \ \ \ \ \textcolor{comment}{//\ with\ physical\ units\ rather\ than\ raw\ register\ bytes.}}
+\DoxyCodeLine{00259\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structicm20948_1_1IMUSample}{IMUSample}}\ \{}
+\DoxyCodeLine{00260\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{structicm20948_1_1IMUSample_ad3cb9f4c9c9eeb83bb76d9ef0112dc87}{ax}},\ \mbox{\hyperlink{structicm20948_1_1IMUSample_a71ec1129db9d4f5aad6c41230327c166}{ay}},\ \mbox{\hyperlink{structicm20948_1_1IMUSample_aca4849745d2da079b6bc812f87e9505b}{az}};}
+\DoxyCodeLine{00261\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{structicm20948_1_1IMUSample_aa3884284d3103cfbc57688e06cd77b11}{gx}},\ \mbox{\hyperlink{structicm20948_1_1IMUSample_a59fe5ac47d14013cc5d5b1489decd522}{gy}},\ \mbox{\hyperlink{structicm20948_1_1IMUSample_a21d94c3988a702dff347a123cca27d1c}{gz}};}
+\DoxyCodeLine{00262\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{structicm20948_1_1IMUSample_a35596f37451ec0bdebdb80eb9333fa27}{mx}},\ \mbox{\hyperlink{structicm20948_1_1IMUSample_af2aaedc603e12136b17219385ff741d8}{my}},\ \mbox{\hyperlink{structicm20948_1_1IMUSample_a473b1e63c3fbef1d3a784f3e1b65153d}{mz}};}
+\DoxyCodeLine{00263\ \ \ \ \ \};}
+\DoxyCodeLine{00264\ }
+\DoxyCodeLine{00265\ \ \ \ \ \textcolor{comment}{//\ ICM20948\_I2C\ encapsulates\ the\ device\ driver\ for\ the\ IMU\ over\ Linux\ I2C.}}
+\DoxyCodeLine{00266\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00267\ \ \ \ \ \textcolor{comment}{//\ SOLID\ design\ intention:}}
+\DoxyCodeLine{00268\ \ \ \ \ \textcolor{comment}{//\ -\/\ Single\ Responsibility:}}
+\DoxyCodeLine{00269\ \ \ \ \ \textcolor{comment}{//\ \ \ This\ class\ focuses\ on\ IMU\ communication,\ configuration,\ and\ conversion}}
+\DoxyCodeLine{00270\ \ \ \ \ \textcolor{comment}{//\ \ \ of\ raw\ register\ data\ into\ decoded\ sensor\ values.}}
+\DoxyCodeLine{00271\ \ \ \ \ \textcolor{comment}{//\ -\/\ Encapsulation:}}
+\DoxyCodeLine{00272\ \ \ \ \ \textcolor{comment}{//\ \ \ Register\ access,\ bank\ switching,\ and\ magnetometer\ control\ are\ hidden}}
+\DoxyCodeLine{00273\ \ \ \ \ \textcolor{comment}{//\ \ \ behind\ a\ higher-\/level\ public\ API.}}
+\DoxyCodeLine{00274\ \ \ \ \ \textcolor{comment}{//\ -\/\ Open/Closed:}}
+\DoxyCodeLine{00275\ \ \ \ \ \textcolor{comment}{//\ \ \ Client\ code\ interacts\ through\ configuration\ objects\ and\ high-\/level}}
+\DoxyCodeLine{00276\ \ \ \ \ \textcolor{comment}{//\ \ \ methods,\ allowing\ internal\ implementation\ details\ to\ evolve\ without}}
+\DoxyCodeLine{00277\ \ \ \ \ \textcolor{comment}{//\ \ \ forcing\ changes\ on\ users\ of\ the\ class.}}
+\DoxyCodeLine{00278\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00279\ \ \ \ \ \textcolor{comment}{//\ Note:}}
+\DoxyCodeLine{00280\ \ \ \ \ \textcolor{comment}{//\ This\ driver\ necessarily\ owns\ several\ low-\/level\ responsibilities\ because}}
+\DoxyCodeLine{00281\ \ \ \ \ \textcolor{comment}{//\ it\ acts\ as\ the\ hardware\ abstraction\ boundary\ for\ the\ IMU\ device.}}
+\DoxyCodeLine{00282\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classicm20948_1_1ICM20948__I2C}{ICM20948\_I2C}}}
+\DoxyCodeLine{00283\ \ \ \ \ \{}
+\DoxyCodeLine{00284\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00285\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Most\ recent\ decoded\ sensor\ values.}}
+\DoxyCodeLine{00286\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ These\ cached\ arrays\ provide\ direct\ access\ to\ the\ latest\ successful}}
+\DoxyCodeLine{00287\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ reading\ while\ keeping\ raw\ register\ handling\ internal\ to\ the\ class.}}
+\DoxyCodeLine{00288\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_af6e029b6c6a94da5496894c50daedb66}{accel}}[3];}
+\DoxyCodeLine{00289\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_af72f1758c258827bbe3debca41260d9f}{gyro}}[3];}
+\DoxyCodeLine{00290\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_addde200e41d649c72927102e67790105}{magn}}[3];}
+\DoxyCodeLine{00291\ }
+\DoxyCodeLine{00292\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Active\ driver\ settings.}}
+\DoxyCodeLine{00293\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Storing\ settings\ here\ keeps\ configuration\ tied\ to\ the\ device\ instance.}}
+\DoxyCodeLine{00294\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structicm20948_1_1settings}{icm20948::settings}}\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a3eec16c908bc6a52a8d190cfdd66bf55}{settings}};}
+\DoxyCodeLine{00295\ }
+\DoxyCodeLine{00296\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C}{ICM20948\_I2C}}(\textcolor{keywordtype}{unsigned}\ \ \ \ \ \ \ \ \ \ \ i2c\_bus,}
+\DoxyCodeLine{00297\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \ \ \ \ \ \ \ \ \ \ i2c\_address\ =\ \mbox{\hyperlink{Icm20948driver_8hpp_ad2332082f2390f86f6d6ee09acf1e259}{ICM20948\_I2C\_ADDR}},}
+\DoxyCodeLine{00298\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structicm20948_1_1settings}{icm20948::settings}}\ \mbox{\hyperlink{structicm20948_1_1settings}{settings}}\ \ \ \ =\ \mbox{\hyperlink{structicm20948_1_1settings}{icm20948::settings}}());}
+\DoxyCodeLine{00299\ }
+\DoxyCodeLine{00300\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Public\ API\ for\ device\ lifecycle\ and\ sensor\ access.}}
+\DoxyCodeLine{00301\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Higher-\/level\ code\ interacts\ through\ these\ methods\ rather\ than}}
+\DoxyCodeLine{00302\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ directly\ manipulating\ device\ registers.}}
+\DoxyCodeLine{00303\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a0ed48078a426d7d43d93aa8d0bd72b92}{init}}();}
+\DoxyCodeLine{00304\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a9730db34affbddeb85298eaeb9322a6f}{reset}}();}
+\DoxyCodeLine{00305\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a81ba652c5ec59a3e63d9883f8bc45e42}{wake}}();}
+\DoxyCodeLine{00306\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_aac5f1f6373e9e965332b49f0bb2b3382}{set\_settings}}();}
+\DoxyCodeLine{00307\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a02e447e84df4ef2512568139ea28ad07}{read\_accel\_gyro}}();}
+\DoxyCodeLine{00308\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a3114b3923967a235e6011ec8cad01406}{read\_magn}}();}
+\DoxyCodeLine{00309\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a09867a9d1a1103e357407a022627d682}{read\_sample}}(\mbox{\hyperlink{structicm20948_1_1IMUSample}{IMUSample}}\&\ sample);}
+\DoxyCodeLine{00310\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a16f60f1416acbe9d214578467df09d35}{check\_DRDY\_INT}}();}
+\DoxyCodeLine{00311\ }
+\DoxyCodeLine{00312\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00313\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Linux\ I2C\ file\ descriptor\ and\ device\ identity.}}
+\DoxyCodeLine{00314\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ These\ implementation\ details\ are\ kept\ private\ so\ the\ transport\ layer}}
+\DoxyCodeLine{00315\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ remains\ hidden\ from\ the\ rest\ of\ the\ application.}}
+\DoxyCodeLine{00316\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_aa7658b444c44a4a1599f2c00a84446d5}{\_i2c\_fd}};}
+\DoxyCodeLine{00317\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a1943684286702592911d9f5941f805fa}{\_i2c\_bus}};}
+\DoxyCodeLine{00318\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_ab045aab8c66f970c7ece2c2fd1bfb1d4}{\_i2c\_address}};}
+\DoxyCodeLine{00319\ }
+\DoxyCodeLine{00320\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Cached\ register\ bank\ to\ avoid\ redundant\ bank\ switches.}}
+\DoxyCodeLine{00321\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ This\ is\ a\ performance\ and\ consistency\ optimisation\ internal\ to\ the\ driver.}}
+\DoxyCodeLine{00322\ \ \ \ \ \ \ \ \ uint8\_t\ \ \ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_acface40282fbe4f88960faa79c646c99}{\_current\_bank}};}
+\DoxyCodeLine{00323\ }
+\DoxyCodeLine{00324\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Cached\ conversion\ factors\ from\ raw\ counts\ to\ physical\ units.}}
+\DoxyCodeLine{00325\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Keeping\ these\ values\ private\ prevents\ duplication\ of\ conversion\ logic.}}
+\DoxyCodeLine{00326\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a168c976d5e1f22cdd5765f736d65fe86}{\_accel\_scale\_factor}};}
+\DoxyCodeLine{00327\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_aff753b4360cea1f9ead1db118d812110}{\_gyro\_scale\_factor}};}
+\DoxyCodeLine{00328\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_aa8e9f9d91270dd262a36beb5057a1c82}{\_magn\_scale\_factor}};}
+\DoxyCodeLine{00329\ }
+\DoxyCodeLine{00330\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Device\ setup\ helpers.}}
+\DoxyCodeLine{00331\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ These\ methods\ isolate\ configuration\ subtasks,\ which\ keeps\ the\ public}}
+\DoxyCodeLine{00332\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ interface\ small\ and\ the\ implementation\ more\ maintainable.}}
+\DoxyCodeLine{00333\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_ab02bdb1e71acf25a84317238d5f4f43e}{\_enable\_data\_ready\_interrupt}}();}
+\DoxyCodeLine{00334\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a952b59898c4fa68df28e2036ff2ecf8e}{\_set\_bank}}(uint8\_t\ bank);}
+\DoxyCodeLine{00335\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_ab4ffa6090fa0629f6ab6e2d5ab8b27e9}{\_set\_accel\_sample\_rate\_div}}();}
+\DoxyCodeLine{00336\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a31e5480f8ed438bd646dff26de1f722a}{\_set\_accel\_range\_dlpf}}();}
+\DoxyCodeLine{00337\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_aa32a44c04e8306ccd4a6a7a946d4fb9e}{\_set\_gyro\_sample\_rate\_div}}();}
+\DoxyCodeLine{00338\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_aa2de7fd07ec6e0035d6a29aefafba72b}{\_set\_gyro\_range\_dlpf}}();}
+\DoxyCodeLine{00339\ }
+\DoxyCodeLine{00340\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Magnetometer\ setup\ via\ the\ ICM-\/20948\ internal\ I2C\ master.}}
+\DoxyCodeLine{00341\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ This\ complexity\ is\ hidden\ from\ callers\ so\ they\ can\ treat\ the\ driver}}
+\DoxyCodeLine{00342\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ as\ a\ single\ IMU\ abstraction.}}
+\DoxyCodeLine{00343\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a0c7041d0f4e0f1212c303b10995ae650}{\_magnetometer\_init}}();}
+\DoxyCodeLine{00344\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a8cd73ca45a243b28564e3ae216f68b4e}{\_magnetometer\_enable}}();}
+\DoxyCodeLine{00345\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_af001bedd491588bd626e1ebe91dd1d5b}{\_magnetometer\_set\_mode}}();}
+\DoxyCodeLine{00346\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a46c75dfb7570048a3c2c84a0fb68a910}{\_magnetometer\_configured}}();}
+\DoxyCodeLine{00347\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a4b6b016fe3c36d6a9af7d1c735ae210a}{\_magnetometer\_set\_readout}}();}
+\DoxyCodeLine{00348\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a9ccf1216e2b8673a13e7dc3a8c44617f}{\_chip\_i2c\_master\_reset}}();}
+\DoxyCodeLine{00349\ }
+\DoxyCodeLine{00350\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Low-\/level\ register\ access\ helpers.}}
+\DoxyCodeLine{00351\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ These\ centralise\ raw\ byte/bit\ operations\ so\ direct\ register\ handling}}
+\DoxyCodeLine{00352\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ is\ not\ scattered\ across\ the\ driver\ implementation.}}
+\DoxyCodeLine{00353\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a7f56513a51193f95f255d6dcd737cd7a}{\_write\_byte}}(uint8\_t\ bank,\ uint8\_t\ reg,\ uint8\_t\ \textcolor{keywordtype}{byte});}
+\DoxyCodeLine{00354\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_abf0348876f7415429adff95f7e4b6d58}{\_read\_byte}}(uint8\_t\ bank,\ uint8\_t\ reg,\ uint8\_t\&\ \textcolor{keywordtype}{byte});}
+\DoxyCodeLine{00355\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a360065071f02d1488b4a4d919c788103}{\_write\_bit}}(uint8\_t\ bank,\ uint8\_t\ reg,\ uint8\_t\ bit\_pos,\ \textcolor{keywordtype}{bool}\ bit);}
+\DoxyCodeLine{00356\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a5f5f612687be39380ae64bf4b24299d7}{\_read\_bit}}(uint8\_t\ bank,\ uint8\_t\ reg,\ uint8\_t\ bit\_pos,\ \textcolor{keywordtype}{bool}\&\ bit);}
+\DoxyCodeLine{00357\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a3fee40f81a7fa03179ecd97545cdc410}{\_read\_block\_bytes}}(uint8\_t\ bank,\ uint8\_t\ start\_reg,\ uint8\_t*\ bytes,\ \textcolor{keywordtype}{int}\ length);}
+\DoxyCodeLine{00358\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a6d1bce3f2771e690e495769cd6d3c663}{\_write\_mag\_byte}}(uint8\_t\ mag\_reg,\ uint8\_t\ \textcolor{keywordtype}{byte});}
+\DoxyCodeLine{00359\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a7f2f8dbfed2281c99909e65edc4d25b6}{\_read\_mag\_byte}}(uint8\_t\ mag\_reg,\ uint8\_t\&\ \textcolor{keywordtype}{byte});}
+\DoxyCodeLine{00360\ }
+\DoxyCodeLine{00361\ }
+\DoxyCodeLine{00362\ \ \ \ \ \};}
+\DoxyCodeLine{00363\ }
+\DoxyCodeLine{00364\ \}\ \textcolor{comment}{//\ namespace\ icm20948}}
+
+\end{DoxyCode}

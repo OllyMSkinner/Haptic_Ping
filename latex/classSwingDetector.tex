@@ -1,0 +1,144 @@
+\doxysection{Swing\+Detector Class Reference}
+\hypertarget{classSwingDetector}{}\label{classSwingDetector}\index{SwingDetector@{SwingDetector}}
+
+
+{\ttfamily \#include $<$Swing\+Detector.\+hpp$>$}
+
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{classSwingDetector_a169ba1ea8739914fc39b89b1295a1f5c}{Event\+Callback}} = std\+::function$<$ void(const char \texorpdfstring{$\ast$}{*}level)$>$
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classSwingDetector_ab2396ef121d15144dcefb44a002aa9e1}{Swing\+Detector}} ()
+\item 
+void \mbox{\hyperlink{classSwingDetector_a6a1a5a4e35e4102964220965daaa4786}{set\+Callback}} (\mbox{\hyperlink{classSwingDetector_a169ba1ea8739914fc39b89b1295a1f5c}{Event\+Callback}} cb)
+\item 
+void \mbox{\hyperlink{classSwingDetector_acc0cb1cf44d9f1b2d6e0159a01d40e34}{detect}} (float accel\+\_\+mag)
+\item 
+void \mbox{\hyperlink{classSwingDetector_a3f3169178e25fbb03b33a102f793242e}{reset}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Types}
+\begin{DoxyCompactItemize}
+\item 
+enum class \mbox{\hyperlink{classSwingDetector_a367fdb5d3438b354c265c81bfe1c3088}{Level}} \{ \mbox{\hyperlink{classSwingDetector_a367fdb5d3438b354c265c81bfe1c3088ab50339a10e1de285ac99d4c3990b8693}{NONE}}
+, \mbox{\hyperlink{classSwingDetector_a367fdb5d3438b354c265c81bfe1c3088a41bc94cbd8eebea13ce0491b2ac11b88}{LOW}}
+, \mbox{\hyperlink{classSwingDetector_a367fdb5d3438b354c265c81bfe1c3088ac87f3be66ffc3c0d4249f1c2cc5f3cce}{MEDIUM}}
+, \mbox{\hyperlink{classSwingDetector_a367fdb5d3438b354c265c81bfe1c3088ab89de3b4b81c4facfac906edf29aec8c}{HIGH}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classSwingDetector_a367fdb5d3438b354c265c81bfe1c3088}{Level}} \mbox{\hyperlink{classSwingDetector_a06e963a0453c19160e22c3dbc9c408e6}{classify}} (float accel\+\_\+mag)
+\item 
+static const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classSwingDetector_acd5eaec64bd2b3403a2678d7e518ad6b}{label}} (\mbox{\hyperlink{classSwingDetector_a367fdb5d3438b354c265c81bfe1c3088}{Level}} level)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classSwingDetector_a367fdb5d3438b354c265c81bfe1c3088}{Level}} \mbox{\hyperlink{classSwingDetector_a0245e1a6450e285c1407da3c52aea405}{last\+\_\+level\+\_\+}}
+\item 
+\mbox{\hyperlink{classSwingDetector_a169ba1ea8739914fc39b89b1295a1f5c}{Event\+Callback}} \mbox{\hyperlink{classSwingDetector_a093f9d7544a947257dd0a8cba383c666}{callback\+\_\+}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Typedef Documentation}
+\Hypertarget{classSwingDetector_a169ba1ea8739914fc39b89b1295a1f5c}\label{classSwingDetector_a169ba1ea8739914fc39b89b1295a1f5c} 
+\index{SwingDetector@{SwingDetector}!EventCallback@{EventCallback}}
+\index{EventCallback@{EventCallback}!SwingDetector@{SwingDetector}}
+\doxysubsubsection{\texorpdfstring{EventCallback}{EventCallback}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{classSwingDetector_a169ba1ea8739914fc39b89b1295a1f5c}{Swing\+Detector\+::\+Event\+Callback}} =  std\+::function$<$void(const char\texorpdfstring{$\ast$}{*} level)$>$}
+
+
+
+\doxysubsection{Member Enumeration Documentation}
+\Hypertarget{classSwingDetector_a367fdb5d3438b354c265c81bfe1c3088}\label{classSwingDetector_a367fdb5d3438b354c265c81bfe1c3088} 
+\index{SwingDetector@{SwingDetector}!Level@{Level}}
+\index{Level@{Level}!SwingDetector@{SwingDetector}}
+\doxysubsubsection{\texorpdfstring{Level}{Level}}
+{\footnotesize\ttfamily enum class \mbox{\hyperlink{classSwingDetector_a367fdb5d3438b354c265c81bfe1c3088}{Swing\+Detector\+::\+Level}}\hspace{0.3cm}{\ttfamily [strong]}, {\ttfamily [private]}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NONE@{NONE}!SwingDetector@{SwingDetector}}\index{SwingDetector@{SwingDetector}!NONE@{NONE}}}\Hypertarget{classSwingDetector_a367fdb5d3438b354c265c81bfe1c3088ab50339a10e1de285ac99d4c3990b8693}\label{classSwingDetector_a367fdb5d3438b354c265c81bfe1c3088ab50339a10e1de285ac99d4c3990b8693} 
+NONE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LOW@{LOW}!SwingDetector@{SwingDetector}}\index{SwingDetector@{SwingDetector}!LOW@{LOW}}}\Hypertarget{classSwingDetector_a367fdb5d3438b354c265c81bfe1c3088a41bc94cbd8eebea13ce0491b2ac11b88}\label{classSwingDetector_a367fdb5d3438b354c265c81bfe1c3088a41bc94cbd8eebea13ce0491b2ac11b88} 
+LOW&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MEDIUM@{MEDIUM}!SwingDetector@{SwingDetector}}\index{SwingDetector@{SwingDetector}!MEDIUM@{MEDIUM}}}\Hypertarget{classSwingDetector_a367fdb5d3438b354c265c81bfe1c3088ac87f3be66ffc3c0d4249f1c2cc5f3cce}\label{classSwingDetector_a367fdb5d3438b354c265c81bfe1c3088ac87f3be66ffc3c0d4249f1c2cc5f3cce} 
+MEDIUM&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{HIGH@{HIGH}!SwingDetector@{SwingDetector}}\index{SwingDetector@{SwingDetector}!HIGH@{HIGH}}}\Hypertarget{classSwingDetector_a367fdb5d3438b354c265c81bfe1c3088ab89de3b4b81c4facfac906edf29aec8c}\label{classSwingDetector_a367fdb5d3438b354c265c81bfe1c3088ab89de3b4b81c4facfac906edf29aec8c} 
+HIGH&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classSwingDetector_ab2396ef121d15144dcefb44a002aa9e1}\label{classSwingDetector_ab2396ef121d15144dcefb44a002aa9e1} 
+\index{SwingDetector@{SwingDetector}!SwingDetector@{SwingDetector}}
+\index{SwingDetector@{SwingDetector}!SwingDetector@{SwingDetector}}
+\doxysubsubsection{\texorpdfstring{SwingDetector()}{SwingDetector()}}
+{\footnotesize\ttfamily Swing\+Detector\+::\+Swing\+Detector (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classSwingDetector_a06e963a0453c19160e22c3dbc9c408e6}\label{classSwingDetector_a06e963a0453c19160e22c3dbc9c408e6} 
+\index{SwingDetector@{SwingDetector}!classify@{classify}}
+\index{classify@{classify}!SwingDetector@{SwingDetector}}
+\doxysubsubsection{\texorpdfstring{classify()}{classify()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classSwingDetector_a367fdb5d3438b354c265c81bfe1c3088}{Swing\+Detector\+::\+Level}} Swing\+Detector\+::classify (\begin{DoxyParamCaption}\item[{float}]{accel\+\_\+mag }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\Hypertarget{classSwingDetector_acc0cb1cf44d9f1b2d6e0159a01d40e34}\label{classSwingDetector_acc0cb1cf44d9f1b2d6e0159a01d40e34} 
+\index{SwingDetector@{SwingDetector}!detect@{detect}}
+\index{detect@{detect}!SwingDetector@{SwingDetector}}
+\doxysubsubsection{\texorpdfstring{detect()}{detect()}}
+{\footnotesize\ttfamily void Swing\+Detector\+::detect (\begin{DoxyParamCaption}\item[{float}]{accel\+\_\+mag }\end{DoxyParamCaption})}
+
+\Hypertarget{classSwingDetector_acd5eaec64bd2b3403a2678d7e518ad6b}\label{classSwingDetector_acd5eaec64bd2b3403a2678d7e518ad6b} 
+\index{SwingDetector@{SwingDetector}!label@{label}}
+\index{label@{label}!SwingDetector@{SwingDetector}}
+\doxysubsubsection{\texorpdfstring{label()}{label()}}
+{\footnotesize\ttfamily const char \texorpdfstring{$\ast$}{*} Swing\+Detector\+::label (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSwingDetector_a367fdb5d3438b354c265c81bfe1c3088}{Level}}}]{level }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\Hypertarget{classSwingDetector_a3f3169178e25fbb03b33a102f793242e}\label{classSwingDetector_a3f3169178e25fbb03b33a102f793242e} 
+\index{SwingDetector@{SwingDetector}!reset@{reset}}
+\index{reset@{reset}!SwingDetector@{SwingDetector}}
+\doxysubsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily void Swing\+Detector\+::reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{classSwingDetector_a6a1a5a4e35e4102964220965daaa4786}\label{classSwingDetector_a6a1a5a4e35e4102964220965daaa4786} 
+\index{SwingDetector@{SwingDetector}!setCallback@{setCallback}}
+\index{setCallback@{setCallback}!SwingDetector@{SwingDetector}}
+\doxysubsubsection{\texorpdfstring{setCallback()}{setCallback()}}
+{\footnotesize\ttfamily void Swing\+Detector\+::set\+Callback (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSwingDetector_a169ba1ea8739914fc39b89b1295a1f5c}{Event\+Callback}}}]{cb }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classSwingDetector_a093f9d7544a947257dd0a8cba383c666}\label{classSwingDetector_a093f9d7544a947257dd0a8cba383c666} 
+\index{SwingDetector@{SwingDetector}!callback\_@{callback\_}}
+\index{callback\_@{callback\_}!SwingDetector@{SwingDetector}}
+\doxysubsubsection{\texorpdfstring{callback\_}{callback\_}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classSwingDetector_a169ba1ea8739914fc39b89b1295a1f5c}{Event\+Callback}} Swing\+Detector\+::callback\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classSwingDetector_a0245e1a6450e285c1407da3c52aea405}\label{classSwingDetector_a0245e1a6450e285c1407da3c52aea405} 
+\index{SwingDetector@{SwingDetector}!last\_level\_@{last\_level\_}}
+\index{last\_level\_@{last\_level\_}!SwingDetector@{SwingDetector}}
+\doxysubsubsection{\texorpdfstring{last\_level\_}{last\_level\_}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classSwingDetector_a367fdb5d3438b354c265c81bfe1c3088}{Level}} Swing\+Detector\+::last\+\_\+level\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/libs/\+IMU\+\_\+math/\+Include/\mbox{\hyperlink{SwingDetector_8hpp}{Swing\+Detector.\+hpp}}\item 
+src/libs/\+IMU\+\_\+math/\mbox{\hyperlink{SwingDetector_8cpp}{Swing\+Detector.\+cpp}}\end{DoxyCompactItemize}

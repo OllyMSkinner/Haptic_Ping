@@ -1,0 +1,30 @@
+\doxysection{i2c\+\_\+mutex.\+hpp}
+\hypertarget{i2c__mutex_8hpp_source}{}\label{i2c__mutex_8hpp_source}\index{src/libs/IMU/Include/i2c\_mutex.hpp@{src/libs/IMU/Include/i2c\_mutex.hpp}}
+\mbox{\hyperlink{i2c__mutex_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ Shared\ mutex\ protecting\ access\ to\ the\ /dev/i2c-\/1\ bus.}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ SOLID\ principles:}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ \ \ S\ -\/\ This\ helper\ provides\ one\ shared\ synchronisation\ point\ for\ I2C\ bus\ access.}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ \ \ D\ -\/\ Centralising\ the\ bus\ lock\ in\ one\ place\ avoids\ duplicating\ global\ mutex}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ \ \ \ \ \ \ definitions\ across\ multiple\ modules\ and\ makes\ cross-\/thread\ I2C\ ownership}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ \ \ \ \ \ \ easier\ to\ reason\ about.}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <mutex>}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ Shared\ mutex\ for\ the\ I2C-\/1\ bus.}}
+\DoxyCodeLine{00013\ \textcolor{comment}{//\ IMUReader\ (ICM20948)\ and\ ADS1115rpi\ run\ on\ separate\ threads\ and\ both}}
+\DoxyCodeLine{00014\ \textcolor{comment}{//\ access\ /dev/i2c-\/1.\ Without\ this\ lock,\ their\ ioctl(I2C\_SLAVE)\ and}}
+\DoxyCodeLine{00015\ \textcolor{comment}{//\ read/write\ sequences\ can\ interleave,\ causing\ transactions\ to\ target}}
+\DoxyCodeLine{00016\ \textcolor{comment}{//\ the\ wrong\ device\ and\ triggering\ the\ ADC\ retry\ failures\ seen\ in\ logs.}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{inline}\ std::mutex\&\ \mbox{\hyperlink{i2c__mutex_8hpp_a805ab45f56a66c4ded90843783a93b15}{i2c1\_mutex}}()}
+\DoxyCodeLine{00019\ \{}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{comment}{//\ Function-\/local\ static\ storage\ gives\ one\ shared\ mutex\ instance\ for\ the}}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{comment}{//\ whole\ process\ while\ keeping\ the\ global\ namespace\ clean.}}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keyword}{static}\ std::mutex\ m;}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordflow}{return}\ m;}
+\DoxyCodeLine{00024\ \}}
+
+\end{DoxyCode}

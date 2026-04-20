@@ -1,0 +1,235 @@
+\doxysection{Simple\+LEDController Class Reference}
+\hypertarget{classSimpleLEDController}{}\label{classSimpleLEDController}\index{SimpleLEDController@{SimpleLEDController}}
+
+
+This header declares a simple LED controller base class. This is to control the LED associated with the IMU swing position.  
+
+
+
+
+{\ttfamily \#include $<$ledcallback.\+hpp$>$}
+
+
+
+Inheritance diagram for Simple\+LEDController\+:
+% FIG 0
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classSimpleLEDController_aa2f50e659018757ef091bc82fb0f8532}{Simple\+LEDController}} (int pin\+No, int chip\+No=0)
+\begin{DoxyCompactList}\small\item\em Construct the controller with the GPIO pin number and optional chip number. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classSimpleLEDController_acb0b223d05c094f61268ac6a78c09f64}{\texorpdfstring{$\sim$}{\string~}\+Simple\+LEDController}} ()
+\begin{DoxyCompactList}\small\item\em Virtual destructor ensures correct cleanup through the base-\/class interface,. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classSimpleLEDController_a933d9c68e4769be331bf5bd6c8064ce0}{set}} (bool on)
+\begin{DoxyCompactList}\small\item\em Minimal public LED interface\+: callers express intent (on/off) while the. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classSimpleLEDController_a0cae5e551cb10191b7bcfb3eb265b18c}{flash\+Green}} (int)
+\begin{DoxyCompactList}\small\item\em Optional extension point for derived classes that support timed flashing. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classSimpleLEDController_a7bb1839d59cbb6d197b9d8b8b73653d8}{service}} ()
+\begin{DoxyCompactList}\small\item\em Optional extension point for derived classes that need periodic servicing,. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classSimpleLEDController_a16a2cc8c3c64d7fa8ed5a25c1a984b8d}{Simple\+LEDController}} ()=default
+\begin{DoxyCompactList}\small\item\em Protected default constructor allows derived classes controlled access. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classSimpleLEDController_a0f35cdd654d87ca8768f0b6578a2a666}{pin}} = -\/1
+\begin{DoxyCompactList}\small\item\em Internal GPIO configuration state is protected so it is available to. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classSimpleLEDController_a04da236eaee57bee7865528889bd9187}{chip\+Number}} = -\/1
+\item 
+std\+::shared\+\_\+ptr$<$ gpiod\+::chip $>$ \mbox{\hyperlink{classSimpleLEDController_ae5b61a04957b520b67bf97c55d8d32e1}{chip}}
+\begin{DoxyCompactList}\small\item\em Shared ownership is used for the GPIO chip/request resources so that the. \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ gpiod\+::line\+\_\+request $>$ \mbox{\hyperlink{classSimpleLEDController_adc10c786dc6bedf433556217f78cc384}{request}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This header declares a simple LED controller base class. This is to control the LED associated with the IMU swing position. 
+
+Design intention\+:
+
+
+\begin{DoxyItemize}
+\item Single Responsibility\+:
+\end{DoxyItemize}
+
+This class is responsible only for wrapping the basic GPIO-\/backed LED
+
+control mechanism and exposing a small interface for derived LED classes.
+
+
+\begin{DoxyItemize}
+\item Open/\+Closed\+:
+\end{DoxyItemize}
+
+Derived classes can extend behaviour such as flashing or timed service
+
+updates without changing the base class interface.
+
+
+\begin{DoxyItemize}
+\item Liskov Substitution\+:
+\end{DoxyItemize}
+
+Client code can use this base class interface and substitute any derived
+
+LED controller that implements the same contract.
+
+
+\begin{DoxyItemize}
+\item Interface Segregation / Dependency Inversion\+:
+\end{DoxyItemize}
+
+Other parts of the system can depend on this small LED abstraction rather
+
+than on a larger concrete GPIO implementation.
+
+It provides\+:
+
+
+\begin{DoxyItemize}
+\item basic LED control through \doxylink{classSimpleLEDController_a933d9c68e4769be331bf5bd6c8064ce0}{set(bool)},
+\item optional flash/service hooks for derived classes,
+\item storage for the GPIO resources needed to control the LED.
+\end{DoxyItemize}
+
+\doxylink{classSimpleLEDController}{Simple\+LEDController} acts as a narrow abstraction for LED behaviour.
+
+Higher-\/level logic can depend on this interface rather than depending
+
+directly on a concrete GPIO-\/specific LED implementation. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classSimpleLEDController_aa2f50e659018757ef091bc82fb0f8532}\label{classSimpleLEDController_aa2f50e659018757ef091bc82fb0f8532} 
+\index{SimpleLEDController@{SimpleLEDController}!SimpleLEDController@{SimpleLEDController}}
+\index{SimpleLEDController@{SimpleLEDController}!SimpleLEDController@{SimpleLEDController}}
+\doxysubsubsection{\texorpdfstring{SimpleLEDController()}{SimpleLEDController()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Simple\+LEDController\+::\+Simple\+LEDController (\begin{DoxyParamCaption}\item[{int}]{pin\+No,  }\item[{int}]{chip\+No = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+
+
+Construct the controller with the GPIO pin number and optional chip number. 
+
+This file implements the simple LED controller class.
+
+The dependency on the physical GPIO configuration is contained here so that
+
+client code does not need to manage those hardware details itself.
+
+It sets up the GPIO line for LED output, releases the GPIO resources
+
+when finished, and allows the LED state to be switched on or off.
+
+Initialises the LED controller by setting up the GPIO chip, output line, and line request for the selected pin. \Hypertarget{classSimpleLEDController_acb0b223d05c094f61268ac6a78c09f64}\label{classSimpleLEDController_acb0b223d05c094f61268ac6a78c09f64} 
+\index{SimpleLEDController@{SimpleLEDController}!````~SimpleLEDController@{\texorpdfstring{$\sim$}{\string~}SimpleLEDController}}
+\index{````~SimpleLEDController@{\texorpdfstring{$\sim$}{\string~}SimpleLEDController}!SimpleLEDController@{SimpleLEDController}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}SimpleLEDController()}{\string~SimpleLEDController()}}
+{\footnotesize\ttfamily Simple\+LEDController\+::\texorpdfstring{$\sim$}{\string~}\+Simple\+LEDController (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Virtual destructor ensures correct cleanup through the base-\/class interface,. 
+
+Releases the GPIO resources and makes sure the LED is turned off before closing.
+
+supporting safe substitution of derived LED controller types. \Hypertarget{classSimpleLEDController_a16a2cc8c3c64d7fa8ed5a25c1a984b8d}\label{classSimpleLEDController_a16a2cc8c3c64d7fa8ed5a25c1a984b8d} 
+\index{SimpleLEDController@{SimpleLEDController}!SimpleLEDController@{SimpleLEDController}}
+\index{SimpleLEDController@{SimpleLEDController}!SimpleLEDController@{SimpleLEDController}}
+\doxysubsubsection{\texorpdfstring{SimpleLEDController()}{SimpleLEDController()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Simple\+LEDController\+::\+Simple\+LEDController (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [default]}}
+
+
+
+Protected default constructor allows derived classes controlled access. 
+
+without exposing incomplete construction to general client code. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classSimpleLEDController_a0cae5e551cb10191b7bcfb3eb265b18c}\label{classSimpleLEDController_a0cae5e551cb10191b7bcfb3eb265b18c} 
+\index{SimpleLEDController@{SimpleLEDController}!flashGreen@{flashGreen}}
+\index{flashGreen@{flashGreen}!SimpleLEDController@{SimpleLEDController}}
+\doxysubsubsection{\texorpdfstring{flashGreen()}{flashGreen()}}
+{\footnotesize\ttfamily virtual void Simple\+LEDController\+::flash\+Green (\begin{DoxyParamCaption}\item[{int}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Optional extension point for derived classes that support timed flashing. 
+
+Default implementation does nothing so derived classes are not forced to
+
+implement behaviour they do not need. 
+
+Reimplemented in \mbox{\hyperlink{classLEDController_a065f173ff5e3eb0bc8b1a522eb6e41ff}{LEDController}}.
+
+\Hypertarget{classSimpleLEDController_a7bb1839d59cbb6d197b9d8b8b73653d8}\label{classSimpleLEDController_a7bb1839d59cbb6d197b9d8b8b73653d8} 
+\index{SimpleLEDController@{SimpleLEDController}!service@{service}}
+\index{service@{service}!SimpleLEDController@{SimpleLEDController}}
+\doxysubsubsection{\texorpdfstring{service()}{service()}}
+{\footnotesize\ttfamily virtual void Simple\+LEDController\+::service (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Optional extension point for derived classes that need periodic servicing,. 
+
+such as time-\/based LED state updates. 
+
+Reimplemented in \mbox{\hyperlink{classLEDController_aab7eded82824ab4e20b0bbb62bdb79fe}{LEDController}}.
+
+\Hypertarget{classSimpleLEDController_a933d9c68e4769be331bf5bd6c8064ce0}\label{classSimpleLEDController_a933d9c68e4769be331bf5bd6c8064ce0} 
+\index{SimpleLEDController@{SimpleLEDController}!set@{set}}
+\index{set@{set}!SimpleLEDController@{SimpleLEDController}}
+\doxysubsubsection{\texorpdfstring{set()}{set()}}
+{\footnotesize\ttfamily void Simple\+LEDController\+::set (\begin{DoxyParamCaption}\item[{bool}]{on }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Minimal public LED interface\+: callers express intent (on/off) while the. 
+
+Sets the LED output state to on or off.
+
+hardware-\/specific details remain encapsulated inside the implementation. 
+
+Reimplemented in \mbox{\hyperlink{classLEDController_a2fbb1a288f1683547250df3b78d8764a}{LEDController}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classSimpleLEDController_ae5b61a04957b520b67bf97c55d8d32e1}\label{classSimpleLEDController_ae5b61a04957b520b67bf97c55d8d32e1} 
+\index{SimpleLEDController@{SimpleLEDController}!chip@{chip}}
+\index{chip@{chip}!SimpleLEDController@{SimpleLEDController}}
+\doxysubsubsection{\texorpdfstring{chip}{chip}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$gpiod\+::chip$>$ Simple\+LEDController\+::chip\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Shared ownership is used for the GPIO chip/request resources so that the. 
+
+resource lifetime is managed safely without manual memory handling. \Hypertarget{classSimpleLEDController_a04da236eaee57bee7865528889bd9187}\label{classSimpleLEDController_a04da236eaee57bee7865528889bd9187} 
+\index{SimpleLEDController@{SimpleLEDController}!chipNumber@{chipNumber}}
+\index{chipNumber@{chipNumber}!SimpleLEDController@{SimpleLEDController}}
+\doxysubsubsection{\texorpdfstring{chipNumber}{chipNumber}}
+{\footnotesize\ttfamily int Simple\+LEDController\+::chip\+Number = -\/1\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classSimpleLEDController_a0f35cdd654d87ca8768f0b6578a2a666}\label{classSimpleLEDController_a0f35cdd654d87ca8768f0b6578a2a666} 
+\index{SimpleLEDController@{SimpleLEDController}!pin@{pin}}
+\index{pin@{pin}!SimpleLEDController@{SimpleLEDController}}
+\doxysubsubsection{\texorpdfstring{pin}{pin}}
+{\footnotesize\ttfamily int Simple\+LEDController\+::pin = -\/1\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Internal GPIO configuration state is protected so it is available to. 
+
+derived implementations, while still hidden from external users. \Hypertarget{classSimpleLEDController_adc10c786dc6bedf433556217f78cc384}\label{classSimpleLEDController_adc10c786dc6bedf433556217f78cc384} 
+\index{SimpleLEDController@{SimpleLEDController}!request@{request}}
+\index{request@{request}!SimpleLEDController@{SimpleLEDController}}
+\doxysubsubsection{\texorpdfstring{request}{request}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$gpiod\+::line\+\_\+request$>$ Simple\+LEDController\+::request\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/libs/\+LEDs/\+Include/\mbox{\hyperlink{ledcallback_8hpp}{ledcallback.\+hpp}}\item 
+src/libs/\+LEDs/\mbox{\hyperlink{ledcallback_8cpp}{ledcallback.\+cpp}}\end{DoxyCompactItemize}

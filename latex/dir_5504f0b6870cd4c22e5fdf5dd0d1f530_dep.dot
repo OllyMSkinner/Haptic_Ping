@@ -1,0 +1,17 @@
+digraph "src/libs/LEDs"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  compound=true
+  subgraph clusterdir_87a455bccb09a92130c26a11a880c98a {
+    graph [ bgcolor="#edf0f7", pencolor="grey50", label="libs", fontname=Helvetica,fontsize=10 style="filled,dashed", URL="dir_87a455bccb09a92130c26a11a880c98a.html",tooltip=""]
+  subgraph clusterdir_5504f0b6870cd4c22e5fdf5dd0d1f530 {
+    graph [ bgcolor="#edf0f7", pencolor="grey25", label="", fontname=Helvetica,fontsize=10 style="filled,bold", URL="dir_5504f0b6870cd4c22e5fdf5dd0d1f530.html",tooltip=""]
+    dir_5504f0b6870cd4c22e5fdf5dd0d1f530 [shape=plaintext, label="LEDs"];
+  dir_120e439be3ee89fd8647f4f702b79457 [label="Include", fillcolor="#a2b4d6", color="grey25", style="filled", URL="dir_120e439be3ee89fd8647f4f702b79457.html",tooltip=""];
+  }
+  }
+  dir_5504f0b6870cd4c22e5fdf5dd0d1f530->dir_120e439be3ee89fd8647f4f702b79457 [headlabel="2", labeldistance=1.5 headhref="dir_000007_000004.html" href="dir_000007_000004.html" color="steelblue1" fontcolor="steelblue1"];
+}

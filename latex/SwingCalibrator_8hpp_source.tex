@@ -1,0 +1,44 @@
+\doxysection{Swing\+Calibrator.\+hpp}
+\hypertarget{SwingCalibrator_8hpp_source}{}\label{SwingCalibrator_8hpp_source}\index{src/libs/IMU\_math/Include/SwingCalibrator.hpp@{src/libs/IMU\_math/Include/SwingCalibrator.hpp}}
+\mbox{\hyperlink{SwingCalibrator_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <functional>}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classSwingCalibrator}{SwingCalibrator}}\ \{}
+\DoxyCodeLine{00010\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{classSwingCalibrator_a0fca1042381a3eadca5a037139dbd138}{DoneCallback}}\ =\ std::function<void(\textcolor{keywordtype}{float}\ bx,\ \textcolor{keywordtype}{float}\ by,\ \textcolor{keywordtype}{float}\ bz,\ \textcolor{keywordtype}{bool}\ initial)>;}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{classSwingCalibrator}{SwingCalibrator}}(\textcolor{keywordtype}{int}\ initial\_samples\ =\ 200,\ \textcolor{keywordtype}{int}\ recal\_samples\ =\ 50);}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSwingCalibrator_afd6852187a46e5972281b3c74d424ed3}{setCallback}}(\mbox{\hyperlink{classSwingCalibrator_a0fca1042381a3eadca5a037139dbd138}{DoneCallback}}\ cb);}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classSwingCalibrator_a763b2ac04244cc6246a8b011e6727754}{feed}}(\textcolor{keywordtype}{float}\ ax,\ \textcolor{keywordtype}{float}\ ay,\ \textcolor{keywordtype}{float}\ az);}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSwingCalibrator_af3698c7f929fb86fe97e7c8337b6213d}{triggerRecal}}();}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classSwingCalibrator_a84d50a34a58f080273020db7eb5af699}{isReady}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classSwingCalibrator_a9f36426aa293cc3b0478b3f992ee3e64}{biasX}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classSwingCalibrator_aa8ea5ac83ac37dbdff3774710568903b}{bias\_x\_}};\ \}}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classSwingCalibrator_ac27c181bc1d256754daeacb98a3b6b97}{biasY}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classSwingCalibrator_a7427c2b5d5abab9d671a09ab00a8f3ea}{bias\_y\_}};\ \}}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classSwingCalibrator_ad3c989d555515464ffb0d5d3655d3a75}{biasZ}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classSwingCalibrator_a8b5ce7eab9c8fa8e43ab14ff7462e15b}{bias\_z\_}};\ \}}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{classSwingCalibrator_a60655018cdf737f15a57baf3f778d66d}{State}}\ \{\ \mbox{\hyperlink{classSwingCalibrator_a60655018cdf737f15a57baf3f778d66da91d26e4b2b105c74655093c9becd30b7}{INITIAL}},\ \mbox{\hyperlink{classSwingCalibrator_a60655018cdf737f15a57baf3f778d66da2baa69eafc7204f3bd8648eba580c489}{READY}},\ \mbox{\hyperlink{classSwingCalibrator_a60655018cdf737f15a57baf3f778d66da521c8f6b3fc11cf1c89cc03783fc2c25}{RECAL}}\ \};}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \mbox{\hyperlink{classSwingCalibrator_a3cae138c1fd68fdbf67f9959123a2477}{initial\_samples\_}};}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \mbox{\hyperlink{classSwingCalibrator_a4edab87b1d8ccf3eb86aa5e4472ab5c1}{recal\_samples\_}};}
+\DoxyCodeLine{00037\ \ \ \ \ \mbox{\hyperlink{classSwingCalibrator_a60655018cdf737f15a57baf3f778d66d}{State}}\ \mbox{\hyperlink{classSwingCalibrator_ad7f23ef33a2b888fedd541b76e1a6de6}{state\_}};}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \mbox{\hyperlink{classSwingCalibrator_a820cd0cd2692d593d5ce249c79583163}{count\_}};}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classSwingCalibrator_a0a1a91873989c8a019d7e1c0dda3ab14}{sum\_x\_}},\ \mbox{\hyperlink{classSwingCalibrator_adf7a3c10405f60a8922e32516c11470c}{sum\_y\_}},\ \mbox{\hyperlink{classSwingCalibrator_a5b322f512206b6ef57266e8b3cc3d8b2}{sum\_z\_}};}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classSwingCalibrator_aa8ea5ac83ac37dbdff3774710568903b}{bias\_x\_}},\ \mbox{\hyperlink{classSwingCalibrator_a7427c2b5d5abab9d671a09ab00a8f3ea}{bias\_y\_}},\ \mbox{\hyperlink{classSwingCalibrator_a8b5ce7eab9c8fa8e43ab14ff7462e15b}{bias\_z\_}};}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ \mbox{\hyperlink{classSwingCalibrator_a0fca1042381a3eadca5a037139dbd138}{DoneCallback}}\ \mbox{\hyperlink{classSwingCalibrator_af76597aa114ecd2641500e7043a0ea8f}{callback\_}};}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSwingCalibrator_a7965dffc00c681bf30ec0ac24a652f2c}{accumulate}}(\textcolor{keywordtype}{float}\ ax,\ \textcolor{keywordtype}{float}\ ay,\ \textcolor{keywordtype}{float}\ az,\ \textcolor{keywordtype}{int}\ target,\ \textcolor{keywordtype}{bool}\ initial);}
+\DoxyCodeLine{00050\ \};}
+
+\end{DoxyCode}

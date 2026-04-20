@@ -1,0 +1,125 @@
+\doxysection{Piezo\+Event\+Detector Class Reference}
+\hypertarget{classPiezoEventDetector}{}\label{classPiezoEventDetector}\index{PiezoEventDetector@{PiezoEventDetector}}
+
+
+{\ttfamily \#include $<$event\+\_\+detector.\+h$>$}
+
+
+
+Collaboration diagram for Piezo\+Event\+Detector\+:
+% FIG 0
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{classPiezoEventDetector_a6654a5fee70b051fa4a469ed25a53fd1}{Force\+Callback}} = std\+::function$<$ void(bool)$>$
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classPiezoEventDetector_a1f43faa8c3c3dd97b0ac77c650b0eb68}{Piezo\+Event\+Detector}} (\mbox{\hyperlink{classSimpleLEDController}{Simple\+LEDController}} \&led\+Ref, \mbox{\hyperlink{structPiezoEventDetectorSettings}{Piezo\+Event\+Detector\+Settings}} settings)
+\item 
+void \mbox{\hyperlink{classPiezoEventDetector_a6591347b0c88fc41e844d2423aadfebe}{set\+Force\+Callback}} (\mbox{\hyperlink{classPiezoEventDetector_a6654a5fee70b051fa4a469ed25a53fd1}{Force\+Callback}} cb)
+\item 
+void \mbox{\hyperlink{classPiezoEventDetector_add56f49efcc31886e095fa94139d47fc}{process\+Sample}} (float v)
+\item 
+void \mbox{\hyperlink{classPiezoEventDetector_af73f0c9c0bb0b747d62fa338182d7fe8}{reset}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classSimpleLEDController}{Simple\+LEDController}} \& \mbox{\hyperlink{classPiezoEventDetector_ac83a1585f92dc0383f69027a24580b89}{led\+\_\+}}
+\item 
+\mbox{\hyperlink{structPiezoEventDetectorSettings}{Piezo\+Event\+Detector\+Settings}} \mbox{\hyperlink{classPiezoEventDetector_aba0bb473afc51c47b3d26567625d6e0a}{settings\+\_\+}}
+\item 
+\mbox{\hyperlink{classPiezoEventDetector_a6654a5fee70b051fa4a469ed25a53fd1}{Force\+Callback}} \mbox{\hyperlink{classPiezoEventDetector_a60a16063c0cf74b5a18e726cbe1f9c64}{force\+Callback\+\_\+}}
+\item 
+bool \mbox{\hyperlink{classPiezoEventDetector_a36b0a529dda9a6ee5d92a28be400c1f0}{pressed\+\_\+}} = false
+\item 
+bool \mbox{\hyperlink{classPiezoEventDetector_a901691233dfad6c7c0d9e867f71871ec}{filter\+\_\+init\+\_\+}} = false
+\item 
+float \mbox{\hyperlink{classPiezoEventDetector_a47e4ed983ad88f90de6842fe8d15746d}{filtered\+\_\+v\+\_\+}} = 0.\+0f
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Typedef Documentation}
+\Hypertarget{classPiezoEventDetector_a6654a5fee70b051fa4a469ed25a53fd1}\label{classPiezoEventDetector_a6654a5fee70b051fa4a469ed25a53fd1} 
+\index{PiezoEventDetector@{PiezoEventDetector}!ForceCallback@{ForceCallback}}
+\index{ForceCallback@{ForceCallback}!PiezoEventDetector@{PiezoEventDetector}}
+\doxysubsubsection{\texorpdfstring{ForceCallback}{ForceCallback}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{classPiezoEventDetector_a6654a5fee70b051fa4a469ed25a53fd1}{Piezo\+Event\+Detector\+::\+Force\+Callback}} =  std\+::function$<$void(bool)$>$}
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classPiezoEventDetector_a1f43faa8c3c3dd97b0ac77c650b0eb68}\label{classPiezoEventDetector_a1f43faa8c3c3dd97b0ac77c650b0eb68} 
+\index{PiezoEventDetector@{PiezoEventDetector}!PiezoEventDetector@{PiezoEventDetector}}
+\index{PiezoEventDetector@{PiezoEventDetector}!PiezoEventDetector@{PiezoEventDetector}}
+\doxysubsubsection{\texorpdfstring{PiezoEventDetector()}{PiezoEventDetector()}}
+{\footnotesize\ttfamily Piezo\+Event\+Detector\+::\+Piezo\+Event\+Detector (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSimpleLEDController}{Simple\+LEDController}} \&}]{led\+Ref,  }\item[{\mbox{\hyperlink{structPiezoEventDetectorSettings}{Piezo\+Event\+Detector\+Settings}}}]{settings }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classPiezoEventDetector_add56f49efcc31886e095fa94139d47fc}\label{classPiezoEventDetector_add56f49efcc31886e095fa94139d47fc} 
+\index{PiezoEventDetector@{PiezoEventDetector}!processSample@{processSample}}
+\index{processSample@{processSample}!PiezoEventDetector@{PiezoEventDetector}}
+\doxysubsubsection{\texorpdfstring{processSample()}{processSample()}}
+{\footnotesize\ttfamily void Piezo\+Event\+Detector\+::process\+Sample (\begin{DoxyParamCaption}\item[{float}]{v }\end{DoxyParamCaption})}
+
+\Hypertarget{classPiezoEventDetector_af73f0c9c0bb0b747d62fa338182d7fe8}\label{classPiezoEventDetector_af73f0c9c0bb0b747d62fa338182d7fe8} 
+\index{PiezoEventDetector@{PiezoEventDetector}!reset@{reset}}
+\index{reset@{reset}!PiezoEventDetector@{PiezoEventDetector}}
+\doxysubsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily void Piezo\+Event\+Detector\+::reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{classPiezoEventDetector_a6591347b0c88fc41e844d2423aadfebe}\label{classPiezoEventDetector_a6591347b0c88fc41e844d2423aadfebe} 
+\index{PiezoEventDetector@{PiezoEventDetector}!setForceCallback@{setForceCallback}}
+\index{setForceCallback@{setForceCallback}!PiezoEventDetector@{PiezoEventDetector}}
+\doxysubsubsection{\texorpdfstring{setForceCallback()}{setForceCallback()}}
+{\footnotesize\ttfamily void Piezo\+Event\+Detector\+::set\+Force\+Callback (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classPiezoEventDetector_a6654a5fee70b051fa4a469ed25a53fd1}{Force\+Callback}}}]{cb }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classPiezoEventDetector_a901691233dfad6c7c0d9e867f71871ec}\label{classPiezoEventDetector_a901691233dfad6c7c0d9e867f71871ec} 
+\index{PiezoEventDetector@{PiezoEventDetector}!filter\_init\_@{filter\_init\_}}
+\index{filter\_init\_@{filter\_init\_}!PiezoEventDetector@{PiezoEventDetector}}
+\doxysubsubsection{\texorpdfstring{filter\_init\_}{filter\_init\_}}
+{\footnotesize\ttfamily bool Piezo\+Event\+Detector\+::filter\+\_\+init\+\_\+ = false\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classPiezoEventDetector_a47e4ed983ad88f90de6842fe8d15746d}\label{classPiezoEventDetector_a47e4ed983ad88f90de6842fe8d15746d} 
+\index{PiezoEventDetector@{PiezoEventDetector}!filtered\_v\_@{filtered\_v\_}}
+\index{filtered\_v\_@{filtered\_v\_}!PiezoEventDetector@{PiezoEventDetector}}
+\doxysubsubsection{\texorpdfstring{filtered\_v\_}{filtered\_v\_}}
+{\footnotesize\ttfamily float Piezo\+Event\+Detector\+::filtered\+\_\+v\+\_\+ = 0.\+0f\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classPiezoEventDetector_a60a16063c0cf74b5a18e726cbe1f9c64}\label{classPiezoEventDetector_a60a16063c0cf74b5a18e726cbe1f9c64} 
+\index{PiezoEventDetector@{PiezoEventDetector}!forceCallback\_@{forceCallback\_}}
+\index{forceCallback\_@{forceCallback\_}!PiezoEventDetector@{PiezoEventDetector}}
+\doxysubsubsection{\texorpdfstring{forceCallback\_}{forceCallback\_}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classPiezoEventDetector_a6654a5fee70b051fa4a469ed25a53fd1}{Force\+Callback}} Piezo\+Event\+Detector\+::force\+Callback\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classPiezoEventDetector_ac83a1585f92dc0383f69027a24580b89}\label{classPiezoEventDetector_ac83a1585f92dc0383f69027a24580b89} 
+\index{PiezoEventDetector@{PiezoEventDetector}!led\_@{led\_}}
+\index{led\_@{led\_}!PiezoEventDetector@{PiezoEventDetector}}
+\doxysubsubsection{\texorpdfstring{led\_}{led\_}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classSimpleLEDController}{Simple\+LEDController}}\& Piezo\+Event\+Detector\+::led\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classPiezoEventDetector_a36b0a529dda9a6ee5d92a28be400c1f0}\label{classPiezoEventDetector_a36b0a529dda9a6ee5d92a28be400c1f0} 
+\index{PiezoEventDetector@{PiezoEventDetector}!pressed\_@{pressed\_}}
+\index{pressed\_@{pressed\_}!PiezoEventDetector@{PiezoEventDetector}}
+\doxysubsubsection{\texorpdfstring{pressed\_}{pressed\_}}
+{\footnotesize\ttfamily bool Piezo\+Event\+Detector\+::pressed\+\_\+ = false\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classPiezoEventDetector_aba0bb473afc51c47b3d26567625d6e0a}\label{classPiezoEventDetector_aba0bb473afc51c47b3d26567625d6e0a} 
+\index{PiezoEventDetector@{PiezoEventDetector}!settings\_@{settings\_}}
+\index{settings\_@{settings\_}!PiezoEventDetector@{PiezoEventDetector}}
+\doxysubsubsection{\texorpdfstring{settings\_}{settings\_}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structPiezoEventDetectorSettings}{Piezo\+Event\+Detector\+Settings}} Piezo\+Event\+Detector\+::settings\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/libs/\+Piezo/\+Include/\mbox{\hyperlink{event__detector_8h}{event\+\_\+detector.\+h}}\item 
+src/libs/\+Piezo/\mbox{\hyperlink{event__detector_8cpp}{event\+\_\+detector.\+cpp}}\end{DoxyCompactItemize}

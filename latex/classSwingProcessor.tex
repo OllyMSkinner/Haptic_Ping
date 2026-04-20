@@ -1,0 +1,218 @@
+\doxysection{Swing\+Processor Class Reference}
+\hypertarget{classSwingProcessor}{}\label{classSwingProcessor}\index{SwingProcessor@{SwingProcessor}}
+
+
+{\ttfamily \#include $<$Swing\+Processor.\+hpp$>$}
+
+
+
+Inheritance diagram for Swing\+Processor\+:
+% FIG 0
+
+
+Collaboration diagram for Swing\+Processor\+:
+% FIG 1
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{classSwingProcessor_a31d9c6aafec669291604f8e47ce9edfc}{Magnitude\+Callback}} = std\+::function$<$ void(float accel\+\_\+mag)$>$
+\item 
+using \mbox{\hyperlink{classSwingProcessor_acf988060044887b7be3153ab982bc50c}{Position\+State\+Callback}} = std\+::function$<$ void(bool upright)$>$
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Types inherited from \mbox{\hyperlink{classPositionDetector}{Position\+Detector}}}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{classPositionDetector_a6cecc4adffa3f995348529f94c1db498}{State\+Callback}} = std\+::function$<$ void(bool upright)$>$
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classSwingProcessor_a576383fe618a02c0142e7073507deb65}{Swing\+Processor}} (float accel\+\_\+deadband=\mbox{\hyperlink{SwingProcessor_8hpp_ade41390a2c6011a23e8054df5621d231}{ACCEL\+\_\+\+DEADBAND}}, int calib\+\_\+samples=\mbox{\hyperlink{SwingProcessor_8hpp_ac684e3b2eaf7d15239031ca404c88059}{CALIB\+\_\+\+SAMPLES}}, int recal\+\_\+samples=\mbox{\hyperlink{SwingProcessor_8hpp_a244f60b18afb57444be7ad3ba6ec1f5a}{RECAL\+\_\+\+SAMPLES}})
+\item 
+void \mbox{\hyperlink{classSwingProcessor_a84a26a132fa3a5003d2896086e6e6cdf}{set\+Magnitude\+Callback}} (\mbox{\hyperlink{classSwingProcessor_a31d9c6aafec669291604f8e47ce9edfc}{Magnitude\+Callback}} cb)
+\item 
+void \mbox{\hyperlink{classSwingProcessor_a3f8acb3098e0478d10211b3b1923fe87}{set\+Position\+Callback}} (\mbox{\hyperlink{classSwingProcessor_acf988060044887b7be3153ab982bc50c}{Position\+State\+Callback}} cb)
+\item 
+void \mbox{\hyperlink{classSwingProcessor_a4b5d83fac0c5bec9a287f54424da5434}{on\+Force\+Ready}} (bool correct\+Force)
+\item 
+bool \mbox{\hyperlink{classSwingProcessor_a19c8b87ea43e973bf6aa5a55f8789037}{is\+Active}} () const
+\item 
+void \mbox{\hyperlink{classSwingProcessor_a36f8bd0212f937bbb9ef9f50583cb034}{on\+Position\+Ready}} (bool upright)
+\item 
+void \mbox{\hyperlink{classSwingProcessor_aea9cf6f18b80fb71de6eb85e570ccf3e}{reset}} ()
+\item 
+void \mbox{\hyperlink{classSwingProcessor_a8e4fbc5ebea519acf8744fefa8f64baa}{on\+Sample}} (float ax, float ay, float az, float mx, float my) override
+\item 
+void \mbox{\hyperlink{classSwingProcessor_a5fa909917ce884a6f519d1abc22e940a}{operator()}} (float ax, float ay, float az, float gx, float gy, float gz, float mx, float my)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classPositionDetector}{Position\+Detector}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classPositionDetector_a14b40be880ad02568135c29134a62e56}{Position\+Detector}} ()
+\item 
+\mbox{\hyperlink{classPositionDetector_ab0e54c6126a4a687ee54da1488b1a6ca}{Position\+Detector}} (const \mbox{\hyperlink{structPositionDetector_1_1Config}{Config}} \&c)
+\item 
+virtual \mbox{\hyperlink{classPositionDetector_a46e8f76935189768ed661b5aa868490c}{\texorpdfstring{$\sim$}{\string~}\+Position\+Detector}} ()=default
+\item 
+void \mbox{\hyperlink{classPositionDetector_a3ed3cfa3dee1eb220ca7d99849bfd226}{set\+Callback}} (\mbox{\hyperlink{classPositionDetector_a6cecc4adffa3f995348529f94c1db498}{State\+Callback}} cb)
+\item 
+void \mbox{\hyperlink{classPositionDetector_aa1219497239de86b59d8c88f6a60c876}{reset\+State}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+float \mbox{\hyperlink{classSwingProcessor_ac5180a9b337ef6e73f367989d13f1a35}{accel\+\_\+deadband\+\_\+}}
+\item 
+\mbox{\hyperlink{classSwingCalibrator}{Swing\+Calibrator}} \mbox{\hyperlink{classSwingProcessor_aec1740512208f2c203c1b2510f80fa2e}{calibrator\+\_\+}}
+\item 
+\mbox{\hyperlink{classSwingProcessor_a31d9c6aafec669291604f8e47ce9edfc}{Magnitude\+Callback}} \mbox{\hyperlink{classSwingProcessor_a8360c8e9302e099edd84818eff147957}{mag\+\_\+callback\+\_\+}}
+\item 
+\mbox{\hyperlink{classSwingProcessor_acf988060044887b7be3153ab982bc50c}{Position\+State\+Callback}} \mbox{\hyperlink{classSwingProcessor_ae75af54e0ae803c94f5cefb3d272bd28}{pos\+\_\+callback\+\_\+}}
+\item 
+bool \mbox{\hyperlink{classSwingProcessor_a38fca6543939d74d4945e817b11ea69f}{is\+Armed\+\_\+}} = false
+\item 
+bool \mbox{\hyperlink{classSwingProcessor_a3184c4f9d59ac9495d41009694fcb423}{is\+Active\+\_\+}} = false
+\item 
+std\+::chrono\+::steady\+\_\+clock\+::time\+\_\+point \mbox{\hyperlink{classSwingProcessor_aea2a21e4d6b577842d80ba059b0130f4}{reset\+\_\+time\+\_\+}} \{\}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static constexpr int \mbox{\hyperlink{classSwingProcessor_a6715d31c5e6bfa2b927de00ce6b8e181}{COOLDOWN\+\_\+\+MS}} = 500
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Typedef Documentation}
+\Hypertarget{classSwingProcessor_a31d9c6aafec669291604f8e47ce9edfc}\label{classSwingProcessor_a31d9c6aafec669291604f8e47ce9edfc} 
+\index{SwingProcessor@{SwingProcessor}!MagnitudeCallback@{MagnitudeCallback}}
+\index{MagnitudeCallback@{MagnitudeCallback}!SwingProcessor@{SwingProcessor}}
+\doxysubsubsection{\texorpdfstring{MagnitudeCallback}{MagnitudeCallback}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{classSwingProcessor_a31d9c6aafec669291604f8e47ce9edfc}{Swing\+Processor\+::\+Magnitude\+Callback}} =  std\+::function$<$void(float accel\+\_\+mag)$>$}
+
+\Hypertarget{classSwingProcessor_acf988060044887b7be3153ab982bc50c}\label{classSwingProcessor_acf988060044887b7be3153ab982bc50c} 
+\index{SwingProcessor@{SwingProcessor}!PositionStateCallback@{PositionStateCallback}}
+\index{PositionStateCallback@{PositionStateCallback}!SwingProcessor@{SwingProcessor}}
+\doxysubsubsection{\texorpdfstring{PositionStateCallback}{PositionStateCallback}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{classSwingProcessor_acf988060044887b7be3153ab982bc50c}{Swing\+Processor\+::\+Position\+State\+Callback}} =  std\+::function$<$void(bool upright)$>$}
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classSwingProcessor_a576383fe618a02c0142e7073507deb65}\label{classSwingProcessor_a576383fe618a02c0142e7073507deb65} 
+\index{SwingProcessor@{SwingProcessor}!SwingProcessor@{SwingProcessor}}
+\index{SwingProcessor@{SwingProcessor}!SwingProcessor@{SwingProcessor}}
+\doxysubsubsection{\texorpdfstring{SwingProcessor()}{SwingProcessor()}}
+{\footnotesize\ttfamily Swing\+Processor\+::\+Swing\+Processor (\begin{DoxyParamCaption}\item[{float}]{accel\+\_\+deadband = {\ttfamily \mbox{\hyperlink{SwingProcessor_8hpp_ade41390a2c6011a23e8054df5621d231}{ACCEL\+\_\+\+DEADBAND}}},  }\item[{int}]{calib\+\_\+samples = {\ttfamily \mbox{\hyperlink{SwingProcessor_8hpp_ac684e3b2eaf7d15239031ca404c88059}{CALIB\+\_\+\+SAMPLES}}},  }\item[{int}]{recal\+\_\+samples = {\ttfamily \mbox{\hyperlink{SwingProcessor_8hpp_a244f60b18afb57444be7ad3ba6ec1f5a}{RECAL\+\_\+\+SAMPLES}}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classSwingProcessor_a19c8b87ea43e973bf6aa5a55f8789037}\label{classSwingProcessor_a19c8b87ea43e973bf6aa5a55f8789037} 
+\index{SwingProcessor@{SwingProcessor}!isActive@{isActive}}
+\index{isActive@{isActive}!SwingProcessor@{SwingProcessor}}
+\doxysubsubsection{\texorpdfstring{isActive()}{isActive()}}
+{\footnotesize\ttfamily bool Swing\+Processor\+::is\+Active (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classSwingProcessor_a4b5d83fac0c5bec9a287f54424da5434}\label{classSwingProcessor_a4b5d83fac0c5bec9a287f54424da5434} 
+\index{SwingProcessor@{SwingProcessor}!onForceReady@{onForceReady}}
+\index{onForceReady@{onForceReady}!SwingProcessor@{SwingProcessor}}
+\doxysubsubsection{\texorpdfstring{onForceReady()}{onForceReady()}}
+{\footnotesize\ttfamily void Swing\+Processor\+::on\+Force\+Ready (\begin{DoxyParamCaption}\item[{bool}]{correct\+Force }\end{DoxyParamCaption})}
+
+\Hypertarget{classSwingProcessor_a36f8bd0212f937bbb9ef9f50583cb034}\label{classSwingProcessor_a36f8bd0212f937bbb9ef9f50583cb034} 
+\index{SwingProcessor@{SwingProcessor}!onPositionReady@{onPositionReady}}
+\index{onPositionReady@{onPositionReady}!SwingProcessor@{SwingProcessor}}
+\doxysubsubsection{\texorpdfstring{onPositionReady()}{onPositionReady()}}
+{\footnotesize\ttfamily void Swing\+Processor\+::on\+Position\+Ready (\begin{DoxyParamCaption}\item[{bool}]{upright }\end{DoxyParamCaption})}
+
+\Hypertarget{classSwingProcessor_a8e4fbc5ebea519acf8744fefa8f64baa}\label{classSwingProcessor_a8e4fbc5ebea519acf8744fefa8f64baa} 
+\index{SwingProcessor@{SwingProcessor}!onSample@{onSample}}
+\index{onSample@{onSample}!SwingProcessor@{SwingProcessor}}
+\doxysubsubsection{\texorpdfstring{onSample()}{onSample()}}
+{\footnotesize\ttfamily void Swing\+Processor\+::on\+Sample (\begin{DoxyParamCaption}\item[{float}]{ax,  }\item[{float}]{ay,  }\item[{float}]{az,  }\item[{float}]{mx,  }\item[{float}]{my }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classPositionDetector_aff71ff748fddc6e18c1303a0aafc9dcf}{Position\+Detector}}.
+
+\Hypertarget{classSwingProcessor_a5fa909917ce884a6f519d1abc22e940a}\label{classSwingProcessor_a5fa909917ce884a6f519d1abc22e940a} 
+\index{SwingProcessor@{SwingProcessor}!operator()@{operator()}}
+\index{operator()@{operator()}!SwingProcessor@{SwingProcessor}}
+\doxysubsubsection{\texorpdfstring{operator()()}{operator()()}}
+{\footnotesize\ttfamily void Swing\+Processor\+::operator() (\begin{DoxyParamCaption}\item[{float}]{ax,  }\item[{float}]{ay,  }\item[{float}]{az,  }\item[{float}]{gx,  }\item[{float}]{gy,  }\item[{float}]{gz,  }\item[{float}]{mx,  }\item[{float}]{my }\end{DoxyParamCaption})}
+
+\Hypertarget{classSwingProcessor_aea9cf6f18b80fb71de6eb85e570ccf3e}\label{classSwingProcessor_aea9cf6f18b80fb71de6eb85e570ccf3e} 
+\index{SwingProcessor@{SwingProcessor}!reset@{reset}}
+\index{reset@{reset}!SwingProcessor@{SwingProcessor}}
+\doxysubsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily void Swing\+Processor\+::reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{classSwingProcessor_a84a26a132fa3a5003d2896086e6e6cdf}\label{classSwingProcessor_a84a26a132fa3a5003d2896086e6e6cdf} 
+\index{SwingProcessor@{SwingProcessor}!setMagnitudeCallback@{setMagnitudeCallback}}
+\index{setMagnitudeCallback@{setMagnitudeCallback}!SwingProcessor@{SwingProcessor}}
+\doxysubsubsection{\texorpdfstring{setMagnitudeCallback()}{setMagnitudeCallback()}}
+{\footnotesize\ttfamily void Swing\+Processor\+::set\+Magnitude\+Callback (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSwingProcessor_a31d9c6aafec669291604f8e47ce9edfc}{Magnitude\+Callback}}}]{cb }\end{DoxyParamCaption})}
+
+\Hypertarget{classSwingProcessor_a3f8acb3098e0478d10211b3b1923fe87}\label{classSwingProcessor_a3f8acb3098e0478d10211b3b1923fe87} 
+\index{SwingProcessor@{SwingProcessor}!setPositionCallback@{setPositionCallback}}
+\index{setPositionCallback@{setPositionCallback}!SwingProcessor@{SwingProcessor}}
+\doxysubsubsection{\texorpdfstring{setPositionCallback()}{setPositionCallback()}}
+{\footnotesize\ttfamily void Swing\+Processor\+::set\+Position\+Callback (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSwingProcessor_acf988060044887b7be3153ab982bc50c}{Position\+State\+Callback}}}]{cb }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classSwingProcessor_ac5180a9b337ef6e73f367989d13f1a35}\label{classSwingProcessor_ac5180a9b337ef6e73f367989d13f1a35} 
+\index{SwingProcessor@{SwingProcessor}!accel\_deadband\_@{accel\_deadband\_}}
+\index{accel\_deadband\_@{accel\_deadband\_}!SwingProcessor@{SwingProcessor}}
+\doxysubsubsection{\texorpdfstring{accel\_deadband\_}{accel\_deadband\_}}
+{\footnotesize\ttfamily float Swing\+Processor\+::accel\+\_\+deadband\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classSwingProcessor_aec1740512208f2c203c1b2510f80fa2e}\label{classSwingProcessor_aec1740512208f2c203c1b2510f80fa2e} 
+\index{SwingProcessor@{SwingProcessor}!calibrator\_@{calibrator\_}}
+\index{calibrator\_@{calibrator\_}!SwingProcessor@{SwingProcessor}}
+\doxysubsubsection{\texorpdfstring{calibrator\_}{calibrator\_}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classSwingCalibrator}{Swing\+Calibrator}} Swing\+Processor\+::calibrator\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classSwingProcessor_a6715d31c5e6bfa2b927de00ce6b8e181}\label{classSwingProcessor_a6715d31c5e6bfa2b927de00ce6b8e181} 
+\index{SwingProcessor@{SwingProcessor}!COOLDOWN\_MS@{COOLDOWN\_MS}}
+\index{COOLDOWN\_MS@{COOLDOWN\_MS}!SwingProcessor@{SwingProcessor}}
+\doxysubsubsection{\texorpdfstring{COOLDOWN\_MS}{COOLDOWN\_MS}}
+{\footnotesize\ttfamily constexpr int Swing\+Processor\+::\+COOLDOWN\+\_\+\+MS = 500\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [private]}}
+
+\Hypertarget{classSwingProcessor_a3184c4f9d59ac9495d41009694fcb423}\label{classSwingProcessor_a3184c4f9d59ac9495d41009694fcb423} 
+\index{SwingProcessor@{SwingProcessor}!isActive\_@{isActive\_}}
+\index{isActive\_@{isActive\_}!SwingProcessor@{SwingProcessor}}
+\doxysubsubsection{\texorpdfstring{isActive\_}{isActive\_}}
+{\footnotesize\ttfamily bool Swing\+Processor\+::is\+Active\+\_\+ = false\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classSwingProcessor_a38fca6543939d74d4945e817b11ea69f}\label{classSwingProcessor_a38fca6543939d74d4945e817b11ea69f} 
+\index{SwingProcessor@{SwingProcessor}!isArmed\_@{isArmed\_}}
+\index{isArmed\_@{isArmed\_}!SwingProcessor@{SwingProcessor}}
+\doxysubsubsection{\texorpdfstring{isArmed\_}{isArmed\_}}
+{\footnotesize\ttfamily bool Swing\+Processor\+::is\+Armed\+\_\+ = false\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classSwingProcessor_a8360c8e9302e099edd84818eff147957}\label{classSwingProcessor_a8360c8e9302e099edd84818eff147957} 
+\index{SwingProcessor@{SwingProcessor}!mag\_callback\_@{mag\_callback\_}}
+\index{mag\_callback\_@{mag\_callback\_}!SwingProcessor@{SwingProcessor}}
+\doxysubsubsection{\texorpdfstring{mag\_callback\_}{mag\_callback\_}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classSwingProcessor_a31d9c6aafec669291604f8e47ce9edfc}{Magnitude\+Callback}} Swing\+Processor\+::mag\+\_\+callback\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classSwingProcessor_ae75af54e0ae803c94f5cefb3d272bd28}\label{classSwingProcessor_ae75af54e0ae803c94f5cefb3d272bd28} 
+\index{SwingProcessor@{SwingProcessor}!pos\_callback\_@{pos\_callback\_}}
+\index{pos\_callback\_@{pos\_callback\_}!SwingProcessor@{SwingProcessor}}
+\doxysubsubsection{\texorpdfstring{pos\_callback\_}{pos\_callback\_}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classSwingProcessor_acf988060044887b7be3153ab982bc50c}{Position\+State\+Callback}} Swing\+Processor\+::pos\+\_\+callback\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classSwingProcessor_aea2a21e4d6b577842d80ba059b0130f4}\label{classSwingProcessor_aea2a21e4d6b577842d80ba059b0130f4} 
+\index{SwingProcessor@{SwingProcessor}!reset\_time\_@{reset\_time\_}}
+\index{reset\_time\_@{reset\_time\_}!SwingProcessor@{SwingProcessor}}
+\doxysubsubsection{\texorpdfstring{reset\_time\_}{reset\_time\_}}
+{\footnotesize\ttfamily std\+::chrono\+::steady\+\_\+clock\+::time\+\_\+point Swing\+Processor\+::reset\+\_\+time\+\_\+ \{\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/libs/\+IMU\+\_\+math/\+Include/\mbox{\hyperlink{SwingProcessor_8hpp}{Swing\+Processor.\+hpp}}\item 
+src/libs/\+IMU\+\_\+math/\mbox{\hyperlink{SwingProcessor_8cpp}{Swing\+Processor.\+cpp}}\end{DoxyCompactItemize}

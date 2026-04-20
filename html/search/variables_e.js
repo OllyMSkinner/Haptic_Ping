@@ -1,0 +1,21 @@
+var searchData=
+[
+  ['rdy_5fline_5f_0',['rdy_line_',['../classIMUReader.html#a629839d6a645c8b3f8ccaee606974488',1,'IMUReader']]],
+  ['recal_5fsamples_1',['RECAL_SAMPLES',['../SwingProcessor_8hpp.html#a244f60b18afb57444be7ad3ba6ec1f5a',1,'SwingProcessor.hpp']]],
+  ['recal_5fsamples_5f_2',['recal_samples_',['../classSwingCalibrator.html#a4edab87b1d8ccf3eb86aa5e4472ab5c1',1,'SwingCalibrator']]],
+  ['refheadingdeg_3',['refHeadingDeg',['../structPositionDetector_1_1Config.html#afb6e988d2a360f24dc814494cbb4eac3',1,'PositionDetector::Config']]],
+  ['refx_4',['refX',['../structPositionDetector_1_1Config.html#a063553abb0586e69dcdbb6d1128d554d',1,'PositionDetector::Config']]],
+  ['refy_5',['refY',['../structPositionDetector_1_1Config.html#a609d2613543493c696721702a04573b5',1,'PositionDetector::Config']]],
+  ['refz_6',['refZ',['../structPositionDetector_1_1Config.html#aa5aa39c8e4b9a73c99b70a985d01624d',1,'PositionDetector::Config']]],
+  ['reg_5fconfig_7',['reg_config',['../classADS1115rpi.html#a7800b618e5fef37f4d8a8ce1e13a094f',1,'ADS1115rpi']]],
+  ['reg_5fhi_5fthres_8',['reg_hi_thres',['../classADS1115rpi.html#ae3ad38da9ef6d6209cd93bfc2dbefce1',1,'ADS1115rpi']]],
+  ['reg_5flo_5fthres_9',['reg_lo_thres',['../classADS1115rpi.html#ab80533eb7df95e3117857507a3fcdd55',1,'ADS1115rpi']]],
+  ['releasethreshold_10',['releaseThreshold',['../structPiezoEventDetectorSettings.html#a79895b6a55d8aa00c66fefe1c777ceb5',1,'PiezoEventDetectorSettings']]],
+  ['request_11',['request',['../classSimpleLEDController.html#adc10c786dc6bedf433556217f78cc384',1,'SimpleLEDController::request'],['../classADS1115rpi.html#a0be8d6d272e95ae6fcb02d4f1000f68d',1,'ADS1115rpi::request']]],
+  ['request_5f_12',['request_',['../classIMUReader.html#a90da6413c5913a16c4cfec1752f8ec4e',1,'IMUReader::request_'],['../classRPI__PWM.html#a166b5fdc6a68035efb310a930f6b39ec',1,'RPI_PWM::request_']]],
+  ['reset_5fcb_5f_13',['reset_cb_',['../classSwingFeedback.html#abdce37fdb856ee889bc17d7a1b488016',1,'SwingFeedback']]],
+  ['reset_5ftime_5f_14',['reset_time_',['../classSwingProcessor.html#aea2a21e4d6b577842d80ba059b0130f4',1,'SwingProcessor']]],
+  ['retry_5fenabled_5f_15',['retry_enabled_',['../classADS1115rpi.html#a6ecd0d8a5c01b199263021de625fb8f0',1,'ADS1115rpi']]],
+  ['running_16',['running',['../classADS1115rpi.html#a4d52bfdaf8f2695e3fdbc94e385e5be2',1,'ADS1115rpi']]],
+  ['running_5f_17',['running_',['../classIMUReader.html#afc74b0a28841ad9481a55af987222c6c',1,'IMUReader::running_'],['../classRPI__PWM.html#aea441885ff26f125cf06d38655903dcf',1,'RPI_PWM::running_']]]
+];

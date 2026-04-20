@@ -1,0 +1,254 @@
+\doxysection{Swing\+Calibrator Class Reference}
+\hypertarget{classSwingCalibrator}{}\label{classSwingCalibrator}\index{SwingCalibrator@{SwingCalibrator}}
+
+
+{\ttfamily \#include $<$Swing\+Calibrator.\+hpp$>$}
+
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{classSwingCalibrator_a0fca1042381a3eadca5a037139dbd138}{Done\+Callback}} = std\+::function$<$ void(float bx, float by, float bz, bool initial)$>$
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classSwingCalibrator_aeb1e6f5064053a8a615d5cf9cf7984a5}{Swing\+Calibrator}} (int initial\+\_\+samples=200, int recal\+\_\+samples=50)
+\item 
+void \mbox{\hyperlink{classSwingCalibrator_afd6852187a46e5972281b3c74d424ed3}{set\+Callback}} (\mbox{\hyperlink{classSwingCalibrator_a0fca1042381a3eadca5a037139dbd138}{Done\+Callback}} cb)
+\item 
+bool \mbox{\hyperlink{classSwingCalibrator_a763b2ac04244cc6246a8b011e6727754}{feed}} (float ax, float ay, float az)
+\item 
+void \mbox{\hyperlink{classSwingCalibrator_af3698c7f929fb86fe97e7c8337b6213d}{trigger\+Recal}} ()
+\begin{DoxyCompactList}\small\item\em Start a recalibration pass if not already calibrating. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classSwingCalibrator_a84d50a34a58f080273020db7eb5af699}{is\+Ready}} () const
+\item 
+float \mbox{\hyperlink{classSwingCalibrator_a9f36426aa293cc3b0478b3f992ee3e64}{biasX}} () const
+\item 
+float \mbox{\hyperlink{classSwingCalibrator_ac27c181bc1d256754daeacb98a3b6b97}{biasY}} () const
+\item 
+float \mbox{\hyperlink{classSwingCalibrator_ad3c989d555515464ffb0d5d3655d3a75}{biasZ}} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Types}
+\begin{DoxyCompactItemize}
+\item 
+enum class \mbox{\hyperlink{classSwingCalibrator_a60655018cdf737f15a57baf3f778d66d}{State}} \{ \mbox{\hyperlink{classSwingCalibrator_a60655018cdf737f15a57baf3f778d66da91d26e4b2b105c74655093c9becd30b7}{INITIAL}}
+, \mbox{\hyperlink{classSwingCalibrator_a60655018cdf737f15a57baf3f778d66da2baa69eafc7204f3bd8648eba580c489}{READY}}
+, \mbox{\hyperlink{classSwingCalibrator_a60655018cdf737f15a57baf3f778d66da521c8f6b3fc11cf1c89cc03783fc2c25}{RECAL}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classSwingCalibrator_a7965dffc00c681bf30ec0ac24a652f2c}{accumulate}} (float ax, float ay, float az, int target, bool initial)
+\begin{DoxyCompactList}\small\item\em Accumulate one sample and finalise when target samples are reached. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classSwingCalibrator_a3cae138c1fd68fdbf67f9959123a2477}{initial\+\_\+samples\+\_\+}}
+\item 
+int \mbox{\hyperlink{classSwingCalibrator_a4edab87b1d8ccf3eb86aa5e4472ab5c1}{recal\+\_\+samples\+\_\+}}
+\item 
+\mbox{\hyperlink{classSwingCalibrator_a60655018cdf737f15a57baf3f778d66d}{State}} \mbox{\hyperlink{classSwingCalibrator_ad7f23ef33a2b888fedd541b76e1a6de6}{state\+\_\+}}
+\item 
+int \mbox{\hyperlink{classSwingCalibrator_a820cd0cd2692d593d5ce249c79583163}{count\+\_\+}}
+\item 
+float \mbox{\hyperlink{classSwingCalibrator_a0a1a91873989c8a019d7e1c0dda3ab14}{sum\+\_\+x\+\_\+}}
+\begin{DoxyCompactList}\small\item\em Running sums for the current calibration window. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classSwingCalibrator_adf7a3c10405f60a8922e32516c11470c}{sum\+\_\+y\+\_\+}}
+\item 
+float \mbox{\hyperlink{classSwingCalibrator_a5b322f512206b6ef57266e8b3cc3d8b2}{sum\+\_\+z\+\_\+}}
+\item 
+float \mbox{\hyperlink{classSwingCalibrator_aa8ea5ac83ac37dbdff3774710568903b}{bias\+\_\+x\+\_\+}}
+\begin{DoxyCompactList}\small\item\em Latest completed bias estimate. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classSwingCalibrator_a7427c2b5d5abab9d671a09ab00a8f3ea}{bias\+\_\+y\+\_\+}}
+\item 
+float \mbox{\hyperlink{classSwingCalibrator_a8b5ce7eab9c8fa8e43ab14ff7462e15b}{bias\+\_\+z\+\_\+}}
+\item 
+\mbox{\hyperlink{classSwingCalibrator_a0fca1042381a3eadca5a037139dbd138}{Done\+Callback}} \mbox{\hyperlink{classSwingCalibrator_af76597aa114ecd2641500e7043a0ea8f}{callback\+\_\+}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Gravity-\/bias calibrator for the swing detector. Feed IMU samples continuously; while calibrating, \doxylink{classSwingCalibrator_a763b2ac04244cc6246a8b011e6727754}{feed()} returns true. Once ready, bias\+X/\+Y/Z() hold the current bias estimate. \doxylink{classSwingCalibrator_af3698c7f929fb86fe97e7c8337b6213d}{trigger\+Recal()} starts a short recalibration window. 
+
+\doxysubsection{Member Typedef Documentation}
+\Hypertarget{classSwingCalibrator_a0fca1042381a3eadca5a037139dbd138}\label{classSwingCalibrator_a0fca1042381a3eadca5a037139dbd138} 
+\index{SwingCalibrator@{SwingCalibrator}!DoneCallback@{DoneCallback}}
+\index{DoneCallback@{DoneCallback}!SwingCalibrator@{SwingCalibrator}}
+\doxysubsubsection{\texorpdfstring{DoneCallback}{DoneCallback}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{classSwingCalibrator_a0fca1042381a3eadca5a037139dbd138}{Swing\+Calibrator\+::\+Done\+Callback}} =  std\+::function$<$void(float bx, float by, float bz, bool initial)$>$}
+
+Called when a calibration pass completes. initial == true for startup calibration, false for recalibration. 
+
+\doxysubsection{Member Enumeration Documentation}
+\Hypertarget{classSwingCalibrator_a60655018cdf737f15a57baf3f778d66d}\label{classSwingCalibrator_a60655018cdf737f15a57baf3f778d66d} 
+\index{SwingCalibrator@{SwingCalibrator}!State@{State}}
+\index{State@{State}!SwingCalibrator@{SwingCalibrator}}
+\doxysubsubsection{\texorpdfstring{State}{State}}
+{\footnotesize\ttfamily enum class \mbox{\hyperlink{classSwingCalibrator_a60655018cdf737f15a57baf3f778d66d}{Swing\+Calibrator\+::\+State}}\hspace{0.3cm}{\ttfamily [strong]}, {\ttfamily [private]}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{INITIAL@{INITIAL}!SwingCalibrator@{SwingCalibrator}}\index{SwingCalibrator@{SwingCalibrator}!INITIAL@{INITIAL}}}\Hypertarget{classSwingCalibrator_a60655018cdf737f15a57baf3f778d66da91d26e4b2b105c74655093c9becd30b7}\label{classSwingCalibrator_a60655018cdf737f15a57baf3f778d66da91d26e4b2b105c74655093c9becd30b7} 
+INITIAL&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{READY@{READY}!SwingCalibrator@{SwingCalibrator}}\index{SwingCalibrator@{SwingCalibrator}!READY@{READY}}}\Hypertarget{classSwingCalibrator_a60655018cdf737f15a57baf3f778d66da2baa69eafc7204f3bd8648eba580c489}\label{classSwingCalibrator_a60655018cdf737f15a57baf3f778d66da2baa69eafc7204f3bd8648eba580c489} 
+READY&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{RECAL@{RECAL}!SwingCalibrator@{SwingCalibrator}}\index{SwingCalibrator@{SwingCalibrator}!RECAL@{RECAL}}}\Hypertarget{classSwingCalibrator_a60655018cdf737f15a57baf3f778d66da521c8f6b3fc11cf1c89cc03783fc2c25}\label{classSwingCalibrator_a60655018cdf737f15a57baf3f778d66da521c8f6b3fc11cf1c89cc03783fc2c25} 
+RECAL&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classSwingCalibrator_aeb1e6f5064053a8a615d5cf9cf7984a5}\label{classSwingCalibrator_aeb1e6f5064053a8a615d5cf9cf7984a5} 
+\index{SwingCalibrator@{SwingCalibrator}!SwingCalibrator@{SwingCalibrator}}
+\index{SwingCalibrator@{SwingCalibrator}!SwingCalibrator@{SwingCalibrator}}
+\doxysubsubsection{\texorpdfstring{SwingCalibrator()}{SwingCalibrator()}}
+{\footnotesize\ttfamily Swing\+Calibrator\+::\+Swing\+Calibrator (\begin{DoxyParamCaption}\item[{int}]{initial\+\_\+samples = {\ttfamily 200},  }\item[{int}]{recal\+\_\+samples = {\ttfamily 50} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classSwingCalibrator_a7965dffc00c681bf30ec0ac24a652f2c}\label{classSwingCalibrator_a7965dffc00c681bf30ec0ac24a652f2c} 
+\index{SwingCalibrator@{SwingCalibrator}!accumulate@{accumulate}}
+\index{accumulate@{accumulate}!SwingCalibrator@{SwingCalibrator}}
+\doxysubsubsection{\texorpdfstring{accumulate()}{accumulate()}}
+{\footnotesize\ttfamily void Swing\+Calibrator\+::accumulate (\begin{DoxyParamCaption}\item[{float}]{ax,  }\item[{float}]{ay,  }\item[{float}]{az,  }\item[{int}]{target,  }\item[{bool}]{initial }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Accumulate one sample and finalise when target samples are reached. 
+
+\Hypertarget{classSwingCalibrator_a9f36426aa293cc3b0478b3f992ee3e64}\label{classSwingCalibrator_a9f36426aa293cc3b0478b3f992ee3e64} 
+\index{SwingCalibrator@{SwingCalibrator}!biasX@{biasX}}
+\index{biasX@{biasX}!SwingCalibrator@{SwingCalibrator}}
+\doxysubsubsection{\texorpdfstring{biasX()}{biasX()}}
+{\footnotesize\ttfamily float Swing\+Calibrator\+::biasX (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classSwingCalibrator_ac27c181bc1d256754daeacb98a3b6b97}\label{classSwingCalibrator_ac27c181bc1d256754daeacb98a3b6b97} 
+\index{SwingCalibrator@{SwingCalibrator}!biasY@{biasY}}
+\index{biasY@{biasY}!SwingCalibrator@{SwingCalibrator}}
+\doxysubsubsection{\texorpdfstring{biasY()}{biasY()}}
+{\footnotesize\ttfamily float Swing\+Calibrator\+::biasY (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classSwingCalibrator_ad3c989d555515464ffb0d5d3655d3a75}\label{classSwingCalibrator_ad3c989d555515464ffb0d5d3655d3a75} 
+\index{SwingCalibrator@{SwingCalibrator}!biasZ@{biasZ}}
+\index{biasZ@{biasZ}!SwingCalibrator@{SwingCalibrator}}
+\doxysubsubsection{\texorpdfstring{biasZ()}{biasZ()}}
+{\footnotesize\ttfamily float Swing\+Calibrator\+::biasZ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classSwingCalibrator_a763b2ac04244cc6246a8b011e6727754}\label{classSwingCalibrator_a763b2ac04244cc6246a8b011e6727754} 
+\index{SwingCalibrator@{SwingCalibrator}!feed@{feed}}
+\index{feed@{feed}!SwingCalibrator@{SwingCalibrator}}
+\doxysubsubsection{\texorpdfstring{feed()}{feed()}}
+{\footnotesize\ttfamily bool Swing\+Calibrator\+::feed (\begin{DoxyParamCaption}\item[{float}]{ax,  }\item[{float}]{ay,  }\item[{float}]{az }\end{DoxyParamCaption})}
+
+Push one accel sample. Returns true if the sample was consumed for calibration. \Hypertarget{classSwingCalibrator_a84d50a34a58f080273020db7eb5af699}\label{classSwingCalibrator_a84d50a34a58f080273020db7eb5af699} 
+\index{SwingCalibrator@{SwingCalibrator}!isReady@{isReady}}
+\index{isReady@{isReady}!SwingCalibrator@{SwingCalibrator}}
+\doxysubsubsection{\texorpdfstring{isReady()}{isReady()}}
+{\footnotesize\ttfamily bool Swing\+Calibrator\+::is\+Ready (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\Hypertarget{classSwingCalibrator_afd6852187a46e5972281b3c74d424ed3}\label{classSwingCalibrator_afd6852187a46e5972281b3c74d424ed3} 
+\index{SwingCalibrator@{SwingCalibrator}!setCallback@{setCallback}}
+\index{setCallback@{setCallback}!SwingCalibrator@{SwingCalibrator}}
+\doxysubsubsection{\texorpdfstring{setCallback()}{setCallback()}}
+{\footnotesize\ttfamily void Swing\+Calibrator\+::set\+Callback (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSwingCalibrator_a0fca1042381a3eadca5a037139dbd138}{Done\+Callback}}}]{cb }\end{DoxyParamCaption})}
+
+\Hypertarget{classSwingCalibrator_af3698c7f929fb86fe97e7c8337b6213d}\label{classSwingCalibrator_af3698c7f929fb86fe97e7c8337b6213d} 
+\index{SwingCalibrator@{SwingCalibrator}!triggerRecal@{triggerRecal}}
+\index{triggerRecal@{triggerRecal}!SwingCalibrator@{SwingCalibrator}}
+\doxysubsubsection{\texorpdfstring{triggerRecal()}{triggerRecal()}}
+{\footnotesize\ttfamily void Swing\+Calibrator\+::trigger\+Recal (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Start a recalibration pass if not already calibrating. 
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classSwingCalibrator_aa8ea5ac83ac37dbdff3774710568903b}\label{classSwingCalibrator_aa8ea5ac83ac37dbdff3774710568903b} 
+\index{SwingCalibrator@{SwingCalibrator}!bias\_x\_@{bias\_x\_}}
+\index{bias\_x\_@{bias\_x\_}!SwingCalibrator@{SwingCalibrator}}
+\doxysubsubsection{\texorpdfstring{bias\_x\_}{bias\_x\_}}
+{\footnotesize\ttfamily float Swing\+Calibrator\+::bias\+\_\+x\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Latest completed bias estimate. 
+
+\Hypertarget{classSwingCalibrator_a7427c2b5d5abab9d671a09ab00a8f3ea}\label{classSwingCalibrator_a7427c2b5d5abab9d671a09ab00a8f3ea} 
+\index{SwingCalibrator@{SwingCalibrator}!bias\_y\_@{bias\_y\_}}
+\index{bias\_y\_@{bias\_y\_}!SwingCalibrator@{SwingCalibrator}}
+\doxysubsubsection{\texorpdfstring{bias\_y\_}{bias\_y\_}}
+{\footnotesize\ttfamily float Swing\+Calibrator\+::bias\+\_\+y\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classSwingCalibrator_a8b5ce7eab9c8fa8e43ab14ff7462e15b}\label{classSwingCalibrator_a8b5ce7eab9c8fa8e43ab14ff7462e15b} 
+\index{SwingCalibrator@{SwingCalibrator}!bias\_z\_@{bias\_z\_}}
+\index{bias\_z\_@{bias\_z\_}!SwingCalibrator@{SwingCalibrator}}
+\doxysubsubsection{\texorpdfstring{bias\_z\_}{bias\_z\_}}
+{\footnotesize\ttfamily float Swing\+Calibrator\+::bias\+\_\+z\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classSwingCalibrator_af76597aa114ecd2641500e7043a0ea8f}\label{classSwingCalibrator_af76597aa114ecd2641500e7043a0ea8f} 
+\index{SwingCalibrator@{SwingCalibrator}!callback\_@{callback\_}}
+\index{callback\_@{callback\_}!SwingCalibrator@{SwingCalibrator}}
+\doxysubsubsection{\texorpdfstring{callback\_}{callback\_}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classSwingCalibrator_a0fca1042381a3eadca5a037139dbd138}{Done\+Callback}} Swing\+Calibrator\+::callback\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classSwingCalibrator_a820cd0cd2692d593d5ce249c79583163}\label{classSwingCalibrator_a820cd0cd2692d593d5ce249c79583163} 
+\index{SwingCalibrator@{SwingCalibrator}!count\_@{count\_}}
+\index{count\_@{count\_}!SwingCalibrator@{SwingCalibrator}}
+\doxysubsubsection{\texorpdfstring{count\_}{count\_}}
+{\footnotesize\ttfamily int Swing\+Calibrator\+::count\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classSwingCalibrator_a3cae138c1fd68fdbf67f9959123a2477}\label{classSwingCalibrator_a3cae138c1fd68fdbf67f9959123a2477} 
+\index{SwingCalibrator@{SwingCalibrator}!initial\_samples\_@{initial\_samples\_}}
+\index{initial\_samples\_@{initial\_samples\_}!SwingCalibrator@{SwingCalibrator}}
+\doxysubsubsection{\texorpdfstring{initial\_samples\_}{initial\_samples\_}}
+{\footnotesize\ttfamily int Swing\+Calibrator\+::initial\+\_\+samples\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classSwingCalibrator_a4edab87b1d8ccf3eb86aa5e4472ab5c1}\label{classSwingCalibrator_a4edab87b1d8ccf3eb86aa5e4472ab5c1} 
+\index{SwingCalibrator@{SwingCalibrator}!recal\_samples\_@{recal\_samples\_}}
+\index{recal\_samples\_@{recal\_samples\_}!SwingCalibrator@{SwingCalibrator}}
+\doxysubsubsection{\texorpdfstring{recal\_samples\_}{recal\_samples\_}}
+{\footnotesize\ttfamily int Swing\+Calibrator\+::recal\+\_\+samples\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classSwingCalibrator_ad7f23ef33a2b888fedd541b76e1a6de6}\label{classSwingCalibrator_ad7f23ef33a2b888fedd541b76e1a6de6} 
+\index{SwingCalibrator@{SwingCalibrator}!state\_@{state\_}}
+\index{state\_@{state\_}!SwingCalibrator@{SwingCalibrator}}
+\doxysubsubsection{\texorpdfstring{state\_}{state\_}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classSwingCalibrator_a60655018cdf737f15a57baf3f778d66d}{State}} Swing\+Calibrator\+::state\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classSwingCalibrator_a0a1a91873989c8a019d7e1c0dda3ab14}\label{classSwingCalibrator_a0a1a91873989c8a019d7e1c0dda3ab14} 
+\index{SwingCalibrator@{SwingCalibrator}!sum\_x\_@{sum\_x\_}}
+\index{sum\_x\_@{sum\_x\_}!SwingCalibrator@{SwingCalibrator}}
+\doxysubsubsection{\texorpdfstring{sum\_x\_}{sum\_x\_}}
+{\footnotesize\ttfamily float Swing\+Calibrator\+::sum\+\_\+x\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Running sums for the current calibration window. 
+
+\Hypertarget{classSwingCalibrator_adf7a3c10405f60a8922e32516c11470c}\label{classSwingCalibrator_adf7a3c10405f60a8922e32516c11470c} 
+\index{SwingCalibrator@{SwingCalibrator}!sum\_y\_@{sum\_y\_}}
+\index{sum\_y\_@{sum\_y\_}!SwingCalibrator@{SwingCalibrator}}
+\doxysubsubsection{\texorpdfstring{sum\_y\_}{sum\_y\_}}
+{\footnotesize\ttfamily float Swing\+Calibrator\+::sum\+\_\+y\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classSwingCalibrator_a5b322f512206b6ef57266e8b3cc3d8b2}\label{classSwingCalibrator_a5b322f512206b6ef57266e8b3cc3d8b2} 
+\index{SwingCalibrator@{SwingCalibrator}!sum\_z\_@{sum\_z\_}}
+\index{sum\_z\_@{sum\_z\_}!SwingCalibrator@{SwingCalibrator}}
+\doxysubsubsection{\texorpdfstring{sum\_z\_}{sum\_z\_}}
+{\footnotesize\ttfamily float Swing\+Calibrator\+::sum\+\_\+z\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/libs/\+IMU\+\_\+math/\+Include/\mbox{\hyperlink{SwingCalibrator_8hpp}{Swing\+Calibrator.\+hpp}}\item 
+src/libs/\+IMU\+\_\+math/\mbox{\hyperlink{SwingCalibrator_8cpp}{Swing\+Calibrator.\+cpp}}\end{DoxyCompactItemize}

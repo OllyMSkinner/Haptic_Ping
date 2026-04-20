@@ -1,0 +1,349 @@
+\doxysection{icm20948\+::ICM20948\+\_\+\+I2C Class Reference}
+\hypertarget{classicm20948_1_1ICM20948__I2C}{}\label{classicm20948_1_1ICM20948__I2C}\index{icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}}
+
+
+{\ttfamily \#include $<$Icm20948driver.\+hpp$>$}
+
+
+
+Collaboration diagram for icm20948\+::ICM20948\+\_\+\+I2C\+:
+% FIG 0
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a33ea17e32b496ab9358dcef69d8c3b5c}{ICM20948\+\_\+\+I2C}} (unsigned i2c\+\_\+bus, unsigned i2c\+\_\+address=\mbox{\hyperlink{Icm20948driver_8hpp_ad2332082f2390f86f6d6ee09acf1e259}{ICM20948\+\_\+\+I2\+C\+\_\+\+ADDR}}, \mbox{\hyperlink{structicm20948_1_1settings}{icm20948\+::settings}} \mbox{\hyperlink{structicm20948_1_1settings}{settings}}=\mbox{\hyperlink{structicm20948_1_1settings}{icm20948\+::settings}}())
+\item 
+bool \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a0ed48078a426d7d43d93aa8d0bd72b92}{init}} ()
+\item 
+bool \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a9730db34affbddeb85298eaeb9322a6f}{reset}} ()
+\item 
+bool \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a81ba652c5ec59a3e63d9883f8bc45e42}{wake}} ()
+\item 
+bool \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_aac5f1f6373e9e965332b49f0bb2b3382}{set\+\_\+settings}} ()
+\item 
+bool \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a02e447e84df4ef2512568139ea28ad07}{read\+\_\+accel\+\_\+gyro}} ()
+\item 
+bool \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a3114b3923967a235e6011ec8cad01406}{read\+\_\+magn}} ()
+\item 
+bool \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a09867a9d1a1103e357407a022627d682}{read\+\_\+sample}} (\mbox{\hyperlink{structicm20948_1_1IMUSample}{IMUSample}} \&sample)
+\item 
+bool \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a16f60f1416acbe9d214578467df09d35}{check\+\_\+\+DRDY\+\_\+\+INT}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+float \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_af6e029b6c6a94da5496894c50daedb66}{accel}} \mbox{[}3\mbox{]}
+\item 
+float \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_af72f1758c258827bbe3debca41260d9f}{gyro}} \mbox{[}3\mbox{]}
+\item 
+float \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_addde200e41d649c72927102e67790105}{magn}} \mbox{[}3\mbox{]}
+\item 
+\mbox{\hyperlink{structicm20948_1_1settings}{icm20948\+::settings}} \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a3eec16c908bc6a52a8d190cfdd66bf55}{settings}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_ab02bdb1e71acf25a84317238d5f4f43e}{\+\_\+enable\+\_\+data\+\_\+ready\+\_\+interrupt}} ()
+\item 
+bool \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a952b59898c4fa68df28e2036ff2ecf8e}{\+\_\+set\+\_\+bank}} (uint8\+\_\+t bank)
+\item 
+bool \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_ab4ffa6090fa0629f6ab6e2d5ab8b27e9}{\+\_\+set\+\_\+accel\+\_\+sample\+\_\+rate\+\_\+div}} ()
+\item 
+bool \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a31e5480f8ed438bd646dff26de1f722a}{\+\_\+set\+\_\+accel\+\_\+range\+\_\+dlpf}} ()
+\item 
+bool \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_aa32a44c04e8306ccd4a6a7a946d4fb9e}{\+\_\+set\+\_\+gyro\+\_\+sample\+\_\+rate\+\_\+div}} ()
+\item 
+bool \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_aa2de7fd07ec6e0035d6a29aefafba72b}{\+\_\+set\+\_\+gyro\+\_\+range\+\_\+dlpf}} ()
+\item 
+bool \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a0c7041d0f4e0f1212c303b10995ae650}{\+\_\+magnetometer\+\_\+init}} ()
+\item 
+bool \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a8cd73ca45a243b28564e3ae216f68b4e}{\+\_\+magnetometer\+\_\+enable}} ()
+\item 
+bool \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_af001bedd491588bd626e1ebe91dd1d5b}{\+\_\+magnetometer\+\_\+set\+\_\+mode}} ()
+\item 
+bool \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a46c75dfb7570048a3c2c84a0fb68a910}{\+\_\+magnetometer\+\_\+configured}} ()
+\item 
+bool \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a4b6b016fe3c36d6a9af7d1c735ae210a}{\+\_\+magnetometer\+\_\+set\+\_\+readout}} ()
+\item 
+bool \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a9ccf1216e2b8673a13e7dc3a8c44617f}{\+\_\+chip\+\_\+i2c\+\_\+master\+\_\+reset}} ()
+\item 
+bool \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a7f56513a51193f95f255d6dcd737cd7a}{\+\_\+write\+\_\+byte}} (uint8\+\_\+t bank, uint8\+\_\+t reg, uint8\+\_\+t byte)
+\item 
+bool \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_abf0348876f7415429adff95f7e4b6d58}{\+\_\+read\+\_\+byte}} (uint8\+\_\+t bank, uint8\+\_\+t reg, uint8\+\_\+t \&byte)
+\item 
+bool \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a360065071f02d1488b4a4d919c788103}{\+\_\+write\+\_\+bit}} (uint8\+\_\+t bank, uint8\+\_\+t reg, uint8\+\_\+t bit\+\_\+pos, bool bit)
+\item 
+bool \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a5f5f612687be39380ae64bf4b24299d7}{\+\_\+read\+\_\+bit}} (uint8\+\_\+t bank, uint8\+\_\+t reg, uint8\+\_\+t bit\+\_\+pos, bool \&bit)
+\item 
+bool \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a3fee40f81a7fa03179ecd97545cdc410}{\+\_\+read\+\_\+block\+\_\+bytes}} (uint8\+\_\+t bank, uint8\+\_\+t start\+\_\+reg, uint8\+\_\+t \texorpdfstring{$\ast$}{*}bytes, int length)
+\item 
+bool \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a6d1bce3f2771e690e495769cd6d3c663}{\+\_\+write\+\_\+mag\+\_\+byte}} (uint8\+\_\+t mag\+\_\+reg, uint8\+\_\+t byte)
+\item 
+bool \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a7f2f8dbfed2281c99909e65edc4d25b6}{\+\_\+read\+\_\+mag\+\_\+byte}} (uint8\+\_\+t mag\+\_\+reg, uint8\+\_\+t \&byte)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_aa7658b444c44a4a1599f2c00a84446d5}{\+\_\+i2c\+\_\+fd}}
+\item 
+unsigned \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a1943684286702592911d9f5941f805fa}{\+\_\+i2c\+\_\+bus}}
+\item 
+unsigned \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_ab045aab8c66f970c7ece2c2fd1bfb1d4}{\+\_\+i2c\+\_\+address}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_acface40282fbe4f88960faa79c646c99}{\+\_\+current\+\_\+bank}}
+\item 
+float \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a168c976d5e1f22cdd5765f736d65fe86}{\+\_\+accel\+\_\+scale\+\_\+factor}}
+\item 
+float \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_aff753b4360cea1f9ead1db118d812110}{\+\_\+gyro\+\_\+scale\+\_\+factor}}
+\item 
+float \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_aa8e9f9d91270dd262a36beb5057a1c82}{\+\_\+magn\+\_\+scale\+\_\+factor}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classicm20948_1_1ICM20948__I2C_a33ea17e32b496ab9358dcef69d8c3b5c}\label{classicm20948_1_1ICM20948__I2C_a33ea17e32b496ab9358dcef69d8c3b5c} 
+\index{icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}!ICM20948\_I2C@{ICM20948\_I2C}}
+\index{ICM20948\_I2C@{ICM20948\_I2C}!icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}}
+\doxysubsubsection{\texorpdfstring{ICM20948\_I2C()}{ICM20948\_I2C()}}
+{\footnotesize\ttfamily icm20948\+::\+ICM20948\+\_\+\+I2\+C\+::\+ICM20948\+\_\+\+I2C (\begin{DoxyParamCaption}\item[{unsigned}]{i2c\+\_\+bus,  }\item[{unsigned}]{i2c\+\_\+address = {\ttfamily \mbox{\hyperlink{Icm20948driver_8hpp_ad2332082f2390f86f6d6ee09acf1e259}{ICM20948\+\_\+\+I2\+C\+\_\+\+ADDR}}},  }\item[{\mbox{\hyperlink{structicm20948_1_1settings}{icm20948\+::settings}}}]{settings = {\ttfamily \mbox{\hyperlink{structicm20948_1_1settings}{icm20948\+::settings}}()} }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classicm20948_1_1ICM20948__I2C_a9ccf1216e2b8673a13e7dc3a8c44617f}\label{classicm20948_1_1ICM20948__I2C_a9ccf1216e2b8673a13e7dc3a8c44617f} 
+\index{icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}!\_chip\_i2c\_master\_reset@{\_chip\_i2c\_master\_reset}}
+\index{\_chip\_i2c\_master\_reset@{\_chip\_i2c\_master\_reset}!icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}}
+\doxysubsubsection{\texorpdfstring{\_chip\_i2c\_master\_reset()}{\_chip\_i2c\_master\_reset()}}
+{\footnotesize\ttfamily bool icm20948\+::\+ICM20948\+\_\+\+I2\+C\+::\+\_\+chip\+\_\+i2c\+\_\+master\+\_\+reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classicm20948_1_1ICM20948__I2C_ab02bdb1e71acf25a84317238d5f4f43e}\label{classicm20948_1_1ICM20948__I2C_ab02bdb1e71acf25a84317238d5f4f43e} 
+\index{icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}!\_enable\_data\_ready\_interrupt@{\_enable\_data\_ready\_interrupt}}
+\index{\_enable\_data\_ready\_interrupt@{\_enable\_data\_ready\_interrupt}!icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}}
+\doxysubsubsection{\texorpdfstring{\_enable\_data\_ready\_interrupt()}{\_enable\_data\_ready\_interrupt()}}
+{\footnotesize\ttfamily bool icm20948\+::\+ICM20948\+\_\+\+I2\+C\+::\+\_\+enable\+\_\+data\+\_\+ready\+\_\+interrupt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classicm20948_1_1ICM20948__I2C_a46c75dfb7570048a3c2c84a0fb68a910}\label{classicm20948_1_1ICM20948__I2C_a46c75dfb7570048a3c2c84a0fb68a910} 
+\index{icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}!\_magnetometer\_configured@{\_magnetometer\_configured}}
+\index{\_magnetometer\_configured@{\_magnetometer\_configured}!icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}}
+\doxysubsubsection{\texorpdfstring{\_magnetometer\_configured()}{\_magnetometer\_configured()}}
+{\footnotesize\ttfamily bool icm20948\+::\+ICM20948\+\_\+\+I2\+C\+::\+\_\+magnetometer\+\_\+configured (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classicm20948_1_1ICM20948__I2C_a8cd73ca45a243b28564e3ae216f68b4e}\label{classicm20948_1_1ICM20948__I2C_a8cd73ca45a243b28564e3ae216f68b4e} 
+\index{icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}!\_magnetometer\_enable@{\_magnetometer\_enable}}
+\index{\_magnetometer\_enable@{\_magnetometer\_enable}!icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}}
+\doxysubsubsection{\texorpdfstring{\_magnetometer\_enable()}{\_magnetometer\_enable()}}
+{\footnotesize\ttfamily bool icm20948\+::\+ICM20948\+\_\+\+I2\+C\+::\+\_\+magnetometer\+\_\+enable (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classicm20948_1_1ICM20948__I2C_a0c7041d0f4e0f1212c303b10995ae650}\label{classicm20948_1_1ICM20948__I2C_a0c7041d0f4e0f1212c303b10995ae650} 
+\index{icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}!\_magnetometer\_init@{\_magnetometer\_init}}
+\index{\_magnetometer\_init@{\_magnetometer\_init}!icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}}
+\doxysubsubsection{\texorpdfstring{\_magnetometer\_init()}{\_magnetometer\_init()}}
+{\footnotesize\ttfamily bool icm20948\+::\+ICM20948\+\_\+\+I2\+C\+::\+\_\+magnetometer\+\_\+init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classicm20948_1_1ICM20948__I2C_af001bedd491588bd626e1ebe91dd1d5b}\label{classicm20948_1_1ICM20948__I2C_af001bedd491588bd626e1ebe91dd1d5b} 
+\index{icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}!\_magnetometer\_set\_mode@{\_magnetometer\_set\_mode}}
+\index{\_magnetometer\_set\_mode@{\_magnetometer\_set\_mode}!icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}}
+\doxysubsubsection{\texorpdfstring{\_magnetometer\_set\_mode()}{\_magnetometer\_set\_mode()}}
+{\footnotesize\ttfamily bool icm20948\+::\+ICM20948\+\_\+\+I2\+C\+::\+\_\+magnetometer\+\_\+set\+\_\+mode (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classicm20948_1_1ICM20948__I2C_a4b6b016fe3c36d6a9af7d1c735ae210a}\label{classicm20948_1_1ICM20948__I2C_a4b6b016fe3c36d6a9af7d1c735ae210a} 
+\index{icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}!\_magnetometer\_set\_readout@{\_magnetometer\_set\_readout}}
+\index{\_magnetometer\_set\_readout@{\_magnetometer\_set\_readout}!icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}}
+\doxysubsubsection{\texorpdfstring{\_magnetometer\_set\_readout()}{\_magnetometer\_set\_readout()}}
+{\footnotesize\ttfamily bool icm20948\+::\+ICM20948\+\_\+\+I2\+C\+::\+\_\+magnetometer\+\_\+set\+\_\+readout (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classicm20948_1_1ICM20948__I2C_a5f5f612687be39380ae64bf4b24299d7}\label{classicm20948_1_1ICM20948__I2C_a5f5f612687be39380ae64bf4b24299d7} 
+\index{icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}!\_read\_bit@{\_read\_bit}}
+\index{\_read\_bit@{\_read\_bit}!icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}}
+\doxysubsubsection{\texorpdfstring{\_read\_bit()}{\_read\_bit()}}
+{\footnotesize\ttfamily bool icm20948\+::\+ICM20948\+\_\+\+I2\+C\+::\+\_\+read\+\_\+bit (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{bank,  }\item[{uint8\+\_\+t}]{reg,  }\item[{uint8\+\_\+t}]{bit\+\_\+pos,  }\item[{bool \&}]{bit }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classicm20948_1_1ICM20948__I2C_a3fee40f81a7fa03179ecd97545cdc410}\label{classicm20948_1_1ICM20948__I2C_a3fee40f81a7fa03179ecd97545cdc410} 
+\index{icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}!\_read\_block\_bytes@{\_read\_block\_bytes}}
+\index{\_read\_block\_bytes@{\_read\_block\_bytes}!icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}}
+\doxysubsubsection{\texorpdfstring{\_read\_block\_bytes()}{\_read\_block\_bytes()}}
+{\footnotesize\ttfamily bool icm20948\+::\+ICM20948\+\_\+\+I2\+C\+::\+\_\+read\+\_\+block\+\_\+bytes (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{bank,  }\item[{uint8\+\_\+t}]{start\+\_\+reg,  }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{bytes,  }\item[{int}]{length }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classicm20948_1_1ICM20948__I2C_abf0348876f7415429adff95f7e4b6d58}\label{classicm20948_1_1ICM20948__I2C_abf0348876f7415429adff95f7e4b6d58} 
+\index{icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}!\_read\_byte@{\_read\_byte}}
+\index{\_read\_byte@{\_read\_byte}!icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}}
+\doxysubsubsection{\texorpdfstring{\_read\_byte()}{\_read\_byte()}}
+{\footnotesize\ttfamily bool icm20948\+::\+ICM20948\+\_\+\+I2\+C\+::\+\_\+read\+\_\+byte (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{bank,  }\item[{uint8\+\_\+t}]{reg,  }\item[{uint8\+\_\+t \&}]{byte }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classicm20948_1_1ICM20948__I2C_a7f2f8dbfed2281c99909e65edc4d25b6}\label{classicm20948_1_1ICM20948__I2C_a7f2f8dbfed2281c99909e65edc4d25b6} 
+\index{icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}!\_read\_mag\_byte@{\_read\_mag\_byte}}
+\index{\_read\_mag\_byte@{\_read\_mag\_byte}!icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}}
+\doxysubsubsection{\texorpdfstring{\_read\_mag\_byte()}{\_read\_mag\_byte()}}
+{\footnotesize\ttfamily bool icm20948\+::\+ICM20948\+\_\+\+I2\+C\+::\+\_\+read\+\_\+mag\+\_\+byte (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{mag\+\_\+reg,  }\item[{uint8\+\_\+t \&}]{byte }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classicm20948_1_1ICM20948__I2C_a31e5480f8ed438bd646dff26de1f722a}\label{classicm20948_1_1ICM20948__I2C_a31e5480f8ed438bd646dff26de1f722a} 
+\index{icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}!\_set\_accel\_range\_dlpf@{\_set\_accel\_range\_dlpf}}
+\index{\_set\_accel\_range\_dlpf@{\_set\_accel\_range\_dlpf}!icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}}
+\doxysubsubsection{\texorpdfstring{\_set\_accel\_range\_dlpf()}{\_set\_accel\_range\_dlpf()}}
+{\footnotesize\ttfamily bool icm20948\+::\+ICM20948\+\_\+\+I2\+C\+::\+\_\+set\+\_\+accel\+\_\+range\+\_\+dlpf (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classicm20948_1_1ICM20948__I2C_ab4ffa6090fa0629f6ab6e2d5ab8b27e9}\label{classicm20948_1_1ICM20948__I2C_ab4ffa6090fa0629f6ab6e2d5ab8b27e9} 
+\index{icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}!\_set\_accel\_sample\_rate\_div@{\_set\_accel\_sample\_rate\_div}}
+\index{\_set\_accel\_sample\_rate\_div@{\_set\_accel\_sample\_rate\_div}!icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}}
+\doxysubsubsection{\texorpdfstring{\_set\_accel\_sample\_rate\_div()}{\_set\_accel\_sample\_rate\_div()}}
+{\footnotesize\ttfamily bool icm20948\+::\+ICM20948\+\_\+\+I2\+C\+::\+\_\+set\+\_\+accel\+\_\+sample\+\_\+rate\+\_\+div (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classicm20948_1_1ICM20948__I2C_a952b59898c4fa68df28e2036ff2ecf8e}\label{classicm20948_1_1ICM20948__I2C_a952b59898c4fa68df28e2036ff2ecf8e} 
+\index{icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}!\_set\_bank@{\_set\_bank}}
+\index{\_set\_bank@{\_set\_bank}!icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}}
+\doxysubsubsection{\texorpdfstring{\_set\_bank()}{\_set\_bank()}}
+{\footnotesize\ttfamily bool icm20948\+::\+ICM20948\+\_\+\+I2\+C\+::\+\_\+set\+\_\+bank (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{bank }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classicm20948_1_1ICM20948__I2C_aa2de7fd07ec6e0035d6a29aefafba72b}\label{classicm20948_1_1ICM20948__I2C_aa2de7fd07ec6e0035d6a29aefafba72b} 
+\index{icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}!\_set\_gyro\_range\_dlpf@{\_set\_gyro\_range\_dlpf}}
+\index{\_set\_gyro\_range\_dlpf@{\_set\_gyro\_range\_dlpf}!icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}}
+\doxysubsubsection{\texorpdfstring{\_set\_gyro\_range\_dlpf()}{\_set\_gyro\_range\_dlpf()}}
+{\footnotesize\ttfamily bool icm20948\+::\+ICM20948\+\_\+\+I2\+C\+::\+\_\+set\+\_\+gyro\+\_\+range\+\_\+dlpf (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classicm20948_1_1ICM20948__I2C_aa32a44c04e8306ccd4a6a7a946d4fb9e}\label{classicm20948_1_1ICM20948__I2C_aa32a44c04e8306ccd4a6a7a946d4fb9e} 
+\index{icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}!\_set\_gyro\_sample\_rate\_div@{\_set\_gyro\_sample\_rate\_div}}
+\index{\_set\_gyro\_sample\_rate\_div@{\_set\_gyro\_sample\_rate\_div}!icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}}
+\doxysubsubsection{\texorpdfstring{\_set\_gyro\_sample\_rate\_div()}{\_set\_gyro\_sample\_rate\_div()}}
+{\footnotesize\ttfamily bool icm20948\+::\+ICM20948\+\_\+\+I2\+C\+::\+\_\+set\+\_\+gyro\+\_\+sample\+\_\+rate\+\_\+div (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classicm20948_1_1ICM20948__I2C_a360065071f02d1488b4a4d919c788103}\label{classicm20948_1_1ICM20948__I2C_a360065071f02d1488b4a4d919c788103} 
+\index{icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}!\_write\_bit@{\_write\_bit}}
+\index{\_write\_bit@{\_write\_bit}!icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}}
+\doxysubsubsection{\texorpdfstring{\_write\_bit()}{\_write\_bit()}}
+{\footnotesize\ttfamily bool icm20948\+::\+ICM20948\+\_\+\+I2\+C\+::\+\_\+write\+\_\+bit (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{bank,  }\item[{uint8\+\_\+t}]{reg,  }\item[{uint8\+\_\+t}]{bit\+\_\+pos,  }\item[{bool}]{bit }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classicm20948_1_1ICM20948__I2C_a7f56513a51193f95f255d6dcd737cd7a}\label{classicm20948_1_1ICM20948__I2C_a7f56513a51193f95f255d6dcd737cd7a} 
+\index{icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}!\_write\_byte@{\_write\_byte}}
+\index{\_write\_byte@{\_write\_byte}!icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}}
+\doxysubsubsection{\texorpdfstring{\_write\_byte()}{\_write\_byte()}}
+{\footnotesize\ttfamily bool icm20948\+::\+ICM20948\+\_\+\+I2\+C\+::\+\_\+write\+\_\+byte (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{bank,  }\item[{uint8\+\_\+t}]{reg,  }\item[{uint8\+\_\+t}]{byte }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classicm20948_1_1ICM20948__I2C_a6d1bce3f2771e690e495769cd6d3c663}\label{classicm20948_1_1ICM20948__I2C_a6d1bce3f2771e690e495769cd6d3c663} 
+\index{icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}!\_write\_mag\_byte@{\_write\_mag\_byte}}
+\index{\_write\_mag\_byte@{\_write\_mag\_byte}!icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}}
+\doxysubsubsection{\texorpdfstring{\_write\_mag\_byte()}{\_write\_mag\_byte()}}
+{\footnotesize\ttfamily bool icm20948\+::\+ICM20948\+\_\+\+I2\+C\+::\+\_\+write\+\_\+mag\+\_\+byte (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{mag\+\_\+reg,  }\item[{uint8\+\_\+t}]{byte }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classicm20948_1_1ICM20948__I2C_a16f60f1416acbe9d214578467df09d35}\label{classicm20948_1_1ICM20948__I2C_a16f60f1416acbe9d214578467df09d35} 
+\index{icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}!check\_DRDY\_INT@{check\_DRDY\_INT}}
+\index{check\_DRDY\_INT@{check\_DRDY\_INT}!icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}}
+\doxysubsubsection{\texorpdfstring{check\_DRDY\_INT()}{check\_DRDY\_INT()}}
+{\footnotesize\ttfamily bool icm20948\+::\+ICM20948\+\_\+\+I2\+C\+::check\+\_\+\+DRDY\+\_\+\+INT (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{classicm20948_1_1ICM20948__I2C_a0ed48078a426d7d43d93aa8d0bd72b92}\label{classicm20948_1_1ICM20948__I2C_a0ed48078a426d7d43d93aa8d0bd72b92} 
+\index{icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}!init@{init}}
+\index{init@{init}!icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}}
+\doxysubsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily bool icm20948\+::\+ICM20948\+\_\+\+I2\+C\+::init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{classicm20948_1_1ICM20948__I2C_a02e447e84df4ef2512568139ea28ad07}\label{classicm20948_1_1ICM20948__I2C_a02e447e84df4ef2512568139ea28ad07} 
+\index{icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}!read\_accel\_gyro@{read\_accel\_gyro}}
+\index{read\_accel\_gyro@{read\_accel\_gyro}!icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}}
+\doxysubsubsection{\texorpdfstring{read\_accel\_gyro()}{read\_accel\_gyro()}}
+{\footnotesize\ttfamily bool icm20948\+::\+ICM20948\+\_\+\+I2\+C\+::read\+\_\+accel\+\_\+gyro (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{classicm20948_1_1ICM20948__I2C_a3114b3923967a235e6011ec8cad01406}\label{classicm20948_1_1ICM20948__I2C_a3114b3923967a235e6011ec8cad01406} 
+\index{icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}!read\_magn@{read\_magn}}
+\index{read\_magn@{read\_magn}!icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}}
+\doxysubsubsection{\texorpdfstring{read\_magn()}{read\_magn()}}
+{\footnotesize\ttfamily bool icm20948\+::\+ICM20948\+\_\+\+I2\+C\+::read\+\_\+magn (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{classicm20948_1_1ICM20948__I2C_a09867a9d1a1103e357407a022627d682}\label{classicm20948_1_1ICM20948__I2C_a09867a9d1a1103e357407a022627d682} 
+\index{icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}!read\_sample@{read\_sample}}
+\index{read\_sample@{read\_sample}!icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}}
+\doxysubsubsection{\texorpdfstring{read\_sample()}{read\_sample()}}
+{\footnotesize\ttfamily bool icm20948\+::\+ICM20948\+\_\+\+I2\+C\+::read\+\_\+sample (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structicm20948_1_1IMUSample}{IMUSample}} \&}]{sample }\end{DoxyParamCaption})}
+
+\Hypertarget{classicm20948_1_1ICM20948__I2C_a9730db34affbddeb85298eaeb9322a6f}\label{classicm20948_1_1ICM20948__I2C_a9730db34affbddeb85298eaeb9322a6f} 
+\index{icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}!reset@{reset}}
+\index{reset@{reset}!icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}}
+\doxysubsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily bool icm20948\+::\+ICM20948\+\_\+\+I2\+C\+::reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{classicm20948_1_1ICM20948__I2C_aac5f1f6373e9e965332b49f0bb2b3382}\label{classicm20948_1_1ICM20948__I2C_aac5f1f6373e9e965332b49f0bb2b3382} 
+\index{icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}!set\_settings@{set\_settings}}
+\index{set\_settings@{set\_settings}!icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}}
+\doxysubsubsection{\texorpdfstring{set\_settings()}{set\_settings()}}
+{\footnotesize\ttfamily bool icm20948\+::\+ICM20948\+\_\+\+I2\+C\+::set\+\_\+settings (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{classicm20948_1_1ICM20948__I2C_a81ba652c5ec59a3e63d9883f8bc45e42}\label{classicm20948_1_1ICM20948__I2C_a81ba652c5ec59a3e63d9883f8bc45e42} 
+\index{icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}!wake@{wake}}
+\index{wake@{wake}!icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}}
+\doxysubsubsection{\texorpdfstring{wake()}{wake()}}
+{\footnotesize\ttfamily bool icm20948\+::\+ICM20948\+\_\+\+I2\+C\+::wake (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classicm20948_1_1ICM20948__I2C_a168c976d5e1f22cdd5765f736d65fe86}\label{classicm20948_1_1ICM20948__I2C_a168c976d5e1f22cdd5765f736d65fe86} 
+\index{icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}!\_accel\_scale\_factor@{\_accel\_scale\_factor}}
+\index{\_accel\_scale\_factor@{\_accel\_scale\_factor}!icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}}
+\doxysubsubsection{\texorpdfstring{\_accel\_scale\_factor}{\_accel\_scale\_factor}}
+{\footnotesize\ttfamily float icm20948\+::\+ICM20948\+\_\+\+I2\+C\+::\+\_\+accel\+\_\+scale\+\_\+factor\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classicm20948_1_1ICM20948__I2C_acface40282fbe4f88960faa79c646c99}\label{classicm20948_1_1ICM20948__I2C_acface40282fbe4f88960faa79c646c99} 
+\index{icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}!\_current\_bank@{\_current\_bank}}
+\index{\_current\_bank@{\_current\_bank}!icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}}
+\doxysubsubsection{\texorpdfstring{\_current\_bank}{\_current\_bank}}
+{\footnotesize\ttfamily uint8\+\_\+t icm20948\+::\+ICM20948\+\_\+\+I2\+C\+::\+\_\+current\+\_\+bank\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classicm20948_1_1ICM20948__I2C_aff753b4360cea1f9ead1db118d812110}\label{classicm20948_1_1ICM20948__I2C_aff753b4360cea1f9ead1db118d812110} 
+\index{icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}!\_gyro\_scale\_factor@{\_gyro\_scale\_factor}}
+\index{\_gyro\_scale\_factor@{\_gyro\_scale\_factor}!icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}}
+\doxysubsubsection{\texorpdfstring{\_gyro\_scale\_factor}{\_gyro\_scale\_factor}}
+{\footnotesize\ttfamily float icm20948\+::\+ICM20948\+\_\+\+I2\+C\+::\+\_\+gyro\+\_\+scale\+\_\+factor\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classicm20948_1_1ICM20948__I2C_ab045aab8c66f970c7ece2c2fd1bfb1d4}\label{classicm20948_1_1ICM20948__I2C_ab045aab8c66f970c7ece2c2fd1bfb1d4} 
+\index{icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}!\_i2c\_address@{\_i2c\_address}}
+\index{\_i2c\_address@{\_i2c\_address}!icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}}
+\doxysubsubsection{\texorpdfstring{\_i2c\_address}{\_i2c\_address}}
+{\footnotesize\ttfamily unsigned icm20948\+::\+ICM20948\+\_\+\+I2\+C\+::\+\_\+i2c\+\_\+address\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classicm20948_1_1ICM20948__I2C_a1943684286702592911d9f5941f805fa}\label{classicm20948_1_1ICM20948__I2C_a1943684286702592911d9f5941f805fa} 
+\index{icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}!\_i2c\_bus@{\_i2c\_bus}}
+\index{\_i2c\_bus@{\_i2c\_bus}!icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}}
+\doxysubsubsection{\texorpdfstring{\_i2c\_bus}{\_i2c\_bus}}
+{\footnotesize\ttfamily unsigned icm20948\+::\+ICM20948\+\_\+\+I2\+C\+::\+\_\+i2c\+\_\+bus\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classicm20948_1_1ICM20948__I2C_aa7658b444c44a4a1599f2c00a84446d5}\label{classicm20948_1_1ICM20948__I2C_aa7658b444c44a4a1599f2c00a84446d5} 
+\index{icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}!\_i2c\_fd@{\_i2c\_fd}}
+\index{\_i2c\_fd@{\_i2c\_fd}!icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}}
+\doxysubsubsection{\texorpdfstring{\_i2c\_fd}{\_i2c\_fd}}
+{\footnotesize\ttfamily int icm20948\+::\+ICM20948\+\_\+\+I2\+C\+::\+\_\+i2c\+\_\+fd\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classicm20948_1_1ICM20948__I2C_aa8e9f9d91270dd262a36beb5057a1c82}\label{classicm20948_1_1ICM20948__I2C_aa8e9f9d91270dd262a36beb5057a1c82} 
+\index{icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}!\_magn\_scale\_factor@{\_magn\_scale\_factor}}
+\index{\_magn\_scale\_factor@{\_magn\_scale\_factor}!icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}}
+\doxysubsubsection{\texorpdfstring{\_magn\_scale\_factor}{\_magn\_scale\_factor}}
+{\footnotesize\ttfamily float icm20948\+::\+ICM20948\+\_\+\+I2\+C\+::\+\_\+magn\+\_\+scale\+\_\+factor\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classicm20948_1_1ICM20948__I2C_af6e029b6c6a94da5496894c50daedb66}\label{classicm20948_1_1ICM20948__I2C_af6e029b6c6a94da5496894c50daedb66} 
+\index{icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}!accel@{accel}}
+\index{accel@{accel}!icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}}
+\doxysubsubsection{\texorpdfstring{accel}{accel}}
+{\footnotesize\ttfamily float icm20948\+::\+ICM20948\+\_\+\+I2\+C\+::accel\mbox{[}3\mbox{]}}
+
+\Hypertarget{classicm20948_1_1ICM20948__I2C_af72f1758c258827bbe3debca41260d9f}\label{classicm20948_1_1ICM20948__I2C_af72f1758c258827bbe3debca41260d9f} 
+\index{icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}!gyro@{gyro}}
+\index{gyro@{gyro}!icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}}
+\doxysubsubsection{\texorpdfstring{gyro}{gyro}}
+{\footnotesize\ttfamily float icm20948\+::\+ICM20948\+\_\+\+I2\+C\+::gyro\mbox{[}3\mbox{]}}
+
+\Hypertarget{classicm20948_1_1ICM20948__I2C_addde200e41d649c72927102e67790105}\label{classicm20948_1_1ICM20948__I2C_addde200e41d649c72927102e67790105} 
+\index{icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}!magn@{magn}}
+\index{magn@{magn}!icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}}
+\doxysubsubsection{\texorpdfstring{magn}{magn}}
+{\footnotesize\ttfamily float icm20948\+::\+ICM20948\+\_\+\+I2\+C\+::magn\mbox{[}3\mbox{]}}
+
+\Hypertarget{classicm20948_1_1ICM20948__I2C_a3eec16c908bc6a52a8d190cfdd66bf55}\label{classicm20948_1_1ICM20948__I2C_a3eec16c908bc6a52a8d190cfdd66bf55} 
+\index{icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}!settings@{settings}}
+\index{settings@{settings}!icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}}
+\doxysubsubsection{\texorpdfstring{settings}{settings}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structicm20948_1_1settings}{icm20948\+::settings}} icm20948\+::\+ICM20948\+\_\+\+I2\+C\+::settings}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/libs/\+IMU/\+Include/\mbox{\hyperlink{Icm20948driver_8hpp}{Icm20948driver.\+hpp}}\item 
+src/libs/\+IMU/\mbox{\hyperlink{Icm20948driver_8cpp}{Icm20948driver.\+cpp}}\end{DoxyCompactItemize}

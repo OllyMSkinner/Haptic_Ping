@@ -1,0 +1,45 @@
+\doxysection{Swing\+Detector.\+hpp}
+\hypertarget{SwingDetector_8hpp_source}{}\label{SwingDetector_8hpp_source}\index{src/libs/IMU\_math/Include/SwingDetector.hpp@{src/libs/IMU\_math/Include/SwingDetector.hpp}}
+\mbox{\hyperlink{SwingDetector_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <functional>}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ Maps\ linear\ acceleration\ magnitude\ to\ duty-\/cycle\ bands.}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ Only\ emits\ when\ the\ band\ changes.}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ a\ >=\ 25\ →\ "{}Highest\ Duty\ Cycle"{}\ }}
+\DoxyCodeLine{00008\ \textcolor{comment}{//\ 15\ <=\ a\ <\ 25\ →\ "{}Medium\ Duty\ Cycle"{}\ }}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ 5\ <=\ a\ <\ 15\ →\ "{}Low\ Duty\ Cycle"{}\ }}
+\DoxyCodeLine{00010\ \textcolor{comment}{//\ a\ <\ 5\ →\ "{}No\ Duty\ Cycle"{}}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classSwingDetector}{SwingDetector}}\ \{}
+\DoxyCodeLine{00013\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{classSwingDetector_a169ba1ea8739914fc39b89b1295a1f5c}{EventCallback}}\ =\ std::function<void(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ level)>;}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \ \ \ \ \mbox{\hyperlink{classSwingDetector_ab2396ef121d15144dcefb44a002aa9e1}{SwingDetector}}();}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSwingDetector_a6a1a5a4e35e4102964220965daaa4786}{setCallback}}(\mbox{\hyperlink{classSwingDetector_a169ba1ea8739914fc39b89b1295a1f5c}{EventCallback}}\ cb);}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{comment}{//\ Process\ one\ accel-\/magnitude\ sample\ and\ emit\ on\ band\ change.}}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSwingDetector_acc0cb1cf44d9f1b2d6e0159a01d40e34}{detect}}(\textcolor{keywordtype}{float}\ accel\_mag);}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{comment}{//\ Clear\ cached\ state\ so\ the\ next\ detect()\ emits\ unconditionally.}}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSwingDetector_a3f3169178e25fbb03b33a102f793242e}{reset}}();}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{classSwingDetector_a367fdb5d3438b354c265c81bfe1c3088}{Level}}\ \{\ \mbox{\hyperlink{classSwingDetector_a367fdb5d3438b354c265c81bfe1c3088ab50339a10e1de285ac99d4c3990b8693}{NONE}},\ \mbox{\hyperlink{classSwingDetector_a367fdb5d3438b354c265c81bfe1c3088a41bc94cbd8eebea13ce0491b2ac11b88}{LOW}},\ \mbox{\hyperlink{classSwingDetector_a367fdb5d3438b354c265c81bfe1c3088ac87f3be66ffc3c0d4249f1c2cc5f3cce}{MEDIUM}},\ \mbox{\hyperlink{classSwingDetector_a367fdb5d3438b354c265c81bfe1c3088ab89de3b4b81c4facfac906edf29aec8c}{HIGH}}\ \};}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{comment}{//\ Convert\ accel\ magnitude\ to\ a\ duty-\/cycle\ band.}}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{classSwingDetector_a367fdb5d3438b354c265c81bfe1c3088}{Level}}\ \mbox{\hyperlink{classSwingDetector_a06e963a0453c19160e22c3dbc9c408e6}{classify}}(\textcolor{keywordtype}{float}\ accel\_mag);}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{comment}{//\ Convert\ enum\ value\ to\ callback\ label.}}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{classSwingDetector_acd5eaec64bd2b3403a2678d7e518ad6b}{label}}(\mbox{\hyperlink{classSwingDetector_a367fdb5d3438b354c265c81bfe1c3088}{Level}}\ level);}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{comment}{//\ Last\ emitted\ band.}}
+\DoxyCodeLine{00036\ \ \ \ \ \mbox{\hyperlink{classSwingDetector_a367fdb5d3438b354c265c81bfe1c3088}{Level}}\ \mbox{\hyperlink{classSwingDetector_a0245e1a6450e285c1407da3c52aea405}{last\_level\_}};}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ \mbox{\hyperlink{classSwingDetector_a169ba1ea8739914fc39b89b1295a1f5c}{EventCallback}}\ \mbox{\hyperlink{classSwingDetector_a093f9d7544a947257dd0a8cba383c666}{callback\_}};}
+\DoxyCodeLine{00039\ \};}
+
+\end{DoxyCode}

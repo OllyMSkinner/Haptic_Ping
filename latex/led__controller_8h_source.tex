@@ -1,0 +1,43 @@
+\doxysection{led\+\_\+controller.\+h}
+\hypertarget{led__controller_8h_source}{}\label{led__controller_8h_source}\index{src/libs/LEDs/Include/led\_controller.h@{src/libs/LEDs/Include/led\_controller.h}}
+\mbox{\hyperlink{led__controller_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#ifndef\ LED\_CONTROLLER\_H}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#define\ LED\_CONTROLLER\_H}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{ledcallback_8hpp}{ledcallback.hpp}}"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <chrono>}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structLEDControllerSettings}{LEDControllerSettings}}\ \{}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structLEDControllerSettings_a9b6a1da94acce6eec37f463166cdb960}{chipNumber}}\ =\ 0;}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structLEDControllerSettings_a77a084da535c51c1f7f41314827cc53e}{greenGpio}}\ \ =\ 25;}
+\DoxyCodeLine{00017\ \};}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classLEDController}{LEDController}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classSimpleLEDController}{SimpleLEDController}}}
+\DoxyCodeLine{00021\ \{}
+\DoxyCodeLine{00022\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00023\ \ \ \ \ \mbox{\hyperlink{classLEDController}{LEDController}}(\mbox{\hyperlink{structLEDControllerSettings}{LEDControllerSettings}}\ settings\ =\ \mbox{\hyperlink{structLEDControllerSettings}{LEDControllerSettings}}());}
+\DoxyCodeLine{00024\ \ \ \ \ \mbox{\hyperlink{classLEDController_ac4763e67d6e696e3e69c2021254bbd83}{\string~LEDController}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classLEDController_a2fbb1a288f1683547250df3b78d8764a}{set}}(\textcolor{keywordtype}{bool}\ on)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classLEDController_a19674d8734865535f5efebeeb4528bce}{greenOn}}();}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classLEDController_a13e1c7caee208561ea711dacdc84b377}{greenOff}}();}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classLEDController_aaab45b457b062931b7ee577ec50dc920}{allOff}}();}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classLEDController_a065f173ff5e3eb0bc8b1a522eb6e41ff}{flashGreen}}(\textcolor{keywordtype}{int}\ flashMs);}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classLEDController_aab7eded82824ab4e20b0bbb62bdb79fe}{service}}();}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classLEDController_a492af50f2143ff79038372f78adfb629}{updateOutputs}}();}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classLEDController_a0e95e380f42fa8ce3b7c7a16ce12c6e6}{greenActive\_}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00040\ \ \ \ \ std::chrono::steady\_clock::time\_point\ \mbox{\hyperlink{classLEDController_a982192a2523e4d6d64520163e9a7db58}{greenOffTime\_}}\{\};}
+\DoxyCodeLine{00041\ \};}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}
