@@ -21,6 +21,8 @@
 
 
 ## Hardware Assembly
+images/bat with piezo image.jpeg
+images/ads1115 front view.jpeg
 
 
 ## Acknowledgements 
