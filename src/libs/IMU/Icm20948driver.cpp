@@ -21,7 +21,7 @@
 
 namespace icm20948
 {
-  // Convert accel range enum to raw-count scale factor.
+  /// Convert accel range enum to raw-count scale factor.
     float accel_scale_factor(accel_scale scale)
     {
         switch (scale) {
@@ -45,7 +45,7 @@ namespace icm20948
             default:        return "<invalid accelerometer scale>";
         }
     }
-    // Stringify accel DLPF enum.
+    /// Stringify accel DLPF enum.
     std::string accel_dlpf_config_to_str(accel_dlpf_config config)
     {
         switch (config) {
@@ -60,7 +60,7 @@ namespace icm20948
             default:                 return "<invalid accelerometer DLPF config>";
         }
     }
- // Convert gyro range enum to raw-count scale factor.
+ /// Convert gyro range enum to raw-count scale factor.
     float gyro_scale_factor(gyro_scale scale)
     {
         switch (scale) {
@@ -73,7 +73,7 @@ namespace icm20948
                     "Invalid argument in gyro_scale_factor(): " + std::to_string(scale));
         }
     }
-  // Stringify gyro range enum.
+  /// Stringify gyro range enum.
     std::string gyro_scale_to_str(gyro_scale scale)
     {
         switch (scale) {
@@ -84,7 +84,7 @@ namespace icm20948
             default:           return "<invalid gyroscope scale>";
         }
     }
-  // Stringify gyro DLPF enum.
+  /// Stringify gyro DLPF enum.
     std::string gyro_dlpf_config_to_str(gyro_dlpf_config config)
     {
         switch (config) {
@@ -99,7 +99,7 @@ namespace icm20948
             default:                return "<invalid gyroscope DLPF config>";
         }
     }
-// Stringify magnetometer mode enum.
+/// Stringify magnetometer mode enum.
     std::string magn_mode_to_str(magn_mode mode)
     {
         switch (mode) {
@@ -113,7 +113,7 @@ namespace icm20948
             default:             return "<invalid magnetometer mode>";
         }
     }
-    // Parse driver settings from YAML.
+    /// Parse driver settings from YAML.
     settings::settings(YAML::Node node)
     {
         for (auto it = node.begin(); it != node.end(); ++it) {
@@ -154,11 +154,11 @@ namespace icm20948
                     }
                 }
             }
-            // Magnetometer YAML config intentionally ignored for stability testing.
+            /// Magnetometer YAML config intentionally ignored for stability testing.
         }
     }
 
-    // Open the I2C device and initialise cached driver state.
+    /// Open the I2C device and initialise cached driver state.
     ICM20948_I2C::ICM20948_I2C(unsigned i2c_bus,
                                unsigned i2c_address,
                                icm20948::settings settings)
@@ -179,7 +179,7 @@ namespace icm20948
             throw std::runtime_error(std::string("ICM20948: cannot open ") + bus_path +
                                      ": " + std::strerror(errno));
         }
-   // Set a kernel-side I2C timeout.
+   /// Set a kernel-side I2C timeout.
         ::ioctl(_i2c_fd, I2C_TIMEOUT, 20);
         
         // Bind this fd to the IMU slave address.
@@ -209,7 +209,7 @@ namespace icm20948
         uint8_t device_id = 0;
         bool success = true;
 
- // Basic bring-up: identify device, reset, wake, configure, enable DRDY.
+ /// Basic bring-up: identify device, reset, wake, configure, enable DRDY.
         success &= _set_bank(0);
         success &= _read_byte(ICM20948_WHO_AM_I_BANK, ICM20948_WHO_AM_I_ADDR, device_id);
         success &= (device_id == ICM20948_BANK0_WHO_AM_I_VALUE);
@@ -233,14 +233,14 @@ namespace icm20948
 
     bool ICM20948_I2C::reset()
     {
-          // Trigger device reset via PWR_MGMT_1.
+          /// Trigger device reset via PWR_MGMT_1.
         bool success = _write_bit(ICM20948_PWR_MGMT_1_BANK,
                                   ICM20948_PWR_MGMT_1_ADDR, 7, true);
         std::this_thread::sleep_for(std::chrono::milliseconds(5));
 
         if (success) {
             bool still_resetting = true;
-             // Poll until the reset bit clears.
+             /// Poll until the reset bit clears.
             while (still_resetting && success) {
                 std::this_thread::sleep_for(std::chrono::milliseconds(25));
                 success &= _read_bit(ICM20948_PWR_MGMT_1_BANK,
@@ -254,7 +254,7 @@ namespace icm20948
 
     bool ICM20948_I2C::wake()
     {
-          // Clear sleep bit.
+          /// Clear sleep bit.
         bool success = _write_bit(ICM20948_PWR_MGMT_1_BANK,
                                   ICM20948_PWR_MGMT_1_ADDR, 6, false);
         std::this_thread::sleep_for(std::chrono::milliseconds(5));
@@ -263,7 +263,7 @@ namespace icm20948
 
     bool ICM20948_I2C::set_settings()
     {
-        // Push cached accel/gyro settings to the device.
+        /// Push cached accel/gyro settings to the device.
         bool success = true;
         success &= _set_accel_sample_rate_div();
         success &= _set_accel_range_dlpf();
@@ -274,7 +274,7 @@ namespace icm20948
 
     bool ICM20948_I2C::_enable_data_ready_interrupt()
     {
-        // Enable raw-data-ready interrupt.
+        /// Enable raw-data-ready interrupt.
         return _write_byte(ICM20948_INT_ENABLE_1_BANK,
                            ICM20948_INT_ENABLE_1_ADDR, 0x01);
     }
@@ -282,7 +282,7 @@ namespace icm20948
     bool ICM20948_I2C::read_accel_gyro()
     {
         uint8_t buf[12] = {};
-        // Read accel and gyro output block in one transaction.
+        /// Read accel and gyro output block in one transaction.
         if (!_read_block_bytes(ICM20948_ACCEL_OUT_BANK,
                                ICM20948_ACCEL_XOUT_H_ADDR, buf, 12)) {
             return false;
@@ -295,7 +295,7 @@ namespace icm20948
         const int16_t gyro_y_raw  = static_cast<int16_t>((buf[8] << 8) | buf[9]);
         const int16_t gyro_z_raw  = static_cast<int16_t>((buf[10] << 8) | buf[11]);
 
-        // Convert raw counts to SI units.
+        /// Convert raw counts to SI units.
         accel[0] = static_cast<float>(accel_x_raw) * _accel_scale_factor * G2MSQR;
         accel[1] = static_cast<float>(accel_y_raw) * _accel_scale_factor * G2MSQR;
         accel[2] = static_cast<float>(accel_z_raw) * _accel_scale_factor * G2MSQR;
@@ -310,7 +310,7 @@ namespace icm20948
     bool ICM20948_I2C::read_magn()
     {
         uint8_t buf[6] = {};
-        // Read magnetometer data staged through the IMU external-sensor window.
+        /// Read magnetometer data staged through the IMU external-sensor window.
         if (!_read_block_bytes(ICM20948_EXT_SLV_SENS_DATA_00_BANK,
                                ICM20948_EXT_SLV_SENS_DATA_00_ADDR, buf, 6)) {
             return false;
@@ -320,7 +320,7 @@ namespace icm20948
         const int16_t mag_y_raw = static_cast<int16_t>((buf[3] << 8) | buf[2]);
         const int16_t mag_z_raw = static_cast<int16_t>((buf[5] << 8) | buf[4]);
 
-        // Convert raw magnetometer counts using fixed scale factor.
+        /// Convert raw magnetometer counts using fixed scale factor.
         magn[0] = static_cast<float>(mag_x_raw) * _magn_scale_factor;
         magn[1] = static_cast<float>(mag_y_raw) * _magn_scale_factor;
         magn[2] = static_cast<float>(mag_z_raw) * _magn_scale_factor;
@@ -330,11 +330,11 @@ namespace icm20948
 
     bool ICM20948_I2C::read_sample(IMUSample& sample)
     {
-        // Accel/gyro are required for a valid sample.
+        /// Accel/gyro are required for a valid sample.
         if (!read_accel_gyro()) return false;
 
-        // Magnetometer intentionally disabled for stability testing.
-        // if (!read_magn()) magn[0] = magn[1] = magn[2] = 0.0f;
+        /// Magnetometer intentionally disabled for stability testing.
+        /// if (!read_magn()) magn[0] = magn[1] = magn[2] = 0.0f;
 
         magn[0] = 0.0f;
         magn[1] = 0.0f;
@@ -350,7 +350,7 @@ namespace icm20948
     bool ICM20948_I2C::_set_bank(uint8_t bank)
     {
 
-        // Skip the write if the requested bank is already selected.
+        /// Skip the write if the requested bank is already selected.
         if (_current_bank == bank) return true;
 
         uint8_t val = 0;
@@ -374,7 +374,7 @@ namespace icm20948
 
     bool ICM20948_I2C::_set_accel_sample_rate_div()
     {
-        // Sample-rate divider is split across MSB/LSB registers.
+        /// Sample-rate divider is split across MSB/LSB registers.
         uint8_t lsb = settings.accel.sample_rate_div & 0xff;
         uint8_t msb = (settings.accel.sample_rate_div >> 8) & 0x0f;
         bool ok = true;
@@ -387,7 +387,7 @@ namespace icm20948
 
     bool ICM20948_I2C::_set_accel_range_dlpf()
     {
-        // Pack accel DLPF enable, range, and cutoff into CONFIG_1.
+        /// Pack accel DLPF enable, range, and cutoff into CONFIG_1.
         uint8_t byte = 0;
         byte |= static_cast<uint8_t>(!!static_cast<uint8_t>(settings.accel.dlpf_enable));
         byte |= static_cast<uint8_t>(static_cast<uint8_t>(settings.accel.scale) << 1);
@@ -421,7 +421,7 @@ namespace icm20948
 
     bool ICM20948_I2C::_magnetometer_init()
     {
-      // Bring up the internal AK09916 through the chip's I2C master.
+      /// Bring up the internal AK09916 through the chip's I2C master.
         bool ok = true;
         ok &= _magnetometer_enable();
         if (!ok) { std::cerr << "Failed on _magnetometer_enable()\n"; return false; }
@@ -453,7 +453,7 @@ namespace icm20948
 
     bool ICM20948_I2C::_magnetometer_set_mode()
     {
-        // Switch through shutdown before applying target mode.
+        /// Switch through shutdown before applying target mode.
         bool ok = _write_mag_byte(AK09916_CNTL2_ADDR,
                                   static_cast<uint8_t>(MAGN_SHUTDOWN));
         ok &= _write_mag_byte(AK09916_CNTL2_ADDR,
@@ -464,7 +464,7 @@ namespace icm20948
     bool ICM20948_I2C::_magnetometer_configured()
     {
         uint8_t mag_id = 0;
-        // Probe the magnetometer and reset the internal master on failure.
+        /// Probe the magnetometer and reset the internal master on failure.
         for (int i = 0; i < 5; ++i) {
             if (_read_mag_byte(0x01, mag_id)) return true;
             _chip_i2c_master_reset();
@@ -476,7 +476,7 @@ namespace icm20948
 
     bool ICM20948_I2C::_magnetometer_set_readout()
     {
-        // Configure SLV0 to continuously fetch magnetometer data into EXT_SLV_SENS_DATA.
+        /// Configure SLV0 to continuously fetch magnetometer data into EXT_SLV_SENS_DATA.
         bool ok = _write_byte(ICM20948_I2C_SLV0_ADDR_BANK,
                               ICM20948_I2C_SLV0_ADDR_ADDR, 0x8C);
         std::this_thread::sleep_for(std::chrono::milliseconds(5));
@@ -491,14 +491,14 @@ namespace icm20948
 
     bool ICM20948_I2C::_chip_i2c_master_reset()
     {
-        // Reset the chip's internal I2C master controller.
+        /// Reset the chip's internal I2C master controller.
         return _write_bit(ICM20948_USER_CTRL_BANK,
                           ICM20948_USER_CTRL_ADDR, 1, true);
     }
 
     bool ICM20948_I2C::_write_byte(uint8_t bank, uint8_t reg, uint8_t byte)
     {
-        // Select bank, then write one register byte.
+        /// Select bank, then write one register byte.
         bool ok = _set_bank(bank);
         uint8_t buf[2] = { reg, byte };
         ok &= (::write(_i2c_fd, buf, 2) == 2);
