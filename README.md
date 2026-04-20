@@ -85,7 +85,16 @@ The code is entirely event-driven with no polling loops:
 - **Shutdown** — handled via `signalfd` blocking on `SIGINT`/`SIGHUP` rather than signal handlers.
 
 ## Maximum Latency
+# IMU - ICM20948
+The sampling frequency is calculated by 
+	• Accelerometer: 1.125 kHz/(1+ sample_rate_div)
+	• Gyrometer: 1.1kHz/(1+ sample_rate_div)
+The maximum frequency for accelerometer is therefore 1.125 kHz and gyrometer is 1.1kHz. The maximum latency found for the accelerometer to work is at _____ (sample_rate_div = ), and ______ (sample_rate_div = ) for the gyrometer. 
 
+# Piezo - ADS1115
+The available sample rate are 8Hz, 16Hz, 32Hz, 64Hz, 128Hz, 250Hz, 475Hz, and 860Hz. The maximum latency for the ADS1115 is at _________.
+
+This can be adjusted in the main.cpp. 
 
 
 ---
