@@ -222,8 +222,8 @@ RTES_Table_Tennis/
 Despina Charalambous: Motor code, soldering, organisation/clean-up  
 Najaree Janjerdsak: Latency test, IMU math code, soldering, organisation/clean-up  
 Natalia McCoy: IMU code, main.cpp,  organisation/clean-up  
-Olivia Skinner: piezo code,  organisation/clean-up  
-Wiktoria Smolarek: piezo code,  organisation/clean-up  
+Olivia Skinner: piezo code, circuit design, organisation/clean-up  
+Wiktoria Smolarek: piezo code, circuit design, organisation/clean-up  
 
 ---
 
