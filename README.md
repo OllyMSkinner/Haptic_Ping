@@ -94,7 +94,7 @@ The sampling frequency is calculated by
 The maximum frequency for accelerometer is therefore 1.125 kHz and gyrometer is 1.1kHz. The maximum latency found for the accelerometer and gyrometer to work is at 18.75 Hz (sample_rate_div = 59).
 
 ### Piezo - ADS1115
-The available sample rate are 8Hz, 16Hz, 32Hz, 64Hz, 128Hz, 250Hz, 475Hz, and 860Hz. The maximum latency for the ADS1115 is at _________.
+The available sample rate are 8Hz, 16Hz, 32Hz, 64Hz, 128Hz, 250Hz, 475Hz, and 860Hz. The maximum latency for the ADS1115 is at 860 Hz.
 
 This can be adjusted in the main.cpp. 
 
@@ -103,7 +103,7 @@ This can be adjusted in the main.cpp.
 
 ## Prerequisites
 
-Hpatic Ping runs on Linux (Raspberry Pi OS) and is not compatible with Windows.  
+Haptic Ping runs on Linux (Raspberry Pi OS) and is not compatible with Windows.  
 Prior to installing the required libraries, the system package list should be updated using:  
 
 sudo apt update 
