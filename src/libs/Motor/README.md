@@ -11,9 +11,9 @@ deliver haptic feedback proportional to swing intensity.
 
 | Component        | Connection                          |
 |------------------|-------------------------------------|
-| Motor +          | 5V (4× AA battery pack)            |
-| Motor −          | NPN transistor collector            |
-| Transistor base  | GPIO 18 via 220Ω resistor           |
+| Motor +          | 5V (4x AA battery pack)            |
+| Motor -          | NPN transistor collector            |
+| Transistor base  | GPIO 18 via 220Ohm resistor           |
 | Transistor emitter | GND                               |
 | Flyback diode    | Across motor terminals (GND to +)   |
 
@@ -34,8 +34,8 @@ deliver haptic feedback proportional to swing intensity.
 
 | Parameter         | Value                          |
 |-------------------|--------------------------------|
-| Operating Voltage | 2V – 5V                        |
-| Dimensions        | 10mm × 2.7mm                   |
+| Operating Voltage | 2V - 5V                        |
+| Dimensions        | 10mm x 2.7mm                   |
 | Current at 5V     | 100 mA                         |
 | Current at 4V     | 80 mA                          |
 | Current at 3V     | 60 mA                          |
@@ -49,11 +49,11 @@ deliver haptic feedback proportional to swing intensity.
 The motor is driven by an NPN transistor switch controlled by the
 Raspberry Pi GPIO 18 software PWM output:
 
-- A **220Ω resistor** on the transistor base limits the base current
+- A **220Ohm resistor** on the transistor base limits the base current
   from GPIO 18.
 - The **flyback diodes** across the motor terminals suppress the
   back-EMF spike when the motor is switched off.
-- Power is supplied by a **4× AA battery pack (~5V)** separate from
+- Power is supplied by a **4x AA battery pack (~5V)** separate from
   the Raspberry Pi supply to avoid voltage dips on the Pi rail.
 ---
 

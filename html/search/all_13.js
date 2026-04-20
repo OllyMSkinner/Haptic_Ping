@@ -1,8 +1,10 @@
 var searchData=
 [
-  ['waitus_0',['waitUs',['../classRPI__PWM.html#ad083942c5b03431c6574cb77e5311760',1,'RPI_PWM']]],
-  ['wake_1',['wake',['../classicm20948_1_1ICM20948__I2C.html#a81ba652c5ec59a3e63d9883f8bc45e42',1,'icm20948::ICM20948_I2C']]],
-  ['worker_2',['worker',['../classIMUReader.html#a9334b3420c3d2d1e790dbfb753f7a8cb',1,'IMUReader::worker()'],['../classSwingFeedback.html#a2f0ecec3b79f40207b84fa9d34680b19',1,'SwingFeedback::worker()'],['../classADS1115rpi.html#a0c68300f73409f5ad0645ec727cb5699',1,'ADS1115rpi::worker()']]],
-  ['worker_5fthread_5f_3',['worker_thread_',['../classIMUReader.html#a1a69762ebad2714b8a1d884e961210d8',1,'IMUReader']]],
-  ['wrapangledeg_4',['wrapAngleDeg',['../classPositionDetector.html#a346d2194b0515bc47f4e03d186339ff9',1,'PositionDetector']]]
+  ['tests_0',['Running Tests',['../md_README.html#autotoc_md56',1,'']]],
+  ['the_20raspberry_20pi_20supply_20to_20avoid_20voltage_20dips_20on_20the_20pi_20rail_1',['the Raspberry Pi supply to avoid voltage dips on the Pi rail.',['../md_src_2libs_2Motor_2README.html#autotoc_md18',1,'']]],
+  ['thr_2',['thr',['../classADS1115rpi.html#af49796d06bc0556073bae758f21029b5',1,'ADS1115rpi']]],
+  ['thread_5f_3',['thread_',['../classRPI__PWM.html#a8079b97600d1fd50512504433a6faebb',1,'RPI_PWM']]],
+  ['timeout_5fms_4',['TIMEOUT_MS',['../classSwingFeedback.html#a8e1ebec717fb857ec33b5d0bd5a9a539',1,'SwingFeedback']]],
+  ['to_20avoid_20voltage_20dips_20on_20the_20pi_20rail_5',['the Raspberry Pi supply to avoid voltage dips on the Pi rail.',['../md_src_2libs_2Motor_2README.html#autotoc_md18',1,'']]],
+  ['triggerrecal_6',['triggerRecal',['../classSwingCalibrator.html#af3698c7f929fb86fe97e7c8337b6213d',1,'SwingCalibrator']]]
 ];

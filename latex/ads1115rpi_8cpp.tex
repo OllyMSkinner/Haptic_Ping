@@ -14,12 +14,18 @@
 {\ttfamily \#include $<$chrono$>$}\newline
 {\ttfamily \#include $<$mutex$>$}\newline
 Include dependency graph for ads1115rpi.\+cpp\+:
-% FIG 0
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ads1115rpi_8cpp__incl}
+\end{center}
+\end{figure}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{structADS1115settings}{ADS1115settings}} \mbox{\hyperlink{ads1115rpi_8cpp_ab93a510bf73672786d210a79f41be1aa}{make\+Default\+ADS1115\+Settings}} ()
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Creates and returns the default ADS1115 settings. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Function Documentation}
@@ -28,4 +34,12 @@ Include dependency graph for ads1115rpi.\+cpp\+:
 \index{makeDefaultADS1115Settings@{makeDefaultADS1115Settings}!ads1115rpi.cpp@{ads1115rpi.cpp}}
 \doxysubsubsection{\texorpdfstring{makeDefaultADS1115Settings()}{makeDefaultADS1115Settings()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structADS1115settings}{ADS1115settings}} make\+Default\+ADS1115\+Settings (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Creates and returns the default ADS1115 settings. 
+
+This file sets up and manages the ADS1115 ADC on a Raspberry Pi. It initializes I2C and GPIO interrupt handling, reads conversion data when the device signals it is ready, and passes the converted voltage to a callback. 
+
+Definition at line \mbox{\hyperlink{ads1115rpi_8cpp_source_l00023}{23}} of file \mbox{\hyperlink{ads1115rpi_8cpp_source}{ads1115rpi.\+cpp}}.
 

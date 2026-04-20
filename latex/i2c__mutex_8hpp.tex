@@ -2,9 +2,21 @@
 \hypertarget{i2c__mutex_8hpp}{}\label{i2c__mutex_8hpp}\index{src/libs/IMU/Include/i2c\_mutex.hpp@{src/libs/IMU/Include/i2c\_mutex.hpp}}
 {\ttfamily \#include $<$mutex$>$}\newline
 Include dependency graph for i2c\+\_\+mutex.\+hpp\+:
-% FIG 0
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=192pt]{i2c__mutex_8hpp__incl}
+\end{center}
+\end{figure}
 This graph shows which files directly or indirectly include this file\+:
-% FIG 1
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{i2c__mutex_8hpp__dep__incl}
+\end{center}
+\end{figure}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -18,4 +30,10 @@ std\+::mutex \& \mbox{\hyperlink{i2c__mutex_8hpp_a805ab45f56a66c4ded90843783a93b
 \index{i2c1\_mutex@{i2c1\_mutex}!i2c\_mutex.hpp@{i2c\_mutex.hpp}}
 \doxysubsubsection{\texorpdfstring{i2c1\_mutex()}{i2c1\_mutex()}}
 {\footnotesize\ttfamily std\+::mutex \& i2c1\+\_\+mutex (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Shared mutex protecting access to the /dev/i2c-\/1 bus.
+
+SOLID principles\+: S -\/ This helper provides one shared synchronisation point for I2C bus access. D -\/ Centralising the bus lock in one place avoids duplicating global mutex definitions across multiple modules and makes cross-\/thread I2C ownership easier to reason about. Shared mutex for the I2\+C-\/1 bus. \doxylink{classIMUReader}{IMUReader} (ICM20948) and \doxylink{classADS1115rpi}{ADS1115rpi} run on separate threads and both access /dev/i2c-\/1. Without this lock, their ioctl(\+I2\+C\+\_\+\+SLAVE) and read/write sequences can interleave, causing transactions to target the wrong device and triggering the ADC retry failures seen in logs. Function-\/local static storage gives one shared mutex instance for the whole process while keeping the global namespace clean.
+
+Definition at line \mbox{\hyperlink{i2c__mutex_8hpp_source_l00018}{18}} of file \mbox{\hyperlink{i2c__mutex_8hpp_source}{i2c\+\_\+mutex.\+hpp}}.
 

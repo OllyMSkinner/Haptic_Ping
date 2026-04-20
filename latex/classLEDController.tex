@@ -11,12 +11,22 @@ Declares the LED controller class and its main functions for setting, switching,
 
 
 
-Inheritance diagram for LEDController\+:
-% FIG 0
+Inheritance diagram for LEDController\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=197pt]{classLEDController__inherit__graph}
+\end{center}
+\end{figure}
 
 
-Collaboration diagram for LEDController\+:
-% FIG 1
+Collaboration diagram for LEDController\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=197pt]{classLEDController__coll__graph}
+\end{center}
+\end{figure}
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -40,9 +50,9 @@ void \mbox{\hyperlink{classLEDController_aab7eded82824ab4e20b0bbb62bdb79fe}{serv
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{classSimpleLEDController_aa2f50e659018757ef091bc82fb0f8532}{Simple\+LEDController}} (int pin\+No, int chip\+No=0)
-\begin{DoxyCompactList}\small\item\em Construct the controller with the GPIO pin number and optional chip number. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Initialises the LED controller by setting up the GPIO chip, output line, and line request for the selected pin. \end{DoxyCompactList}\item 
 virtual \mbox{\hyperlink{classSimpleLEDController_acb0b223d05c094f61268ac6a78c09f64}{\texorpdfstring{$\sim$}{\string~}\+Simple\+LEDController}} ()
-\begin{DoxyCompactList}\small\item\em Virtual destructor ensures correct cleanup through the base-\/class interface,. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Releases the GPIO resources and makes sure the LED is turned off before closing. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -60,22 +70,26 @@ std\+::chrono\+::steady\+\_\+clock\+::time\+\_\+point \mbox{\hyperlink{classLEDC
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{classSimpleLEDController_a16a2cc8c3c64d7fa8ed5a25c1a984b8d}{Simple\+LEDController}} ()=default
-\begin{DoxyCompactList}\small\item\em Protected default constructor allows derived classes controlled access. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{DoxyCompactItemize}
 \doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classSimpleLEDController}{Simple\+LEDController}}}
 \begin{DoxyCompactItemize}
 \item 
 int \mbox{\hyperlink{classSimpleLEDController_a0f35cdd654d87ca8768f0b6578a2a666}{pin}} = -\/1
-\begin{DoxyCompactList}\small\item\em Internal GPIO configuration state is protected so it is available to. \end{DoxyCompactList}\item 
+\item 
 int \mbox{\hyperlink{classSimpleLEDController_a04da236eaee57bee7865528889bd9187}{chip\+Number}} = -\/1
 \item 
 std\+::shared\+\_\+ptr$<$ gpiod\+::chip $>$ \mbox{\hyperlink{classSimpleLEDController_ae5b61a04957b520b67bf97c55d8d32e1}{chip}}
-\begin{DoxyCompactList}\small\item\em Shared ownership is used for the GPIO chip/request resources so that the. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em resource lifetime is managed safely without manual memory handling. \end{DoxyCompactList}\item 
 std\+::shared\+\_\+ptr$<$ gpiod\+::line\+\_\+request $>$ \mbox{\hyperlink{classSimpleLEDController_adc10c786dc6bedf433556217f78cc384}{request}}
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
 Declares the LED controller class and its main functions for setting, switching, flashing, and updating the LED output. 
+
+Definition at line \mbox{\hyperlink{led__controller_8h_source_l00029}{29}} of file \mbox{\hyperlink{led__controller_8h_source}{led\+\_\+controller.\+h}}.
+
+
 
 \doxysubsection{Constructor \& Destructor Documentation}
 \Hypertarget{classLEDController_ab7408c7e7de434246c021b77be7538a0}\label{classLEDController_ab7408c7e7de434246c021b77be7538a0} 
@@ -87,6 +101,10 @@ Declares the LED controller class and its main functions for setting, switching,
 
 
 Initialises the LED controller, clears the LED state, and updates the output. 
+
+
+
+Definition at line \mbox{\hyperlink{led__controller_8cpp_source_l00024}{24}} of file \mbox{\hyperlink{led__controller_8cpp_source}{led\+\_\+controller.\+cpp}}.
 
 \Hypertarget{classLEDController_ac4763e67d6e696e3e69c2021254bbd83}\label{classLEDController_ac4763e67d6e696e3e69c2021254bbd83} 
 \index{LEDController@{LEDController}!````~LEDController@{\texorpdfstring{$\sim$}{\string~}LEDController}}
@@ -100,6 +118,10 @@ Turns all LED output off when the controller is destroyed.
 
 
 
+Definition at line \mbox{\hyperlink{led__controller_8cpp_source_l00033}{33}} of file \mbox{\hyperlink{led__controller_8cpp_source}{led\+\_\+controller.\+cpp}}.
+
+
+
 \doxysubsection{Member Function Documentation}
 \Hypertarget{classLEDController_aaab45b457b062931b7ee577ec50dc920}\label{classLEDController_aaab45b457b062931b7ee577ec50dc920} 
 \index{LEDController@{LEDController}!allOff@{allOff}}
@@ -110,6 +132,10 @@ Turns all LED output off when the controller is destroyed.
 
 
 Turns all LED output off and clears any flash timing. 
+
+
+
+Definition at line \mbox{\hyperlink{led__controller_8cpp_source_l00065}{65}} of file \mbox{\hyperlink{led__controller_8cpp_source}{led\+\_\+controller.\+cpp}}.
 
 \Hypertarget{classLEDController_a065f173ff5e3eb0bc8b1a522eb6e41ff}\label{classLEDController_a065f173ff5e3eb0bc8b1a522eb6e41ff} 
 \index{LEDController@{LEDController}!flashGreen@{flashGreen}}
@@ -125,6 +151,10 @@ Turns the green LED on for a set time and stores when it should switch off.
 
 Reimplemented from \mbox{\hyperlink{classSimpleLEDController_a0cae5e551cb10191b7bcfb3eb265b18c}{Simple\+LEDController}}.
 
+
+
+Definition at line \mbox{\hyperlink{led__controller_8cpp_source_l00072}{72}} of file \mbox{\hyperlink{led__controller_8cpp_source}{led\+\_\+controller.\+cpp}}.
+
 \Hypertarget{classLEDController_a13e1c7caee208561ea711dacdc84b377}\label{classLEDController_a13e1c7caee208561ea711dacdc84b377} 
 \index{LEDController@{LEDController}!greenOff@{greenOff}}
 \index{greenOff@{greenOff}!LEDController@{LEDController}}
@@ -135,6 +165,10 @@ Reimplemented from \mbox{\hyperlink{classSimpleLEDController_a0cae5e551cb10191b7
 
 Turns the green LED off and clears any flash timing. 
 
+
+
+Definition at line \mbox{\hyperlink{led__controller_8cpp_source_l00057}{57}} of file \mbox{\hyperlink{led__controller_8cpp_source}{led\+\_\+controller.\+cpp}}.
+
 \Hypertarget{classLEDController_a19674d8734865535f5efebeeb4528bce}\label{classLEDController_a19674d8734865535f5efebeeb4528bce} 
 \index{LEDController@{LEDController}!greenOn@{greenOn}}
 \index{greenOn@{greenOn}!LEDController@{LEDController}}
@@ -144,6 +178,10 @@ Turns the green LED off and clears any flash timing.
 
 
 Turns the green LED on and clears any flash timing. 
+
+
+
+Definition at line \mbox{\hyperlink{led__controller_8cpp_source_l00049}{49}} of file \mbox{\hyperlink{led__controller_8cpp_source}{led\+\_\+controller.\+cpp}}.
 
 \Hypertarget{classLEDController_aab7eded82824ab4e20b0bbb62bdb79fe}\label{classLEDController_aab7eded82824ab4e20b0bbb62bdb79fe} 
 \index{LEDController@{LEDController}!service@{service}}
@@ -159,6 +197,10 @@ Checks whether the flash time has ended and switches the LED off if needed.
 
 Reimplemented from \mbox{\hyperlink{classSimpleLEDController_a7bb1839d59cbb6d197b9d8b8b73653d8}{Simple\+LEDController}}.
 
+
+
+Definition at line \mbox{\hyperlink{led__controller_8cpp_source_l00080}{80}} of file \mbox{\hyperlink{led__controller_8cpp_source}{led\+\_\+controller.\+cpp}}.
+
 \Hypertarget{classLEDController_a2fbb1a288f1683547250df3b78d8764a}\label{classLEDController_a2fbb1a288f1683547250df3b78d8764a} 
 \index{LEDController@{LEDController}!set@{set}}
 \index{set@{set}!LEDController@{LEDController}}
@@ -173,6 +215,10 @@ Sets the green LED state directly and updates the output.
 
 Reimplemented from \mbox{\hyperlink{classSimpleLEDController_a933d9c68e4769be331bf5bd6c8064ce0}{Simple\+LEDController}}.
 
+
+
+Definition at line \mbox{\hyperlink{led__controller_8cpp_source_l00039}{39}} of file \mbox{\hyperlink{led__controller_8cpp_source}{led\+\_\+controller.\+cpp}}.
+
 \Hypertarget{classLEDController_a492af50f2143ff79038372f78adfb629}\label{classLEDController_a492af50f2143ff79038372f78adfb629} 
 \index{LEDController@{LEDController}!updateOutputs@{updateOutputs}}
 \index{updateOutputs@{updateOutputs}!LEDController@{LEDController}}
@@ -183,6 +229,10 @@ Reimplemented from \mbox{\hyperlink{classSimpleLEDController_a933d9c68e4769be331
 
 Declares the internal update function and private members used to track the green LED state and flash timing. 
 
+Updates the physical LED output to match the current stored state. 
+
+Definition at line \mbox{\hyperlink{led__controller_8cpp_source_l00092}{92}} of file \mbox{\hyperlink{led__controller_8cpp_source}{led\+\_\+controller.\+cpp}}.
+
 
 
 \doxysubsection{Member Data Documentation}
@@ -192,11 +242,19 @@ Declares the internal update function and private members used to track the gree
 \doxysubsubsection{\texorpdfstring{greenActive\_}{greenActive\_}}
 {\footnotesize\ttfamily bool LEDController\+::green\+Active\+\_\+ = false\hspace{0.3cm}{\ttfamily [private]}}
 
+
+
+Definition at line \mbox{\hyperlink{led__controller_8h_source_l00048}{48}} of file \mbox{\hyperlink{led__controller_8h_source}{led\+\_\+controller.\+h}}.
+
 \Hypertarget{classLEDController_a982192a2523e4d6d64520163e9a7db58}\label{classLEDController_a982192a2523e4d6d64520163e9a7db58} 
 \index{LEDController@{LEDController}!greenOffTime\_@{greenOffTime\_}}
 \index{greenOffTime\_@{greenOffTime\_}!LEDController@{LEDController}}
 \doxysubsubsection{\texorpdfstring{greenOffTime\_}{greenOffTime\_}}
 {\footnotesize\ttfamily std\+::chrono\+::steady\+\_\+clock\+::time\+\_\+point LEDController\+::green\+Off\+Time\+\_\+ \{\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{led__controller_8h_source_l00049}{49}} of file \mbox{\hyperlink{led__controller_8h_source}{led\+\_\+controller.\+h}}.
 
 
 

@@ -5,25 +5,37 @@
 {\ttfamily \#include $<$chrono$>$}\newline
 {\ttfamily \#include $<$functional$>$}\newline
 Include dependency graph for Swing\+Processor.\+hpp\+:
-% FIG 0
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{SwingProcessor_8hpp__incl}
+\end{center}
+\end{figure}
 This graph shows which files directly or indirectly include this file\+:
-% FIG 1
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{SwingProcessor_8hpp__dep__incl}
+\end{center}
+\end{figure}
 \doxysubsubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
 class \mbox{\hyperlink{classSwingProcessor}{Swing\+Processor}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em raised to reject motor EMI noise floor \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
 static constexpr unsigned \mbox{\hyperlink{SwingProcessor_8hpp_a08ea26a0b6d1252d3b6fb7f194ad6fd8}{I2\+C\+\_\+\+BUS}} = 1
-\item 
+\begin{DoxyCompactList}\small\item\em Defines the I2C bus and the main constants used for calibration, recalibration, and acceleration deadband control. \end{DoxyCompactList}\item 
 static constexpr int \mbox{\hyperlink{SwingProcessor_8hpp_ac684e3b2eaf7d15239031ca404c88059}{CALIB\+\_\+\+SAMPLES}} = 50
 \item 
 static constexpr int \mbox{\hyperlink{SwingProcessor_8hpp_a244f60b18afb57444be7ad3ba6ec1f5a}{RECAL\+\_\+\+SAMPLES}} = 20
-\item 
+\begin{DoxyCompactList}\small\item\em \texorpdfstring{$\sim$}{\string~}0.5s at 100Hz — startup bias \end{DoxyCompactList}\item 
 static constexpr float \mbox{\hyperlink{SwingProcessor_8hpp_ade41390a2c6011a23e8054df5621d231}{ACCEL\+\_\+\+DEADBAND}} = 1.\+0f
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em \texorpdfstring{$\sim$}{\string~}0.2s recal on position confirm \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Variable Documentation}
@@ -33,11 +45,23 @@ static constexpr float \mbox{\hyperlink{SwingProcessor_8hpp_ade41390a2c6011a23e8
 \doxysubsubsection{\texorpdfstring{ACCEL\_DEADBAND}{ACCEL\_DEADBAND}}
 {\footnotesize\ttfamily constexpr float ACCEL\+\_\+\+DEADBAND = 1.\+0f\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}}
 
+
+
+\texorpdfstring{$\sim$}{\string~}0.2s recal on position confirm 
+
+
+
+Definition at line \mbox{\hyperlink{SwingProcessor_8hpp_source_l00020}{20}} of file \mbox{\hyperlink{SwingProcessor_8hpp_source}{Swing\+Processor.\+hpp}}.
+
 \Hypertarget{SwingProcessor_8hpp_ac684e3b2eaf7d15239031ca404c88059}\label{SwingProcessor_8hpp_ac684e3b2eaf7d15239031ca404c88059} 
 \index{SwingProcessor.hpp@{SwingProcessor.hpp}!CALIB\_SAMPLES@{CALIB\_SAMPLES}}
 \index{CALIB\_SAMPLES@{CALIB\_SAMPLES}!SwingProcessor.hpp@{SwingProcessor.hpp}}
 \doxysubsubsection{\texorpdfstring{CALIB\_SAMPLES}{CALIB\_SAMPLES}}
 {\footnotesize\ttfamily constexpr int CALIB\+\_\+\+SAMPLES = 50\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}}
+
+
+
+Definition at line \mbox{\hyperlink{SwingProcessor_8hpp_source_l00018}{18}} of file \mbox{\hyperlink{SwingProcessor_8hpp_source}{Swing\+Processor.\+hpp}}.
 
 \Hypertarget{SwingProcessor_8hpp_a08ea26a0b6d1252d3b6fb7f194ad6fd8}\label{SwingProcessor_8hpp_a08ea26a0b6d1252d3b6fb7f194ad6fd8} 
 \index{SwingProcessor.hpp@{SwingProcessor.hpp}!I2C\_BUS@{I2C\_BUS}}
@@ -45,9 +69,25 @@ static constexpr float \mbox{\hyperlink{SwingProcessor_8hpp_ade41390a2c6011a23e8
 \doxysubsubsection{\texorpdfstring{I2C\_BUS}{I2C\_BUS}}
 {\footnotesize\ttfamily constexpr unsigned I2\+C\+\_\+\+BUS = 1\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}}
 
+
+
+Defines the I2C bus and the main constants used for calibration, recalibration, and acceleration deadband control. 
+
+This header declares the swing processor class. It combines calibration, position detection, force input, and sample processing to control when swing feedback becomes active. SOLID Principles\+: D -\/ Magnitude\+Callback and Position\+State\+Callback are std\+::function output abstractions. 
+
+Definition at line \mbox{\hyperlink{SwingProcessor_8hpp_source_l00017}{17}} of file \mbox{\hyperlink{SwingProcessor_8hpp_source}{Swing\+Processor.\+hpp}}.
+
 \Hypertarget{SwingProcessor_8hpp_a244f60b18afb57444be7ad3ba6ec1f5a}\label{SwingProcessor_8hpp_a244f60b18afb57444be7ad3ba6ec1f5a} 
 \index{SwingProcessor.hpp@{SwingProcessor.hpp}!RECAL\_SAMPLES@{RECAL\_SAMPLES}}
 \index{RECAL\_SAMPLES@{RECAL\_SAMPLES}!SwingProcessor.hpp@{SwingProcessor.hpp}}
 \doxysubsubsection{\texorpdfstring{RECAL\_SAMPLES}{RECAL\_SAMPLES}}
 {\footnotesize\ttfamily constexpr int RECAL\+\_\+\+SAMPLES = 20\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}}
+
+
+
+\texorpdfstring{$\sim$}{\string~}0.5s at 100Hz — startup bias 
+
+
+
+Definition at line \mbox{\hyperlink{SwingProcessor_8hpp_source_l00019}{19}} of file \mbox{\hyperlink{SwingProcessor_8hpp_source}{Swing\+Processor.\+hpp}}.
 

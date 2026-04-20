@@ -20,8 +20,8 @@ I2C Address : 0x69 (AD0 tied to GND)
 
 ## Sensor Settings
 
-Accelerometer range : ±2G
-Gyroscope range     : ±250 DPS
+Accelerometer range : +/-2G
+Gyroscope range     : +/-250 DPS
 Magnetometer mode   : 100Hz continuous
 DLPF                : enabled
 

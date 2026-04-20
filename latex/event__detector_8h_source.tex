@@ -2,58 +2,40 @@
 \hypertarget{event__detector_8h_source}{}\label{event__detector_8h_source}\index{src/libs/Piezo/Include/event\_detector.h@{src/libs/Piezo/Include/event\_detector.h}}
 \mbox{\hyperlink{event__detector_8h}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00001\ \textcolor{comment}{//\ This\ header\ defines\ the\ piezo\ event\ detector\ and\ its\ settings.}}
-\DoxyCodeLine{00002\ \textcolor{comment}{//\ The\ detector\ is\ responsible\ for\ interpreting\ sensor\ samples\ from\ the\ ADC,}}
-\DoxyCodeLine{00003\ \textcolor{comment}{//\ tracking\ press/release\ state,\ and\ exposing\ higher-\/level\ event\ behaviour}}
-\DoxyCodeLine{00004\ \textcolor{comment}{//\ through\ a\ callback\ while\ also\ providing\ direct\ LED\ feedback.}}
-\DoxyCodeLine{00005\ }
-\DoxyCodeLine{00006\ }
-\DoxyCodeLine{00007\ \textcolor{comment}{//\ SOLID\ principle:}}
-\DoxyCodeLine{00008\ \textcolor{comment}{//\ \ \ S\ -\/\ \ \ The\ main\ responsibility\ of\ this\ class\ is\ to\ interpret\ piezo\ samples\ using}}
-\DoxyCodeLine{00009\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ filtering\ and\ threshold\ logic.}}
-\DoxyCodeLine{00010\ \textcolor{comment}{//\ \ \ O\ -\/\ \ \ New\ behaviours\ can\ be\ attached\ through\ the\ callback\ without\ changing\ the}}
-\DoxyCodeLine{00011\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ detector\ logic\ itself.}}
-\DoxyCodeLine{00012\ \textcolor{comment}{//\ \ \ L/D\ -\/\ The\ detector\ depends\ on\ a\ simpler\ LED\ abstraction\ and\ a\ callback\ rather\ than}}
-\DoxyCodeLine{00013\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ on\ broader\ application\ logic,\ helping\ to\ reduce\ coupling.}}
-\DoxyCodeLine{00014\ }
-\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#pragma\ once}}
-\DoxyCodeLine{00016\ }
-\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <functional>}}
-\DoxyCodeLine{00018\ }
-\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{led__controller_8h}{led\_controller.h}}"{}}}
-\DoxyCodeLine{00020\ }
-\DoxyCodeLine{00021\ \textcolor{comment}{//\ Stores\ the\ threshold\ and\ debug\ settings\ for\ the\ detector.}}
-\DoxyCodeLine{00022\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structPiezoEventDetectorSettings}{PiezoEventDetectorSettings}}}
-\DoxyCodeLine{00023\ \{}
-\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{structPiezoEventDetectorSettings_a5b116e2e26b447e80bd09fdda677c1ee}{pressThreshold}}\ =\ 0.95f;}
-\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{structPiezoEventDetectorSettings_a79895b6a55d8aa00c66fefe1c777ceb5}{releaseThreshold}}\ =\ 0.70f;}
-\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structPiezoEventDetectorSettings_af68019440086962c16fe6a98aacaf63d}{enableDebugPrints}}\ =\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00027\ \};}
-\DoxyCodeLine{00028\ }
-\DoxyCodeLine{00029\ \textcolor{comment}{//\ Declares\ the\ detector\ class\ and\ its\ public\ interface.}}
-\DoxyCodeLine{00030\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classPiezoEventDetector}{PiezoEventDetector}}}
-\DoxyCodeLine{00031\ \{}
-\DoxyCodeLine{00032\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00033\ \ \ \ \ \textcolor{comment}{//\ Defines\ the\ callback\ type\ used\ for\ press\ state\ changes.}}
-\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{classPiezoEventDetector_a6654a5fee70b051fa4a469ed25a53fd1}{ForceCallback}}\ =\ std::function<void(\textcolor{keywordtype}{bool})>;}
-\DoxyCodeLine{00035\ }
-\DoxyCodeLine{00036\ \ \ \ \ \textcolor{comment}{//\ Creates\ the\ detector\ with\ an\ LED\ reference\ and\ settings.}}
-\DoxyCodeLine{00037\ \ \ \ \ \mbox{\hyperlink{classPiezoEventDetector}{PiezoEventDetector}}(\mbox{\hyperlink{classSimpleLEDController}{SimpleLEDController}}\&\ ledRef,}
-\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structPiezoEventDetectorSettings}{PiezoEventDetectorSettings}}\ settings);}
-\DoxyCodeLine{00039\ }
-\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classPiezoEventDetector_a6591347b0c88fc41e844d2423aadfebe}{setForceCallback}}(\mbox{\hyperlink{classPiezoEventDetector_a6654a5fee70b051fa4a469ed25a53fd1}{ForceCallback}}\ cb);\ \ \ \ \ \textcolor{comment}{//\ Sets\ the\ callback\ function\ for\ state\ changes.}}
-\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classPiezoEventDetector_add56f49efcc31886e095fa94139d47fc}{processSample}}(\textcolor{keywordtype}{float}\ v);\ \ \ \ \ \textcolor{comment}{//\ Processes\ a\ new\ sensor\ sample.}}
-\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classPiezoEventDetector_af73f0c9c0bb0b747d62fa338182d7fe8}{reset}}();\ \ \ \ \textcolor{comment}{//\ Resets\ the\ detector\ state.}}
-\DoxyCodeLine{00043\ }
-\DoxyCodeLine{00044\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00045\ \ \ \ \ \mbox{\hyperlink{classSimpleLEDController}{SimpleLEDController}}\&\ \mbox{\hyperlink{classPiezoEventDetector_ac83a1585f92dc0383f69027a24580b89}{led\_}};\ \ \ \ \textcolor{comment}{//\ Reference\ to\ the\ LED\ controller.}}
-\DoxyCodeLine{00046\ \ \ \ \ \mbox{\hyperlink{structPiezoEventDetectorSettings}{PiezoEventDetectorSettings}}\ \mbox{\hyperlink{classPiezoEventDetector_aba0bb473afc51c47b3d26567625d6e0a}{settings\_}};\ \ \ \ \textcolor{comment}{//\ Stores\ the\ detector\ settings.}}
-\DoxyCodeLine{00047\ \ \ \ \ \mbox{\hyperlink{classPiezoEventDetector_a6654a5fee70b051fa4a469ed25a53fd1}{ForceCallback}}\ \mbox{\hyperlink{classPiezoEventDetector_a60a16063c0cf74b5a18e726cbe1f9c64}{forceCallback\_}};\ \ \ \ \textcolor{comment}{//\ Stores\ the\ callback\ function.}}
-\DoxyCodeLine{00048\ }
-\DoxyCodeLine{00049\ \ \ \ \ \textcolor{comment}{//\ Tracks\ whether\ the\ detector\ is\ currently\ pressed,\ whether\ the\ filter\ has\ been\ initialised\ and\ stores\ the\ current\ filtered\ sample\ value.}}
-\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \mbox{\hyperlink{classPiezoEventDetector_a36b0a529dda9a6ee5d92a28be400c1f0}{pressed\_}}\ \ \ \ \ =\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \mbox{\hyperlink{classPiezoEventDetector_a901691233dfad6c7c0d9e867f71871ec}{filter\_init\_}}\ =\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classPiezoEventDetector_a47e4ed983ad88f90de6842fe8d15746d}{filtered\_v\_}}\ \ =\ 0.0f;}
-\DoxyCodeLine{00053\ \};}
+\DoxyCodeLine{\Hypertarget{event__detector_8h_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{event__detector_8h_source_l00015}00015\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{event__detector_8h_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{event__detector_8h_source_l00017}00017\ \textcolor{preprocessor}{\#include\ <functional>}}
+\DoxyCodeLine{\Hypertarget{event__detector_8h_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{event__detector_8h_source_l00019}00019\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{led__controller_8h}{led\_controller.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{event__detector_8h_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{event__detector_8h_source_l00022}\mbox{\hyperlink{structPiezoEventDetectorSettings}{00022}}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structPiezoEventDetectorSettings}{PiezoEventDetectorSettings}}}
+\DoxyCodeLine{\Hypertarget{event__detector_8h_source_l00023}00023\ \{}
+\DoxyCodeLine{\Hypertarget{event__detector_8h_source_l00024}\mbox{\hyperlink{structPiezoEventDetectorSettings_a5b116e2e26b447e80bd09fdda677c1ee}{00024}}\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{structPiezoEventDetectorSettings_a5b116e2e26b447e80bd09fdda677c1ee}{pressThreshold}}\ =\ 0.95f;}
+\DoxyCodeLine{\Hypertarget{event__detector_8h_source_l00025}\mbox{\hyperlink{structPiezoEventDetectorSettings_a79895b6a55d8aa00c66fefe1c777ceb5}{00025}}\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{structPiezoEventDetectorSettings_a79895b6a55d8aa00c66fefe1c777ceb5}{releaseThreshold}}\ =\ 0.70f;}
+\DoxyCodeLine{\Hypertarget{event__detector_8h_source_l00026}\mbox{\hyperlink{structPiezoEventDetectorSettings_af68019440086962c16fe6a98aacaf63d}{00026}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structPiezoEventDetectorSettings_af68019440086962c16fe6a98aacaf63d}{enableDebugPrints}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{event__detector_8h_source_l00027}00027\ \};}
+\DoxyCodeLine{\Hypertarget{event__detector_8h_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{event__detector_8h_source_l00030}\mbox{\hyperlink{classPiezoEventDetector}{00030}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classPiezoEventDetector}{PiezoEventDetector}}}
+\DoxyCodeLine{\Hypertarget{event__detector_8h_source_l00031}00031\ \{}
+\DoxyCodeLine{\Hypertarget{event__detector_8h_source_l00032}00032\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{event__detector_8h_source_l00034}\mbox{\hyperlink{classPiezoEventDetector_a6654a5fee70b051fa4a469ed25a53fd1}{00034}}\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{classPiezoEventDetector_a6654a5fee70b051fa4a469ed25a53fd1}{ForceCallback}}\ =\ std::function<void(\textcolor{keywordtype}{bool})>;}
+\DoxyCodeLine{\Hypertarget{event__detector_8h_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{event__detector_8h_source_l00037}00037\ \ \ \ \ \mbox{\hyperlink{classPiezoEventDetector}{PiezoEventDetector}}(\mbox{\hyperlink{classSimpleLEDController}{SimpleLEDController}}\&\ ledRef,}
+\DoxyCodeLine{\Hypertarget{event__detector_8h_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structPiezoEventDetectorSettings}{PiezoEventDetectorSettings}}\ settings);}
+\DoxyCodeLine{\Hypertarget{event__detector_8h_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{event__detector_8h_source_l00040}00040\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classPiezoEventDetector_a6591347b0c88fc41e844d2423aadfebe}{setForceCallback}}(\mbox{\hyperlink{classPiezoEventDetector_a6654a5fee70b051fa4a469ed25a53fd1}{ForceCallback}}\ cb);\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{event__detector_8h_source_l00041}00041\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classPiezoEventDetector_add56f49efcc31886e095fa94139d47fc}{processSample}}(\textcolor{keywordtype}{float}\ v);\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{event__detector_8h_source_l00042}00042\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classPiezoEventDetector_af73f0c9c0bb0b747d62fa338182d7fe8}{reset}}();\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{event__detector_8h_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{event__detector_8h_source_l00044}00044\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{event__detector_8h_source_l00045}\mbox{\hyperlink{classPiezoEventDetector_ac83a1585f92dc0383f69027a24580b89}{00045}}\ \ \ \ \ \mbox{\hyperlink{classSimpleLEDController}{SimpleLEDController}}\&\ \mbox{\hyperlink{classPiezoEventDetector_ac83a1585f92dc0383f69027a24580b89}{led\_}};\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{event__detector_8h_source_l00046}\mbox{\hyperlink{classPiezoEventDetector_aba0bb473afc51c47b3d26567625d6e0a}{00046}}\ \ \ \ \ \mbox{\hyperlink{structPiezoEventDetectorSettings}{PiezoEventDetectorSettings}}\ \mbox{\hyperlink{classPiezoEventDetector_aba0bb473afc51c47b3d26567625d6e0a}{settings\_}};\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{event__detector_8h_source_l00047}\mbox{\hyperlink{classPiezoEventDetector_a60a16063c0cf74b5a18e726cbe1f9c64}{00047}}\ \ \ \ \ \mbox{\hyperlink{classPiezoEventDetector_a6654a5fee70b051fa4a469ed25a53fd1}{ForceCallback}}\ \mbox{\hyperlink{classPiezoEventDetector_a60a16063c0cf74b5a18e726cbe1f9c64}{forceCallback\_}};\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{event__detector_8h_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{event__detector_8h_source_l00050}\mbox{\hyperlink{classPiezoEventDetector_a36b0a529dda9a6ee5d92a28be400c1f0}{00050}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \mbox{\hyperlink{classPiezoEventDetector_a36b0a529dda9a6ee5d92a28be400c1f0}{pressed\_}}\ \ \ \ \ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{event__detector_8h_source_l00051}\mbox{\hyperlink{classPiezoEventDetector_a901691233dfad6c7c0d9e867f71871ec}{00051}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \mbox{\hyperlink{classPiezoEventDetector_a901691233dfad6c7c0d9e867f71871ec}{filter\_init\_}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{event__detector_8h_source_l00052}\mbox{\hyperlink{classPiezoEventDetector_a47e4ed983ad88f90de6842fe8d15746d}{00052}}\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classPiezoEventDetector_a47e4ed983ad88f90de6842fe8d15746d}{filtered\_v\_}}\ \ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{event__detector_8h_source_l00053}00053\ \};}
 
 \end{DoxyCode}

@@ -80,45 +80,64 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>Drives PWM feedback from detected swing levels.  
+ <a href="classSwingFeedback.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="swingfeedback_8h_source.html">swingfeedback.h</a>&gt;</code></p>
 <div class="dynheader">
 Collaboration diagram for SwingFeedback:</div>
 <div class="dyncontent">
 <div class="center"><img src="classSwingFeedback__coll__graph.png" border="0" usemap="#aSwingFeedback_coll__map" alt="Collaboration graph"/></div>
+<map name="aSwingFeedback_coll__map" id="aSwingFeedback_coll__map">
+<area shape="rect" title="Drives PWM feedback from detected swing levels." alt="" coords="5,93,128,119"/>
+<area shape="rect" href="classRPI__PWM.html" title=" " alt="" coords="25,5,108,31"/>
+<area shape="poly" title=" " alt="" coords="69,45,69,93,64,93,64,45"/>
+</map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
 Public Types</h2></td></tr>
 <tr class="memitem:afe26c04487150b3d6d458e06b0a1742e" id="r_afe26c04487150b3d6d458e06b0a1742e"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSwingFeedback.html#afe26c04487150b3d6d458e06b0a1742e">ResetCallback</a> = std::function&lt; void()&gt;</td></tr>
+<tr class="memdesc:afe26c04487150b3d6d458e06b0a1742e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fired when the feedback cycle times out and needs a reset.  <br /></td></tr>
 <tr class="separator:afe26c04487150b3d6d458e06b0a1742e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:aa020d3d8547ba16c5c2e7b6f3169f189" id="r_aa020d3d8547ba16c5c2e7b6f3169f189"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSwingFeedback.html#aa020d3d8547ba16c5c2e7b6f3169f189">SwingFeedback</a> (<a class="el" href="classRPI__PWM.html">RPI_PWM</a> &amp;pwm)</td></tr>
+<tr class="memdesc:aa020d3d8547ba16c5c2e7b6f3169f189"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialises the feedback object and sets the PWM output to off.  <br /></td></tr>
 <tr class="separator:aa020d3d8547ba16c5c2e7b6f3169f189"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad1acada36c94a13292b71c4495ce7474" id="r_ad1acada36c94a13292b71c4495ce7474"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSwingFeedback.html#ad1acada36c94a13292b71c4495ce7474">setResetCallback</a> (<a class="el" href="classSwingFeedback.html#afe26c04487150b3d6d458e06b0a1742e">ResetCallback</a> cb)</td></tr>
+<tr class="memdesc:ad1acada36c94a13292b71c4495ce7474"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stores the callback used when the feedback state is reset.  <br /></td></tr>
 <tr class="separator:ad1acada36c94a13292b71c4495ce7474"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af26c1985c1eac2d9031958c46ec13f39" id="r_af26c1985c1eac2d9031958c46ec13f39"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSwingFeedback.html#af26c1985c1eac2d9031958c46ec13f39">checkTimeout</a> ()</td></tr>
+<tr class="memdesc:af26c1985c1eac2d9031958c46ec13f39"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks whether the feedback has been active for too long and forces it off if needed.  <br /></td></tr>
 <tr class="separator:af26c1985c1eac2d9031958c46ec13f39"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a869d9a4be1e27ce382e6f95d6a11f989" id="r_a869d9a4be1e27ce382e6f95d6a11f989"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSwingFeedback.html#a869d9a4be1e27ce382e6f95d6a11f989">onLevel</a> (const char *level)</td></tr>
+<tr class="memdesc:a869d9a4be1e27ce382e6f95d6a11f989"><td class="mdescLeft">&#160;</td><td class="mdescRight">Receives a feedback level, stores the highest pending level, and starts the worker if needed.  <br /></td></tr>
 <tr class="separator:a869d9a4be1e27ce382e6f95d6a11f989"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a966b6904fc774204125e5e5dc07fc322" id="r_a966b6904fc774204125e5e5dc07fc322"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSwingFeedback.html#a966b6904fc774204125e5e5dc07fc322">forceOff</a> ()</td></tr>
+<tr class="memdesc:a966b6904fc774204125e5e5dc07fc322"><td class="mdescLeft">&#160;</td><td class="mdescRight">Forces the PWM output off, clears the busy state, and triggers the reset callback.  <br /></td></tr>
 <tr class="separator:a966b6904fc774204125e5e5dc07fc322"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
 <tr class="memitem:a2f0ecec3b79f40207b84fa9d34680b19" id="r_a2f0ecec3b79f40207b84fa9d34680b19"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSwingFeedback.html#a2f0ecec3b79f40207b84fa9d34680b19">worker</a> ()</td></tr>
+<tr class="memdesc:a2f0ecec3b79f40207b84fa9d34680b19"><td class="mdescLeft">&#160;</td><td class="mdescRight">Internal worker for applying queued feedback updates.  <br /></td></tr>
 <tr class="separator:a2f0ecec3b79f40207b84fa9d34680b19"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:add2ef007e5a95f4b59f1941a272ee0ca" id="r_add2ef007e5a95f4b59f1941a272ee0ca"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classRPI__PWM.html">RPI_PWM</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSwingFeedback.html#add2ef007e5a95f4b59f1941a272ee0ca">pwm_</a></td></tr>
+<tr class="memdesc:add2ef007e5a95f4b59f1941a272ee0ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">PWM output owned externally.  <br /></td></tr>
 <tr class="separator:add2ef007e5a95f4b59f1941a272ee0ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abdce37fdb856ee889bc17d7a1b488016" id="r_abdce37fdb856ee889bc17d7a1b488016"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSwingFeedback.html#afe26c04487150b3d6d458e06b0a1742e">ResetCallback</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSwingFeedback.html#abdce37fdb856ee889bc17d7a1b488016">reset_cb_</a></td></tr>
+<tr class="memdesc:abdce37fdb856ee889bc17d7a1b488016"><td class="mdescLeft">&#160;</td><td class="mdescRight">Optional callback for timeout/reset handling.  <br /></td></tr>
 <tr class="separator:abdce37fdb856ee889bc17d7a1b488016"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a34091e66500508702fa74af4cd013f39" id="r_a34091e66500508702fa74af4cd013f39"><td class="memItemLeft" align="right" valign="top">std::atomic&lt; bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSwingFeedback.html#a34091e66500508702fa74af4cd013f39">busy_</a> {false}</td></tr>
+<tr class="memdesc:a34091e66500508702fa74af4cd013f39"><td class="mdescLeft">&#160;</td><td class="mdescRight">True while a feedback cycle is active.  <br /></td></tr>
 <tr class="separator:a34091e66500508702fa74af4cd013f39"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a18a0795df67442f2281435e4ce818205" id="r_a18a0795df67442f2281435e4ce818205"><td class="memItemLeft" align="right" valign="top">std::atomic&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSwingFeedback.html#a18a0795df67442f2281435e4ce818205">pending_level_</a> {0}</td></tr>
+<tr class="memdesc:a18a0795df67442f2281435e4ce818205"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pending duty-cycle level to apply.  <br /></td></tr>
 <tr class="separator:a18a0795df67442f2281435e4ce818205"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a956a5e871448c96876a9c4e4dd7f1ae8" id="r_a956a5e871448c96876a9c4e4dd7f1ae8"><td class="memItemLeft" align="right" valign="top">std::atomic&lt; int64_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSwingFeedback.html#a956a5e871448c96876a9c4e4dd7f1ae8">busy_since_ms_</a> {0}</td></tr>
 <tr class="separator:a956a5e871448c96876a9c4e4dd7f1ae8"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -128,7 +147,11 @@ Static Private Attributes</h2></td></tr>
 <tr class="memitem:a8e1ebec717fb857ec33b5d0bd5a9a539" id="r_a8e1ebec717fb857ec33b5d0bd5a9a539"><td class="memItemLeft" align="right" valign="top">static constexpr int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSwingFeedback.html#a8e1ebec717fb857ec33b5d0bd5a9a539">TIMEOUT_MS</a> = 3000</td></tr>
 <tr class="separator:a8e1ebec717fb857ec33b5d0bd5a9a539"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Typedef Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Drives PWM feedback from detected swing levels. </p>
+
+<p class="definition">Definition at line <a class="el" href="swingfeedback_8h_source.html#l00017">17</a> of file <a class="el" href="swingfeedback_8h_source.html">swingfeedback.h</a>.</p>
+</div><h2 class="groupheader">Member Typedef Documentation</h2>
 <a id="afe26c04487150b3d6d458e06b0a1742e" name="afe26c04487150b3d6d458e06b0a1742e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#afe26c04487150b3d6d458e06b0a1742e">&#9670;&#160;</a></span>ResetCallback</h2>
 
@@ -140,6 +163,10 @@ Static Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Fired when the feedback cycle times out and needs a reset. </p>
+
+<p class="definition">Definition at line <a class="el" href="swingfeedback_8h_source.html#l00020">20</a> of file <a class="el" href="swingfeedback_8h_source.html">swingfeedback.h</a>.</p>
 
 </div>
 </div>
@@ -168,6 +195,10 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Initialises the feedback object and sets the PWM output to off. </p>
+
+<p class="definition">Definition at line <a class="el" href="swingfeedback_8cpp_source.html#l00102">102</a> of file <a class="el" href="swingfeedback_8cpp_source.html">swingfeedback.cpp</a>.</p>
+
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -186,6 +217,10 @@ Static Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Checks whether the feedback has been active for too long and forces it off if needed. </p>
+
+<p class="definition">Definition at line <a class="el" href="swingfeedback_8cpp_source.html#l00114">114</a> of file <a class="el" href="swingfeedback_8cpp_source.html">swingfeedback.cpp</a>.</p>
+
 </div>
 </div>
 <a id="a966b6904fc774204125e5e5dc07fc322" name="a966b6904fc774204125e5e5dc07fc322"></a>
@@ -202,6 +237,10 @@ Static Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Forces the PWM output off, clears the busy state, and triggers the reset callback. </p>
+
+<p class="definition">Definition at line <a class="el" href="swingfeedback_8cpp_source.html#l00172">172</a> of file <a class="el" href="swingfeedback_8cpp_source.html">swingfeedback.cpp</a>.</p>
 
 </div>
 </div>
@@ -221,6 +260,12 @@ Static Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Receives a feedback level, stores the highest pending level, and starts the worker if needed. </p>
+<p>Level dropped to zero — swing has ended. Fire the worker now so it plays the actual peak that was accumulated, not just the first edge.</p>
+<p>Accumulate the highest level reached during the swing. Do NOT spawn the worker yet — wait for the swing to end (rank == 0 above).</p>
+
+<p class="definition">Definition at line <a class="el" href="swingfeedback_8cpp_source.html#l00149">149</a> of file <a class="el" href="swingfeedback_8cpp_source.html">swingfeedback.cpp</a>.</p>
+
 </div>
 </div>
 <a id="ad1acada36c94a13292b71c4495ce7474" name="ad1acada36c94a13292b71c4495ce7474"></a>
@@ -238,6 +283,10 @@ Static Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Stores the callback used when the feedback state is reset. </p>
+
+<p class="definition">Definition at line <a class="el" href="swingfeedback_8cpp_source.html#l00109">109</a> of file <a class="el" href="swingfeedback_8cpp_source.html">swingfeedback.cpp</a>.</p>
 
 </div>
 </div>
@@ -264,6 +313,12 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Internal worker for applying queued feedback updates. </p>
+<p>Runs the feedback output, updates the busy state, and calls the reset callback when finished. </p>
+<p>Clear any level that accumulated during playback so it doesn't contaminate the next swing.</p>
+
+<p class="definition">Definition at line <a class="el" href="swingfeedback_8cpp_source.html#l00125">125</a> of file <a class="el" href="swingfeedback_8cpp_source.html">swingfeedback.cpp</a>.</p>
+
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
@@ -287,6 +342,10 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>True while a feedback cycle is active. </p>
+
+<p class="definition">Definition at line <a class="el" href="swingfeedback_8h_source.html#l00040">40</a> of file <a class="el" href="swingfeedback_8h_source.html">swingfeedback.h</a>.</p>
+
 </div>
 </div>
 <a id="a956a5e871448c96876a9c4e4dd7f1ae8" name="a956a5e871448c96876a9c4e4dd7f1ae8"></a>
@@ -308,6 +367,9 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Start time of the active feedback cycle in ms since epoch. Zero means idle. </p>
+
+<p class="definition">Definition at line <a class="el" href="swingfeedback_8h_source.html#l00047">47</a> of file <a class="el" href="swingfeedback_8h_source.html">swingfeedback.h</a>.</p>
 
 </div>
 </div>
@@ -331,6 +393,10 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Pending duty-cycle level to apply. </p>
+
+<p class="definition">Definition at line <a class="el" href="swingfeedback_8h_source.html#l00043">43</a> of file <a class="el" href="swingfeedback_8h_source.html">swingfeedback.h</a>.</p>
+
 </div>
 </div>
 <a id="add2ef007e5a95f4b59f1941a272ee0ca" name="add2ef007e5a95f4b59f1941a272ee0ca"></a>
@@ -352,6 +418,10 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>PWM output owned externally. </p>
+
+<p class="definition">Definition at line <a class="el" href="swingfeedback_8h_source.html#l00034">34</a> of file <a class="el" href="swingfeedback_8h_source.html">swingfeedback.h</a>.</p>
 
 </div>
 </div>
@@ -375,6 +445,10 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Optional callback for timeout/reset handling. </p>
+
+<p class="definition">Definition at line <a class="el" href="swingfeedback_8h_source.html#l00037">37</a> of file <a class="el" href="swingfeedback_8h_source.html">swingfeedback.h</a>.</p>
+
 </div>
 </div>
 <a id="a8e1ebec717fb857ec33b5d0bd5a9a539" name="a8e1ebec717fb857ec33b5d0bd5a9a539"></a>
@@ -397,11 +471,13 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="swingfeedback_8h_source.html#l00049">49</a> of file <a class="el" href="swingfeedback_8h_source.html">swingfeedback.h</a>.</p>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/libs/Motor/Include/<a class="el" href="swingfeedback_8h_source.html">swingfeedback.h</a></li>
-<li>src/libs/Motor/<a class="el" href="swingfeedback_8cpp.html">swingfeedback.cpp</a></li>
+<li>src/libs/Motor/<a class="el" href="swingfeedback_8cpp_source.html">swingfeedback.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

@@ -13,13 +13,13 @@ using \mbox{\hyperlink{classSwingDetector_a169ba1ea8739914fc39b89b1295a1f5c}{Eve
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{classSwingDetector_ab2396ef121d15144dcefb44a002aa9e1}{Swing\+Detector}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Start with no previously emitted level. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classSwingDetector_a6a1a5a4e35e4102964220965daaa4786}{set\+Callback}} (\mbox{\hyperlink{classSwingDetector_a169ba1ea8739914fc39b89b1295a1f5c}{Event\+Callback}} cb)
-\item 
+\begin{DoxyCompactList}\small\item\em Register the callback fired on level changes. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classSwingDetector_acc0cb1cf44d9f1b2d6e0159a01d40e34}{detect}} (float accel\+\_\+mag)
-\item 
+\begin{DoxyCompactList}\small\item\em Feed one accel magnitude sample (m/s²). Fires callback on level change. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classSwingDetector_a3f3169178e25fbb03b33a102f793242e}{reset}} ()
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Reset last known level so the next \doxylink{classSwingDetector_acc0cb1cf44d9f1b2d6e0159a01d40e34}{detect()} always fires a callback. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Private Types}
 \begin{DoxyCompactItemize}
 \item 
@@ -33,16 +33,25 @@ enum class \mbox{\hyperlink{classSwingDetector_a367fdb5d3438b354c265c81bfe1c3088
 \begin{DoxyCompactItemize}
 \item 
 static \mbox{\hyperlink{classSwingDetector_a367fdb5d3438b354c265c81bfe1c3088}{Level}} \mbox{\hyperlink{classSwingDetector_a06e963a0453c19160e22c3dbc9c408e6}{classify}} (float accel\+\_\+mag)
-\item 
+\begin{DoxyCompactList}\small\item\em Convert accel magnitude to a duty-\/cycle band. \end{DoxyCompactList}\item 
 static const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classSwingDetector_acd5eaec64bd2b3403a2678d7e518ad6b}{label}} (\mbox{\hyperlink{classSwingDetector_a367fdb5d3438b354c265c81bfe1c3088}{Level}} level)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Convert enum value to callback label. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{classSwingDetector_a367fdb5d3438b354c265c81bfe1c3088}{Level}} \mbox{\hyperlink{classSwingDetector_a0245e1a6450e285c1407da3c52aea405}{last\+\_\+level\+\_\+}}
-\item 
+\begin{DoxyCompactList}\small\item\em Last emitted band. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classSwingDetector_a169ba1ea8739914fc39b89b1295a1f5c}{Event\+Callback}} \mbox{\hyperlink{classSwingDetector_a093f9d7544a947257dd0a8cba383c666}{callback\+\_\+}}
 \end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+SOLID principles\+: S -\/ \doxylink{classSwingDetector}{Swing\+Detector} categorised the swing speed intro 3 levels, and creates a callback when the level changes. This actually does 2 things but it is very small so we decided to wrap them up with each other. I -\/ The calculation of the level classification in made private as other caller doesn\textquotesingle{}t need to know. D -\/ The std\+::function is an abstraction which allows for any inputs to the function. Classifies linear acceleration magnitude into duty cycle levels. Fires the registered callback only when the level changes.
+
+Thresholds (m/s²)\+: a \texorpdfstring{$>$}{>}= 25 → "{}\+Highest Duty Cycle"{} 15 \texorpdfstring{$<$}{<}= a \texorpdfstring{$<$}{<} 25 → "{}\+Medium Duty Cycle"{} 5 \texorpdfstring{$<$}{<}= a \texorpdfstring{$<$}{<} 15 → "{}\+Low Duty Cycle"{} a \texorpdfstring{$<$}{<} 5 → "{}\+No Duty Cycle"{} 
+
+Definition at line \mbox{\hyperlink{SwingDetector_8hpp_source_l00021}{21}} of file \mbox{\hyperlink{SwingDetector_8hpp_source}{Swing\+Detector.\+hpp}}.
+
 
 
 \doxysubsection{Member Typedef Documentation}
@@ -51,6 +60,10 @@ static const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classSwingDetector
 \index{EventCallback@{EventCallback}!SwingDetector@{SwingDetector}}
 \doxysubsubsection{\texorpdfstring{EventCallback}{EventCallback}}
 {\footnotesize\ttfamily using \mbox{\hyperlink{classSwingDetector_a169ba1ea8739914fc39b89b1295a1f5c}{Swing\+Detector\+::\+Event\+Callback}} =  std\+::function$<$void(const char\texorpdfstring{$\ast$}{*} level)$>$}
+
+
+
+Definition at line \mbox{\hyperlink{SwingDetector_8hpp_source_l00023}{23}} of file \mbox{\hyperlink{SwingDetector_8hpp_source}{Swing\+Detector.\+hpp}}.
 
 
 
@@ -81,12 +94,24 @@ HIGH&\\
 \end{DoxyEnumFields}
 
 
+Definition at line \mbox{\hyperlink{SwingDetector_8hpp_source_l00036}{36}} of file \mbox{\hyperlink{SwingDetector_8hpp_source}{Swing\+Detector.\+hpp}}.
+
+
+
 \doxysubsection{Constructor \& Destructor Documentation}
 \Hypertarget{classSwingDetector_ab2396ef121d15144dcefb44a002aa9e1}\label{classSwingDetector_ab2396ef121d15144dcefb44a002aa9e1} 
 \index{SwingDetector@{SwingDetector}!SwingDetector@{SwingDetector}}
 \index{SwingDetector@{SwingDetector}!SwingDetector@{SwingDetector}}
 \doxysubsubsection{\texorpdfstring{SwingDetector()}{SwingDetector()}}
 {\footnotesize\ttfamily Swing\+Detector\+::\+Swing\+Detector (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Start with no previously emitted level. 
+
+
+
+Definition at line \mbox{\hyperlink{SwingDetector_8cpp_source_l00004}{4}} of file \mbox{\hyperlink{SwingDetector_8cpp_source}{Swing\+Detector.\+cpp}}.
 
 
 
@@ -97,11 +122,29 @@ HIGH&\\
 \doxysubsubsection{\texorpdfstring{classify()}{classify()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{classSwingDetector_a367fdb5d3438b354c265c81bfe1c3088}{Swing\+Detector\+::\+Level}} Swing\+Detector\+::classify (\begin{DoxyParamCaption}\item[{float}]{accel\+\_\+mag }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
 
+
+
+Convert accel magnitude to a duty-\/cycle band. 
+
+Map acceleration magnitude to a discrete level.
+
+Definition at line \mbox{\hyperlink{SwingDetector_8cpp_source_l00032}{32}} of file \mbox{\hyperlink{SwingDetector_8cpp_source}{Swing\+Detector.\+cpp}}.
+
 \Hypertarget{classSwingDetector_acc0cb1cf44d9f1b2d6e0159a01d40e34}\label{classSwingDetector_acc0cb1cf44d9f1b2d6e0159a01d40e34} 
 \index{SwingDetector@{SwingDetector}!detect@{detect}}
 \index{detect@{detect}!SwingDetector@{SwingDetector}}
 \doxysubsubsection{\texorpdfstring{detect()}{detect()}}
 {\footnotesize\ttfamily void Swing\+Detector\+::detect (\begin{DoxyParamCaption}\item[{float}]{accel\+\_\+mag }\end{DoxyParamCaption})}
+
+
+
+Feed one accel magnitude sample (m/s²). Fires callback on level change. 
+
+Classify the current sample into a duty-\/cycle band.
+
+Only emit when the band changes.
+
+Definition at line \mbox{\hyperlink{SwingDetector_8cpp_source_l00020}{20}} of file \mbox{\hyperlink{SwingDetector_8cpp_source}{Swing\+Detector.\+cpp}}.
 
 \Hypertarget{classSwingDetector_acd5eaec64bd2b3403a2678d7e518ad6b}\label{classSwingDetector_acd5eaec64bd2b3403a2678d7e518ad6b} 
 \index{SwingDetector@{SwingDetector}!label@{label}}
@@ -109,17 +152,41 @@ HIGH&\\
 \doxysubsubsection{\texorpdfstring{label()}{label()}}
 {\footnotesize\ttfamily const char \texorpdfstring{$\ast$}{*} Swing\+Detector\+::label (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSwingDetector_a367fdb5d3438b354c265c81bfe1c3088}{Level}}}]{level }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
 
+
+
+Convert enum value to callback label. 
+
+Convert enum level to the external string label.
+
+Definition at line \mbox{\hyperlink{SwingDetector_8cpp_source_l00041}{41}} of file \mbox{\hyperlink{SwingDetector_8cpp_source}{Swing\+Detector.\+cpp}}.
+
 \Hypertarget{classSwingDetector_a3f3169178e25fbb03b33a102f793242e}\label{classSwingDetector_a3f3169178e25fbb03b33a102f793242e} 
 \index{SwingDetector@{SwingDetector}!reset@{reset}}
 \index{reset@{reset}!SwingDetector@{SwingDetector}}
 \doxysubsubsection{\texorpdfstring{reset()}{reset()}}
 {\footnotesize\ttfamily void Swing\+Detector\+::reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+
+
+Reset last known level so the next \doxylink{classSwingDetector_acc0cb1cf44d9f1b2d6e0159a01d40e34}{detect()} always fires a callback. 
+
+Clear cached state so the next \doxylink{classSwingDetector_acc0cb1cf44d9f1b2d6e0159a01d40e34}{detect()} call always emits. 
+
+Definition at line \mbox{\hyperlink{SwingDetector_8cpp_source_l00015}{15}} of file \mbox{\hyperlink{SwingDetector_8cpp_source}{Swing\+Detector.\+cpp}}.
+
 \Hypertarget{classSwingDetector_a6a1a5a4e35e4102964220965daaa4786}\label{classSwingDetector_a6a1a5a4e35e4102964220965daaa4786} 
 \index{SwingDetector@{SwingDetector}!setCallback@{setCallback}}
 \index{setCallback@{setCallback}!SwingDetector@{SwingDetector}}
 \doxysubsubsection{\texorpdfstring{setCallback()}{setCallback()}}
 {\footnotesize\ttfamily void Swing\+Detector\+::set\+Callback (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSwingDetector_a169ba1ea8739914fc39b89b1295a1f5c}{Event\+Callback}}}]{cb }\end{DoxyParamCaption})}
+
+
+
+Register the callback fired on level changes. 
+
+
+
+Definition at line \mbox{\hyperlink{SwingDetector_8cpp_source_l00009}{9}} of file \mbox{\hyperlink{SwingDetector_8cpp_source}{Swing\+Detector.\+cpp}}.
 
 
 
@@ -130,11 +197,23 @@ HIGH&\\
 \doxysubsubsection{\texorpdfstring{callback\_}{callback\_}}
 {\footnotesize\ttfamily \mbox{\hyperlink{classSwingDetector_a169ba1ea8739914fc39b89b1295a1f5c}{Event\+Callback}} Swing\+Detector\+::callback\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
 
+
+
+Definition at line \mbox{\hyperlink{SwingDetector_8hpp_source_l00047}{47}} of file \mbox{\hyperlink{SwingDetector_8hpp_source}{Swing\+Detector.\+hpp}}.
+
 \Hypertarget{classSwingDetector_a0245e1a6450e285c1407da3c52aea405}\label{classSwingDetector_a0245e1a6450e285c1407da3c52aea405} 
 \index{SwingDetector@{SwingDetector}!last\_level\_@{last\_level\_}}
 \index{last\_level\_@{last\_level\_}!SwingDetector@{SwingDetector}}
 \doxysubsubsection{\texorpdfstring{last\_level\_}{last\_level\_}}
 {\footnotesize\ttfamily \mbox{\hyperlink{classSwingDetector_a367fdb5d3438b354c265c81bfe1c3088}{Level}} Swing\+Detector\+::last\+\_\+level\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Last emitted band. 
+
+
+
+Definition at line \mbox{\hyperlink{SwingDetector_8hpp_source_l00045}{45}} of file \mbox{\hyperlink{SwingDetector_8hpp_source}{Swing\+Detector.\+hpp}}.
 
 
 

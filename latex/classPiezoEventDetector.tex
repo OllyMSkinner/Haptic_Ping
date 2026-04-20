@@ -2,43 +2,61 @@
 \hypertarget{classPiezoEventDetector}{}\label{classPiezoEventDetector}\index{PiezoEventDetector@{PiezoEventDetector}}
 
 
+Declares the detector class and its public interface.  
+
+
+
+
 {\ttfamily \#include $<$event\+\_\+detector.\+h$>$}
 
 
 
 Collaboration diagram for Piezo\+Event\+Detector\+:
-% FIG 0
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classPiezoEventDetector__coll__graph}
+\end{center}
+\end{figure}
 \doxysubsubsection*{Public Types}
 \begin{DoxyCompactItemize}
 \item 
 using \mbox{\hyperlink{classPiezoEventDetector_a6654a5fee70b051fa4a469ed25a53fd1}{Force\+Callback}} = std\+::function$<$ void(bool)$>$
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Defines the callback type used for press state changes. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{classPiezoEventDetector_a1f43faa8c3c3dd97b0ac77c650b0eb68}{Piezo\+Event\+Detector}} (\mbox{\hyperlink{classSimpleLEDController}{Simple\+LEDController}} \&led\+Ref, \mbox{\hyperlink{structPiezoEventDetectorSettings}{Piezo\+Event\+Detector\+Settings}} settings)
-\item 
+\begin{DoxyCompactList}\small\item\em Creates the detector with an LED reference and settings. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classPiezoEventDetector_a6591347b0c88fc41e844d2423aadfebe}{set\+Force\+Callback}} (\mbox{\hyperlink{classPiezoEventDetector_a6654a5fee70b051fa4a469ed25a53fd1}{Force\+Callback}} cb)
-\item 
+\begin{DoxyCompactList}\small\item\em Sets the callback used when the press state changes. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classPiezoEventDetector_add56f49efcc31886e095fa94139d47fc}{process\+Sample}} (float v)
-\item 
+\begin{DoxyCompactList}\small\item\em Sets the callback function for state changes. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classPiezoEventDetector_af73f0c9c0bb0b747d62fa338182d7fe8}{reset}} ()
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Processes a new sensor sample. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{classSimpleLEDController}{Simple\+LEDController}} \& \mbox{\hyperlink{classPiezoEventDetector_ac83a1585f92dc0383f69027a24580b89}{led\+\_\+}}
-\item 
+\begin{DoxyCompactList}\small\item\em Resets the detector state. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{structPiezoEventDetectorSettings}{Piezo\+Event\+Detector\+Settings}} \mbox{\hyperlink{classPiezoEventDetector_aba0bb473afc51c47b3d26567625d6e0a}{settings\+\_\+}}
-\item 
+\begin{DoxyCompactList}\small\item\em Reference to the LED controller. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classPiezoEventDetector_a6654a5fee70b051fa4a469ed25a53fd1}{Force\+Callback}} \mbox{\hyperlink{classPiezoEventDetector_a60a16063c0cf74b5a18e726cbe1f9c64}{force\+Callback\+\_\+}}
-\item 
+\begin{DoxyCompactList}\small\item\em Stores the detector settings. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classPiezoEventDetector_a36b0a529dda9a6ee5d92a28be400c1f0}{pressed\+\_\+}} = false
-\item 
+\begin{DoxyCompactList}\small\item\em Stores the callback function. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classPiezoEventDetector_a901691233dfad6c7c0d9e867f71871ec}{filter\+\_\+init\+\_\+}} = false
 \item 
 float \mbox{\hyperlink{classPiezoEventDetector_a47e4ed983ad88f90de6842fe8d15746d}{filtered\+\_\+v\+\_\+}} = 0.\+0f
 \end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Declares the detector class and its public interface. 
+
+Definition at line \mbox{\hyperlink{event__detector_8h_source_l00030}{30}} of file \mbox{\hyperlink{event__detector_8h_source}{event\+\_\+detector.\+h}}.
+
 
 
 \doxysubsection{Member Typedef Documentation}
@@ -47,6 +65,14 @@ float \mbox{\hyperlink{classPiezoEventDetector_a47e4ed983ad88f90de6842fe8d15746d
 \index{ForceCallback@{ForceCallback}!PiezoEventDetector@{PiezoEventDetector}}
 \doxysubsubsection{\texorpdfstring{ForceCallback}{ForceCallback}}
 {\footnotesize\ttfamily using \mbox{\hyperlink{classPiezoEventDetector_a6654a5fee70b051fa4a469ed25a53fd1}{Piezo\+Event\+Detector\+::\+Force\+Callback}} =  std\+::function$<$void(bool)$>$}
+
+
+
+Defines the callback type used for press state changes. 
+
+
+
+Definition at line \mbox{\hyperlink{event__detector_8h_source_l00034}{34}} of file \mbox{\hyperlink{event__detector_8h_source}{event\+\_\+detector.\+h}}.
 
 
 
@@ -59,6 +85,16 @@ float \mbox{\hyperlink{classPiezoEventDetector_a47e4ed983ad88f90de6842fe8d15746d
 
 
 
+Creates the detector with an LED reference and settings. 
+
+Stores the LED reference and detector settings.
+
+This class processes piezo sensor samples to detect press and release events. It smooths the input signal, compares it against press/release thresholds, updates the LED state, and triggers a callback when the state changes. 
+
+Definition at line \mbox{\hyperlink{event__detector_8cpp_source_l00011}{11}} of file \mbox{\hyperlink{event__detector_8cpp_source}{event\+\_\+detector.\+cpp}}.
+
+
+
 \doxysubsection{Member Function Documentation}
 \Hypertarget{classPiezoEventDetector_add56f49efcc31886e095fa94139d47fc}\label{classPiezoEventDetector_add56f49efcc31886e095fa94139d47fc} 
 \index{PiezoEventDetector@{PiezoEventDetector}!processSample@{processSample}}
@@ -66,17 +102,41 @@ float \mbox{\hyperlink{classPiezoEventDetector_a47e4ed983ad88f90de6842fe8d15746d
 \doxysubsubsection{\texorpdfstring{processSample()}{processSample()}}
 {\footnotesize\ttfamily void Piezo\+Event\+Detector\+::process\+Sample (\begin{DoxyParamCaption}\item[{float}]{v }\end{DoxyParamCaption})}
 
+
+
+Sets the callback function for state changes. 
+
+Filters the sample, checks thresholds, updates state, and triggers outputs. 
+
+Definition at line \mbox{\hyperlink{event__detector_8cpp_source_l00033}{33}} of file \mbox{\hyperlink{event__detector_8cpp_source}{event\+\_\+detector.\+cpp}}.
+
 \Hypertarget{classPiezoEventDetector_af73f0c9c0bb0b747d62fa338182d7fe8}\label{classPiezoEventDetector_af73f0c9c0bb0b747d62fa338182d7fe8} 
 \index{PiezoEventDetector@{PiezoEventDetector}!reset@{reset}}
 \index{reset@{reset}!PiezoEventDetector@{PiezoEventDetector}}
 \doxysubsubsection{\texorpdfstring{reset()}{reset()}}
 {\footnotesize\ttfamily void Piezo\+Event\+Detector\+::reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+
+
+Processes a new sensor sample. 
+
+Resets the detector state and turns the LED off. 
+
+Definition at line \mbox{\hyperlink{event__detector_8cpp_source_l00024}{24}} of file \mbox{\hyperlink{event__detector_8cpp_source}{event\+\_\+detector.\+cpp}}.
+
 \Hypertarget{classPiezoEventDetector_a6591347b0c88fc41e844d2423aadfebe}\label{classPiezoEventDetector_a6591347b0c88fc41e844d2423aadfebe} 
 \index{PiezoEventDetector@{PiezoEventDetector}!setForceCallback@{setForceCallback}}
 \index{setForceCallback@{setForceCallback}!PiezoEventDetector@{PiezoEventDetector}}
 \doxysubsubsection{\texorpdfstring{setForceCallback()}{setForceCallback()}}
 {\footnotesize\ttfamily void Piezo\+Event\+Detector\+::set\+Force\+Callback (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classPiezoEventDetector_a6654a5fee70b051fa4a469ed25a53fd1}{Force\+Callback}}}]{cb }\end{DoxyParamCaption})}
+
+
+
+Sets the callback used when the press state changes. 
+
+
+
+Definition at line \mbox{\hyperlink{event__detector_8cpp_source_l00018}{18}} of file \mbox{\hyperlink{event__detector_8cpp_source}{event\+\_\+detector.\+cpp}}.
 
 
 
@@ -87,11 +147,19 @@ float \mbox{\hyperlink{classPiezoEventDetector_a47e4ed983ad88f90de6842fe8d15746d
 \doxysubsubsection{\texorpdfstring{filter\_init\_}{filter\_init\_}}
 {\footnotesize\ttfamily bool Piezo\+Event\+Detector\+::filter\+\_\+init\+\_\+ = false\hspace{0.3cm}{\ttfamily [private]}}
 
+
+
+Definition at line \mbox{\hyperlink{event__detector_8h_source_l00051}{51}} of file \mbox{\hyperlink{event__detector_8h_source}{event\+\_\+detector.\+h}}.
+
 \Hypertarget{classPiezoEventDetector_a47e4ed983ad88f90de6842fe8d15746d}\label{classPiezoEventDetector_a47e4ed983ad88f90de6842fe8d15746d} 
 \index{PiezoEventDetector@{PiezoEventDetector}!filtered\_v\_@{filtered\_v\_}}
 \index{filtered\_v\_@{filtered\_v\_}!PiezoEventDetector@{PiezoEventDetector}}
 \doxysubsubsection{\texorpdfstring{filtered\_v\_}{filtered\_v\_}}
 {\footnotesize\ttfamily float Piezo\+Event\+Detector\+::filtered\+\_\+v\+\_\+ = 0.\+0f\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{event__detector_8h_source_l00052}{52}} of file \mbox{\hyperlink{event__detector_8h_source}{event\+\_\+detector.\+h}}.
 
 \Hypertarget{classPiezoEventDetector_a60a16063c0cf74b5a18e726cbe1f9c64}\label{classPiezoEventDetector_a60a16063c0cf74b5a18e726cbe1f9c64} 
 \index{PiezoEventDetector@{PiezoEventDetector}!forceCallback\_@{forceCallback\_}}
@@ -99,11 +167,27 @@ float \mbox{\hyperlink{classPiezoEventDetector_a47e4ed983ad88f90de6842fe8d15746d
 \doxysubsubsection{\texorpdfstring{forceCallback\_}{forceCallback\_}}
 {\footnotesize\ttfamily \mbox{\hyperlink{classPiezoEventDetector_a6654a5fee70b051fa4a469ed25a53fd1}{Force\+Callback}} Piezo\+Event\+Detector\+::force\+Callback\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
 
+
+
+Stores the detector settings. 
+
+
+
+Definition at line \mbox{\hyperlink{event__detector_8h_source_l00047}{47}} of file \mbox{\hyperlink{event__detector_8h_source}{event\+\_\+detector.\+h}}.
+
 \Hypertarget{classPiezoEventDetector_ac83a1585f92dc0383f69027a24580b89}\label{classPiezoEventDetector_ac83a1585f92dc0383f69027a24580b89} 
 \index{PiezoEventDetector@{PiezoEventDetector}!led\_@{led\_}}
 \index{led\_@{led\_}!PiezoEventDetector@{PiezoEventDetector}}
 \doxysubsubsection{\texorpdfstring{led\_}{led\_}}
 {\footnotesize\ttfamily \mbox{\hyperlink{classSimpleLEDController}{Simple\+LEDController}}\& Piezo\+Event\+Detector\+::led\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Resets the detector state. 
+
+
+
+Definition at line \mbox{\hyperlink{event__detector_8h_source_l00045}{45}} of file \mbox{\hyperlink{event__detector_8h_source}{event\+\_\+detector.\+h}}.
 
 \Hypertarget{classPiezoEventDetector_a36b0a529dda9a6ee5d92a28be400c1f0}\label{classPiezoEventDetector_a36b0a529dda9a6ee5d92a28be400c1f0} 
 \index{PiezoEventDetector@{PiezoEventDetector}!pressed\_@{pressed\_}}
@@ -111,11 +195,27 @@ float \mbox{\hyperlink{classPiezoEventDetector_a47e4ed983ad88f90de6842fe8d15746d
 \doxysubsubsection{\texorpdfstring{pressed\_}{pressed\_}}
 {\footnotesize\ttfamily bool Piezo\+Event\+Detector\+::pressed\+\_\+ = false\hspace{0.3cm}{\ttfamily [private]}}
 
+
+
+Stores the callback function. 
+
+Tracks whether the detector is currently pressed, whether the filter has been initialised and stores the current filtered sample value. 
+
+Definition at line \mbox{\hyperlink{event__detector_8h_source_l00050}{50}} of file \mbox{\hyperlink{event__detector_8h_source}{event\+\_\+detector.\+h}}.
+
 \Hypertarget{classPiezoEventDetector_aba0bb473afc51c47b3d26567625d6e0a}\label{classPiezoEventDetector_aba0bb473afc51c47b3d26567625d6e0a} 
 \index{PiezoEventDetector@{PiezoEventDetector}!settings\_@{settings\_}}
 \index{settings\_@{settings\_}!PiezoEventDetector@{PiezoEventDetector}}
 \doxysubsubsection{\texorpdfstring{settings\_}{settings\_}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structPiezoEventDetectorSettings}{Piezo\+Event\+Detector\+Settings}} Piezo\+Event\+Detector\+::settings\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Reference to the LED controller. 
+
+
+
+Definition at line \mbox{\hyperlink{event__detector_8h_source_l00046}{46}} of file \mbox{\hyperlink{event__detector_8h_source}{event\+\_\+detector.\+h}}.
 
 
 

@@ -2,16 +2,32 @@
 \hypertarget{classPositionDetector}{}\label{classPositionDetector}\index{PositionDetector@{PositionDetector}}
 
 
+Declares the position detector class, including its callback type, configuration settings, and main functions for processing samples and resetting state.  
+
+
+
+
 {\ttfamily \#include $<$positiondetector.\+hpp$>$}
 
 
 
-Inheritance diagram for Position\+Detector\+:
-% FIG 0
+Inheritance diagram for Position\+Detector\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=178pt]{classPositionDetector__inherit__graph}
+\end{center}
+\end{figure}
 
 
 Collaboration diagram for Position\+Detector\+:
-% FIG 1
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=214pt]{classPositionDetector__coll__graph}
+\end{center}
+\end{figure}
 \doxysubsubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
@@ -26,7 +42,7 @@ using \mbox{\hyperlink{classPositionDetector_a6cecc4adffa3f995348529f94c1db498}{
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{classPositionDetector_a14b40be880ad02568135c29134a62e56}{Position\+Detector}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Default constructor delegates to config-\/based constructor. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classPositionDetector_ab0e54c6126a4a687ee54da1488b1a6ca}{Position\+Detector}} (const \mbox{\hyperlink{structPositionDetector_1_1Config}{Config}} \&c)
 \item 
 virtual \mbox{\hyperlink{classPositionDetector_a46e8f76935189768ed661b5aa868490c}{\texorpdfstring{$\sim$}{\string~}\+Position\+Detector}} ()=default
@@ -41,7 +57,7 @@ void \mbox{\hyperlink{classPositionDetector_aa1219497239de86b59d8c88f6a60c876}{r
 \begin{DoxyCompactItemize}
 \item 
 static float \mbox{\hyperlink{classPositionDetector_a346d2194b0515bc47f4e03d186339ff9}{wrap\+Angle\+Deg}} (float a)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Declares the helper function and private members used to store configuration, reference values, stability count, state, and callback data. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -54,11 +70,22 @@ float \mbox{\hyperlink{classPositionDetector_ad1083c445fd76423838c90fed341a590}{
 float \mbox{\hyperlink{classPositionDetector_a6303a331e34b61b49b7b3c6681355111}{n\+RefZ}}
 \item 
 int \mbox{\hyperlink{classPositionDetector_af56e669264fd7441de6ae3343d8e5245}{stable\+Count}}
-\item 
+\begin{DoxyCompactList}\small\item\em normalised ref vector, computed from cfg \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classPositionDetector_a890b67cd6046e11042bd7ba0214571cb}{confirmed}}
 \item 
 \mbox{\hyperlink{classPositionDetector_a6cecc4adffa3f995348529f94c1db498}{State\+Callback}} \mbox{\hyperlink{classPositionDetector_aae56d9e61b2afb80a07003ba59fbb318}{callback}}
 \end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Declares the position detector class, including its callback type, configuration settings, and main functions for processing samples and resetting state. 
+
+This header declares the position detector class. It stores the configuration for detecting an upright position, processes sensor samples, tracks stability, and uses a callback when the required position has been confirmed.
+
+SOLID principles\+: S -\/ This class is responsible for analysing incoming motion/orientation samples and deciding whether the required upright position has been stably detected. O -\/ Client code can extend what happens after detection by attaching a callback, without modifying the detector logic itself. L -\/ The virtual destructor and virtual \doxylink{classPositionDetector_aff71ff748fddc6e18c1303a0aafc9dcf}{on\+Sample()} allow derived detector types to replace the base class safely, provided they preserve the same detection contract. I -\/ The public API is intentionally small, exposing only the operations needed by client code\+: process samples, register a callback, and reset state. 
+
+Definition at line \mbox{\hyperlink{positiondetector_8hpp_source_l00027}{27}} of file \mbox{\hyperlink{positiondetector_8hpp_source}{positiondetector.\+hpp}}.
+
 
 
 \doxysubsection{Member Typedef Documentation}
@@ -70,6 +97,10 @@ bool \mbox{\hyperlink{classPositionDetector_a890b67cd6046e11042bd7ba0214571cb}{c
 
 
 
+Definition at line \mbox{\hyperlink{positiondetector_8hpp_source_l00029}{29}} of file \mbox{\hyperlink{positiondetector_8hpp_source}{positiondetector.\+hpp}}.
+
+
+
 \doxysubsection{Constructor \& Destructor Documentation}
 \Hypertarget{classPositionDetector_a14b40be880ad02568135c29134a62e56}\label{classPositionDetector_a14b40be880ad02568135c29134a62e56} 
 \index{PositionDetector@{PositionDetector}!PositionDetector@{PositionDetector}}
@@ -77,11 +108,23 @@ bool \mbox{\hyperlink{classPositionDetector_a890b67cd6046e11042bd7ba0214571cb}{c
 \doxysubsubsection{\texorpdfstring{PositionDetector()}{PositionDetector()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily Position\+Detector\+::\+Position\+Detector (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+
+
+Default constructor delegates to config-\/based constructor. 
+
+
+
+Definition at line \mbox{\hyperlink{positiondetector_8cpp_source_l00004}{4}} of file \mbox{\hyperlink{positiondetector_8cpp_source}{positiondetector.\+cpp}}.
+
 \Hypertarget{classPositionDetector_ab0e54c6126a4a687ee54da1488b1a6ca}\label{classPositionDetector_ab0e54c6126a4a687ee54da1488b1a6ca} 
 \index{PositionDetector@{PositionDetector}!PositionDetector@{PositionDetector}}
 \index{PositionDetector@{PositionDetector}!PositionDetector@{PositionDetector}}
 \doxysubsubsection{\texorpdfstring{PositionDetector()}{PositionDetector()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily Position\+Detector\+::\+Position\+Detector (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structPositionDetector_1_1Config}{Config}} \&}]{c }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+Precompute normalised reference gravity vector.
+
+Definition at line \mbox{\hyperlink{positiondetector_8cpp_source_l00007}{7}} of file \mbox{\hyperlink{positiondetector_8cpp_source}{positiondetector.\+cpp}}.
 
 \Hypertarget{classPositionDetector_a46e8f76935189768ed661b5aa868490c}\label{classPositionDetector_a46e8f76935189768ed661b5aa868490c} 
 \index{PositionDetector@{PositionDetector}!````~PositionDetector@{\texorpdfstring{$\sim$}{\string~}PositionDetector}}
@@ -98,9 +141,33 @@ bool \mbox{\hyperlink{classPositionDetector_a890b67cd6046e11042bd7ba0214571cb}{c
 \doxysubsubsection{\texorpdfstring{onSample()}{onSample()}}
 {\footnotesize\ttfamily void Position\+Detector\+::on\+Sample (\begin{DoxyParamCaption}\item[{float}]{ax,  }\item[{float}]{ay,  }\item[{float}]{az,  }\item[{float}]{mx,  }\item[{float}]{my }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
 
+Compute acceleration magnitude.
 
+Compute heading from magnetometer.
+
+Check heading against reference (with wrap-\/around).
+
+Check if acceleration magnitude is within expected bounds.
+
+Normalise acceleration vector.
+
+Compare with reference orientation using dot product.
+
+Position valid only if both checks pass.
+
+Count consecutive valid samples.
+
+Reset on failure.
+
+Confirm only after enough consecutive valid samples.
+
+Emit callback only on state change.
 
 Reimplemented in \mbox{\hyperlink{classSwingProcessor_a8e4fbc5ebea519acf8744fefa8f64baa}{Swing\+Processor}}.
+
+
+
+Definition at line \mbox{\hyperlink{positiondetector_8cpp_source_l00032}{32}} of file \mbox{\hyperlink{positiondetector_8cpp_source}{positiondetector.\+cpp}}.
 
 \Hypertarget{classPositionDetector_aa1219497239de86b59d8c88f6a60c876}\label{classPositionDetector_aa1219497239de86b59d8c88f6a60c876} 
 \index{PositionDetector@{PositionDetector}!resetState@{resetState}}
@@ -108,17 +175,33 @@ Reimplemented in \mbox{\hyperlink{classSwingProcessor_a8e4fbc5ebea519acf8744fefa
 \doxysubsubsection{\texorpdfstring{resetState()}{resetState()}}
 {\footnotesize\ttfamily void Position\+Detector\+::reset\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+Clears stability count and confirmed state so the callback can re-\/fire after a cycle reset while the device stays at the same position. Reset stability tracking and confirmation state.
+
+Definition at line \mbox{\hyperlink{positiondetector_8cpp_source_l00025}{25}} of file \mbox{\hyperlink{positiondetector_8cpp_source}{positiondetector.\+cpp}}.
+
 \Hypertarget{classPositionDetector_a3ed3cfa3dee1eb220ca7d99849bfd226}\label{classPositionDetector_a3ed3cfa3dee1eb220ca7d99849bfd226} 
 \index{PositionDetector@{PositionDetector}!setCallback@{setCallback}}
 \index{setCallback@{setCallback}!PositionDetector@{PositionDetector}}
 \doxysubsubsection{\texorpdfstring{setCallback()}{setCallback()}}
 {\footnotesize\ttfamily void Position\+Detector\+::set\+Callback (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classPositionDetector_a6cecc4adffa3f995348529f94c1db498}{State\+Callback}}}]{cb }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+
+
+Definition at line \mbox{\hyperlink{positiondetector_8hpp_source_l00051}{51}} of file \mbox{\hyperlink{positiondetector_8hpp_source}{positiondetector.\+hpp}}.
+
 \Hypertarget{classPositionDetector_a346d2194b0515bc47f4e03d186339ff9}\label{classPositionDetector_a346d2194b0515bc47f4e03d186339ff9} 
 \index{PositionDetector@{PositionDetector}!wrapAngleDeg@{wrapAngleDeg}}
 \index{wrapAngleDeg@{wrapAngleDeg}!PositionDetector@{PositionDetector}}
 \doxysubsubsection{\texorpdfstring{wrapAngleDeg()}{wrapAngleDeg()}}
 {\footnotesize\ttfamily float Position\+Detector\+::wrap\+Angle\+Deg (\begin{DoxyParamCaption}\item[{float}]{a }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Declares the helper function and private members used to store configuration, reference values, stability count, state, and callback data. 
+
+Wrap angle into \mbox{[}-\/180, 180\mbox{]} range.
+
+Definition at line \mbox{\hyperlink{positiondetector_8cpp_source_l00017}{17}} of file \mbox{\hyperlink{positiondetector_8cpp_source}{positiondetector.\+cpp}}.
 
 
 
@@ -129,11 +212,19 @@ Reimplemented in \mbox{\hyperlink{classSwingProcessor_a8e4fbc5ebea519acf8744fefa
 \doxysubsubsection{\texorpdfstring{callback}{callback}}
 {\footnotesize\ttfamily \mbox{\hyperlink{classPositionDetector_a6cecc4adffa3f995348529f94c1db498}{State\+Callback}} Position\+Detector\+::callback\hspace{0.3cm}{\ttfamily [private]}}
 
+
+
+Definition at line \mbox{\hyperlink{positiondetector_8hpp_source_l00064}{64}} of file \mbox{\hyperlink{positiondetector_8hpp_source}{positiondetector.\+hpp}}.
+
 \Hypertarget{classPositionDetector_a3d1ce96b906dab1b6b43d7fe71dab89e}\label{classPositionDetector_a3d1ce96b906dab1b6b43d7fe71dab89e} 
 \index{PositionDetector@{PositionDetector}!cfg@{cfg}}
 \index{cfg@{cfg}!PositionDetector@{PositionDetector}}
 \doxysubsubsection{\texorpdfstring{cfg}{cfg}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structPositionDetector_1_1Config}{Config}} Position\+Detector\+::cfg\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{positiondetector_8hpp_source_l00060}{60}} of file \mbox{\hyperlink{positiondetector_8hpp_source}{positiondetector.\+hpp}}.
 
 \Hypertarget{classPositionDetector_a890b67cd6046e11042bd7ba0214571cb}\label{classPositionDetector_a890b67cd6046e11042bd7ba0214571cb} 
 \index{PositionDetector@{PositionDetector}!confirmed@{confirmed}}
@@ -141,11 +232,19 @@ Reimplemented in \mbox{\hyperlink{classSwingProcessor_a8e4fbc5ebea519acf8744fefa
 \doxysubsubsection{\texorpdfstring{confirmed}{confirmed}}
 {\footnotesize\ttfamily bool Position\+Detector\+::confirmed\hspace{0.3cm}{\ttfamily [private]}}
 
+
+
+Definition at line \mbox{\hyperlink{positiondetector_8hpp_source_l00063}{63}} of file \mbox{\hyperlink{positiondetector_8hpp_source}{positiondetector.\+hpp}}.
+
 \Hypertarget{classPositionDetector_a938a212e42e110a7344429f2a65fe40f}\label{classPositionDetector_a938a212e42e110a7344429f2a65fe40f} 
 \index{PositionDetector@{PositionDetector}!nRefX@{nRefX}}
 \index{nRefX@{nRefX}!PositionDetector@{PositionDetector}}
 \doxysubsubsection{\texorpdfstring{nRefX}{nRefX}}
 {\footnotesize\ttfamily float Position\+Detector\+::n\+RefX\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{positiondetector_8hpp_source_l00061}{61}} of file \mbox{\hyperlink{positiondetector_8hpp_source}{positiondetector.\+hpp}}.
 
 \Hypertarget{classPositionDetector_ad1083c445fd76423838c90fed341a590}\label{classPositionDetector_ad1083c445fd76423838c90fed341a590} 
 \index{PositionDetector@{PositionDetector}!nRefY@{nRefY}}
@@ -153,17 +252,33 @@ Reimplemented in \mbox{\hyperlink{classSwingProcessor_a8e4fbc5ebea519acf8744fefa
 \doxysubsubsection{\texorpdfstring{nRefY}{nRefY}}
 {\footnotesize\ttfamily float Position\+Detector\+::n\+RefY\hspace{0.3cm}{\ttfamily [private]}}
 
+
+
+Definition at line \mbox{\hyperlink{positiondetector_8hpp_source_l00061}{61}} of file \mbox{\hyperlink{positiondetector_8hpp_source}{positiondetector.\+hpp}}.
+
 \Hypertarget{classPositionDetector_a6303a331e34b61b49b7b3c6681355111}\label{classPositionDetector_a6303a331e34b61b49b7b3c6681355111} 
 \index{PositionDetector@{PositionDetector}!nRefZ@{nRefZ}}
 \index{nRefZ@{nRefZ}!PositionDetector@{PositionDetector}}
 \doxysubsubsection{\texorpdfstring{nRefZ}{nRefZ}}
 {\footnotesize\ttfamily float Position\+Detector\+::n\+RefZ\hspace{0.3cm}{\ttfamily [private]}}
 
+
+
+Definition at line \mbox{\hyperlink{positiondetector_8hpp_source_l00061}{61}} of file \mbox{\hyperlink{positiondetector_8hpp_source}{positiondetector.\+hpp}}.
+
 \Hypertarget{classPositionDetector_af56e669264fd7441de6ae3343d8e5245}\label{classPositionDetector_af56e669264fd7441de6ae3343d8e5245} 
 \index{PositionDetector@{PositionDetector}!stableCount@{stableCount}}
 \index{stableCount@{stableCount}!PositionDetector@{PositionDetector}}
 \doxysubsubsection{\texorpdfstring{stableCount}{stableCount}}
 {\footnotesize\ttfamily int Position\+Detector\+::stable\+Count\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+normalised ref vector, computed from cfg 
+
+
+
+Definition at line \mbox{\hyperlink{positiondetector_8hpp_source_l00062}{62}} of file \mbox{\hyperlink{positiondetector_8hpp_source}{positiondetector.\+hpp}}.
 
 
 

@@ -1,0 +1,64 @@
+\doxysection{ledcallback.\+cpp}
+\hypertarget{ledcallback_8cpp_source}{}\label{ledcallback_8cpp_source}\index{src/libs/LEDs/ledcallback.cpp@{src/libs/LEDs/ledcallback.cpp}}
+\mbox{\hyperlink{ledcallback_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{ledcallback_8cpp_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{ledcallback_8cpp_source_l00006}00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{ledcallback_8hpp}{ledcallback.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{ledcallback_8cpp_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{ledcallback_8cpp_source_l00008}00008\ \textcolor{preprocessor}{\#include\ <stdexcept>}}
+\DoxyCodeLine{\Hypertarget{ledcallback_8cpp_source_l00009}00009\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{\Hypertarget{ledcallback_8cpp_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{ledcallback_8cpp_source_l00012}\mbox{\hyperlink{classSimpleLEDController_aa2f50e659018757ef091bc82fb0f8532}{00012}}\ \mbox{\hyperlink{classSimpleLEDController_a16a2cc8c3c64d7fa8ed5a25c1a984b8d}{SimpleLEDController::SimpleLEDController}}(\textcolor{keywordtype}{int}\ pinNo,\ \textcolor{keywordtype}{int}\ chipNo)}
+\DoxyCodeLine{\Hypertarget{ledcallback_8cpp_source_l00013}00013\ \ \ \ \ :\ pin(pinNo),\ chipNumber(chipNo)}
+\DoxyCodeLine{\Hypertarget{ledcallback_8cpp_source_l00014}00014\ \{}
+\DoxyCodeLine{\Hypertarget{ledcallback_8cpp_source_l00015}00015\ \ \ \ \ \textcolor{keyword}{const}\ std::string\ chipPath\ =}
+\DoxyCodeLine{\Hypertarget{ledcallback_8cpp_source_l00016}00016\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}/dev/gpiochip"{}}\ +\ std::to\_string(\mbox{\hyperlink{classSimpleLEDController_a04da236eaee57bee7865528889bd9187}{chipNumber}});}
+\DoxyCodeLine{\Hypertarget{ledcallback_8cpp_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{ledcallback_8cpp_source_l00018}00018\ \ \ \ \ \textcolor{keyword}{const}\ std::string\ consumerName\ =}
+\DoxyCodeLine{\Hypertarget{ledcallback_8cpp_source_l00019}00019\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}ledcontroller\_"{}}\ +\ std::to\_string(\mbox{\hyperlink{classSimpleLEDController_a04da236eaee57bee7865528889bd9187}{chipNumber}})\ +\ \textcolor{stringliteral}{"{}\_"{}}\ +\ std::to\_string(\mbox{\hyperlink{classSimpleLEDController_a0f35cdd654d87ca8768f0b6578a2a666}{pin}});}
+\DoxyCodeLine{\Hypertarget{ledcallback_8cpp_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{ledcallback_8cpp_source_l00021}00021\ \ \ \ \ \mbox{\hyperlink{classSimpleLEDController_ae5b61a04957b520b67bf97c55d8d32e1}{chip}}\ =\ std::make\_shared<gpiod::chip>(chipPath);}
+\DoxyCodeLine{\Hypertarget{ledcallback_8cpp_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{ledcallback_8cpp_source_l00023}00023\ \ \ \ \ gpiod::line\_config\ line\_cfg;}
+\DoxyCodeLine{\Hypertarget{ledcallback_8cpp_source_l00024}00024\ \ \ \ \ line\_cfg.add\_line\_settings(}
+\DoxyCodeLine{\Hypertarget{ledcallback_8cpp_source_l00025}00025\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSimpleLEDController_a0f35cdd654d87ca8768f0b6578a2a666}{pin}},}
+\DoxyCodeLine{\Hypertarget{ledcallback_8cpp_source_l00026}00026\ \ \ \ \ \ \ \ \ gpiod::line\_settings()}
+\DoxyCodeLine{\Hypertarget{ledcallback_8cpp_source_l00027}00027\ \ \ \ \ \ \ \ \ \ \ \ \ .set\_direction(gpiod::line::direction::OUTPUT)}
+\DoxyCodeLine{\Hypertarget{ledcallback_8cpp_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ .set\_output\_value(gpiod::line::value::INACTIVE));}
+\DoxyCodeLine{\Hypertarget{ledcallback_8cpp_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{ledcallback_8cpp_source_l00030}00030\ \ \ \ \ \textcolor{keyword}{auto}\ builder\ =\ \mbox{\hyperlink{classSimpleLEDController_ae5b61a04957b520b67bf97c55d8d32e1}{chip}}-\/>prepare\_request();}
+\DoxyCodeLine{\Hypertarget{ledcallback_8cpp_source_l00031}00031\ \ \ \ \ builder.set\_consumer(consumerName);}
+\DoxyCodeLine{\Hypertarget{ledcallback_8cpp_source_l00032}00032\ \ \ \ \ builder.set\_line\_config(line\_cfg);}
+\DoxyCodeLine{\Hypertarget{ledcallback_8cpp_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{ledcallback_8cpp_source_l00034}00034\ \ \ \ \ \mbox{\hyperlink{classSimpleLEDController_adc10c786dc6bedf433556217f78cc384}{request}}\ =\ std::make\_shared<gpiod::line\_request>(builder.do\_request());}
+\DoxyCodeLine{\Hypertarget{ledcallback_8cpp_source_l00035}00035\ \}}
+\DoxyCodeLine{\Hypertarget{ledcallback_8cpp_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{ledcallback_8cpp_source_l00038}\mbox{\hyperlink{classSimpleLEDController_acb0b223d05c094f61268ac6a78c09f64}{00038}}\ \mbox{\hyperlink{classSimpleLEDController_acb0b223d05c094f61268ac6a78c09f64}{SimpleLEDController::\string~SimpleLEDController}}()}
+\DoxyCodeLine{\Hypertarget{ledcallback_8cpp_source_l00039}00039\ \{}
+\DoxyCodeLine{\Hypertarget{ledcallback_8cpp_source_l00040}00040\ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{\Hypertarget{ledcallback_8cpp_source_l00041}00041\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classSimpleLEDController_adc10c786dc6bedf433556217f78cc384}{request}})}
+\DoxyCodeLine{\Hypertarget{ledcallback_8cpp_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSimpleLEDController_adc10c786dc6bedf433556217f78cc384}{request}}-\/>set\_value(\mbox{\hyperlink{classSimpleLEDController_a0f35cdd654d87ca8768f0b6578a2a666}{pin}},\ gpiod::line::value::INACTIVE);}
+\DoxyCodeLine{\Hypertarget{ledcallback_8cpp_source_l00043}00043\ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (...)\ \{\}}
+\DoxyCodeLine{\Hypertarget{ledcallback_8cpp_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{ledcallback_8cpp_source_l00045}00045\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classSimpleLEDController_adc10c786dc6bedf433556217f78cc384}{request}})\ \{}
+\DoxyCodeLine{\Hypertarget{ledcallback_8cpp_source_l00046}00046\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSimpleLEDController_adc10c786dc6bedf433556217f78cc384}{request}}-\/>release();}
+\DoxyCodeLine{\Hypertarget{ledcallback_8cpp_source_l00047}00047\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{ledcallback_8cpp_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{ledcallback_8cpp_source_l00049}00049\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classSimpleLEDController_ae5b61a04957b520b67bf97c55d8d32e1}{chip}})\ \{}
+\DoxyCodeLine{\Hypertarget{ledcallback_8cpp_source_l00050}00050\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSimpleLEDController_ae5b61a04957b520b67bf97c55d8d32e1}{chip}}-\/>close();}
+\DoxyCodeLine{\Hypertarget{ledcallback_8cpp_source_l00051}00051\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{ledcallback_8cpp_source_l00052}00052\ \}}
+\DoxyCodeLine{\Hypertarget{ledcallback_8cpp_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{ledcallback_8cpp_source_l00055}\mbox{\hyperlink{classSimpleLEDController_a933d9c68e4769be331bf5bd6c8064ce0}{00055}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSimpleLEDController_a933d9c68e4769be331bf5bd6c8064ce0}{SimpleLEDController::set}}(\textcolor{keywordtype}{bool}\ on)}
+\DoxyCodeLine{\Hypertarget{ledcallback_8cpp_source_l00056}00056\ \{}
+\DoxyCodeLine{\Hypertarget{ledcallback_8cpp_source_l00057}00057\ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classSimpleLEDController_adc10c786dc6bedf433556217f78cc384}{request}})\ \{}
+\DoxyCodeLine{\Hypertarget{ledcallback_8cpp_source_l00058}00058\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}LED\ GPIO\ line\ is\ not\ initialized"{}});}
+\DoxyCodeLine{\Hypertarget{ledcallback_8cpp_source_l00059}00059\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{ledcallback_8cpp_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{ledcallback_8cpp_source_l00061}00061\ \ \ \ \ \mbox{\hyperlink{classSimpleLEDController_adc10c786dc6bedf433556217f78cc384}{request}}-\/>set\_value(}
+\DoxyCodeLine{\Hypertarget{ledcallback_8cpp_source_l00062}00062\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSimpleLEDController_a0f35cdd654d87ca8768f0b6578a2a666}{pin}},}
+\DoxyCodeLine{\Hypertarget{ledcallback_8cpp_source_l00063}00063\ \ \ \ \ \ \ \ \ on\ ?\ gpiod::line::value::ACTIVE}
+\DoxyCodeLine{\Hypertarget{ledcallback_8cpp_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ :\ gpiod::line::value::INACTIVE);}
+\DoxyCodeLine{\Hypertarget{ledcallback_8cpp_source_l00065}00065\ \}}
+
+\end{DoxyCode}

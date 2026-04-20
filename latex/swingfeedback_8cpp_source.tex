@@ -1,0 +1,157 @@
+\doxysection{swingfeedback.\+cpp}
+\hypertarget{swingfeedback_8cpp_source}{}\label{swingfeedback_8cpp_source}\index{src/libs/Motor/swingfeedback.cpp@{src/libs/Motor/swingfeedback.cpp}}
+\mbox{\hyperlink{swingfeedback_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00005}00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{swingfeedback_8h}{swingfeedback.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00007}00007\ \textcolor{preprocessor}{\#include\ <atomic>}}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00008}00008\ \textcolor{preprocessor}{\#include\ <chrono>}}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00009}00009\ \textcolor{preprocessor}{\#include\ <string\_view>}}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00010}00010\ \textcolor{preprocessor}{\#include\ <sys/timerfd.h>}}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00011}00011\ \textcolor{preprocessor}{\#include\ <thread>}}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00012}00012\ \textcolor{preprocessor}{\#include\ <unistd.h>}}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00013}00013\ \textcolor{preprocessor}{\#include\ <utility>}}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00015}00015\ \textcolor{keyword}{namespace\ }\{}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00023}00023\ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ MAX\_DUTY\ =\ 80.0f;}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00025}00025\ \textcolor{keywordtype}{int}\ levelRank(std::string\_view\ level)}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00026}00026\ \{}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00027}00027\ \ \ \ \ \textcolor{keywordflow}{if}\ (level\ ==\ \textcolor{stringliteral}{"{}Low\ Duty\ Cycle"{}})\ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00028}00028\ \ \ \ \ \textcolor{keywordflow}{if}\ (level\ ==\ \textcolor{stringliteral}{"{}Medium\ Duty\ Cycle"{}})\ \ \textcolor{keywordflow}{return}\ 2;}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00029}00029\ \ \ \ \ \textcolor{keywordflow}{if}\ (level\ ==\ \textcolor{stringliteral}{"{}Highest\ Duty\ Cycle"{}})\ \textcolor{keywordflow}{return}\ 3;}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00030}00030\ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00031}00031\ \}}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00033}00033\ \textcolor{keywordtype}{void}\ waitMs(\textcolor{keywordtype}{int}\ tfd,\ \textcolor{keywordtype}{int}\ ms)}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00034}00034\ \{}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00035}00035\ \ \ \ \ itimerspec\ ts\{\};}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00036}00036\ \ \ \ \ ts.it\_value.tv\_sec\ \ =\ ms\ /\ 1000;}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00037}00037\ \ \ \ \ ts.it\_value.tv\_nsec\ =\ (ms\ \%\ 1000)\ *\ 1000000L;}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00038}00038\ \ \ \ \ timerfd\_settime(tfd,\ 0,\ \&ts,\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00039}00039\ \ \ \ \ uint64\_t\ exp;}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00040}00040\ \ \ \ \ ::read(tfd,\ \&exp,\ \textcolor{keyword}{sizeof}(exp));}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00041}00041\ \}}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00048}00048\ \textcolor{keywordtype}{void}\ rampUp(\mbox{\hyperlink{classRPI__PWM}{RPI\_PWM}}\&\ pwm,\ \textcolor{keywordtype}{int}\ tfd)}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00049}00049\ \{}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00050}00050\ \ \ \ \ pwm.\mbox{\hyperlink{classRPI__PWM_ae58a56579ae4abb9207cdfc8ee360906}{setDutyCycle}}(MAX\_DUTY\ *\ 0.33f);\ waitMs(tfd,\ 30);}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00051}00051\ \ \ \ \ pwm.\mbox{\hyperlink{classRPI__PWM_ae58a56579ae4abb9207cdfc8ee360906}{setDutyCycle}}(MAX\_DUTY\ *\ 0.66f);\ waitMs(tfd,\ 30);}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00052}00052\ \ \ \ \ pwm.\mbox{\hyperlink{classRPI__PWM_ae58a56579ae4abb9207cdfc8ee360906}{setDutyCycle}}(MAX\_DUTY);\ \ \ \ \ \ \ \ \ waitMs(tfd,\ 30);}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00053}00053\ \}}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00058}00058\ \textcolor{keywordtype}{void}\ rampDown(\mbox{\hyperlink{classRPI__PWM}{RPI\_PWM}}\&\ pwm,\ \textcolor{keywordtype}{int}\ tfd)}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00059}00059\ \{}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00060}00060\ \ \ \ \ pwm.\mbox{\hyperlink{classRPI__PWM_ae58a56579ae4abb9207cdfc8ee360906}{setDutyCycle}}(MAX\_DUTY\ *\ 0.66f);\ waitMs(tfd,\ 30);}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00061}00061\ \ \ \ \ pwm.\mbox{\hyperlink{classRPI__PWM_ae58a56579ae4abb9207cdfc8ee360906}{setDutyCycle}}(MAX\_DUTY\ *\ 0.33f);\ waitMs(tfd,\ 30);}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00062}00062\ \ \ \ \ pwm.\mbox{\hyperlink{classRPI__PWM_ae58a56579ae4abb9207cdfc8ee360906}{setDutyCycle}}(0.0f);}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00063}00063\ \}}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00065}00065\ \textcolor{keywordtype}{void}\ playRank(\mbox{\hyperlink{classRPI__PWM}{RPI\_PWM}}\&\ pwm,\ \textcolor{keywordtype}{int}\ rank)}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00066}00066\ \{}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00067}00067\ \ \ \ \ \textcolor{keywordtype}{int}\ tfd\ =\ timerfd\_create(CLOCK\_MONOTONIC,\ 0);}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00068}00068\ \ \ \ \ \textcolor{keywordflow}{if}\ (tfd\ <\ 0)\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00070}00070\ \ \ \ \ \textcolor{keywordflow}{if}\ (rank\ ==\ 1)\ \{}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00071}00071\ \ \ \ \ \ \ \ \ rampUp(pwm,\ tfd);}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00072}00072\ \ \ \ \ \ \ \ \ waitMs(tfd,\ 180);}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00073}00073\ \ \ \ \ \ \ \ \ rampDown(pwm,\ tfd);}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00074}00074\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (rank\ ==\ 2)\ \{}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00075}00075\ \ \ \ \ \ \ \ \ rampUp(pwm,\ tfd);}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00076}00076\ \ \ \ \ \ \ \ \ waitMs(tfd,\ 180);}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00077}00077\ \ \ \ \ \ \ \ \ rampDown(pwm,\ tfd);}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00078}00078\ \ \ \ \ \ \ \ \ waitMs(tfd,\ 100);}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00079}00079\ \ \ \ \ \ \ \ \ rampUp(pwm,\ tfd);}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00080}00080\ \ \ \ \ \ \ \ \ waitMs(tfd,\ 180);}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00081}00081\ \ \ \ \ \ \ \ \ rampDown(pwm,\ tfd);}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00082}00082\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (rank\ ==\ 3)\ \{}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00083}00083\ \ \ \ \ \ \ \ \ rampUp(pwm,\ tfd);}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00084}00084\ \ \ \ \ \ \ \ \ waitMs(tfd,\ 450);}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00085}00085\ \ \ \ \ \ \ \ \ rampDown(pwm,\ tfd);}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00086}00086\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00087}00087\ }
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00088}00088\ \ \ \ \ pwm.\mbox{\hyperlink{classRPI__PWM_ae58a56579ae4abb9207cdfc8ee360906}{setDutyCycle}}(0.0f);}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00089}00089\ \ \ \ \ ::close(tfd);}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00090}00090\ \}}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00091}00091\ }
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00092}00092\ \}\ }
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00093}00093\ }
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00095}\mbox{\hyperlink{swingfeedback_8cpp_a0be14e739d57e9268d451ec0cb80f133}{00095}}\ \textcolor{keyword}{static}\ int64\_t\ \mbox{\hyperlink{swingfeedback_8cpp_a0be14e739d57e9268d451ec0cb80f133}{nowMs}}()}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00096}00096\ \{}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00097}00097\ \ \ \ \ \textcolor{keywordflow}{return}\ std::chrono::duration\_cast<std::chrono::milliseconds>(}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00098}00098\ \ \ \ \ \ \ \ \ std::chrono::steady\_clock::now().time\_since\_epoch()).count();}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00099}00099\ \}}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00100}00100\ }
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00102}\mbox{\hyperlink{classSwingFeedback_aa020d3d8547ba16c5c2e7b6f3169f189}{00102}}\ \mbox{\hyperlink{classSwingFeedback_aa020d3d8547ba16c5c2e7b6f3169f189}{SwingFeedback::SwingFeedback}}(\mbox{\hyperlink{classRPI__PWM}{RPI\_PWM}}\&\ pwm)}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00103}00103\ \ \ \ \ :\ pwm\_(pwm)}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00104}00104\ \{}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00105}00105\ \ \ \ \ \mbox{\hyperlink{classSwingFeedback_add2ef007e5a95f4b59f1941a272ee0ca}{pwm\_}}.\mbox{\hyperlink{classRPI__PWM_ae58a56579ae4abb9207cdfc8ee360906}{setDutyCycle}}(0.0f);}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00106}00106\ \}}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00107}00107\ }
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00109}\mbox{\hyperlink{classSwingFeedback_ad1acada36c94a13292b71c4495ce7474}{00109}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSwingFeedback_ad1acada36c94a13292b71c4495ce7474}{SwingFeedback::setResetCallback}}(\mbox{\hyperlink{classSwingFeedback_afe26c04487150b3d6d458e06b0a1742e}{ResetCallback}}\ cb)}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00110}00110\ \{}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00111}00111\ \ \ \ \ \mbox{\hyperlink{classSwingFeedback_abdce37fdb856ee889bc17d7a1b488016}{reset\_cb\_}}\ =\ std::move(cb);}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00112}00112\ \}}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00114}\mbox{\hyperlink{classSwingFeedback_af26c1985c1eac2d9031958c46ec13f39}{00114}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSwingFeedback_af26c1985c1eac2d9031958c46ec13f39}{SwingFeedback::checkTimeout}}()}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00115}00115\ \{}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00116}00116\ \ \ \ \ int64\_t\ start\ =\ \mbox{\hyperlink{classSwingFeedback_a956a5e871448c96876a9c4e4dd7f1ae8}{busy\_since\_ms\_}}.load();}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00117}00117\ \ \ \ \ \textcolor{keywordflow}{if}\ (start\ ==\ 0)\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00118}00118\ }
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00119}00119\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{swingfeedback_8cpp_a0be14e739d57e9268d451ec0cb80f133}{nowMs}}()\ -\/\ start\ >\ \mbox{\hyperlink{classSwingFeedback_a8e1ebec717fb857ec33b5d0bd5a9a539}{TIMEOUT\_MS}})\ \{}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00120}00120\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSwingFeedback_a966b6904fc774204125e5e5dc07fc322}{forceOff}}();}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00121}00121\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00122}00122\ \}}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00123}00123\ }
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00125}\mbox{\hyperlink{classSwingFeedback_a2f0ecec3b79f40207b84fa9d34680b19}{00125}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSwingFeedback_a2f0ecec3b79f40207b84fa9d34680b19}{SwingFeedback::worker}}()}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00126}00126\ \{}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00127}00127\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classSwingFeedback_a34091e66500508702fa74af4cd013f39}{busy\_}}.exchange(\textcolor{keyword}{true}))\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00128}00128\ }
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00129}00129\ \ \ \ \ \mbox{\hyperlink{classSwingFeedback_a956a5e871448c96876a9c4e4dd7f1ae8}{busy\_since\_ms\_}}.store(\mbox{\hyperlink{swingfeedback_8cpp_a0be14e739d57e9268d451ec0cb80f133}{nowMs}}());}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00130}00130\ }
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00131}00131\ \ \ \ \ \textcolor{keywordtype}{int}\ rank\ =\ \mbox{\hyperlink{classSwingFeedback_a18a0795df67442f2281435e4ce818205}{pending\_level\_}}.exchange(0);}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00132}00132\ \ \ \ \ \textcolor{keywordflow}{if}\ (rank\ >\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00133}00133\ \ \ \ \ \ \ \ \ playRank(\mbox{\hyperlink{classSwingFeedback_add2ef007e5a95f4b59f1941a272ee0ca}{pwm\_}},\ rank);}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00134}00134\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00135}00135\ }
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00136}00136\ \ \ \ \ \mbox{\hyperlink{classSwingFeedback_a956a5e871448c96876a9c4e4dd7f1ae8}{busy\_since\_ms\_}}.store(0);}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00137}00137\ \ \ \ \ \mbox{\hyperlink{classSwingFeedback_a34091e66500508702fa74af4cd013f39}{busy\_}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00138}00138\ }
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00139}00139\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classSwingFeedback_abdce37fdb856ee889bc17d7a1b488016}{reset\_cb\_}})\ \{}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00140}00140\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSwingFeedback_abdce37fdb856ee889bc17d7a1b488016}{reset\_cb\_}}();}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00141}00141\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00142}00142\ }
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00145}00145\ \ \ \ \ \mbox{\hyperlink{classSwingFeedback_a18a0795df67442f2281435e4ce818205}{pending\_level\_}}.store(0);}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00146}00146\ \}}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00147}00147\ }
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00149}\mbox{\hyperlink{classSwingFeedback_a869d9a4be1e27ce382e6f95d6a11f989}{00149}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSwingFeedback_a869d9a4be1e27ce382e6f95d6a11f989}{SwingFeedback::onLevel}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ level)}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00150}00150\ \{}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00151}00151\ \ \ \ \ \textcolor{keywordflow}{if}\ (!level)\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00152}00152\ }
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00153}00153\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ rank\ =\ levelRank(level);}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00154}00154\ }
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00155}00155\ \ \ \ \ \textcolor{keywordflow}{if}\ (rank\ <=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00158}00158\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classSwingFeedback_a34091e66500508702fa74af4cd013f39}{busy\_}}.load()\ \&\&\ \mbox{\hyperlink{classSwingFeedback_a18a0795df67442f2281435e4ce818205}{pending\_level\_}}.load()\ >\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00159}00159\ \ \ \ \ \ \ \ \ \ \ \ \ std::thread(\&\mbox{\hyperlink{classSwingFeedback_a2f0ecec3b79f40207b84fa9d34680b19}{SwingFeedback::worker}},\ \textcolor{keyword}{this}).detach();}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00160}00160\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00161}00161\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00162}00162\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00163}00163\ }
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00166}00166\ \ \ \ \ \textcolor{keywordtype}{int}\ current\ =\ \mbox{\hyperlink{classSwingFeedback_a18a0795df67442f2281435e4ce818205}{pending\_level\_}}.load();}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00167}00167\ \ \ \ \ \textcolor{keywordflow}{while}\ (rank\ >\ current\ \&\&\ !\mbox{\hyperlink{classSwingFeedback_a18a0795df67442f2281435e4ce818205}{pending\_level\_}}.compare\_exchange\_weak(current,\ rank))\ \{}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00168}00168\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00169}00169\ \}}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00170}00170\ }
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00172}\mbox{\hyperlink{classSwingFeedback_a966b6904fc774204125e5e5dc07fc322}{00172}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSwingFeedback_a966b6904fc774204125e5e5dc07fc322}{SwingFeedback::forceOff}}()}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00173}00173\ \{}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00174}00174\ \ \ \ \ \mbox{\hyperlink{classSwingFeedback_a956a5e871448c96876a9c4e4dd7f1ae8}{busy\_since\_ms\_}}.store(0);}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00175}00175\ \ \ \ \ \mbox{\hyperlink{classSwingFeedback_a34091e66500508702fa74af4cd013f39}{busy\_}}.store(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00176}00176\ \ \ \ \ \mbox{\hyperlink{classSwingFeedback_a18a0795df67442f2281435e4ce818205}{pending\_level\_}}.store(0);}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00177}00177\ \ \ \ \ \mbox{\hyperlink{classSwingFeedback_add2ef007e5a95f4b59f1941a272ee0ca}{pwm\_}}.\mbox{\hyperlink{classRPI__PWM_ae58a56579ae4abb9207cdfc8ee360906}{setDutyCycle}}(0.0f);}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00178}00178\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classSwingFeedback_abdce37fdb856ee889bc17d7a1b488016}{reset\_cb\_}})\ \mbox{\hyperlink{classSwingFeedback_abdce37fdb856ee889bc17d7a1b488016}{reset\_cb\_}}();}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8cpp_source_l00179}00179\ \}}
+
+\end{DoxyCode}

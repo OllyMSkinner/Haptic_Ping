@@ -8,9 +8,21 @@
 {\ttfamily \#include $<$thread$>$}\newline
 {\ttfamily \#include $<$unistd.\+h$>$}\newline
 Include dependency graph for rpi\+\_\+pwm.\+h\+:
-% FIG 0
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{rpi__pwm_8h__incl}
+\end{center}
+\end{figure}
 This graph shows which files directly or indirectly include this file\+:
-% FIG 1
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{rpi__pwm_8h__dep__incl}
+\end{center}
+\end{figure}
 \doxysubsubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
@@ -32,9 +44,19 @@ static constexpr int \mbox{\hyperlink{rpi__pwm_8h_a32468f51598772e74f2acc41f816c
 \doxysubsubsection{\texorpdfstring{PWM\_FREQ\_HZ}{PWM\_FREQ\_HZ}}
 {\footnotesize\ttfamily constexpr int PWM\+\_\+\+FREQ\+\_\+\+HZ = 30\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}}
 
+
+
+Definition at line \mbox{\hyperlink{rpi__pwm_8h_source_l00029}{29}} of file \mbox{\hyperlink{rpi__pwm_8h_source}{rpi\+\_\+pwm.\+h}}.
+
 \Hypertarget{rpi__pwm_8h_aa3a5591a094e4977117ccc510778fb0d}\label{rpi__pwm_8h_aa3a5591a094e4977117ccc510778fb0d} 
 \index{rpi\_pwm.h@{rpi\_pwm.h}!PWM\_GPIO\_LINE@{PWM\_GPIO\_LINE}}
 \index{PWM\_GPIO\_LINE@{PWM\_GPIO\_LINE}!rpi\_pwm.h@{rpi\_pwm.h}}
 \doxysubsubsection{\texorpdfstring{PWM\_GPIO\_LINE}{PWM\_GPIO\_LINE}}
 {\footnotesize\ttfamily constexpr unsigned int PWM\+\_\+\+GPIO\+\_\+\+LINE = 18\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}}
+
+This class uses a dedicated worker thread and libgpiod to provide a software PWM output on a Raspberry Pi GPIO pin. Its main responsibility is to provide a safe interface for starting and stopping PWM generation, allow client code to update the duty cycle without needing to manage any GPIO or timing details, and internally handle the GPIO line request and timing loop.
+
+SOLID principles\+: S -\/ this class his only responsible for generating PWM on one GPIO line. Higher level classification decides when feedback should happen and why the duty cycle changes. O -\/ Client code can reuse this class for different duty cycle values without the internal logic being modified itself. This behaviour is extended by calling its public interface rather than rewriting the timing logic. Fixed hardware/software config for\+PWM output Keeping these constant avoids mageic numbers and makes the class behaviour easier to maintain and reason with. 
+
+Definition at line \mbox{\hyperlink{rpi__pwm_8h_source_l00028}{28}} of file \mbox{\hyperlink{rpi__pwm_8h_source}{rpi\+\_\+pwm.\+h}}.
 

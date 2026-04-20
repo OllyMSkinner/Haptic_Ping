@@ -2,7 +2,7 @@
 \hypertarget{structLEDControllerSettings}{}\label{structLEDControllerSettings}\index{LEDControllerSettings@{LEDControllerSettings}}
 
 
-This header declares the LED controller settings and class.  
+Declares the LED controller settings, including the chip number and green LED GPIO pin.  
 
 
 
@@ -19,13 +19,15 @@ unsigned int \mbox{\hyperlink{structLEDControllerSettings_a77a084da535c51c1f7f41
 
 
 \doxysubsection{Detailed Description}
-This header declares the LED controller settings and class. 
-
-It manages the green LED output, supports timed flashing,
-
-and updates the LED state through the inherited controller interface.
-
 Declares the LED controller settings, including the chip number and green LED GPIO pin. 
+
+This header declares the LED controller settings and class. It manages green LED output, supports timed flashing, and exposes a small LED-\/facing interface through the inherited controller.
+
+SOLID principles\+: S -\/ This class is responsible for LED-\/specific behaviour only. O -\/ Client code can request LED actions through the public interface without modifying the internal output logic. L -\/ The concrete \doxylink{classLEDController}{LEDController} builds on the simpler base controller so it can be substituted wherever that LED abstraction is expected. I -\/ Client code uses a small LED-\/facing interface rather than dealing with GPIO details or unrelated hardware operations. D -\/ Higher-\/level code can depend on the simpler \doxylink{classSimpleLEDController}{Simple\+LEDController} abstraction rather than this concrete GPIO-\/backed implementation. 
+
+Definition at line \mbox{\hyperlink{led__controller_8h_source_l00023}{23}} of file \mbox{\hyperlink{led__controller_8h_source}{led\+\_\+controller.\+h}}.
+
+
 
 \doxysubsection{Member Data Documentation}
 \Hypertarget{structLEDControllerSettings_a9b6a1da94acce6eec37f463166cdb960}\label{structLEDControllerSettings_a9b6a1da94acce6eec37f463166cdb960} 
@@ -34,11 +36,19 @@ Declares the LED controller settings, including the chip number and green LED GP
 \doxysubsubsection{\texorpdfstring{chipNumber}{chipNumber}}
 {\footnotesize\ttfamily int LEDController\+Settings\+::chip\+Number = 0}
 
+
+
+Definition at line \mbox{\hyperlink{led__controller_8h_source_l00024}{24}} of file \mbox{\hyperlink{led__controller_8h_source}{led\+\_\+controller.\+h}}.
+
 \Hypertarget{structLEDControllerSettings_a77a084da535c51c1f7f41314827cc53e}\label{structLEDControllerSettings_a77a084da535c51c1f7f41314827cc53e} 
 \index{LEDControllerSettings@{LEDControllerSettings}!greenGpio@{greenGpio}}
 \index{greenGpio@{greenGpio}!LEDControllerSettings@{LEDControllerSettings}}
 \doxysubsubsection{\texorpdfstring{greenGpio}{greenGpio}}
 {\footnotesize\ttfamily unsigned int LEDController\+Settings\+::green\+Gpio = 25}
+
+
+
+Definition at line \mbox{\hyperlink{led__controller_8h_source_l00025}{25}} of file \mbox{\hyperlink{led__controller_8h_source}{led\+\_\+controller.\+h}}.
 
 
 

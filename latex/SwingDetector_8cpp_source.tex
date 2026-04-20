@@ -1,0 +1,49 @@
+\doxysection{Swing\+Detector.\+cpp}
+\hypertarget{SwingDetector_8cpp_source}{}\label{SwingDetector_8cpp_source}\index{src/libs/IMU\_math/SwingDetector.cpp@{src/libs/IMU\_math/SwingDetector.cpp}}
+\mbox{\hyperlink{SwingDetector_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{SwingDetector_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{SwingDetector_8hpp}{SwingDetector.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{SwingDetector_8cpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{SwingDetector_8cpp_source_l00004}\mbox{\hyperlink{classSwingDetector_ab2396ef121d15144dcefb44a002aa9e1}{00004}}\ \mbox{\hyperlink{classSwingDetector_ab2396ef121d15144dcefb44a002aa9e1}{SwingDetector::SwingDetector}}()}
+\DoxyCodeLine{\Hypertarget{SwingDetector_8cpp_source_l00005}00005\ \ \ \ \ :\ last\_level\_(\mbox{\hyperlink{classSwingDetector_a367fdb5d3438b354c265c81bfe1c3088}{Level}}::NONE)}
+\DoxyCodeLine{\Hypertarget{SwingDetector_8cpp_source_l00006}00006\ \{\}}
+\DoxyCodeLine{\Hypertarget{SwingDetector_8cpp_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{SwingDetector_8cpp_source_l00009}\mbox{\hyperlink{classSwingDetector_a6a1a5a4e35e4102964220965daaa4786}{00009}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSwingDetector_a6a1a5a4e35e4102964220965daaa4786}{SwingDetector::setCallback}}(\mbox{\hyperlink{classSwingDetector_a169ba1ea8739914fc39b89b1295a1f5c}{EventCallback}}\ cb)}
+\DoxyCodeLine{\Hypertarget{SwingDetector_8cpp_source_l00010}00010\ \{}
+\DoxyCodeLine{\Hypertarget{SwingDetector_8cpp_source_l00011}00011\ \ \ \ \ \mbox{\hyperlink{classSwingDetector_a093f9d7544a947257dd0a8cba383c666}{callback\_}}\ =\ std::move(cb);}
+\DoxyCodeLine{\Hypertarget{SwingDetector_8cpp_source_l00012}00012\ \}}
+\DoxyCodeLine{\Hypertarget{SwingDetector_8cpp_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{SwingDetector_8cpp_source_l00015}\mbox{\hyperlink{classSwingDetector_a3f3169178e25fbb03b33a102f793242e}{00015}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSwingDetector_a3f3169178e25fbb03b33a102f793242e}{SwingDetector::reset}}()}
+\DoxyCodeLine{\Hypertarget{SwingDetector_8cpp_source_l00016}00016\ \{}
+\DoxyCodeLine{\Hypertarget{SwingDetector_8cpp_source_l00017}00017\ \ \ \ \ \mbox{\hyperlink{classSwingDetector_a0245e1a6450e285c1407da3c52aea405}{last\_level\_}}\ =\ \mbox{\hyperlink{classSwingDetector_a367fdb5d3438b354c265c81bfe1c3088ab50339a10e1de285ac99d4c3990b8693}{Level::NONE}};}
+\DoxyCodeLine{\Hypertarget{SwingDetector_8cpp_source_l00018}00018\ \}}
+\DoxyCodeLine{\Hypertarget{SwingDetector_8cpp_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{SwingDetector_8cpp_source_l00020}\mbox{\hyperlink{classSwingDetector_acc0cb1cf44d9f1b2d6e0159a01d40e34}{00020}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSwingDetector_acc0cb1cf44d9f1b2d6e0159a01d40e34}{SwingDetector::detect}}(\textcolor{keywordtype}{float}\ accel\_mag)}
+\DoxyCodeLine{\Hypertarget{SwingDetector_8cpp_source_l00021}00021\ \{}
+\DoxyCodeLine{\Hypertarget{SwingDetector_8cpp_source_l00023}00023\ \ \ \ \ \mbox{\hyperlink{classSwingDetector_a367fdb5d3438b354c265c81bfe1c3088}{Level}}\ current\ =\ \mbox{\hyperlink{classSwingDetector_a06e963a0453c19160e22c3dbc9c408e6}{classify}}(accel\_mag);}
+\DoxyCodeLine{\Hypertarget{SwingDetector_8cpp_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{SwingDetector_8cpp_source_l00026}00026\ \ \ \ \ \textcolor{keywordflow}{if}\ (current\ !=\ \mbox{\hyperlink{classSwingDetector_a0245e1a6450e285c1407da3c52aea405}{last\_level\_}})\ \{}
+\DoxyCodeLine{\Hypertarget{SwingDetector_8cpp_source_l00027}00027\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSwingDetector_a0245e1a6450e285c1407da3c52aea405}{last\_level\_}}\ =\ current;}
+\DoxyCodeLine{\Hypertarget{SwingDetector_8cpp_source_l00028}00028\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classSwingDetector_a093f9d7544a947257dd0a8cba383c666}{callback\_}})\ \mbox{\hyperlink{classSwingDetector_a093f9d7544a947257dd0a8cba383c666}{callback\_}}(\mbox{\hyperlink{classSwingDetector_acd5eaec64bd2b3403a2678d7e518ad6b}{label}}(current));}
+\DoxyCodeLine{\Hypertarget{SwingDetector_8cpp_source_l00029}00029\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{SwingDetector_8cpp_source_l00030}00030\ \}}
+\DoxyCodeLine{\Hypertarget{SwingDetector_8cpp_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{SwingDetector_8cpp_source_l00032}\mbox{\hyperlink{classSwingDetector_a06e963a0453c19160e22c3dbc9c408e6}{00032}}\ \mbox{\hyperlink{classSwingDetector_a367fdb5d3438b354c265c81bfe1c3088}{SwingDetector::Level}}\ \mbox{\hyperlink{classSwingDetector_a06e963a0453c19160e22c3dbc9c408e6}{SwingDetector::classify}}(\textcolor{keywordtype}{float}\ a)}
+\DoxyCodeLine{\Hypertarget{SwingDetector_8cpp_source_l00033}00033\ \{}
+\DoxyCodeLine{\Hypertarget{SwingDetector_8cpp_source_l00035}00035\ \ \ \ \ \textcolor{keywordflow}{if}\ (a\ >=\ 25.f)\ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classSwingDetector_a367fdb5d3438b354c265c81bfe1c3088ab89de3b4b81c4facfac906edf29aec8c}{Level::HIGH}};}
+\DoxyCodeLine{\Hypertarget{SwingDetector_8cpp_source_l00036}00036\ \ \ \ \ \textcolor{keywordflow}{if}\ (a\ >=\ 15.f)\ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classSwingDetector_a367fdb5d3438b354c265c81bfe1c3088ac87f3be66ffc3c0d4249f1c2cc5f3cce}{Level::MEDIUM}};}
+\DoxyCodeLine{\Hypertarget{SwingDetector_8cpp_source_l00037}00037\ \ \ \ \ \textcolor{keywordflow}{if}\ (a\ >=\ 10.f)\ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classSwingDetector_a367fdb5d3438b354c265c81bfe1c3088a41bc94cbd8eebea13ce0491b2ac11b88}{Level::LOW}};}
+\DoxyCodeLine{\Hypertarget{SwingDetector_8cpp_source_l00038}00038\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classSwingDetector_a367fdb5d3438b354c265c81bfe1c3088ab50339a10e1de285ac99d4c3990b8693}{Level::NONE}};}
+\DoxyCodeLine{\Hypertarget{SwingDetector_8cpp_source_l00039}00039\ \}}
+\DoxyCodeLine{\Hypertarget{SwingDetector_8cpp_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{SwingDetector_8cpp_source_l00041}\mbox{\hyperlink{classSwingDetector_acd5eaec64bd2b3403a2678d7e518ad6b}{00041}}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{classSwingDetector_acd5eaec64bd2b3403a2678d7e518ad6b}{SwingDetector::label}}(\mbox{\hyperlink{classSwingDetector_a367fdb5d3438b354c265c81bfe1c3088}{Level}}\ level)}
+\DoxyCodeLine{\Hypertarget{SwingDetector_8cpp_source_l00042}00042\ \{}
+\DoxyCodeLine{\Hypertarget{SwingDetector_8cpp_source_l00044}00044\ \ \ \ \ \textcolor{keywordflow}{switch}\ (level)\ \{}
+\DoxyCodeLine{\Hypertarget{SwingDetector_8cpp_source_l00045}00045\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{classSwingDetector_a367fdb5d3438b354c265c81bfe1c3088ab89de3b4b81c4facfac906edf29aec8c}{Level::HIGH}}:\ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Highest\ Duty\ Cycle"{}};}
+\DoxyCodeLine{\Hypertarget{SwingDetector_8cpp_source_l00046}00046\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{classSwingDetector_a367fdb5d3438b354c265c81bfe1c3088ac87f3be66ffc3c0d4249f1c2cc5f3cce}{Level::MEDIUM}}:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Medium\ Duty\ Cycle"{}};}
+\DoxyCodeLine{\Hypertarget{SwingDetector_8cpp_source_l00047}00047\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{classSwingDetector_a367fdb5d3438b354c265c81bfe1c3088a41bc94cbd8eebea13ce0491b2ac11b88}{Level::LOW}}:\ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Low\ Duty\ Cycle"{}};}
+\DoxyCodeLine{\Hypertarget{SwingDetector_8cpp_source_l00048}00048\ \ \ \ \ \textcolor{keywordflow}{default}:\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}No\ Duty\ Cycle"{}};}
+\DoxyCodeLine{\Hypertarget{SwingDetector_8cpp_source_l00049}00049\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{SwingDetector_8cpp_source_l00050}00050\ \}}
+
+\end{DoxyCode}

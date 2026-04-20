@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['pin_20connection_20list_3a_0',['ADS1115 Pin connection list:',['../md_src_2libs_2Piezo_2ReadMe.html',1,'']]]
+  ['erm_20vibration_20motor_0',['ERM Vibration Motor',['../md_src_2libs_2Motor_2README.html',1,'']]]
 ];

@@ -1,29 +1,5 @@
 var searchData=
 [
-  ['_5faccel_5fscale_5ffactor_0',['_accel_scale_factor',['../classicm20948_1_1ICM20948__I2C.html#a168c976d5e1f22cdd5765f736d65fe86',1,'icm20948::ICM20948_I2C']]],
-  ['_5fchip_5fi2c_5fmaster_5freset_1',['_chip_i2c_master_reset',['../classicm20948_1_1ICM20948__I2C.html#a9ccf1216e2b8673a13e7dc3a8c44617f',1,'icm20948::ICM20948_I2C']]],
-  ['_5fcurrent_5fbank_2',['_current_bank',['../classicm20948_1_1ICM20948__I2C.html#acface40282fbe4f88960faa79c646c99',1,'icm20948::ICM20948_I2C']]],
-  ['_5fenable_5fdata_5fready_5finterrupt_3',['_enable_data_ready_interrupt',['../classicm20948_1_1ICM20948__I2C.html#ab02bdb1e71acf25a84317238d5f4f43e',1,'icm20948::ICM20948_I2C']]],
-  ['_5fgyro_5fscale_5ffactor_4',['_gyro_scale_factor',['../classicm20948_1_1ICM20948__I2C.html#aff753b4360cea1f9ead1db118d812110',1,'icm20948::ICM20948_I2C']]],
-  ['_5fi2c_5faddress_5',['_i2c_address',['../classicm20948_1_1ICM20948__I2C.html#ab045aab8c66f970c7ece2c2fd1bfb1d4',1,'icm20948::ICM20948_I2C']]],
-  ['_5fi2c_5fbus_6',['_i2c_bus',['../classicm20948_1_1ICM20948__I2C.html#a1943684286702592911d9f5941f805fa',1,'icm20948::ICM20948_I2C']]],
-  ['_5fi2c_5ffd_7',['_i2c_fd',['../classicm20948_1_1ICM20948__I2C.html#aa7658b444c44a4a1599f2c00a84446d5',1,'icm20948::ICM20948_I2C']]],
-  ['_5fmagn_5fscale_5ffactor_8',['_magn_scale_factor',['../classicm20948_1_1ICM20948__I2C.html#aa8e9f9d91270dd262a36beb5057a1c82',1,'icm20948::ICM20948_I2C']]],
-  ['_5fmagnetometer_5fconfigured_9',['_magnetometer_configured',['../classicm20948_1_1ICM20948__I2C.html#a46c75dfb7570048a3c2c84a0fb68a910',1,'icm20948::ICM20948_I2C']]],
-  ['_5fmagnetometer_5fenable_10',['_magnetometer_enable',['../classicm20948_1_1ICM20948__I2C.html#a8cd73ca45a243b28564e3ae216f68b4e',1,'icm20948::ICM20948_I2C']]],
-  ['_5fmagnetometer_5finit_11',['_magnetometer_init',['../classicm20948_1_1ICM20948__I2C.html#a0c7041d0f4e0f1212c303b10995ae650',1,'icm20948::ICM20948_I2C']]],
-  ['_5fmagnetometer_5fset_5fmode_12',['_magnetometer_set_mode',['../classicm20948_1_1ICM20948__I2C.html#af001bedd491588bd626e1ebe91dd1d5b',1,'icm20948::ICM20948_I2C']]],
-  ['_5fmagnetometer_5fset_5freadout_13',['_magnetometer_set_readout',['../classicm20948_1_1ICM20948__I2C.html#a4b6b016fe3c36d6a9af7d1c735ae210a',1,'icm20948::ICM20948_I2C']]],
-  ['_5fread_5fbit_14',['_read_bit',['../classicm20948_1_1ICM20948__I2C.html#a5f5f612687be39380ae64bf4b24299d7',1,'icm20948::ICM20948_I2C']]],
-  ['_5fread_5fblock_5fbytes_15',['_read_block_bytes',['../classicm20948_1_1ICM20948__I2C.html#a3fee40f81a7fa03179ecd97545cdc410',1,'icm20948::ICM20948_I2C']]],
-  ['_5fread_5fbyte_16',['_read_byte',['../classicm20948_1_1ICM20948__I2C.html#abf0348876f7415429adff95f7e4b6d58',1,'icm20948::ICM20948_I2C']]],
-  ['_5fread_5fmag_5fbyte_17',['_read_mag_byte',['../classicm20948_1_1ICM20948__I2C.html#a7f2f8dbfed2281c99909e65edc4d25b6',1,'icm20948::ICM20948_I2C']]],
-  ['_5fset_5faccel_5frange_5fdlpf_18',['_set_accel_range_dlpf',['../classicm20948_1_1ICM20948__I2C.html#a31e5480f8ed438bd646dff26de1f722a',1,'icm20948::ICM20948_I2C']]],
-  ['_5fset_5faccel_5fsample_5frate_5fdiv_19',['_set_accel_sample_rate_div',['../classicm20948_1_1ICM20948__I2C.html#ab4ffa6090fa0629f6ab6e2d5ab8b27e9',1,'icm20948::ICM20948_I2C']]],
-  ['_5fset_5fbank_20',['_set_bank',['../classicm20948_1_1ICM20948__I2C.html#a952b59898c4fa68df28e2036ff2ecf8e',1,'icm20948::ICM20948_I2C']]],
-  ['_5fset_5fgyro_5frange_5fdlpf_21',['_set_gyro_range_dlpf',['../classicm20948_1_1ICM20948__I2C.html#aa2de7fd07ec6e0035d6a29aefafba72b',1,'icm20948::ICM20948_I2C']]],
-  ['_5fset_5fgyro_5fsample_5frate_5fdiv_22',['_set_gyro_sample_rate_div',['../classicm20948_1_1ICM20948__I2C.html#aa32a44c04e8306ccd4a6a7a946d4fb9e',1,'icm20948::ICM20948_I2C']]],
-  ['_5fwrite_5fbit_23',['_write_bit',['../classicm20948_1_1ICM20948__I2C.html#a360065071f02d1488b4a4d919c788103',1,'icm20948::ICM20948_I2C']]],
-  ['_5fwrite_5fbyte_24',['_write_byte',['../classicm20948_1_1ICM20948__I2C.html#a7f56513a51193f95f255d6dcd737cd7a',1,'icm20948::ICM20948_I2C']]],
-  ['_5fwrite_5fmag_5fbyte_25',['_write_mag_byte',['../classicm20948_1_1ICM20948__I2C.html#a6d1bce3f2771e690e495769cd6d3c663',1,'icm20948::ICM20948_I2C']]]
+  ['20948_0',['IMU - ICM-20948',['../md_src_2libs_2IMU_2README.html',1,'']]],
+  ['20948_20pin_20connections_1',['ICM-20948 Pin Connections',['../md_src_2libs_2IMU_2README.html#autotoc_md2',1,'']]]
 ];

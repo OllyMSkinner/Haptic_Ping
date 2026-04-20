@@ -13,16 +13,28 @@
 {\ttfamily \#include $<$functional$>$}\newline
 {\ttfamily \#include $<$memory$>$}\newline
 Include dependency graph for ads1115rpi.\+h\+:
-% FIG 0
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ads1115rpi_8h__incl}
+\end{center}
+\end{figure}
 This graph shows which files directly or indirectly include this file\+:
-% FIG 1
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=335pt]{ads1115rpi_8h__dep__incl}
+\end{center}
+\end{figure}
 \doxysubsubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
 struct \mbox{\hyperlink{structADS1115settings}{ADS1115settings}}
-\item 
+\begin{DoxyCompactList}\small\item\em Stores the ADS1115 configuration values, including I2C settings, sampling rate, gain, input channel, and GPIO settings. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classADS1115rpi}{ADS1115rpi}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Declares the ADS1115 Raspberry Pi interface, including callback support and the main functions for starting, stopping, configuring, and reading the device. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
@@ -32,7 +44,7 @@ class \mbox{\hyperlink{classADS1115rpi}{ADS1115rpi}}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{structADS1115settings}{ADS1115settings}} \mbox{\hyperlink{ads1115rpi_8h_ab93a510bf73672786d210a79f41be1aa}{make\+Default\+ADS1115\+Settings}} ()
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Creates and returns the default ADS1115 settings. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Macro Definition Documentation}
@@ -42,6 +54,12 @@ class \mbox{\hyperlink{classADS1115rpi}{ADS1115rpi}}
 \doxysubsubsection{\texorpdfstring{DEBUG}{DEBUG}}
 {\footnotesize\ttfamily \#define DEBUG}
 
+This header defines the ADS1115 configuration data and the Raspberry Pi interface used to communicate with the ADS1115 device. It provides the available setup options, callback registration, channel control, and the functions used to start, stop, and manage ADC readings.
+
+SOLID principles\+: S -\/ The settings struct is responsible only for configuration data, while the delivery. O -\/ Client behaviour can be extended through the callback interface without changing the ADC reading logic itself. I/D -\/ Client code interacts with this class through a small public API and a narrow callback interface rather than depending on low-\/level I2C or GPIO operations directly. 
+
+Definition at line \mbox{\hyperlink{ads1115rpi_8h_source_l00033}{33}} of file \mbox{\hyperlink{ads1115rpi_8h_source}{ads1115rpi.\+h}}.
+
 
 
 \doxysubsection{Function Documentation}
@@ -50,4 +68,12 @@ class \mbox{\hyperlink{classADS1115rpi}{ADS1115rpi}}
 \index{makeDefaultADS1115Settings@{makeDefaultADS1115Settings}!ads1115rpi.h@{ads1115rpi.h}}
 \doxysubsubsection{\texorpdfstring{makeDefaultADS1115Settings()}{makeDefaultADS1115Settings()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structADS1115settings}{ADS1115settings}} make\+Default\+ADS1115\+Settings (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Creates and returns the default ADS1115 settings. 
+
+This file sets up and manages the ADS1115 ADC on a Raspberry Pi. It initializes I2C and GPIO interrupt handling, reads conversion data when the device signals it is ready, and passes the converted voltage to a callback. 
+
+Definition at line \mbox{\hyperlink{ads1115rpi_8cpp_source_l00023}{23}} of file \mbox{\hyperlink{ads1115rpi_8cpp_source}{ads1115rpi.\+cpp}}.
 

@@ -80,16 +80,29 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>Declares the position detector class, including its callback type, configuration settings, and main functions for processing samples and resetting state.  
+ <a href="classPositionDetector.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="positiondetector_8hpp_source.html">positiondetector.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for PositionDetector:</div>
 <div class="dyncontent">
 <div class="center"><img src="classPositionDetector__inherit__graph.png" border="0" usemap="#aPositionDetector_inherit__map" alt="Inheritance graph"/></div>
+<map name="aPositionDetector_inherit__map" id="aPositionDetector_inherit__map">
+<area shape="rect" title="Declares the position detector class, including its callback type, configuration settings,..." alt="" coords="5,5,136,31"/>
+<area shape="rect" href="classSwingProcessor.html" title="raised to reject motor EMI noise floor" alt="" coords="9,79,133,104"/>
+<area shape="poly" title=" " alt="" coords="73,44,73,79,68,79,68,44"/>
+</map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <div class="dynheader">
 Collaboration diagram for PositionDetector:</div>
 <div class="dyncontent">
 <div class="center"><img src="classPositionDetector__coll__graph.png" border="0" usemap="#aPositionDetector_coll__map" alt="Collaboration graph"/></div>
+<map name="aPositionDetector_coll__map" id="aPositionDetector_coll__map">
+<area shape="rect" title="Declares the position detector class, including its callback type, configuration settings,..." alt="" coords="29,93,160,119"/>
+<area shape="rect" href="structPositionDetector_1_1Config.html" title=" " alt="" coords="5,5,184,31"/>
+<area shape="poly" title=" " alt="" coords="97,45,97,93,92,93,92,45"/>
+</map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
@@ -105,6 +118,7 @@ Public Types</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a14b40be880ad02568135c29134a62e56" id="r_a14b40be880ad02568135c29134a62e56"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPositionDetector.html#a14b40be880ad02568135c29134a62e56">PositionDetector</a> ()</td></tr>
+<tr class="memdesc:a14b40be880ad02568135c29134a62e56"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor delegates to config-based constructor.  <br /></td></tr>
 <tr class="separator:a14b40be880ad02568135c29134a62e56"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab0e54c6126a4a687ee54da1488b1a6ca" id="r_ab0e54c6126a4a687ee54da1488b1a6ca"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPositionDetector.html#ab0e54c6126a4a687ee54da1488b1a6ca">PositionDetector</a> (const <a class="el" href="structPositionDetector_1_1Config.html">Config</a> &amp;c)</td></tr>
 <tr class="separator:ab0e54c6126a4a687ee54da1488b1a6ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -120,6 +134,7 @@ Public Member Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-methods" name="pri-static-methods"></a>
 Static Private Member Functions</h2></td></tr>
 <tr class="memitem:a346d2194b0515bc47f4e03d186339ff9" id="r_a346d2194b0515bc47f4e03d186339ff9"><td class="memItemLeft" align="right" valign="top">static float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPositionDetector.html#a346d2194b0515bc47f4e03d186339ff9">wrapAngleDeg</a> (float a)</td></tr>
+<tr class="memdesc:a346d2194b0515bc47f4e03d186339ff9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Declares the helper function and private members used to store configuration, reference values, stability count, state, and callback data.  <br /></td></tr>
 <tr class="separator:a346d2194b0515bc47f4e03d186339ff9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
@@ -133,13 +148,20 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a6303a331e34b61b49b7b3c6681355111" id="r_a6303a331e34b61b49b7b3c6681355111"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPositionDetector.html#a6303a331e34b61b49b7b3c6681355111">nRefZ</a></td></tr>
 <tr class="separator:a6303a331e34b61b49b7b3c6681355111"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af56e669264fd7441de6ae3343d8e5245" id="r_af56e669264fd7441de6ae3343d8e5245"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPositionDetector.html#af56e669264fd7441de6ae3343d8e5245">stableCount</a></td></tr>
+<tr class="memdesc:af56e669264fd7441de6ae3343d8e5245"><td class="mdescLeft">&#160;</td><td class="mdescRight">normalised ref vector, computed from cfg  <br /></td></tr>
 <tr class="separator:af56e669264fd7441de6ae3343d8e5245"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a890b67cd6046e11042bd7ba0214571cb" id="r_a890b67cd6046e11042bd7ba0214571cb"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPositionDetector.html#a890b67cd6046e11042bd7ba0214571cb">confirmed</a></td></tr>
 <tr class="separator:a890b67cd6046e11042bd7ba0214571cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aae56d9e61b2afb80a07003ba59fbb318" id="r_aae56d9e61b2afb80a07003ba59fbb318"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classPositionDetector.html#a6cecc4adffa3f995348529f94c1db498">StateCallback</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPositionDetector.html#aae56d9e61b2afb80a07003ba59fbb318">callback</a></td></tr>
 <tr class="separator:aae56d9e61b2afb80a07003ba59fbb318"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Typedef Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Declares the position detector class, including its callback type, configuration settings, and main functions for processing samples and resetting state. </p>
+<p>This header declares the position detector class. It stores the configuration for detecting an upright position, processes sensor samples, tracks stability, and uses a callback when the required position has been confirmed.</p>
+<p>SOLID principles: S - This class is responsible for analysing incoming motion/orientation samples and deciding whether the required upright position has been stably detected. O - Client code can extend what happens after detection by attaching a callback, without modifying the detector logic itself. L - The virtual destructor and virtual <a class="el" href="classPositionDetector.html#aff71ff748fddc6e18c1303a0aafc9dcf">onSample()</a> allow derived detector types to replace the base class safely, provided they preserve the same detection contract. I - The public API is intentionally small, exposing only the operations needed by client code: process samples, register a callback, and reset state. </p>
+
+<p class="definition">Definition at line <a class="el" href="positiondetector_8hpp_source.html#l00027">27</a> of file <a class="el" href="positiondetector_8hpp_source.html">positiondetector.hpp</a>.</p>
+</div><h2 class="groupheader">Member Typedef Documentation</h2>
 <a id="a6cecc4adffa3f995348529f94c1db498" name="a6cecc4adffa3f995348529f94c1db498"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6cecc4adffa3f995348529f94c1db498">&#9670;&#160;</a></span>StateCallback</h2>
 
@@ -151,6 +173,8 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="positiondetector_8hpp_source.html#l00029">29</a> of file <a class="el" href="positiondetector_8hpp_source.html">positiondetector.hpp</a>.</p>
 
 </div>
 </div>
@@ -169,6 +193,10 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Default constructor delegates to config-based constructor. </p>
+
+<p class="definition">Definition at line <a class="el" href="positiondetector_8cpp_source.html#l00004">4</a> of file <a class="el" href="positiondetector_8cpp_source.html">positiondetector.cpp</a>.</p>
 
 </div>
 </div>
@@ -195,6 +223,9 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Precompute normalised reference gravity vector.</p>
+
+<p class="definition">Definition at line <a class="el" href="positiondetector_8cpp_source.html#l00007">7</a> of file <a class="el" href="positiondetector_8cpp_source.html">positiondetector.cpp</a>.</p>
 
 </div>
 </div>
@@ -275,8 +306,21 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Compute acceleration magnitude.</p>
+<p>Compute heading from magnetometer.</p>
+<p>Check heading against reference (with wrap-around).</p>
+<p>Check if acceleration magnitude is within expected bounds.</p>
+<p>Normalise acceleration vector.</p>
+<p>Compare with reference orientation using dot product.</p>
+<p>Position valid only if both checks pass.</p>
+<p>Count consecutive valid samples.</p>
+<p>Reset on failure.</p>
+<p>Confirm only after enough consecutive valid samples.</p>
+<p>Emit callback only on state change.</p>
 
 <p>Reimplemented in <a class="el" href="classSwingProcessor.html#a8e4fbc5ebea519acf8744fefa8f64baa">SwingProcessor</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="positiondetector_8cpp_source.html#l00032">32</a> of file <a class="el" href="positiondetector_8cpp_source.html">positiondetector.cpp</a>.</p>
 
 </div>
 </div>
@@ -294,6 +338,10 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Clears stability count and confirmed state so the callback can re-fire after a cycle reset while the device stays at the same position. </p>
+<p>Reset stability tracking and confirmation state.</p>
+
+<p class="definition">Definition at line <a class="el" href="positiondetector_8cpp_source.html#l00025">25</a> of file <a class="el" href="positiondetector_8cpp_source.html">positiondetector.cpp</a>.</p>
 
 </div>
 </div>
@@ -321,6 +369,8 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="positiondetector_8hpp_source.html#l00051">51</a> of file <a class="el" href="positiondetector_8hpp_source.html">positiondetector.hpp</a>.</p>
+
 </div>
 </div>
 <a id="a346d2194b0515bc47f4e03d186339ff9" name="a346d2194b0515bc47f4e03d186339ff9"></a>
@@ -347,6 +397,11 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Declares the helper function and private members used to store configuration, reference values, stability count, state, and callback data. </p>
+<p>Wrap angle into [-180, 180] range.</p>
+
+<p class="definition">Definition at line <a class="el" href="positiondetector_8cpp_source.html#l00017">17</a> of file <a class="el" href="positiondetector_8cpp_source.html">positiondetector.cpp</a>.</p>
+
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
@@ -370,6 +425,8 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="positiondetector_8hpp_source.html#l00064">64</a> of file <a class="el" href="positiondetector_8hpp_source.html">positiondetector.hpp</a>.</p>
+
 </div>
 </div>
 <a id="a3d1ce96b906dab1b6b43d7fe71dab89e" name="a3d1ce96b906dab1b6b43d7fe71dab89e"></a>
@@ -391,6 +448,8 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="positiondetector_8hpp_source.html#l00060">60</a> of file <a class="el" href="positiondetector_8hpp_source.html">positiondetector.hpp</a>.</p>
 
 </div>
 </div>
@@ -414,6 +473,8 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="positiondetector_8hpp_source.html#l00063">63</a> of file <a class="el" href="positiondetector_8hpp_source.html">positiondetector.hpp</a>.</p>
+
 </div>
 </div>
 <a id="a938a212e42e110a7344429f2a65fe40f" name="a938a212e42e110a7344429f2a65fe40f"></a>
@@ -435,6 +496,8 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="positiondetector_8hpp_source.html#l00061">61</a> of file <a class="el" href="positiondetector_8hpp_source.html">positiondetector.hpp</a>.</p>
 
 </div>
 </div>
@@ -458,6 +521,8 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="positiondetector_8hpp_source.html#l00061">61</a> of file <a class="el" href="positiondetector_8hpp_source.html">positiondetector.hpp</a>.</p>
+
 </div>
 </div>
 <a id="a6303a331e34b61b49b7b3c6681355111" name="a6303a331e34b61b49b7b3c6681355111"></a>
@@ -479,6 +544,8 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="positiondetector_8hpp_source.html#l00061">61</a> of file <a class="el" href="positiondetector_8hpp_source.html">positiondetector.hpp</a>.</p>
 
 </div>
 </div>
@@ -502,11 +569,15 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>normalised ref vector, computed from cfg </p>
+
+<p class="definition">Definition at line <a class="el" href="positiondetector_8hpp_source.html#l00062">62</a> of file <a class="el" href="positiondetector_8hpp_source.html">positiondetector.hpp</a>.</p>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/libs/IMU_math/Include/<a class="el" href="positiondetector_8hpp_source.html">positiondetector.hpp</a></li>
-<li>src/libs/IMU_math/<a class="el" href="positiondetector_8cpp.html">positiondetector.cpp</a></li>
+<li>src/libs/IMU_math/<a class="el" href="positiondetector_8cpp_source.html">positiondetector.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['label_0',['label',['../classSwingDetector.html#acd5eaec64bd2b3403a2678d7e518ad6b',1,'SwingDetector']]],
-  ['ledcontroller_1',['LEDController',['../classLEDController.html#ab7408c7e7de434246c021b77be7538a0',1,'LEDController']]],
-  ['loop_2',['loop',['../classRPI__PWM.html#ad3c2649079790966a48c1fe13575ab3e',1,'RPI_PWM']]]
+  ['magn_5fmode_5fto_5fstr_0',['magn_mode_to_str',['../namespaceicm20948.html#a4e2db8332ee3f51602d9032468ec2b34',1,'icm20948']]],
+  ['magn_5fsettings_1',['magn_settings',['../structicm20948_1_1magn__settings.html#a4a8042e4a839f077a832f4035f5b1d2f',1,'icm20948::magn_settings']]],
+  ['main_2',['main',['../CMakeCXXCompilerId_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main(int argc, char *argv[]):&#160;CMakeCXXCompilerId.cpp'],['../main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;main.cpp']]],
+  ['makedefaultads1115settings_3',['makedefaultads1115settings',['../ads1115rpi_8cpp.html#ab93a510bf73672786d210a79f41be1aa',1,'makeDefaultADS1115Settings():&#160;ads1115rpi.cpp'],['../ads1115rpi_8h.html#ab93a510bf73672786d210a79f41be1aa',1,'makeDefaultADS1115Settings():&#160;ads1115rpi.cpp']]]
 ];

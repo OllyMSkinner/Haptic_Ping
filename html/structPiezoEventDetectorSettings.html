@@ -76,6 +76,9 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>Stores the threshold and debug settings for the detector.  
+ <a href="structPiezoEventDetectorSettings.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="event__detector_8h_source.html">event_detector.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
@@ -87,7 +90,13 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:af68019440086962c16fe6a98aacaf63d" id="r_af68019440086962c16fe6a98aacaf63d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structPiezoEventDetectorSettings.html#af68019440086962c16fe6a98aacaf63d">enableDebugPrints</a> = false</td></tr>
 <tr class="separator:af68019440086962c16fe6a98aacaf63d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Data Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Stores the threshold and debug settings for the detector. </p>
+<p>This header defines the piezo event detector and its settings. The detector is responsible for interpreting sensor samples from the ADC, tracking press/release state, and exposing higher-level event behaviour through a callback while also providing direct LED feedback.</p>
+<p>SOLID principle: S - The main responsibility of this class is to interpret piezo samples using filtering and threshold logic. O - New behaviours can be attached through the callback without changing the detector logic itself. L/D - The detector depends on a simpler LED abstraction and a callback rather than on broader application logic, helping to reduce coupling. </p>
+
+<p class="definition">Definition at line <a class="el" href="event__detector_8h_source.html#l00022">22</a> of file <a class="el" href="event__detector_8h_source.html">event_detector.h</a>.</p>
+</div><h2 class="groupheader">Member Data Documentation</h2>
 <a id="af68019440086962c16fe6a98aacaf63d" name="af68019440086962c16fe6a98aacaf63d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af68019440086962c16fe6a98aacaf63d">&#9670;&#160;</a></span>enableDebugPrints</h2>
 
@@ -99,6 +108,8 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="event__detector_8h_source.html#l00026">26</a> of file <a class="el" href="event__detector_8h_source.html">event_detector.h</a>.</p>
 
 </div>
 </div>
@@ -114,6 +125,8 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="event__detector_8h_source.html#l00024">24</a> of file <a class="el" href="event__detector_8h_source.html">event_detector.h</a>.</p>
+
 </div>
 </div>
 <a id="a79895b6a55d8aa00c66fefe1c777ceb5" name="a79895b6a55d8aa00c66fefe1c777ceb5"></a>
@@ -127,6 +140,8 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="event__detector_8h_source.html#l00025">25</a> of file <a class="el" href="event__detector_8h_source.html">event_detector.h</a>.</p>
 
 </div>
 </div>

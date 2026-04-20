@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2025/dev/Debian) (preloaded format=pdflatex 2026.4.19)  20 APR 2026 02:30
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2025/dev/Debian) (preloaded format=pdflatex 2026.4.19)  20 APR 2026 22:16
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -845,8 +845,6 @@ st/fonts/enc/dvips/base/8r.enc}]
 
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
 (Font)              scaled to size 8.99994pt on input line 204.
-LaTeX Font Info:    Font shape `T1/phv/b/n' will be
-(Font)              scaled to size 6.29996pt on input line 204.
 LaTeX Font Info:    Trying to load font information for U+msa on input line 204
 .
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
@@ -868,6 +866,8 @@ LaTeX Font Info:    Font shape `T1/phv/m/n' will be
 (Font)              scaled to size 6.29996pt on input line 204.
 
 
+LaTeX Font Info:    Font shape `T1/phv/b/n' will be
+(Font)              scaled to size 6.29996pt on input line 204.
 [1]
 
 [2]
@@ -877,6 +877,10 @@ LaTeX Font Info:    Font shape `T1/phv/m/n' will be
 [4]
 
 [5]
+
+[6]
+
+[7]
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
 (Font)              scaled to size 7.19995pt on input line 204.
 LaTeX Font Info:    Trying to load font information for T1+pcr on input line 20
@@ -884,10 +888,6 @@ LaTeX Font Info:    Trying to load font information for T1+pcr on input line 20
  (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
 )
-
-[6]
-
-[7]
 
 [8]
 
@@ -901,11 +901,13 @@ File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
 
 [13]
 
-[14
+[14]
 
-]
+[15]
+
+[16]
 Package hyperref Info: Option `pageanchor' set `true' on input line 207.
- (./md_src_2libs_2Piezo_2ReadMe.tex
+ (./md_src_2libs_2IMU_2README.tex
 Chapter 1.
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
 (Font)              scaled to size 18.66588pt on input line 1.
@@ -914,17 +916,13 @@ LaTeX Font Info:    Font shape `T1/phv/b/n' will be
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
 (Font)              scaled to size 22.39185pt on input line 1.
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
-(Font)              scaled to size 12.9599pt on input line 13.
-LaTeX Font Info:    Trying to load font information for TS1+phv on input line 1
-6.
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1phv.fd
-File: ts1phv.fd 2020/03/25 scalable font definitions for TS1/phv.
-)
-LaTeX Font Info:    Font shape `TS1/phv/m/n' will be
-(Font)              scaled to size 8.99994pt on input line 16.
-)
+(Font)              scaled to size 12.9599pt on input line 5.
+LaTeX Font Info:    Font shape `T1/phv/b/n' will be
+(Font)              scaled to size 10.79993pt on input line 6.
+) (./md_src_2libs_2Motor_2README.tex
 
 [1
+
 
 ]
 
@@ -932,256 +930,438 @@ LaTeX Font Info:    Font shape `TS1/phv/m/n' will be
 
 ]
 Chapter 2.
-(./namespaces.tex)
+LaTeX Font Info:    Trying to load font information for TS1+phv on input line 7
+5.
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1phv.fd
+File: ts1phv.fd 2020/03/25 scalable font definitions for TS1/phv.
+)
+LaTeX Font Info:    Font shape `TS1/phv/m/n' will be
+(Font)              scaled to size 8.99994pt on input line 75.
 
-[3]
 
-[4
+[3]) (./md_src_2libs_2Piezo_2ReadMe.tex
+
+[4]
+Chapter 3.
+) (./md_README.tex
+
+[5
 
 ]
-Chapter 3.
-(./hierarchy.tex)
-
-[5]
 
 [6
 
 ]
 Chapter 4.
-(./annotated.tex)
+
 
 [7]
 
-[8
+Package textcomp Warning: Symbol \textrightarrow not provided by
+(textcomp)                font family phv in TS1 encoding.
+(textcomp)                Default family used instead on input line 85.
 
-]
-Chapter 5.
-(./files.tex)
+
+Package textcomp Warning: Symbol \textrightarrow not provided by
+(textcomp)                font family phv in TS1 encoding.
+(textcomp)                Default family used instead on input line 86.
+
+
+Package textcomp Warning: Symbol \textrightarrow not provided by
+(textcomp)                font family phv in TS1 encoding.
+(textcomp)                Default family used instead on input line 87.
+
+
+
+[8]
+Underfull \hbox (badness 10000) in paragraph at lines 116--118
+
+ []
+
+
+Package textcomp Warning: Symbol \textrightarrow not provided by
+(textcomp)                font family pcr in TS1 encoding.
+(textcomp)                Default family used instead on input line 127.
+
+
+Package textcomp Warning: Symbol \textrightarrow not provided by
+(textcomp)                font family pcr in TS1 encoding.
+(textcomp)                Default family used instead on input line 127.
+
+
 
 [9]
 
-[10
+Package textcomp Warning: Symbol \textrightarrow not provided by
+(textcomp)                font family phv in TS1 encoding.
+(textcomp)                Default family used instead on input line 183.
 
-]
-Chapter 6.
-(./namespaceicm20948.tex
-LaTeX Font Info:    Font shape `T1/phv/b/n' will be
-(Font)              scaled to size 10.79993pt on input line 98.
 
+Package textcomp Warning: Symbol \textrightarrow not provided by
+(textcomp)                font family phv in TS1 encoding.
+(textcomp)                Default family used instead on input line 184.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 189--190
+
+ []
+
+[10]
+Underfull \hbox (badness 10000) in paragraph at lines 267--272
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 291--292
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 295--296
+
+ []
+
+)
 
 [11]
 
-[12] [13]
-LaTeX Font Info:    Font shape `T1/pcr/m/it' in size <8> not available
-(Font)              Font shape `T1/pcr/m/sl' tried instead on input line 297.
-)
+[12
 
-[14]
+]
+Chapter 5.
+(./namespaces.tex)
+
+[13]
+
+[14
+
+]
+Chapter 6.
+(./hierarchy.tex)
+
+[15]
+
+[16
+
+]
 Chapter 7.
+(./annotated.tex)
+
+[17]
+
+[18
+
+]
+Chapter 8.
+(./files.tex)
+
+[19]
+
+[20
+
+]
+Chapter 9.
+(./namespaceicm20948.tex
+LaTeX Font Info:    Font shape `T1/phv/m/n' will be
+(Font)              scaled to size 8.09995pt on input line 14.
+LaTeX Font Info:    Font shape `T1/phv/m/it' in size <9> not available
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 14.
+LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
+(Font)              scaled to size 8.09995pt on input line 14.
+
+
+[21] [22]
+
+[23]
+LaTeX Font Info:    Font shape `T1/pcr/m/it' in size <8> not available
+(Font)              Font shape `T1/pcr/m/sl' tried instead on input line 349.
+
+
+[24])
+
+[25]
+
+[26
+
+]
+Chapter 10.
 (./structicm20948_1_1accel__settings.tex
 Underfull \hbox (badness 4819) in paragraph at lines 10--11
 [][] \T1/phv/m/n/10 (uint16[]_[]t []=0, [] []=[], bool []=true,
  []
 
 LaTeX Font Info:    Font shape `T1/pcr/m/it' in size <7> not available
-(Font)              Font shape `T1/pcr/m/sl' tried instead on input line 30.
+(Font)              Font shape `T1/pcr/m/sl' tried instead on input line 37.
 
 
-[15
+[27]) (./classADS1115rpi.tex <./classADS1115rpi__coll__graph.pdf>
+<classADS1115rpi__coll__graph.pdf, id=4029, 214.8025pt x 165.61874pt>
+File: classADS1115rpi__coll__graph.pdf Graphic file (type pdf)
+<use classADS1115rpi__coll__graph.pdf>
+Package pdftex.def Info: classADS1115rpi__coll__graph.pdf  used on input line 1
+9.
+(pdftex.def)             Requested size: 214.0pt x 165.00171pt.
 
-]) (./classADS1115rpi.tex
 
-[16]
+[28]
 
-[17]
+[29]
 
-[18]
+[30]
 
-[19]) (./structADS1115settings.tex
+[31]) (./structADS1115settings.tex
 
-[20]
+[32]
 
-[21]) (./structPositionDetector_1_1Config.tex
+[33]) (./structPositionDetector_1_1Config.tex
 
-[22]
+[34]) (./structicm20948_1_1gyro__settings.tex
 
-[23]) (./structicm20948_1_1gyro__settings.tex
-Underfull \hbox (badness 2726) in paragraph at lines 10--11
+[35]
+Underfull \hbox (badness 2726) in paragraph at lines 15--16
 [][] \T1/phv/m/n/10 (uint8[]_[]t []=0, [] []=[], bool []=true,
  []
 
+) (./classicm20948_1_1ICM20948__I2C.tex
 
+[36] <./classicm20948_1_1ICM20948__I2C__coll__graph.pdf>
+<classicm20948_1_1ICM20948__I2C__coll__graph.pdf, id=4471, 539.01375pt x 231.86
+626pt>
+File: classicm20948_1_1ICM20948__I2C__coll__graph.pdf Graphic file (type pdf)
+<use classicm20948_1_1ICM20948__I2C__coll__graph.pdf>
+Package pdftex.def Info: classicm20948_1_1ICM20948__I2C__coll__graph.pdf  used 
+on input line 13.
+(pdftex.def)             Requested size: 350.0pt x 150.55913pt.
 
-[24]) (./classicm20948_1_1ICM20948__I2C.tex
-Underfull \hbox (badness 3029) in paragraph at lines 14--16
+Underfull \hbox (badness 3029) in paragraph at lines 19--20
 [][] \T1/phv/m/n/10 (un-signed i2c[]_[]bus, un-signed i2c[]_[]address=[], []
  []
 
 
 
-[25]
+[37]
 
-[26]
+[38]
 
-[27]
+[39]
 
-[28]
+[40]
 
-[29]) (./classIMUReader.tex
+[41]
 
-[30]
-Overfull \hbox (35.33554pt too wide) in paragraph at lines 19--21
+[42]) (./classIMUReader.tex <./classIMUReader__coll__graph.pdf>
+<classIMUReader__coll__graph.pdf, id=4729, 539.01375pt x 298.11375pt>
+File: classIMUReader__coll__graph.pdf Graphic file (type pdf)
+<use classIMUReader__coll__graph.pdf>
+Package pdftex.def Info: classIMUReader__coll__graph.pdf  used on input line 14
+.
+(pdftex.def)             Requested size: 350.0pt x 193.57603pt.
+
+Overfull \hbox (35.33554pt too wide) in paragraph at lines 25--27
 [][] \T1/phv/m/n/10 (un-signed i2c[]_[]bus, un-signed i2c[]_[]address=[], const
  char $\OMS/cmsy/m/n/10 ^^C$\T1/phv/m/n/10 gpiochip="/dev/gpiochip0",
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 68--69
+
+[43]
+Underfull \hbox (badness 10000) in paragraph at lines 85--86
 \T1/pcr/m/n/8 using [] = std[]::function$\OML/cmm/m/it/8 <$\T1/pcr/m/n/8 void(f
 loat ax, float ay, float az, float gx,
  []
 
 
 
-[31]
+[44]
 
-[32]) (./structicm20948_1_1IMUSample.tex
+[45]) (./structicm20948_1_1IMUSample.tex
 
-[33]
+[46]
 
-[34]) (./classLEDController.tex
-LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 8.09995pt on input line 24.
-LaTeX Font Info:    Font shape `T1/phv/m/it' in size <9> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 24.
-LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
-(Font)              scaled to size 8.09995pt on input line 24.
+[47]) (./classLEDController.tex <./classLEDController__inherit__graph.pdf>
+<classLEDController__inherit__graph.pdf, id=4929, 197.73875pt x 154.5775pt>
+File: classLEDController__inherit__graph.pdf Graphic file (type pdf)
+<use classLEDController__inherit__graph.pdf>
+Package pdftex.def Info: classLEDController__inherit__graph.pdf  used on input 
+line 18.
+(pdftex.def)             Requested size: 197.0pt x 154.00159pt.
+ <./classLEDController__coll__graph.pdf>
+<classLEDController__coll__graph.pdf, id=4937, 197.73875pt x 154.5775pt>
+File: classLEDController__coll__graph.pdf Graphic file (type pdf)
+<use classLEDController__coll__graph.pdf>
+Package pdftex.def Info: classLEDController__coll__graph.pdf  used on input lin
+e 27.
+(pdftex.def)             Requested size: 197.0pt x 154.00159pt.
 
 
-[35]
+[48]
 
-[36]
+[49]
 
-[37]) (./structLEDControllerSettings.tex
+[50]) (./structLEDControllerSettings.tex)
+(./structicm20948_1_1magn__settings.tex
 
-[38]) (./structicm20948_1_1magn__settings.tex) (./classPiezoEventDetector.tex
+[51]) (./classPiezoEventDetector.tex <./classPiezoEventDetector__coll__graph.pd
+f>
+<classPiezoEventDetector__coll__graph.pdf, id=5099, 369.38pt x 165.61874pt>
+File: classPiezoEventDetector__coll__graph.pdf Graphic file (type pdf)
+<use classPiezoEventDetector__coll__graph.pdf>
+Package pdftex.def Info: classPiezoEventDetector__coll__graph.pdf  used on inpu
+t line 19.
+(pdftex.def)             Requested size: 350.0pt x 156.93004pt.
 
-[39]
 
-[40]) (./structPiezoEventDetectorSettings.tex
+[52]
 
-[41]) (./classPositionDetector.tex
+[53]) (./structPiezoEventDetectorSettings.tex
 
-[42]
+[54]) (./classPositionDetector.tex <./classPositionDetector__inherit__graph.pdf
+>
+<classPositionDetector__inherit__graph.pdf, id=5216, 178.6675pt x 154.5775pt>
+File: classPositionDetector__inherit__graph.pdf Graphic file (type pdf)
+<use classPositionDetector__inherit__graph.pdf>
+Package pdftex.def Info: classPositionDetector__inherit__graph.pdf  used on inp
+ut line 18.
+(pdftex.def)             Requested size: 178.0pt x 154.00865pt.
+ <./classPositionDetector__coll__graph.pdf>
+<classPositionDetector__coll__graph.pdf, id=5224, 214.8025pt x 165.61874pt>
+File: classPositionDetector__coll__graph.pdf Graphic file (type pdf)
+<use classPositionDetector__coll__graph.pdf>
+Package pdftex.def Info: classPositionDetector__coll__graph.pdf  used on input 
+line 28.
+(pdftex.def)             Requested size: 214.0pt x 165.00171pt.
+
+
+[55]
+
+[56]
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
-(Font)              scaled to size 7.19995pt on input line 77.
+(Font)              scaled to size 7.19995pt on input line 108.
 
 
-[43]
+[57]
 
-[44]) (./classRPI__PWM.tex
+[58]) (./classRPI__PWM.tex
 
-[45]
+[59]
 
-[46]) (./structicm20948_1_1settings.tex
+[60]) (./structicm20948_1_1settings.tex <./structicm20948_1_1settings__coll__gr
+aph.pdf>
+<structicm20948_1_1settings__coll__graph.pdf, id=5444, 539.01375pt x 165.61874p
+t>
+File: structicm20948_1_1settings__coll__graph.pdf Graphic file (type pdf)
+<use structicm20948_1_1settings__coll__graph.pdf>
+Package pdftex.def Info: structicm20948_1_1settings__coll__graph.pdf  used on i
+nput line 13.
+(pdftex.def)             Requested size: 350.0pt x 107.54224pt.
 
-[47]
-Underfull \hbox (badness 10000) in paragraph at lines 14--16
+
+[61]
+Underfull \hbox (badness 10000) in paragraph at lines 19--21
 [][] \T1/phv/m/n/10 ([] []=[](), [] []=[](), []
  []
 
 
 
-[48]) (./classSimpleLEDController.tex
-LaTeX Font Info:    Font shape `T1/phv/m/it' in size <7> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 24.
-LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
-(Font)              scaled to size 6.29996pt on input line 24.
+[62]) (./classSimpleLEDController.tex <./classSimpleLEDController__inherit__gra
+ph.pdf>
+<classSimpleLEDController__inherit__graph.pdf, id=5523, 197.73875pt x 154.5775p
+t>
+File: classSimpleLEDController__inherit__graph.pdf Graphic file (type pdf)
+<use classSimpleLEDController__inherit__graph.pdf>
+Package pdftex.def Info: classSimpleLEDController__inherit__graph.pdf  used on 
+input line 13.
+(pdftex.def)             Requested size: 197.0pt x 154.00159pt.
 
 
-[49]
+[63]
 
-[50]
+[64]) (./classSwingCalibrator.tex
 
-[51]) (./classSwingCalibrator.tex
-
-[52]
-
-[53]
-Underfull \hbox (badness 10000) in paragraph at lines 79--80
+[65]
+Underfull \hbox (badness 10000) in paragraph at lines 94--95
 \T1/pcr/m/n/8 using [] = std[]::function$\OML/cmm/m/it/8 <$\T1/pcr/m/n/8 void(f
 loat bx, float by, float bz, bool
  []
 
 
 
-[54]
-
-[55]) (./classSwingDetector.tex
-
-[56]
-
-[57]) (./classSwingFeedback.tex
-
-[58]
-
-[59]
-
-[60]) (./classSwingProcessor.tex
-Underfull \hbox (badness 862) in paragraph at lines 30--32
-[][] \T1/phv/m/n/10 (float accel[]_[]deadband=[], int calib[]_[]samples=[], int
-
- []
-
-
-
-[61]
-
-[62]
-
-[63])
-
-[64]
-Chapter 8.
-(./Icm20948driver_8cpp.tex) (./imureader_8cpp.tex) (./i2c__mutex_8hpp.tex)
-(./i2c__mutex_8hpp_source.tex
-
-[65
-
-]) (./Icm20948driver_8hpp.tex
-
 [66]
 
+Package textcomp Warning: Symbol \textrightarrow not provided by
+(textcomp)                font family phv in TS1 encoding.
+(textcomp)                Default family used instead on input line 203.
+
+
+Package textcomp Warning: Symbol \textrightarrow not provided by
+(textcomp)                font family phv in TS1 encoding.
+(textcomp)                Default family used instead on input line 203.
+
+
+
 [67]
-Overfull \hbox (18.04195pt too wide) in paragraph at lines 197--209
-[] \T1/phv/m/n/10 = 0 , [] , []
- []
 
-
-Overfull \hbox (46.9759pt too wide) in paragraph at lines 209--215
-[]\T1/phv/m/n/10 enum [] { [] = 0 , [] , []
- []
-
-
-Overfull \hbox (17.81673pt too wide) in paragraph at lines 215--227
-[] \T1/phv/m/n/10 = 0 , [] , []
- []
-
-
-
-[68]
+[68]) (./classSwingDetector.tex
 
 [69]
 
-[70]
+Package textcomp Warning: Symbol \textrightarrow not provided by
+(textcomp)                font family phv in TS1 encoding.
+(textcomp)                Default family used instead on input line 51.
+
+
+Package textcomp Warning: Symbol \textrightarrow not provided by
+(textcomp)                font family phv in TS1 encoding.
+(textcomp)                Default family used instead on input line 51.
+
+
+Package textcomp Warning: Symbol \textrightarrow not provided by
+(textcomp)                font family phv in TS1 encoding.
+(textcomp)                Default family used instead on input line 51.
+
+
+Package textcomp Warning: Symbol \textrightarrow not provided by
+(textcomp)                font family phv in TS1 encoding.
+(textcomp)                Default family used instead on input line 51.
+
+
+
+[70]) (./classSwingFeedback.tex <./classSwingFeedback__coll__graph.pdf>
+<classSwingFeedback__coll__graph.pdf, id=5846, 172.645pt x 165.61874pt>
+File: classSwingFeedback__coll__graph.pdf Graphic file (type pdf)
+<use classSwingFeedback__coll__graph.pdf>
+Package pdftex.def Info: classSwingFeedback__coll__graph.pdf  used on input lin
+e 19.
+(pdftex.def)             Requested size: 172.0pt x 165.00171pt.
+
 
 [71]
 
 [72]
 
-[73]
+[73]) (./classSwingProcessor.tex <./classSwingProcessor__inherit__graph.pdf>
+<classSwingProcessor__inherit__graph.pdf, id=5956, 178.6675pt x 154.5775pt>
+File: classSwingProcessor__inherit__graph.pdf Graphic file (type pdf)
+<use classSwingProcessor__inherit__graph.pdf>
+Package pdftex.def Info: classSwingProcessor__inherit__graph.pdf  used on input
+ line 18.
+(pdftex.def)             Requested size: 178.0pt x 154.00865pt.
 
-[74]) (./Icm20948driver_8hpp_source.tex
+
+[74] <./classSwingProcessor__coll__graph.pdf>
+<classSwingProcessor__coll__graph.pdf, id=5975, 309.155pt x 231.86626pt>
+File: classSwingProcessor__coll__graph.pdf Graphic file (type pdf)
+<use classSwingProcessor__coll__graph.pdf>
+Package pdftex.def Info: classSwingProcessor__coll__graph.pdf  used on input li
+ne 28.
+(pdftex.def)             Requested size: 308.0pt x 231.0201pt.
+
+Underfull \hbox (badness 862) in paragraph at lines 46--47
+[][] \T1/phv/m/n/10 (float accel[]_[]deadband=[], int calib[]_[]samples=[], int
+
+ []
+
+
 
 [75]
 
@@ -1189,156 +1369,710 @@ Overfull \hbox (17.81673pt too wide) in paragraph at lines 215--227
 
 [77]
 
-[78]
+[78])
 
-[79]) (./imureader_8hpp.tex) (./imureader_8hpp_source.tex
+[79]
 
-[80]
+[80
 
-[81]) (./positiondetector_8hpp.tex) (./positiondetector_8hpp_source.tex
+]
+Chapter 11.
+(./CMakeCXXCompilerId_8cpp.tex
 
-[82]) (./SwingCalibrator_8hpp.tex) (./SwingCalibrator_8hpp_source.tex)
-(./SwingDetector_8hpp.tex
+[81]
 
-[83]) (./SwingDetector_8hpp_source.tex
+[82]
 
-Package textcomp Warning: Symbol \textrightarrow not provided by
-(textcomp)                font family pcr in TS1 encoding.
-(textcomp)                Default family used instead on input line 11.
+[83]) (./CMakeCXXCompilerId_8cpp_source.tex
 
+[84]
 
-Package textcomp Warning: Symbol \textrightarrow not provided by
-(textcomp)                font family pcr in TS1 encoding.
-(textcomp)                Default family used instead on input line 12.
+[85]
 
+[86]
 
-Package textcomp Warning: Symbol \textrightarrow not provided by
-(textcomp)                font family pcr in TS1 encoding.
-(textcomp)                Default family used instead on input line 13.
+[87]
 
-
-Package textcomp Warning: Symbol \textrightarrow not provided by
-(textcomp)                font family pcr in TS1 encoding.
-(textcomp)                Default family used instead on input line 14.
-
-) (./SwingProcessor_8hpp.tex
-
-[84]) (./SwingProcessor_8hpp_source.tex
-
-[85]) (./positiondetector_8cpp.tex) (./SwingCalibrator_8cpp.tex)
-(./SwingDetector_8cpp.tex) (./SwingProcessor_8cpp.tex)
-(./led__controller_8h.tex
-
-[86]) (./led__controller_8h_source.tex) (./ledcallback_8hpp.tex
-
-[87]) (./ledcallback_8hpp_source.tex) (./led__controller_8cpp.tex)
-(./ledcallback_8cpp.tex) (./rpi__pwm_8h.tex
-
-[88]) (./rpi__pwm_8h_source.tex
+[88]
 
 [89]
 
-[90]) (./swingfeedback_8h.tex) (./swingfeedback_8h_source.tex
+[90]
 
-[91]) (./swingfeedback_8cpp.tex) (./ads1115rpi_8cpp.tex
+[91]
 
-[92]) (./event__detector_8cpp.tex) (./ads1115rpi_8h.tex
+[92]
 
-[93]) (./ads1115rpi_8h_source.tex
+[93]
 
-[94]
+[94]) (./link_8d.tex) (./link_8d_source.tex
 
-[95]) (./event__detector_8h.tex) (./event__detector_8h_source.tex
+[95]) (./main_8cpp_8o_8d.tex) (./main_8cpp_8o_8d_source.tex
 
-[96]) (./ReadMe_8md.tex) (./main_8cpp.tex
+[96]
 
-[97])
+[97]
 
-[98] (./refman.ind
+[98]
+
+[99]
+
+[100]) (./Icm20948driver_8cpp_8o_8d.tex)
+(./Icm20948driver_8cpp_8o_8d_source.tex
+
+[101]
+
+[102]
+
+[103]
+
+[104]) (./imureader_8cpp_8o_8d.tex) (./imureader_8cpp_8o_8d_source.tex
+
+[105]
+
+[106]
+
+[107]) (./Icm20948driver_8cpp.tex <./Icm20948driver_8cpp__incl.pdf>
+<Icm20948driver_8cpp__incl.pdf, id=8442, 1141.26375pt x 209.78375pt>
+File: Icm20948driver_8cpp__incl.pdf Graphic file (type pdf)
+<use Icm20948driver_8cpp__incl.pdf>
+Package pdftex.def Info: Icm20948driver_8cpp__incl.pdf  used on input line 22.
+(pdftex.def)             Requested size: 350.0pt x 64.33446pt.
+
+
+[108]
+
+[109]) (./Icm20948driver_8cpp_source.tex
+
+[110]
+
+[111]
+
+[112]
+
+[113]
+
+[114]
+
+[115]
+
+[116]) (./imureader_8cpp.tex <./imureader_8cpp__incl.pdf>
+<imureader_8cpp__incl.pdf, id=9607, 902.37125pt x 264.99pt>
+File: imureader_8cpp__incl.pdf Graphic file (type pdf)
+<use imureader_8cpp__incl.pdf>
+Package pdftex.def Info: imureader_8cpp__incl.pdf  used on input line 14.
+(pdftex.def)             Requested size: 350.0pt x 102.78365pt.
+)
+(./imureader_8cpp_source.tex
+
+[117]
+
+[118]) (./i2c__mutex_8hpp.tex <./i2c__mutex_8hpp__incl.pdf>
+<i2c__mutex_8hpp__incl.pdf, id=9829, 192.72pt x 165.61874pt>
+File: i2c__mutex_8hpp__incl.pdf Graphic file (type pdf)
+<use i2c__mutex_8hpp__incl.pdf>
+Package pdftex.def Info: i2c__mutex_8hpp__incl.pdf  used on input line 9.
+(pdftex.def)             Requested size: 192.0pt x 164.99918pt.
+ <./i2c__mutex_8hpp__dep__incl.pdf>
+<i2c__mutex_8hpp__dep__incl.pdf, id=9837, 403.5075pt x 165.61874pt>
+File: i2c__mutex_8hpp__dep__incl.pdf Graphic file (type pdf)
+<use i2c__mutex_8hpp__dep__incl.pdf>
+Package pdftex.def Info: i2c__mutex_8hpp__dep__incl.pdf  used on input line 17.
+
+(pdftex.def)             Requested size: 350.0pt x 143.65752pt.
+
+
+[119]) (./i2c__mutex_8hpp_source.tex) (./Icm20948driver_8hpp.tex <./Icm20948dri
+ver_8hpp__incl.pdf>
+<Icm20948driver_8hpp__incl.pdf, id=9901, 502.87875pt x 165.61874pt>
+File: Icm20948driver_8hpp__incl.pdf Graphic file (type pdf)
+<use Icm20948driver_8hpp__incl.pdf>
+Package pdftex.def Info: Icm20948driver_8hpp__incl.pdf  used on input line 13.
+(pdftex.def)             Requested size: 350.0pt x 115.26768pt.
+
+
+[120] <./Icm20948driver_8hpp__dep__incl.pdf>
+<Icm20948driver_8hpp__dep__incl.pdf, id=9927, 433.62pt x 231.86626pt>
+File: Icm20948driver_8hpp__dep__incl.pdf Graphic file (type pdf)
+<use Icm20948driver_8hpp__dep__incl.pdf>
+Package pdftex.def Info: Icm20948driver_8hpp__dep__incl.pdf  used on input line
+ 21.
+(pdftex.def)             Requested size: 350.0pt x 187.16318pt.
+
+
+[121]
+
+[122]
+LaTeX Font Info:    Font shape `T1/phv/m/it' in size <7> not available
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 178.
+LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
+(Font)              scaled to size 6.29996pt on input line 178.
+
+Overfull \hbox (18.04195pt too wide) in paragraph at lines 209--220
+[] \T1/phv/m/n/10 = 0 , [] , []
+ []
+
+
+Overfull \hbox (46.9759pt too wide) in paragraph at lines 221--226
+[]\T1/phv/m/n/10 enum [] { [] = 0 , [] , []
+ []
+
+
+Overfull \hbox (17.81673pt too wide) in paragraph at lines 227--238
+[] \T1/phv/m/n/10 = 0 , [] , []
+ []
+
+
+
+[123]
+
+[124]
+
+[125]
+
+[126]
+
+[127]
+
+[128]
+
+[129]) (./Icm20948driver_8hpp_source.tex
+
+[130]
+
+[131]
+
+[132]) (./imureader_8hpp.tex <./imureader_8hpp__incl.pdf>
+<imureader_8hpp__incl.pdf, id=10816, 604.2575pt x 220.825pt>
+File: imureader_8hpp__incl.pdf Graphic file (type pdf)
+<use imureader_8hpp__incl.pdf>
+Package pdftex.def Info: imureader_8hpp__incl.pdf  used on input line 14.
+(pdftex.def)             Requested size: 350.0pt x 127.90674pt.
+ <./imureader_8hpp__dep__incl.pdf>
+<imureader_8hpp__dep__incl.pdf, id=10824, 325.215pt x 165.61874pt>
+File: imureader_8hpp__dep__incl.pdf Graphic file (type pdf)
+<use imureader_8hpp__dep__incl.pdf>
+Package pdftex.def Info: imureader_8hpp__dep__incl.pdf  used on input line 22.
+(pdftex.def)             Requested size: 324.0pt x 165.01181pt.
+
+
+[133]) (./imureader_8hpp_source.tex
+
+[134]) (./README_8md.tex) (./src_2libs_2IMU_2README_8md.tex)
+(./src_2libs_2Motor_2README_8md.tex) (./positiondetector_8cpp_8o_8d.tex)
+(./positiondetector_8cpp_8o_8d_source.tex
+
+[135]) (./SwingCalibrator_8cpp_8o_8d.tex)
+(./SwingCalibrator_8cpp_8o_8d_source.tex
+
+[136]) (./SwingDetector_8cpp_8o_8d.tex) (./SwingDetector_8cpp_8o_8d_source.tex
+
+[137]) (./SwingProcessor_8cpp_8o_8d.tex)
+(./SwingProcessor_8cpp_8o_8d_source.tex
+
+[138]
+
+[139]
+
+[140]) (./positiondetector_8hpp.tex <./positiondetector_8hpp__incl.pdf>
+<positiondetector_8hpp__incl.pdf, id=11482, 223.83624pt x 165.61874pt>
+File: positiondetector_8hpp__incl.pdf Graphic file (type pdf)
+<use positiondetector_8hpp__incl.pdf>
+Package pdftex.def Info: positiondetector_8hpp__incl.pdf  used on input line 10
+.
+(pdftex.def)             Requested size: 223.0pt x 165.00423pt.
+ <./positiondetector_8hpp__dep__incl.pdf>
+<positiondetector_8hpp__dep__incl.pdf, id=11490, 577.15625pt x 231.86626pt>
+File: positiondetector_8hpp__dep__incl.pdf Graphic file (type pdf)
+<use positiondetector_8hpp__dep__incl.pdf>
+Package pdftex.def Info: positiondetector_8hpp__dep__incl.pdf  used on input li
+ne 18.
+(pdftex.def)             Requested size: 350.0pt x 140.61385pt.
+
+
+[141]) (./positiondetector_8hpp_source.tex) (./SwingCalibrator_8hpp.tex <./Swin
+gCalibrator_8hpp__incl.pdf>
+<SwingCalibrator_8hpp__incl.pdf, id=11603, 223.83624pt x 165.61874pt>
+File: SwingCalibrator_8hpp__incl.pdf Graphic file (type pdf)
+<use SwingCalibrator_8hpp__incl.pdf>
+Package pdftex.def Info: SwingCalibrator_8hpp__incl.pdf  used on input line 9.
+(pdftex.def)             Requested size: 223.0pt x 165.00423pt.
+
+
+[142] <./SwingCalibrator_8hpp__dep__incl.pdf>
+<SwingCalibrator_8hpp__dep__incl.pdf, id=11643, 557.08125pt x 231.86626pt>
+File: SwingCalibrator_8hpp__dep__incl.pdf Graphic file (type pdf)
+<use SwingCalibrator_8hpp__dep__incl.pdf>
+Package pdftex.def Info: SwingCalibrator_8hpp__dep__incl.pdf  used on input lin
+e 17.
+(pdftex.def)             Requested size: 350.0pt x 145.67671pt.
+)
+(./SwingCalibrator_8hpp_source.tex
+
+[143]) (./SwingDetector_8hpp.tex <./SwingDetector_8hpp__incl.pdf>
+<SwingDetector_8hpp__incl.pdf, id=11724, 223.83624pt x 165.61874pt>
+File: SwingDetector_8hpp__incl.pdf Graphic file (type pdf)
+<use SwingDetector_8hpp__incl.pdf>
+Package pdftex.def Info: SwingDetector_8hpp__incl.pdf  used on input line 9.
+(pdftex.def)             Requested size: 223.0pt x 165.00423pt.
+ <./SwingDetector_8hpp__dep__incl.pdf>
+<SwingDetector_8hpp__dep__incl.pdf, id=11732, 377.41pt x 165.61874pt>
+File: SwingDetector_8hpp__dep__incl.pdf Graphic file (type pdf)
+<use SwingDetector_8hpp__dep__incl.pdf>
+Package pdftex.def Info: SwingDetector_8hpp__dep__incl.pdf  used on input line 
+17.
+(pdftex.def)             Requested size: 350.0pt x 153.58916pt.
+) (./SwingDetector_8hpp_source.tex
+
+[144]) (./SwingProcessor_8hpp.tex <./SwingProcessor_8hpp__incl.pdf>
+<SwingProcessor_8hpp__incl.pdf, id=11785, 435.6275pt x 220.825pt>
+File: SwingProcessor_8hpp__incl.pdf Graphic file (type pdf)
+<use SwingProcessor_8hpp__incl.pdf>
+Package pdftex.def Info: SwingProcessor_8hpp__incl.pdf  used on input line 12.
+(pdftex.def)             Requested size: 350.0pt x 177.41837pt.
+ <./SwingProcessor_8hpp__dep__incl.pdf>
+<SwingProcessor_8hpp__dep__incl.pdf, id=11793, 381.425pt x 165.61874pt>
+File: SwingProcessor_8hpp__dep__incl.pdf Graphic file (type pdf)
+<use SwingProcessor_8hpp__dep__incl.pdf>
+Package pdftex.def Info: SwingProcessor_8hpp__dep__incl.pdf  used on input line
+ 20.
+(pdftex.def)             Requested size: 350.0pt x 151.97937pt.
+
+
+[145]) (./SwingProcessor_8hpp_source.tex
+
+[146]) (./positiondetector_8cpp.tex <./positiondetector_8cpp__incl.pdf>
+<positiondetector_8cpp__incl.pdf, id=11913, 287.0725pt x 209.78375pt>
+File: positiondetector_8cpp__incl.pdf Graphic file (type pdf)
+<use positiondetector_8cpp__incl.pdf>
+Package pdftex.def Info: positiondetector_8cpp__incl.pdf  used on input line 9.
+
+(pdftex.def)             Requested size: 286.0pt x 209.00536pt.
+)
+(./positiondetector_8cpp_source.tex
+
+[147]
+
+[148]) (./SwingCalibrator_8cpp.tex <./SwingCalibrator_8cpp__incl.pdf>
+<SwingCalibrator_8cpp__incl.pdf, id=12067, 285.065pt x 209.78375pt>
+File: SwingCalibrator_8cpp__incl.pdf Graphic file (type pdf)
+<use SwingCalibrator_8cpp__incl.pdf>
+Package pdftex.def Info: SwingCalibrator_8cpp__incl.pdf  used on input line 9.
+(pdftex.def)             Requested size: 284.0pt x 208.99896pt.
+)
+(./SwingCalibrator_8cpp_source.tex
+
+[149]) (./SwingDetector_8cpp.tex <./SwingDetector_8cpp__incl.pdf>
+<SwingDetector_8cpp__incl.pdf, id=12178, 279.0425pt x 209.78375pt>
+File: SwingDetector_8cpp__incl.pdf Graphic file (type pdf)
+<use SwingDetector_8cpp__incl.pdf>
+Package pdftex.def Info: SwingDetector_8cpp__incl.pdf  used on input line 9.
+(pdftex.def)             Requested size: 278.0pt x 209.00536pt.
+)
+(./SwingDetector_8cpp_source.tex
+
+[150]) (./SwingProcessor_8cpp.tex <./SwingProcessor_8cpp__incl.pdf>
+<SwingProcessor_8cpp__incl.pdf, id=12271, 488.82625pt x 264.99pt>
+File: SwingProcessor_8cpp__incl.pdf Graphic file (type pdf)
+<use SwingProcessor_8cpp__incl.pdf>
+Package pdftex.def Info: SwingProcessor_8cpp__incl.pdf  used on input line 10.
+(pdftex.def)             Requested size: 350.0pt x 189.73732pt.
+)
+(./SwingProcessor_8cpp_source.tex
+
+[151]
+
+[152]) (./led__controller_8cpp_8o_8d.tex)
+(./led__controller_8cpp_8o_8d_source.tex
+
+[153]
+
+[154]
+
+[155]) (./ledcallback_8cpp_8o_8d.tex) (./ledcallback_8cpp_8o_8d_source.tex
+
+[156]
+
+[157]
+
+[158]) (./led__controller_8h.tex <./led__controller_8h__incl.pdf>
+<led__controller_8h__incl.pdf, id=13000, 269.005pt x 220.825pt>
+File: led__controller_8h__incl.pdf Graphic file (type pdf)
+<use led__controller_8h__incl.pdf>
+Package pdftex.def Info: led__controller_8h__incl.pdf  used on input line 10.
+(pdftex.def)             Requested size: 268.0pt x 220.00227pt.
+ <./led__controller_8h__dep__incl.pdf>
+<led__controller_8h__dep__incl.pdf, id=13008, 453.695pt x 242.9075pt>
+File: led__controller_8h__dep__incl.pdf Graphic file (type pdf)
+<use led__controller_8h__dep__incl.pdf>
+Package pdftex.def Info: led__controller_8h__dep__incl.pdf  used on input line 
+18.
+(pdftex.def)             Requested size: 350.0pt x 187.39145pt.
+
+
+[159]) (./led__controller_8h_source.tex) (./ledcallback_8hpp.tex <./ledcallback
+_8hpp__incl.pdf>
+<ledcallback_8hpp__incl.pdf, id=13078, 222.8325pt x 165.61874pt>
+File: ledcallback_8hpp__incl.pdf Graphic file (type pdf)
+<use ledcallback_8hpp__incl.pdf>
+Package pdftex.def Info: ledcallback_8hpp__incl.pdf  used on input line 10.
+(pdftex.def)             Requested size: 222.0pt x 165.00171pt.
+
+
+[160] <./ledcallback_8hpp__dep__incl.pdf>
+<ledcallback_8hpp__dep__incl.pdf, id=13122, 638.385pt x 309.155pt>
+File: ledcallback_8hpp__dep__incl.pdf Graphic file (type pdf)
+<use ledcallback_8hpp__dep__incl.pdf>
+Package pdftex.def Info: ledcallback_8hpp__dep__incl.pdf  used on input line 18
+.
+(pdftex.def)             Requested size: 350.0pt x 169.49799pt.
+) (./ledcallback_8hpp_source.tex
+
+[161]) (./led__controller_8cpp.tex <./led__controller_8cpp__incl.pdf>
+<led__controller_8cpp__incl.pdf, id=13175, 429.605pt x 264.99pt>
+File: led__controller_8cpp__incl.pdf Graphic file (type pdf)
+<use led__controller_8cpp__incl.pdf>
+Package pdftex.def Info: led__controller_8cpp__incl.pdf  used on input line 12.
+
+(pdftex.def)             Requested size: 350.0pt x 215.89014pt.
+)
+(./led__controller_8cpp_source.tex
+
+[162]) (./ledcallback_8cpp.tex <./ledcallback_8cpp__incl.pdf>
+<ledcallback_8cpp__incl.pdf, id=13270, 346.29375pt x 209.78375pt>
+File: ledcallback_8cpp__incl.pdf Graphic file (type pdf)
+<use ledcallback_8cpp__incl.pdf>
+Package pdftex.def Info: ledcallback_8cpp__incl.pdf  used on input line 11.
+(pdftex.def)             Requested size: 345.0pt x 209.00536pt.
+)
+(./ledcallback_8cpp_source.tex
+
+[163]
+
+[164]) (./swingfeedback_8cpp_8o_8d.tex) (./swingfeedback_8cpp_8o_8d_source.tex
+
+[165]
+
+[166]
+
+[167]) (./rpi__pwm_8h.tex <./rpi__pwm_8h__incl.pdf>
+<rpi__pwm_8h__incl.pdf, id=13678, 590.205pt x 165.61874pt>
+File: rpi__pwm_8h__incl.pdf Graphic file (type pdf)
+<use rpi__pwm_8h__incl.pdf>
+Package pdftex.def Info: rpi__pwm_8h__incl.pdf  used on input line 15.
+(pdftex.def)             Requested size: 350.0pt x 98.21457pt.
+ <./rpi__pwm_8h__dep__incl.pdf>
+<rpi__pwm_8h__dep__incl.pdf, id=13686, 357.335pt x 231.86626pt>
+File: rpi__pwm_8h__dep__incl.pdf Graphic file (type pdf)
+<use rpi__pwm_8h__dep__incl.pdf>
+Package pdftex.def Info: rpi__pwm_8h__dep__incl.pdf  used on input line 23.
+(pdftex.def)             Requested size: 350.0pt x 227.11769pt.
+
+
+[168]) (./rpi__pwm_8h_source.tex
+
+[169]
+
+[170]) (./swingfeedback_8h.tex <./swingfeedback_8h__incl.pdf>
+<swingfeedback_8h__incl.pdf, id=13939, 590.205pt x 220.825pt>
+File: swingfeedback_8h__incl.pdf Graphic file (type pdf)
+<use swingfeedback_8h__incl.pdf>
+Package pdftex.def Info: swingfeedback_8h__incl.pdf  used on input line 12.
+(pdftex.def)             Requested size: 350.0pt x 130.95277pt.
+ <./swingfeedback_8h__dep__incl.pdf>
+<swingfeedback_8h__dep__incl.pdf, id=13947, 357.335pt x 165.61874pt>
+File: swingfeedback_8h__dep__incl.pdf Graphic file (type pdf)
+<use swingfeedback_8h__dep__incl.pdf>
+Package pdftex.def Info: swingfeedback_8h__dep__incl.pdf  used on input line 20
+.
+(pdftex.def)             Requested size: 350.0pt x 162.22691pt.
+) (./swingfeedback_8h_source.tex
+
+[171]) (./swingfeedback_8cpp.tex <./swingfeedback_8cpp__incl.pdf>
+<swingfeedback_8cpp__incl.pdf, id=14003, 660.4675pt x 264.99pt>
+File: swingfeedback_8cpp__incl.pdf Graphic file (type pdf)
+<use swingfeedback_8cpp__incl.pdf>
+Package pdftex.def Info: swingfeedback_8cpp__incl.pdf  used on input line 16.
+(pdftex.def)             Requested size: 350.0pt x 140.42786pt.
+
+
+[172]) (./swingfeedback_8cpp_source.tex
+
+[173]) (./ads1115rpi_8cpp.tex <./ads1115rpi_8cpp__incl.pdf>
+<ads1115rpi_8cpp__incl.pdf, id=14187, 1308.89pt x 209.78375pt>
+File: ads1115rpi_8cpp__incl.pdf Graphic file (type pdf)
+<use ads1115rpi_8cpp__incl.pdf>
+Package pdftex.def Info: ads1115rpi_8cpp__incl.pdf  used on input line 21.
+(pdftex.def)             Requested size: 350.0pt x 56.09499pt.
+
+
+[174]) (./ads1115rpi_8cpp_source.tex
+
+[175]
+
+[176]
+
+[177]) (./ads1115rpi_8cpp_8o_8d.tex) (./ads1115rpi_8cpp_8o_8d_source.tex
+
+[178]
+
+[179]
+
+[180]
+
+[181]) (./event__detector_8cpp_8o_8d.tex)
+(./event__detector_8cpp_8o_8d_source.tex
+
+[182]
+
+[183]
+
+[184]) (./event__detector_8cpp.tex <./event__detector_8cpp__incl.pdf>
+<event__detector_8cpp__incl.pdf, id=15224, 338.26375pt x 331.2375pt>
+File: event__detector_8cpp__incl.pdf Graphic file (type pdf)
+<use event__detector_8cpp__incl.pdf>
+Package pdftex.def Info: event__detector_8cpp__incl.pdf  used on input line 11.
+
+(pdftex.def)             Requested size: 337.0pt x 330.00848pt.
+)
+(./event__detector_8cpp_source.tex
+
+[185]) (./ads1115rpi_8h.tex <./ads1115rpi_8h__incl.pdf>
+<ads1115rpi_8h__incl.pdf, id=15310, 994.71625pt x 165.61874pt>
+File: ads1115rpi_8h__incl.pdf Graphic file (type pdf)
+<use ads1115rpi_8h__incl.pdf>
+Package pdftex.def Info: ads1115rpi_8h__incl.pdf  used on input line 20.
+(pdftex.def)             Requested size: 350.0pt x 58.27573pt.
+
+
+[186] <./ads1115rpi_8h__dep__incl.pdf>
+<ads1115rpi_8h__dep__incl.pdf, id=15381, 336.25626pt x 165.61874pt>
+File: ads1115rpi_8h__dep__incl.pdf Graphic file (type pdf)
+<use ads1115rpi_8h__dep__incl.pdf>
+Package pdftex.def Info: ads1115rpi_8h__dep__incl.pdf  used on input line 28.
+(pdftex.def)             Requested size: 335.0pt x 165.00171pt.
+
+
+[187]) (./ads1115rpi_8h_source.tex
+
+[188]) (./event__detector_8h.tex <./event__detector_8h__incl.pdf>
+<event__detector_8h__incl.pdf, id=15612, 281.05pt x 276.03125pt>
+File: event__detector_8h__incl.pdf Graphic file (type pdf)
+<use event__detector_8h__incl.pdf>
+Package pdftex.def Info: event__detector_8h__incl.pdf  used on input line 10.
+(pdftex.def)             Requested size: 280.0pt x 275.01549pt.
+
+
+[189] <./event__detector_8h__dep__incl.pdf>
+<event__detector_8h__dep__incl.pdf, id=15681, 289.08pt x 176.66pt>
+File: event__detector_8h__dep__incl.pdf Graphic file (type pdf)
+<use event__detector_8h__dep__incl.pdf>
+Package pdftex.def Info: event__detector_8h__dep__incl.pdf  used on input line 
+18.
+(pdftex.def)             Requested size: 288.0pt x 176.00992pt.
+) (./event__detector_8h_source.tex
+
+[190]) (./ReadMe_8md.tex) (./main_8cpp.tex <./main_8cpp__incl.pdf>
+<main_8cpp__incl.pdf, id=15737, 1499.6025pt x 320.19624pt>
+File: main_8cpp__incl.pdf Graphic file (type pdf)
+<use main_8cpp__incl.pdf>
+Package pdftex.def Info: main_8cpp__incl.pdf  used on input line 23.
+(pdftex.def)             Requested size: 350.0pt x 74.72823pt.
+
+
+[191]) (./main_8cpp_source.tex
+
+[192])
+
+[193]
+
+[194
+
+] (./refman.ind
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
 (Font)              scaled to size 22.39185pt on input line 1.
 
 
 
 
-[99
-
+[195
 
 
 ]
 
 
 
-[100]
+[196]
 
 
 
-[101]
+[197]
 
 
 
-[102]
+[198]
 
 
 
-[103]
+[199]
 
 
 
-[104]
+[200]
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 778--780
+[]| \T1/phv/m/n/10 ICM20948_EXT_SLV_SENS_DATA_00_ADDR,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 780--782
+[]| \T1/phv/m/n/10 ICM20948_EXT_SLV_SENS_DATA_00_BANK,
+ []
 
 
 
-[105]
+[201]
+Underfull \hbox (badness 10000) in paragraph at lines 826--827
+[]| \T1/phv/m/n/10 ICM20948_REG_BANK_SEL_BANK0_VALUE,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 827--828
+[]| \T1/phv/m/n/10 ICM20948_REG_BANK_SEL_BANK1_VALUE,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 828--829
+[]| \T1/phv/m/n/10 ICM20948_REG_BANK_SEL_BANK2_VALUE,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 829--830
+[]| \T1/phv/m/n/10 ICM20948_REG_BANK_SEL_BANK3_VALUE,
+ []
 
 
 
-[106]
+
+
+[202]
 
 
 
-[107]
+[203]
 
 
 
-[108]
+[204]
+Overfull \hbox (43.57515pt too wide) in paragraph at lines 1218--1220
+[]\T1/phv/m/n/10 src/CMakeFiles/3.31.6/CompilerIdCXX/CMakeCXXCompilerId.cpp,
+ []
+
+
+Overfull \hbox (15.08145pt too wide) in paragraph at lines 1222--1224
+[]\T1/phv/m/n/10 src/libs/IMU/CMakeFiles/imu_lib.dir/Icm20948driver.cpp.o.d,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1224--1226
+[]\T1/phv/m/n/10 src/libs/IMU/CMakeFiles/imu_lib.dir/imureader.cpp.o.d,
+ []
+
+
+Overfull \hbox (66.70439pt too wide) in paragraph at lines 1234--1236
+[]\T1/phv/m/n/10 src/libs/IMU_math/CMakeFiles/imu_math_lib.dir/positiondetector
+.cpp.o.d,
+ []
+
+
+Overfull \hbox (66.59648pt too wide) in paragraph at lines 1236--1238
+[]\T1/phv/m/n/10 src/libs/IMU_math/CMakeFiles/imu_math_lib.dir/SwingCalibrator.
+cpp.o.d,
+ []
+
+
+Overfull \hbox (61.69159pt too wide) in paragraph at lines 1238--1240
+[]\T1/phv/m/n/10 src/libs/IMU_math/CMakeFiles/imu_math_lib.dir/SwingDetector.cp
+p.o.d,
+ []
+
+
+Overfull \hbox (68.18964pt too wide) in paragraph at lines 1240--1242
+[]\T1/phv/m/n/10 src/libs/IMU_math/CMakeFiles/imu_math_lib.dir/SwingProcessor.c
+pp.o.d,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1242--1244
+[]\T1/phv/m/n/10 src/libs/IMU_math/Include/positiondetector.hpp, [][]141[][],
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1247--1249
+[]\T1/phv/m/n/10 src/libs/IMU_math/Include/SwingProcessor.hpp, [][]145[][],
+ []
 
 
 
-[109]) (./refman.aux)
+
+Overfull \hbox (27.51044pt too wide) in paragraph at lines 1261--1263
+[]\T1/phv/m/n/10 src/libs/Motor/CMakeFiles/motor_lib.dir/swingfeedback.cpp.o.d,
+
+ []
+
+
+Overfull \hbox (25.03545pt too wide) in paragraph at lines 1270--1272
+[]\T1/phv/m/n/10 src/libs/Piezo/CMakeFiles/piezo_lib.dir/event_detector.cpp.o.d
+,
+ []
+
+
+
+[205]
+
+
+
+[206]) (./refman.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
 Package rerunfilecheck Info: File `refman.out' has not changed.
-(rerunfilecheck)             Checksum: 0CD507F226699DE6F3F6829B3B077C4C;110460.
+(rerunfilecheck)             Checksum: 3AA2FC65CFA74FC57BFD5AE845832B20;144337.
 
  ) 
 Here is how much of TeX's memory you used:
- 20776 strings out of 475178
- 377420 string characters out of 5766539
- 897467 words of memory out of 5000000
- 42078 multiletter control sequences out of 15000+600000
- 613029 words of font info for 106 fonts, out of 8000000 for 9000
+ 28900 strings out of 475178
+ 647746 string characters out of 5766539
+ 951383 words of memory out of 5000000
+ 43060 multiletter control sequences out of 15000+600000
+ 617659 words of font info for 122 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 101i,16n,117p,1071b,747s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 101i,16n,117p,1071b,737s stack positions out of 10000i,1000n,20000p,200000b,200000s
  </home/group5/.texlive2025/texmf-var/fonts/pk/ljfour/jknappen/ec/tctt0800.52
-5pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></
-usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/sha
-re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texl
-ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts
-/type1/urw/courier/ucrb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/co
-urier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrro8a
-.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/s
-hare/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8ac.pfb></usr/share/texliv
-e/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/texmf-dist
-/fonts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on refman.pdf (125 pages, 460139 bytes).
+5pk> </home/group5/.texlive2025/texmf-var/fonts/pk/ljfour/jknappen/ec/tcss1000.
+600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb>
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/
+share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/t
+exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/font
+s/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
+msy9.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrb8a.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/urw/courier/ucrro8a.pfb></usr/share/texlive/texmf-dis
+t/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type
+1/urw/helvetic/uhvb8ac.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helve
+tic/uhvr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.
+pfb>
+Output written on refman.pdf (224 pages, 1357173 bytes).
 PDF statistics:
- 6436 PDF objects out of 7423 (max. 8388607)
- 6219 compressed objects within 63 object streams
- 1222 named destinations out of 1440 (max. 500000)
- 4137 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 18783 PDF objects out of 22161 (max. 8388607)
+ 18135 compressed objects within 182 object streams
+ 8255 named destinations out of 8907 (max. 500000)
+ 5488 words of extra memory for PDF output out of 10000 (max. 10000000)
 

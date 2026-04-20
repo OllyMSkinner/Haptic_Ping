@@ -2,137 +2,148 @@
 \hypertarget{rpi__pwm_8h_source}{}\label{rpi__pwm_8h_source}\index{src/libs/Motor/Include/rpi\_pwm.h@{src/libs/Motor/Include/rpi\_pwm.h}}
 \mbox{\hyperlink{rpi__pwm_8h}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
-\DoxyCodeLine{00002\ \textcolor{comment}{\ \ \ \ This\ header\ declares\ a\ simple\ software\ PWM\ class\ for\ the\ Raspberry\ Pi.}}
-\DoxyCodeLine{00003\ \textcolor{comment}{\ \ \ \ It\ controls\ a\ GPIO\ output\ using\ a\ timed\ loop,\ allows\ the\ duty\ cycle}}
-\DoxyCodeLine{00004\ \textcolor{comment}{\ \ \ \ to\ be\ updated,\ and\ manages\ the\ resources\ needed\ to\ run\ the\ PWM\ signal.}}
-\DoxyCodeLine{00005\ \textcolor{comment}{*/}}
-\DoxyCodeLine{00006\ }
-\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#pragma\ once}}
-\DoxyCodeLine{00008\ }
-\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <atomic>}}
-\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <chrono>}}
-\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <gpiod.h>}}
-\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <iostream>}}
-\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <sys/timerfd.h>}}
-\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <thread>}}
-\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <unistd.h>}}
-\DoxyCodeLine{00016\ }
-\DoxyCodeLine{00017\ \textcolor{comment}{//\ Defines\ the\ GPIO\ line\ and\ PWM\ frequency\ used\ by\ the\ software\ PWM\ output.}}
-\DoxyCodeLine{00018\ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{rpi__pwm_8h_aa3a5591a094e4977117ccc510778fb0d}{PWM\_GPIO\_LINE}}\ =\ 18;}
-\DoxyCodeLine{00019\ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{rpi__pwm_8h_a32468f51598772e74f2acc41f816c9ff}{PWM\_FREQ\_HZ}}\ =\ 30;}
-\DoxyCodeLine{00020\ }
-\DoxyCodeLine{00021\ \textcolor{comment}{//\ Declares\ the\ PWM\ class\ and\ its\ main\ functions\ for\ starting,\ stopping,\ and\ updating\ the\ duty\ cycle.}}
-\DoxyCodeLine{00022\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classRPI__PWM}{RPI\_PWM}}\ \{}
-\DoxyCodeLine{00023\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00024\ \ \ \ \ \mbox{\hyperlink{classRPI__PWM_aab77efba6b8ca65496a9b76695564476}{RPI\_PWM}}()\ :\ \mbox{\hyperlink{classRPI__PWM_a6c3a800d79b3eea98aee231f817e1bae}{duty\_}}(0.0f),\ \mbox{\hyperlink{classRPI__PWM_aea441885ff26f125cf06d38655903dcf}{running\_}}(false),\ \mbox{\hyperlink{classRPI__PWM_a7545b1c1fd69bacfb8bd9494de9bec72}{chip\_}}(nullptr),\ \mbox{\hyperlink{classRPI__PWM_a166b5fdc6a68035efb310a930f6b39ec}{request\_}}(nullptr)\ \{\}}
-\DoxyCodeLine{00025\ }
-\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classRPI__PWM_a8fafd8227f58258c61449af83c466d20}{start}}()\ \{}
-\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classRPI__PWM_a7545b1c1fd69bacfb8bd9494de9bec72}{chip\_}}\ =\ gpiod\_chip\_open(\textcolor{stringliteral}{"{}/dev/gpiochip0"{}});}
-\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classRPI__PWM_a7545b1c1fd69bacfb8bd9494de9bec72}{chip\_}})\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00029\ }
-\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ gpiod\_line\_settings*\ settings\ =\ gpiod\_line\_settings\_new();}
-\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ gpiod\_line\_settings\_set\_direction(settings,\ GPIOD\_LINE\_DIRECTION\_OUTPUT);}
-\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ gpiod\_line\_settings\_set\_output\_value(settings,\ GPIOD\_LINE\_VALUE\_INACTIVE);}
-\DoxyCodeLine{00033\ }
-\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ gpiod\_line\_config*\ line\_cfg\ =\ gpiod\_line\_config\_new();}
-\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ gpiod\_line\_config\_add\_line\_settings(line\_cfg,\ \&\mbox{\hyperlink{rpi__pwm_8h_aa3a5591a094e4977117ccc510778fb0d}{PWM\_GPIO\_LINE}},\ 1,\ settings);}
-\DoxyCodeLine{00036\ }
-\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ gpiod\_request\_config*\ req\_cfg\ =\ gpiod\_request\_config\_new();}
-\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ gpiod\_request\_config\_set\_consumer(req\_cfg,\ \textcolor{stringliteral}{"{}soft\_pwm"{}});}
-\DoxyCodeLine{00039\ }
-\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classRPI__PWM_a166b5fdc6a68035efb310a930f6b39ec}{request\_}}\ =\ gpiod\_chip\_request\_lines(\mbox{\hyperlink{classRPI__PWM_a7545b1c1fd69bacfb8bd9494de9bec72}{chip\_}},\ req\_cfg,\ line\_cfg);}
-\DoxyCodeLine{00041\ }
-\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ gpiod\_line\_settings\_free(settings);}
-\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ gpiod\_line\_config\_free(line\_cfg);}
-\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ gpiod\_request\_config\_free(req\_cfg);}
-\DoxyCodeLine{00045\ }
-\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classRPI__PWM_a166b5fdc6a68035efb310a930f6b39ec}{request\_}})\ \{}
-\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ gpiod\_chip\_close(\mbox{\hyperlink{classRPI__PWM_a7545b1c1fd69bacfb8bd9494de9bec72}{chip\_}});}
-\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00050\ }
-\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classRPI__PWM_aea441885ff26f125cf06d38655903dcf}{running\_}}\ =\ \textcolor{keyword}{true};}
-\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classRPI__PWM_a8079b97600d1fd50512504433a6faebb}{thread\_}}\ =\ std::thread(\&\mbox{\hyperlink{classRPI__PWM_ad3c2649079790966a48c1fe13575ab3e}{RPI\_PWM::loop}},\ \textcolor{keyword}{this});}
-\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Software\ PWM\ started\ on\ GPIO\ "{}}\ <<\ \mbox{\hyperlink{rpi__pwm_8h_aa3a5591a094e4977117ccc510778fb0d}{PWM\_GPIO\_LINE}}\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
-\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
-\DoxyCodeLine{00055\ \ \ \ \ \}}
-\DoxyCodeLine{00056\ }
-\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classRPI__PWM_a1ca02994ab743f3397bce2ebc2b745ed}{stop}}()\ \{}
-\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classRPI__PWM_aea441885ff26f125cf06d38655903dcf}{running\_}}\ =\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classRPI__PWM_a8079b97600d1fd50512504433a6faebb}{thread\_}}.joinable())\ \mbox{\hyperlink{classRPI__PWM_a8079b97600d1fd50512504433a6faebb}{thread\_}}.join();}
-\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classRPI__PWM_a166b5fdc6a68035efb310a930f6b39ec}{request\_}})\ \{}
-\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ gpiod\_line\_request\_set\_value(\mbox{\hyperlink{classRPI__PWM_a166b5fdc6a68035efb310a930f6b39ec}{request\_}},\ \mbox{\hyperlink{rpi__pwm_8h_aa3a5591a094e4977117ccc510778fb0d}{PWM\_GPIO\_LINE}},\ GPIOD\_LINE\_VALUE\_INACTIVE);}
-\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ gpiod\_line\_request\_release(\mbox{\hyperlink{classRPI__PWM_a166b5fdc6a68035efb310a930f6b39ec}{request\_}});}
-\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classRPI__PWM_a166b5fdc6a68035efb310a930f6b39ec}{request\_}}\ =\ \textcolor{keyword}{nullptr};}
-\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classRPI__PWM_a7545b1c1fd69bacfb8bd9494de9bec72}{chip\_}})\ \{}
-\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ gpiod\_chip\_close(\mbox{\hyperlink{classRPI__PWM_a7545b1c1fd69bacfb8bd9494de9bec72}{chip\_}});}
-\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classRPI__PWM_a7545b1c1fd69bacfb8bd9494de9bec72}{chip\_}}\ =\ \textcolor{keyword}{nullptr};}
-\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00069\ \ \ \ \ \}}
-\DoxyCodeLine{00070\ }
-\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classRPI__PWM_ae58a56579ae4abb9207cdfc8ee360906}{setDutyCycle}}(\textcolor{keywordtype}{float}\ percent)\ \{}
-\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (percent\ <\ 0.0f)\ \ \ percent\ =\ 0.0f;}
-\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (percent\ >\ 100.0f)\ percent\ =\ 100.0f;}
-\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classRPI__PWM_a6c3a800d79b3eea98aee231f817e1bae}{duty\_}}\ =\ percent;}
-\DoxyCodeLine{00075\ \ \ \ \ \}}
-\DoxyCodeLine{00076\ }
-\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classRPI__PWM_a5491fa126da09d08cc08f8fa713d129b}{getDutyCycle}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classRPI__PWM_a6c3a800d79b3eea98aee231f817e1bae}{duty\_}}.load();\ \}}
-\DoxyCodeLine{00078\ }
-\DoxyCodeLine{00079\ \ \ \ \ \mbox{\hyperlink{classRPI__PWM_a48018f0627c5c22a313a2d69b0bb3301}{\string~RPI\_PWM}}()\ \{\ \mbox{\hyperlink{classRPI__PWM_a1ca02994ab743f3397bce2ebc2b745ed}{stop}}();\ \}}
-\DoxyCodeLine{00080\ }
-\DoxyCodeLine{00081\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00082\ \ \ \ \ \textcolor{comment}{//\ Declares\ the\ helper\ functions\ and\ private\ members\ used\ for\ timing,\ GPIO\ control,\ thread\ handling,\ and\ PWM\ state.}}
-\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keyword}{static}\ itimerspec\ \mbox{\hyperlink{classRPI__PWM_a7ed4b2d6274a00cd33676d4dd82df7d8}{usToTimerspec}}(\textcolor{keywordtype}{long}\ us)\ \{}
-\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ itimerspec\ ts\{\};}
-\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ ts.it\_value.tv\_sec\ \ \ \ \ =\ us\ /\ 1000000;}
-\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ ts.it\_value.tv\_nsec\ \ \ \ =\ (us\ \%\ 1000000)\ *\ 1000;}
-\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ ts.it\_interval.tv\_sec\ \ =\ 0;}
-\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ ts.it\_interval.tv\_nsec\ =\ 0;}
-\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ ts;}
-\DoxyCodeLine{00090\ \ \ \ \ \}}
-\DoxyCodeLine{00091\ }
-\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classRPI__PWM_ad083942c5b03431c6574cb77e5311760}{waitUs}}(\textcolor{keywordtype}{int}\ tfd,\ \textcolor{keywordtype}{int}\ us)\ \{}
-\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ itimerspec\ ts\ =\ \mbox{\hyperlink{classRPI__PWM_a7ed4b2d6274a00cd33676d4dd82df7d8}{usToTimerspec}}(us);}
-\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ timerfd\_settime(tfd,\ 0,\ \&ts,\ \textcolor{keyword}{nullptr});}
-\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ uint64\_t\ exp;}
-\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ ::read(tfd,\ \&exp,\ \textcolor{keyword}{sizeof}(exp));}
-\DoxyCodeLine{00097\ \ \ \ \ \}}
-\DoxyCodeLine{00098\ }
-\DoxyCodeLine{00099\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classRPI__PWM_ad3c2649079790966a48c1fe13575ab3e}{loop}}()\ \{}
-\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ period\_us\ =\ 1000000\ /\ \mbox{\hyperlink{rpi__pwm_8h_a32468f51598772e74f2acc41f816c9ff}{PWM\_FREQ\_HZ}};}
-\DoxyCodeLine{00101\ }
-\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ tfd\ =\ timerfd\_create(CLOCK\_MONOTONIC,\ 0);}
-\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (tfd\ <\ 0)\ \textcolor{keywordflow}{return};}
-\DoxyCodeLine{00104\ }
-\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (\mbox{\hyperlink{classRPI__PWM_aea441885ff26f125cf06d38655903dcf}{running\_}})\ \{}
-\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ d\ \ \ \ =\ \mbox{\hyperlink{classRPI__PWM_a6c3a800d79b3eea98aee231f817e1bae}{duty\_}}.load();}
-\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ on\_us\ \ =\ (int)(period\_us\ *\ d\ /\ 100.0f);}
-\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ off\_us\ =\ period\_us\ -\/\ on\_us;}
-\DoxyCodeLine{00109\ }
-\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (d\ >=\ 100.0f)\ \{}
-\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ gpiod\_line\_request\_set\_value(\mbox{\hyperlink{classRPI__PWM_a166b5fdc6a68035efb310a930f6b39ec}{request\_}},\ \mbox{\hyperlink{rpi__pwm_8h_aa3a5591a094e4977117ccc510778fb0d}{PWM\_GPIO\_LINE}},\ GPIOD\_LINE\_VALUE\_ACTIVE);}
-\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classRPI__PWM_ad083942c5b03431c6574cb77e5311760}{waitUs}}(tfd,\ period\_us);}
-\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (d\ <=\ 0.0f)\ \{}
-\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ gpiod\_line\_request\_set\_value(\mbox{\hyperlink{classRPI__PWM_a166b5fdc6a68035efb310a930f6b39ec}{request\_}},\ \mbox{\hyperlink{rpi__pwm_8h_aa3a5591a094e4977117ccc510778fb0d}{PWM\_GPIO\_LINE}},\ GPIOD\_LINE\_VALUE\_INACTIVE);}
-\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classRPI__PWM_ad083942c5b03431c6574cb77e5311760}{waitUs}}(tfd,\ period\_us);}
-\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ gpiod\_line\_request\_set\_value(\mbox{\hyperlink{classRPI__PWM_a166b5fdc6a68035efb310a930f6b39ec}{request\_}},\ \mbox{\hyperlink{rpi__pwm_8h_aa3a5591a094e4977117ccc510778fb0d}{PWM\_GPIO\_LINE}},\ GPIOD\_LINE\_VALUE\_ACTIVE);}
-\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classRPI__PWM_ad083942c5b03431c6574cb77e5311760}{waitUs}}(tfd,\ on\_us);}
-\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ gpiod\_line\_request\_set\_value(\mbox{\hyperlink{classRPI__PWM_a166b5fdc6a68035efb310a930f6b39ec}{request\_}},\ \mbox{\hyperlink{rpi__pwm_8h_aa3a5591a094e4977117ccc510778fb0d}{PWM\_GPIO\_LINE}},\ GPIOD\_LINE\_VALUE\_INACTIVE);}
-\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classRPI__PWM_ad083942c5b03431c6574cb77e5311760}{waitUs}}(tfd,\ off\_us);}
-\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00123\ }
-\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ ::close(tfd);}
-\DoxyCodeLine{00125\ \ \ \ \ \}}
-\DoxyCodeLine{00126\ }
-\DoxyCodeLine{00127\ \ \ \ \ std::atomic<float>\ \ \mbox{\hyperlink{classRPI__PWM_a6c3a800d79b3eea98aee231f817e1bae}{duty\_}};}
-\DoxyCodeLine{00128\ \ \ \ \ std::atomic<bool>\ \ \ \mbox{\hyperlink{classRPI__PWM_aea441885ff26f125cf06d38655903dcf}{running\_}};}
-\DoxyCodeLine{00129\ \ \ \ \ std::thread\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classRPI__PWM_a8079b97600d1fd50512504433a6faebb}{thread\_}};}
-\DoxyCodeLine{00130\ \ \ \ \ gpiod\_chip*\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classRPI__PWM_a7545b1c1fd69bacfb8bd9494de9bec72}{chip\_}};}
-\DoxyCodeLine{00131\ \ \ \ \ gpiod\_line\_request*\ \mbox{\hyperlink{classRPI__PWM_a166b5fdc6a68035efb310a930f6b39ec}{request\_}};}
-\DoxyCodeLine{00132\ \};}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00016}00016\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00018}00018\ \textcolor{preprocessor}{\#include\ <atomic>}}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00019}00019\ \textcolor{preprocessor}{\#include\ <chrono>}}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00020}00020\ \textcolor{preprocessor}{\#include\ <gpiod.h>}}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00021}00021\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00022}00022\ \textcolor{preprocessor}{\#include\ <sys/timerfd.h>}}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00023}00023\ \textcolor{preprocessor}{\#include\ <thread>}}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00024}00024\ \textcolor{preprocessor}{\#include\ <unistd.h>}}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00028}\mbox{\hyperlink{rpi__pwm_8h_aa3a5591a094e4977117ccc510778fb0d}{00028}}\ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{rpi__pwm_8h_aa3a5591a094e4977117ccc510778fb0d}{PWM\_GPIO\_LINE}}\ =\ 18;}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00029}\mbox{\hyperlink{rpi__pwm_8h_a32468f51598772e74f2acc41f816c9ff}{00029}}\ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{rpi__pwm_8h_a32468f51598772e74f2acc41f816c9ff}{PWM\_FREQ\_HZ}}\ =\ 30;}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00031}00031\ \textcolor{comment}{//\ Declares\ the\ PWM\ class\ and\ its\ main\ functions\ for\ starting,\ stopping,\ and\ updating\ the\ duty\ cycle.}}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00032}\mbox{\hyperlink{classRPI__PWM}{00032}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classRPI__PWM}{RPI\_PWM}}\ \{}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00033}00033\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00038}\mbox{\hyperlink{classRPI__PWM_aab77efba6b8ca65496a9b76695564476}{00038}}\ \ \ \ \ \mbox{\hyperlink{classRPI__PWM_aab77efba6b8ca65496a9b76695564476}{RPI\_PWM}}()\ :\ \mbox{\hyperlink{classRPI__PWM_a6c3a800d79b3eea98aee231f817e1bae}{duty\_}}(0.0f),\ \mbox{\hyperlink{classRPI__PWM_aea441885ff26f125cf06d38655903dcf}{running\_}}(false),\ \mbox{\hyperlink{classRPI__PWM_a7545b1c1fd69bacfb8bd9494de9bec72}{chip\_}}(nullptr),\ \mbox{\hyperlink{classRPI__PWM_a166b5fdc6a68035efb310a930f6b39ec}{request\_}}(nullptr)\ \{\}}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00044}\mbox{\hyperlink{classRPI__PWM_a8fafd8227f58258c61449af83c466d20}{00044}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classRPI__PWM_a8fafd8227f58258c61449af83c466d20}{start}}()\ \{}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00046}00046\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classRPI__PWM_a7545b1c1fd69bacfb8bd9494de9bec72}{chip\_}}\ =\ gpiod\_chip\_open(\textcolor{stringliteral}{"{}/dev/gpiochip0"{}});}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00047}00047\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classRPI__PWM_a7545b1c1fd69bacfb8bd9494de9bec72}{chip\_}})\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00050}00050\ \ \ \ \ \ \ \ \ gpiod\_line\_settings*\ settings\ =\ gpiod\_line\_settings\_new();}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00051}00051\ \ \ \ \ \ \ \ \ gpiod\_line\_settings\_set\_direction(settings,\ GPIOD\_LINE\_DIRECTION\_OUTPUT);}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00052}00052\ \ \ \ \ \ \ \ \ gpiod\_line\_settings\_set\_output\_value(settings,\ GPIOD\_LINE\_VALUE\_INACTIVE);}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00055}00055\ \ \ \ \ \ \ \ \ gpiod\_line\_config*\ line\_cfg\ =\ gpiod\_line\_config\_new();}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00056}00056\ \ \ \ \ \ \ \ \ gpiod\_line\_config\_add\_line\_settings(line\_cfg,\ \&\mbox{\hyperlink{rpi__pwm_8h_aa3a5591a094e4977117ccc510778fb0d}{PWM\_GPIO\_LINE}},\ 1,\ settings);}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00059}00059\ \ \ \ \ \ \ \ \ gpiod\_request\_config*\ req\_cfg\ =\ gpiod\_request\_config\_new();}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00060}00060\ \ \ \ \ \ \ \ \ gpiod\_request\_config\_set\_consumer(req\_cfg,\ \textcolor{stringliteral}{"{}soft\_pwm"{}});}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00063}00063\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classRPI__PWM_a166b5fdc6a68035efb310a930f6b39ec}{request\_}}\ =\ gpiod\_chip\_request\_lines(\mbox{\hyperlink{classRPI__PWM_a7545b1c1fd69bacfb8bd9494de9bec72}{chip\_}},\ req\_cfg,\ line\_cfg);}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00066}00066\ \ \ \ \ \ \ \ \ gpiod\_line\_settings\_free(settings);}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00067}00067\ \ \ \ \ \ \ \ \ gpiod\_line\_config\_free(line\_cfg);}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00068}00068\ \ \ \ \ \ \ \ \ gpiod\_request\_config\_free(req\_cfg);}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00071}00071\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classRPI__PWM_a166b5fdc6a68035efb310a930f6b39ec}{request\_}})\ \{}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ gpiod\_chip\_close(\mbox{\hyperlink{classRPI__PWM_a7545b1c1fd69bacfb8bd9494de9bec72}{chip\_}});}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00074}00074\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00075}00075\ }
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00077}00077\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classRPI__PWM_aea441885ff26f125cf06d38655903dcf}{running\_}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00078}00078\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classRPI__PWM_a8079b97600d1fd50512504433a6faebb}{thread\_}}\ =\ std::thread(\&\mbox{\hyperlink{classRPI__PWM_ad3c2649079790966a48c1fe13575ab3e}{RPI\_PWM::loop}},\ \textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00079}00079\ }
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00081}00081\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Software\ PWM\ started\ on\ GPIO\ "{}}\ <<\ \mbox{\hyperlink{rpi__pwm_8h_aa3a5591a094e4977117ccc510778fb0d}{PWM\_GPIO\_LINE}}\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00082}00082\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00083}00083\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00086}00086\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00087}\mbox{\hyperlink{classRPI__PWM_a1ca02994ab743f3397bce2ebc2b745ed}{00087}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classRPI__PWM_a1ca02994ab743f3397bce2ebc2b745ed}{stop}}()\ \{}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00089}00089\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classRPI__PWM_aea441885ff26f125cf06d38655903dcf}{running\_}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00090}00090\ }
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00092}00092\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classRPI__PWM_a8079b97600d1fd50512504433a6faebb}{thread\_}}.joinable())\ \mbox{\hyperlink{classRPI__PWM_a8079b97600d1fd50512504433a6faebb}{thread\_}}.join();}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00093}00093\ }
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00095}00095\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classRPI__PWM_a166b5fdc6a68035efb310a930f6b39ec}{request\_}})\ \{}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00096}00096\ \ \ \ \ \ \ \ \ \ \ \ \ gpiod\_line\_request\_set\_value(\mbox{\hyperlink{classRPI__PWM_a166b5fdc6a68035efb310a930f6b39ec}{request\_}},\ \mbox{\hyperlink{rpi__pwm_8h_aa3a5591a094e4977117ccc510778fb0d}{PWM\_GPIO\_LINE}},\ GPIOD\_LINE\_VALUE\_INACTIVE);}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00097}00097\ \ \ \ \ \ \ \ \ \ \ \ \ gpiod\_line\_request\_release(\mbox{\hyperlink{classRPI__PWM_a166b5fdc6a68035efb310a930f6b39ec}{request\_}});}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00098}00098\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classRPI__PWM_a166b5fdc6a68035efb310a930f6b39ec}{request\_}}\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00099}00099\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00100}00100\ }
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00102}00102\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classRPI__PWM_a7545b1c1fd69bacfb8bd9494de9bec72}{chip\_}})\ \{}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00103}00103\ \ \ \ \ \ \ \ \ \ \ \ \ gpiod\_chip\_close(\mbox{\hyperlink{classRPI__PWM_a7545b1c1fd69bacfb8bd9494de9bec72}{chip\_}});}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00104}00104\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classRPI__PWM_a7545b1c1fd69bacfb8bd9494de9bec72}{chip\_}}\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00105}00105\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00106}00106\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00107}00107\ }
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00109}00109\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00110}\mbox{\hyperlink{classRPI__PWM_ae58a56579ae4abb9207cdfc8ee360906}{00110}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classRPI__PWM_ae58a56579ae4abb9207cdfc8ee360906}{setDutyCycle}}(\textcolor{keywordtype}{float}\ percent)\ \{}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00112}00112\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (percent\ <\ 0.0f)\ \ \ percent\ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00113}00113\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (percent\ >\ 100.0f)\ percent\ =\ 100.0f;}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00114}00114\ }
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00116}00116\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classRPI__PWM_a6c3a800d79b3eea98aee231f817e1bae}{duty\_}}\ =\ percent;}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00117}00117\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00118}00118\ }
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00120}\mbox{\hyperlink{classRPI__PWM_a5491fa126da09d08cc08f8fa713d129b}{00120}}\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classRPI__PWM_a5491fa126da09d08cc08f8fa713d129b}{getDutyCycle}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classRPI__PWM_a6c3a800d79b3eea98aee231f817e1bae}{duty\_}}.load();\ \}}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00121}00121\ }
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00123}\mbox{\hyperlink{classRPI__PWM_a48018f0627c5c22a313a2d69b0bb3301}{00123}}\ \ \ \ \ \mbox{\hyperlink{classRPI__PWM_a48018f0627c5c22a313a2d69b0bb3301}{\string~RPI\_PWM}}()\ \{\ \mbox{\hyperlink{classRPI__PWM_a1ca02994ab743f3397bce2ebc2b745ed}{stop}}();\ \}}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00124}00124\ }
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00125}00125\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00127}\mbox{\hyperlink{classRPI__PWM_a7ed4b2d6274a00cd33676d4dd82df7d8}{00127}}\ \ \ \ \ \textcolor{keyword}{static}\ itimerspec\ \mbox{\hyperlink{classRPI__PWM_a7ed4b2d6274a00cd33676d4dd82df7d8}{usToTimerspec}}(\textcolor{keywordtype}{long}\ us)\ \{}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00128}00128\ \ \ \ \ \ \ \ \ itimerspec\ ts\{\};}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00129}00129\ }
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00131}00131\ \ \ \ \ \ \ \ \ ts.it\_value.tv\_sec\ \ \ \ \ =\ us\ /\ 1000000;}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00132}00132\ }
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00134}00134\ \ \ \ \ \ \ \ \ ts.it\_value.tv\_nsec\ \ \ \ =\ (us\ \%\ 1000000)\ *\ 1000;}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00135}00135\ }
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00137}00137\ \ \ \ \ \ \ \ \ ts.it\_interval.tv\_sec\ \ =\ 0;}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00138}00138\ \ \ \ \ \ \ \ \ ts.it\_interval.tv\_nsec\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00139}00139\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ ts;}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00140}00140\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00141}00141\ }
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00143}00143\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00144}\mbox{\hyperlink{classRPI__PWM_ad083942c5b03431c6574cb77e5311760}{00144}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classRPI__PWM_ad083942c5b03431c6574cb77e5311760}{waitUs}}(\textcolor{keywordtype}{int}\ tfd,\ \textcolor{keywordtype}{int}\ us)\ \{}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00146}00146\ \ \ \ \ \ \ \ \ itimerspec\ ts\ =\ \mbox{\hyperlink{classRPI__PWM_a7ed4b2d6274a00cd33676d4dd82df7d8}{usToTimerspec}}(us);}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00147}00147\ }
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00149}00149\ \ \ \ \ \ \ \ \ timerfd\_settime(tfd,\ 0,\ \&ts,\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00150}00150\ }
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00152}00152\ \ \ \ \ \ \ \ \ uint64\_t\ exp;}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00153}00153\ \ \ \ \ \ \ \ \ ::read(tfd,\ \&exp,\ \textcolor{keyword}{sizeof}(exp));}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00154}00154\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00155}00155\ }
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00157}\mbox{\hyperlink{classRPI__PWM_ad3c2649079790966a48c1fe13575ab3e}{00157}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classRPI__PWM_ad3c2649079790966a48c1fe13575ab3e}{loop}}()\ \{}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00159}00159\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ period\_us\ =\ 1000000\ /\ \mbox{\hyperlink{rpi__pwm_8h_a32468f51598772e74f2acc41f816c9ff}{PWM\_FREQ\_HZ}};}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00160}00160\ }
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00162}00162\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ tfd\ =\ timerfd\_create(CLOCK\_MONOTONIC,\ 0);}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00163}00163\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (tfd\ <\ 0)\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00164}00164\ }
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00166}00166\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (\mbox{\hyperlink{classRPI__PWM_aea441885ff26f125cf06d38655903dcf}{running\_}})\ \{}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00167}00167\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Read\ the\ current\ duty\ cycle.}}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00168}00168\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ d\ \ \ \ =\ \mbox{\hyperlink{classRPI__PWM_a6c3a800d79b3eea98aee231f817e1bae}{duty\_}}.load();}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00169}00169\ }
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00171}00171\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ on\_us\ \ =\ (int)(period\_us\ *\ d\ /\ 100.0f);}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00172}00172\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ off\_us\ =\ period\_us\ -\/\ on\_us;}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00173}00173\ }
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00175}00175\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (d\ >=\ 100.0f)\ \{}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00176}00176\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ gpiod\_line\_request\_set\_value(\mbox{\hyperlink{classRPI__PWM_a166b5fdc6a68035efb310a930f6b39ec}{request\_}},\ \mbox{\hyperlink{rpi__pwm_8h_aa3a5591a094e4977117ccc510778fb0d}{PWM\_GPIO\_LINE}},\ GPIOD\_LINE\_VALUE\_ACTIVE);}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00177}00177\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classRPI__PWM_ad083942c5b03431c6574cb77e5311760}{waitUs}}(tfd,\ period\_us);}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00178}00178\ }
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00180}00180\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (d\ <=\ 0.0f)\ \{}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00181}00181\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ gpiod\_line\_request\_set\_value(\mbox{\hyperlink{classRPI__PWM_a166b5fdc6a68035efb310a930f6b39ec}{request\_}},\ \mbox{\hyperlink{rpi__pwm_8h_aa3a5591a094e4977117ccc510778fb0d}{PWM\_GPIO\_LINE}},\ GPIOD\_LINE\_VALUE\_INACTIVE);}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00182}00182\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classRPI__PWM_ad083942c5b03431c6574cb77e5311760}{waitUs}}(tfd,\ period\_us);}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00183}00183\ }
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00185}00185\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00186}00186\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ gpiod\_line\_request\_set\_value(\mbox{\hyperlink{classRPI__PWM_a166b5fdc6a68035efb310a930f6b39ec}{request\_}},\ \mbox{\hyperlink{rpi__pwm_8h_aa3a5591a094e4977117ccc510778fb0d}{PWM\_GPIO\_LINE}},\ GPIOD\_LINE\_VALUE\_ACTIVE);}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00187}00187\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classRPI__PWM_ad083942c5b03431c6574cb77e5311760}{waitUs}}(tfd,\ on\_us);}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00188}00188\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ gpiod\_line\_request\_set\_value(\mbox{\hyperlink{classRPI__PWM_a166b5fdc6a68035efb310a930f6b39ec}{request\_}},\ \mbox{\hyperlink{rpi__pwm_8h_aa3a5591a094e4977117ccc510778fb0d}{PWM\_GPIO\_LINE}},\ GPIOD\_LINE\_VALUE\_INACTIVE);}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00189}00189\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classRPI__PWM_ad083942c5b03431c6574cb77e5311760}{waitUs}}(tfd,\ off\_us);}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00190}00190\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00191}00191\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00192}00192\ }
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00194}00194\ \ \ \ \ \ \ \ \ ::close(tfd);}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00195}00195\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00196}00196\ }
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00197}\mbox{\hyperlink{classRPI__PWM_a6c3a800d79b3eea98aee231f817e1bae}{00197}}\ \ \ \ \ std::atomic<float>\ \ \mbox{\hyperlink{classRPI__PWM_a6c3a800d79b3eea98aee231f817e1bae}{duty\_}};}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00198}\mbox{\hyperlink{classRPI__PWM_aea441885ff26f125cf06d38655903dcf}{00198}}\ \ \ \ \ std::atomic<bool>\ \ \ \mbox{\hyperlink{classRPI__PWM_aea441885ff26f125cf06d38655903dcf}{running\_}};}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00199}\mbox{\hyperlink{classRPI__PWM_a8079b97600d1fd50512504433a6faebb}{00199}}\ \ \ \ \ std::thread\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classRPI__PWM_a8079b97600d1fd50512504433a6faebb}{thread\_}};}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00200}\mbox{\hyperlink{classRPI__PWM_a7545b1c1fd69bacfb8bd9494de9bec72}{00200}}\ \ \ \ \ gpiod\_chip*\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classRPI__PWM_a7545b1c1fd69bacfb8bd9494de9bec72}{chip\_}};}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00201}\mbox{\hyperlink{classRPI__PWM_a166b5fdc6a68035efb310a930f6b39ec}{00201}}\ \ \ \ \ gpiod\_line\_request*\ \mbox{\hyperlink{classRPI__PWM_a166b5fdc6a68035efb310a930f6b39ec}{request\_}};}
+\DoxyCodeLine{\Hypertarget{rpi__pwm_8h_source_l00202}00202\ \};}
 
 \end{DoxyCode}

@@ -90,13 +90,14 @@ Public Types</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:aeb1e6f5064053a8a615d5cf9cf7984a5" id="r_aeb1e6f5064053a8a615d5cf9cf7984a5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSwingCalibrator.html#aeb1e6f5064053a8a615d5cf9cf7984a5">SwingCalibrator</a> (int initial_samples=200, int recal_samples=50)</td></tr>
+<tr class="memdesc:aeb1e6f5064053a8a615d5cf9cf7984a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start in initial-calibration mode with empty accumulators and zero bias.  <br /></td></tr>
 <tr class="separator:aeb1e6f5064053a8a615d5cf9cf7984a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afd6852187a46e5972281b3c74d424ed3" id="r_afd6852187a46e5972281b3c74d424ed3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSwingCalibrator.html#afd6852187a46e5972281b3c74d424ed3">setCallback</a> (<a class="el" href="classSwingCalibrator.html#a0fca1042381a3eadca5a037139dbd138">DoneCallback</a> cb)</td></tr>
+<tr class="memdesc:afd6852187a46e5972281b3c74d424ed3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register the callback fired when a calibration pass completes.  <br /></td></tr>
 <tr class="separator:afd6852187a46e5972281b3c74d424ed3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a763b2ac04244cc6246a8b011e6727754" id="r_a763b2ac04244cc6246a8b011e6727754"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSwingCalibrator.html#a763b2ac04244cc6246a8b011e6727754">feed</a> (float ax, float ay, float az)</td></tr>
 <tr class="separator:a763b2ac04244cc6246a8b011e6727754"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af3698c7f929fb86fe97e7c8337b6213d" id="r_af3698c7f929fb86fe97e7c8337b6213d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSwingCalibrator.html#af3698c7f929fb86fe97e7c8337b6213d">triggerRecal</a> ()</td></tr>
-<tr class="memdesc:af3698c7f929fb86fe97e7c8337b6213d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start a recalibration pass if not already calibrating.  <br /></td></tr>
 <tr class="separator:af3698c7f929fb86fe97e7c8337b6213d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a84d50a34a58f080273020db7eb5af699" id="r_a84d50a34a58f080273020db7eb5af699"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSwingCalibrator.html#a84d50a34a58f080273020db7eb5af699">isReady</a> () const</td></tr>
 <tr class="separator:a84d50a34a58f080273020db7eb5af699"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -149,7 +150,18 @@ Private Attributes</h2></td></tr>
 <tr class="separator:af76597aa114ecd2641500e7043a0ea8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Gravity-bias calibrator for the swing detector. Feed IMU samples continuously; while calibrating, <a class="el" href="classSwingCalibrator.html#a763b2ac04244cc6246a8b011e6727754">feed()</a> returns true. Once ready, biasX/Y/Z() hold the current bias estimate. <a class="el" href="classSwingCalibrator.html#af3698c7f929fb86fe97e7c8337b6213d" title="Start a recalibration pass if not already calibrating.">triggerRecal()</a> starts a short recalibration window. </p>
+<div class="textblock"><p>SOLID Principles: S - This file has exactly one function - to remove the gravitational bias from the acceleration value of each axis. I - The <a class="el" href="classSwingCalibrator.html#a7965dffc00c681bf30ec0ac24a652f2c" title="Accumulate one sample and finalise when target samples are reached.">accumulate()</a> is kept private as it is only used for moving average calibration, other caller doesn't need it. D - The std::function, which is an abstraction, allows the <a class="el" href="classSwingCalibrator.html">SwingCalibrator</a> to do its job without needing to know the caller or the results. Manages gravity-bias calibration for the swing detector.</p>
+<p>Usage:</p><ol type="1">
+<li>Construct and set a callback.</li>
+<li>Call <a class="el" href="classSwingCalibrator.html#a763b2ac04244cc6246a8b011e6727754">feed()</a> on every IMU sample.<ul>
+<li>While calibrating, <a class="el" href="classSwingCalibrator.html#a763b2ac04244cc6246a8b011e6727754">feed()</a> returns true (caller should skip measurement).</li>
+<li>Once done, <a class="el" href="classSwingCalibrator.html#a763b2ac04244cc6246a8b011e6727754">feed()</a> returns false and the bias is ready via biasX/Y/Z().</li>
+</ul>
+</li>
+<li>Call <a class="el" href="classSwingCalibrator.html#af3698c7f929fb86fe97e7c8337b6213d">triggerRecal()</a> whenever the position detector confirms the start position. The next RECAL_SAMPLES samples will be used to refresh the bias. </li>
+</ol>
+
+<p class="definition">Definition at line <a class="el" href="SwingCalibrator_8hpp_source.html#l00024">24</a> of file <a class="el" href="SwingCalibrator_8hpp_source.html">SwingCalibrator.hpp</a>.</p>
 </div><h2 class="groupheader">Member Typedef Documentation</h2>
 <a id="a0fca1042381a3eadca5a037139dbd138" name="a0fca1042381a3eadca5a037139dbd138"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0fca1042381a3eadca5a037139dbd138">&#9670;&#160;</a></span>DoneCallback</h2>
@@ -162,7 +174,9 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Called when a calibration pass completes. initial == true for startup calibration, false for recalibration. </p>
+<p>Fired when a calibration phase completes. bx/by/bz – new gravity bias (m/s²) initial – true for the first calibration, false for recalibrations </p>
+
+<p class="definition">Definition at line <a class="el" href="SwingCalibrator_8hpp_source.html#l00030">30</a> of file <a class="el" href="SwingCalibrator_8hpp_source.html">SwingCalibrator.hpp</a>.</p>
 
 </div>
 </div>
@@ -191,6 +205,8 @@ Private Attributes</h2></td></tr>
 <tr><td class="fieldname"><a id="a60655018cdf737f15a57baf3f778d66da2baa69eafc7204f3bd8648eba580c489" name="a60655018cdf737f15a57baf3f778d66da2baa69eafc7204f3bd8648eba580c489"></a>READY&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a60655018cdf737f15a57baf3f778d66da521c8f6b3fc11cf1c89cc03783fc2c25" name="a60655018cdf737f15a57baf3f778d66da521c8f6b3fc11cf1c89cc03783fc2c25"></a>RECAL&#160;</td><td class="fielddoc"></td></tr>
 </table>
+
+<p class="definition">Definition at line <a class="el" href="SwingCalibrator_8hpp_source.html#l00052">52</a> of file <a class="el" href="SwingCalibrator_8hpp_source.html">SwingCalibrator.hpp</a>.</p>
 
 </div>
 </div>
@@ -228,6 +244,10 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Start in initial-calibration mode with empty accumulators and zero bias. </p>
+
+<p class="definition">Definition at line <a class="el" href="SwingCalibrator_8cpp_source.html#l00004">4</a> of file <a class="el" href="SwingCalibrator_8cpp_source.html">SwingCalibrator.cpp</a>.</p>
 
 </div>
 </div>
@@ -285,6 +305,12 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Accumulate one sample and finalise when target samples are reached. </p>
+<p>Update running sums for the current calibration window.</p>
+<p>Finalise once the target sample count is reached.</p>
+<p>Reset state for normal operation.</p>
+<p>Notify caller that a new bias is available.</p>
+
+<p class="definition">Definition at line <a class="el" href="SwingCalibrator_8cpp_source.html#l00058">58</a> of file <a class="el" href="SwingCalibrator_8cpp_source.html">SwingCalibrator.cpp</a>.</p>
 
 </div>
 </div>
@@ -311,6 +337,8 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="SwingCalibrator_8hpp_source.html#l00047">47</a> of file <a class="el" href="SwingCalibrator_8hpp_source.html">SwingCalibrator.hpp</a>.</p>
+
 </div>
 </div>
 <a id="ac27c181bc1d256754daeacb98a3b6b97" name="ac27c181bc1d256754daeacb98a3b6b97"></a>
@@ -336,6 +364,8 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="SwingCalibrator_8hpp_source.html#l00048">48</a> of file <a class="el" href="SwingCalibrator_8hpp_source.html">SwingCalibrator.hpp</a>.</p>
+
 </div>
 </div>
 <a id="ad3c989d555515464ffb0d5d3655d3a75" name="ad3c989d555515464ffb0d5d3655d3a75"></a>
@@ -360,6 +390,8 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="SwingCalibrator_8hpp_source.html#l00049">49</a> of file <a class="el" href="SwingCalibrator_8hpp_source.html">SwingCalibrator.hpp</a>.</p>
 
 </div>
 </div>
@@ -394,7 +426,12 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Push one accel sample. Returns true if the sample was consumed for calibration. </p>
+<p>Feed one raw accel sample (m/s²). Returns true → sample was consumed for calibration; skip measurement output. Returns false → calibration is idle; use biasX/Y/Z() to correct the sample. </p>
+<p>Consume samples for initial calibration.</p>
+<p>Consume samples for recalibration.</p>
+<p>Calibration idle; caller can use the current bias.</p>
+
+<p class="definition">Definition at line <a class="el" href="SwingCalibrator_8cpp_source.html#l00020">20</a> of file <a class="el" href="SwingCalibrator_8cpp_source.html">SwingCalibrator.cpp</a>.</p>
 
 </div>
 </div>
@@ -412,6 +449,8 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="SwingCalibrator_8cpp_source.html#l00053">53</a> of file <a class="el" href="SwingCalibrator_8cpp_source.html">SwingCalibrator.cpp</a>.</p>
 
 </div>
 </div>
@@ -431,6 +470,11 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Register the callback fired when a calibration pass completes. </p>
+<p>Register completion callback.</p>
+
+<p class="definition">Definition at line <a class="el" href="SwingCalibrator_8cpp_source.html#l00014">14</a> of file <a class="el" href="SwingCalibrator_8cpp_source.html">SwingCalibrator.cpp</a>.</p>
+
 </div>
 </div>
 <a id="af3698c7f929fb86fe97e7c8337b6213d" name="af3698c7f929fb86fe97e7c8337b6213d"></a>
@@ -447,8 +491,12 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Request a recalibration burst (e.g. triggered by the position detector). Ignored if a calibration phase is already in progress. </p>
+<p>Ignore if a calibration pass is already in progress.</p>
+<p>already calibrating</p>
+<p>Reset accumulators and enter recalibration state.</p>
 
-<p>Start a recalibration pass if not already calibrating. </p>
+<p class="definition">Definition at line <a class="el" href="SwingCalibrator_8cpp_source.html#l00041">41</a> of file <a class="el" href="SwingCalibrator_8cpp_source.html">SwingCalibrator.cpp</a>.</p>
 
 </div>
 </div>
@@ -475,6 +523,8 @@ Private Attributes</h2></td></tr>
 
 <p>Latest completed bias estimate. </p>
 
+<p class="definition">Definition at line <a class="el" href="SwingCalibrator_8hpp_source.html#l00063">63</a> of file <a class="el" href="SwingCalibrator_8hpp_source.html">SwingCalibrator.hpp</a>.</p>
+
 </div>
 </div>
 <a id="a7427c2b5d5abab9d671a09ab00a8f3ea" name="a7427c2b5d5abab9d671a09ab00a8f3ea"></a>
@@ -496,6 +546,8 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="SwingCalibrator_8hpp_source.html#l00063">63</a> of file <a class="el" href="SwingCalibrator_8hpp_source.html">SwingCalibrator.hpp</a>.</p>
 
 </div>
 </div>
@@ -519,6 +571,8 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="SwingCalibrator_8hpp_source.html#l00063">63</a> of file <a class="el" href="SwingCalibrator_8hpp_source.html">SwingCalibrator.hpp</a>.</p>
+
 </div>
 </div>
 <a id="af76597aa114ecd2641500e7043a0ea8f" name="af76597aa114ecd2641500e7043a0ea8f"></a>
@@ -540,6 +594,8 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="SwingCalibrator_8hpp_source.html#l00065">65</a> of file <a class="el" href="SwingCalibrator_8hpp_source.html">SwingCalibrator.hpp</a>.</p>
 
 </div>
 </div>
@@ -563,6 +619,8 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="SwingCalibrator_8hpp_source.html#l00057">57</a> of file <a class="el" href="SwingCalibrator_8hpp_source.html">SwingCalibrator.hpp</a>.</p>
+
 </div>
 </div>
 <a id="a3cae138c1fd68fdbf67f9959123a2477" name="a3cae138c1fd68fdbf67f9959123a2477"></a>
@@ -584,6 +642,8 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="SwingCalibrator_8hpp_source.html#l00054">54</a> of file <a class="el" href="SwingCalibrator_8hpp_source.html">SwingCalibrator.hpp</a>.</p>
 
 </div>
 </div>
@@ -607,6 +667,8 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="SwingCalibrator_8hpp_source.html#l00055">55</a> of file <a class="el" href="SwingCalibrator_8hpp_source.html">SwingCalibrator.hpp</a>.</p>
+
 </div>
 </div>
 <a id="ad7f23ef33a2b888fedd541b76e1a6de6" name="ad7f23ef33a2b888fedd541b76e1a6de6"></a>
@@ -628,6 +690,8 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="SwingCalibrator_8hpp_source.html#l00056">56</a> of file <a class="el" href="SwingCalibrator_8hpp_source.html">SwingCalibrator.hpp</a>.</p>
 
 </div>
 </div>
@@ -653,6 +717,8 @@ Private Attributes</h2></td></tr>
 
 <p>Running sums for the current calibration window. </p>
 
+<p class="definition">Definition at line <a class="el" href="SwingCalibrator_8hpp_source.html#l00060">60</a> of file <a class="el" href="SwingCalibrator_8hpp_source.html">SwingCalibrator.hpp</a>.</p>
+
 </div>
 </div>
 <a id="adf7a3c10405f60a8922e32516c11470c" name="adf7a3c10405f60a8922e32516c11470c"></a>
@@ -674,6 +740,8 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="SwingCalibrator_8hpp_source.html#l00060">60</a> of file <a class="el" href="SwingCalibrator_8hpp_source.html">SwingCalibrator.hpp</a>.</p>
 
 </div>
 </div>
@@ -697,11 +765,13 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="SwingCalibrator_8hpp_source.html#l00060">60</a> of file <a class="el" href="SwingCalibrator_8hpp_source.html">SwingCalibrator.hpp</a>.</p>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/libs/IMU_math/Include/<a class="el" href="SwingCalibrator_8hpp_source.html">SwingCalibrator.hpp</a></li>
-<li>src/libs/IMU_math/<a class="el" href="SwingCalibrator_8cpp.html">SwingCalibrator.cpp</a></li>
+<li>src/libs/IMU_math/<a class="el" href="SwingCalibrator_8cpp_source.html">SwingCalibrator.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

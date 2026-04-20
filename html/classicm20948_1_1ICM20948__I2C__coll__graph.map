@@ -1,0 +1,11 @@
+<map id="icm20948::ICM20948_I2C" name="icm20948::ICM20948_I2C">
+<area shape="rect" id="Node000001" title=" " alt="" coords="215,181,401,207"/>
+<area shape="rect" id="Node000002" href="$structicm20948_1_1settings.html" title=" " alt="" coords="235,93,381,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="311,133,311,181,305,181,305,133"/>
+<area shape="rect" id="Node000003" href="$structicm20948_1_1accel__settings.html" title=" " alt="" coords="5,5,192,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="141,34,281,91,279,96,139,38"/>
+<area shape="rect" id="Node000004" href="$structicm20948_1_1gyro__settings.html" title="Gyroscope runtime configuration." alt="" coords="217,5,399,31"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="311,45,311,93,305,93,305,45"/>
+<area shape="rect" id="Node000005" href="$structicm20948_1_1magn__settings.html" title="Magnetometer runtime configuration." alt="" coords="423,5,614,31"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="479,38,337,96,335,91,477,34"/>
+</map>

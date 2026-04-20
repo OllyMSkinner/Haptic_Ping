@@ -1,0 +1,617 @@
+\doxysection{Icm20948driver.\+cpp}
+\hypertarget{Icm20948driver_8cpp_source}{}\label{Icm20948driver_8cpp_source}\index{src/libs/IMU/Icm20948driver.cpp@{src/libs/IMU/Icm20948driver.cpp}}
+\mbox{\hyperlink{Icm20948driver_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Icm20948driver_8hpp}{Icm20948driver.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <chrono>}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00005}00005\ \textcolor{preprocessor}{\#include\ <stdexcept>}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00006}00006\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00007}00007\ \textcolor{preprocessor}{\#include\ <thread>}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00009}00009\ \textcolor{preprocessor}{\#include\ <linux/i2c-\/dev.h>}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00010}00010\ \textcolor{preprocessor}{\#include\ <linux/i2c.h>}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00011}00011\ \textcolor{preprocessor}{\#include\ <fcntl.h>}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00012}00012\ \textcolor{preprocessor}{\#include\ <sys/ioctl.h>}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00013}00013\ \textcolor{preprocessor}{\#include\ <unistd.h>}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00014}00014\ \textcolor{preprocessor}{\#include\ <cerrno>}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00015}00015\ \textcolor{preprocessor}{\#include\ <cstdio>}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00016}00016\ \textcolor{preprocessor}{\#include\ <cstring>}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00018}\mbox{\hyperlink{Icm20948driver_8cpp_acc8ed5566f624d9841e18d81987b13c5}{00018}}\ \textcolor{preprocessor}{\#define\ G2MSQR\ \ \ \ \ \ \ \ \ \ \ \ 9.80665f}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00019}\mbox{\hyperlink{Icm20948driver_8cpp_af7e8592d0a634bd3642e9fd508ea8022}{00019}}\ \textcolor{preprocessor}{\#define\ DEG2RAD\ \ \ \ \ \ \ \ \ \ \ 0.017453293f}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00020}\mbox{\hyperlink{Icm20948driver_8cpp_af824acbd5aa2637ee7ebca6dbedc217f}{00020}}\ \textcolor{preprocessor}{\#define\ MAGN\_SCALE\_FACTOR\ 0.149975574f}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00022}\mbox{\hyperlink{namespaceicm20948}{00022}}\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceicm20948}{icm20948}}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00023}00023\ \{}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00025}\mbox{\hyperlink{namespaceicm20948_af14221b01595095e63c2b6da92461546}{00025}}\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{namespaceicm20948_af14221b01595095e63c2b6da92461546}{accel\_scale\_factor}}(\mbox{\hyperlink{namespaceicm20948_a270e710b092b62b0a289753093c2a673}{accel\_scale}}\ scale)}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00026}00026\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00027}00027\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (scale)\ \{}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespaceicm20948_a270e710b092b62b0a289753093c2a673a10962c0378d54e76d00fca0435c5eed5}{ACCEL\_2G}}:\ \ \textcolor{keywordflow}{return}\ 1\ /\ 16384.0f;}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespaceicm20948_a270e710b092b62b0a289753093c2a673af2a264922f360e04817e77765b80978b}{ACCEL\_4G}}:\ \ \textcolor{keywordflow}{return}\ 1\ /\ 8192.0f;}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespaceicm20948_a270e710b092b62b0a289753093c2a673a3795f5faff7839b7fbb08f22fe80d907}{ACCEL\_8G}}:\ \ \textcolor{keywordflow}{return}\ 1\ /\ 4096.0f;}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespaceicm20948_a270e710b092b62b0a289753093c2a673a2c5998799a8fab32e9f3569957311b88}{ACCEL\_16G}}:\ \textcolor{keywordflow}{return}\ 1\ /\ 2048.0f;}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Invalid\ argument\ in\ accel\_scale\_factor():\ "{}}\ +\ std::to\_string(scale));}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00035}00035\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00036}00036\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00038}00038\ \ \ \ \ \textcolor{comment}{//\ Stringify\ accel\ range\ enum.}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00039}\mbox{\hyperlink{namespaceicm20948_a4946bab7910d89f8bfd507e564872e96}{00039}}\ \ \ \ \ std::string\ \mbox{\hyperlink{namespaceicm20948_a4946bab7910d89f8bfd507e564872e96}{accel\_scale\_to\_str}}(\mbox{\hyperlink{namespaceicm20948_a270e710b092b62b0a289753093c2a673}{accel\_scale}}\ scale)}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00040}00040\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00041}00041\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (scale)\ \{}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespaceicm20948_a270e710b092b62b0a289753093c2a673a10962c0378d54e76d00fca0435c5eed5}{ACCEL\_2G}}:\ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}2G"{}};}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespaceicm20948_a270e710b092b62b0a289753093c2a673af2a264922f360e04817e77765b80978b}{ACCEL\_4G}}:\ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}4G"{}};}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespaceicm20948_a270e710b092b62b0a289753093c2a673a3795f5faff7839b7fbb08f22fe80d907}{ACCEL\_8G}}:\ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}8G"{}};}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespaceicm20948_a270e710b092b62b0a289753093c2a673a2c5998799a8fab32e9f3569957311b88}{ACCEL\_16G}}:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}16G"{}};}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}<invalid\ accelerometer\ scale>"{}};}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00047}00047\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00048}00048\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00050}\mbox{\hyperlink{namespaceicm20948_a4a26038ff1fca8a832393f87ff9ed235}{00050}}\ \ \ \ \ std::string\ \mbox{\hyperlink{namespaceicm20948_a4a26038ff1fca8a832393f87ff9ed235}{accel\_dlpf\_config\_to\_str}}(\mbox{\hyperlink{namespaceicm20948_a11320e5ffc65dc1997d850a2747b1857}{accel\_dlpf\_config}}\ config)}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00051}00051\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00052}00052\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (config)\ \{}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespaceicm20948_a11320e5ffc65dc1997d850a2747b1857ad576f91386994ed878db4b7dee32bcae}{ACCEL\_DLPF\_246HZ}}:\ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}246Hz"{}};}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespaceicm20948_a11320e5ffc65dc1997d850a2747b1857a439d5f4636f81ae51d01a1e4f0eac85f}{ACCEL\_DLPF\_246HZ\_2}}:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}246Hz"{}};}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespaceicm20948_a11320e5ffc65dc1997d850a2747b1857a26cb85d4b765d07a462b0463ed720775}{ACCEL\_DLPF\_111\_4HZ}}:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}111.4Hz"{}};}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespaceicm20948_a11320e5ffc65dc1997d850a2747b1857a90657a417f142990ecf234018082a3a6}{ACCEL\_DLPF\_50\_4HZ}}:\ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}50.4Hz"{}};}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespaceicm20948_a11320e5ffc65dc1997d850a2747b1857af97490556aeb64d4bf2cc3d3387f4029}{ACCEL\_DLPF\_23\_9HZ}}:\ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}23.9Hz"{}};}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespaceicm20948_a11320e5ffc65dc1997d850a2747b1857a754f26fbba29b3056442f3e2abc5e2ff}{ACCEL\_DLPF\_11\_5HZ}}:\ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}11.5Hz"{}};}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespaceicm20948_a11320e5ffc65dc1997d850a2747b1857aad38873c989e80fa60860b2ec48205a3}{ACCEL\_DLPF\_5\_7HZ}}:\ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}5.7Hz"{}};}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespaceicm20948_a11320e5ffc65dc1997d850a2747b1857a54a59d3f305828db07e8b11f6db49f70}{ACCEL\_DLPF\_473HZ}}:\ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}473Hz"{}};}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}<invalid\ accelerometer\ DLPF\ config>"{}};}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00062}00062\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00063}00063\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00065}\mbox{\hyperlink{namespaceicm20948_ab5aff64efdfa42700724773154b88241}{00065}}\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{namespaceicm20948_ab5aff64efdfa42700724773154b88241}{gyro\_scale\_factor}}(\mbox{\hyperlink{namespaceicm20948_ab4ed127a0673926c94b3419379774950}{gyro\_scale}}\ scale)}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00066}00066\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00067}00067\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (scale)\ \{}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespaceicm20948_ab4ed127a0673926c94b3419379774950aabd72e9c7237ef6ac1483378c37db628}{GYRO\_250DPS}}:\ \ \textcolor{keywordflow}{return}\ 1\ /\ 131.0f;}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespaceicm20948_ab4ed127a0673926c94b3419379774950a549d7b9c4b2bbf75a2c70c96f121cfe0}{GYRO\_500DPS}}:\ \ \textcolor{keywordflow}{return}\ 1\ /\ 65.5f;}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespaceicm20948_ab4ed127a0673926c94b3419379774950ae2d68a647e8a6ef753561ee9fe15fcd9}{GYRO\_1000DPS}}:\ \textcolor{keywordflow}{return}\ 1\ /\ 32.8f;}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespaceicm20948_ab4ed127a0673926c94b3419379774950a87d8034a32d15681a2811fd897f0ef94}{GYRO\_2000DPS}}:\ \textcolor{keywordflow}{return}\ 1\ /\ 16.4f;}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Invalid\ argument\ in\ gyro\_scale\_factor():\ "{}}\ +\ std::to\_string(scale));}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00075}00075\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00076}00076\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00078}\mbox{\hyperlink{namespaceicm20948_a7ceffdb0c86d118f1852b4a67c119517}{00078}}\ \ \ \ \ std::string\ \mbox{\hyperlink{namespaceicm20948_a7ceffdb0c86d118f1852b4a67c119517}{gyro\_scale\_to\_str}}(\mbox{\hyperlink{namespaceicm20948_ab4ed127a0673926c94b3419379774950}{gyro\_scale}}\ scale)}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00079}00079\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00080}00080\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (scale)\ \{}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespaceicm20948_ab4ed127a0673926c94b3419379774950aabd72e9c7237ef6ac1483378c37db628}{GYRO\_250DPS}}:\ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}250DPS"{}};}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00082}00082\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespaceicm20948_ab4ed127a0673926c94b3419379774950a549d7b9c4b2bbf75a2c70c96f121cfe0}{GYRO\_500DPS}}:\ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}500DPS"{}};}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00083}00083\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespaceicm20948_ab4ed127a0673926c94b3419379774950ae2d68a647e8a6ef753561ee9fe15fcd9}{GYRO\_1000DPS}}:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}1000DPS"{}};}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00084}00084\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespaceicm20948_ab4ed127a0673926c94b3419379774950a87d8034a32d15681a2811fd897f0ef94}{GYRO\_2000DPS}}:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}2000DPS"{}};}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00085}00085\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}<invalid\ gyroscope\ scale>"{}};}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00086}00086\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00087}00087\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00089}\mbox{\hyperlink{namespaceicm20948_a37feed00f9178e9a6733f1f0db39e468}{00089}}\ \ \ \ \ std::string\ \mbox{\hyperlink{namespaceicm20948_a37feed00f9178e9a6733f1f0db39e468}{gyro\_dlpf\_config\_to\_str}}(\mbox{\hyperlink{namespaceicm20948_ab21febc613fcda495faedf1fadf8da01}{gyro\_dlpf\_config}}\ config)}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00090}00090\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00091}00091\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (config)\ \{}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00092}00092\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespaceicm20948_ab21febc613fcda495faedf1fadf8da01a3d4b8dc9e1511d7d42e031f4cc04fd44}{GYRO\_DLPF\_196\_6HZ}}:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}196.6Hz"{}};}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00093}00093\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespaceicm20948_ab21febc613fcda495faedf1fadf8da01ac3aa6b2e10ac763342844ce203cedeb9}{GYRO\_DLPF\_151\_8HZ}}:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}151.8Hz"{}};}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00094}00094\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespaceicm20948_ab21febc613fcda495faedf1fadf8da01a8a05f80bd6e2edae852b4f9b13b605f1}{GYRO\_DLPF\_119\_5HZ}}:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}119.5Hz"{}};}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00095}00095\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespaceicm20948_ab21febc613fcda495faedf1fadf8da01a915166c0d2c456d42828e64331a7ddc7}{GYRO\_DLPF\_51\_2HZ}}:\ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}51.2Hz"{}};}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00096}00096\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespaceicm20948_ab21febc613fcda495faedf1fadf8da01a2ec4f20881ca82d990d67c5b325e378d}{GYRO\_DLPF\_23\_9HZ}}:\ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}23.9Hz"{}};}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00097}00097\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespaceicm20948_ab21febc613fcda495faedf1fadf8da01a6d136718830bbce7a90cbac74ecefc1e}{GYRO\_DLPF\_11\_6HZ}}:\ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}11.6Hz"{}};}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00098}00098\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespaceicm20948_ab21febc613fcda495faedf1fadf8da01ac729d419c805e6e8b0e4c5b7a979eef9}{GYRO\_DLPF\_5\_7HZ}}:\ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}5.7Hz"{}};}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00099}00099\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespaceicm20948_ab21febc613fcda495faedf1fadf8da01abfd46a43efe7108d44c1cd85123d8275}{GYRO\_DLPF\_361\_4HZ}}:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}361.4Hz"{}};}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00100}00100\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}<invalid\ gyroscope\ DLPF\ config>"{}};}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00101}00101\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00102}00102\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00104}\mbox{\hyperlink{namespaceicm20948_a4e2db8332ee3f51602d9032468ec2b34}{00104}}\ \ \ \ \ std::string\ \mbox{\hyperlink{namespaceicm20948_a4e2db8332ee3f51602d9032468ec2b34}{magn\_mode\_to\_str}}(\mbox{\hyperlink{namespaceicm20948_a52f2b76d3ebd33c9147b45c09ed3d02c}{magn\_mode}}\ mode)}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00105}00105\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00106}00106\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (mode)\ \{}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00107}00107\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespaceicm20948_a52f2b76d3ebd33c9147b45c09ed3d02caf7a1f55f16854e842b04e2d311525a7a}{MAGN\_SHUTDOWN}}:\ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Shutdown"{}};}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00108}00108\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespaceicm20948_a52f2b76d3ebd33c9147b45c09ed3d02ca4696e7df486d4c8527ec94a02a9aaa96}{MAGN\_SINGLE}}:\ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Single"{}};}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00109}00109\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespaceicm20948_a52f2b76d3ebd33c9147b45c09ed3d02cad54782be844575b7d7eeff6f6afde888}{MAGN\_10HZ}}:\ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}10Hz"{}};}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00110}00110\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespaceicm20948_a52f2b76d3ebd33c9147b45c09ed3d02cada7064494b2cdab263d8a919bdfb3c49}{MAGN\_20HZ}}:\ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}20Hz"{}};}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00111}00111\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespaceicm20948_a52f2b76d3ebd33c9147b45c09ed3d02ca20c2ccacb7d16752e55197c2ae202087}{MAGN\_50HZ}}:\ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}50Hz"{}};}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00112}00112\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespaceicm20948_a52f2b76d3ebd33c9147b45c09ed3d02caaa091f0f880adfe061f828e771680137}{MAGN\_100HZ}}:\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}100Hz"{}};}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00113}00113\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespaceicm20948_a52f2b76d3ebd33c9147b45c09ed3d02cad20e2222b9521644cdccdeb39f3c3f6e}{MAGN\_SELF\_TEST}}:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Self-\/test"{}};}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00114}00114\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}<invalid\ magnetometer\ mode>"{}};}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00115}00115\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00116}00116\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00118}\mbox{\hyperlink{structicm20948_1_1settings_ae7fa4079f4d7dbe03aa4454b6a3749c8}{00118}}\ \ \ \ \ \mbox{\hyperlink{structicm20948_1_1settings_a10a11e4c131120c7d473aa97376505df}{settings::settings}}(YAML::Node\ node)}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00119}00119\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00120}00120\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ it\ =\ node.begin();\ it\ !=\ node.end();\ ++it)\ \{}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00121}00121\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ key\ =\ it-\/>first.as<std::string>();}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00122}00122\ }
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00123}00123\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (key\ ==\ \textcolor{stringliteral}{"{}accelerometer"{}})\ \{}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00124}00124\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ a\ =\ it-\/>second.begin();\ a\ !=\ it-\/>second.end();\ ++a)\ \{}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00125}00125\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ ak\ =\ a-\/>first.as<std::string>();}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00126}00126\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ak\ ==\ \textcolor{stringliteral}{"{}sample\_rate\_div"{}})}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00127}00127\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structicm20948_1_1settings_ab4b40ef5ec0c6cd305df73dcb17ea781}{accel}}.\mbox{\hyperlink{structicm20948_1_1accel__settings_a64dfd5b27e84b62d329e4408a4df23b4}{sample\_rate\_div}}\ =\ \textcolor{keyword}{static\_cast<}uint16\_t\textcolor{keyword}{>}(a-\/>second.as<\textcolor{keywordtype}{unsigned}>());}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00128}00128\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (ak\ ==\ \textcolor{stringliteral}{"{}scale"{}})}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00129}00129\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structicm20948_1_1settings_ab4b40ef5ec0c6cd305df73dcb17ea781}{accel}}.\mbox{\hyperlink{structicm20948_1_1accel__settings_ad649bd2496bb26f58e3029b47c30cbd7}{scale}}\ =\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{namespaceicm20948_a270e710b092b62b0a289753093c2a673}{accel\_scale}}\textcolor{keyword}{>}(a-\/>second.as<\textcolor{keywordtype}{unsigned}>());}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00130}00130\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (ak\ ==\ \textcolor{stringliteral}{"{}dlpf"{}})\ \{}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00131}00131\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ d\ =\ a-\/>second.begin();\ d\ !=\ a-\/>second.end();\ ++d)\ \{}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00132}00132\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ dk\ =\ d-\/>first.as<std::string>();}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00133}00133\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (dk\ ==\ \textcolor{stringliteral}{"{}enable"{}})}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00134}00134\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structicm20948_1_1settings_ab4b40ef5ec0c6cd305df73dcb17ea781}{accel}}.\mbox{\hyperlink{structicm20948_1_1accel__settings_aa421055550715ec1c62cb3305bd546ac}{dlpf\_enable}}\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{bool}\textcolor{keyword}{>}(d-\/>second.as<\textcolor{keywordtype}{int}>());}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00135}00135\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (dk\ ==\ \textcolor{stringliteral}{"{}cutoff"{}})}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00136}00136\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structicm20948_1_1settings_ab4b40ef5ec0c6cd305df73dcb17ea781}{accel}}.\mbox{\hyperlink{structicm20948_1_1accel__settings_a765cb2b3456544a528091f19babc1201}{dlpf\_config}}\ =\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{namespaceicm20948_a11320e5ffc65dc1997d850a2747b1857}{accel\_dlpf\_config}}\textcolor{keyword}{>}(d-\/>second.as<\textcolor{keywordtype}{unsigned}>());}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00137}00137\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00138}00138\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00139}00139\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00140}00140\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (key\ ==\ \textcolor{stringliteral}{"{}gyroscope"{}})\ \{}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00141}00141\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ g\ =\ it-\/>second.begin();\ g\ !=\ it-\/>second.end();\ ++g)\ \{}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00142}00142\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ gk\ =\ g-\/>first.as<std::string>();}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00143}00143\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (gk\ ==\ \textcolor{stringliteral}{"{}sample\_rate\_div"{}})}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00144}00144\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structicm20948_1_1settings_a0c2485a146323219f03a06177ced80d9}{gyro}}.\mbox{\hyperlink{structicm20948_1_1gyro__settings_a2cf7df75b4a09485192659cd07bb594c}{sample\_rate\_div}}\ =\ \textcolor{keyword}{static\_cast<}uint8\_t\textcolor{keyword}{>}(g-\/>second.as<\textcolor{keywordtype}{unsigned}>());}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00145}00145\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (gk\ ==\ \textcolor{stringliteral}{"{}scale"{}})}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00146}00146\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structicm20948_1_1settings_a0c2485a146323219f03a06177ced80d9}{gyro}}.\mbox{\hyperlink{structicm20948_1_1gyro__settings_a829959828518829a0a27879e520b3285}{scale}}\ =\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{namespaceicm20948_ab4ed127a0673926c94b3419379774950}{gyro\_scale}}\textcolor{keyword}{>}(g-\/>second.as<\textcolor{keywordtype}{unsigned}>());}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00147}00147\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (gk\ ==\ \textcolor{stringliteral}{"{}dlpf"{}})\ \{}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00148}00148\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ d\ =\ g-\/>second.begin();\ d\ !=\ g-\/>second.end();\ ++d)\ \{}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00149}00149\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ dk\ =\ d-\/>first.as<std::string>();}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00150}00150\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (dk\ ==\ \textcolor{stringliteral}{"{}enable"{}})}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00151}00151\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structicm20948_1_1settings_a0c2485a146323219f03a06177ced80d9}{gyro}}.\mbox{\hyperlink{structicm20948_1_1gyro__settings_a97a692e938acb12c3202c790d0c3b9e1}{dlpf\_enable}}\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{bool}\textcolor{keyword}{>}(d-\/>second.as<\textcolor{keywordtype}{int}>());}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00152}00152\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (dk\ ==\ \textcolor{stringliteral}{"{}cutoff"{}})}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00153}00153\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structicm20948_1_1settings_a0c2485a146323219f03a06177ced80d9}{gyro}}.\mbox{\hyperlink{structicm20948_1_1gyro__settings_a12430b9b2460efbb25ebeb8d691feb3a}{dlpf\_config}}\ =\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{namespaceicm20948_ab21febc613fcda495faedf1fadf8da01}{gyro\_dlpf\_config}}\textcolor{keyword}{>}(d-\/>second.as<\textcolor{keywordtype}{unsigned}>());}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00154}00154\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00155}00155\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00156}00156\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00157}00157\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00159}00159\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00160}00160\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00161}00161\ }
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00163}\mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a33ea17e32b496ab9358dcef69d8c3b5c}{00163}}\ \ \ \ \ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a33ea17e32b496ab9358dcef69d8c3b5c}{ICM20948\_I2C::ICM20948\_I2C}}(\textcolor{keywordtype}{unsigned}\ i2c\_bus,}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00164}00164\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ i2c\_address,}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00165}00165\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structicm20948_1_1settings}{icm20948::settings}}\ \mbox{\hyperlink{structicm20948_1_1settings}{settings}})}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00166}00166\ \ \ \ \ \ \ \ \ :\ \_i2c\_fd(-\/1),}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00167}00167\ \ \ \ \ \ \ \ \ \ \ \_i2c\_bus(i2c\_bus),}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00168}00168\ \ \ \ \ \ \ \ \ \ \ \_i2c\_address(i2c\_address),}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00169}00169\ \ \ \ \ \ \ \ \ \ \ \_current\_bank(0),}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00170}00170\ \ \ \ \ \ \ \ \ \ \ \_accel\_scale\_factor(0.0f),}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00171}00171\ \ \ \ \ \ \ \ \ \ \ \_gyro\_scale\_factor(0.0f),}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00172}00172\ \ \ \ \ \ \ \ \ \ \ \_magn\_scale\_factor(\mbox{\hyperlink{Icm20948driver_8cpp_af824acbd5aa2637ee7ebca6dbedc217f}{MAGN\_SCALE\_FACTOR}}),}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00173}00173\ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structicm20948_1_1settings}{settings}}(\mbox{\hyperlink{structicm20948_1_1settings}{settings}})}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00174}00174\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00175}00175\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ bus\_path[32];}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00176}00176\ \ \ \ \ \ \ \ \ std::snprintf(bus\_path,\ \textcolor{keyword}{sizeof}(bus\_path),\ \textcolor{stringliteral}{"{}/dev/i2c-\/\%u"{}},\ i2c\_bus);}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00177}00177\ }
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00178}00178\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_aa7658b444c44a4a1599f2c00a84446d5}{\_i2c\_fd}}\ =\ ::open(bus\_path,\ O\_RDWR);}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00179}00179\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_aa7658b444c44a4a1599f2c00a84446d5}{\_i2c\_fd}}\ <\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00180}00180\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(std::string(\textcolor{stringliteral}{"{}ICM20948:\ cannot\ open\ "{}})\ +\ bus\_path\ +}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00181}00181\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}:\ "{}}\ +\ std::strerror(errno));}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00182}00182\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00184}00184\ \ \ \ \ \ \ \ \ ::ioctl(\mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_aa7658b444c44a4a1599f2c00a84446d5}{\_i2c\_fd}},\ I2C\_TIMEOUT,\ 20);}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00185}00185\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00187}00187\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (::ioctl(\mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_aa7658b444c44a4a1599f2c00a84446d5}{\_i2c\_fd}},\ I2C\_SLAVE,\ i2c\_address)\ <\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00188}00188\ \ \ \ \ \ \ \ \ \ \ \ \ ::close(\mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_aa7658b444c44a4a1599f2c00a84446d5}{\_i2c\_fd}});}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00189}00189\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_aa7658b444c44a4a1599f2c00a84446d5}{\_i2c\_fd}}\ =\ -\/1;}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00190}00190\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(std::string(\textcolor{stringliteral}{"{}ICM20948:\ I2C\_SLAVE\ failed:\ "{}})\ +}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00191}00191\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::strerror(errno));}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00192}00192\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00193}00193\ }
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00195}00195\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_af6e029b6c6a94da5496894c50daedb66}{accel}}[0]\ =\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_af6e029b6c6a94da5496894c50daedb66}{accel}}[1]\ =\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_af6e029b6c6a94da5496894c50daedb66}{accel}}[2]\ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00196}00196\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_af72f1758c258827bbe3debca41260d9f}{gyro}}[0]\ \ =\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_af72f1758c258827bbe3debca41260d9f}{gyro}}[1]\ \ =\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_af72f1758c258827bbe3debca41260d9f}{gyro}}[2]\ \ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00197}00197\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_addde200e41d649c72927102e67790105}{magn}}[0]\ \ =\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_addde200e41d649c72927102e67790105}{magn}}[1]\ \ =\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_addde200e41d649c72927102e67790105}{magn}}[2]\ \ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00198}00198\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00199}00199\ }
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00200}\mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a213bb7cdf5c8e3894c730ddc1cd971bc}{00200}}\ \ \ \ \ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a213bb7cdf5c8e3894c730ddc1cd971bc}{ICM20948\_I2C::\string~ICM20948\_I2C}}()}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00201}00201\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00202}00202\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_aa7658b444c44a4a1599f2c00a84446d5}{\_i2c\_fd}}\ >=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00203}00203\ \ \ \ \ \ \ \ \ \ \ \ \ ::close(\mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_aa7658b444c44a4a1599f2c00a84446d5}{\_i2c\_fd}});}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00204}00204\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_aa7658b444c44a4a1599f2c00a84446d5}{\_i2c\_fd}}\ =\ -\/1;}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00205}00205\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00206}00206\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00207}00207\ }
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00208}\mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a0ed48078a426d7d43d93aa8d0bd72b92}{00208}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a0ed48078a426d7d43d93aa8d0bd72b92}{ICM20948\_I2C::init}}()}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00209}00209\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00210}00210\ \ \ \ \ \ \ \ \ uint8\_t\ device\_id\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00211}00211\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ success\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00212}00212\ }
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00214}00214\ \ \ \ \ \ \ \ \ success\ \&=\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a952b59898c4fa68df28e2036ff2ecf8e}{\_set\_bank}}(0);}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00215}00215\ \ \ \ \ \ \ \ \ success\ \&=\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_abf0348876f7415429adff95f7e4b6d58}{\_read\_byte}}(\mbox{\hyperlink{Icm20948driver_8hpp_a367b16d86f331668e4f9c2ebc9d73065}{ICM20948\_WHO\_AM\_I\_BANK}},\ \mbox{\hyperlink{Icm20948driver_8hpp_a75a97e0d07c6949c8e610efb5070cbd6}{ICM20948\_WHO\_AM\_I\_ADDR}},\ device\_id);}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00216}00216\ \ \ \ \ \ \ \ \ success\ \&=\ (device\_id\ ==\ \mbox{\hyperlink{Icm20948driver_8hpp_a1e1722168b7fb9b2002232b07021c61a}{ICM20948\_BANK0\_WHO\_AM\_I\_VALUE}});}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00217}00217\ \ \ \ \ \ \ \ \ success\ \&=\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a9730db34affbddeb85298eaeb9322a6f}{reset}}();}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00218}00218\ \ \ \ \ \ \ \ \ success\ \&=\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a81ba652c5ec59a3e63d9883f8bc45e42}{wake}}();}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00219}00219\ \ \ \ \ \ \ \ \ success\ \&=\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_aac5f1f6373e9e965332b49f0bb2b3382}{set\_settings}}();}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00220}00220\ \ \ \ \ \ \ \ \ success\ \&=\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_ab02bdb1e71acf25a84317238d5f4f43e}{\_enable\_data\_ready\_interrupt}}();}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00221}00221\ }
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00222}00222\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Magnetometer\ intentionally\ disabled\ for\ stability\ testing.}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00223}00223\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ bool\ magn\_ok\ =\ false;}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00224}00224\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ for\ (int\ i\ =\ 0;\ i\ <\ 3;\ ++i)\ \{}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00225}00225\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ magn\_ok\ =\ \_magnetometer\_init();}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00226}00226\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ if\ (magn\_ok)\ break;}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00227}00227\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \}}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00228}00228\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ (!magn\_ok)\ \{}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00229}00229\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ std::cerr\ <<\ "{}[IMU]\ Magnetometer\ init\ failed,\ continuing\ without\ it\(\backslash\)n"{};}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00230}00230\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \}}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00231}00231\ }
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00232}00232\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ success;}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00233}00233\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00234}00234\ }
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00235}\mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a9730db34affbddeb85298eaeb9322a6f}{00235}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a9730db34affbddeb85298eaeb9322a6f}{ICM20948\_I2C::reset}}()}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00236}00236\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00238}00238\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ success\ =\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a360065071f02d1488b4a4d919c788103}{\_write\_bit}}(\mbox{\hyperlink{Icm20948driver_8hpp_a77d09e874f9137b1c1cc4af56f854297}{ICM20948\_PWR\_MGMT\_1\_BANK}},}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00239}00239\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{Icm20948driver_8hpp_a6258467df6916233045eb4760629df8b}{ICM20948\_PWR\_MGMT\_1\_ADDR}},\ 7,\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00240}00240\ \ \ \ \ \ \ \ \ std::this\_thread::sleep\_for(std::chrono::milliseconds(5));}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00241}00241\ }
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00242}00242\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (success)\ \{}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00243}00243\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ still\_resetting\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00245}00245\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (still\_resetting\ \&\&\ success)\ \{}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00246}00246\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::this\_thread::sleep\_for(std::chrono::milliseconds(25));}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00247}00247\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ success\ \&=\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a5f5f612687be39380ae64bf4b24299d7}{\_read\_bit}}(\mbox{\hyperlink{Icm20948driver_8hpp_a77d09e874f9137b1c1cc4af56f854297}{ICM20948\_PWR\_MGMT\_1\_BANK}},}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00248}00248\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{Icm20948driver_8hpp_a6258467df6916233045eb4760629df8b}{ICM20948\_PWR\_MGMT\_1\_ADDR}},\ 7,\ still\_resetting);}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00249}00249\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00250}00250\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00251}00251\ }
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00252}00252\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (success)\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_acface40282fbe4f88960faa79c646c99}{\_current\_bank}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00253}00253\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ success;}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00254}00254\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00255}00255\ }
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00256}\mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a81ba652c5ec59a3e63d9883f8bc45e42}{00256}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a81ba652c5ec59a3e63d9883f8bc45e42}{ICM20948\_I2C::wake}}()}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00257}00257\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00259}00259\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ success\ =\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a360065071f02d1488b4a4d919c788103}{\_write\_bit}}(\mbox{\hyperlink{Icm20948driver_8hpp_a77d09e874f9137b1c1cc4af56f854297}{ICM20948\_PWR\_MGMT\_1\_BANK}},}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00260}00260\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{Icm20948driver_8hpp_a6258467df6916233045eb4760629df8b}{ICM20948\_PWR\_MGMT\_1\_ADDR}},\ 6,\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00261}00261\ \ \ \ \ \ \ \ \ std::this\_thread::sleep\_for(std::chrono::milliseconds(5));}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00262}00262\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ success;}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00263}00263\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00264}00264\ }
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00265}\mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_aac5f1f6373e9e965332b49f0bb2b3382}{00265}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_aac5f1f6373e9e965332b49f0bb2b3382}{ICM20948\_I2C::set\_settings}}()}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00266}00266\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00268}00268\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ success\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00269}00269\ \ \ \ \ \ \ \ \ success\ \&=\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_ab4ffa6090fa0629f6ab6e2d5ab8b27e9}{\_set\_accel\_sample\_rate\_div}}();}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00270}00270\ \ \ \ \ \ \ \ \ success\ \&=\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a31e5480f8ed438bd646dff26de1f722a}{\_set\_accel\_range\_dlpf}}();}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00271}00271\ \ \ \ \ \ \ \ \ success\ \&=\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_aa32a44c04e8306ccd4a6a7a946d4fb9e}{\_set\_gyro\_sample\_rate\_div}}();}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00272}00272\ \ \ \ \ \ \ \ \ success\ \&=\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_aa2de7fd07ec6e0035d6a29aefafba72b}{\_set\_gyro\_range\_dlpf}}();}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00273}00273\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ success;}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00274}00274\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00275}00275\ }
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00276}\mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_ab02bdb1e71acf25a84317238d5f4f43e}{00276}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_ab02bdb1e71acf25a84317238d5f4f43e}{ICM20948\_I2C::\_enable\_data\_ready\_interrupt}}()}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00277}00277\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00279}00279\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a7f56513a51193f95f255d6dcd737cd7a}{\_write\_byte}}(\mbox{\hyperlink{Icm20948driver_8hpp_a24664e77307b791bdacf3babefb2e1f6}{ICM20948\_INT\_ENABLE\_1\_BANK}},}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00280}00280\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{Icm20948driver_8hpp_ad8bf99534ec1e09528cd17075f09c640}{ICM20948\_INT\_ENABLE\_1\_ADDR}},\ 0x01);}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00281}00281\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00282}00282\ }
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00283}\mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a02e447e84df4ef2512568139ea28ad07}{00283}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a02e447e84df4ef2512568139ea28ad07}{ICM20948\_I2C::read\_accel\_gyro}}()}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00284}00284\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00285}00285\ \ \ \ \ \ \ \ \ uint8\_t\ buf[12]\ =\ \{\};}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00287}00287\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a3fee40f81a7fa03179ecd97545cdc410}{\_read\_block\_bytes}}(\mbox{\hyperlink{Icm20948driver_8hpp_aa381c8e28eeb2c6b9e1acc3b86f33095}{ICM20948\_ACCEL\_OUT\_BANK}},}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00288}00288\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{Icm20948driver_8hpp_aab2856e1b25b134c4f8da6ffe55874dd}{ICM20948\_ACCEL\_XOUT\_H\_ADDR}},\ buf,\ 12))\ \{}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00289}00289\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00290}00290\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00291}00291\ }
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00292}00292\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ int16\_t\ accel\_x\_raw\ =\ \textcolor{keyword}{static\_cast<}int16\_t\textcolor{keyword}{>}((buf[0]\ <<\ 8)\ |\ buf[1]);}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00293}00293\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ int16\_t\ accel\_y\_raw\ =\ \textcolor{keyword}{static\_cast<}int16\_t\textcolor{keyword}{>}((buf[2]\ <<\ 8)\ |\ buf[3]);}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00294}00294\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ int16\_t\ accel\_z\_raw\ =\ \textcolor{keyword}{static\_cast<}int16\_t\textcolor{keyword}{>}((buf[4]\ <<\ 8)\ |\ buf[5]);}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00295}00295\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ int16\_t\ gyro\_x\_raw\ \ =\ \textcolor{keyword}{static\_cast<}int16\_t\textcolor{keyword}{>}((buf[6]\ <<\ 8)\ |\ buf[7]);}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00296}00296\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ int16\_t\ gyro\_y\_raw\ \ =\ \textcolor{keyword}{static\_cast<}int16\_t\textcolor{keyword}{>}((buf[8]\ <<\ 8)\ |\ buf[9]);}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00297}00297\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ int16\_t\ gyro\_z\_raw\ \ =\ \textcolor{keyword}{static\_cast<}int16\_t\textcolor{keyword}{>}((buf[10]\ <<\ 8)\ |\ buf[11]);}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00298}00298\ }
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00300}00300\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_af6e029b6c6a94da5496894c50daedb66}{accel}}[0]\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(accel\_x\_raw)\ *\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a168c976d5e1f22cdd5765f736d65fe86}{\_accel\_scale\_factor}}\ *\ \mbox{\hyperlink{Icm20948driver_8cpp_acc8ed5566f624d9841e18d81987b13c5}{G2MSQR}};}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00301}00301\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_af6e029b6c6a94da5496894c50daedb66}{accel}}[1]\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(accel\_y\_raw)\ *\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a168c976d5e1f22cdd5765f736d65fe86}{\_accel\_scale\_factor}}\ *\ \mbox{\hyperlink{Icm20948driver_8cpp_acc8ed5566f624d9841e18d81987b13c5}{G2MSQR}};}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00302}00302\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_af6e029b6c6a94da5496894c50daedb66}{accel}}[2]\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(accel\_z\_raw)\ *\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a168c976d5e1f22cdd5765f736d65fe86}{\_accel\_scale\_factor}}\ *\ \mbox{\hyperlink{Icm20948driver_8cpp_acc8ed5566f624d9841e18d81987b13c5}{G2MSQR}};}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00303}00303\ }
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00304}00304\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_af72f1758c258827bbe3debca41260d9f}{gyro}}[0]\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(gyro\_x\_raw)\ *\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_aff753b4360cea1f9ead1db118d812110}{\_gyro\_scale\_factor}}\ *\ \mbox{\hyperlink{Icm20948driver_8cpp_af7e8592d0a634bd3642e9fd508ea8022}{DEG2RAD}};}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00305}00305\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_af72f1758c258827bbe3debca41260d9f}{gyro}}[1]\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(gyro\_y\_raw)\ *\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_aff753b4360cea1f9ead1db118d812110}{\_gyro\_scale\_factor}}\ *\ \mbox{\hyperlink{Icm20948driver_8cpp_af7e8592d0a634bd3642e9fd508ea8022}{DEG2RAD}};}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00306}00306\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_af72f1758c258827bbe3debca41260d9f}{gyro}}[2]\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(gyro\_z\_raw)\ *\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_aff753b4360cea1f9ead1db118d812110}{\_gyro\_scale\_factor}}\ *\ \mbox{\hyperlink{Icm20948driver_8cpp_af7e8592d0a634bd3642e9fd508ea8022}{DEG2RAD}};}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00307}00307\ }
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00308}00308\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00309}00309\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00310}00310\ }
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00311}\mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a3114b3923967a235e6011ec8cad01406}{00311}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a3114b3923967a235e6011ec8cad01406}{ICM20948\_I2C::read\_magn}}()}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00312}00312\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00313}00313\ \ \ \ \ \ \ \ \ uint8\_t\ buf[6]\ =\ \{\};}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00315}00315\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a3fee40f81a7fa03179ecd97545cdc410}{\_read\_block\_bytes}}(\mbox{\hyperlink{Icm20948driver_8hpp_a47eee228bd1d7ae41f78d1bd5da32d20}{ICM20948\_EXT\_SLV\_SENS\_DATA\_00\_BANK}},}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00316}00316\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{Icm20948driver_8hpp_a7f0af5364efcde9da16e79ceb0515115}{ICM20948\_EXT\_SLV\_SENS\_DATA\_00\_ADDR}},\ buf,\ 6))\ \{}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00317}00317\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00318}00318\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00319}00319\ }
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00320}00320\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ int16\_t\ mag\_x\_raw\ =\ \textcolor{keyword}{static\_cast<}int16\_t\textcolor{keyword}{>}((buf[1]\ <<\ 8)\ |\ buf[0]);}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00321}00321\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ int16\_t\ mag\_y\_raw\ =\ \textcolor{keyword}{static\_cast<}int16\_t\textcolor{keyword}{>}((buf[3]\ <<\ 8)\ |\ buf[2]);}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00322}00322\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ int16\_t\ mag\_z\_raw\ =\ \textcolor{keyword}{static\_cast<}int16\_t\textcolor{keyword}{>}((buf[5]\ <<\ 8)\ |\ buf[4]);}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00323}00323\ }
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00325}00325\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_addde200e41d649c72927102e67790105}{magn}}[0]\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(mag\_x\_raw)\ *\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_aa8e9f9d91270dd262a36beb5057a1c82}{\_magn\_scale\_factor}};}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00326}00326\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_addde200e41d649c72927102e67790105}{magn}}[1]\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(mag\_y\_raw)\ *\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_aa8e9f9d91270dd262a36beb5057a1c82}{\_magn\_scale\_factor}};}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00327}00327\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_addde200e41d649c72927102e67790105}{magn}}[2]\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(mag\_z\_raw)\ *\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_aa8e9f9d91270dd262a36beb5057a1c82}{\_magn\_scale\_factor}};}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00328}00328\ }
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00329}00329\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00330}00330\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00331}00331\ }
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00332}\mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a09867a9d1a1103e357407a022627d682}{00332}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a09867a9d1a1103e357407a022627d682}{ICM20948\_I2C::read\_sample}}(\mbox{\hyperlink{structicm20948_1_1IMUSample}{IMUSample}}\&\ sample)}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00333}00333\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00335}00335\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a02e447e84df4ef2512568139ea28ad07}{read\_accel\_gyro}}())\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00336}00336\ }
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00339}00339\ }
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00340}00340\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_addde200e41d649c72927102e67790105}{magn}}[0]\ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00341}00341\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_addde200e41d649c72927102e67790105}{magn}}[1]\ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00342}00342\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_addde200e41d649c72927102e67790105}{magn}}[2]\ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00343}00343\ }
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00344}00344\ \ \ \ \ \ \ \ \ sample.\mbox{\hyperlink{structicm20948_1_1IMUSample_ad3cb9f4c9c9eeb83bb76d9ef0112dc87}{ax}}\ =\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_af6e029b6c6a94da5496894c50daedb66}{accel}}[0];\ sample.\mbox{\hyperlink{structicm20948_1_1IMUSample_a71ec1129db9d4f5aad6c41230327c166}{ay}}\ =\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_af6e029b6c6a94da5496894c50daedb66}{accel}}[1];\ sample.\mbox{\hyperlink{structicm20948_1_1IMUSample_aca4849745d2da079b6bc812f87e9505b}{az}}\ =\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_af6e029b6c6a94da5496894c50daedb66}{accel}}[2];}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00345}00345\ \ \ \ \ \ \ \ \ sample.\mbox{\hyperlink{structicm20948_1_1IMUSample_aa3884284d3103cfbc57688e06cd77b11}{gx}}\ =\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_af72f1758c258827bbe3debca41260d9f}{gyro}}[0];\ \ sample.\mbox{\hyperlink{structicm20948_1_1IMUSample_a59fe5ac47d14013cc5d5b1489decd522}{gy}}\ =\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_af72f1758c258827bbe3debca41260d9f}{gyro}}[1];\ \ sample.\mbox{\hyperlink{structicm20948_1_1IMUSample_a21d94c3988a702dff347a123cca27d1c}{gz}}\ =\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_af72f1758c258827bbe3debca41260d9f}{gyro}}[2];}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00346}00346\ \ \ \ \ \ \ \ \ sample.\mbox{\hyperlink{structicm20948_1_1IMUSample_a35596f37451ec0bdebdb80eb9333fa27}{mx}}\ =\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_addde200e41d649c72927102e67790105}{magn}}[0];\ \ sample.\mbox{\hyperlink{structicm20948_1_1IMUSample_af2aaedc603e12136b17219385ff741d8}{my}}\ =\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_addde200e41d649c72927102e67790105}{magn}}[1];\ \ sample.\mbox{\hyperlink{structicm20948_1_1IMUSample_a473b1e63c3fbef1d3a784f3e1b65153d}{mz}}\ =\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_addde200e41d649c72927102e67790105}{magn}}[2];}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00347}00347\ }
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00348}00348\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00349}00349\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00350}00350\ }
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00351}\mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a952b59898c4fa68df28e2036ff2ecf8e}{00351}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a952b59898c4fa68df28e2036ff2ecf8e}{ICM20948\_I2C::\_set\_bank}}(uint8\_t\ bank)}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00352}00352\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00353}00353\ }
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00355}00355\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_acface40282fbe4f88960faa79c646c99}{\_current\_bank}}\ ==\ bank)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00356}00356\ }
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00357}00357\ \ \ \ \ \ \ \ \ uint8\_t\ val\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00358}00358\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (bank)\ \{}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00359}00359\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 0:\ val\ =\ \mbox{\hyperlink{Icm20948driver_8hpp_a3cc7196a809362f9d91b29bb628e35ec}{ICM20948\_REG\_BANK\_SEL\_BANK0\_VALUE}};\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00360}00360\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 1:\ val\ =\ \mbox{\hyperlink{Icm20948driver_8hpp_ac2aee8b221ac88e7dccbd298e60e2b1a}{ICM20948\_REG\_BANK\_SEL\_BANK1\_VALUE}};\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00361}00361\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 2:\ val\ =\ \mbox{\hyperlink{Icm20948driver_8hpp_ad0eb51eea9094eb222c243397116fab9}{ICM20948\_REG\_BANK\_SEL\_BANK2\_VALUE}};\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00362}00362\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 3:\ val\ =\ \mbox{\hyperlink{Icm20948driver_8hpp_a08a2de2a34ff50d72beadab152028b71}{ICM20948\_REG\_BANK\_SEL\_BANK3\_VALUE}};\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00363}00363\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00364}00364\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00365}00365\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Invalid\ bank\ number\ in\ \_set\_bank():\ "{}}\ +\ std::to\_string(bank));}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00366}00366\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00367}00367\ }
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00368}00368\ \ \ \ \ \ \ \ \ uint8\_t\ buf[2]\ =\ \{\ \mbox{\hyperlink{Icm20948driver_8hpp_a32e3877bf2cbcbd9a60924180790dd2c}{ICM20948\_REG\_BANK\_SEL\_ADDR}},\ val\ \};}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00369}00369\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (::write(\mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_aa7658b444c44a4a1599f2c00a84446d5}{\_i2c\_fd}},\ buf,\ 2)\ ==\ 2)\ \{}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00370}00370\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_acface40282fbe4f88960faa79c646c99}{\_current\_bank}}\ =\ bank;}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00371}00371\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00372}00372\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00373}00373\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00374}00374\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00375}00375\ }
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00376}\mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_ab4ffa6090fa0629f6ab6e2d5ab8b27e9}{00376}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_ab4ffa6090fa0629f6ab6e2d5ab8b27e9}{ICM20948\_I2C::\_set\_accel\_sample\_rate\_div}}()}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00377}00377\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00379}00379\ \ \ \ \ \ \ \ \ uint8\_t\ lsb\ =\ \mbox{\hyperlink{structicm20948_1_1settings}{settings}}.\mbox{\hyperlink{structicm20948_1_1settings_ab4b40ef5ec0c6cd305df73dcb17ea781}{accel}}.\mbox{\hyperlink{structicm20948_1_1accel__settings_a64dfd5b27e84b62d329e4408a4df23b4}{sample\_rate\_div}}\ \&\ 0xff;}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00380}00380\ \ \ \ \ \ \ \ \ uint8\_t\ msb\ =\ (\mbox{\hyperlink{structicm20948_1_1settings}{settings}}.\mbox{\hyperlink{structicm20948_1_1settings_ab4b40ef5ec0c6cd305df73dcb17ea781}{accel}}.\mbox{\hyperlink{structicm20948_1_1accel__settings_a64dfd5b27e84b62d329e4408a4df23b4}{sample\_rate\_div}}\ >>\ 8)\ \&\ 0x0f;}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00381}00381\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ ok\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00382}00382\ \ \ \ \ \ \ \ \ ok\ \&=\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a7f56513a51193f95f255d6dcd737cd7a}{\_write\_byte}}(\mbox{\hyperlink{Icm20948driver_8hpp_afc0e9c74b8475cfcf2750386f210b747}{ICM20948\_ACCEL\_SMPLRT\_DIV\_1\_BANK}},}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00383}00383\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{Icm20948driver_8hpp_a9e94b438e0d89136ce738b8dae21bfdb}{ICM20948\_ACCEL\_SMPLRT\_DIV\_1\_ADDR}},\ msb);}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00384}00384\ \ \ \ \ \ \ \ \ ok\ \&=\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a7f56513a51193f95f255d6dcd737cd7a}{\_write\_byte}}(\mbox{\hyperlink{Icm20948driver_8hpp_abee057483e8191c5462c3991035d1d44}{ICM20948\_ACCEL\_SMPLRT\_DIV\_2\_BANK}},}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00385}00385\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{Icm20948driver_8hpp_a7b112dc250595d3233756696997b0530}{ICM20948\_ACCEL\_SMPLRT\_DIV\_2\_ADDR}},\ lsb);}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00386}00386\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ ok;}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00387}00387\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00388}00388\ }
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00389}\mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a31e5480f8ed438bd646dff26de1f722a}{00389}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a31e5480f8ed438bd646dff26de1f722a}{ICM20948\_I2C::\_set\_accel\_range\_dlpf}}()}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00390}00390\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00392}00392\ \ \ \ \ \ \ \ \ uint8\_t\ \textcolor{keywordtype}{byte}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00393}00393\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{byte}\ |=\ \textcolor{keyword}{static\_cast<}uint8\_t\textcolor{keyword}{>}(!!\textcolor{keyword}{static\_cast<}uint8\_t\textcolor{keyword}{>}(\mbox{\hyperlink{structicm20948_1_1settings}{settings}}.\mbox{\hyperlink{structicm20948_1_1settings_ab4b40ef5ec0c6cd305df73dcb17ea781}{accel}}.\mbox{\hyperlink{structicm20948_1_1accel__settings_aa421055550715ec1c62cb3305bd546ac}{dlpf\_enable}}));}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00394}00394\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{byte}\ |=\ \textcolor{keyword}{static\_cast<}uint8\_t\textcolor{keyword}{>}(\textcolor{keyword}{static\_cast<}uint8\_t\textcolor{keyword}{>}(\mbox{\hyperlink{structicm20948_1_1settings}{settings}}.\mbox{\hyperlink{structicm20948_1_1settings_ab4b40ef5ec0c6cd305df73dcb17ea781}{accel}}.\mbox{\hyperlink{structicm20948_1_1accel__settings_ad649bd2496bb26f58e3029b47c30cbd7}{scale}})\ <<\ 1);}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00395}00395\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{byte}\ |=\ \textcolor{keyword}{static\_cast<}uint8\_t\textcolor{keyword}{>}(\textcolor{keyword}{static\_cast<}uint8\_t\textcolor{keyword}{>}(\mbox{\hyperlink{structicm20948_1_1settings}{settings}}.\mbox{\hyperlink{structicm20948_1_1settings_ab4b40ef5ec0c6cd305df73dcb17ea781}{accel}}.\mbox{\hyperlink{structicm20948_1_1accel__settings_a765cb2b3456544a528091f19babc1201}{dlpf\_config}})\ <<\ 3);}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00396}00396\ }
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00397}00397\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ ok\ =\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a7f56513a51193f95f255d6dcd737cd7a}{\_write\_byte}}(\mbox{\hyperlink{Icm20948driver_8hpp_a846828478b8c07f6e83ea5e68c4c1069}{ICM20948\_ACCEL\_CONFIG\_1\_BANK}},}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00398}00398\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{Icm20948driver_8hpp_af3d9c6213cd3c1038f394e9584e6d61f}{ICM20948\_ACCEL\_CONFIG\_1\_ADDR}},\ \textcolor{keywordtype}{byte});}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00399}00399\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ok)\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a168c976d5e1f22cdd5765f736d65fe86}{\_accel\_scale\_factor}}\ =\ \mbox{\hyperlink{namespaceicm20948_af14221b01595095e63c2b6da92461546}{accel\_scale\_factor}}(\mbox{\hyperlink{structicm20948_1_1settings}{settings}}.\mbox{\hyperlink{structicm20948_1_1settings_ab4b40ef5ec0c6cd305df73dcb17ea781}{accel}}.\mbox{\hyperlink{structicm20948_1_1accel__settings_ad649bd2496bb26f58e3029b47c30cbd7}{scale}});}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00400}00400\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ ok;}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00401}00401\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00402}00402\ }
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00403}\mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_aa32a44c04e8306ccd4a6a7a946d4fb9e}{00403}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_aa32a44c04e8306ccd4a6a7a946d4fb9e}{ICM20948\_I2C::\_set\_gyro\_sample\_rate\_div}}()}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00404}00404\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00405}00405\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a7f56513a51193f95f255d6dcd737cd7a}{\_write\_byte}}(\mbox{\hyperlink{Icm20948driver_8hpp_ad0d3ce60a73493d5d65023ee67b24782}{ICM20948\_GYRO\_SMPLRT\_DIV\_BANK}},}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00406}00406\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{Icm20948driver_8hpp_ae86eba280e098021719f8554141fd108}{ICM20948\_GYRO\_SMPLRT\_DIV\_ADDR}},}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00407}00407\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structicm20948_1_1settings}{settings}}.\mbox{\hyperlink{structicm20948_1_1settings_a0c2485a146323219f03a06177ced80d9}{gyro}}.\mbox{\hyperlink{structicm20948_1_1gyro__settings_a2cf7df75b4a09485192659cd07bb594c}{sample\_rate\_div}});}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00408}00408\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00409}00409\ }
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00410}\mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_aa2de7fd07ec6e0035d6a29aefafba72b}{00410}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_aa2de7fd07ec6e0035d6a29aefafba72b}{ICM20948\_I2C::\_set\_gyro\_range\_dlpf}}()}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00411}00411\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00413}00413\ \ \ \ \ \ \ \ \ uint8\_t\ \textcolor{keywordtype}{byte}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00414}00414\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{byte}\ |=\ \textcolor{keyword}{static\_cast<}uint8\_t\textcolor{keyword}{>}(!!\textcolor{keyword}{static\_cast<}uint8\_t\textcolor{keyword}{>}(\mbox{\hyperlink{structicm20948_1_1settings}{settings}}.\mbox{\hyperlink{structicm20948_1_1settings_a0c2485a146323219f03a06177ced80d9}{gyro}}.\mbox{\hyperlink{structicm20948_1_1gyro__settings_a97a692e938acb12c3202c790d0c3b9e1}{dlpf\_enable}}));}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00415}00415\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{byte}\ |=\ \textcolor{keyword}{static\_cast<}uint8\_t\textcolor{keyword}{>}(\textcolor{keyword}{static\_cast<}uint8\_t\textcolor{keyword}{>}(\mbox{\hyperlink{structicm20948_1_1settings}{settings}}.\mbox{\hyperlink{structicm20948_1_1settings_a0c2485a146323219f03a06177ced80d9}{gyro}}.\mbox{\hyperlink{structicm20948_1_1gyro__settings_a829959828518829a0a27879e520b3285}{scale}})\ <<\ 1);}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00416}00416\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{byte}\ |=\ \textcolor{keyword}{static\_cast<}uint8\_t\textcolor{keyword}{>}(\textcolor{keyword}{static\_cast<}uint8\_t\textcolor{keyword}{>}(\mbox{\hyperlink{structicm20948_1_1settings}{settings}}.\mbox{\hyperlink{structicm20948_1_1settings_a0c2485a146323219f03a06177ced80d9}{gyro}}.\mbox{\hyperlink{structicm20948_1_1gyro__settings_a12430b9b2460efbb25ebeb8d691feb3a}{dlpf\_config}})\ <<\ 3);}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00417}00417\ }
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00418}00418\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ ok\ =\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a7f56513a51193f95f255d6dcd737cd7a}{\_write\_byte}}(\mbox{\hyperlink{Icm20948driver_8hpp_abd7c5a2c0fec8a31b3997d7f0464a82a}{ICM20948\_GYRO\_CONFIG\_1\_BANK}},}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00419}00419\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{Icm20948driver_8hpp_a56c7e35b4ad7df92875c6dbb2b6e5670}{ICM20948\_GYRO\_CONFIG\_1\_ADDR}},\ \textcolor{keywordtype}{byte});}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00420}00420\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ok)\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_aff753b4360cea1f9ead1db118d812110}{\_gyro\_scale\_factor}}\ =\ \mbox{\hyperlink{namespaceicm20948_ab5aff64efdfa42700724773154b88241}{gyro\_scale\_factor}}(\mbox{\hyperlink{structicm20948_1_1settings}{settings}}.\mbox{\hyperlink{structicm20948_1_1settings_a0c2485a146323219f03a06177ced80d9}{gyro}}.\mbox{\hyperlink{structicm20948_1_1gyro__settings_a829959828518829a0a27879e520b3285}{scale}});}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00421}00421\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ ok;}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00422}00422\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00423}00423\ }
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00424}\mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a0c7041d0f4e0f1212c303b10995ae650}{00424}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a0c7041d0f4e0f1212c303b10995ae650}{ICM20948\_I2C::\_magnetometer\_init}}()}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00425}00425\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00427}00427\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ ok\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00428}00428\ \ \ \ \ \ \ \ \ ok\ \&=\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a8cd73ca45a243b28564e3ae216f68b4e}{\_magnetometer\_enable}}();}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00429}00429\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!ok)\ \{\ std::cerr\ <<\ \textcolor{stringliteral}{"{}Failed\ on\ \_magnetometer\_enable()\(\backslash\)n"{}};\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};\ \}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00430}00430\ \ \ \ \ \ \ \ \ ok\ \&=\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_af001bedd491588bd626e1ebe91dd1d5b}{\_magnetometer\_set\_mode}}();}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00431}00431\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!ok)\ \{\ std::cerr\ <<\ \textcolor{stringliteral}{"{}Failed\ on\ \_magnetometer\_set\_mode()\(\backslash\)n"{}};\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};\ \}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00432}00432\ \ \ \ \ \ \ \ \ ok\ \&=\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a46c75dfb7570048a3c2c84a0fb68a910}{\_magnetometer\_configured}}();}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00433}00433\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!ok)\ \{\ std::cerr\ <<\ \textcolor{stringliteral}{"{}Failed\ on\ \_magnetometer\_configured()\(\backslash\)n"{}};\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};\ \}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00434}00434\ \ \ \ \ \ \ \ \ ok\ \&=\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a4b6b016fe3c36d6a9af7d1c735ae210a}{\_magnetometer\_set\_readout}}();}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00435}00435\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!ok)\ \{\ std::cerr\ <<\ \textcolor{stringliteral}{"{}Failed\ on\ \_magnetometer\_set\_readout()\(\backslash\)n"{}};\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};\ \}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00436}00436\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ ok;}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00437}00437\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00438}00438\ }
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00439}\mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a8cd73ca45a243b28564e3ae216f68b4e}{00439}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a8cd73ca45a243b28564e3ae216f68b4e}{ICM20948\_I2C::\_magnetometer\_enable}}()}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00440}00440\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00442}00442\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ ok\ =\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a360065071f02d1488b4a4d919c788103}{\_write\_bit}}(\mbox{\hyperlink{Icm20948driver_8hpp_a7e8f68c3e1e05dc79d780837b4da6431}{ICM20948\_INT\_PIN\_CFG\_BANK}},}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00443}00443\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{Icm20948driver_8hpp_a37df37dbbb8ac44d8c2f9cd00e650113}{ICM20948\_INT\_PIN\_CFG\_ADDR}},\ 1,\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00444}00444\ \ \ \ \ \ \ \ \ std::this\_thread::sleep\_for(std::chrono::milliseconds(10));}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00445}00445\ }
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00446}00446\ \ \ \ \ \ \ \ \ ok\ \&=\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a7f56513a51193f95f255d6dcd737cd7a}{\_write\_byte}}(\mbox{\hyperlink{Icm20948driver_8hpp_ac23dfc6c232d904d914397c4b047d8d0}{ICM20948\_I2C\_MST\_CTRL\_BANK}},}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00447}00447\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{Icm20948driver_8hpp_a16c37bd1eb369c3e195a57890699c7a9}{ICM20948\_I2C\_MST\_CTRL\_ADDR}},\ 0x4D);}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00448}00448\ \ \ \ \ \ \ \ \ std::this\_thread::sleep\_for(std::chrono::milliseconds(10));}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00449}00449\ }
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00450}00450\ \ \ \ \ \ \ \ \ ok\ \&=\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a360065071f02d1488b4a4d919c788103}{\_write\_bit}}(\mbox{\hyperlink{Icm20948driver_8hpp_a0b1e61b45c7f9417f9303303d1c7d3af}{ICM20948\_USER\_CTRL\_BANK}},}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00451}00451\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{Icm20948driver_8hpp_abead790a1cacf6c6578de7440ead57a7}{ICM20948\_USER\_CTRL\_ADDR}},\ 5,\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00452}00452\ \ \ \ \ \ \ \ \ std::this\_thread::sleep\_for(std::chrono::milliseconds(100));}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00453}00453\ }
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00454}00454\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ ok;}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00455}00455\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00456}00456\ }
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00457}\mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_af001bedd491588bd626e1ebe91dd1d5b}{00457}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_af001bedd491588bd626e1ebe91dd1d5b}{ICM20948\_I2C::\_magnetometer\_set\_mode}}()}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00458}00458\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00460}00460\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ ok\ =\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a6d1bce3f2771e690e495769cd6d3c663}{\_write\_mag\_byte}}(\mbox{\hyperlink{Icm20948driver_8hpp_ac7156dd79bb7e3c0845cf807cc3a15f9}{AK09916\_CNTL2\_ADDR}},}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00461}00461\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_cast<}uint8\_t\textcolor{keyword}{>}(\mbox{\hyperlink{namespaceicm20948_a52f2b76d3ebd33c9147b45c09ed3d02caf7a1f55f16854e842b04e2d311525a7a}{MAGN\_SHUTDOWN}}));}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00462}00462\ \ \ \ \ \ \ \ \ ok\ \&=\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a6d1bce3f2771e690e495769cd6d3c663}{\_write\_mag\_byte}}(\mbox{\hyperlink{Icm20948driver_8hpp_ac7156dd79bb7e3c0845cf807cc3a15f9}{AK09916\_CNTL2\_ADDR}},}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00463}00463\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_cast<}uint8\_t\textcolor{keyword}{>}(\mbox{\hyperlink{structicm20948_1_1settings}{settings}}.\mbox{\hyperlink{structicm20948_1_1settings_a1e7c191c05324ae009daa9edca4b5b86}{magn}}.\mbox{\hyperlink{structicm20948_1_1magn__settings_a9dafcbd7b44a43a2910781b42c788905}{mode}}));}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00464}00464\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ ok;}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00465}00465\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00466}00466\ }
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00467}\mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a46c75dfb7570048a3c2c84a0fb68a910}{00467}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a46c75dfb7570048a3c2c84a0fb68a910}{ICM20948\_I2C::\_magnetometer\_configured}}()}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00468}00468\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00469}00469\ \ \ \ \ \ \ \ \ uint8\_t\ mag\_id\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00471}00471\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ 5;\ ++i)\ \{}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00472}00472\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a7f2f8dbfed2281c99909e65edc4d25b6}{\_read\_mag\_byte}}(0x01,\ mag\_id))\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00473}00473\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a9ccf1216e2b8673a13e7dc3a8c44617f}{\_chip\_i2c\_master\_reset}}();}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00474}00474\ \ \ \ \ \ \ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Magnetometer\ not\ configured\ properly,\ resetting\ chip\ I2C\ master\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00475}00475\ \ \ \ \ \ \ \ \ \ \ \ \ std::this\_thread::sleep\_for(std::chrono::milliseconds(25));}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00476}00476\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00477}00477\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00478}00478\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00479}00479\ }
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00480}\mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a4b6b016fe3c36d6a9af7d1c735ae210a}{00480}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a4b6b016fe3c36d6a9af7d1c735ae210a}{ICM20948\_I2C::\_magnetometer\_set\_readout}}()}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00481}00481\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00483}00483\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ ok\ =\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a7f56513a51193f95f255d6dcd737cd7a}{\_write\_byte}}(\mbox{\hyperlink{Icm20948driver_8hpp_acdc1cf2ce72949ab50dc64178245e322}{ICM20948\_I2C\_SLV0\_ADDR\_BANK}},}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00484}00484\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{Icm20948driver_8hpp_a94b4ae4c3ae363e6902064671bd1bd3c}{ICM20948\_I2C\_SLV0\_ADDR\_ADDR}},\ 0x8C);}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00485}00485\ \ \ \ \ \ \ \ \ std::this\_thread::sleep\_for(std::chrono::milliseconds(5));}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00486}00486\ \ \ \ \ \ \ \ \ ok\ \&=\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a7f56513a51193f95f255d6dcd737cd7a}{\_write\_byte}}(\mbox{\hyperlink{Icm20948driver_8hpp_a24466cbcfc388a324d99bbcee2db5476}{ICM20948\_I2C\_SLV0\_REG\_BANK}},}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00487}00487\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{Icm20948driver_8hpp_aef18d3d697e584cae5236c7f32359f52}{ICM20948\_I2C\_SLV0\_REG\_ADDR}},\ 0x11);}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00488}00488\ \ \ \ \ \ \ \ \ std::this\_thread::sleep\_for(std::chrono::milliseconds(5));}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00489}00489\ \ \ \ \ \ \ \ \ ok\ \&=\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a7f56513a51193f95f255d6dcd737cd7a}{\_write\_byte}}(\mbox{\hyperlink{Icm20948driver_8hpp_a2ade8afdaf06f1ec302f977a914e6d89}{ICM20948\_I2C\_SLV0\_CTRL\_BANK}},}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00490}00490\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{Icm20948driver_8hpp_a4272bce367fb11076678244354ebc408}{ICM20948\_I2C\_SLV0\_CTRL\_ADDR}},\ 0x89);}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00491}00491\ \ \ \ \ \ \ \ \ std::this\_thread::sleep\_for(std::chrono::milliseconds(5));}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00492}00492\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ ok;}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00493}00493\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00494}00494\ }
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00495}\mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a9ccf1216e2b8673a13e7dc3a8c44617f}{00495}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a9ccf1216e2b8673a13e7dc3a8c44617f}{ICM20948\_I2C::\_chip\_i2c\_master\_reset}}()}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00496}00496\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00498}00498\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a360065071f02d1488b4a4d919c788103}{\_write\_bit}}(\mbox{\hyperlink{Icm20948driver_8hpp_a0b1e61b45c7f9417f9303303d1c7d3af}{ICM20948\_USER\_CTRL\_BANK}},}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00499}00499\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{Icm20948driver_8hpp_abead790a1cacf6c6578de7440ead57a7}{ICM20948\_USER\_CTRL\_ADDR}},\ 1,\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00500}00500\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00501}00501\ }
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00502}\mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a7f56513a51193f95f255d6dcd737cd7a}{00502}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a7f56513a51193f95f255d6dcd737cd7a}{ICM20948\_I2C::\_write\_byte}}(uint8\_t\ bank,\ uint8\_t\ reg,\ uint8\_t\ \textcolor{keywordtype}{byte})}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00503}00503\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00505}00505\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ ok\ =\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a952b59898c4fa68df28e2036ff2ecf8e}{\_set\_bank}}(bank);}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00506}00506\ \ \ \ \ \ \ \ \ uint8\_t\ buf[2]\ =\ \{\ reg,\ \textcolor{keywordtype}{byte}\ \};}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00507}00507\ \ \ \ \ \ \ \ \ ok\ \&=\ (::write(\mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_aa7658b444c44a4a1599f2c00a84446d5}{\_i2c\_fd}},\ buf,\ 2)\ ==\ 2);}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00508}00508\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ ok;}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00509}00509\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00510}00510\ }
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00511}\mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_abf0348876f7415429adff95f7e4b6d58}{00511}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_abf0348876f7415429adff95f7e4b6d58}{ICM20948\_I2C::\_read\_byte}}(uint8\_t\ bank,\ uint8\_t\ reg,\ uint8\_t\&\ \textcolor{keywordtype}{byte})}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00512}00512\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00513}00513\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a952b59898c4fa68df28e2036ff2ecf8e}{\_set\_bank}}(bank))\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00514}00514\ }
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00515}00515\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }i2c\_msg\ msgs[2];}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00516}00516\ \ \ \ \ \ \ \ \ msgs[0].addr\ \ =\ \textcolor{keyword}{static\_cast<}\_\_u16\textcolor{keyword}{>}(\mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_ab045aab8c66f970c7ece2c2fd1bfb1d4}{\_i2c\_address}});}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00517}00517\ \ \ \ \ \ \ \ \ msgs[0].flags\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00518}00518\ \ \ \ \ \ \ \ \ msgs[0].len\ \ \ =\ 1;}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00519}00519\ \ \ \ \ \ \ \ \ msgs[0].buf\ \ \ =\ \&reg;}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00520}00520\ }
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00521}00521\ \ \ \ \ \ \ \ \ msgs[1].addr\ \ =\ \textcolor{keyword}{static\_cast<}\_\_u16\textcolor{keyword}{>}(\mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_ab045aab8c66f970c7ece2c2fd1bfb1d4}{\_i2c\_address}});}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00522}00522\ \ \ \ \ \ \ \ \ msgs[1].flags\ =\ I2C\_M\_RD;}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00523}00523\ \ \ \ \ \ \ \ \ msgs[1].len\ \ \ =\ 1;}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00524}00524\ \ \ \ \ \ \ \ \ msgs[1].buf\ \ \ =\ \&byte;}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00525}00525\ }
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00526}00526\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }i2c\_rdwr\_ioctl\_data\ txn;}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00527}00527\ \ \ \ \ \ \ \ \ txn.msgs\ \ =\ msgs;}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00528}00528\ \ \ \ \ \ \ \ \ txn.nmsgs\ =\ 2;}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00529}00529\ }
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00530}00530\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ ok\ =\ ::ioctl(\mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_aa7658b444c44a4a1599f2c00a84446d5}{\_i2c\_fd}},\ I2C\_RDWR,\ \&txn)\ ==\ 2;}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00531}00531\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ok)\ ::usleep(5000);}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00532}00532\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ ok;}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00533}00533\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00534}00534\ }
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00535}\mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a360065071f02d1488b4a4d919c788103}{00535}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a360065071f02d1488b4a4d919c788103}{ICM20948\_I2C::\_write\_bit}}(uint8\_t\ bank,\ uint8\_t\ reg,}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00536}00536\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ bit\_pos,\ \textcolor{keywordtype}{bool}\ bit)}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00537}00537\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00539}00539\ \ \ \ \ \ \ \ \ uint8\_t\ existing\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00540}00540\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_abf0348876f7415429adff95f7e4b6d58}{\_read\_byte}}(bank,\ reg,\ existing))\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00541}00541\ }
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00542}00542\ \ \ \ \ \ \ \ \ uint8\_t\ updated\ =}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00543}00543\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_cast<}uint8\_t\textcolor{keyword}{>}(}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00544}00544\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (existing\ \&\ \string~static\_cast<uint8\_t>(1U\ <<\ bit\_pos))\ |}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00545}00545\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (\textcolor{keyword}{static\_cast<}uint8\_t\textcolor{keyword}{>}(!!bit)\ <<\ bit\_pos));}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00546}00546\ }
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00547}00547\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a7f56513a51193f95f255d6dcd737cd7a}{\_write\_byte}}(bank,\ reg,\ updated);}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00548}00548\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00549}00549\ }
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00550}\mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a5f5f612687be39380ae64bf4b24299d7}{00550}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a5f5f612687be39380ae64bf4b24299d7}{ICM20948\_I2C::\_read\_bit}}(uint8\_t\ bank,\ uint8\_t\ reg,}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00551}00551\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ bit\_pos,\ \textcolor{keywordtype}{bool}\&\ bit)}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00552}00552\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00554}00554\ \ \ \ \ \ \ \ \ uint8\_t\ existing\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00555}00555\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_abf0348876f7415429adff95f7e4b6d58}{\_read\_byte}}(bank,\ reg,\ existing))\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00556}00556\ \ \ \ \ \ \ \ \ bit\ =\ ((existing\ >>\ bit\_pos)\ \&\ 1U)\ !=\ 0U;}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00557}00557\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00558}00558\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00559}00559\ }
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00560}\mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a3fee40f81a7fa03179ecd97545cdc410}{00560}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a3fee40f81a7fa03179ecd97545cdc410}{ICM20948\_I2C::\_read\_block\_bytes}}(uint8\_t\ bank,\ uint8\_t\ start\_reg,}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00561}00561\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t*\ bytes,\ \textcolor{keywordtype}{int}\ length)}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00562}00562\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00564}00564\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a952b59898c4fa68df28e2036ff2ecf8e}{\_set\_bank}}(bank))\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00565}00565\ }
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00566}00566\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }i2c\_msg\ msgs[2];}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00567}00567\ \ \ \ \ \ \ \ \ msgs[0].addr\ \ =\ \textcolor{keyword}{static\_cast<}\_\_u16\textcolor{keyword}{>}(\mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_ab045aab8c66f970c7ece2c2fd1bfb1d4}{\_i2c\_address}});}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00568}00568\ \ \ \ \ \ \ \ \ msgs[0].flags\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00569}00569\ \ \ \ \ \ \ \ \ msgs[0].len\ \ \ =\ 1;}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00570}00570\ \ \ \ \ \ \ \ \ msgs[0].buf\ \ \ =\ \&start\_reg;}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00571}00571\ }
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00572}00572\ \ \ \ \ \ \ \ \ msgs[1].addr\ \ =\ \textcolor{keyword}{static\_cast<}\_\_u16\textcolor{keyword}{>}(\mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_ab045aab8c66f970c7ece2c2fd1bfb1d4}{\_i2c\_address}});}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00573}00573\ \ \ \ \ \ \ \ \ msgs[1].flags\ =\ I2C\_M\_RD;}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00574}00574\ \ \ \ \ \ \ \ \ msgs[1].len\ \ \ =\ \textcolor{keyword}{static\_cast<}\_\_u16\textcolor{keyword}{>}(length);}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00575}00575\ \ \ \ \ \ \ \ \ msgs[1].buf\ \ \ =\ bytes;}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00576}00576\ }
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00577}00577\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }i2c\_rdwr\_ioctl\_data\ txn;}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00578}00578\ \ \ \ \ \ \ \ \ txn.msgs\ \ =\ msgs;}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00579}00579\ \ \ \ \ \ \ \ \ txn.nmsgs\ =\ 2;}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00580}00580\ }
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00581}00581\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ ok\ =\ ::ioctl(\mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_aa7658b444c44a4a1599f2c00a84446d5}{\_i2c\_fd}},\ I2C\_RDWR,\ \&txn)\ ==\ 2;}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00582}00582\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ok)\ ::usleep(5000);}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00583}00583\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ ok;}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00584}00584\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00585}00585\ }
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00586}\mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a6d1bce3f2771e690e495769cd6d3c663}{00586}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a6d1bce3f2771e690e495769cd6d3c663}{ICM20948\_I2C::\_write\_mag\_byte}}(uint8\_t\ mag\_reg,\ uint8\_t\ \textcolor{keywordtype}{byte})}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00587}00587\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00589}00589\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ ok\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00590}00590\ \ \ \ \ \ \ \ \ ok\ \&=\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a7f56513a51193f95f255d6dcd737cd7a}{\_write\_byte}}(\mbox{\hyperlink{Icm20948driver_8hpp_af31b79db818bce75a9e340f5dd1eb933}{ICM20948\_I2C\_SLV4\_ADDR\_BANK}},}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00591}00591\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{Icm20948driver_8hpp_a2edc7717316afb62c49e774c966e3481}{ICM20948\_I2C\_SLV4\_ADDR\_ADDR}},\ \mbox{\hyperlink{Icm20948driver_8hpp_ab1f3382b47abfad1bf2bcd79041e8ef8}{ICM20948\_MAGN\_I2C\_ADDR}});}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00592}00592\ \ \ \ \ \ \ \ \ ok\ \&=\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a7f56513a51193f95f255d6dcd737cd7a}{\_write\_byte}}(\mbox{\hyperlink{Icm20948driver_8hpp_af3ee009b5a68a855fe3a218d6c9a0bba}{ICM20948\_I2C\_SLV4\_REG\_BANK}},}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00593}00593\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{Icm20948driver_8hpp_a810162a382b33cadb0f98e6512214711}{ICM20948\_I2C\_SLV4\_REG\_ADDR}},\ mag\_reg);}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00594}00594\ \ \ \ \ \ \ \ \ ok\ \&=\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a7f56513a51193f95f255d6dcd737cd7a}{\_write\_byte}}(\mbox{\hyperlink{Icm20948driver_8hpp_a2ac23a236afe7df45f0cb508422f3ceb}{ICM20948\_I2C\_SLV4\_DO\_BANK}},}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00595}00595\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{Icm20948driver_8hpp_a038095babc6a5b205fcc7a13e591a27e}{ICM20948\_I2C\_SLV4\_DO\_ADDR}},\ \textcolor{keywordtype}{byte});}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00596}00596\ \ \ \ \ \ \ \ \ ok\ \&=\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a7f56513a51193f95f255d6dcd737cd7a}{\_write\_byte}}(\mbox{\hyperlink{Icm20948driver_8hpp_af627695dd3d1c1c5a71a262a54e8029c}{ICM20948\_I2C\_SLV4\_CTRL\_BANK}},}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00597}00597\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{Icm20948driver_8hpp_ae56ce54ac7321ce7af2e160d5c54da58}{ICM20948\_I2C\_SLV4\_CTRL\_ADDR}},\ 0x80);}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00598}00598\ }
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00600}00600\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ done\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00601}00601\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ 20;\ ++i)\ \{}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00602}00602\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a5f5f612687be39380ae64bf4b24299d7}{\_read\_bit}}(\mbox{\hyperlink{Icm20948driver_8hpp_ad5e35bb0de9fdcb3ce6a8a346cfc23ab}{ICM20948\_I2C\_MST\_STATUS\_BANK}},}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00603}00603\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{Icm20948driver_8hpp_a4345af90d9875fa66abadeae49a740d7}{ICM20948\_I2C\_MST\_STATUS\_ADDR}},\ 6,\ done);}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00604}00604\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (done)\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00605}00605\ \ \ \ \ \ \ \ \ \ \ \ \ std::this\_thread::sleep\_for(std::chrono::milliseconds(5));}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00606}00606\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00607}00607\ }
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00608}00608\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!done)\ std::cerr\ <<\ \textcolor{stringliteral}{"{}Could\ not\ write\ to\ magnetometer\ (acknowledgement\ error)\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00609}00609\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ ok\ \&\&\ done;}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00610}00610\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00611}00611\ }
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00612}\mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a7f2f8dbfed2281c99909e65edc4d25b6}{00612}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a7f2f8dbfed2281c99909e65edc4d25b6}{ICM20948\_I2C::\_read\_mag\_byte}}(uint8\_t\ mag\_reg,\ uint8\_t\&\ \textcolor{keywordtype}{byte})}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00613}00613\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00615}00615\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ ok\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00616}00616\ \ \ \ \ \ \ \ \ ok\ \&=\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a7f56513a51193f95f255d6dcd737cd7a}{\_write\_byte}}(\mbox{\hyperlink{Icm20948driver_8hpp_af31b79db818bce75a9e340f5dd1eb933}{ICM20948\_I2C\_SLV4\_ADDR\_BANK}},}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00617}00617\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{Icm20948driver_8hpp_a2edc7717316afb62c49e774c966e3481}{ICM20948\_I2C\_SLV4\_ADDR\_ADDR}},}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00618}00618\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_cast<}uint8\_t\textcolor{keyword}{>}(\mbox{\hyperlink{Icm20948driver_8hpp_ab1f3382b47abfad1bf2bcd79041e8ef8}{ICM20948\_MAGN\_I2C\_ADDR}}\ |\ 0x80));}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00619}00619\ \ \ \ \ \ \ \ \ ok\ \&=\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a7f56513a51193f95f255d6dcd737cd7a}{\_write\_byte}}(\mbox{\hyperlink{Icm20948driver_8hpp_af3ee009b5a68a855fe3a218d6c9a0bba}{ICM20948\_I2C\_SLV4\_REG\_BANK}},}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00620}00620\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{Icm20948driver_8hpp_a810162a382b33cadb0f98e6512214711}{ICM20948\_I2C\_SLV4\_REG\_ADDR}},\ mag\_reg);}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00621}00621\ \ \ \ \ \ \ \ \ ok\ \&=\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a7f56513a51193f95f255d6dcd737cd7a}{\_write\_byte}}(\mbox{\hyperlink{Icm20948driver_8hpp_af627695dd3d1c1c5a71a262a54e8029c}{ICM20948\_I2C\_SLV4\_CTRL\_BANK}},}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00622}00622\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{Icm20948driver_8hpp_ae56ce54ac7321ce7af2e160d5c54da58}{ICM20948\_I2C\_SLV4\_CTRL\_ADDR}},\ 0x80);}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00623}00623\ }
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00625}00625\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ done\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00626}00626\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ 20;\ ++i)\ \{}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00627}00627\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a5f5f612687be39380ae64bf4b24299d7}{\_read\_bit}}(\mbox{\hyperlink{Icm20948driver_8hpp_ad5e35bb0de9fdcb3ce6a8a346cfc23ab}{ICM20948\_I2C\_MST\_STATUS\_BANK}},}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00628}00628\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{Icm20948driver_8hpp_a4345af90d9875fa66abadeae49a740d7}{ICM20948\_I2C\_MST\_STATUS\_ADDR}},\ 6,\ done);}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00629}00629\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (done)\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00630}00630\ \ \ \ \ \ \ \ \ \ \ \ \ std::this\_thread::sleep\_for(std::chrono::milliseconds(5));}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00631}00631\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00632}00632\ }
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00633}00633\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!done)\ std::cerr\ <<\ \textcolor{stringliteral}{"{}Could\ not\ read\ from\ magnetometer\ (acknowledgement\ error)\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00634}00634\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!done)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00635}00635\ }
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00636}00636\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_abf0348876f7415429adff95f7e4b6d58}{\_read\_byte}}(\mbox{\hyperlink{Icm20948driver_8hpp_a516f6090c4c7afbdf6863a2fafa96f40}{ICM20948\_I2C\_SLV4\_DI\_BANK}},}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00637}00637\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{Icm20948driver_8hpp_a711dcddb3ed57b86ef4d01778077c117}{ICM20948\_I2C\_SLV4\_DI\_ADDR}},\ \textcolor{keywordtype}{byte});}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00638}00638\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00639}00639\ }
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00640}\mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a16f60f1416acbe9d214578467df09d35}{00640}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a16f60f1416acbe9d214578467df09d35}{ICM20948\_I2C::check\_DRDY\_INT}}()}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00641}00641\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00642}00642\ \ \ \ \ \ \ \ \ uint8\_t\ int\_status;}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00643}00643\ }
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00644}00644\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_abf0348876f7415429adff95f7e4b6d58}{\_read\_byte}}(\mbox{\hyperlink{Icm20948driver_8hpp_ab5683645c770cc73b41ed952e1bc6f69}{ICM20948\_INT\_STATUS\_1\_BANK}},}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00645}00645\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{Icm20948driver_8hpp_a8a8793d87ae4682c53c73b85f1bcaa7e}{ICM20948\_INT\_STATUS\_1\_ADDR}},}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00646}00646\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ int\_status))\ \{}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00647}00647\ \ \ \ \ \ \ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Unable\ to\ read\ INT\_STATUS"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00648}00648\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00649}00649\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00650}00650\ }
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00651}00651\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (int\_status\ \&\ 0x01)\ !=\ 0;}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00652}00652\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00653}00653\ }
+\DoxyCodeLine{\Hypertarget{Icm20948driver_8cpp_source_l00654}00654\ \}\ \textcolor{comment}{//\ namespace\ icm20948}}
+
+\end{DoxyCode}

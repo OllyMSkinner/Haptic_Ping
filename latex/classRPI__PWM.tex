@@ -12,25 +12,25 @@
 bool \mbox{\hyperlink{classRPI__PWM_a8fafd8227f58258c61449af83c466d20}{start}} ()
 \item 
 void \mbox{\hyperlink{classRPI__PWM_a1ca02994ab743f3397bce2ebc2b745ed}{stop}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Stops the PWM, turns the output off, and releases the GPIO resources. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classRPI__PWM_ae58a56579ae4abb9207cdfc8ee360906}{set\+Duty\+Cycle}} (float percent)
-\item 
+\begin{DoxyCompactList}\small\item\em Updates the PWM duty cycle and keeps it within a valid range. \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{classRPI__PWM_a5491fa126da09d08cc08f8fa713d129b}{get\+Duty\+Cycle}} () const
-\item 
+\begin{DoxyCompactList}\small\item\em Returns the current duty cycle value. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classRPI__PWM_a48018f0627c5c22a313a2d69b0bb3301}{\texorpdfstring{$\sim$}{\string~}\+RPI\+\_\+\+PWM}} ()
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Stops the PWM automatically when the object is destroyed. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{classRPI__PWM_ad083942c5b03431c6574cb77e5311760}{wait\+Us}} (int tfd, int us)
-\item 
+\begin{DoxyCompactList}\small\item\em Waits for the given number of microseconds using a timer file descriptor. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classRPI__PWM_ad3c2649079790966a48c1fe13575ab3e}{loop}} ()
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Runs the PWM loop by switching the GPIO on and off based on the duty cycle. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Static Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 static itimerspec \mbox{\hyperlink{classRPI__PWM_a7ed4b2d6274a00cd33676d4dd82df7d8}{us\+To\+Timerspec}} (long us)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Converts a time value in microseconds into a timer specification. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -46,6 +46,13 @@ gpiod\+\_\+line\+\_\+request \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classRP
 \end{DoxyCompactItemize}
 
 
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{rpi__pwm_8h_source_l00032}{32}} of file \mbox{\hyperlink{rpi__pwm_8h_source}{rpi\+\_\+pwm.\+h}}.
+
+
+
 \doxysubsection{Constructor \& Destructor Documentation}
 \Hypertarget{classRPI__PWM_aab77efba6b8ca65496a9b76695564476}\label{classRPI__PWM_aab77efba6b8ca65496a9b76695564476} 
 \index{RPI\_PWM@{RPI\_PWM}!RPI\_PWM@{RPI\_PWM}}
@@ -53,11 +60,23 @@ gpiod\+\_\+line\+\_\+request \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classRP
 \doxysubsubsection{\texorpdfstring{RPI\_PWM()}{RPI\_PWM()}}
 {\footnotesize\ttfamily RPI\+\_\+\+PWM\+::\+RPI\+\_\+\+PWM (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+Initialises the PWM class to a safe default state with no active output or GPIO resources in use. 
+
+Definition at line \mbox{\hyperlink{rpi__pwm_8h_source_l00038}{38}} of file \mbox{\hyperlink{rpi__pwm_8h_source}{rpi\+\_\+pwm.\+h}}.
+
 \Hypertarget{classRPI__PWM_a48018f0627c5c22a313a2d69b0bb3301}\label{classRPI__PWM_a48018f0627c5c22a313a2d69b0bb3301} 
 \index{RPI\_PWM@{RPI\_PWM}!````~RPI\_PWM@{\texorpdfstring{$\sim$}{\string~}RPI\_PWM}}
 \index{````~RPI\_PWM@{\texorpdfstring{$\sim$}{\string~}RPI\_PWM}!RPI\_PWM@{RPI\_PWM}}
 \doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}RPI\_PWM()}{\string~RPI\_PWM()}}
 {\footnotesize\ttfamily RPI\+\_\+\+PWM\+::\texorpdfstring{$\sim$}{\string~}\+RPI\+\_\+\+PWM (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Stops the PWM automatically when the object is destroyed. 
+
+
+
+Definition at line \mbox{\hyperlink{rpi__pwm_8h_source_l00123}{123}} of file \mbox{\hyperlink{rpi__pwm_8h_source}{rpi\+\_\+pwm.\+h}}.
 
 
 
@@ -68,11 +87,41 @@ gpiod\+\_\+line\+\_\+request \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classRP
 \doxysubsubsection{\texorpdfstring{getDutyCycle()}{getDutyCycle()}}
 {\footnotesize\ttfamily float RPI\+\_\+\+PWM\+::get\+Duty\+Cycle (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
+
+
+Returns the current duty cycle value. 
+
+
+
+Definition at line \mbox{\hyperlink{rpi__pwm_8h_source_l00120}{120}} of file \mbox{\hyperlink{rpi__pwm_8h_source}{rpi\+\_\+pwm.\+h}}.
+
 \Hypertarget{classRPI__PWM_ad3c2649079790966a48c1fe13575ab3e}\label{classRPI__PWM_ad3c2649079790966a48c1fe13575ab3e} 
 \index{RPI\_PWM@{RPI\_PWM}!loop@{loop}}
 \index{loop@{loop}!RPI\_PWM@{RPI\_PWM}}
 \doxysubsubsection{\texorpdfstring{loop()}{loop()}}
 {\footnotesize\ttfamily void RPI\+\_\+\+PWM\+::loop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Runs the PWM loop by switching the GPIO on and off based on the duty cycle. 
+
+Work out the full PWM period in microseconds.
+
+Create a timer used for accurate PWM delays.
+
+Keep generating PWM while the class is marked as running.
+
+Calculate the on and off times for this PWM cycle.
+
+Keep the output fully on for a 100\% duty cycle.
+
+Keep the output fully off for a 0\% duty cycle.
+
+Otherwise, switch on for part of the period and off for the rest.
+
+Close the timer once the loop finishes.
+
+Definition at line \mbox{\hyperlink{rpi__pwm_8h_source_l00157}{157}} of file \mbox{\hyperlink{rpi__pwm_8h_source}{rpi\+\_\+pwm.\+h}}.
 
 \Hypertarget{classRPI__PWM_ae58a56579ae4abb9207cdfc8ee360906}\label{classRPI__PWM_ae58a56579ae4abb9207cdfc8ee360906} 
 \index{RPI\_PWM@{RPI\_PWM}!setDutyCycle@{setDutyCycle}}
@@ -80,11 +129,41 @@ gpiod\+\_\+line\+\_\+request \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classRP
 \doxysubsubsection{\texorpdfstring{setDutyCycle()}{setDutyCycle()}}
 {\footnotesize\ttfamily void RPI\+\_\+\+PWM\+::set\+Duty\+Cycle (\begin{DoxyParamCaption}\item[{float}]{percent }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+
+
+Updates the PWM duty cycle and keeps it within a valid range. 
+
+Clamp the value so it stays between 0\% and 100\%.
+
+Store the new duty cycle value.
+
+Definition at line \mbox{\hyperlink{rpi__pwm_8h_source_l00110}{110}} of file \mbox{\hyperlink{rpi__pwm_8h_source}{rpi\+\_\+pwm.\+h}}.
+
 \Hypertarget{classRPI__PWM_a8fafd8227f58258c61449af83c466d20}\label{classRPI__PWM_a8fafd8227f58258c61449af83c466d20} 
 \index{RPI\_PWM@{RPI\_PWM}!start@{start}}
 \index{start@{start}!RPI\_PWM@{RPI\_PWM}}
 \doxysubsubsection{\texorpdfstring{start()}{start()}}
 {\footnotesize\ttfamily bool RPI\+\_\+\+PWM\+::start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Sets up the GPIO output and starts the PWM worker thread. Returns true if the PWM starts successfully. Open the GPIO chip used for the PWM output pin.
+
+Create and configure the GPIO line as an output, starting inactive.
+
+Apply the line settings to the chosen PWM GPIO line.
+
+Create the request configuration and name this GPIO user.
+
+Request control of the GPIO line.
+
+Free the temporary configuration objects after the request is made.
+
+If the line request fails, close the chip and report failure.
+
+Mark the PWM engine as active and launch the worker thread.
+
+Print a message to confirm that PWM has started.
+
+Definition at line \mbox{\hyperlink{rpi__pwm_8h_source_l00044}{44}} of file \mbox{\hyperlink{rpi__pwm_8h_source}{rpi\+\_\+pwm.\+h}}.
 
 \Hypertarget{classRPI__PWM_a1ca02994ab743f3397bce2ebc2b745ed}\label{classRPI__PWM_a1ca02994ab743f3397bce2ebc2b745ed} 
 \index{RPI\_PWM@{RPI\_PWM}!stop@{stop}}
@@ -92,17 +171,55 @@ gpiod\+\_\+line\+\_\+request \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classRP
 \doxysubsubsection{\texorpdfstring{stop()}{stop()}}
 {\footnotesize\ttfamily void RPI\+\_\+\+PWM\+::stop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+
+
+Stops the PWM, turns the output off, and releases the GPIO resources. 
+
+Mark the PWM as no longer running.
+
+Wait for the worker thread to finish if it is active.
+
+Set the GPIO output low, then release the line request.
+
+Close the GPIO chip and clear the stored pointer.
+
+Definition at line \mbox{\hyperlink{rpi__pwm_8h_source_l00087}{87}} of file \mbox{\hyperlink{rpi__pwm_8h_source}{rpi\+\_\+pwm.\+h}}.
+
 \Hypertarget{classRPI__PWM_a7ed4b2d6274a00cd33676d4dd82df7d8}\label{classRPI__PWM_a7ed4b2d6274a00cd33676d4dd82df7d8} 
 \index{RPI\_PWM@{RPI\_PWM}!usToTimerspec@{usToTimerspec}}
 \index{usToTimerspec@{usToTimerspec}!RPI\_PWM@{RPI\_PWM}}
 \doxysubsubsection{\texorpdfstring{usToTimerspec()}{usToTimerspec()}}
 {\footnotesize\ttfamily static itimerspec RPI\+\_\+\+PWM\+::us\+To\+Timerspec (\begin{DoxyParamCaption}\item[{long}]{us }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}}
 
+
+
+Converts a time value in microseconds into a timer specification. 
+
+Store the whole seconds part of the delay.
+
+Store the remaining time in nanoseconds.
+
+Disable repeating so the timer only runs once.
+
+Definition at line \mbox{\hyperlink{rpi__pwm_8h_source_l00127}{127}} of file \mbox{\hyperlink{rpi__pwm_8h_source}{rpi\+\_\+pwm.\+h}}.
+
 \Hypertarget{classRPI__PWM_ad083942c5b03431c6574cb77e5311760}\label{classRPI__PWM_ad083942c5b03431c6574cb77e5311760} 
 \index{RPI\_PWM@{RPI\_PWM}!waitUs@{waitUs}}
 \index{waitUs@{waitUs}!RPI\_PWM@{RPI\_PWM}}
 \doxysubsubsection{\texorpdfstring{waitUs()}{waitUs()}}
 {\footnotesize\ttfamily void RPI\+\_\+\+PWM\+::wait\+Us (\begin{DoxyParamCaption}\item[{int}]{tfd,  }\item[{int}]{us }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Waits for the given number of microseconds using a timer file descriptor. 
+
+Convert the delay into a timer format.
+
+Start the timer with the requested delay.
+
+Read from the timer so the function blocks until the timer expires.
+
+Definition at line \mbox{\hyperlink{rpi__pwm_8h_source_l00144}{144}} of file \mbox{\hyperlink{rpi__pwm_8h_source}{rpi\+\_\+pwm.\+h}}.
 
 
 
@@ -113,11 +230,19 @@ gpiod\+\_\+line\+\_\+request \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classRP
 \doxysubsubsection{\texorpdfstring{chip\_}{chip\_}}
 {\footnotesize\ttfamily gpiod\+\_\+chip\texorpdfstring{$\ast$}{*} RPI\+\_\+\+PWM\+::chip\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
 
+
+
+Definition at line \mbox{\hyperlink{rpi__pwm_8h_source_l00200}{200}} of file \mbox{\hyperlink{rpi__pwm_8h_source}{rpi\+\_\+pwm.\+h}}.
+
 \Hypertarget{classRPI__PWM_a6c3a800d79b3eea98aee231f817e1bae}\label{classRPI__PWM_a6c3a800d79b3eea98aee231f817e1bae} 
 \index{RPI\_PWM@{RPI\_PWM}!duty\_@{duty\_}}
 \index{duty\_@{duty\_}!RPI\_PWM@{RPI\_PWM}}
 \doxysubsubsection{\texorpdfstring{duty\_}{duty\_}}
 {\footnotesize\ttfamily std\+::atomic$<$float$>$ RPI\+\_\+\+PWM\+::duty\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{rpi__pwm_8h_source_l00197}{197}} of file \mbox{\hyperlink{rpi__pwm_8h_source}{rpi\+\_\+pwm.\+h}}.
 
 \Hypertarget{classRPI__PWM_a166b5fdc6a68035efb310a930f6b39ec}\label{classRPI__PWM_a166b5fdc6a68035efb310a930f6b39ec} 
 \index{RPI\_PWM@{RPI\_PWM}!request\_@{request\_}}
@@ -125,17 +250,29 @@ gpiod\+\_\+line\+\_\+request \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classRP
 \doxysubsubsection{\texorpdfstring{request\_}{request\_}}
 {\footnotesize\ttfamily gpiod\+\_\+line\+\_\+request\texorpdfstring{$\ast$}{*} RPI\+\_\+\+PWM\+::request\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
 
+
+
+Definition at line \mbox{\hyperlink{rpi__pwm_8h_source_l00201}{201}} of file \mbox{\hyperlink{rpi__pwm_8h_source}{rpi\+\_\+pwm.\+h}}.
+
 \Hypertarget{classRPI__PWM_aea441885ff26f125cf06d38655903dcf}\label{classRPI__PWM_aea441885ff26f125cf06d38655903dcf} 
 \index{RPI\_PWM@{RPI\_PWM}!running\_@{running\_}}
 \index{running\_@{running\_}!RPI\_PWM@{RPI\_PWM}}
 \doxysubsubsection{\texorpdfstring{running\_}{running\_}}
 {\footnotesize\ttfamily std\+::atomic$<$bool$>$ RPI\+\_\+\+PWM\+::running\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
 
+
+
+Definition at line \mbox{\hyperlink{rpi__pwm_8h_source_l00198}{198}} of file \mbox{\hyperlink{rpi__pwm_8h_source}{rpi\+\_\+pwm.\+h}}.
+
 \Hypertarget{classRPI__PWM_a8079b97600d1fd50512504433a6faebb}\label{classRPI__PWM_a8079b97600d1fd50512504433a6faebb} 
 \index{RPI\_PWM@{RPI\_PWM}!thread\_@{thread\_}}
 \index{thread\_@{thread\_}!RPI\_PWM@{RPI\_PWM}}
 \doxysubsubsection{\texorpdfstring{thread\_}{thread\_}}
 {\footnotesize\ttfamily std\+::thread RPI\+\_\+\+PWM\+::thread\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{rpi__pwm_8h_source_l00199}{199}} of file \mbox{\hyperlink{rpi__pwm_8h_source}{rpi\+\_\+pwm.\+h}}.
 
 
 

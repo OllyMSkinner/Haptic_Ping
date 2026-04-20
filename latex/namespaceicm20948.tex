@@ -1,18 +1,23 @@
 \doxysection{icm20948 Namespace Reference}
 \hypertarget{namespaceicm20948}{}\label{namespaceicm20948}\index{icm20948@{icm20948}}
+
+
+Settings types.  
+
+
 \doxysubsubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
 struct \mbox{\hyperlink{structicm20948_1_1accel__settings}{accel\+\_\+settings}}
 \item 
 struct \mbox{\hyperlink{structicm20948_1_1gyro__settings}{gyro\+\_\+settings}}
-\item 
+\begin{DoxyCompactList}\small\item\em Gyroscope runtime configuration. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C}{ICM20948\+\_\+\+I2C}}
 \item 
 struct \mbox{\hyperlink{structicm20948_1_1IMUSample}{IMUSample}}
 \item 
 struct \mbox{\hyperlink{structicm20948_1_1magn__settings}{magn\+\_\+settings}}
-\item 
+\begin{DoxyCompactList}\small\item\em Magnetometer runtime configuration. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structicm20948_1_1settings}{settings}}
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Typedefs}
@@ -21,9 +26,9 @@ struct \mbox{\hyperlink{structicm20948_1_1settings}{settings}}
 typedef struct \mbox{\hyperlink{structicm20948_1_1accel__settings}{icm20948\+::accel\+\_\+settings}} \mbox{\hyperlink{namespaceicm20948_a4604c05a67dc8537a1f4780eccec81b7}{accel\+\_\+settings}}
 \item 
 typedef struct \mbox{\hyperlink{structicm20948_1_1gyro__settings}{icm20948\+::gyro\+\_\+settings}} \mbox{\hyperlink{namespaceicm20948_a305679615d047d722f18ccbb13b5dff8}{gyro\+\_\+settings}}
-\item 
+\begin{DoxyCompactList}\small\item\em Gyroscope runtime configuration. \end{DoxyCompactList}\item 
 typedef struct \mbox{\hyperlink{structicm20948_1_1magn__settings}{icm20948\+::magn\+\_\+settings}} \mbox{\hyperlink{namespaceicm20948_ab8718ad937a784bdb91b1f8ae23e2c6a}{magn\+\_\+settings}}
-\item 
+\begin{DoxyCompactList}\small\item\em Magnetometer runtime configuration. \end{DoxyCompactList}\item 
 typedef struct \mbox{\hyperlink{structicm20948_1_1settings}{icm20948\+::settings}} \mbox{\hyperlink{namespaceicm20948_af58f34f9f5f028d1ebc80a98fbebf3f4}{settings}}
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Enumerations}
@@ -46,13 +51,13 @@ enum \mbox{\hyperlink{namespaceicm20948_a11320e5ffc65dc1997d850a2747b1857}{accel
 , \mbox{\hyperlink{namespaceicm20948_a11320e5ffc65dc1997d850a2747b1857aad38873c989e80fa60860b2ec48205a3}{ACCEL\+\_\+\+DLPF\+\_\+5\+\_\+7\+HZ}}
 , \mbox{\hyperlink{namespaceicm20948_a11320e5ffc65dc1997d850a2747b1857a54a59d3f305828db07e8b11f6db49f70}{ACCEL\+\_\+\+DLPF\+\_\+473\+HZ}}
  \}
-\item 
+\begin{DoxyCompactList}\small\item\em Accelerometer digital low-\/pass filter config. \end{DoxyCompactList}\item 
 enum \mbox{\hyperlink{namespaceicm20948_ab4ed127a0673926c94b3419379774950}{gyro\+\_\+scale}} \{ \mbox{\hyperlink{namespaceicm20948_ab4ed127a0673926c94b3419379774950aabd72e9c7237ef6ac1483378c37db628}{GYRO\+\_\+250\+DPS}} = 0
 , \mbox{\hyperlink{namespaceicm20948_ab4ed127a0673926c94b3419379774950a549d7b9c4b2bbf75a2c70c96f121cfe0}{GYRO\+\_\+500\+DPS}}
 , \mbox{\hyperlink{namespaceicm20948_ab4ed127a0673926c94b3419379774950ae2d68a647e8a6ef753561ee9fe15fcd9}{GYRO\+\_\+1000\+DPS}}
 , \mbox{\hyperlink{namespaceicm20948_ab4ed127a0673926c94b3419379774950a87d8034a32d15681a2811fd897f0ef94}{GYRO\+\_\+2000\+DPS}}
  \}
-\item 
+\begin{DoxyCompactList}\small\item\em Gyroscope full-\/scale range. \end{DoxyCompactList}\item 
 enum \mbox{\hyperlink{namespaceicm20948_ab21febc613fcda495faedf1fadf8da01}{gyro\+\_\+dlpf\+\_\+config}} \{ \newline
 \mbox{\hyperlink{namespaceicm20948_ab21febc613fcda495faedf1fadf8da01a3d4b8dc9e1511d7d42e031f4cc04fd44}{GYRO\+\_\+\+DLPF\+\_\+196\+\_\+6\+HZ}} = 0
 , \mbox{\hyperlink{namespaceicm20948_ab21febc613fcda495faedf1fadf8da01ac3aa6b2e10ac763342844ce203cedeb9}{GYRO\+\_\+\+DLPF\+\_\+151\+\_\+8\+HZ}}
@@ -64,7 +69,7 @@ enum \mbox{\hyperlink{namespaceicm20948_ab21febc613fcda495faedf1fadf8da01}{gyro\
 , \mbox{\hyperlink{namespaceicm20948_ab21febc613fcda495faedf1fadf8da01ac729d419c805e6e8b0e4c5b7a979eef9}{GYRO\+\_\+\+DLPF\+\_\+5\+\_\+7\+HZ}}
 , \mbox{\hyperlink{namespaceicm20948_ab21febc613fcda495faedf1fadf8da01abfd46a43efe7108d44c1cd85123d8275}{GYRO\+\_\+\+DLPF\+\_\+361\+\_\+4\+HZ}}
  \}
-\item 
+\begin{DoxyCompactList}\small\item\em Gyroscope digital low-\/pass filter config. \end{DoxyCompactList}\item 
 enum \mbox{\hyperlink{namespaceicm20948_a52f2b76d3ebd33c9147b45c09ed3d02c}{magn\+\_\+mode}} \{ \newline
 \mbox{\hyperlink{namespaceicm20948_a52f2b76d3ebd33c9147b45c09ed3d02caf7a1f55f16854e842b04e2d311525a7a}{MAGN\+\_\+\+SHUTDOWN}} = 0
 , \mbox{\hyperlink{namespaceicm20948_a52f2b76d3ebd33c9147b45c09ed3d02ca4696e7df486d4c8527ec94a02a9aaa96}{MAGN\+\_\+\+SINGLE}} = 1
@@ -75,25 +80,28 @@ enum \mbox{\hyperlink{namespaceicm20948_a52f2b76d3ebd33c9147b45c09ed3d02c}{magn\
 , \mbox{\hyperlink{namespaceicm20948_a52f2b76d3ebd33c9147b45c09ed3d02caaa091f0f880adfe061f828e771680137}{MAGN\+\_\+100\+HZ}} = 8
 , \mbox{\hyperlink{namespaceicm20948_a52f2b76d3ebd33c9147b45c09ed3d02cad20e2222b9521644cdccdeb39f3c3f6e}{MAGN\+\_\+\+SELF\+\_\+\+TEST}} = 16
  \}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Magnetometer operating mode. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
 float \mbox{\hyperlink{namespaceicm20948_af14221b01595095e63c2b6da92461546}{accel\+\_\+scale\+\_\+factor}} (\mbox{\hyperlink{namespaceicm20948_a270e710b092b62b0a289753093c2a673}{accel\+\_\+scale}} scale)
-\item 
+\begin{DoxyCompactList}\small\item\em Convert accel range enum to raw-\/count scale factor. \end{DoxyCompactList}\item 
 std\+::string \mbox{\hyperlink{namespaceicm20948_a4946bab7910d89f8bfd507e564872e96}{accel\+\_\+scale\+\_\+to\+\_\+str}} (\mbox{\hyperlink{namespaceicm20948_a270e710b092b62b0a289753093c2a673}{accel\+\_\+scale}} scale)
 \item 
 std\+::string \mbox{\hyperlink{namespaceicm20948_a4a26038ff1fca8a832393f87ff9ed235}{accel\+\_\+dlpf\+\_\+config\+\_\+to\+\_\+str}} (\mbox{\hyperlink{namespaceicm20948_a11320e5ffc65dc1997d850a2747b1857}{accel\+\_\+dlpf\+\_\+config}} config)
-\item 
+\begin{DoxyCompactList}\small\item\em Stringify accel DLPF enum. \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{namespaceicm20948_ab5aff64efdfa42700724773154b88241}{gyro\+\_\+scale\+\_\+factor}} (\mbox{\hyperlink{namespaceicm20948_ab4ed127a0673926c94b3419379774950}{gyro\+\_\+scale}} scale)
-\item 
+\begin{DoxyCompactList}\small\item\em Convert gyro range enum to raw-\/count scale factor. \end{DoxyCompactList}\item 
 std\+::string \mbox{\hyperlink{namespaceicm20948_a7ceffdb0c86d118f1852b4a67c119517}{gyro\+\_\+scale\+\_\+to\+\_\+str}} (\mbox{\hyperlink{namespaceicm20948_ab4ed127a0673926c94b3419379774950}{gyro\+\_\+scale}} scale)
-\item 
+\begin{DoxyCompactList}\small\item\em Stringify gyro range enum. \end{DoxyCompactList}\item 
 std\+::string \mbox{\hyperlink{namespaceicm20948_a37feed00f9178e9a6733f1f0db39e468}{gyro\+\_\+dlpf\+\_\+config\+\_\+to\+\_\+str}} (\mbox{\hyperlink{namespaceicm20948_ab21febc613fcda495faedf1fadf8da01}{gyro\+\_\+dlpf\+\_\+config}} config)
-\item 
+\begin{DoxyCompactList}\small\item\em Stringify gyro DLPF enum. \end{DoxyCompactList}\item 
 std\+::string \mbox{\hyperlink{namespaceicm20948_a4e2db8332ee3f51602d9032468ec2b34}{magn\+\_\+mode\+\_\+to\+\_\+str}} (\mbox{\hyperlink{namespaceicm20948_a52f2b76d3ebd33c9147b45c09ed3d02c}{magn\+\_\+mode}} mode)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Stringify magnetometer mode enum. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
+
+\doxysubsection{Detailed Description}
+Settings types. 
 
 \doxysubsection{Typedef Documentation}
 \Hypertarget{namespaceicm20948_a4604c05a67dc8537a1f4780eccec81b7}\label{namespaceicm20948_a4604c05a67dc8537a1f4780eccec81b7} 
@@ -102,11 +110,15 @@ std\+::string \mbox{\hyperlink{namespaceicm20948_a4e2db8332ee3f51602d9032468ec2b
 \doxysubsubsection{\texorpdfstring{accel\_settings}{accel\_settings}}
 {\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structicm20948_1_1accel__settings}{icm20948\+::accel\+\_\+settings}} \mbox{\hyperlink{structicm20948_1_1accel__settings}{icm20948\+::accel\+\_\+settings}}}
 
-\Hypertarget{namespaceicm20948_a305679615d047d722f18ccbb13b5dff8}\label{namespaceicm20948_a305679615d047d722f18ccbb13b5dff8} 
+Accelerometer runtime configuration. Grouping these parameters in one struct improves clarity and keeps the public interface cleaner than passing many separate constructor arguments. \Hypertarget{namespaceicm20948_a305679615d047d722f18ccbb13b5dff8}\label{namespaceicm20948_a305679615d047d722f18ccbb13b5dff8} 
 \index{icm20948@{icm20948}!gyro\_settings@{gyro\_settings}}
 \index{gyro\_settings@{gyro\_settings}!icm20948@{icm20948}}
 \doxysubsubsection{\texorpdfstring{gyro\_settings}{gyro\_settings}}
 {\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structicm20948_1_1gyro__settings}{icm20948\+::gyro\+\_\+settings}} \mbox{\hyperlink{structicm20948_1_1gyro__settings}{icm20948\+::gyro\+\_\+settings}}}
+
+
+
+Gyroscope runtime configuration. 
 
 \Hypertarget{namespaceicm20948_ab8718ad937a784bdb91b1f8ae23e2c6a}\label{namespaceicm20948_ab8718ad937a784bdb91b1f8ae23e2c6a} 
 \index{icm20948@{icm20948}!magn\_settings@{magn\_settings}}
@@ -114,13 +126,17 @@ std\+::string \mbox{\hyperlink{namespaceicm20948_a4e2db8332ee3f51602d9032468ec2b
 \doxysubsubsection{\texorpdfstring{magn\_settings}{magn\_settings}}
 {\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structicm20948_1_1magn__settings}{icm20948\+::magn\+\_\+settings}} \mbox{\hyperlink{structicm20948_1_1magn__settings}{icm20948\+::magn\+\_\+settings}}}
 
+
+
+Magnetometer runtime configuration. 
+
 \Hypertarget{namespaceicm20948_af58f34f9f5f028d1ebc80a98fbebf3f4}\label{namespaceicm20948_af58f34f9f5f028d1ebc80a98fbebf3f4} 
 \index{icm20948@{icm20948}!settings@{settings}}
 \index{settings@{settings}!icm20948@{icm20948}}
 \doxysubsubsection{\texorpdfstring{settings}{settings}}
 {\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structicm20948_1_1settings}{icm20948\+::settings}} \mbox{\hyperlink{structicm20948_1_1settings}{icm20948\+::settings}}}
 
-
+Aggregate device configuration. This gives client code a single configuration object, which improves readability and makes the driver easier to construct and reconfigure. 
 
 \doxysubsection{Enumeration Type Documentation}
 \Hypertarget{namespaceicm20948_a11320e5ffc65dc1997d850a2747b1857}\label{namespaceicm20948_a11320e5ffc65dc1997d850a2747b1857} 
@@ -128,6 +144,10 @@ std\+::string \mbox{\hyperlink{namespaceicm20948_a4e2db8332ee3f51602d9032468ec2b
 \index{accel\_dlpf\_config@{accel\_dlpf\_config}!icm20948@{icm20948}}
 \doxysubsubsection{\texorpdfstring{accel\_dlpf\_config}{accel\_dlpf\_config}}
 {\footnotesize\ttfamily enum \mbox{\hyperlink{namespaceicm20948_a11320e5ffc65dc1997d850a2747b1857}{icm20948\+::accel\+\_\+dlpf\+\_\+config}}}
+
+
+
+Accelerometer digital low-\/pass filter config. 
 
 \begin{DoxyEnumFields}{Enumerator}
 \raisebox{\heightof{T}}[0pt][0pt]{\index{ACCEL\_DLPF\_246HZ@{ACCEL\_DLPF\_246HZ}!icm20948@{icm20948}}\index{icm20948@{icm20948}!ACCEL\_DLPF\_246HZ@{ACCEL\_DLPF\_246HZ}}}\Hypertarget{namespaceicm20948_a11320e5ffc65dc1997d850a2747b1857ad576f91386994ed878db4b7dee32bcae}\label{namespaceicm20948_a11320e5ffc65dc1997d850a2747b1857ad576f91386994ed878db4b7dee32bcae} 
@@ -163,13 +183,17 @@ ACCEL\+\_\+\+DLPF\+\_\+473\+HZ&\\
 \hline
 
 \end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8hpp_source_l00143}{143}} of file \mbox{\hyperlink{Icm20948driver_8hpp_source}{Icm20948driver.\+hpp}}.
+
 \Hypertarget{namespaceicm20948_a270e710b092b62b0a289753093c2a673}\label{namespaceicm20948_a270e710b092b62b0a289753093c2a673} 
 \index{icm20948@{icm20948}!accel\_scale@{accel\_scale}}
 \index{accel\_scale@{accel\_scale}!icm20948@{icm20948}}
 \doxysubsubsection{\texorpdfstring{accel\_scale}{accel\_scale}}
 {\footnotesize\ttfamily enum \mbox{\hyperlink{namespaceicm20948_a270e710b092b62b0a289753093c2a673}{icm20948\+::accel\+\_\+scale}}}
 
-\begin{DoxyEnumFields}{Enumerator}
+Accelerometer full-\/scale range. Using an enum keeps configuration values readable and avoids scattering raw register meanings through application code. \begin{DoxyEnumFields}{Enumerator}
 \raisebox{\heightof{T}}[0pt][0pt]{\index{ACCEL\_2G@{ACCEL\_2G}!icm20948@{icm20948}}\index{icm20948@{icm20948}!ACCEL\_2G@{ACCEL\_2G}}}\Hypertarget{namespaceicm20948_a270e710b092b62b0a289753093c2a673a10962c0378d54e76d00fca0435c5eed5}\label{namespaceicm20948_a270e710b092b62b0a289753093c2a673a10962c0378d54e76d00fca0435c5eed5} 
 ACCEL\+\_\+2G&\\
 \hline
@@ -187,11 +211,19 @@ ACCEL\+\_\+16G&\\
 \hline
 
 \end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8hpp_source_l00135}{135}} of file \mbox{\hyperlink{Icm20948driver_8hpp_source}{Icm20948driver.\+hpp}}.
+
 \Hypertarget{namespaceicm20948_ab21febc613fcda495faedf1fadf8da01}\label{namespaceicm20948_ab21febc613fcda495faedf1fadf8da01} 
 \index{icm20948@{icm20948}!gyro\_dlpf\_config@{gyro\_dlpf\_config}}
 \index{gyro\_dlpf\_config@{gyro\_dlpf\_config}!icm20948@{icm20948}}
 \doxysubsubsection{\texorpdfstring{gyro\_dlpf\_config}{gyro\_dlpf\_config}}
 {\footnotesize\ttfamily enum \mbox{\hyperlink{namespaceicm20948_ab21febc613fcda495faedf1fadf8da01}{icm20948\+::gyro\+\_\+dlpf\+\_\+config}}}
+
+
+
+Gyroscope digital low-\/pass filter config. 
 
 \begin{DoxyEnumFields}{Enumerator}
 \raisebox{\heightof{T}}[0pt][0pt]{\index{GYRO\_DLPF\_196\_6HZ@{GYRO\_DLPF\_196\_6HZ}!icm20948@{icm20948}}\index{icm20948@{icm20948}!GYRO\_DLPF\_196\_6HZ@{GYRO\_DLPF\_196\_6HZ}}}\Hypertarget{namespaceicm20948_ab21febc613fcda495faedf1fadf8da01a3d4b8dc9e1511d7d42e031f4cc04fd44}\label{namespaceicm20948_ab21febc613fcda495faedf1fadf8da01a3d4b8dc9e1511d7d42e031f4cc04fd44} 
@@ -227,11 +259,19 @@ GYRO\+\_\+\+DLPF\+\_\+361\+\_\+4\+HZ&\\
 \hline
 
 \end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8hpp_source_l00180}{180}} of file \mbox{\hyperlink{Icm20948driver_8hpp_source}{Icm20948driver.\+hpp}}.
+
 \Hypertarget{namespaceicm20948_ab4ed127a0673926c94b3419379774950}\label{namespaceicm20948_ab4ed127a0673926c94b3419379774950} 
 \index{icm20948@{icm20948}!gyro\_scale@{gyro\_scale}}
 \index{gyro\_scale@{gyro\_scale}!icm20948@{icm20948}}
 \doxysubsubsection{\texorpdfstring{gyro\_scale}{gyro\_scale}}
 {\footnotesize\ttfamily enum \mbox{\hyperlink{namespaceicm20948_ab4ed127a0673926c94b3419379774950}{icm20948\+::gyro\+\_\+scale}}}
+
+
+
+Gyroscope full-\/scale range. 
 
 \begin{DoxyEnumFields}{Enumerator}
 \raisebox{\heightof{T}}[0pt][0pt]{\index{GYRO\_250DPS@{GYRO\_250DPS}!icm20948@{icm20948}}\index{icm20948@{icm20948}!GYRO\_250DPS@{GYRO\_250DPS}}}\Hypertarget{namespaceicm20948_ab4ed127a0673926c94b3419379774950aabd72e9c7237ef6ac1483378c37db628}\label{namespaceicm20948_ab4ed127a0673926c94b3419379774950aabd72e9c7237ef6ac1483378c37db628} 
@@ -251,11 +291,19 @@ GYRO\+\_\+2000\+DPS&\\
 \hline
 
 \end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8hpp_source_l00172}{172}} of file \mbox{\hyperlink{Icm20948driver_8hpp_source}{Icm20948driver.\+hpp}}.
+
 \Hypertarget{namespaceicm20948_a52f2b76d3ebd33c9147b45c09ed3d02c}\label{namespaceicm20948_a52f2b76d3ebd33c9147b45c09ed3d02c} 
 \index{icm20948@{icm20948}!magn\_mode@{magn\_mode}}
 \index{magn\_mode@{magn\_mode}!icm20948@{icm20948}}
 \doxysubsubsection{\texorpdfstring{magn\_mode}{magn\_mode}}
 {\footnotesize\ttfamily enum \mbox{\hyperlink{namespaceicm20948_a52f2b76d3ebd33c9147b45c09ed3d02c}{icm20948\+::magn\+\_\+mode}}}
+
+
+
+Magnetometer operating mode. 
 
 \begin{DoxyEnumFields}{Enumerator}
 \raisebox{\heightof{T}}[0pt][0pt]{\index{MAGN\_SHUTDOWN@{MAGN\_SHUTDOWN}!icm20948@{icm20948}}\index{icm20948@{icm20948}!MAGN\_SHUTDOWN@{MAGN\_SHUTDOWN}}}\Hypertarget{namespaceicm20948_a52f2b76d3ebd33c9147b45c09ed3d02caf7a1f55f16854e842b04e2d311525a7a}\label{namespaceicm20948_a52f2b76d3ebd33c9147b45c09ed3d02caf7a1f55f16854e842b04e2d311525a7a} 
@@ -289,6 +337,10 @@ MAGN\+\_\+\+SELF\+\_\+\+TEST&\\
 \end{DoxyEnumFields}
 
 
+Definition at line \mbox{\hyperlink{Icm20948driver_8hpp_source_l00207}{207}} of file \mbox{\hyperlink{Icm20948driver_8hpp_source}{Icm20948driver.\+hpp}}.
+
+
+
 \doxysubsection{Function Documentation}
 \Hypertarget{namespaceicm20948_a4a26038ff1fca8a832393f87ff9ed235}\label{namespaceicm20948_a4a26038ff1fca8a832393f87ff9ed235} 
 \index{icm20948@{icm20948}!accel\_dlpf\_config\_to\_str@{accel\_dlpf\_config\_to\_str}}
@@ -296,11 +348,27 @@ MAGN\+\_\+\+SELF\+\_\+\+TEST&\\
 \doxysubsubsection{\texorpdfstring{accel\_dlpf\_config\_to\_str()}{accel\_dlpf\_config\_to\_str()}}
 {\footnotesize\ttfamily std\+::string icm20948\+::accel\+\_\+dlpf\+\_\+config\+\_\+to\+\_\+str (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespaceicm20948_a11320e5ffc65dc1997d850a2747b1857}{accel\+\_\+dlpf\+\_\+config}}}]{config }\end{DoxyParamCaption})}
 
+
+
+Stringify accel DLPF enum. 
+
+
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8cpp_source_l00050}{50}} of file \mbox{\hyperlink{Icm20948driver_8cpp_source}{Icm20948driver.\+cpp}}.
+
 \Hypertarget{namespaceicm20948_af14221b01595095e63c2b6da92461546}\label{namespaceicm20948_af14221b01595095e63c2b6da92461546} 
 \index{icm20948@{icm20948}!accel\_scale\_factor@{accel\_scale\_factor}}
 \index{accel\_scale\_factor@{accel\_scale\_factor}!icm20948@{icm20948}}
 \doxysubsubsection{\texorpdfstring{accel\_scale\_factor()}{accel\_scale\_factor()}}
 {\footnotesize\ttfamily float icm20948\+::accel\+\_\+scale\+\_\+factor (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespaceicm20948_a270e710b092b62b0a289753093c2a673}{accel\+\_\+scale}}}]{scale }\end{DoxyParamCaption})}
+
+
+
+Convert accel range enum to raw-\/count scale factor. 
+
+Helpers for converting config enums to scale factors / readable strings. These utility functions separate presentation and conversion logic from the main driver code, improving maintainability. 
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8cpp_source_l00025}{25}} of file \mbox{\hyperlink{Icm20948driver_8cpp_source}{Icm20948driver.\+cpp}}.
 
 \Hypertarget{namespaceicm20948_a4946bab7910d89f8bfd507e564872e96}\label{namespaceicm20948_a4946bab7910d89f8bfd507e564872e96} 
 \index{icm20948@{icm20948}!accel\_scale\_to\_str@{accel\_scale\_to\_str}}
@@ -308,11 +376,23 @@ MAGN\+\_\+\+SELF\+\_\+\+TEST&\\
 \doxysubsubsection{\texorpdfstring{accel\_scale\_to\_str()}{accel\_scale\_to\_str()}}
 {\footnotesize\ttfamily std\+::string icm20948\+::accel\+\_\+scale\+\_\+to\+\_\+str (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespaceicm20948_a270e710b092b62b0a289753093c2a673}{accel\+\_\+scale}}}]{scale }\end{DoxyParamCaption})}
 
+
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8cpp_source_l00039}{39}} of file \mbox{\hyperlink{Icm20948driver_8cpp_source}{Icm20948driver.\+cpp}}.
+
 \Hypertarget{namespaceicm20948_a37feed00f9178e9a6733f1f0db39e468}\label{namespaceicm20948_a37feed00f9178e9a6733f1f0db39e468} 
 \index{icm20948@{icm20948}!gyro\_dlpf\_config\_to\_str@{gyro\_dlpf\_config\_to\_str}}
 \index{gyro\_dlpf\_config\_to\_str@{gyro\_dlpf\_config\_to\_str}!icm20948@{icm20948}}
 \doxysubsubsection{\texorpdfstring{gyro\_dlpf\_config\_to\_str()}{gyro\_dlpf\_config\_to\_str()}}
 {\footnotesize\ttfamily std\+::string icm20948\+::gyro\+\_\+dlpf\+\_\+config\+\_\+to\+\_\+str (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespaceicm20948_ab21febc613fcda495faedf1fadf8da01}{gyro\+\_\+dlpf\+\_\+config}}}]{config }\end{DoxyParamCaption})}
+
+
+
+Stringify gyro DLPF enum. 
+
+
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8cpp_source_l00089}{89}} of file \mbox{\hyperlink{Icm20948driver_8cpp_source}{Icm20948driver.\+cpp}}.
 
 \Hypertarget{namespaceicm20948_ab5aff64efdfa42700724773154b88241}\label{namespaceicm20948_ab5aff64efdfa42700724773154b88241} 
 \index{icm20948@{icm20948}!gyro\_scale\_factor@{gyro\_scale\_factor}}
@@ -320,15 +400,39 @@ MAGN\+\_\+\+SELF\+\_\+\+TEST&\\
 \doxysubsubsection{\texorpdfstring{gyro\_scale\_factor()}{gyro\_scale\_factor()}}
 {\footnotesize\ttfamily float icm20948\+::gyro\+\_\+scale\+\_\+factor (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespaceicm20948_ab4ed127a0673926c94b3419379774950}{gyro\+\_\+scale}}}]{scale }\end{DoxyParamCaption})}
 
+
+
+Convert gyro range enum to raw-\/count scale factor. 
+
+
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8cpp_source_l00065}{65}} of file \mbox{\hyperlink{Icm20948driver_8cpp_source}{Icm20948driver.\+cpp}}.
+
 \Hypertarget{namespaceicm20948_a7ceffdb0c86d118f1852b4a67c119517}\label{namespaceicm20948_a7ceffdb0c86d118f1852b4a67c119517} 
 \index{icm20948@{icm20948}!gyro\_scale\_to\_str@{gyro\_scale\_to\_str}}
 \index{gyro\_scale\_to\_str@{gyro\_scale\_to\_str}!icm20948@{icm20948}}
 \doxysubsubsection{\texorpdfstring{gyro\_scale\_to\_str()}{gyro\_scale\_to\_str()}}
 {\footnotesize\ttfamily std\+::string icm20948\+::gyro\+\_\+scale\+\_\+to\+\_\+str (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespaceicm20948_ab4ed127a0673926c94b3419379774950}{gyro\+\_\+scale}}}]{scale }\end{DoxyParamCaption})}
 
+
+
+Stringify gyro range enum. 
+
+
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8cpp_source_l00078}{78}} of file \mbox{\hyperlink{Icm20948driver_8cpp_source}{Icm20948driver.\+cpp}}.
+
 \Hypertarget{namespaceicm20948_a4e2db8332ee3f51602d9032468ec2b34}\label{namespaceicm20948_a4e2db8332ee3f51602d9032468ec2b34} 
 \index{icm20948@{icm20948}!magn\_mode\_to\_str@{magn\_mode\_to\_str}}
 \index{magn\_mode\_to\_str@{magn\_mode\_to\_str}!icm20948@{icm20948}}
 \doxysubsubsection{\texorpdfstring{magn\_mode\_to\_str()}{magn\_mode\_to\_str()}}
 {\footnotesize\ttfamily std\+::string icm20948\+::magn\+\_\+mode\+\_\+to\+\_\+str (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespaceicm20948_a52f2b76d3ebd33c9147b45c09ed3d02c}{magn\+\_\+mode}}}]{mode }\end{DoxyParamCaption})}
+
+
+
+Stringify magnetometer mode enum. 
+
+
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8cpp_source_l00104}{104}} of file \mbox{\hyperlink{Icm20948driver_8cpp_source}{Icm20948driver.\+cpp}}.
 

@@ -78,85 +78,56 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>This header declares a simple LED controller base class. This is to control the LED associated with the IMU swing position.  
- <a href="classSimpleLEDController.html#details">More...</a></p>
-
 <p><code>#include &lt;<a class="el" href="ledcallback_8hpp_source.html">ledcallback.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for SimpleLEDController:</div>
 <div class="dyncontent">
 <div class="center"><img src="classSimpleLEDController__inherit__graph.png" border="0" usemap="#aSimpleLEDController_inherit__map" alt="Inheritance graph"/></div>
+<map name="aSimpleLEDController_inherit__map" id="aSimpleLEDController_inherit__map">
+<area shape="rect" title=" " alt="" coords="5,5,161,31"/>
+<area shape="rect" href="classLEDController.html" title="Declares the LED controller class and its main functions for setting, switching, flashing,..." alt="" coords="28,79,139,104"/>
+<area shape="poly" title=" " alt="" coords="86,44,86,79,81,79,81,44"/>
+</map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:aa2f50e659018757ef091bc82fb0f8532" id="r_aa2f50e659018757ef091bc82fb0f8532"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSimpleLEDController.html#aa2f50e659018757ef091bc82fb0f8532">SimpleLEDController</a> (int pinNo, int chipNo=0)</td></tr>
-<tr class="memdesc:aa2f50e659018757ef091bc82fb0f8532"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct the controller with the GPIO pin number and optional chip number.  <br /></td></tr>
+<tr class="memdesc:aa2f50e659018757ef091bc82fb0f8532"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialises the LED controller by setting up the GPIO chip, output line, and line request for the selected pin.  <br /></td></tr>
 <tr class="separator:aa2f50e659018757ef091bc82fb0f8532"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acb0b223d05c094f61268ac6a78c09f64" id="r_acb0b223d05c094f61268ac6a78c09f64"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSimpleLEDController.html#acb0b223d05c094f61268ac6a78c09f64">~SimpleLEDController</a> ()</td></tr>
-<tr class="memdesc:acb0b223d05c094f61268ac6a78c09f64"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual destructor ensures correct cleanup through the base-class interface,.  <br /></td></tr>
+<tr class="memdesc:acb0b223d05c094f61268ac6a78c09f64"><td class="mdescLeft">&#160;</td><td class="mdescRight">Releases the GPIO resources and makes sure the LED is turned off before closing.  <br /></td></tr>
 <tr class="separator:acb0b223d05c094f61268ac6a78c09f64"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a933d9c68e4769be331bf5bd6c8064ce0" id="r_a933d9c68e4769be331bf5bd6c8064ce0"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSimpleLEDController.html#a933d9c68e4769be331bf5bd6c8064ce0">set</a> (bool on)</td></tr>
-<tr class="memdesc:a933d9c68e4769be331bf5bd6c8064ce0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Minimal public LED interface: callers express intent (on/off) while the.  <br /></td></tr>
+<tr class="memdesc:a933d9c68e4769be331bf5bd6c8064ce0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the LED output state to on or off.  <br /></td></tr>
 <tr class="separator:a933d9c68e4769be331bf5bd6c8064ce0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0cae5e551cb10191b7bcfb3eb265b18c" id="r_a0cae5e551cb10191b7bcfb3eb265b18c"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSimpleLEDController.html#a0cae5e551cb10191b7bcfb3eb265b18c">flashGreen</a> (int)</td></tr>
-<tr class="memdesc:a0cae5e551cb10191b7bcfb3eb265b18c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Optional extension point for derived classes that support timed flashing.  <br /></td></tr>
 <tr class="separator:a0cae5e551cb10191b7bcfb3eb265b18c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7bb1839d59cbb6d197b9d8b8b73653d8" id="r_a7bb1839d59cbb6d197b9d8b8b73653d8"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSimpleLEDController.html#a7bb1839d59cbb6d197b9d8b8b73653d8">service</a> ()</td></tr>
-<tr class="memdesc:a7bb1839d59cbb6d197b9d8b8b73653d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Optional extension point for derived classes that need periodic servicing,.  <br /></td></tr>
 <tr class="separator:a7bb1839d59cbb6d197b9d8b8b73653d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
 <tr class="memitem:a16a2cc8c3c64d7fa8ed5a25c1a984b8d" id="r_a16a2cc8c3c64d7fa8ed5a25c1a984b8d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSimpleLEDController.html#a16a2cc8c3c64d7fa8ed5a25c1a984b8d">SimpleLEDController</a> ()=default</td></tr>
-<tr class="memdesc:a16a2cc8c3c64d7fa8ed5a25c1a984b8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Protected default constructor allows derived classes controlled access.  <br /></td></tr>
 <tr class="separator:a16a2cc8c3c64d7fa8ed5a25c1a984b8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
 <tr class="memitem:a0f35cdd654d87ca8768f0b6578a2a666" id="r_a0f35cdd654d87ca8768f0b6578a2a666"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSimpleLEDController.html#a0f35cdd654d87ca8768f0b6578a2a666">pin</a> = -1</td></tr>
-<tr class="memdesc:a0f35cdd654d87ca8768f0b6578a2a666"><td class="mdescLeft">&#160;</td><td class="mdescRight">Internal GPIO configuration state is protected so it is available to.  <br /></td></tr>
 <tr class="separator:a0f35cdd654d87ca8768f0b6578a2a666"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a04da236eaee57bee7865528889bd9187" id="r_a04da236eaee57bee7865528889bd9187"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSimpleLEDController.html#a04da236eaee57bee7865528889bd9187">chipNumber</a> = -1</td></tr>
 <tr class="separator:a04da236eaee57bee7865528889bd9187"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae5b61a04957b520b67bf97c55d8d32e1" id="r_ae5b61a04957b520b67bf97c55d8d32e1"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; gpiod::chip &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSimpleLEDController.html#ae5b61a04957b520b67bf97c55d8d32e1">chip</a></td></tr>
-<tr class="memdesc:ae5b61a04957b520b67bf97c55d8d32e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Shared ownership is used for the GPIO chip/request resources so that the.  <br /></td></tr>
+<tr class="memdesc:ae5b61a04957b520b67bf97c55d8d32e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">resource lifetime is managed safely without manual memory handling.  <br /></td></tr>
 <tr class="separator:ae5b61a04957b520b67bf97c55d8d32e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adc10c786dc6bedf433556217f78cc384" id="r_adc10c786dc6bedf433556217f78cc384"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; gpiod::line_request &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSimpleLEDController.html#adc10c786dc6bedf433556217f78cc384">request</a></td></tr>
 <tr class="separator:adc10c786dc6bedf433556217f78cc384"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>This header declares a simple LED controller base class. This is to control the LED associated with the IMU swing position. </p>
-<p>Design intention:</p>
-<ul>
-<li>Single Responsibility:</li>
-</ul>
-<p>This class is responsible only for wrapping the basic GPIO-backed LED</p>
-<p>control mechanism and exposing a small interface for derived LED classes.</p>
-<ul>
-<li>Open/Closed:</li>
-</ul>
-<p>Derived classes can extend behaviour such as flashing or timed service</p>
-<p>updates without changing the base class interface.</p>
-<ul>
-<li>Liskov Substitution:</li>
-</ul>
-<p>Client code can use this base class interface and substitute any derived</p>
-<p>LED controller that implements the same contract.</p>
-<ul>
-<li>Interface Segregation / Dependency Inversion:</li>
-</ul>
-<p>Other parts of the system can depend on this small LED abstraction rather</p>
-<p>than on a larger concrete GPIO implementation.</p>
-<p>It provides:</p>
-<ul>
-<li>basic LED control through <a class="el" href="classSimpleLEDController.html#a933d9c68e4769be331bf5bd6c8064ce0" title="Minimal public LED interface: callers express intent (on/off) while the.">set(bool)</a>,</li>
-<li>optional flash/service hooks for derived classes,</li>
-<li>storage for the GPIO resources needed to control the LED.</li>
-</ul>
-<p><a class="el" href="classSimpleLEDController.html" title="This header declares a simple LED controller base class. This is to control the LED associated with t...">SimpleLEDController</a> acts as a narrow abstraction for LED behaviour.</p>
-<p>Higher-level logic can depend on this interface rather than depending</p>
-<p>directly on a concrete GPIO-specific LED implementation. </p>
+<div class="textblock"><p>This header declares a simple LED controller base class. This is to control the LED associated with the IMU swing position.</p>
+<p>SOLID principles: S - This class is responsible only for wrapping the basic GPIO-backed LED control mechanism and exposing a small interface for derived LED classes. O - Derived classes can extend behaviour such as flashing or timed service updates without changing the base class interface. L - Client code can use this base class interface and substitute any derived LED controller that implements the same contract. I/D - Other parts of the system can depend on this small LED abstraction rather than on a larger concrete GPIO implementation. <a class="el" href="classSimpleLEDController.html">SimpleLEDController</a> acts as a narrow abstraction for LED behaviour. Higher-level logic can depend on this interface rather than depending directly on a concrete GPIO-specific LED implementation. </p>
+
+<p class="definition">Definition at line <a class="el" href="ledcallback_8hpp_source.html#l00023">23</a> of file <a class="el" href="ledcallback_8hpp_source.html">ledcallback.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="aa2f50e659018757ef091bc82fb0f8532" name="aa2f50e659018757ef091bc82fb0f8532"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa2f50e659018757ef091bc82fb0f8532">&#9670;&#160;</a></span>SimpleLEDController() <span class="overload">[1/2]</span></h2>
@@ -184,13 +155,11 @@ Protected Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Construct the controller with the GPIO pin number and optional chip number. </p>
-<p>This file implements the simple LED controller class.</p>
-<p>The dependency on the physical GPIO configuration is contained here so that</p>
-<p>client code does not need to manage those hardware details itself.</p>
-<p>It sets up the GPIO line for LED output, releases the GPIO resources</p>
-<p>when finished, and allows the LED state to be switched on or off.</p>
 <p>Initialises the LED controller by setting up the GPIO chip, output line, and line request for the selected pin. </p>
+<p>Construct the controller with the GPIO pin number and optional chip number. The dependency on the physical GPIO configuration is contained here so that client code does not need to manage those hardware details itself.</p>
+<p>This file implements the simple LED controller class. It sets up the GPIO line for LED output, releases the GPIO resources when finished, and allows the LED state to be switched on or off. </p>
+
+<p class="definition">Definition at line <a class="el" href="ledcallback_8cpp_source.html#l00012">12</a> of file <a class="el" href="ledcallback_8cpp_source.html">ledcallback.cpp</a>.</p>
 
 </div>
 </div>
@@ -217,9 +186,10 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Virtual destructor ensures correct cleanup through the base-class interface,. </p>
-<p>Releases the GPIO resources and makes sure the LED is turned off before closing.</p>
-<p>supporting safe substitution of derived LED controller types. </p>
+<p>Releases the GPIO resources and makes sure the LED is turned off before closing. </p>
+<p>Virtual destructor ensures correct cleanup through the base-class interface, supporting safe substitution of derived LED controller types. </p>
+
+<p class="definition">Definition at line <a class="el" href="ledcallback_8cpp_source.html#l00038">38</a> of file <a class="el" href="ledcallback_8cpp_source.html">ledcallback.cpp</a>.</p>
 
 </div>
 </div>
@@ -245,9 +215,7 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>Protected default constructor allows derived classes controlled access. </p>
-<p>without exposing incomplete construction to general client code. </p>
+<p>Protected default constructor allows derived classes controlled access without exposing incomplete construction to general client code. </p>
 
 </div>
 </div>
@@ -275,12 +243,11 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>Optional extension point for derived classes that support timed flashing. </p>
-<p>Default implementation does nothing so derived classes are not forced to</p>
-<p>implement behaviour they do not need. </p>
+<p>Optional extension point for derived classes that support timed flashing. Default implementation does nothing so derived classes are not forced to implement behaviour they do not need. </p>
 
 <p>Reimplemented in <a class="el" href="classLEDController.html#a065f173ff5e3eb0bc8b1a522eb6e41ff">LEDController</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="ledcallback_8hpp_source.html#l00042">42</a> of file <a class="el" href="ledcallback_8hpp_source.html">ledcallback.hpp</a>.</p>
 
 </div>
 </div>
@@ -306,11 +273,11 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>Optional extension point for derived classes that need periodic servicing,. </p>
-<p>such as time-based LED state updates. </p>
+<p>Optional extension point for derived classes that need periodic servicing, such as time-based LED state updates. </p>
 
 <p>Reimplemented in <a class="el" href="classLEDController.html#aab7eded82824ab4e20b0bbb62bdb79fe">LEDController</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="ledcallback_8hpp_source.html#l00046">46</a> of file <a class="el" href="ledcallback_8hpp_source.html">ledcallback.hpp</a>.</p>
 
 </div>
 </div>
@@ -338,11 +305,12 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Minimal public LED interface: callers express intent (on/off) while the. </p>
-<p>Sets the LED output state to on or off.</p>
-<p>hardware-specific details remain encapsulated inside the implementation. </p>
+<p>Sets the LED output state to on or off. </p>
+<p>Minimal public LED interface: callers express intent (on/off) while the hardware-specific details remain encapsulated inside the implementation. </p>
 
 <p>Reimplemented in <a class="el" href="classLEDController.html#a2fbb1a288f1683547250df3b78d8764a">LEDController</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="ledcallback_8cpp_source.html#l00055">55</a> of file <a class="el" href="ledcallback_8cpp_source.html">ledcallback.cpp</a>.</p>
 
 </div>
 </div>
@@ -367,8 +335,10 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Shared ownership is used for the GPIO chip/request resources so that the. </p>
 <p>resource lifetime is managed safely without manual memory handling. </p>
+<p>Shared ownership is used for the GPIO chip/request resources so that the </p>
+
+<p class="definition">Definition at line <a class="el" href="ledcallback_8hpp_source.html#l00060">60</a> of file <a class="el" href="ledcallback_8hpp_source.html">ledcallback.hpp</a>.</p>
 
 </div>
 </div>
@@ -392,6 +362,8 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="ledcallback_8hpp_source.html#l00056">56</a> of file <a class="el" href="ledcallback_8hpp_source.html">ledcallback.hpp</a>.</p>
+
 </div>
 </div>
 <a id="a0f35cdd654d87ca8768f0b6578a2a666" name="a0f35cdd654d87ca8768f0b6578a2a666"></a>
@@ -413,9 +385,9 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Internal GPIO configuration state is protected so it is available to derived implementations, while still hidden from external users. </p>
 
-<p>Internal GPIO configuration state is protected so it is available to. </p>
-<p>derived implementations, while still hidden from external users. </p>
+<p class="definition">Definition at line <a class="el" href="ledcallback_8hpp_source.html#l00055">55</a> of file <a class="el" href="ledcallback_8hpp_source.html">ledcallback.hpp</a>.</p>
 
 </div>
 </div>
@@ -439,11 +411,13 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="ledcallback_8hpp_source.html#l00061">61</a> of file <a class="el" href="ledcallback_8hpp_source.html">ledcallback.hpp</a>.</p>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/libs/LEDs/Include/<a class="el" href="ledcallback_8hpp_source.html">ledcallback.hpp</a></li>
-<li>src/libs/LEDs/<a class="el" href="ledcallback_8cpp.html">ledcallback.cpp</a></li>
+<li>src/libs/LEDs/<a class="el" href="ledcallback_8cpp_source.html">ledcallback.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

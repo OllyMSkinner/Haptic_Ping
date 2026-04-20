@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['debug_0',['DEBUG',['../ads1115rpi_8h.html#ad72dbcf6d0153db1b8d8a58001feed83',1,'ads1115rpi.h']]],
-  ['deg2rad_1',['DEG2RAD',['../Icm20948driver_8cpp.html#af7e8592d0a634bd3642e9fd508ea8022',1,'Icm20948driver.cpp']]]
+  ['ak09916_5fcntl2_5faddr_0',['AK09916_CNTL2_ADDR',['../Icm20948driver_8hpp.html#ac7156dd79bb7e3c0845cf807cc3a15f9',1,'Icm20948driver.hpp']]],
+  ['architecture_5fid_1',['ARCHITECTURE_ID',['../CMakeCXXCompilerId_8cpp.html#aba35d0d200deaeb06aee95ca297acb28',1,'CMakeCXXCompilerId.cpp']]]
 ];

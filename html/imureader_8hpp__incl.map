@@ -1,0 +1,25 @@
+<map id="src/libs/IMU/Include/imureader.hpp" name="src/libs/IMU/Include/imureader.hpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="231,5,380,45"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,93,72,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="242,48,86,93,85,88,241,43"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="97,93,183,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="267,48,178,90,175,85,265,43"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="208,93,272,119"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="292,47,260,84,256,81,287,44"/>
+<area shape="rect" id="Node000005" href="$Icm20948driver_8hpp.html" title=" " alt="" coords="297,93,447,119"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="323,44,355,81,351,84,319,47"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="471,93,542,119"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="355,43,465,86,463,91,353,48"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="567,93,628,119"/>
+<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="376,43,554,90,553,95,375,48"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="140,167,207,192"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="341,121,220,164,218,159,339,116"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="231,167,289,192"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="355,121,292,161,289,157,353,116"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="313,167,431,192"/>
+<area shape="poly" id="edge7_Node000005_Node000008" title=" " alt="" coords="375,119,375,153,369,153,369,119"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="455,167,545,192"/>
+<area shape="poly" id="edge8_Node000005_Node000009" title=" " alt="" coords="394,116,468,157,466,162,391,121"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="569,167,701,192"/>
+<area shape="poly" id="edge9_Node000005_Node000010" title=" " alt="" coords="415,116,580,160,578,166,414,121"/>
+</map>

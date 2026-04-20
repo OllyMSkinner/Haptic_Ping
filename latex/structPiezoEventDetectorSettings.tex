@@ -2,6 +2,11 @@
 \hypertarget{structPiezoEventDetectorSettings}{}\label{structPiezoEventDetectorSettings}\index{PiezoEventDetectorSettings@{PiezoEventDetectorSettings}}
 
 
+Stores the threshold and debug settings for the detector.  
+
+
+
+
 {\ttfamily \#include $<$event\+\_\+detector.\+h$>$}
 
 \doxysubsubsection*{Public Attributes}
@@ -15,6 +20,17 @@ bool \mbox{\hyperlink{structPiezoEventDetectorSettings_af68019440086962c16fe6a98
 \end{DoxyCompactItemize}
 
 
+\doxysubsection{Detailed Description}
+Stores the threshold and debug settings for the detector. 
+
+This header defines the piezo event detector and its settings. The detector is responsible for interpreting sensor samples from the ADC, tracking press/release state, and exposing higher-\/level event behaviour through a callback while also providing direct LED feedback.
+
+SOLID principle\+: S -\/ The main responsibility of this class is to interpret piezo samples using filtering and threshold logic. O -\/ New behaviours can be attached through the callback without changing the detector logic itself. L/D -\/ The detector depends on a simpler LED abstraction and a callback rather than on broader application logic, helping to reduce coupling. 
+
+Definition at line \mbox{\hyperlink{event__detector_8h_source_l00022}{22}} of file \mbox{\hyperlink{event__detector_8h_source}{event\+\_\+detector.\+h}}.
+
+
+
 \doxysubsection{Member Data Documentation}
 \Hypertarget{structPiezoEventDetectorSettings_af68019440086962c16fe6a98aacaf63d}\label{structPiezoEventDetectorSettings_af68019440086962c16fe6a98aacaf63d} 
 \index{PiezoEventDetectorSettings@{PiezoEventDetectorSettings}!enableDebugPrints@{enableDebugPrints}}
@@ -22,17 +38,29 @@ bool \mbox{\hyperlink{structPiezoEventDetectorSettings_af68019440086962c16fe6a98
 \doxysubsubsection{\texorpdfstring{enableDebugPrints}{enableDebugPrints}}
 {\footnotesize\ttfamily bool Piezo\+Event\+Detector\+Settings\+::enable\+Debug\+Prints = false}
 
+
+
+Definition at line \mbox{\hyperlink{event__detector_8h_source_l00026}{26}} of file \mbox{\hyperlink{event__detector_8h_source}{event\+\_\+detector.\+h}}.
+
 \Hypertarget{structPiezoEventDetectorSettings_a5b116e2e26b447e80bd09fdda677c1ee}\label{structPiezoEventDetectorSettings_a5b116e2e26b447e80bd09fdda677c1ee} 
 \index{PiezoEventDetectorSettings@{PiezoEventDetectorSettings}!pressThreshold@{pressThreshold}}
 \index{pressThreshold@{pressThreshold}!PiezoEventDetectorSettings@{PiezoEventDetectorSettings}}
 \doxysubsubsection{\texorpdfstring{pressThreshold}{pressThreshold}}
 {\footnotesize\ttfamily float Piezo\+Event\+Detector\+Settings\+::press\+Threshold = 0.\+95f}
 
+
+
+Definition at line \mbox{\hyperlink{event__detector_8h_source_l00024}{24}} of file \mbox{\hyperlink{event__detector_8h_source}{event\+\_\+detector.\+h}}.
+
 \Hypertarget{structPiezoEventDetectorSettings_a79895b6a55d8aa00c66fefe1c777ceb5}\label{structPiezoEventDetectorSettings_a79895b6a55d8aa00c66fefe1c777ceb5} 
 \index{PiezoEventDetectorSettings@{PiezoEventDetectorSettings}!releaseThreshold@{releaseThreshold}}
 \index{releaseThreshold@{releaseThreshold}!PiezoEventDetectorSettings@{PiezoEventDetectorSettings}}
 \doxysubsubsection{\texorpdfstring{releaseThreshold}{releaseThreshold}}
 {\footnotesize\ttfamily float Piezo\+Event\+Detector\+Settings\+::release\+Threshold = 0.\+70f}
+
+
+
+Definition at line \mbox{\hyperlink{event__detector_8h_source_l00025}{25}} of file \mbox{\hyperlink{event__detector_8h_source}{event\+\_\+detector.\+h}}.
 
 
 

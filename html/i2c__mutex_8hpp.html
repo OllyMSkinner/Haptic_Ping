@@ -83,11 +83,23 @@ $(function() {
 Include dependency graph for i2c_mutex.hpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="i2c__mutex_8hpp__incl.png" border="0" usemap="#asrc_2libs_2IMU_2Include_2i2c__mutex_8hpp" alt=""/></div>
+<map name="asrc_2libs_2IMU_2Include_2i2c__mutex_8hpp" id="asrc_2libs_2IMU_2Include_2i2c__mutex_8hpp">
+<area shape="rect" title=" " alt="" coords="5,5,155,45"/>
+<area shape="rect" title=" " alt="" coords="48,93,112,119"/>
+<area shape="poly" title=" " alt="" coords="83,46,83,79,77,79,77,46"/>
+</map>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="i2c__mutex_8hpp__dep__incl.png" border="0" usemap="#asrc_2libs_2IMU_2Include_2i2c__mutex_8hppdep" alt=""/></div>
+<map name="asrc_2libs_2IMU_2Include_2i2c__mutex_8hppdep" id="asrc_2libs_2IMU_2Include_2i2c__mutex_8hppdep">
+<area shape="rect" title=" " alt="" coords="141,5,291,45"/>
+<area shape="rect" href="imureader_8cpp.html" title=" " alt="" coords="5,93,200,119"/>
+<area shape="poly" title=" " alt="" coords="179,55,121,95,118,91,176,51"/>
+<area shape="rect" href="ads1115rpi_8cpp.html" title=" " alt="" coords="224,93,435,119"/>
+<area shape="poly" title=" " alt="" coords="256,51,314,91,311,95,253,55"/>
+</map>
 </div>
 </div>
 <p><a href="i2c__mutex_8hpp_source.html">Go to the source code of this file.</a></p>
@@ -120,6 +132,11 @@ Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Shared mutex protecting access to the /dev/i2c-1 bus.</p>
+<p>SOLID principles: S - This helper provides one shared synchronisation point for I2C bus access. D - Centralising the bus lock in one place avoids duplicating global mutex definitions across multiple modules and makes cross-thread I2C ownership easier to reason about. Shared mutex for the I2C-1 bus. <a class="el" href="classIMUReader.html">IMUReader</a> (ICM20948) and <a class="el" href="classADS1115rpi.html" title="Declares the ADS1115 Raspberry Pi interface, including callback support and the main functions for st...">ADS1115rpi</a> run on separate threads and both access /dev/i2c-1. Without this lock, their ioctl(I2C_SLAVE) and read/write sequences can interleave, causing transactions to target the wrong device and triggering the ADC retry failures seen in logs. </p>
+<p>Function-local static storage gives one shared mutex instance for the whole process while keeping the global namespace clean.</p>
+
+<p class="definition">Definition at line <a class="el" href="i2c__mutex_8hpp_source.html#l00018">18</a> of file <a class="el" href="i2c__mutex_8hpp_source.html">i2c_mutex.hpp</a>.</p>
 
 </div>
 </div>

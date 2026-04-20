@@ -1,0 +1,15 @@
+<map id="src/libs/IMU_math/Include/SwingProcessor.hpp" name="src/libs/IMU_math/Include/SwingProcessor.hpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="157,5,347,45"/>
+<area shape="rect" id="Node000002" href="$SwingCalibrator_8hpp.html" title=" " alt="" coords="5,93,157,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="212,48,120,90,118,85,210,43"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="151,167,238,192"/>
+<area shape="poly" id="edge7_Node000001_Node000003" title=" " alt="" coords="244,47,222,94,204,154,198,152,218,92,240,44"/>
+<area shape="rect" id="Node000004" href="$positiondetector_8hpp.html" title=" " alt="" coords="232,93,387,119"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="268,44,295,80,291,84,264,47"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="411,93,477,119"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="299,43,404,86,402,91,297,48"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="101,116,166,157,163,162,98,121"/>
+<area shape="poly" id="edge5_Node000004_Node000003" title=" " alt="" coords="292,121,226,162,224,157,290,116"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="278,167,341,192"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="312,119,312,153,307,153,307,119"/>
+</map>

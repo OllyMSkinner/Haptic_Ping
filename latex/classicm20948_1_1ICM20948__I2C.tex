@@ -6,12 +6,19 @@
 
 
 
-Collaboration diagram for icm20948\+::ICM20948\+\_\+\+I2C\+:
-% FIG 0
+Collaboration diagram for icm20948\+::ICM20948\+\_\+\+I2C\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classicm20948_1_1ICM20948__I2C__coll__graph}
+\end{center}
+\end{figure}
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a33ea17e32b496ab9358dcef69d8c3b5c}{ICM20948\+\_\+\+I2C}} (unsigned i2c\+\_\+bus, unsigned i2c\+\_\+address=\mbox{\hyperlink{Icm20948driver_8hpp_ad2332082f2390f86f6d6ee09acf1e259}{ICM20948\+\_\+\+I2\+C\+\_\+\+ADDR}}, \mbox{\hyperlink{structicm20948_1_1settings}{icm20948\+::settings}} \mbox{\hyperlink{structicm20948_1_1settings}{settings}}=\mbox{\hyperlink{structicm20948_1_1settings}{icm20948\+::settings}}())
+\begin{DoxyCompactList}\small\item\em Open the I2C device and initialise cached driver state. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a213bb7cdf5c8e3894c730ddc1cd971bc}{\texorpdfstring{$\sim$}{\string~}\+ICM20948\+\_\+\+I2C}} ()
 \item 
 bool \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a0ed48078a426d7d43d93aa8d0bd72b92}{init}} ()
 \item 
@@ -100,12 +107,43 @@ float \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_aa8e9f9d91270dd262a36beb50
 \end{DoxyCompactItemize}
 
 
+\doxysubsection{Detailed Description}
+\doxylink{classicm20948_1_1ICM20948__I2C}{ICM20948\+\_\+\+I2C} encapsulates the device driver for the IMU over Linux I2C.
+
+SOLID principles\+: S -\/ This class focuses on IMU communication, configuration, and conversion of raw register data into decoded sensor values. O -\/ Client code interacts through configuration objects and high-\/level methods, allowing internal implementation details to evolve without forcing changes on users of the class. 
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8hpp_source_l00274}{274}} of file \mbox{\hyperlink{Icm20948driver_8hpp_source}{Icm20948driver.\+hpp}}.
+
+
+
 \doxysubsection{Constructor \& Destructor Documentation}
 \Hypertarget{classicm20948_1_1ICM20948__I2C_a33ea17e32b496ab9358dcef69d8c3b5c}\label{classicm20948_1_1ICM20948__I2C_a33ea17e32b496ab9358dcef69d8c3b5c} 
 \index{icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}!ICM20948\_I2C@{ICM20948\_I2C}}
 \index{ICM20948\_I2C@{ICM20948\_I2C}!icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}}
 \doxysubsubsection{\texorpdfstring{ICM20948\_I2C()}{ICM20948\_I2C()}}
 {\footnotesize\ttfamily icm20948\+::\+ICM20948\+\_\+\+I2\+C\+::\+ICM20948\+\_\+\+I2C (\begin{DoxyParamCaption}\item[{unsigned}]{i2c\+\_\+bus,  }\item[{unsigned}]{i2c\+\_\+address = {\ttfamily \mbox{\hyperlink{Icm20948driver_8hpp_ad2332082f2390f86f6d6ee09acf1e259}{ICM20948\+\_\+\+I2\+C\+\_\+\+ADDR}}},  }\item[{\mbox{\hyperlink{structicm20948_1_1settings}{icm20948\+::settings}}}]{settings = {\ttfamily \mbox{\hyperlink{structicm20948_1_1settings}{icm20948\+::settings}}()} }\end{DoxyParamCaption})}
+
+
+
+Open the I2C device and initialise cached driver state. 
+
+Set a kernel-\/side I2C timeout.
+
+Bind this fd to the IMU slave address.
+
+Zero cached sensor outputs.
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8cpp_source_l00163}{163}} of file \mbox{\hyperlink{Icm20948driver_8cpp_source}{Icm20948driver.\+cpp}}.
+
+\Hypertarget{classicm20948_1_1ICM20948__I2C_a213bb7cdf5c8e3894c730ddc1cd971bc}\label{classicm20948_1_1ICM20948__I2C_a213bb7cdf5c8e3894c730ddc1cd971bc} 
+\index{icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}!````~ICM20948\_I2C@{\texorpdfstring{$\sim$}{\string~}ICM20948\_I2C}}
+\index{````~ICM20948\_I2C@{\texorpdfstring{$\sim$}{\string~}ICM20948\_I2C}!icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}ICM20948\_I2C()}{\string~ICM20948\_I2C()}}
+{\footnotesize\ttfamily icm20948\+::\+ICM20948\+\_\+\+I2\+C\+::\texorpdfstring{$\sim$}{\string~}\+ICM20948\+\_\+\+I2C (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8cpp_source_l00200}{200}} of file \mbox{\hyperlink{Icm20948driver_8cpp_source}{Icm20948driver.\+cpp}}.
 
 
 
@@ -116,11 +154,19 @@ float \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_aa8e9f9d91270dd262a36beb50
 \doxysubsubsection{\texorpdfstring{\_chip\_i2c\_master\_reset()}{\_chip\_i2c\_master\_reset()}}
 {\footnotesize\ttfamily bool icm20948\+::\+ICM20948\+\_\+\+I2\+C\+::\+\_\+chip\+\_\+i2c\+\_\+master\+\_\+reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
+Reset the chip\textquotesingle{}s internal I2C master controller.
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8cpp_source_l00495}{495}} of file \mbox{\hyperlink{Icm20948driver_8cpp_source}{Icm20948driver.\+cpp}}.
+
 \Hypertarget{classicm20948_1_1ICM20948__I2C_ab02bdb1e71acf25a84317238d5f4f43e}\label{classicm20948_1_1ICM20948__I2C_ab02bdb1e71acf25a84317238d5f4f43e} 
 \index{icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}!\_enable\_data\_ready\_interrupt@{\_enable\_data\_ready\_interrupt}}
 \index{\_enable\_data\_ready\_interrupt@{\_enable\_data\_ready\_interrupt}!icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}}
 \doxysubsubsection{\texorpdfstring{\_enable\_data\_ready\_interrupt()}{\_enable\_data\_ready\_interrupt()}}
 {\footnotesize\ttfamily bool icm20948\+::\+ICM20948\+\_\+\+I2\+C\+::\+\_\+enable\+\_\+data\+\_\+ready\+\_\+interrupt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Device setup helpers. These methods isolate configuration subtasks, which keeps the public interface small and the implementation more maintainable. Enable raw-\/data-\/ready interrupt.
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8cpp_source_l00276}{276}} of file \mbox{\hyperlink{Icm20948driver_8cpp_source}{Icm20948driver.\+cpp}}.
 
 \Hypertarget{classicm20948_1_1ICM20948__I2C_a46c75dfb7570048a3c2c84a0fb68a910}\label{classicm20948_1_1ICM20948__I2C_a46c75dfb7570048a3c2c84a0fb68a910} 
 \index{icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}!\_magnetometer\_configured@{\_magnetometer\_configured}}
@@ -128,11 +174,19 @@ float \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_aa8e9f9d91270dd262a36beb50
 \doxysubsubsection{\texorpdfstring{\_magnetometer\_configured()}{\_magnetometer\_configured()}}
 {\footnotesize\ttfamily bool icm20948\+::\+ICM20948\+\_\+\+I2\+C\+::\+\_\+magnetometer\+\_\+configured (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
+Probe the magnetometer and reset the internal master on failure.
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8cpp_source_l00467}{467}} of file \mbox{\hyperlink{Icm20948driver_8cpp_source}{Icm20948driver.\+cpp}}.
+
 \Hypertarget{classicm20948_1_1ICM20948__I2C_a8cd73ca45a243b28564e3ae216f68b4e}\label{classicm20948_1_1ICM20948__I2C_a8cd73ca45a243b28564e3ae216f68b4e} 
 \index{icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}!\_magnetometer\_enable@{\_magnetometer\_enable}}
 \index{\_magnetometer\_enable@{\_magnetometer\_enable}!icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}}
 \doxysubsubsection{\texorpdfstring{\_magnetometer\_enable()}{\_magnetometer\_enable()}}
 {\footnotesize\ttfamily bool icm20948\+::\+ICM20948\+\_\+\+I2\+C\+::\+\_\+magnetometer\+\_\+enable (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Enable the chip\textquotesingle{}s internal I2C master path for magnetometer access.
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8cpp_source_l00439}{439}} of file \mbox{\hyperlink{Icm20948driver_8cpp_source}{Icm20948driver.\+cpp}}.
 
 \Hypertarget{classicm20948_1_1ICM20948__I2C_a0c7041d0f4e0f1212c303b10995ae650}\label{classicm20948_1_1ICM20948__I2C_a0c7041d0f4e0f1212c303b10995ae650} 
 \index{icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}!\_magnetometer\_init@{\_magnetometer\_init}}
@@ -140,11 +194,19 @@ float \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_aa8e9f9d91270dd262a36beb50
 \doxysubsubsection{\texorpdfstring{\_magnetometer\_init()}{\_magnetometer\_init()}}
 {\footnotesize\ttfamily bool icm20948\+::\+ICM20948\+\_\+\+I2\+C\+::\+\_\+magnetometer\+\_\+init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
+Magnetometer setup via the ICM-\/20948 internal I2C master. This complexity is hidden from callers so they can treat the driver as a single IMU abstraction. Bring up the internal AK09916 through the chip\textquotesingle{}s I2C master.
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8cpp_source_l00424}{424}} of file \mbox{\hyperlink{Icm20948driver_8cpp_source}{Icm20948driver.\+cpp}}.
+
 \Hypertarget{classicm20948_1_1ICM20948__I2C_af001bedd491588bd626e1ebe91dd1d5b}\label{classicm20948_1_1ICM20948__I2C_af001bedd491588bd626e1ebe91dd1d5b} 
 \index{icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}!\_magnetometer\_set\_mode@{\_magnetometer\_set\_mode}}
 \index{\_magnetometer\_set\_mode@{\_magnetometer\_set\_mode}!icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}}
 \doxysubsubsection{\texorpdfstring{\_magnetometer\_set\_mode()}{\_magnetometer\_set\_mode()}}
 {\footnotesize\ttfamily bool icm20948\+::\+ICM20948\+\_\+\+I2\+C\+::\+\_\+magnetometer\+\_\+set\+\_\+mode (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Switch through shutdown before applying target mode.
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8cpp_source_l00457}{457}} of file \mbox{\hyperlink{Icm20948driver_8cpp_source}{Icm20948driver.\+cpp}}.
 
 \Hypertarget{classicm20948_1_1ICM20948__I2C_a4b6b016fe3c36d6a9af7d1c735ae210a}\label{classicm20948_1_1ICM20948__I2C_a4b6b016fe3c36d6a9af7d1c735ae210a} 
 \index{icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}!\_magnetometer\_set\_readout@{\_magnetometer\_set\_readout}}
@@ -152,11 +214,19 @@ float \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_aa8e9f9d91270dd262a36beb50
 \doxysubsubsection{\texorpdfstring{\_magnetometer\_set\_readout()}{\_magnetometer\_set\_readout()}}
 {\footnotesize\ttfamily bool icm20948\+::\+ICM20948\+\_\+\+I2\+C\+::\+\_\+magnetometer\+\_\+set\+\_\+readout (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
+Configure SLV0 to continuously fetch magnetometer data into EXT\+\_\+\+SLV\+\_\+\+SENS\+\_\+\+DATA.
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8cpp_source_l00480}{480}} of file \mbox{\hyperlink{Icm20948driver_8cpp_source}{Icm20948driver.\+cpp}}.
+
 \Hypertarget{classicm20948_1_1ICM20948__I2C_a5f5f612687be39380ae64bf4b24299d7}\label{classicm20948_1_1ICM20948__I2C_a5f5f612687be39380ae64bf4b24299d7} 
 \index{icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}!\_read\_bit@{\_read\_bit}}
 \index{\_read\_bit@{\_read\_bit}!icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}}
 \doxysubsubsection{\texorpdfstring{\_read\_bit()}{\_read\_bit()}}
 {\footnotesize\ttfamily bool icm20948\+::\+ICM20948\+\_\+\+I2\+C\+::\+\_\+read\+\_\+bit (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{bank,  }\item[{uint8\+\_\+t}]{reg,  }\item[{uint8\+\_\+t}]{bit\+\_\+pos,  }\item[{bool \&}]{bit }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Extract one bit from a register.
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8cpp_source_l00550}{550}} of file \mbox{\hyperlink{Icm20948driver_8cpp_source}{Icm20948driver.\+cpp}}.
 
 \Hypertarget{classicm20948_1_1ICM20948__I2C_a3fee40f81a7fa03179ecd97545cdc410}\label{classicm20948_1_1ICM20948__I2C_a3fee40f81a7fa03179ecd97545cdc410} 
 \index{icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}!\_read\_block\_bytes@{\_read\_block\_bytes}}
@@ -164,11 +234,19 @@ float \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_aa8e9f9d91270dd262a36beb50
 \doxysubsubsection{\texorpdfstring{\_read\_block\_bytes()}{\_read\_block\_bytes()}}
 {\footnotesize\ttfamily bool icm20948\+::\+ICM20948\+\_\+\+I2\+C\+::\+\_\+read\+\_\+block\+\_\+bytes (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{bank,  }\item[{uint8\+\_\+t}]{start\+\_\+reg,  }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{bytes,  }\item[{int}]{length }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
+Sequential block read starting at start\+\_\+reg.
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8cpp_source_l00560}{560}} of file \mbox{\hyperlink{Icm20948driver_8cpp_source}{Icm20948driver.\+cpp}}.
+
 \Hypertarget{classicm20948_1_1ICM20948__I2C_abf0348876f7415429adff95f7e4b6d58}\label{classicm20948_1_1ICM20948__I2C_abf0348876f7415429adff95f7e4b6d58} 
 \index{icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}!\_read\_byte@{\_read\_byte}}
 \index{\_read\_byte@{\_read\_byte}!icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}}
 \doxysubsubsection{\texorpdfstring{\_read\_byte()}{\_read\_byte()}}
 {\footnotesize\ttfamily bool icm20948\+::\+ICM20948\+\_\+\+I2\+C\+::\+\_\+read\+\_\+byte (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{bank,  }\item[{uint8\+\_\+t}]{reg,  }\item[{uint8\+\_\+t \&}]{byte }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8cpp_source_l00511}{511}} of file \mbox{\hyperlink{Icm20948driver_8cpp_source}{Icm20948driver.\+cpp}}.
 
 \Hypertarget{classicm20948_1_1ICM20948__I2C_a7f2f8dbfed2281c99909e65edc4d25b6}\label{classicm20948_1_1ICM20948__I2C_a7f2f8dbfed2281c99909e65edc4d25b6} 
 \index{icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}!\_read\_mag\_byte@{\_read\_mag\_byte}}
@@ -176,11 +254,21 @@ float \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_aa8e9f9d91270dd262a36beb50
 \doxysubsubsection{\texorpdfstring{\_read\_mag\_byte()}{\_read\_mag\_byte()}}
 {\footnotesize\ttfamily bool icm20948\+::\+ICM20948\+\_\+\+I2\+C\+::\+\_\+read\+\_\+mag\+\_\+byte (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{mag\+\_\+reg,  }\item[{uint8\+\_\+t \&}]{byte }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
+Route a read from the external magnetometer via SLV4.
+
+Poll for completion/\+ACK.
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8cpp_source_l00612}{612}} of file \mbox{\hyperlink{Icm20948driver_8cpp_source}{Icm20948driver.\+cpp}}.
+
 \Hypertarget{classicm20948_1_1ICM20948__I2C_a31e5480f8ed438bd646dff26de1f722a}\label{classicm20948_1_1ICM20948__I2C_a31e5480f8ed438bd646dff26de1f722a} 
 \index{icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}!\_set\_accel\_range\_dlpf@{\_set\_accel\_range\_dlpf}}
 \index{\_set\_accel\_range\_dlpf@{\_set\_accel\_range\_dlpf}!icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}}
 \doxysubsubsection{\texorpdfstring{\_set\_accel\_range\_dlpf()}{\_set\_accel\_range\_dlpf()}}
 {\footnotesize\ttfamily bool icm20948\+::\+ICM20948\+\_\+\+I2\+C\+::\+\_\+set\+\_\+accel\+\_\+range\+\_\+dlpf (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Pack accel DLPF enable, range, and cutoff into CONFIG\+\_\+1.
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8cpp_source_l00389}{389}} of file \mbox{\hyperlink{Icm20948driver_8cpp_source}{Icm20948driver.\+cpp}}.
 
 \Hypertarget{classicm20948_1_1ICM20948__I2C_ab4ffa6090fa0629f6ab6e2d5ab8b27e9}\label{classicm20948_1_1ICM20948__I2C_ab4ffa6090fa0629f6ab6e2d5ab8b27e9} 
 \index{icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}!\_set\_accel\_sample\_rate\_div@{\_set\_accel\_sample\_rate\_div}}
@@ -188,11 +276,19 @@ float \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_aa8e9f9d91270dd262a36beb50
 \doxysubsubsection{\texorpdfstring{\_set\_accel\_sample\_rate\_div()}{\_set\_accel\_sample\_rate\_div()}}
 {\footnotesize\ttfamily bool icm20948\+::\+ICM20948\+\_\+\+I2\+C\+::\+\_\+set\+\_\+accel\+\_\+sample\+\_\+rate\+\_\+div (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
+Sample-\/rate divider is split across MSB/\+LSB registers.
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8cpp_source_l00376}{376}} of file \mbox{\hyperlink{Icm20948driver_8cpp_source}{Icm20948driver.\+cpp}}.
+
 \Hypertarget{classicm20948_1_1ICM20948__I2C_a952b59898c4fa68df28e2036ff2ecf8e}\label{classicm20948_1_1ICM20948__I2C_a952b59898c4fa68df28e2036ff2ecf8e} 
 \index{icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}!\_set\_bank@{\_set\_bank}}
 \index{\_set\_bank@{\_set\_bank}!icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}}
 \doxysubsubsection{\texorpdfstring{\_set\_bank()}{\_set\_bank()}}
 {\footnotesize\ttfamily bool icm20948\+::\+ICM20948\+\_\+\+I2\+C\+::\+\_\+set\+\_\+bank (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{bank }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Skip the write if the requested bank is already selected.
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8cpp_source_l00351}{351}} of file \mbox{\hyperlink{Icm20948driver_8cpp_source}{Icm20948driver.\+cpp}}.
 
 \Hypertarget{classicm20948_1_1ICM20948__I2C_aa2de7fd07ec6e0035d6a29aefafba72b}\label{classicm20948_1_1ICM20948__I2C_aa2de7fd07ec6e0035d6a29aefafba72b} 
 \index{icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}!\_set\_gyro\_range\_dlpf@{\_set\_gyro\_range\_dlpf}}
@@ -200,11 +296,19 @@ float \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_aa8e9f9d91270dd262a36beb50
 \doxysubsubsection{\texorpdfstring{\_set\_gyro\_range\_dlpf()}{\_set\_gyro\_range\_dlpf()}}
 {\footnotesize\ttfamily bool icm20948\+::\+ICM20948\+\_\+\+I2\+C\+::\+\_\+set\+\_\+gyro\+\_\+range\+\_\+dlpf (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
+Pack gyro DLPF enable, range, and cutoff into CONFIG\+\_\+1.
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8cpp_source_l00410}{410}} of file \mbox{\hyperlink{Icm20948driver_8cpp_source}{Icm20948driver.\+cpp}}.
+
 \Hypertarget{classicm20948_1_1ICM20948__I2C_aa32a44c04e8306ccd4a6a7a946d4fb9e}\label{classicm20948_1_1ICM20948__I2C_aa32a44c04e8306ccd4a6a7a946d4fb9e} 
 \index{icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}!\_set\_gyro\_sample\_rate\_div@{\_set\_gyro\_sample\_rate\_div}}
 \index{\_set\_gyro\_sample\_rate\_div@{\_set\_gyro\_sample\_rate\_div}!icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}}
 \doxysubsubsection{\texorpdfstring{\_set\_gyro\_sample\_rate\_div()}{\_set\_gyro\_sample\_rate\_div()}}
 {\footnotesize\ttfamily bool icm20948\+::\+ICM20948\+\_\+\+I2\+C\+::\+\_\+set\+\_\+gyro\+\_\+sample\+\_\+rate\+\_\+div (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8cpp_source_l00403}{403}} of file \mbox{\hyperlink{Icm20948driver_8cpp_source}{Icm20948driver.\+cpp}}.
 
 \Hypertarget{classicm20948_1_1ICM20948__I2C_a360065071f02d1488b4a4d919c788103}\label{classicm20948_1_1ICM20948__I2C_a360065071f02d1488b4a4d919c788103} 
 \index{icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}!\_write\_bit@{\_write\_bit}}
@@ -212,11 +316,19 @@ float \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_aa8e9f9d91270dd262a36beb50
 \doxysubsubsection{\texorpdfstring{\_write\_bit()}{\_write\_bit()}}
 {\footnotesize\ttfamily bool icm20948\+::\+ICM20948\+\_\+\+I2\+C\+::\+\_\+write\+\_\+bit (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{bank,  }\item[{uint8\+\_\+t}]{reg,  }\item[{uint8\+\_\+t}]{bit\+\_\+pos,  }\item[{bool}]{bit }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
+Read-\/modify-\/write a single register bit.
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8cpp_source_l00535}{535}} of file \mbox{\hyperlink{Icm20948driver_8cpp_source}{Icm20948driver.\+cpp}}.
+
 \Hypertarget{classicm20948_1_1ICM20948__I2C_a7f56513a51193f95f255d6dcd737cd7a}\label{classicm20948_1_1ICM20948__I2C_a7f56513a51193f95f255d6dcd737cd7a} 
 \index{icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}!\_write\_byte@{\_write\_byte}}
 \index{\_write\_byte@{\_write\_byte}!icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}}
 \doxysubsubsection{\texorpdfstring{\_write\_byte()}{\_write\_byte()}}
 {\footnotesize\ttfamily bool icm20948\+::\+ICM20948\+\_\+\+I2\+C\+::\+\_\+write\+\_\+byte (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{bank,  }\item[{uint8\+\_\+t}]{reg,  }\item[{uint8\+\_\+t}]{byte }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Low-\/level register access helpers. These centralise raw byte/bit operations so direct register handling is not scattered across the driver implementation. Select bank, then write one register byte.
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8cpp_source_l00502}{502}} of file \mbox{\hyperlink{Icm20948driver_8cpp_source}{Icm20948driver.\+cpp}}.
 
 \Hypertarget{classicm20948_1_1ICM20948__I2C_a6d1bce3f2771e690e495769cd6d3c663}\label{classicm20948_1_1ICM20948__I2C_a6d1bce3f2771e690e495769cd6d3c663} 
 \index{icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}!\_write\_mag\_byte@{\_write\_mag\_byte}}
@@ -224,11 +336,21 @@ float \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_aa8e9f9d91270dd262a36beb50
 \doxysubsubsection{\texorpdfstring{\_write\_mag\_byte()}{\_write\_mag\_byte()}}
 {\footnotesize\ttfamily bool icm20948\+::\+ICM20948\+\_\+\+I2\+C\+::\+\_\+write\+\_\+mag\+\_\+byte (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{mag\+\_\+reg,  }\item[{uint8\+\_\+t}]{byte }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
+Route a write to the external magnetometer via SLV4.
+
+Poll for completion/\+ACK.
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8cpp_source_l00586}{586}} of file \mbox{\hyperlink{Icm20948driver_8cpp_source}{Icm20948driver.\+cpp}}.
+
 \Hypertarget{classicm20948_1_1ICM20948__I2C_a16f60f1416acbe9d214578467df09d35}\label{classicm20948_1_1ICM20948__I2C_a16f60f1416acbe9d214578467df09d35} 
 \index{icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}!check\_DRDY\_INT@{check\_DRDY\_INT}}
 \index{check\_DRDY\_INT@{check\_DRDY\_INT}!icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}}
 \doxysubsubsection{\texorpdfstring{check\_DRDY\_INT()}{check\_DRDY\_INT()}}
 {\footnotesize\ttfamily bool icm20948\+::\+ICM20948\+\_\+\+I2\+C\+::check\+\_\+\+DRDY\+\_\+\+INT (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8cpp_source_l00640}{640}} of file \mbox{\hyperlink{Icm20948driver_8cpp_source}{Icm20948driver.\+cpp}}.
 
 \Hypertarget{classicm20948_1_1ICM20948__I2C_a0ed48078a426d7d43d93aa8d0bd72b92}\label{classicm20948_1_1ICM20948__I2C_a0ed48078a426d7d43d93aa8d0bd72b92} 
 \index{icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}!init@{init}}
@@ -236,11 +358,21 @@ float \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_aa8e9f9d91270dd262a36beb50
 \doxysubsubsection{\texorpdfstring{init()}{init()}}
 {\footnotesize\ttfamily bool icm20948\+::\+ICM20948\+\_\+\+I2\+C\+::init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+Public API for device lifecycle and sensor access. Higher-\/level code interacts through these methods rather than directly manipulating device registers. Basic bring-\/up\+: identify device, reset, wake, configure, enable DRDY.
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8cpp_source_l00208}{208}} of file \mbox{\hyperlink{Icm20948driver_8cpp_source}{Icm20948driver.\+cpp}}.
+
 \Hypertarget{classicm20948_1_1ICM20948__I2C_a02e447e84df4ef2512568139ea28ad07}\label{classicm20948_1_1ICM20948__I2C_a02e447e84df4ef2512568139ea28ad07} 
 \index{icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}!read\_accel\_gyro@{read\_accel\_gyro}}
 \index{read\_accel\_gyro@{read\_accel\_gyro}!icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}}
 \doxysubsubsection{\texorpdfstring{read\_accel\_gyro()}{read\_accel\_gyro()}}
 {\footnotesize\ttfamily bool icm20948\+::\+ICM20948\+\_\+\+I2\+C\+::read\+\_\+accel\+\_\+gyro (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Read accel and gyro output block in one transaction.
+
+Convert raw counts to SI units.
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8cpp_source_l00283}{283}} of file \mbox{\hyperlink{Icm20948driver_8cpp_source}{Icm20948driver.\+cpp}}.
 
 \Hypertarget{classicm20948_1_1ICM20948__I2C_a3114b3923967a235e6011ec8cad01406}\label{classicm20948_1_1ICM20948__I2C_a3114b3923967a235e6011ec8cad01406} 
 \index{icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}!read\_magn@{read\_magn}}
@@ -248,11 +380,23 @@ float \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_aa8e9f9d91270dd262a36beb50
 \doxysubsubsection{\texorpdfstring{read\_magn()}{read\_magn()}}
 {\footnotesize\ttfamily bool icm20948\+::\+ICM20948\+\_\+\+I2\+C\+::read\+\_\+magn (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+Read magnetometer data staged through the IMU external-\/sensor window.
+
+Convert raw magnetometer counts using fixed scale factor.
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8cpp_source_l00311}{311}} of file \mbox{\hyperlink{Icm20948driver_8cpp_source}{Icm20948driver.\+cpp}}.
+
 \Hypertarget{classicm20948_1_1ICM20948__I2C_a09867a9d1a1103e357407a022627d682}\label{classicm20948_1_1ICM20948__I2C_a09867a9d1a1103e357407a022627d682} 
 \index{icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}!read\_sample@{read\_sample}}
 \index{read\_sample@{read\_sample}!icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}}
 \doxysubsubsection{\texorpdfstring{read\_sample()}{read\_sample()}}
 {\footnotesize\ttfamily bool icm20948\+::\+ICM20948\+\_\+\+I2\+C\+::read\+\_\+sample (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structicm20948_1_1IMUSample}{IMUSample}} \&}]{sample }\end{DoxyParamCaption})}
+
+Accel/gyro are required for a valid sample.
+
+Magnetometer intentionally disabled for stability testing. if (!read\+\_\+magn()) magn\mbox{[}0\mbox{]} = magn\mbox{[}1\mbox{]} = magn\mbox{[}2\mbox{]} = 0.\+0f;
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8cpp_source_l00332}{332}} of file \mbox{\hyperlink{Icm20948driver_8cpp_source}{Icm20948driver.\+cpp}}.
 
 \Hypertarget{classicm20948_1_1ICM20948__I2C_a9730db34affbddeb85298eaeb9322a6f}\label{classicm20948_1_1ICM20948__I2C_a9730db34affbddeb85298eaeb9322a6f} 
 \index{icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}!reset@{reset}}
@@ -260,17 +404,31 @@ float \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_aa8e9f9d91270dd262a36beb50
 \doxysubsubsection{\texorpdfstring{reset()}{reset()}}
 {\footnotesize\ttfamily bool icm20948\+::\+ICM20948\+\_\+\+I2\+C\+::reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+Trigger device reset via PWR\+\_\+\+MGMT\+\_\+1.
+
+Poll until the reset bit clears.
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8cpp_source_l00235}{235}} of file \mbox{\hyperlink{Icm20948driver_8cpp_source}{Icm20948driver.\+cpp}}.
+
 \Hypertarget{classicm20948_1_1ICM20948__I2C_aac5f1f6373e9e965332b49f0bb2b3382}\label{classicm20948_1_1ICM20948__I2C_aac5f1f6373e9e965332b49f0bb2b3382} 
 \index{icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}!set\_settings@{set\_settings}}
 \index{set\_settings@{set\_settings}!icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}}
 \doxysubsubsection{\texorpdfstring{set\_settings()}{set\_settings()}}
 {\footnotesize\ttfamily bool icm20948\+::\+ICM20948\+\_\+\+I2\+C\+::set\+\_\+settings (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+Push cached accel/gyro settings to the device.
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8cpp_source_l00265}{265}} of file \mbox{\hyperlink{Icm20948driver_8cpp_source}{Icm20948driver.\+cpp}}.
+
 \Hypertarget{classicm20948_1_1ICM20948__I2C_a81ba652c5ec59a3e63d9883f8bc45e42}\label{classicm20948_1_1ICM20948__I2C_a81ba652c5ec59a3e63d9883f8bc45e42} 
 \index{icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}!wake@{wake}}
 \index{wake@{wake}!icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}}
 \doxysubsubsection{\texorpdfstring{wake()}{wake()}}
 {\footnotesize\ttfamily bool icm20948\+::\+ICM20948\+\_\+\+I2\+C\+::wake (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Clear sleep bit.
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8cpp_source_l00256}{256}} of file \mbox{\hyperlink{Icm20948driver_8cpp_source}{Icm20948driver.\+cpp}}.
 
 
 
@@ -281,11 +439,19 @@ float \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_aa8e9f9d91270dd262a36beb50
 \doxysubsubsection{\texorpdfstring{\_accel\_scale\_factor}{\_accel\_scale\_factor}}
 {\footnotesize\ttfamily float icm20948\+::\+ICM20948\+\_\+\+I2\+C\+::\+\_\+accel\+\_\+scale\+\_\+factor\hspace{0.3cm}{\ttfamily [private]}}
 
+Cached conversion factors from raw counts to physical units. Keeping these values private prevents duplication of conversion logic. 
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8hpp_source_l00319}{319}} of file \mbox{\hyperlink{Icm20948driver_8hpp_source}{Icm20948driver.\+hpp}}.
+
 \Hypertarget{classicm20948_1_1ICM20948__I2C_acface40282fbe4f88960faa79c646c99}\label{classicm20948_1_1ICM20948__I2C_acface40282fbe4f88960faa79c646c99} 
 \index{icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}!\_current\_bank@{\_current\_bank}}
 \index{\_current\_bank@{\_current\_bank}!icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}}
 \doxysubsubsection{\texorpdfstring{\_current\_bank}{\_current\_bank}}
 {\footnotesize\ttfamily uint8\+\_\+t icm20948\+::\+ICM20948\+\_\+\+I2\+C\+::\+\_\+current\+\_\+bank\hspace{0.3cm}{\ttfamily [private]}}
+
+Cached register bank to avoid redundant bank switches. This is a performance and consistency optimisation internal to the driver. 
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8hpp_source_l00315}{315}} of file \mbox{\hyperlink{Icm20948driver_8hpp_source}{Icm20948driver.\+hpp}}.
 
 \Hypertarget{classicm20948_1_1ICM20948__I2C_aff753b4360cea1f9ead1db118d812110}\label{classicm20948_1_1ICM20948__I2C_aff753b4360cea1f9ead1db118d812110} 
 \index{icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}!\_gyro\_scale\_factor@{\_gyro\_scale\_factor}}
@@ -293,11 +459,19 @@ float \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_aa8e9f9d91270dd262a36beb50
 \doxysubsubsection{\texorpdfstring{\_gyro\_scale\_factor}{\_gyro\_scale\_factor}}
 {\footnotesize\ttfamily float icm20948\+::\+ICM20948\+\_\+\+I2\+C\+::\+\_\+gyro\+\_\+scale\+\_\+factor\hspace{0.3cm}{\ttfamily [private]}}
 
+
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8hpp_source_l00320}{320}} of file \mbox{\hyperlink{Icm20948driver_8hpp_source}{Icm20948driver.\+hpp}}.
+
 \Hypertarget{classicm20948_1_1ICM20948__I2C_ab045aab8c66f970c7ece2c2fd1bfb1d4}\label{classicm20948_1_1ICM20948__I2C_ab045aab8c66f970c7ece2c2fd1bfb1d4} 
 \index{icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}!\_i2c\_address@{\_i2c\_address}}
 \index{\_i2c\_address@{\_i2c\_address}!icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}}
 \doxysubsubsection{\texorpdfstring{\_i2c\_address}{\_i2c\_address}}
 {\footnotesize\ttfamily unsigned icm20948\+::\+ICM20948\+\_\+\+I2\+C\+::\+\_\+i2c\+\_\+address\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8hpp_source_l00311}{311}} of file \mbox{\hyperlink{Icm20948driver_8hpp_source}{Icm20948driver.\+hpp}}.
 
 \Hypertarget{classicm20948_1_1ICM20948__I2C_a1943684286702592911d9f5941f805fa}\label{classicm20948_1_1ICM20948__I2C_a1943684286702592911d9f5941f805fa} 
 \index{icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}!\_i2c\_bus@{\_i2c\_bus}}
@@ -305,11 +479,19 @@ float \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_aa8e9f9d91270dd262a36beb50
 \doxysubsubsection{\texorpdfstring{\_i2c\_bus}{\_i2c\_bus}}
 {\footnotesize\ttfamily unsigned icm20948\+::\+ICM20948\+\_\+\+I2\+C\+::\+\_\+i2c\+\_\+bus\hspace{0.3cm}{\ttfamily [private]}}
 
+
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8hpp_source_l00310}{310}} of file \mbox{\hyperlink{Icm20948driver_8hpp_source}{Icm20948driver.\+hpp}}.
+
 \Hypertarget{classicm20948_1_1ICM20948__I2C_aa7658b444c44a4a1599f2c00a84446d5}\label{classicm20948_1_1ICM20948__I2C_aa7658b444c44a4a1599f2c00a84446d5} 
 \index{icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}!\_i2c\_fd@{\_i2c\_fd}}
 \index{\_i2c\_fd@{\_i2c\_fd}!icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}}
 \doxysubsubsection{\texorpdfstring{\_i2c\_fd}{\_i2c\_fd}}
 {\footnotesize\ttfamily int icm20948\+::\+ICM20948\+\_\+\+I2\+C\+::\+\_\+i2c\+\_\+fd\hspace{0.3cm}{\ttfamily [private]}}
+
+Linux I2C file descriptor and device identity. These implementation details are kept private so the transport layer remains hidden from the rest of the application. 
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8hpp_source_l00309}{309}} of file \mbox{\hyperlink{Icm20948driver_8hpp_source}{Icm20948driver.\+hpp}}.
 
 \Hypertarget{classicm20948_1_1ICM20948__I2C_aa8e9f9d91270dd262a36beb5057a1c82}\label{classicm20948_1_1ICM20948__I2C_aa8e9f9d91270dd262a36beb5057a1c82} 
 \index{icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}!\_magn\_scale\_factor@{\_magn\_scale\_factor}}
@@ -317,11 +499,19 @@ float \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_aa8e9f9d91270dd262a36beb50
 \doxysubsubsection{\texorpdfstring{\_magn\_scale\_factor}{\_magn\_scale\_factor}}
 {\footnotesize\ttfamily float icm20948\+::\+ICM20948\+\_\+\+I2\+C\+::\+\_\+magn\+\_\+scale\+\_\+factor\hspace{0.3cm}{\ttfamily [private]}}
 
+
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8hpp_source_l00321}{321}} of file \mbox{\hyperlink{Icm20948driver_8hpp_source}{Icm20948driver.\+hpp}}.
+
 \Hypertarget{classicm20948_1_1ICM20948__I2C_af6e029b6c6a94da5496894c50daedb66}\label{classicm20948_1_1ICM20948__I2C_af6e029b6c6a94da5496894c50daedb66} 
 \index{icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}!accel@{accel}}
 \index{accel@{accel}!icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}}
 \doxysubsubsection{\texorpdfstring{accel}{accel}}
 {\footnotesize\ttfamily float icm20948\+::\+ICM20948\+\_\+\+I2\+C\+::accel\mbox{[}3\mbox{]}}
+
+Most recent decoded sensor values. These cached arrays provide direct access to the latest successful reading while keeping raw register handling internal to the class. 
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8hpp_source_l00280}{280}} of file \mbox{\hyperlink{Icm20948driver_8hpp_source}{Icm20948driver.\+hpp}}.
 
 \Hypertarget{classicm20948_1_1ICM20948__I2C_af72f1758c258827bbe3debca41260d9f}\label{classicm20948_1_1ICM20948__I2C_af72f1758c258827bbe3debca41260d9f} 
 \index{icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}!gyro@{gyro}}
@@ -329,17 +519,29 @@ float \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_aa8e9f9d91270dd262a36beb50
 \doxysubsubsection{\texorpdfstring{gyro}{gyro}}
 {\footnotesize\ttfamily float icm20948\+::\+ICM20948\+\_\+\+I2\+C\+::gyro\mbox{[}3\mbox{]}}
 
+
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8hpp_source_l00281}{281}} of file \mbox{\hyperlink{Icm20948driver_8hpp_source}{Icm20948driver.\+hpp}}.
+
 \Hypertarget{classicm20948_1_1ICM20948__I2C_addde200e41d649c72927102e67790105}\label{classicm20948_1_1ICM20948__I2C_addde200e41d649c72927102e67790105} 
 \index{icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}!magn@{magn}}
 \index{magn@{magn}!icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}}
 \doxysubsubsection{\texorpdfstring{magn}{magn}}
 {\footnotesize\ttfamily float icm20948\+::\+ICM20948\+\_\+\+I2\+C\+::magn\mbox{[}3\mbox{]}}
 
+
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8hpp_source_l00282}{282}} of file \mbox{\hyperlink{Icm20948driver_8hpp_source}{Icm20948driver.\+hpp}}.
+
 \Hypertarget{classicm20948_1_1ICM20948__I2C_a3eec16c908bc6a52a8d190cfdd66bf55}\label{classicm20948_1_1ICM20948__I2C_a3eec16c908bc6a52a8d190cfdd66bf55} 
 \index{icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}!settings@{settings}}
 \index{settings@{settings}!icm20948::ICM20948\_I2C@{icm20948::ICM20948\_I2C}}
 \doxysubsubsection{\texorpdfstring{settings}{settings}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structicm20948_1_1settings}{icm20948\+::settings}} icm20948\+::\+ICM20948\+\_\+\+I2\+C\+::settings}
+
+Active driver settings. Storing settings here keeps configuration tied to the device instance. 
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8hpp_source_l00286}{286}} of file \mbox{\hyperlink{Icm20948driver_8hpp_source}{Icm20948driver.\+hpp}}.
 
 
 

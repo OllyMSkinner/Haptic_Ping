@@ -22,7 +22,7 @@
 - I2C bus: 1
 - I2C address: 0x48
 - Sampling rate: 128Hz
-- Gain/full-scale range: ±2.048V
+- Gain/full-scale range: +/-2.048V
 
 
 ## Piezo Event Detector Settings

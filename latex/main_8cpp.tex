@@ -6,45 +6,46 @@
 {\ttfamily \#include "{}Swing\+Detector.\+hpp"{}}\newline
 {\ttfamily \#include "{}swingfeedback.\+h"{}}\newline
 {\ttfamily \#include "{}rpi\+\_\+pwm.\+h"{}}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
 {\ttfamily \#include $<$cstdlib$>$}\newline
 {\ttfamily \#include $<$csignal$>$}\newline
+{\ttfamily \#include $<$sys/signalfd.\+h$>$}\newline
 {\ttfamily \#include $<$unistd.\+h$>$}\newline
-{\ttfamily \#include $<$atomic$>$}\newline
-{\ttfamily \#include $<$thread$>$}\newline
-{\ttfamily \#include $<$chrono$>$}\newline
 {\ttfamily \#include "{}ads1115rpi.\+h"{}}\newline
 {\ttfamily \#include "{}event\+\_\+detector.\+h"{}}\newline
 {\ttfamily \#include "{}led\+\_\+controller.\+h"{}}\newline
 {\ttfamily \#include "{}ledcallback.\+hpp"{}}\newline
 Include dependency graph for main.\+cpp\+:
-% FIG 0
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{main_8cpp__incl}
+\end{center}
+\end{figure}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
-\item 
-static std\+::atomic$<$ bool $>$ \mbox{\hyperlink{main_8cpp_af7c41795cade08431f93078ad7c2663e}{running}} (true)
-\item 
-void \mbox{\hyperlink{main_8cpp_a1d48dc1714c6c9e9397fe1efd278638d}{handle\+\_\+signal}} (int)
 \item 
 int \mbox{\hyperlink{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Function Documentation}
-\Hypertarget{main_8cpp_a1d48dc1714c6c9e9397fe1efd278638d}\label{main_8cpp_a1d48dc1714c6c9e9397fe1efd278638d} 
-\index{main.cpp@{main.cpp}!handle\_signal@{handle\_signal}}
-\index{handle\_signal@{handle\_signal}!main.cpp@{main.cpp}}
-\doxysubsubsection{\texorpdfstring{handle\_signal()}{handle\_signal()}}
-{\footnotesize\ttfamily void handle\+\_\+signal (\begin{DoxyParamCaption}\item[{int}]{ }\end{DoxyParamCaption})}
-
 \Hypertarget{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4} 
 \index{main.cpp@{main.cpp}!main@{main}}
 \index{main@{main}!main.cpp@{main.cpp}}
 \doxysubsubsection{\texorpdfstring{main()}{main()}}
 {\footnotesize\ttfamily int main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-\Hypertarget{main_8cpp_af7c41795cade08431f93078ad7c2663e}\label{main_8cpp_af7c41795cade08431f93078ad7c2663e} 
-\index{main.cpp@{main.cpp}!running@{running}}
-\index{running@{running}!main.cpp@{main.cpp}}
-\doxysubsubsection{\texorpdfstring{running()}{running()}}
-{\footnotesize\ttfamily static std\+::atomic$<$ bool $>$ running (\begin{DoxyParamCaption}\item[{true}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+Latency test for IMU
+
+change this to test for latency
+
+12-\/bit divider
+
+8-\/bit divider
+
+Latency test for Piezo
+
+Definition at line \mbox{\hyperlink{main_8cpp_source_l00019}{19}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
 

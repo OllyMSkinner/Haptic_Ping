@@ -1,93 +1,298 @@
 \chapter{README}
 \hypertarget{md_README}{}\label{md_README}\index{README@{README}}
-\texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} HEAD \hypertarget{md_README_autotoc_md0}{}\doxysection{\texorpdfstring{RTES\+\_\+\+Table\+\_\+\+Tennis}{RTES\_Table\_Tennis}}\label{md_README_autotoc_md0}
-Table tennis racket performance analyser for Real Time Embedded Systems
-
-Hello squirrel friends
-
-Description of AMU coompondnt code\+:\hypertarget{md_README_autotoc_md1}{}\doxysection{\texorpdfstring{Description of Piezo and ADS1115 code\+:}{Description of Piezo and ADS1115 code:}}\label{md_README_autotoc_md1}
-\hypertarget{md_README_autotoc_md2}{}\doxysection{\texorpdfstring{Haptic\+Ping}{HapticPing}}\label{md_README_autotoc_md2}
-Haptic Ping combines table tennis shadow practice with haptic feedback to simulate a training expeerinece that mroe closely resembles real play. Shadow practice is a widely used technique where table tennis players practice their strokes and form, but in the absence of a coach it can be difficult for players to know whether their position and movements are correct. Therefore, our prototype addresses this limitation by providing real-\/time haptic feedback, allowing players to practice effectively without the need for a coach or any additional table tennis equipment. ~\newline
- Haptic Ping uses an inertial measurement unit (IMU), eccentric rotating mass (ERM) and a piezoelectric sensor to monitor motion, detect impact, and deliver responsive feedback to the user. ~\newline
 
 
-A project from ENG 5220 Real-\/\+Time Embedded Programming ~\newline
- University of Glasgow, 2026\hypertarget{md_README_autotoc_md3}{}\doxysubsection{\texorpdfstring{Description}{Description}}\label{md_README_autotoc_md3}
-An in-\/depth paragraph about your project and overview of use.\hypertarget{md_README_autotoc_md4}{}\doxysubsection{\texorpdfstring{Getting Started}{Getting Started}}\label{md_README_autotoc_md4}
-The following components were used to build the Haptic Ping prototype\+: ~\newline
- \href{https://uk.rs-online.com/web/p/raspberry-pi/0219255/}{\texttt{ Raspberry Pi}} (1x) ~\newline
- \href{https://uk.rs-online.com/web/p/sensor-development-tools/2836590}{\texttt{ IMU}} (1x) ~\newline
- \href{https://thepihut.com/products/vibrating-mini-motor-disc}{\texttt{ ERM}} (1x) ~\newline
- \href{https://thepihut.com/products/adafruit-drv2605l-haptic-motor-controller?srsltid=AfmBOor9hL8GBIkbBknmkgmD5isfLFcB0laND6bchnF5WGKlw_JkHqm7}{\texttt{ ADS 1115}} (1x) ~\newline
- \href{https://uk.rs-online.com/web/p/piezo-buzzers/8377840?cm_mmc=UK-PLA-DS3A-_-google-_-CSS_UK_EN_PMAX_RS+PRO-_--_-8377840&matchtype=&&gclsrc=aw.ds&gad_source=1&gad_campaignid=20690300296&gbraid=0AAAAADkeWNM9CLJAnbNVKQPojF0eghgD3&gclid=Cj0KCQjwy_fOBhC6ARIsAHKFB79oq-QJd7hoZ1sjtoHpvGlvcI1X8whJQtJW4mBjeF-B9KxrcIIMLTAaAoeEEALw_wcB}{\texttt{ Piezoelectric sensor}} (1x) ~\newline
-\hypertarget{md_README_autotoc_md5}{}\doxysubsubsection{\texorpdfstring{Dependencies}{Dependencies}}\label{md_README_autotoc_md5}
+ \hypertarget{md_README_autotoc_md26}{}\doxysection{\texorpdfstring{Haptic Ping}{Haptic Ping}}\label{md_README_autotoc_md26}
+Haptic Ping combines table tennis shadow practice with haptic feedback to simulate a training experience that more closely resembles real play. Shadow practice is a widely used technique where table tennis players practice their strokes and form, but in the absence of a coach it can be difficult for players to know whether their position and movements are correct.
+
+Our prototype addresses this limitation by providing real-\/time haptic feedback, allowing players to practice effectively without the need for a coach or any additional table tennis equipment.
+
+Haptic Ping integrates an inertial measurement unit (IMU) and a piezo sensor mounted on the bat to monitor both orientation and physical interaction. The piezo sensor detects correct grip and handling, which triggers an LED to confirm proper finger placement. Once the correct starting position is established, a second LED illuminates to indicate the system is ready for swing analysis. The IMU then tracks the bat\textquotesingle{}s motion to analyse swing patterns in real time. When a correct swing is detected, the system provides immediate haptic feedback through an eccentric rotating motor (ERM).
+
+A project from ENG 5220 Real-\/\+Time Embedded Programming University of Glasgow, 2026
+
+\DoxyHorRuler{0}
+\hypertarget{md_README_autotoc_md28}{}\doxysubsection{\texorpdfstring{Hardware Components}{Hardware Components}}\label{md_README_autotoc_md28}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{4}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Component   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Quantity   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Link   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Cost per unit    }\\\cline{1-4}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Component   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Quantity   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Link   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Cost per unit    }\\\cline{1-4}
+\endhead
+Raspberry Pi 5   &1×   &\href{https://uk.rs-online.com/web/p/raspberry-pi/0219255/}{\texttt{ RS Online}}   &\texorpdfstring{$\sim$}{\string~}£161.53    \\\cline{1-4}
+ICM-\/20948 IMU   &1×   &\href{https://uk.rs-online.com/web/p/sensor-development-tools/2836590}{\texttt{ RS Online}}   &\texorpdfstring{$\sim$}{\string~}£24.28    \\\cline{1-4}
+ERM Vibration Motor   &1×   &\href{https://thepihut.com/products/vibrating-mini-motor-disc}{\texttt{ The Pi Hut}}   &\texorpdfstring{$\sim$}{\string~}£1.70    \\\cline{1-4}
+ADS1115 ADC   &1×   &\href{https://thepihut.com/products/adafruit-ads1115-16-bit-adc}{\texttt{ The Pi Hut}}   &\texorpdfstring{$\sim$}{\string~}£14.40    \\\cline{1-4}
+Piezoelectric Sensor   &1×   &\href{https://uk.rs-online.com/web/p/piezo-buzzers/8377840}{\texttt{ RS Online}}   &\texorpdfstring{$\sim$}{\string~}£2.50    \\\cline{1-4}
+LEDs   &2×   &—   &\texorpdfstring{$\sim$}{\string~}£0.45    \\\cline{1-4}
+Table Tennis Bat   &1×   &—   &\texorpdfstring{$\sim$}{\string~}£70    \\\cline{1-4}
+AA Batteries   &3×   &—   &\texorpdfstring{$\sim$}{\string~}£0.61   \\\cline{1-4}
+\end{longtabu}
+
+
+\DoxyHorRuler{0}
+\hypertarget{md_README_autotoc_md30}{}\doxysubsection{\texorpdfstring{GPIO Pin Assignments}{GPIO Pin Assignments}}\label{md_README_autotoc_md30}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Signal   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ GPIO Pin    }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Signal   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ GPIO Pin    }\\\cline{1-2}
+\endhead
+PWM (ERM motor)   &GPIO 18    \\\cline{1-2}
+IMU LED   &GPIO 22    \\\cline{1-2}
+Piezo LED   &GPIO 25    \\\cline{1-2}
+ADS1115 DRDY interrupt   &GPIO 26    \\\cline{1-2}
+IMU data-\/ready interrupt   &GPIO 27    \\\cline{1-2}
+I2C SDA   &GPIO 2    \\\cline{1-2}
+I2C SCL   &GPIO 3   \\\cline{1-2}
+\end{longtabu}
+
+
+IMU I2C address\+: {\ttfamily 0x69}, ADS1115 I2C address\+: {\ttfamily 0x48}, I2C bus\+: {\ttfamily 1}
+
+\DoxyHorRuler{0}
+\hypertarget{md_README_autotoc_md32}{}\doxysubsection{\texorpdfstring{Wiring Diagram}{Wiring Diagram}}\label{md_README_autotoc_md32}
+
+
+\DoxyHorRuler{0}
+\hypertarget{md_README_autotoc_md34}{}\doxysubsection{\texorpdfstring{Hardware Assembly}{Hardware Assembly}}\label{md_README_autotoc_md34}
 
 \begin{DoxyItemize}
-\item Describe any prerequisites, libraries, OS version, etc., needed before installing program.
-\item ex. Windows 10
-\end{DoxyItemize}\hypertarget{md_README_autotoc_md6}{}\doxysubsubsection{\texorpdfstring{Installing}{Installing}}\label{md_README_autotoc_md6}
-The wiring guide for this project is illustrated below\+: ~\newline
+\item The IMU was mounted at the distal end of the bat using velcro (see below).
+\item The matrix board shown in the Wiring Diagram was affixed to one face of the bat using velcro.
+\item The piezolelectric sensor was attached to the bat at the area that ensures appropriate index finger placement for the user and therefore grip.
+\item Extended wiring (\texorpdfstring{$\sim$}{\string~}1 metre for ease of use) was created by splicing female-\/to-\/female jumper cables with standard wire via soldering. Heat-\/shrink tubing was applied over each joint for insulation and mechanical reinforcement.
+\item The LED outputs were soldered to matrix boards with wire lengths tailored to suit the user’s preferred placement and positioned on a secondary station in front of the user to ensure clear visibility.
+\item The battery holder wire lenght was also extended to \texorpdfstring{$\sim$}{\string~}1 metre for ease of use. 
+\end{DoxyItemize}\hypertarget{md_README_autotoc_md35}{}\doxysubsection{\texorpdfstring{$<$img src="{}images/\+IMU.\+jpeg"{} alt="{}\+IMU LOCATION"{}/$>$}{<img src="images/IMU.jpeg" alt="IMU LOCATION"/>}}\label{md_README_autotoc_md35}
+\hypertarget{md_README_autotoc_md36}{}\doxysubsection{\texorpdfstring{How It Works}{How It Works}}\label{md_README_autotoc_md36}
+The system uses a gate logic sequence to ensure feedback is only triggered for a valid swing\+:
+
+
+\begin{DoxyEnumerate}
+\item {\bfseries{Grip detection}} — The piezo sensor on the bat is sampled at 128 Hz by the ADS1115 ADC. An EMA filter smooths the signal and a threshold of 0.\+95V triggers a press event, illuminating the piezo LED.
+\item {\bfseries{Position confirmation}} — The IMU data-\/ready interrupt (GPIO 27) wakes the reader thread for each sample. The position detector checks the acceleration vector against a reference orientation using a dot product. After 10 consecutive samples that meet the predetermined threshold for correct starting position, the system is considered to be in the correct starting position and the IMU LED illuminates.
+\item {\bfseries{Swing analysis}} — Once both grip and position are confirmed, the swing processor categorises the swing vibration magnitude through the magnitude of the IMU acceleration. Gravity bias is removed via a rolling calibration window. The net linear acceleration magnitude is classified into duty cycle levels\+:
+\begin{DoxyItemize}
+\item {\ttfamily \texorpdfstring{$>$}{>}= 25 m/s²} → Highest Duty Cycle (long vibration burst)
+\item {\ttfamily \texorpdfstring{$>$}{>}= 15 m/s²} → Medium Duty Cycle (double burst)
+\item {\ttfamily \texorpdfstring{$>$}{>}= 10 m/s²} → Low Duty Cycle (short burst)
+\end{DoxyItemize}
+\item {\bfseries{Haptic feedback}} — The ERM motor is driven by software PWM on GPIO 18 ramping up to max 80\% duty cycle. The feedback pattern plays and the system resets for the next swing.
+\end{DoxyEnumerate}
+
+\DoxyHorRuler{0}
+\hypertarget{md_README_autotoc_md38}{}\doxysubsection{\texorpdfstring{Realtime Design}{Realtime Design}}\label{md_README_autotoc_md38}
+The code is entirely event-\/driven with no polling loops\+:
+
+
+\begin{DoxyItemize}
+\item {\bfseries{IMU sampling}} — driven by the data-\/ready GPIO interrupt via {\ttfamily epoll} + {\ttfamily eventfd}. The reader thread blocks on {\ttfamily epoll\+\_\+wait} and wakes only when new data is available.
+\item {\bfseries{ADS1115 sampling}} — driven by the ALERT/\+RDY GPIO edge event via {\ttfamily libgpiodcxx}. The worker thread blocks on {\ttfamily wait\+\_\+edge\+\_\+events}.
+\item {\bfseries{PWM generation}} — runs in a dedicated thread using {\ttfamily timerfd} for precise on/off timing at 30 Hz. No {\ttfamily usleep} or busy-\/wait.
+\item {\bfseries{Haptic patterns}} — played in a detached worker thread using {\ttfamily timerfd}-\/based waits for each ramp step.
+\item {\bfseries{Shutdown}} — handled via {\ttfamily signalfd} blocking on {\ttfamily SIGINT}/{\ttfamily SIGHUP} rather than signal handlers.
+\end{DoxyItemize}\hypertarget{md_README_autotoc_md39}{}\doxysubsection{\texorpdfstring{Maximum Latency}{Maximum Latency}}\label{md_README_autotoc_md39}
+\hypertarget{md_README_autotoc_md40}{}\doxysubsubsection{\texorpdfstring{IMU -\/ ICM20948}{IMU - ICM20948}}\label{md_README_autotoc_md40}
+The sampling frequency is calculated by
+\begin{DoxyItemize}
+\item {\bfseries{Accelerometer}}\+: 1.\+125 k\+Hz/(1+ sample\+\_\+rate\+\_\+div)
+\item {\bfseries{Gyrometer}}\+: 1.\+1k\+Hz/(1+ sample\+\_\+rate\+\_\+div) The maximum frequency for accelerometer is therefore 1.\+125 k\+Hz and gyrometer is 1.\+1k\+Hz. The maximum latency found for the accelerometer and gyrometer to work is at 18.\+75 Hz (sample\+\_\+rate\+\_\+div = 59).
+\end{DoxyItemize}\hypertarget{md_README_autotoc_md41}{}\doxysubsubsection{\texorpdfstring{Piezo -\/ ADS1115}{Piezo - ADS1115}}\label{md_README_autotoc_md41}
+The available sample rate are 8Hz, 16Hz, 32Hz, 64Hz, 128Hz, 250Hz, 475Hz, and 860Hz. The maximum latency for the ADS1115 is at 860 Hz.
+
+This can be adjusted in the \doxylink{main_8cpp}{main.\+cpp}.
+
+\DoxyHorRuler{0}
+\hypertarget{md_README_autotoc_md43}{}\doxysubsection{\texorpdfstring{Prerequisites}{Prerequisites}}\label{md_README_autotoc_md43}
+Haptic Ping runs on Linux (Raspberry Pi OS) and is not compatible with Windows. ~\newline
+ Prior to installing the required libraries, the system package list should be updated using\+: ~\newline
  
-
-
-\begin{DoxyItemize}
-\item How/where to download your program
-\item Any modifications needed to be made to files/folders
-\end{DoxyItemize}\hypertarget{md_README_autotoc_md7}{}\doxysubsubsection{\texorpdfstring{Executing program}{Executing program}}\label{md_README_autotoc_md7}
-
-\begin{DoxyItemize}
-\item How to run the program
-\item Step-\/by-\/step bullets 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{code\ blocks\ for\ commands}
+\DoxyCodeLine{sudo\ apt\ update}
+
+\end{DoxyCode}
+\hypertarget{md_README_autotoc_md44}{}\doxysubsubsection{\texorpdfstring{Enable I2C}{Enable I2C}}\label{md_README_autotoc_md44}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{sudo\ raspi-\/config}
+\DoxyCodeLine{\#\ Navigate\ to:\ Interface\ Options\ →\ I2C\ →\ Enable}
+
+\end{DoxyCode}
+\hypertarget{md_README_autotoc_md45}{}\doxysubsubsection{\texorpdfstring{Install dependencies}{Install dependencies}}\label{md_README_autotoc_md45}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{sudo\ apt\ update}
+\DoxyCodeLine{sudo\ apt\ install\ -\/y\ libgpiod-\/dev\ libgpiod2\ libi2c-\/dev\ i2c-\/tools\ libyaml-\/cpp-\/dev\ cmake\ build-\/essential}
 
 \end{DoxyCode}
 
-\end{DoxyItemize}\hypertarget{md_README_autotoc_md8}{}\doxysubsection{\texorpdfstring{Help}{Help}}\label{md_README_autotoc_md8}
-Any advise for common problems or issues. 
+
+\DoxyHorRuler{0}
+\hypertarget{md_README_autotoc_md47}{}\doxysubsection{\texorpdfstring{Libraries}{Libraries}}\label{md_README_autotoc_md47}
+\hypertarget{md_README_autotoc_md48}{}\doxysubsubsection{\texorpdfstring{libgpiod}{libgpiod}}\label{md_README_autotoc_md48}
+
+\begin{DoxyItemize}
+\item \href{https://git.kernel.org/pub/scm/libs/libgpiod/libgpiod.git/}{\texttt{ libgpiod}} ~\newline
+ Used for all GPIO control on the Raspberry Pi via the Linux character device interface. In this project it is used in three places\+: the IMU reader configures the data-\/ready line (GPIO 27) as a rising-\/edge input and uses {\ttfamily epoll} on the GPIO file descriptor to wake the reader thread; the ADS1115 driver configures the ALERT/\+RDY line (GPIO 26) as a rising-\/edge input and blocks on {\ttfamily wait\+\_\+edge\+\_\+events}; and the LED controllers and PWM driver configure output lines to drive the LEDs and ERM motor.
+\end{DoxyItemize}\hypertarget{md_README_autotoc_md49}{}\doxysubsubsection{\texorpdfstring{PWM}{PWM}}\label{md_README_autotoc_md49}
+
+\begin{DoxyItemize}
+\item This library was developed by the project group. ~\newline
+ \doxylink{classRPI__PWM}{RPI\+\_\+\+PWM} is a software PWM library for the Raspberry Pi that drives GPIO 18 at 30 Hz using a dedicated worker thread and timerfd-\/based waits. It exposes a simple set\+Duty\+Cycle() interface, clamps output to a maximum of 80\% to reduce back-\/\+EMF spikes, and cleanly acquires and releases the GPIO line through libgpiod.
+\end{DoxyItemize}\hypertarget{md_README_autotoc_md50}{}\doxysubsubsection{\texorpdfstring{yaml-\/cpp}{yaml-cpp}}\label{md_README_autotoc_md50}
+
+\begin{DoxyItemize}
+\item \href{https://github.com/jbeder/yaml-cpp}{\texttt{ yaml-\/cpp}} ~\newline
+ Used by the ICM-\/20948 driver settings class to load sensor configuration parameters — accelerometer scale, gyroscope scale, sample rate divider, and digital low-\/pass filter settings — from a YAML file. This allows sensor tuning without recompiling.
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+\hypertarget{md_README_autotoc_md52}{}\doxysubsection{\texorpdfstring{Compilation from Source}{Compilation from Source}}\label{md_README_autotoc_md52}
+
 \begin{DoxyCode}{0}
-\DoxyCodeLine{command\ to\ run\ if\ program\ contains\ helper\ info}
+\DoxyCodeLine{git\ clone\ <repo-\/url>}
+\DoxyCodeLine{cd\ RTES\_Table\_Tennis}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\ Build\ main\ application}
+\DoxyCodeLine{cmake\ -\/S\ src\ -\/B\ build}
+\DoxyCodeLine{cmake\ -\/-\/build\ build\ -\/j\$(nproc)}
 
 \end{DoxyCode}
-\hypertarget{md_README_autotoc_md9}{}\doxysubsection{\texorpdfstring{Authors}{Authors}}\label{md_README_autotoc_md9}
-Despina Charalambous (2689332C) ~\newline
- Najaree Janjerdsak (2717383J) ~\newline
- Natalia Mc\+Coy (2661134M) ~\newline
- Olivia Skinner (2671612S) ~\newline
- Wiktoria Smolarek (2619869S) ~\newline
-\hypertarget{md_README_autotoc_md10}{}\doxysubsection{\texorpdfstring{Version History}{Version History}}\label{md_README_autotoc_md10}
+
+
+\DoxyHorRuler{0}
+\hypertarget{md_README_autotoc_md54}{}\doxysubsection{\texorpdfstring{Usage}{Usage}}\label{md_README_autotoc_md54}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{sudo\ ./build/rtes\_main}
+
+\end{DoxyCode}
+
+
+The system will\+:
+\begin{DoxyEnumerate}
+\item Wait for correct grip detected by piezo sensor → {\bfseries{Piezo LED on}}
+\item Wait for correct bat starting position detected by IMU → {\bfseries{IMU LED on}}
+\item Analyse swing in real time
+\item Vibrate ERM motor on correct swing detection
+\end{DoxyEnumerate}
+
+Press {\ttfamily Ctrl+C} or {\ttfamily SIGHUP} to stop cleanly. ~\newline
+
+
+A demo video is linked \href{https://gla-my.sharepoint.com/my?id=\%2Fpersonal\%2F2661134m\%5Fstudent\%5Fgla\%5Fac\%5Fuk\%2FDocuments\%2FUsage\%20Video\%20\%2D\%20Haptic\%20Ping}{\texttt{ here}} (only accessible to UofG staff and students)
+
+\DoxyHorRuler{0}
+\hypertarget{md_README_autotoc_md56}{}\doxysubsection{\texorpdfstring{Running Tests}{Running Tests}}\label{md_README_autotoc_md56}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{cmake\ -\/S\ src\ -\/B\ build\ -\/DBUILD\_TESTS=ON}
+\DoxyCodeLine{cmake\ -\/-\/build\ build\ -\/j\$(nproc)}
+\DoxyCodeLine{ctest\ -\/-\/test-\/dir\ build\ -\/-\/output-\/on-\/failure}
+
+\end{DoxyCode}
+
+
+31 unit tests across 6 test suites covering\+:
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Test Suite   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ What it tests    }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Test Suite   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ What it tests    }\\\cline{1-2}
+\endhead
+{\ttfamily \doxylink{classPiezoEventDetector}{Piezo\+Event\+Detector}}   &EMA filter, press/release thresholds, reset behaviour    \\\cline{1-2}
+{\ttfamily \doxylink{classPositionDetector}{Position\+Detector}}   &Stability counter, orientation detection, state transitions    \\\cline{1-2}
+{\ttfamily \doxylink{classSwingCalibrator}{Swing\+Calibrator}}   &Bias averaging, recalibration trigger, callback firing    \\\cline{1-2}
+{\ttfamily \doxylink{classSwingDetector}{Swing\+Detector}}   &Level classification, threshold boundaries, reset    \\\cline{1-2}
+{\ttfamily \doxylink{classSwingFeedback}{Swing\+Feedback}}   &PWM ramp patterns, reset callback, timeout guard    \\\cline{1-2}
+{\ttfamily \doxylink{classSwingProcessor}{Swing\+Processor}}   &Gate logic, force/position interaction, magnitude output   \\\cline{1-2}
+\end{longtabu}
+
+
+\DoxyHorRuler{0}
+\hypertarget{md_README_autotoc_md58}{}\doxysubsection{\texorpdfstring{Documentation}{Documentation}}\label{md_README_autotoc_md58}
+The documentation for this project can be found here\+:\hypertarget{md_README_autotoc_md59}{}\doxysubsection{\texorpdfstring{Project Structure}{Project Structure}}\label{md_README_autotoc_md59}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{RTES\_Table\_Tennis/}
+\DoxyCodeLine{+-\/-\/\ src/}
+\DoxyCodeLine{|\ \ \ +-\/-\/\ main.cpp}
+\DoxyCodeLine{|\ \ \ +-\/-\/\ CMakeLists.txt}
+\DoxyCodeLine{|\ \ \ +-\/-\/\ libs/}
+\DoxyCodeLine{|\ \ \ \ \ \ \ +-\/-\/\ IMU/\ \ \ \ \ \ \ \ \#\ ICM-\/20948\ driver\ and\ threaded\ reader}
+\DoxyCodeLine{|\ \ \ \ \ \ \ +-\/-\/\ IMU\_math/\ \ \ \#\ Position\ detection,\ swing\ analysis,\ calibration}
+\DoxyCodeLine{|\ \ \ \ \ \ \ +-\/-\/\ LEDs/\ \ \ \ \ \ \ \#\ GPIO-\/backed\ LED\ controllers}
+\DoxyCodeLine{|\ \ \ \ \ \ \ +-\/-\/\ Motor/\ \ \ \ \ \ \#\ Software\ PWM\ and\ swing\ feedback\ patterns}
+\DoxyCodeLine{|\ \ \ \ \ \ \ +-\/-\/\ Piezo/\ \ \ \ \ \ \#\ ADS1115\ ADC\ driver\ and\ event\ detector}
+\DoxyCodeLine{+-\/-\/\ test/\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#\ GTest\ unit\ tests}
+\DoxyCodeLine{+-\/-\/\ images/}
+
+\end{DoxyCode}
+ \DoxyHorRuler{0}
+\hypertarget{md_README_autotoc_md61}{}\doxysubsection{\texorpdfstring{Authors}{Authors}}\label{md_README_autotoc_md61}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Name   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Matric    }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Name   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Matric    }\\\cline{1-2}
+\endhead
+Despina Charalambous   &2689332C    \\\cline{1-2}
+Najaree Janjerdsak   &2717383J    \\\cline{1-2}
+Natalia Mc\+Coy   &2661134M    \\\cline{1-2}
+Olivia Skinner   &2671612S    \\\cline{1-2}
+Wiktoria Smolarek   &2619869S   \\\cline{1-2}
+\end{longtabu}
+
+
+\DoxyHorRuler{0}
+ \hypertarget{md_README_autotoc_md63}{}\doxysubsection{\texorpdfstring{Individual Contributions}{Individual Contributions}}\label{md_README_autotoc_md63}
+Despina Charalambous\+: Motor code, soldering, organisation/clean-\/up ~\newline
+ Najaree Janjerdsak\+: Latency test, IMU math code, soldering, organisation/clean-\/up ~\newline
+ Natalia Mc\+Coy\+: IMU code, \doxylink{main_8cpp}{main.\+cpp}, organisation/clean-\/up ~\newline
+ Olivia Skinner\+: piezo code, circuit design, organisation/clean-\/up ~\newline
+ Wiktoria Smolarek\+: piezo code, circuit design, organisation/clean-\/up ~\newline
+
+
+\DoxyHorRuler{0}
+\hypertarget{md_README_autotoc_md65}{}\doxysubsection{\texorpdfstring{Media}{Media}}\label{md_README_autotoc_md65}
 
 \begin{DoxyItemize}
-\item 0.\+2
-\begin{DoxyItemize}
-\item Various bug fixes and optimizations
-\item See \mbox{[}commit change\mbox{]}() or See \mbox{[}release history\mbox{]}()
-\end{DoxyItemize}
-\item 0.\+1
-\begin{DoxyItemize}
-\item Initial Release
-\end{DoxyItemize}
-\end{DoxyItemize}\hypertarget{md_README_autotoc_md11}{}\doxysubsection{\texorpdfstring{Acknowledgments}{Acknowledgments}}\label{md_README_autotoc_md11}
-Inspiration, code snippets, etc.
-\begin{DoxyItemize}
-\item \href{https://github.com/matiassingers/awesome-readme}{\texttt{ awesome-\/readme}}
-\item \href{https://gist.github.com/PurpleBooth/109311bb0361f32d87a2}{\texttt{ Purple\+Booth}}
-\item \href{https://github.com/dbader/readme-template}{\texttt{ dbader}}
-\item \href{https://gist.github.com/zenorocha/4526327}{\texttt{ zenorocha}}
-\item \href{https://gist.github.com/fvcproductions/1bfc2d4aecb01a834b46}{\texttt{ fvcproductions}}
+\item \href{https://www.instagram.com/hapticping}{\texttt{ Instagram}}
+\item \href{https://www.tiktok.com/@hapticping}{\texttt{ Tik\+Tok}}
 \end{DoxyItemize}
 
-\begin{quote}
-\begin{quote}
-\begin{quote}
-\begin{quote}
-\begin{quote}
-\begin{quote}
-\begin{quote}
-Nano\+\_\+swing \end{quote}
-\end{quote}
-\end{quote}
-\end{quote}
-\end{quote}
-\end{quote}
-\end{quote}
+\DoxyHorRuler{0}
+\hypertarget{md_README_autotoc_md67}{}\doxysubsection{\texorpdfstring{License}{License}}\label{md_README_autotoc_md67}
+This project is licensed under the GPL License — see the \mbox{[}LICENSE\mbox{]}(LICENSE) file for details.
+
+\DoxyHorRuler{0}
+\hypertarget{md_README_autotoc_md69}{}\doxysubsection{\texorpdfstring{Acknowledgements}{Acknowledgements}}\label{md_README_autotoc_md69}
+
+\begin{DoxyItemize}
+\item \href{https://github.com/google/googletest}{\texttt{ Google Test}}
+\item University of Glasgow ENG 5220 teaching team ~\newline
+
+\end{DoxyItemize}
+
+We would like to thank the lecturers for the course Real time Embedded Systems, Bernd Porr and Chongfeng Wei, for all their help. We would also like to expresss our gratitude to Thomas O\textquotesingle{}Hara for all his guidance and support. ~\newline
+
+
+This project used AI tools, including Claude (Anthropic), to assist with debugging, documentation, and refactoring. All suggestions were reviewed and validated by the development team, who retain full responsibility for the design decisions and final codebase. 

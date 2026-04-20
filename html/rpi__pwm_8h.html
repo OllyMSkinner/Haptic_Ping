@@ -90,11 +90,38 @@ $(function() {
 Include dependency graph for rpi_pwm.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="rpi__pwm_8h__incl.png" border="0" usemap="#asrc_2libs_2Motor_2Include_2rpi__pwm_8h" alt=""/></div>
+<map name="asrc_2libs_2Motor_2Include_2rpi__pwm_8h" id="asrc_2libs_2Motor_2Include_2rpi__pwm_8h">
+<area shape="rect" title=" " alt="" coords="242,5,403,45"/>
+<area shape="rect" title=" " alt="" coords="5,93,72,119"/>
+<area shape="poly" title=" " alt="" coords="255,48,86,94,84,89,254,43"/>
+<area shape="rect" title=" " alt="" coords="96,93,163,119"/>
+<area shape="poly" title=" " alt="" coords="277,48,171,91,169,86,275,43"/>
+<area shape="rect" title=" " alt="" coords="187,93,258,119"/>
+<area shape="poly" title=" " alt="" coords="300,48,250,87,247,82,297,43"/>
+<area shape="rect" title=" " alt="" coords="283,93,363,119"/>
+<area shape="poly" title=" " alt="" coords="325,46,325,79,320,79,320,46"/>
+<area shape="rect" title=" " alt="" coords="387,93,495,119"/>
+<area shape="poly" title=" " alt="" coords="353,43,414,84,411,88,350,48"/>
+<area shape="rect" title=" " alt="" coords="520,93,584,119"/>
+<area shape="poly" title=" " alt="" coords="378,43,507,87,506,92,377,48"/>
+<area shape="rect" title=" " alt="" coords="608,93,683,119"/>
+<area shape="poly" title=" " alt="" coords="401,43,595,90,594,95,399,48"/>
+</map>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="rpi__pwm_8h__dep__incl.png" border="0" usemap="#asrc_2libs_2Motor_2Include_2rpi__pwm_8hdep" alt=""/></div>
+<map name="asrc_2libs_2Motor_2Include_2rpi__pwm_8hdep" id="asrc_2libs_2Motor_2Include_2rpi__pwm_8hdep">
+<area shape="rect" title=" " alt="" coords="180,5,341,45"/>
+<area shape="rect" href="swingfeedback_8h.html" title=" " alt="" coords="121,93,283,133"/>
+<area shape="poly" title=" " alt="" coords="242,58,217,95,213,92,238,55"/>
+<area shape="rect" href="main_8cpp.html" title=" " alt="" coords="268,181,373,207"/>
+<area shape="poly" title=" " alt="" coords="281,56,298,92,313,141,321,180,316,181,307,142,293,94,276,58"/>
+<area shape="rect" href="swingfeedback_8cpp.html" title=" " alt="" coords="5,181,244,207"/>
+<area shape="poly" title=" " alt="" coords="176,145,138,183,134,179,172,141"/>
+<area shape="poly" title=" " alt="" coords="244,139,305,179,302,183,241,143"/>
+</map>
 </div>
 </div>
 <p><a href="rpi__pwm_8h_source.html">Go to the source code of this file.</a></p>
@@ -132,6 +159,8 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="rpi__pwm_8h_source.html#l00029">29</a> of file <a class="el" href="rpi__pwm_8h_source.html">rpi_pwm.h</a>.</p>
+
 </div>
 </div>
 <a id="aa3a5591a094e4977117ccc510778fb0d" name="aa3a5591a094e4977117ccc510778fb0d"></a>
@@ -153,6 +182,10 @@ Variables</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>This class uses a dedicated worker thread and libgpiod to provide a software PWM output on a Raspberry Pi GPIO pin. Its main responsibility is to provide a safe interface for starting and stopping PWM generation, allow client code to update the duty cycle without needing to manage any GPIO or timing details, and internally handle the GPIO line request and timing loop.</p>
+<p>SOLID principles: S - this class his only responsible for generating PWM on one GPIO line. Higher level classification decides when feedback should happen and why the duty cycle changes. O - Client code can reuse this class for different duty cycle values without the internal logic being modified itself. This behaviour is extended by calling its public interface rather than rewriting the timing logic. Fixed hardware/software config forPWM output Keeping these constant avoids mageic numbers and makes the class behaviour easier to maintain and reason with. </p>
+
+<p class="definition">Definition at line <a class="el" href="rpi__pwm_8h_source.html#l00028">28</a> of file <a class="el" href="rpi__pwm_8h_source.html">rpi_pwm.h</a>.</p>
 
 </div>
 </div>

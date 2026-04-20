@@ -1,28 +1,4 @@
 var searchData=
 [
-  ['mag_5fcallback_5f_0',['mag_callback_',['../classSwingProcessor.html#a8360c8e9302e099edd84818eff147957',1,'SwingProcessor']]],
-  ['magn_1',['magn',['../structicm20948_1_1settings.html#a1e7c191c05324ae009daa9edca4b5b86',1,'icm20948::settings::magn'],['../classicm20948_1_1ICM20948__I2C.html#addde200e41d649c72927102e67790105',1,'icm20948::ICM20948_I2C::magn']]],
-  ['magn_5f100hz_2',['MAGN_100HZ',['../namespaceicm20948.html#a52f2b76d3ebd33c9147b45c09ed3d02caaa091f0f880adfe061f828e771680137',1,'icm20948']]],
-  ['magn_5f10hz_3',['MAGN_10HZ',['../namespaceicm20948.html#a52f2b76d3ebd33c9147b45c09ed3d02cad54782be844575b7d7eeff6f6afde888',1,'icm20948']]],
-  ['magn_5f20hz_4',['MAGN_20HZ',['../namespaceicm20948.html#a52f2b76d3ebd33c9147b45c09ed3d02cada7064494b2cdab263d8a919bdfb3c49',1,'icm20948']]],
-  ['magn_5f50hz_5',['MAGN_50HZ',['../namespaceicm20948.html#a52f2b76d3ebd33c9147b45c09ed3d02ca20c2ccacb7d16752e55197c2ae202087',1,'icm20948']]],
-  ['magn_5fmode_6',['magn_mode',['../namespaceicm20948.html#a52f2b76d3ebd33c9147b45c09ed3d02c',1,'icm20948']]],
-  ['magn_5fmode_5fto_5fstr_7',['magn_mode_to_str',['../namespaceicm20948.html#a4e2db8332ee3f51602d9032468ec2b34',1,'icm20948']]],
-  ['magn_5fscale_5ffactor_8',['MAGN_SCALE_FACTOR',['../Icm20948driver_8cpp.html#af824acbd5aa2637ee7ebca6dbedc217f',1,'Icm20948driver.cpp']]],
-  ['magn_5fself_5ftest_9',['MAGN_SELF_TEST',['../namespaceicm20948.html#a52f2b76d3ebd33c9147b45c09ed3d02cad20e2222b9521644cdccdeb39f3c3f6e',1,'icm20948']]],
-  ['magn_5fsettings_10',['magn_settings',['../structicm20948_1_1magn__settings.html#a4a8042e4a839f077a832f4035f5b1d2f',1,'icm20948::magn_settings::magn_settings()'],['../structicm20948_1_1magn__settings.html',1,'icm20948::magn_settings'],['../namespaceicm20948.html#ab8718ad937a784bdb91b1f8ae23e2c6a',1,'icm20948::magn_settings']]],
-  ['magn_5fshutdown_11',['MAGN_SHUTDOWN',['../namespaceicm20948.html#a52f2b76d3ebd33c9147b45c09ed3d02caf7a1f55f16854e842b04e2d311525a7a',1,'icm20948']]],
-  ['magn_5fsingle_12',['MAGN_SINGLE',['../namespaceicm20948.html#a52f2b76d3ebd33c9147b45c09ed3d02ca4696e7df486d4c8527ec94a02a9aaa96',1,'icm20948']]],
-  ['magnitudecallback_13',['MagnitudeCallback',['../classSwingProcessor.html#a31d9c6aafec669291604f8e47ce9edfc',1,'SwingProcessor']]],
-  ['main_14',['main',['../main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main.cpp']]],
-  ['main_2ecpp_15',['main.cpp',['../main_8cpp.html',1,'']]],
-  ['makedefaultads1115settings_16',['makedefaultads1115settings',['../ads1115rpi_8h.html#ab93a510bf73672786d210a79f41be1aa',1,'makeDefaultADS1115Settings():&#160;ads1115rpi.cpp'],['../ads1115rpi_8cpp.html#ab93a510bf73672786d210a79f41be1aa',1,'makeDefaultADS1115Settings():&#160;ads1115rpi.cpp']]],
-  ['maxg_17',['maxG',['../structPositionDetector_1_1Config.html#a7b5fc9c011fe6d3e1a17ed4501da1abf',1,'PositionDetector::Config']]],
-  ['medium_18',['MEDIUM',['../classSwingDetector.html#a367fdb5d3438b354c265c81bfe1c3088ac87f3be66ffc3c0d4249f1c2cc5f3cce',1,'SwingDetector']]],
-  ['mindot_19',['minDot',['../structPositionDetector_1_1Config.html#a6d8656fb0bde8819a205e8f967fe65f0',1,'PositionDetector::Config']]],
-  ['ming_20',['minG',['../structPositionDetector_1_1Config.html#a5bc3ba0437fcbee5fbbc074033763558',1,'PositionDetector::Config']]],
-  ['mode_21',['mode',['../structicm20948_1_1magn__settings.html#a9dafcbd7b44a43a2910781b42c788905',1,'icm20948::magn_settings']]],
-  ['mx_22',['mx',['../structicm20948_1_1IMUSample.html#a35596f37451ec0bdebdb80eb9333fa27',1,'icm20948::IMUSample']]],
-  ['my_23',['my',['../structicm20948_1_1IMUSample.html#af2aaedc603e12136b17219385ff741d8',1,'icm20948::IMUSample']]],
-  ['mz_24',['mz',['../structicm20948_1_1IMUSample.html#a473b1e63c3fbef1d3a784f3e1b65153d',1,'icm20948::IMUSample']]]
+  ['jpeg_20alt_20imu_20location_0',['&lt;img src=&quot;images/IMU.jpeg&quot; alt=&quot;IMU LOCATION&quot;/&gt;',['../md_README.html#autotoc_md35',1,'']]]
 ];

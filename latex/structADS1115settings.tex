@@ -2,6 +2,11 @@
 \hypertarget{structADS1115settings}{}\label{structADS1115settings}\index{ADS1115settings@{ADS1115settings}}
 
 
+Stores the ADS1115 configuration values, including I2C settings, sampling rate, gain, input channel, and GPIO settings.  
+
+
+
+
 {\ttfamily \#include $<$ads1115rpi.\+h$>$}
 
 \doxysubsubsection*{Public Types}
@@ -35,7 +40,7 @@ enum \mbox{\hyperlink{structADS1115settings_a17845a1a94f94bb7d2406dbe13bc560d}{I
 \begin{DoxyCompactItemize}
 \item 
 unsigned \mbox{\hyperlink{structADS1115settings_ab4314bdcd3638815129e97458ca43950}{get\+Sampling\+Rate}} () const
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Returns the sampling rate value that matches the selected enum setting. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -60,6 +65,13 @@ static constexpr uint8\+\_\+t \mbox{\hyperlink{structADS1115settings_a9e6e2fdcde
 \item 
 static constexpr int \mbox{\hyperlink{structADS1115settings_a2d2bfcac34bf116790df8b08001dcb66}{DEFAULT\+\_\+\+ALERT\+\_\+\+RDY\+\_\+\+TO\+\_\+\+GPIO}} = 26
 \end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Stores the ADS1115 configuration values, including I2C settings, sampling rate, gain, input channel, and GPIO settings. 
+
+Definition at line \mbox{\hyperlink{ads1115rpi_8h_source_l00037}{37}} of file \mbox{\hyperlink{ads1115rpi_8h_source}{ads1115rpi.\+h}}.
+
 
 
 \doxysubsection{Member Enumeration Documentation}
@@ -87,6 +99,10 @@ AIN3&\\
 \hline
 
 \end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{ads1115rpi_8h_source_l00075}{75}} of file \mbox{\hyperlink{ads1115rpi_8h_source}{ads1115rpi.\+h}}.
+
 \Hypertarget{structADS1115settings_a831970032a15754ead970931dd25ac5f}\label{structADS1115settings_a831970032a15754ead970931dd25ac5f} 
 \index{ADS1115settings@{ADS1115settings}!PGA@{PGA}}
 \index{PGA@{PGA}!ADS1115settings@{ADS1115settings}}
@@ -111,6 +127,10 @@ FSR0\+\_\+256&\\
 \hline
 
 \end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{ads1115rpi_8h_source_l00065}{65}} of file \mbox{\hyperlink{ads1115rpi_8h_source}{ads1115rpi.\+h}}.
+
 \Hypertarget{structADS1115settings_aa3a33d5f6c7f14bb708a70499a225357}\label{structADS1115settings_aa3a33d5f6c7f14bb708a70499a225357} 
 \index{ADS1115settings@{ADS1115settings}!SamplingRates@{SamplingRates}}
 \index{SamplingRates@{SamplingRates}!ADS1115settings@{ADS1115settings}}
@@ -153,12 +173,24 @@ FS860\+HZ&\\
 \end{DoxyEnumFields}
 
 
+Definition at line \mbox{\hyperlink{ads1115rpi_8h_source_l00044}{44}} of file \mbox{\hyperlink{ads1115rpi_8h_source}{ads1115rpi.\+h}}.
+
+
+
 \doxysubsection{Member Function Documentation}
 \Hypertarget{structADS1115settings_ab4314bdcd3638815129e97458ca43950}\label{structADS1115settings_ab4314bdcd3638815129e97458ca43950} 
 \index{ADS1115settings@{ADS1115settings}!getSamplingRate@{getSamplingRate}}
 \index{getSamplingRate@{getSamplingRate}!ADS1115settings@{ADS1115settings}}
 \doxysubsubsection{\texorpdfstring{getSamplingRate()}{getSamplingRate()}}
 {\footnotesize\ttfamily unsigned ADS1115settings\+::get\+Sampling\+Rate (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns the sampling rate value that matches the selected enum setting. 
+
+
+
+Definition at line \mbox{\hyperlink{ads1115rpi_8h_source_l00056}{56}} of file \mbox{\hyperlink{ads1115rpi_8h_source}{ads1115rpi.\+h}}.
 
 
 
@@ -169,11 +201,19 @@ FS860\+HZ&\\
 \doxysubsubsection{\texorpdfstring{address}{address}}
 {\footnotesize\ttfamily uint8\+\_\+t ADS1115settings\+::address = \mbox{\hyperlink{structADS1115settings_a9e6e2fdcded026f0b1fcc9099f361ffa}{DEFAULT\+\_\+\+ADS1115\+\_\+\+ADDRESS}}}
 
+
+
+Definition at line \mbox{\hyperlink{ads1115rpi_8h_source_l00042}{42}} of file \mbox{\hyperlink{ads1115rpi_8h_source}{ads1115rpi.\+h}}.
+
 \Hypertarget{structADS1115settings_a3f4f9b2d8b6f0ef724bd4e4a68b75245}\label{structADS1115settings_a3f4f9b2d8b6f0ef724bd4e4a68b75245} 
 \index{ADS1115settings@{ADS1115settings}!channel@{channel}}
 \index{channel@{channel}!ADS1115settings@{ADS1115settings}}
 \doxysubsubsection{\texorpdfstring{channel}{channel}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structADS1115settings_a17845a1a94f94bb7d2406dbe13bc560d}{Input}} ADS1115settings\+::channel = \mbox{\hyperlink{structADS1115settings_a17845a1a94f94bb7d2406dbe13bc560daa087ea46f630c382cfbe6b9e74a93956}{AIN0}}}
+
+
+
+Definition at line \mbox{\hyperlink{ads1115rpi_8h_source_l00083}{83}} of file \mbox{\hyperlink{ads1115rpi_8h_source}{ads1115rpi.\+h}}.
 
 \Hypertarget{structADS1115settings_a9e6e2fdcded026f0b1fcc9099f361ffa}\label{structADS1115settings_a9e6e2fdcded026f0b1fcc9099f361ffa} 
 \index{ADS1115settings@{ADS1115settings}!DEFAULT\_ADS1115\_ADDRESS@{DEFAULT\_ADS1115\_ADDRESS}}
@@ -181,11 +221,19 @@ FS860\+HZ&\\
 \doxysubsubsection{\texorpdfstring{DEFAULT\_ADS1115\_ADDRESS}{DEFAULT\_ADS1115\_ADDRESS}}
 {\footnotesize\ttfamily constexpr uint8\+\_\+t ADS1115settings\+::\+DEFAULT\+\_\+\+ADS1115\+\_\+\+ADDRESS = 0x48\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}}
 
+
+
+Definition at line \mbox{\hyperlink{ads1115rpi_8h_source_l00041}{41}} of file \mbox{\hyperlink{ads1115rpi_8h_source}{ads1115rpi.\+h}}.
+
 \Hypertarget{structADS1115settings_a2d2bfcac34bf116790df8b08001dcb66}\label{structADS1115settings_a2d2bfcac34bf116790df8b08001dcb66} 
 \index{ADS1115settings@{ADS1115settings}!DEFAULT\_ALERT\_RDY\_TO\_GPIO@{DEFAULT\_ALERT\_RDY\_TO\_GPIO}}
 \index{DEFAULT\_ALERT\_RDY\_TO\_GPIO@{DEFAULT\_ALERT\_RDY\_TO\_GPIO}!ADS1115settings@{ADS1115settings}}
 \doxysubsubsection{\texorpdfstring{DEFAULT\_ALERT\_RDY\_TO\_GPIO}{DEFAULT\_ALERT\_RDY\_TO\_GPIO}}
 {\footnotesize\ttfamily constexpr int ADS1115settings\+::\+DEFAULT\+\_\+\+ALERT\+\_\+\+RDY\+\_\+\+TO\+\_\+\+GPIO = 26\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}}
+
+
+
+Definition at line \mbox{\hyperlink{ads1115rpi_8h_source_l00087}{87}} of file \mbox{\hyperlink{ads1115rpi_8h_source}{ads1115rpi.\+h}}.
 
 \Hypertarget{structADS1115settings_a5b764c1300798718106d83bf76bd2608}\label{structADS1115settings_a5b764c1300798718106d83bf76bd2608} 
 \index{ADS1115settings@{ADS1115settings}!drdy\_chip@{drdy\_chip}}
@@ -193,11 +241,19 @@ FS860\+HZ&\\
 \doxysubsubsection{\texorpdfstring{drdy\_chip}{drdy\_chip}}
 {\footnotesize\ttfamily int ADS1115settings\+::drdy\+\_\+chip = 0}
 
+
+
+Definition at line \mbox{\hyperlink{ads1115rpi_8h_source_l00085}{85}} of file \mbox{\hyperlink{ads1115rpi_8h_source}{ads1115rpi.\+h}}.
+
 \Hypertarget{structADS1115settings_a2ec35347e84e5165a35191e670c05b79}\label{structADS1115settings_a2ec35347e84e5165a35191e670c05b79} 
 \index{ADS1115settings@{ADS1115settings}!drdy\_gpio@{drdy\_gpio}}
 \index{drdy\_gpio@{drdy\_gpio}!ADS1115settings@{ADS1115settings}}
 \doxysubsubsection{\texorpdfstring{drdy\_gpio}{drdy\_gpio}}
 {\footnotesize\ttfamily int ADS1115settings\+::drdy\+\_\+gpio = \mbox{\hyperlink{structADS1115settings_a2d2bfcac34bf116790df8b08001dcb66}{DEFAULT\+\_\+\+ALERT\+\_\+\+RDY\+\_\+\+TO\+\_\+\+GPIO}}}
+
+
+
+Definition at line \mbox{\hyperlink{ads1115rpi_8h_source_l00088}{88}} of file \mbox{\hyperlink{ads1115rpi_8h_source}{ads1115rpi.\+h}}.
 
 \Hypertarget{structADS1115settings_ae0f3b1d6ef8068fed5e580fd4d7123b3}\label{structADS1115settings_ae0f3b1d6ef8068fed5e580fd4d7123b3} 
 \index{ADS1115settings@{ADS1115settings}!i2c\_bus@{i2c\_bus}}
@@ -205,17 +261,29 @@ FS860\+HZ&\\
 \doxysubsubsection{\texorpdfstring{i2c\_bus}{i2c\_bus}}
 {\footnotesize\ttfamily int ADS1115settings\+::i2c\+\_\+bus = 1}
 
+
+
+Definition at line \mbox{\hyperlink{ads1115rpi_8h_source_l00039}{39}} of file \mbox{\hyperlink{ads1115rpi_8h_source}{ads1115rpi.\+h}}.
+
 \Hypertarget{structADS1115settings_a9c5013fdbef7376faec2df49d123e67e}\label{structADS1115settings_a9c5013fdbef7376faec2df49d123e67e} 
 \index{ADS1115settings@{ADS1115settings}!pgaGain@{pgaGain}}
 \index{pgaGain@{pgaGain}!ADS1115settings@{ADS1115settings}}
 \doxysubsubsection{\texorpdfstring{pgaGain}{pgaGain}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structADS1115settings_a831970032a15754ead970931dd25ac5f}{PGA}} ADS1115settings\+::pga\+Gain = \mbox{\hyperlink{structADS1115settings_a831970032a15754ead970931dd25ac5fa219c056740c23deafea320ee522d56cf}{FSR2\+\_\+048}}}
 
+
+
+Definition at line \mbox{\hyperlink{ads1115rpi_8h_source_l00073}{73}} of file \mbox{\hyperlink{ads1115rpi_8h_source}{ads1115rpi.\+h}}.
+
 \Hypertarget{structADS1115settings_aab5ef57bb9aef08aac7a7fd7de33a451}\label{structADS1115settings_aab5ef57bb9aef08aac7a7fd7de33a451} 
 \index{ADS1115settings@{ADS1115settings}!samplingRate@{samplingRate}}
 \index{samplingRate@{samplingRate}!ADS1115settings@{ADS1115settings}}
 \doxysubsubsection{\texorpdfstring{samplingRate}{samplingRate}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structADS1115settings_aa3a33d5f6c7f14bb708a70499a225357}{Sampling\+Rates}} ADS1115settings\+::sampling\+Rate = \mbox{\hyperlink{structADS1115settings_aa3a33d5f6c7f14bb708a70499a225357a3265d07f32b61328f3ded165f8cb8fbc}{FS128\+HZ}}}
+
+
+
+Definition at line \mbox{\hyperlink{ads1115rpi_8h_source_l00063}{63}} of file \mbox{\hyperlink{ads1115rpi_8h_source}{ads1115rpi.\+h}}.
 
 
 

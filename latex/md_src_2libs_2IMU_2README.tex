@@ -1,0 +1,12 @@
+\chapter{IMU -\/ ICM-\/20948}
+\hypertarget{md_src_2libs_2IMU_2README}{}\label{md_src_2libs_2IMU_2README}\index{IMU -\/ ICM-\/20948@{IMU -\/ ICM-\/20948}}
+\label{md_src_2libs_2IMU_2README_autotoc_md0}%
+\Hypertarget{md_src_2libs_2IMU_2README_autotoc_md0}%
+ \hypertarget{md_src_2libs_2IMU_2README_autotoc_md1}{}\doxysection{\texorpdfstring{Pin Connection List}{Pin Connection List}}\label{md_src_2libs_2IMU_2README_autotoc_md1}
+\hypertarget{md_src_2libs_2IMU_2README_autotoc_md2}{}\doxysubsection{\texorpdfstring{ICM-\/20948 Pin Connections}{ICM-20948 Pin Connections}}\label{md_src_2libs_2IMU_2README_autotoc_md2}
+VDD -\/ Pin 1 (3.\+3V) GND -\/ Pin 6 (GND) SDA -\/ Pin 3 (I2C SDA, GPIO 2) SCL -\/ Pin 5 (I2C SCL, GPIO 3) INT -\/ Pin 13 (GPIO 27, data-\/ready interrupt) AD0 -\/ GND (sets I2C address to 0x69)\hypertarget{md_src_2libs_2IMU_2README_autotoc_md3}{}\doxysection{\texorpdfstring{I2\+C Configuration}{I2C Configuration}}\label{md_src_2libs_2IMU_2README_autotoc_md3}
+I2C Bus \+: 1 I2C Address \+: 0x69 (AD0 tied to GND)\hypertarget{md_src_2libs_2IMU_2README_autotoc_md4}{}\doxysection{\texorpdfstring{Sensor Settings}{Sensor Settings}}\label{md_src_2libs_2IMU_2README_autotoc_md4}
+Accelerometer range \+: +/-\/2G Gyroscope range \+: +/-\/250 DPS Magnetometer mode \+: 100Hz continuous DLPF \+: enabled\hypertarget{md_src_2libs_2IMU_2README_autotoc_md5}{}\doxysection{\texorpdfstring{Data-\/\+Ready Interrupt}{Data-Ready Interrupt}}\label{md_src_2libs_2IMU_2README_autotoc_md5}
+The ICM-\/20948 asserts a rising edge on the INT pin when a new sample is ready. This is wired to GPIO 27 on the Raspberry Pi.\hypertarget{md_src_2libs_2IMU_2README_autotoc_md6}{}\doxysection{\texorpdfstring{Hardware Assembly}{Hardware Assembly}}\label{md_src_2libs_2IMU_2README_autotoc_md6}
+ \hypertarget{md_src_2libs_2IMU_2README_autotoc_md7}{}\doxysection{\texorpdfstring{Acknowledgements}{Acknowledgements}}\label{md_src_2libs_2IMU_2README_autotoc_md7}
+The ICM-\/20948 IMU driver was adapted from the implementation written by the Sn\+AIRbeats team (ENG 5220, University of Glasgow, 2025), available at\+: \href{https://github.com/alepgr/SnAIRbeats/tree/main}{\texttt{ https\+://github.\+com/alepgr/\+Sn\+AIRbeats/tree/main}} 

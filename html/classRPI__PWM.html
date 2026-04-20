@@ -88,24 +88,31 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a8fafd8227f58258c61449af83c466d20" id="r_a8fafd8227f58258c61449af83c466d20"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRPI__PWM.html#a8fafd8227f58258c61449af83c466d20">start</a> ()</td></tr>
 <tr class="separator:a8fafd8227f58258c61449af83c466d20"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1ca02994ab743f3397bce2ebc2b745ed" id="r_a1ca02994ab743f3397bce2ebc2b745ed"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRPI__PWM.html#a1ca02994ab743f3397bce2ebc2b745ed">stop</a> ()</td></tr>
+<tr class="memdesc:a1ca02994ab743f3397bce2ebc2b745ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stops the PWM, turns the output off, and releases the GPIO resources.  <br /></td></tr>
 <tr class="separator:a1ca02994ab743f3397bce2ebc2b745ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae58a56579ae4abb9207cdfc8ee360906" id="r_ae58a56579ae4abb9207cdfc8ee360906"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRPI__PWM.html#ae58a56579ae4abb9207cdfc8ee360906">setDutyCycle</a> (float percent)</td></tr>
+<tr class="memdesc:ae58a56579ae4abb9207cdfc8ee360906"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the PWM duty cycle and keeps it within a valid range.  <br /></td></tr>
 <tr class="separator:ae58a56579ae4abb9207cdfc8ee360906"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5491fa126da09d08cc08f8fa713d129b" id="r_a5491fa126da09d08cc08f8fa713d129b"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRPI__PWM.html#a5491fa126da09d08cc08f8fa713d129b">getDutyCycle</a> () const</td></tr>
+<tr class="memdesc:a5491fa126da09d08cc08f8fa713d129b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the current duty cycle value.  <br /></td></tr>
 <tr class="separator:a5491fa126da09d08cc08f8fa713d129b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a48018f0627c5c22a313a2d69b0bb3301" id="r_a48018f0627c5c22a313a2d69b0bb3301"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRPI__PWM.html#a48018f0627c5c22a313a2d69b0bb3301">~RPI_PWM</a> ()</td></tr>
+<tr class="memdesc:a48018f0627c5c22a313a2d69b0bb3301"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stops the PWM automatically when the object is destroyed.  <br /></td></tr>
 <tr class="separator:a48018f0627c5c22a313a2d69b0bb3301"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
 <tr class="memitem:ad083942c5b03431c6574cb77e5311760" id="r_ad083942c5b03431c6574cb77e5311760"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRPI__PWM.html#ad083942c5b03431c6574cb77e5311760">waitUs</a> (int tfd, int us)</td></tr>
+<tr class="memdesc:ad083942c5b03431c6574cb77e5311760"><td class="mdescLeft">&#160;</td><td class="mdescRight">Waits for the given number of microseconds using a timer file descriptor.  <br /></td></tr>
 <tr class="separator:ad083942c5b03431c6574cb77e5311760"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad3c2649079790966a48c1fe13575ab3e" id="r_ad3c2649079790966a48c1fe13575ab3e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRPI__PWM.html#ad3c2649079790966a48c1fe13575ab3e">loop</a> ()</td></tr>
+<tr class="memdesc:ad3c2649079790966a48c1fe13575ab3e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Runs the PWM loop by switching the GPIO on and off based on the duty cycle.  <br /></td></tr>
 <tr class="separator:ad3c2649079790966a48c1fe13575ab3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-methods" name="pri-static-methods"></a>
 Static Private Member Functions</h2></td></tr>
 <tr class="memitem:a7ed4b2d6274a00cd33676d4dd82df7d8" id="r_a7ed4b2d6274a00cd33676d4dd82df7d8"><td class="memItemLeft" align="right" valign="top">static itimerspec&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRPI__PWM.html#a7ed4b2d6274a00cd33676d4dd82df7d8">usToTimerspec</a> (long us)</td></tr>
+<tr class="memdesc:a7ed4b2d6274a00cd33676d4dd82df7d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a time value in microseconds into a timer specification.  <br /></td></tr>
 <tr class="separator:a7ed4b2d6274a00cd33676d4dd82df7d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
@@ -121,7 +128,10 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a166b5fdc6a68035efb310a930f6b39ec" id="r_a166b5fdc6a68035efb310a930f6b39ec"><td class="memItemLeft" align="right" valign="top">gpiod_line_request *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRPI__PWM.html#a166b5fdc6a68035efb310a930f6b39ec">request_</a></td></tr>
 <tr class="separator:a166b5fdc6a68035efb310a930f6b39ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock">
+<p class="definition">Definition at line <a class="el" href="rpi__pwm_8h_source.html#l00032">32</a> of file <a class="el" href="rpi__pwm_8h_source.html">rpi_pwm.h</a>.</p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="aab77efba6b8ca65496a9b76695564476" name="aab77efba6b8ca65496a9b76695564476"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aab77efba6b8ca65496a9b76695564476">&#9670;&#160;</a></span>RPI_PWM()</h2>
 
@@ -144,6 +154,9 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Initialises the PWM class to a safe default state with no active output or GPIO resources in use. </p>
+
+<p class="definition">Definition at line <a class="el" href="rpi__pwm_8h_source.html#l00038">38</a> of file <a class="el" href="rpi__pwm_8h_source.html">rpi_pwm.h</a>.</p>
 
 </div>
 </div>
@@ -169,6 +182,10 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Stops the PWM automatically when the object is destroyed. </p>
+
+<p class="definition">Definition at line <a class="el" href="rpi__pwm_8h_source.html#l00123">123</a> of file <a class="el" href="rpi__pwm_8h_source.html">rpi_pwm.h</a>.</p>
 
 </div>
 </div>
@@ -196,6 +213,10 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Returns the current duty cycle value. </p>
+
+<p class="definition">Definition at line <a class="el" href="rpi__pwm_8h_source.html#l00120">120</a> of file <a class="el" href="rpi__pwm_8h_source.html">rpi_pwm.h</a>.</p>
+
 </div>
 </div>
 <a id="ad3c2649079790966a48c1fe13575ab3e" name="ad3c2649079790966a48c1fe13575ab3e"></a>
@@ -220,6 +241,18 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Runs the PWM loop by switching the GPIO on and off based on the duty cycle. </p>
+<p>Work out the full PWM period in microseconds.</p>
+<p>Create a timer used for accurate PWM delays.</p>
+<p>Keep generating PWM while the class is marked as running.</p>
+<p>Calculate the on and off times for this PWM cycle.</p>
+<p>Keep the output fully on for a 100% duty cycle.</p>
+<p>Keep the output fully off for a 0% duty cycle.</p>
+<p>Otherwise, switch on for part of the period and off for the rest.</p>
+<p>Close the timer once the loop finishes.</p>
+
+<p class="definition">Definition at line <a class="el" href="rpi__pwm_8h_source.html#l00157">157</a> of file <a class="el" href="rpi__pwm_8h_source.html">rpi_pwm.h</a>.</p>
 
 </div>
 </div>
@@ -247,6 +280,12 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Updates the PWM duty cycle and keeps it within a valid range. </p>
+<p>Clamp the value so it stays between 0% and 100%.</p>
+<p>Store the new duty cycle value.</p>
+
+<p class="definition">Definition at line <a class="el" href="rpi__pwm_8h_source.html#l00110">110</a> of file <a class="el" href="rpi__pwm_8h_source.html">rpi_pwm.h</a>.</p>
+
 </div>
 </div>
 <a id="a8fafd8227f58258c61449af83c466d20" name="a8fafd8227f58258c61449af83c466d20"></a>
@@ -271,6 +310,18 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Sets up the GPIO output and starts the PWM worker thread. Returns true if the PWM starts successfully. </p>
+<p>Open the GPIO chip used for the PWM output pin.</p>
+<p>Create and configure the GPIO line as an output, starting inactive.</p>
+<p>Apply the line settings to the chosen PWM GPIO line.</p>
+<p>Create the request configuration and name this GPIO user.</p>
+<p>Request control of the GPIO line.</p>
+<p>Free the temporary configuration objects after the request is made.</p>
+<p>If the line request fails, close the chip and report failure.</p>
+<p>Mark the PWM engine as active and launch the worker thread.</p>
+<p>Print a message to confirm that PWM has started.</p>
+
+<p class="definition">Definition at line <a class="el" href="rpi__pwm_8h_source.html#l00044">44</a> of file <a class="el" href="rpi__pwm_8h_source.html">rpi_pwm.h</a>.</p>
 
 </div>
 </div>
@@ -297,6 +348,14 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Stops the PWM, turns the output off, and releases the GPIO resources. </p>
+<p>Mark the PWM as no longer running.</p>
+<p>Wait for the worker thread to finish if it is active.</p>
+<p>Set the GPIO output low, then release the line request.</p>
+<p>Close the GPIO chip and clear the stored pointer.</p>
+
+<p class="definition">Definition at line <a class="el" href="rpi__pwm_8h_source.html#l00087">87</a> of file <a class="el" href="rpi__pwm_8h_source.html">rpi_pwm.h</a>.</p>
+
 </div>
 </div>
 <a id="a7ed4b2d6274a00cd33676d4dd82df7d8" name="a7ed4b2d6274a00cd33676d4dd82df7d8"></a>
@@ -322,6 +381,13 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Converts a time value in microseconds into a timer specification. </p>
+<p>Store the whole seconds part of the delay.</p>
+<p>Store the remaining time in nanoseconds.</p>
+<p>Disable repeating so the timer only runs once.</p>
+
+<p class="definition">Definition at line <a class="el" href="rpi__pwm_8h_source.html#l00127">127</a> of file <a class="el" href="rpi__pwm_8h_source.html">rpi_pwm.h</a>.</p>
 
 </div>
 </div>
@@ -359,6 +425,13 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Waits for the given number of microseconds using a timer file descriptor. </p>
+<p>Convert the delay into a timer format.</p>
+<p>Start the timer with the requested delay.</p>
+<p>Read from the timer so the function blocks until the timer expires.</p>
+
+<p class="definition">Definition at line <a class="el" href="rpi__pwm_8h_source.html#l00144">144</a> of file <a class="el" href="rpi__pwm_8h_source.html">rpi_pwm.h</a>.</p>
+
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
@@ -382,6 +455,8 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="rpi__pwm_8h_source.html#l00200">200</a> of file <a class="el" href="rpi__pwm_8h_source.html">rpi_pwm.h</a>.</p>
+
 </div>
 </div>
 <a id="a6c3a800d79b3eea98aee231f817e1bae" name="a6c3a800d79b3eea98aee231f817e1bae"></a>
@@ -403,6 +478,8 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="rpi__pwm_8h_source.html#l00197">197</a> of file <a class="el" href="rpi__pwm_8h_source.html">rpi_pwm.h</a>.</p>
 
 </div>
 </div>
@@ -426,6 +503,8 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="rpi__pwm_8h_source.html#l00201">201</a> of file <a class="el" href="rpi__pwm_8h_source.html">rpi_pwm.h</a>.</p>
+
 </div>
 </div>
 <a id="aea441885ff26f125cf06d38655903dcf" name="aea441885ff26f125cf06d38655903dcf"></a>
@@ -448,6 +527,8 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="rpi__pwm_8h_source.html#l00198">198</a> of file <a class="el" href="rpi__pwm_8h_source.html">rpi_pwm.h</a>.</p>
+
 </div>
 </div>
 <a id="a8079b97600d1fd50512504433a6faebb" name="a8079b97600d1fd50512504433a6faebb"></a>
@@ -469,6 +550,8 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="rpi__pwm_8h_source.html#l00199">199</a> of file <a class="el" href="rpi__pwm_8h_source.html">rpi_pwm.h</a>.</p>
 
 </div>
 </div>

@@ -6,18 +6,30 @@
 {\ttfamily \#include $<$linux/i2c.\+h$>$}\newline
 {\ttfamily \#include "{}yaml-\/cpp/yaml.\+h"{}}\newline
 Include dependency graph for Icm20948driver.\+hpp\+:
-% FIG 0
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{Icm20948driver_8hpp__incl}
+\end{center}
+\end{figure}
 This graph shows which files directly or indirectly include this file\+:
-% FIG 1
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{Icm20948driver_8hpp__dep__incl}
+\end{center}
+\end{figure}
 \doxysubsubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
 struct \mbox{\hyperlink{structicm20948_1_1accel__settings}{icm20948\+::accel\+\_\+settings}}
 \item 
 struct \mbox{\hyperlink{structicm20948_1_1gyro__settings}{icm20948\+::gyro\+\_\+settings}}
-\item 
+\begin{DoxyCompactList}\small\item\em Gyroscope runtime configuration. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structicm20948_1_1magn__settings}{icm20948\+::magn\+\_\+settings}}
-\item 
+\begin{DoxyCompactList}\small\item\em Magnetometer runtime configuration. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structicm20948_1_1settings}{icm20948\+::settings}}
 \item 
 struct \mbox{\hyperlink{structicm20948_1_1IMUSample}{icm20948\+::\+IMUSample}}
@@ -28,7 +40,7 @@ class \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C}{icm20948\+::\+ICM20948\+\
 \begin{DoxyCompactItemize}
 \item 
 namespace \mbox{\hyperlink{namespaceicm20948}{icm20948}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Settings types. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
@@ -117,7 +129,7 @@ namespace \mbox{\hyperlink{namespaceicm20948}{icm20948}}
 \#define \mbox{\hyperlink{Icm20948driver_8hpp_af3d9c6213cd3c1038f394e9584e6d61f}{ICM20948\+\_\+\+ACCEL\+\_\+\+CONFIG\+\_\+1\+\_\+\+ADDR}}~0x14
 \item 
 \#define \mbox{\hyperlink{Icm20948driver_8hpp_ad0d3ce60a73493d5d65023ee67b24782}{ICM20948\+\_\+\+GYRO\+\_\+\+SMPLRT\+\_\+\+DIV\+\_\+\+BANK}}~2
-\item 
+\begin{DoxyCompactList}\small\item\em Bank IDs for accel/gyro configuration registers. \end{DoxyCompactList}\item 
 \#define \mbox{\hyperlink{Icm20948driver_8hpp_abd7c5a2c0fec8a31b3997d7f0464a82a}{ICM20948\+\_\+\+GYRO\+\_\+\+CONFIG\+\_\+1\+\_\+\+BANK}}~2
 \item 
 \#define \mbox{\hyperlink{Icm20948driver_8hpp_afc0e9c74b8475cfcf2750386f210b747}{ICM20948\+\_\+\+ACCEL\+\_\+\+SMPLRT\+\_\+\+DIV\+\_\+1\+\_\+\+BANK}}~2
@@ -145,7 +157,7 @@ namespace \mbox{\hyperlink{namespaceicm20948}{icm20948}}
 \#define \mbox{\hyperlink{Icm20948driver_8hpp_a711dcddb3ed57b86ef4d01778077c117}{ICM20948\+\_\+\+I2\+C\+\_\+\+SLV4\+\_\+\+DI\+\_\+\+ADDR}}~0x17
 \item 
 \#define \mbox{\hyperlink{Icm20948driver_8hpp_ac23dfc6c232d904d914397c4b047d8d0}{ICM20948\+\_\+\+I2\+C\+\_\+\+MST\+\_\+\+CTRL\+\_\+\+BANK}}~3
-\item 
+\begin{DoxyCompactList}\small\item\em Bank IDs for the internal I2C master interface. \end{DoxyCompactList}\item 
 \#define \mbox{\hyperlink{Icm20948driver_8hpp_acdc1cf2ce72949ab50dc64178245e322}{ICM20948\+\_\+\+I2\+C\+\_\+\+SLV0\+\_\+\+ADDR\+\_\+\+BANK}}~3
 \item 
 \#define \mbox{\hyperlink{Icm20948driver_8hpp_a24466cbcfc388a324d99bbcee2db5476}{ICM20948\+\_\+\+I2\+C\+\_\+\+SLV0\+\_\+\+REG\+\_\+\+BANK}}~3
@@ -163,7 +175,7 @@ namespace \mbox{\hyperlink{namespaceicm20948}{icm20948}}
 \#define \mbox{\hyperlink{Icm20948driver_8hpp_a516f6090c4c7afbdf6863a2fafa96f40}{ICM20948\+\_\+\+I2\+C\+\_\+\+SLV4\+\_\+\+DI\+\_\+\+BANK}}~3
 \item 
 \#define \mbox{\hyperlink{Icm20948driver_8hpp_ac7156dd79bb7e3c0845cf807cc3a15f9}{AK09916\+\_\+\+CNTL2\+\_\+\+ADDR}}~0x31
-\item 
+\begin{DoxyCompactList}\small\item\em AK09916 magnetometer control register and expected WHO\+\_\+\+AM\+\_\+I value. \end{DoxyCompactList}\item 
 \#define \mbox{\hyperlink{Icm20948driver_8hpp_a1e1722168b7fb9b2002232b07021c61a}{ICM20948\+\_\+\+BANK0\+\_\+\+WHO\+\_\+\+AM\+\_\+\+I\+\_\+\+VALUE}}~0x\+EA
 \item 
 \#define \mbox{\hyperlink{Icm20948driver_8hpp_a616a9125ea56646e442d2f9a32317711}{ICM20948\+\_\+\+INT\+\_\+\+STATUS\+\_\+\+BANK}}~0
@@ -180,9 +192,9 @@ namespace \mbox{\hyperlink{namespaceicm20948}{icm20948}}
 typedef struct \mbox{\hyperlink{structicm20948_1_1accel__settings}{icm20948\+::accel\+\_\+settings}} \mbox{\hyperlink{namespaceicm20948_a4604c05a67dc8537a1f4780eccec81b7}{icm20948\+::accel\+\_\+settings}}
 \item 
 typedef struct \mbox{\hyperlink{structicm20948_1_1gyro__settings}{icm20948\+::gyro\+\_\+settings}} \mbox{\hyperlink{namespaceicm20948_a305679615d047d722f18ccbb13b5dff8}{icm20948\+::gyro\+\_\+settings}}
-\item 
+\begin{DoxyCompactList}\small\item\em Gyroscope runtime configuration. \end{DoxyCompactList}\item 
 typedef struct \mbox{\hyperlink{structicm20948_1_1magn__settings}{icm20948\+::magn\+\_\+settings}} \mbox{\hyperlink{namespaceicm20948_ab8718ad937a784bdb91b1f8ae23e2c6a}{icm20948\+::magn\+\_\+settings}}
-\item 
+\begin{DoxyCompactList}\small\item\em Magnetometer runtime configuration. \end{DoxyCompactList}\item 
 typedef struct \mbox{\hyperlink{structicm20948_1_1settings}{icm20948\+::settings}} \mbox{\hyperlink{namespaceicm20948_af58f34f9f5f028d1ebc80a98fbebf3f4}{icm20948\+::settings}}
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Enumerations}
@@ -205,13 +217,13 @@ enum \mbox{\hyperlink{namespaceicm20948_a11320e5ffc65dc1997d850a2747b1857}{icm20
 , \mbox{\hyperlink{namespaceicm20948_a11320e5ffc65dc1997d850a2747b1857aad38873c989e80fa60860b2ec48205a3}{icm20948\+::\+ACCEL\+\_\+\+DLPF\+\_\+5\+\_\+7\+HZ}}
 , \mbox{\hyperlink{namespaceicm20948_a11320e5ffc65dc1997d850a2747b1857a54a59d3f305828db07e8b11f6db49f70}{icm20948\+::\+ACCEL\+\_\+\+DLPF\+\_\+473\+HZ}}
  \}
-\item 
+\begin{DoxyCompactList}\small\item\em Accelerometer digital low-\/pass filter config. \end{DoxyCompactList}\item 
 enum \mbox{\hyperlink{namespaceicm20948_ab4ed127a0673926c94b3419379774950}{icm20948\+::gyro\+\_\+scale}} \{ \mbox{\hyperlink{namespaceicm20948_ab4ed127a0673926c94b3419379774950aabd72e9c7237ef6ac1483378c37db628}{icm20948\+::\+GYRO\+\_\+250\+DPS}} = 0
 , \mbox{\hyperlink{namespaceicm20948_ab4ed127a0673926c94b3419379774950a549d7b9c4b2bbf75a2c70c96f121cfe0}{icm20948\+::\+GYRO\+\_\+500\+DPS}}
 , \mbox{\hyperlink{namespaceicm20948_ab4ed127a0673926c94b3419379774950ae2d68a647e8a6ef753561ee9fe15fcd9}{icm20948\+::\+GYRO\+\_\+1000\+DPS}}
 , \mbox{\hyperlink{namespaceicm20948_ab4ed127a0673926c94b3419379774950a87d8034a32d15681a2811fd897f0ef94}{icm20948\+::\+GYRO\+\_\+2000\+DPS}}
  \}
-\item 
+\begin{DoxyCompactList}\small\item\em Gyroscope full-\/scale range. \end{DoxyCompactList}\item 
 enum \mbox{\hyperlink{namespaceicm20948_ab21febc613fcda495faedf1fadf8da01}{icm20948\+::gyro\+\_\+dlpf\+\_\+config}} \{ \newline
 \mbox{\hyperlink{namespaceicm20948_ab21febc613fcda495faedf1fadf8da01a3d4b8dc9e1511d7d42e031f4cc04fd44}{icm20948\+::\+GYRO\+\_\+\+DLPF\+\_\+196\+\_\+6\+HZ}} = 0
 , \mbox{\hyperlink{namespaceicm20948_ab21febc613fcda495faedf1fadf8da01ac3aa6b2e10ac763342844ce203cedeb9}{icm20948\+::\+GYRO\+\_\+\+DLPF\+\_\+151\+\_\+8\+HZ}}
@@ -223,7 +235,7 @@ enum \mbox{\hyperlink{namespaceicm20948_ab21febc613fcda495faedf1fadf8da01}{icm20
 , \mbox{\hyperlink{namespaceicm20948_ab21febc613fcda495faedf1fadf8da01ac729d419c805e6e8b0e4c5b7a979eef9}{icm20948\+::\+GYRO\+\_\+\+DLPF\+\_\+5\+\_\+7\+HZ}}
 , \mbox{\hyperlink{namespaceicm20948_ab21febc613fcda495faedf1fadf8da01abfd46a43efe7108d44c1cd85123d8275}{icm20948\+::\+GYRO\+\_\+\+DLPF\+\_\+361\+\_\+4\+HZ}}
  \}
-\item 
+\begin{DoxyCompactList}\small\item\em Gyroscope digital low-\/pass filter config. \end{DoxyCompactList}\item 
 enum \mbox{\hyperlink{namespaceicm20948_a52f2b76d3ebd33c9147b45c09ed3d02c}{icm20948\+::magn\+\_\+mode}} \{ \newline
 \mbox{\hyperlink{namespaceicm20948_a52f2b76d3ebd33c9147b45c09ed3d02caf7a1f55f16854e842b04e2d311525a7a}{icm20948\+::\+MAGN\+\_\+\+SHUTDOWN}} = 0
 , \mbox{\hyperlink{namespaceicm20948_a52f2b76d3ebd33c9147b45c09ed3d02ca4696e7df486d4c8527ec94a02a9aaa96}{icm20948\+::\+MAGN\+\_\+\+SINGLE}} = 1
@@ -234,24 +246,24 @@ enum \mbox{\hyperlink{namespaceicm20948_a52f2b76d3ebd33c9147b45c09ed3d02c}{icm20
 , \mbox{\hyperlink{namespaceicm20948_a52f2b76d3ebd33c9147b45c09ed3d02caaa091f0f880adfe061f828e771680137}{icm20948\+::\+MAGN\+\_\+100\+HZ}} = 8
 , \mbox{\hyperlink{namespaceicm20948_a52f2b76d3ebd33c9147b45c09ed3d02cad20e2222b9521644cdccdeb39f3c3f6e}{icm20948\+::\+MAGN\+\_\+\+SELF\+\_\+\+TEST}} = 16
  \}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Magnetometer operating mode. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
 float \mbox{\hyperlink{namespaceicm20948_af14221b01595095e63c2b6da92461546}{icm20948\+::accel\+\_\+scale\+\_\+factor}} (\mbox{\hyperlink{namespaceicm20948_a270e710b092b62b0a289753093c2a673}{accel\+\_\+scale}} scale)
-\item 
+\begin{DoxyCompactList}\small\item\em Convert accel range enum to raw-\/count scale factor. \end{DoxyCompactList}\item 
 std\+::string \mbox{\hyperlink{namespaceicm20948_a4946bab7910d89f8bfd507e564872e96}{icm20948\+::accel\+\_\+scale\+\_\+to\+\_\+str}} (\mbox{\hyperlink{namespaceicm20948_a270e710b092b62b0a289753093c2a673}{accel\+\_\+scale}} scale)
 \item 
 std\+::string \mbox{\hyperlink{namespaceicm20948_a4a26038ff1fca8a832393f87ff9ed235}{icm20948\+::accel\+\_\+dlpf\+\_\+config\+\_\+to\+\_\+str}} (\mbox{\hyperlink{namespaceicm20948_a11320e5ffc65dc1997d850a2747b1857}{accel\+\_\+dlpf\+\_\+config}} config)
-\item 
+\begin{DoxyCompactList}\small\item\em Stringify accel DLPF enum. \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{namespaceicm20948_ab5aff64efdfa42700724773154b88241}{icm20948\+::gyro\+\_\+scale\+\_\+factor}} (\mbox{\hyperlink{namespaceicm20948_ab4ed127a0673926c94b3419379774950}{gyro\+\_\+scale}} scale)
-\item 
+\begin{DoxyCompactList}\small\item\em Convert gyro range enum to raw-\/count scale factor. \end{DoxyCompactList}\item 
 std\+::string \mbox{\hyperlink{namespaceicm20948_a7ceffdb0c86d118f1852b4a67c119517}{icm20948\+::gyro\+\_\+scale\+\_\+to\+\_\+str}} (\mbox{\hyperlink{namespaceicm20948_ab4ed127a0673926c94b3419379774950}{gyro\+\_\+scale}} scale)
-\item 
+\begin{DoxyCompactList}\small\item\em Stringify gyro range enum. \end{DoxyCompactList}\item 
 std\+::string \mbox{\hyperlink{namespaceicm20948_a37feed00f9178e9a6733f1f0db39e468}{icm20948\+::gyro\+\_\+dlpf\+\_\+config\+\_\+to\+\_\+str}} (\mbox{\hyperlink{namespaceicm20948_ab21febc613fcda495faedf1fadf8da01}{gyro\+\_\+dlpf\+\_\+config}} config)
-\item 
+\begin{DoxyCompactList}\small\item\em Stringify gyro DLPF enum. \end{DoxyCompactList}\item 
 std\+::string \mbox{\hyperlink{namespaceicm20948_a4e2db8332ee3f51602d9032468ec2b34}{icm20948\+::magn\+\_\+mode\+\_\+to\+\_\+str}} (\mbox{\hyperlink{namespaceicm20948_a52f2b76d3ebd33c9147b45c09ed3d02c}{magn\+\_\+mode}} mode)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Stringify magnetometer mode enum. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Macro Definition Documentation}
@@ -261,11 +273,23 @@ std\+::string \mbox{\hyperlink{namespaceicm20948_a4e2db8332ee3f51602d9032468ec2b
 \doxysubsubsection{\texorpdfstring{AK09916\_CNTL2\_ADDR}{AK09916\_CNTL2\_ADDR}}
 {\footnotesize\ttfamily \#define AK09916\+\_\+\+CNTL2\+\_\+\+ADDR~0x31}
 
+
+
+AK09916 magnetometer control register and expected WHO\+\_\+\+AM\+\_\+I value. 
+
+
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8hpp_source_l00114}{114}} of file \mbox{\hyperlink{Icm20948driver_8hpp_source}{Icm20948driver.\+hpp}}.
+
 \Hypertarget{Icm20948driver_8hpp_af3d9c6213cd3c1038f394e9584e6d61f}\label{Icm20948driver_8hpp_af3d9c6213cd3c1038f394e9584e6d61f} 
 \index{Icm20948driver.hpp@{Icm20948driver.hpp}!ICM20948\_ACCEL\_CONFIG\_1\_ADDR@{ICM20948\_ACCEL\_CONFIG\_1\_ADDR}}
 \index{ICM20948\_ACCEL\_CONFIG\_1\_ADDR@{ICM20948\_ACCEL\_CONFIG\_1\_ADDR}!Icm20948driver.hpp@{Icm20948driver.hpp}}
 \doxysubsubsection{\texorpdfstring{ICM20948\_ACCEL\_CONFIG\_1\_ADDR}{ICM20948\_ACCEL\_CONFIG\_1\_ADDR}}
 {\footnotesize\ttfamily \#define ICM20948\+\_\+\+ACCEL\+\_\+\+CONFIG\+\_\+1\+\_\+\+ADDR~0x14}
+
+
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8hpp_source_l00080}{80}} of file \mbox{\hyperlink{Icm20948driver_8hpp_source}{Icm20948driver.\+hpp}}.
 
 \Hypertarget{Icm20948driver_8hpp_a846828478b8c07f6e83ea5e68c4c1069}\label{Icm20948driver_8hpp_a846828478b8c07f6e83ea5e68c4c1069} 
 \index{Icm20948driver.hpp@{Icm20948driver.hpp}!ICM20948\_ACCEL\_CONFIG\_1\_BANK@{ICM20948\_ACCEL\_CONFIG\_1\_BANK}}
@@ -273,11 +297,19 @@ std\+::string \mbox{\hyperlink{namespaceicm20948_a4e2db8332ee3f51602d9032468ec2b
 \doxysubsubsection{\texorpdfstring{ICM20948\_ACCEL\_CONFIG\_1\_BANK}{ICM20948\_ACCEL\_CONFIG\_1\_BANK}}
 {\footnotesize\ttfamily \#define ICM20948\+\_\+\+ACCEL\+\_\+\+CONFIG\+\_\+1\+\_\+\+BANK~2}
 
+
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8hpp_source_l00087}{87}} of file \mbox{\hyperlink{Icm20948driver_8hpp_source}{Icm20948driver.\+hpp}}.
+
 \Hypertarget{Icm20948driver_8hpp_aa381c8e28eeb2c6b9e1acc3b86f33095}\label{Icm20948driver_8hpp_aa381c8e28eeb2c6b9e1acc3b86f33095} 
 \index{Icm20948driver.hpp@{Icm20948driver.hpp}!ICM20948\_ACCEL\_OUT\_BANK@{ICM20948\_ACCEL\_OUT\_BANK}}
 \index{ICM20948\_ACCEL\_OUT\_BANK@{ICM20948\_ACCEL\_OUT\_BANK}!Icm20948driver.hpp@{Icm20948driver.hpp}}
 \doxysubsubsection{\texorpdfstring{ICM20948\_ACCEL\_OUT\_BANK}{ICM20948\_ACCEL\_OUT\_BANK}}
 {\footnotesize\ttfamily \#define ICM20948\+\_\+\+ACCEL\+\_\+\+OUT\+\_\+\+BANK~0}
+
+
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8hpp_source_l00069}{69}} of file \mbox{\hyperlink{Icm20948driver_8hpp_source}{Icm20948driver.\+hpp}}.
 
 \Hypertarget{Icm20948driver_8hpp_a9e94b438e0d89136ce738b8dae21bfdb}\label{Icm20948driver_8hpp_a9e94b438e0d89136ce738b8dae21bfdb} 
 \index{Icm20948driver.hpp@{Icm20948driver.hpp}!ICM20948\_ACCEL\_SMPLRT\_DIV\_1\_ADDR@{ICM20948\_ACCEL\_SMPLRT\_DIV\_1\_ADDR}}
@@ -285,11 +317,19 @@ std\+::string \mbox{\hyperlink{namespaceicm20948_a4e2db8332ee3f51602d9032468ec2b
 \doxysubsubsection{\texorpdfstring{ICM20948\_ACCEL\_SMPLRT\_DIV\_1\_ADDR}{ICM20948\_ACCEL\_SMPLRT\_DIV\_1\_ADDR}}
 {\footnotesize\ttfamily \#define ICM20948\+\_\+\+ACCEL\+\_\+\+SMPLRT\+\_\+\+DIV\+\_\+1\+\_\+\+ADDR~0x10}
 
+
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8hpp_source_l00078}{78}} of file \mbox{\hyperlink{Icm20948driver_8hpp_source}{Icm20948driver.\+hpp}}.
+
 \Hypertarget{Icm20948driver_8hpp_afc0e9c74b8475cfcf2750386f210b747}\label{Icm20948driver_8hpp_afc0e9c74b8475cfcf2750386f210b747} 
 \index{Icm20948driver.hpp@{Icm20948driver.hpp}!ICM20948\_ACCEL\_SMPLRT\_DIV\_1\_BANK@{ICM20948\_ACCEL\_SMPLRT\_DIV\_1\_BANK}}
 \index{ICM20948\_ACCEL\_SMPLRT\_DIV\_1\_BANK@{ICM20948\_ACCEL\_SMPLRT\_DIV\_1\_BANK}!Icm20948driver.hpp@{Icm20948driver.hpp}}
 \doxysubsubsection{\texorpdfstring{ICM20948\_ACCEL\_SMPLRT\_DIV\_1\_BANK}{ICM20948\_ACCEL\_SMPLRT\_DIV\_1\_BANK}}
 {\footnotesize\ttfamily \#define ICM20948\+\_\+\+ACCEL\+\_\+\+SMPLRT\+\_\+\+DIV\+\_\+1\+\_\+\+BANK~2}
+
+
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8hpp_source_l00085}{85}} of file \mbox{\hyperlink{Icm20948driver_8hpp_source}{Icm20948driver.\+hpp}}.
 
 \Hypertarget{Icm20948driver_8hpp_a7b112dc250595d3233756696997b0530}\label{Icm20948driver_8hpp_a7b112dc250595d3233756696997b0530} 
 \index{Icm20948driver.hpp@{Icm20948driver.hpp}!ICM20948\_ACCEL\_SMPLRT\_DIV\_2\_ADDR@{ICM20948\_ACCEL\_SMPLRT\_DIV\_2\_ADDR}}
@@ -297,11 +337,19 @@ std\+::string \mbox{\hyperlink{namespaceicm20948_a4e2db8332ee3f51602d9032468ec2b
 \doxysubsubsection{\texorpdfstring{ICM20948\_ACCEL\_SMPLRT\_DIV\_2\_ADDR}{ICM20948\_ACCEL\_SMPLRT\_DIV\_2\_ADDR}}
 {\footnotesize\ttfamily \#define ICM20948\+\_\+\+ACCEL\+\_\+\+SMPLRT\+\_\+\+DIV\+\_\+2\+\_\+\+ADDR~0x11}
 
+
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8hpp_source_l00079}{79}} of file \mbox{\hyperlink{Icm20948driver_8hpp_source}{Icm20948driver.\+hpp}}.
+
 \Hypertarget{Icm20948driver_8hpp_abee057483e8191c5462c3991035d1d44}\label{Icm20948driver_8hpp_abee057483e8191c5462c3991035d1d44} 
 \index{Icm20948driver.hpp@{Icm20948driver.hpp}!ICM20948\_ACCEL\_SMPLRT\_DIV\_2\_BANK@{ICM20948\_ACCEL\_SMPLRT\_DIV\_2\_BANK}}
 \index{ICM20948\_ACCEL\_SMPLRT\_DIV\_2\_BANK@{ICM20948\_ACCEL\_SMPLRT\_DIV\_2\_BANK}!Icm20948driver.hpp@{Icm20948driver.hpp}}
 \doxysubsubsection{\texorpdfstring{ICM20948\_ACCEL\_SMPLRT\_DIV\_2\_BANK}{ICM20948\_ACCEL\_SMPLRT\_DIV\_2\_BANK}}
 {\footnotesize\ttfamily \#define ICM20948\+\_\+\+ACCEL\+\_\+\+SMPLRT\+\_\+\+DIV\+\_\+2\+\_\+\+BANK~2}
+
+
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8hpp_source_l00086}{86}} of file \mbox{\hyperlink{Icm20948driver_8hpp_source}{Icm20948driver.\+hpp}}.
 
 \Hypertarget{Icm20948driver_8hpp_aab2856e1b25b134c4f8da6ffe55874dd}\label{Icm20948driver_8hpp_aab2856e1b25b134c4f8da6ffe55874dd} 
 \index{Icm20948driver.hpp@{Icm20948driver.hpp}!ICM20948\_ACCEL\_XOUT\_H\_ADDR@{ICM20948\_ACCEL\_XOUT\_H\_ADDR}}
@@ -309,11 +357,19 @@ std\+::string \mbox{\hyperlink{namespaceicm20948_a4e2db8332ee3f51602d9032468ec2b
 \doxysubsubsection{\texorpdfstring{ICM20948\_ACCEL\_XOUT\_H\_ADDR}{ICM20948\_ACCEL\_XOUT\_H\_ADDR}}
 {\footnotesize\ttfamily \#define ICM20948\+\_\+\+ACCEL\+\_\+\+XOUT\+\_\+\+H\+\_\+\+ADDR~0x2D}
 
+
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8hpp_source_l00044}{44}} of file \mbox{\hyperlink{Icm20948driver_8hpp_source}{Icm20948driver.\+hpp}}.
+
 \Hypertarget{Icm20948driver_8hpp_a9e3fc7126ed78b3797eee6cdef9bcfed}\label{Icm20948driver_8hpp_a9e3fc7126ed78b3797eee6cdef9bcfed} 
 \index{Icm20948driver.hpp@{Icm20948driver.hpp}!ICM20948\_ACCEL\_XOUT\_L\_ADDR@{ICM20948\_ACCEL\_XOUT\_L\_ADDR}}
 \index{ICM20948\_ACCEL\_XOUT\_L\_ADDR@{ICM20948\_ACCEL\_XOUT\_L\_ADDR}!Icm20948driver.hpp@{Icm20948driver.hpp}}
 \doxysubsubsection{\texorpdfstring{ICM20948\_ACCEL\_XOUT\_L\_ADDR}{ICM20948\_ACCEL\_XOUT\_L\_ADDR}}
 {\footnotesize\ttfamily \#define ICM20948\+\_\+\+ACCEL\+\_\+\+XOUT\+\_\+\+L\+\_\+\+ADDR~0x2E}
+
+
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8hpp_source_l00045}{45}} of file \mbox{\hyperlink{Icm20948driver_8hpp_source}{Icm20948driver.\+hpp}}.
 
 \Hypertarget{Icm20948driver_8hpp_a1921fb4a7fb8313b68cf0117b67145e3}\label{Icm20948driver_8hpp_a1921fb4a7fb8313b68cf0117b67145e3} 
 \index{Icm20948driver.hpp@{Icm20948driver.hpp}!ICM20948\_ACCEL\_YOUT\_H\_ADDR@{ICM20948\_ACCEL\_YOUT\_H\_ADDR}}
@@ -321,11 +377,19 @@ std\+::string \mbox{\hyperlink{namespaceicm20948_a4e2db8332ee3f51602d9032468ec2b
 \doxysubsubsection{\texorpdfstring{ICM20948\_ACCEL\_YOUT\_H\_ADDR}{ICM20948\_ACCEL\_YOUT\_H\_ADDR}}
 {\footnotesize\ttfamily \#define ICM20948\+\_\+\+ACCEL\+\_\+\+YOUT\+\_\+\+H\+\_\+\+ADDR~0x2F}
 
+
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8hpp_source_l00046}{46}} of file \mbox{\hyperlink{Icm20948driver_8hpp_source}{Icm20948driver.\+hpp}}.
+
 \Hypertarget{Icm20948driver_8hpp_ac311fc7bf7736ba1d33a4ab8a2316247}\label{Icm20948driver_8hpp_ac311fc7bf7736ba1d33a4ab8a2316247} 
 \index{Icm20948driver.hpp@{Icm20948driver.hpp}!ICM20948\_ACCEL\_YOUT\_L\_ADDR@{ICM20948\_ACCEL\_YOUT\_L\_ADDR}}
 \index{ICM20948\_ACCEL\_YOUT\_L\_ADDR@{ICM20948\_ACCEL\_YOUT\_L\_ADDR}!Icm20948driver.hpp@{Icm20948driver.hpp}}
 \doxysubsubsection{\texorpdfstring{ICM20948\_ACCEL\_YOUT\_L\_ADDR}{ICM20948\_ACCEL\_YOUT\_L\_ADDR}}
 {\footnotesize\ttfamily \#define ICM20948\+\_\+\+ACCEL\+\_\+\+YOUT\+\_\+\+L\+\_\+\+ADDR~0x30}
+
+
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8hpp_source_l00047}{47}} of file \mbox{\hyperlink{Icm20948driver_8hpp_source}{Icm20948driver.\+hpp}}.
 
 \Hypertarget{Icm20948driver_8hpp_af7bbcbb01850473655f93c131dc6147b}\label{Icm20948driver_8hpp_af7bbcbb01850473655f93c131dc6147b} 
 \index{Icm20948driver.hpp@{Icm20948driver.hpp}!ICM20948\_ACCEL\_ZOUT\_H\_ADDR@{ICM20948\_ACCEL\_ZOUT\_H\_ADDR}}
@@ -333,11 +397,19 @@ std\+::string \mbox{\hyperlink{namespaceicm20948_a4e2db8332ee3f51602d9032468ec2b
 \doxysubsubsection{\texorpdfstring{ICM20948\_ACCEL\_ZOUT\_H\_ADDR}{ICM20948\_ACCEL\_ZOUT\_H\_ADDR}}
 {\footnotesize\ttfamily \#define ICM20948\+\_\+\+ACCEL\+\_\+\+ZOUT\+\_\+\+H\+\_\+\+ADDR~0x31}
 
+
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8hpp_source_l00048}{48}} of file \mbox{\hyperlink{Icm20948driver_8hpp_source}{Icm20948driver.\+hpp}}.
+
 \Hypertarget{Icm20948driver_8hpp_a044c68ed4cfc83c6b4161a043a7a5e4b}\label{Icm20948driver_8hpp_a044c68ed4cfc83c6b4161a043a7a5e4b} 
 \index{Icm20948driver.hpp@{Icm20948driver.hpp}!ICM20948\_ACCEL\_ZOUT\_L\_ADDR@{ICM20948\_ACCEL\_ZOUT\_L\_ADDR}}
 \index{ICM20948\_ACCEL\_ZOUT\_L\_ADDR@{ICM20948\_ACCEL\_ZOUT\_L\_ADDR}!Icm20948driver.hpp@{Icm20948driver.hpp}}
 \doxysubsubsection{\texorpdfstring{ICM20948\_ACCEL\_ZOUT\_L\_ADDR}{ICM20948\_ACCEL\_ZOUT\_L\_ADDR}}
 {\footnotesize\ttfamily \#define ICM20948\+\_\+\+ACCEL\+\_\+\+ZOUT\+\_\+\+L\+\_\+\+ADDR~0x32}
+
+
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8hpp_source_l00049}{49}} of file \mbox{\hyperlink{Icm20948driver_8hpp_source}{Icm20948driver.\+hpp}}.
 
 \Hypertarget{Icm20948driver_8hpp_a1e1722168b7fb9b2002232b07021c61a}\label{Icm20948driver_8hpp_a1e1722168b7fb9b2002232b07021c61a} 
 \index{Icm20948driver.hpp@{Icm20948driver.hpp}!ICM20948\_BANK0\_WHO\_AM\_I\_VALUE@{ICM20948\_BANK0\_WHO\_AM\_I\_VALUE}}
@@ -345,11 +417,19 @@ std\+::string \mbox{\hyperlink{namespaceicm20948_a4e2db8332ee3f51602d9032468ec2b
 \doxysubsubsection{\texorpdfstring{ICM20948\_BANK0\_WHO\_AM\_I\_VALUE}{ICM20948\_BANK0\_WHO\_AM\_I\_VALUE}}
 {\footnotesize\ttfamily \#define ICM20948\+\_\+\+BANK0\+\_\+\+WHO\+\_\+\+AM\+\_\+\+I\+\_\+\+VALUE~0x\+EA}
 
+
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8hpp_source_l00115}{115}} of file \mbox{\hyperlink{Icm20948driver_8hpp_source}{Icm20948driver.\+hpp}}.
+
 \Hypertarget{Icm20948driver_8hpp_a7f0af5364efcde9da16e79ceb0515115}\label{Icm20948driver_8hpp_a7f0af5364efcde9da16e79ceb0515115} 
 \index{Icm20948driver.hpp@{Icm20948driver.hpp}!ICM20948\_EXT\_SLV\_SENS\_DATA\_00\_ADDR@{ICM20948\_EXT\_SLV\_SENS\_DATA\_00\_ADDR}}
 \index{ICM20948\_EXT\_SLV\_SENS\_DATA\_00\_ADDR@{ICM20948\_EXT\_SLV\_SENS\_DATA\_00\_ADDR}!Icm20948driver.hpp@{Icm20948driver.hpp}}
 \doxysubsubsection{\texorpdfstring{ICM20948\_EXT\_SLV\_SENS\_DATA\_00\_ADDR}{ICM20948\_EXT\_SLV\_SENS\_DATA\_00\_ADDR}}
 {\footnotesize\ttfamily \#define ICM20948\+\_\+\+EXT\+\_\+\+SLV\+\_\+\+SENS\+\_\+\+DATA\+\_\+00\+\_\+\+ADDR~0x3B}
+
+
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8hpp_source_l00058}{58}} of file \mbox{\hyperlink{Icm20948driver_8hpp_source}{Icm20948driver.\+hpp}}.
 
 \Hypertarget{Icm20948driver_8hpp_a47eee228bd1d7ae41f78d1bd5da32d20}\label{Icm20948driver_8hpp_a47eee228bd1d7ae41f78d1bd5da32d20} 
 \index{Icm20948driver.hpp@{Icm20948driver.hpp}!ICM20948\_EXT\_SLV\_SENS\_DATA\_00\_BANK@{ICM20948\_EXT\_SLV\_SENS\_DATA\_00\_BANK}}
@@ -357,11 +437,19 @@ std\+::string \mbox{\hyperlink{namespaceicm20948_a4e2db8332ee3f51602d9032468ec2b
 \doxysubsubsection{\texorpdfstring{ICM20948\_EXT\_SLV\_SENS\_DATA\_00\_BANK}{ICM20948\_EXT\_SLV\_SENS\_DATA\_00\_BANK}}
 {\footnotesize\ttfamily \#define ICM20948\+\_\+\+EXT\+\_\+\+SLV\+\_\+\+SENS\+\_\+\+DATA\+\_\+00\+\_\+\+BANK~0}
 
+
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8hpp_source_l00071}{71}} of file \mbox{\hyperlink{Icm20948driver_8hpp_source}{Icm20948driver.\+hpp}}.
+
 \Hypertarget{Icm20948driver_8hpp_a56c7e35b4ad7df92875c6dbb2b6e5670}\label{Icm20948driver_8hpp_a56c7e35b4ad7df92875c6dbb2b6e5670} 
 \index{Icm20948driver.hpp@{Icm20948driver.hpp}!ICM20948\_GYRO\_CONFIG\_1\_ADDR@{ICM20948\_GYRO\_CONFIG\_1\_ADDR}}
 \index{ICM20948\_GYRO\_CONFIG\_1\_ADDR@{ICM20948\_GYRO\_CONFIG\_1\_ADDR}!Icm20948driver.hpp@{Icm20948driver.hpp}}
 \doxysubsubsection{\texorpdfstring{ICM20948\_GYRO\_CONFIG\_1\_ADDR}{ICM20948\_GYRO\_CONFIG\_1\_ADDR}}
 {\footnotesize\ttfamily \#define ICM20948\+\_\+\+GYRO\+\_\+\+CONFIG\+\_\+1\+\_\+\+ADDR~0x01}
+
+
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8hpp_source_l00077}{77}} of file \mbox{\hyperlink{Icm20948driver_8hpp_source}{Icm20948driver.\+hpp}}.
 
 \Hypertarget{Icm20948driver_8hpp_abd7c5a2c0fec8a31b3997d7f0464a82a}\label{Icm20948driver_8hpp_abd7c5a2c0fec8a31b3997d7f0464a82a} 
 \index{Icm20948driver.hpp@{Icm20948driver.hpp}!ICM20948\_GYRO\_CONFIG\_1\_BANK@{ICM20948\_GYRO\_CONFIG\_1\_BANK}}
@@ -369,11 +457,19 @@ std\+::string \mbox{\hyperlink{namespaceicm20948_a4e2db8332ee3f51602d9032468ec2b
 \doxysubsubsection{\texorpdfstring{ICM20948\_GYRO\_CONFIG\_1\_BANK}{ICM20948\_GYRO\_CONFIG\_1\_BANK}}
 {\footnotesize\ttfamily \#define ICM20948\+\_\+\+GYRO\+\_\+\+CONFIG\+\_\+1\+\_\+\+BANK~2}
 
+
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8hpp_source_l00084}{84}} of file \mbox{\hyperlink{Icm20948driver_8hpp_source}{Icm20948driver.\+hpp}}.
+
 \Hypertarget{Icm20948driver_8hpp_a0efbf4d39edb530efef5733d587e27ce}\label{Icm20948driver_8hpp_a0efbf4d39edb530efef5733d587e27ce} 
 \index{Icm20948driver.hpp@{Icm20948driver.hpp}!ICM20948\_GYRO\_OUT\_BANK@{ICM20948\_GYRO\_OUT\_BANK}}
 \index{ICM20948\_GYRO\_OUT\_BANK@{ICM20948\_GYRO\_OUT\_BANK}!Icm20948driver.hpp@{Icm20948driver.hpp}}
 \doxysubsubsection{\texorpdfstring{ICM20948\_GYRO\_OUT\_BANK}{ICM20948\_GYRO\_OUT\_BANK}}
 {\footnotesize\ttfamily \#define ICM20948\+\_\+\+GYRO\+\_\+\+OUT\+\_\+\+BANK~0}
+
+
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8hpp_source_l00070}{70}} of file \mbox{\hyperlink{Icm20948driver_8hpp_source}{Icm20948driver.\+hpp}}.
 
 \Hypertarget{Icm20948driver_8hpp_ae86eba280e098021719f8554141fd108}\label{Icm20948driver_8hpp_ae86eba280e098021719f8554141fd108} 
 \index{Icm20948driver.hpp@{Icm20948driver.hpp}!ICM20948\_GYRO\_SMPLRT\_DIV\_ADDR@{ICM20948\_GYRO\_SMPLRT\_DIV\_ADDR}}
@@ -381,11 +477,23 @@ std\+::string \mbox{\hyperlink{namespaceicm20948_a4e2db8332ee3f51602d9032468ec2b
 \doxysubsubsection{\texorpdfstring{ICM20948\_GYRO\_SMPLRT\_DIV\_ADDR}{ICM20948\_GYRO\_SMPLRT\_DIV\_ADDR}}
 {\footnotesize\ttfamily \#define ICM20948\+\_\+\+GYRO\+\_\+\+SMPLRT\+\_\+\+DIV\+\_\+\+ADDR~0x00}
 
+Bank 2 Configuration registers for sample rate, scale, and digital filtering. 
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8hpp_source_l00076}{76}} of file \mbox{\hyperlink{Icm20948driver_8hpp_source}{Icm20948driver.\+hpp}}.
+
 \Hypertarget{Icm20948driver_8hpp_ad0d3ce60a73493d5d65023ee67b24782}\label{Icm20948driver_8hpp_ad0d3ce60a73493d5d65023ee67b24782} 
 \index{Icm20948driver.hpp@{Icm20948driver.hpp}!ICM20948\_GYRO\_SMPLRT\_DIV\_BANK@{ICM20948\_GYRO\_SMPLRT\_DIV\_BANK}}
 \index{ICM20948\_GYRO\_SMPLRT\_DIV\_BANK@{ICM20948\_GYRO\_SMPLRT\_DIV\_BANK}!Icm20948driver.hpp@{Icm20948driver.hpp}}
 \doxysubsubsection{\texorpdfstring{ICM20948\_GYRO\_SMPLRT\_DIV\_BANK}{ICM20948\_GYRO\_SMPLRT\_DIV\_BANK}}
 {\footnotesize\ttfamily \#define ICM20948\+\_\+\+GYRO\+\_\+\+SMPLRT\+\_\+\+DIV\+\_\+\+BANK~2}
+
+
+
+Bank IDs for accel/gyro configuration registers. 
+
+
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8hpp_source_l00083}{83}} of file \mbox{\hyperlink{Icm20948driver_8hpp_source}{Icm20948driver.\+hpp}}.
 
 \Hypertarget{Icm20948driver_8hpp_a0e698c1de1b840ccb8455802ebba7be3}\label{Icm20948driver_8hpp_a0e698c1de1b840ccb8455802ebba7be3} 
 \index{Icm20948driver.hpp@{Icm20948driver.hpp}!ICM20948\_GYRO\_XOUT\_H\_ADDR@{ICM20948\_GYRO\_XOUT\_H\_ADDR}}
@@ -393,11 +501,19 @@ std\+::string \mbox{\hyperlink{namespaceicm20948_a4e2db8332ee3f51602d9032468ec2b
 \doxysubsubsection{\texorpdfstring{ICM20948\_GYRO\_XOUT\_H\_ADDR}{ICM20948\_GYRO\_XOUT\_H\_ADDR}}
 {\footnotesize\ttfamily \#define ICM20948\+\_\+\+GYRO\+\_\+\+XOUT\+\_\+\+H\+\_\+\+ADDR~0x33}
 
+
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8hpp_source_l00050}{50}} of file \mbox{\hyperlink{Icm20948driver_8hpp_source}{Icm20948driver.\+hpp}}.
+
 \Hypertarget{Icm20948driver_8hpp_a2f622203ad20dd1b1dde96364e151a26}\label{Icm20948driver_8hpp_a2f622203ad20dd1b1dde96364e151a26} 
 \index{Icm20948driver.hpp@{Icm20948driver.hpp}!ICM20948\_GYRO\_XOUT\_L\_ADDR@{ICM20948\_GYRO\_XOUT\_L\_ADDR}}
 \index{ICM20948\_GYRO\_XOUT\_L\_ADDR@{ICM20948\_GYRO\_XOUT\_L\_ADDR}!Icm20948driver.hpp@{Icm20948driver.hpp}}
 \doxysubsubsection{\texorpdfstring{ICM20948\_GYRO\_XOUT\_L\_ADDR}{ICM20948\_GYRO\_XOUT\_L\_ADDR}}
 {\footnotesize\ttfamily \#define ICM20948\+\_\+\+GYRO\+\_\+\+XOUT\+\_\+\+L\+\_\+\+ADDR~0x34}
+
+
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8hpp_source_l00051}{51}} of file \mbox{\hyperlink{Icm20948driver_8hpp_source}{Icm20948driver.\+hpp}}.
 
 \Hypertarget{Icm20948driver_8hpp_ad248da9c1f24a15af06baf00120cbf28}\label{Icm20948driver_8hpp_ad248da9c1f24a15af06baf00120cbf28} 
 \index{Icm20948driver.hpp@{Icm20948driver.hpp}!ICM20948\_GYRO\_YOUT\_H\_ADDR@{ICM20948\_GYRO\_YOUT\_H\_ADDR}}
@@ -405,11 +521,19 @@ std\+::string \mbox{\hyperlink{namespaceicm20948_a4e2db8332ee3f51602d9032468ec2b
 \doxysubsubsection{\texorpdfstring{ICM20948\_GYRO\_YOUT\_H\_ADDR}{ICM20948\_GYRO\_YOUT\_H\_ADDR}}
 {\footnotesize\ttfamily \#define ICM20948\+\_\+\+GYRO\+\_\+\+YOUT\+\_\+\+H\+\_\+\+ADDR~0x35}
 
+
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8hpp_source_l00052}{52}} of file \mbox{\hyperlink{Icm20948driver_8hpp_source}{Icm20948driver.\+hpp}}.
+
 \Hypertarget{Icm20948driver_8hpp_acb14d208a40f195d9470b81e7f5ad400}\label{Icm20948driver_8hpp_acb14d208a40f195d9470b81e7f5ad400} 
 \index{Icm20948driver.hpp@{Icm20948driver.hpp}!ICM20948\_GYRO\_YOUT\_L\_ADDR@{ICM20948\_GYRO\_YOUT\_L\_ADDR}}
 \index{ICM20948\_GYRO\_YOUT\_L\_ADDR@{ICM20948\_GYRO\_YOUT\_L\_ADDR}!Icm20948driver.hpp@{Icm20948driver.hpp}}
 \doxysubsubsection{\texorpdfstring{ICM20948\_GYRO\_YOUT\_L\_ADDR}{ICM20948\_GYRO\_YOUT\_L\_ADDR}}
 {\footnotesize\ttfamily \#define ICM20948\+\_\+\+GYRO\+\_\+\+YOUT\+\_\+\+L\+\_\+\+ADDR~0x36}
+
+
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8hpp_source_l00053}{53}} of file \mbox{\hyperlink{Icm20948driver_8hpp_source}{Icm20948driver.\+hpp}}.
 
 \Hypertarget{Icm20948driver_8hpp_a2e24f33c002a7db10746a0ffd04973db}\label{Icm20948driver_8hpp_a2e24f33c002a7db10746a0ffd04973db} 
 \index{Icm20948driver.hpp@{Icm20948driver.hpp}!ICM20948\_GYRO\_ZOUT\_H\_ADDR@{ICM20948\_GYRO\_ZOUT\_H\_ADDR}}
@@ -417,11 +541,19 @@ std\+::string \mbox{\hyperlink{namespaceicm20948_a4e2db8332ee3f51602d9032468ec2b
 \doxysubsubsection{\texorpdfstring{ICM20948\_GYRO\_ZOUT\_H\_ADDR}{ICM20948\_GYRO\_ZOUT\_H\_ADDR}}
 {\footnotesize\ttfamily \#define ICM20948\+\_\+\+GYRO\+\_\+\+ZOUT\+\_\+\+H\+\_\+\+ADDR~0x37}
 
+
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8hpp_source_l00054}{54}} of file \mbox{\hyperlink{Icm20948driver_8hpp_source}{Icm20948driver.\+hpp}}.
+
 \Hypertarget{Icm20948driver_8hpp_a85f88ca1d84d9a0c9f31010ba81dcffe}\label{Icm20948driver_8hpp_a85f88ca1d84d9a0c9f31010ba81dcffe} 
 \index{Icm20948driver.hpp@{Icm20948driver.hpp}!ICM20948\_GYRO\_ZOUT\_L\_ADDR@{ICM20948\_GYRO\_ZOUT\_L\_ADDR}}
 \index{ICM20948\_GYRO\_ZOUT\_L\_ADDR@{ICM20948\_GYRO\_ZOUT\_L\_ADDR}!Icm20948driver.hpp@{Icm20948driver.hpp}}
 \doxysubsubsection{\texorpdfstring{ICM20948\_GYRO\_ZOUT\_L\_ADDR}{ICM20948\_GYRO\_ZOUT\_L\_ADDR}}
 {\footnotesize\ttfamily \#define ICM20948\+\_\+\+GYRO\+\_\+\+ZOUT\+\_\+\+L\+\_\+\+ADDR~0x38}
+
+
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8hpp_source_l00055}{55}} of file \mbox{\hyperlink{Icm20948driver_8hpp_source}{Icm20948driver.\+hpp}}.
 
 \Hypertarget{Icm20948driver_8hpp_ad2332082f2390f86f6d6ee09acf1e259}\label{Icm20948driver_8hpp_ad2332082f2390f86f6d6ee09acf1e259} 
 \index{Icm20948driver.hpp@{Icm20948driver.hpp}!ICM20948\_I2C\_ADDR@{ICM20948\_I2C\_ADDR}}
@@ -429,11 +561,21 @@ std\+::string \mbox{\hyperlink{namespaceicm20948_a4e2db8332ee3f51602d9032468ec2b
 \doxysubsubsection{\texorpdfstring{ICM20948\_I2C\_ADDR}{ICM20948\_I2C\_ADDR}}
 {\footnotesize\ttfamily \#define ICM20948\+\_\+\+I2\+C\+\_\+\+ADDR~0x69}
 
+This header defines the register map, configuration types, and public driver interface for the ICM-\/20948 IMU and its onboard magnetometer.
+
+SOLID principles\+: S -\/ This file centralises device-\/specific constants, configuration structures, and the public interface for the IMU driver in one place. O -\/ Configuration is represented through settings types, allowing the driver to be reconfigured without changing client code that uses the interface. I -\/ Configuration is grouped into smaller settings types (accelerometer, gyroscope, magnetometer) so callers interact with the parts of the device configuration they actually need. Register addresses and constants for the ICM-\/20948 IMU and onboard magnetometer. Register map 
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8hpp_source_l00024}{24}} of file \mbox{\hyperlink{Icm20948driver_8hpp_source}{Icm20948driver.\+hpp}}.
+
 \Hypertarget{Icm20948driver_8hpp_a16c37bd1eb369c3e195a57890699c7a9}\label{Icm20948driver_8hpp_a16c37bd1eb369c3e195a57890699c7a9} 
 \index{Icm20948driver.hpp@{Icm20948driver.hpp}!ICM20948\_I2C\_MST\_CTRL\_ADDR@{ICM20948\_I2C\_MST\_CTRL\_ADDR}}
 \index{ICM20948\_I2C\_MST\_CTRL\_ADDR@{ICM20948\_I2C\_MST\_CTRL\_ADDR}!Icm20948driver.hpp@{Icm20948driver.hpp}}
 \doxysubsubsection{\texorpdfstring{ICM20948\_I2C\_MST\_CTRL\_ADDR}{ICM20948\_I2C\_MST\_CTRL\_ADDR}}
 {\footnotesize\ttfamily \#define ICM20948\+\_\+\+I2\+C\+\_\+\+MST\+\_\+\+CTRL\+\_\+\+ADDR~0x01}
+
+Bank 3 Registers for the internal I2C master used to communicate with the onboard magnetometer through the main IMU device. 
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8hpp_source_l00092}{92}} of file \mbox{\hyperlink{Icm20948driver_8hpp_source}{Icm20948driver.\+hpp}}.
 
 \Hypertarget{Icm20948driver_8hpp_ac23dfc6c232d904d914397c4b047d8d0}\label{Icm20948driver_8hpp_ac23dfc6c232d904d914397c4b047d8d0} 
 \index{Icm20948driver.hpp@{Icm20948driver.hpp}!ICM20948\_I2C\_MST\_CTRL\_BANK@{ICM20948\_I2C\_MST\_CTRL\_BANK}}
@@ -441,11 +583,23 @@ std\+::string \mbox{\hyperlink{namespaceicm20948_a4e2db8332ee3f51602d9032468ec2b
 \doxysubsubsection{\texorpdfstring{ICM20948\_I2C\_MST\_CTRL\_BANK}{ICM20948\_I2C\_MST\_CTRL\_BANK}}
 {\footnotesize\ttfamily \#define ICM20948\+\_\+\+I2\+C\+\_\+\+MST\+\_\+\+CTRL\+\_\+\+BANK~3}
 
+
+
+Bank IDs for the internal I2C master interface. 
+
+
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8hpp_source_l00103}{103}} of file \mbox{\hyperlink{Icm20948driver_8hpp_source}{Icm20948driver.\+hpp}}.
+
 \Hypertarget{Icm20948driver_8hpp_a4345af90d9875fa66abadeae49a740d7}\label{Icm20948driver_8hpp_a4345af90d9875fa66abadeae49a740d7} 
 \index{Icm20948driver.hpp@{Icm20948driver.hpp}!ICM20948\_I2C\_MST\_STATUS\_ADDR@{ICM20948\_I2C\_MST\_STATUS\_ADDR}}
 \index{ICM20948\_I2C\_MST\_STATUS\_ADDR@{ICM20948\_I2C\_MST\_STATUS\_ADDR}!Icm20948driver.hpp@{Icm20948driver.hpp}}
 \doxysubsubsection{\texorpdfstring{ICM20948\_I2C\_MST\_STATUS\_ADDR}{ICM20948\_I2C\_MST\_STATUS\_ADDR}}
 {\footnotesize\ttfamily \#define ICM20948\+\_\+\+I2\+C\+\_\+\+MST\+\_\+\+STATUS\+\_\+\+ADDR~0x17}
+
+
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8hpp_source_l00043}{43}} of file \mbox{\hyperlink{Icm20948driver_8hpp_source}{Icm20948driver.\+hpp}}.
 
 \Hypertarget{Icm20948driver_8hpp_ad5e35bb0de9fdcb3ce6a8a346cfc23ab}\label{Icm20948driver_8hpp_ad5e35bb0de9fdcb3ce6a8a346cfc23ab} 
 \index{Icm20948driver.hpp@{Icm20948driver.hpp}!ICM20948\_I2C\_MST\_STATUS\_BANK@{ICM20948\_I2C\_MST\_STATUS\_BANK}}
@@ -453,11 +607,19 @@ std\+::string \mbox{\hyperlink{namespaceicm20948_a4e2db8332ee3f51602d9032468ec2b
 \doxysubsubsection{\texorpdfstring{ICM20948\_I2C\_MST\_STATUS\_BANK}{ICM20948\_I2C\_MST\_STATUS\_BANK}}
 {\footnotesize\ttfamily \#define ICM20948\+\_\+\+I2\+C\+\_\+\+MST\+\_\+\+STATUS\+\_\+\+BANK~0}
 
+
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8hpp_source_l00068}{68}} of file \mbox{\hyperlink{Icm20948driver_8hpp_source}{Icm20948driver.\+hpp}}.
+
 \Hypertarget{Icm20948driver_8hpp_a94b4ae4c3ae363e6902064671bd1bd3c}\label{Icm20948driver_8hpp_a94b4ae4c3ae363e6902064671bd1bd3c} 
 \index{Icm20948driver.hpp@{Icm20948driver.hpp}!ICM20948\_I2C\_SLV0\_ADDR\_ADDR@{ICM20948\_I2C\_SLV0\_ADDR\_ADDR}}
 \index{ICM20948\_I2C\_SLV0\_ADDR\_ADDR@{ICM20948\_I2C\_SLV0\_ADDR\_ADDR}!Icm20948driver.hpp@{Icm20948driver.hpp}}
 \doxysubsubsection{\texorpdfstring{ICM20948\_I2C\_SLV0\_ADDR\_ADDR}{ICM20948\_I2C\_SLV0\_ADDR\_ADDR}}
 {\footnotesize\ttfamily \#define ICM20948\+\_\+\+I2\+C\+\_\+\+SLV0\+\_\+\+ADDR\+\_\+\+ADDR~0x03}
+
+
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8hpp_source_l00093}{93}} of file \mbox{\hyperlink{Icm20948driver_8hpp_source}{Icm20948driver.\+hpp}}.
 
 \Hypertarget{Icm20948driver_8hpp_acdc1cf2ce72949ab50dc64178245e322}\label{Icm20948driver_8hpp_acdc1cf2ce72949ab50dc64178245e322} 
 \index{Icm20948driver.hpp@{Icm20948driver.hpp}!ICM20948\_I2C\_SLV0\_ADDR\_BANK@{ICM20948\_I2C\_SLV0\_ADDR\_BANK}}
@@ -465,11 +627,19 @@ std\+::string \mbox{\hyperlink{namespaceicm20948_a4e2db8332ee3f51602d9032468ec2b
 \doxysubsubsection{\texorpdfstring{ICM20948\_I2C\_SLV0\_ADDR\_BANK}{ICM20948\_I2C\_SLV0\_ADDR\_BANK}}
 {\footnotesize\ttfamily \#define ICM20948\+\_\+\+I2\+C\+\_\+\+SLV0\+\_\+\+ADDR\+\_\+\+BANK~3}
 
+
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8hpp_source_l00104}{104}} of file \mbox{\hyperlink{Icm20948driver_8hpp_source}{Icm20948driver.\+hpp}}.
+
 \Hypertarget{Icm20948driver_8hpp_a4272bce367fb11076678244354ebc408}\label{Icm20948driver_8hpp_a4272bce367fb11076678244354ebc408} 
 \index{Icm20948driver.hpp@{Icm20948driver.hpp}!ICM20948\_I2C\_SLV0\_CTRL\_ADDR@{ICM20948\_I2C\_SLV0\_CTRL\_ADDR}}
 \index{ICM20948\_I2C\_SLV0\_CTRL\_ADDR@{ICM20948\_I2C\_SLV0\_CTRL\_ADDR}!Icm20948driver.hpp@{Icm20948driver.hpp}}
 \doxysubsubsection{\texorpdfstring{ICM20948\_I2C\_SLV0\_CTRL\_ADDR}{ICM20948\_I2C\_SLV0\_CTRL\_ADDR}}
 {\footnotesize\ttfamily \#define ICM20948\+\_\+\+I2\+C\+\_\+\+SLV0\+\_\+\+CTRL\+\_\+\+ADDR~0x05}
+
+
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8hpp_source_l00095}{95}} of file \mbox{\hyperlink{Icm20948driver_8hpp_source}{Icm20948driver.\+hpp}}.
 
 \Hypertarget{Icm20948driver_8hpp_a2ade8afdaf06f1ec302f977a914e6d89}\label{Icm20948driver_8hpp_a2ade8afdaf06f1ec302f977a914e6d89} 
 \index{Icm20948driver.hpp@{Icm20948driver.hpp}!ICM20948\_I2C\_SLV0\_CTRL\_BANK@{ICM20948\_I2C\_SLV0\_CTRL\_BANK}}
@@ -477,11 +647,19 @@ std\+::string \mbox{\hyperlink{namespaceicm20948_a4e2db8332ee3f51602d9032468ec2b
 \doxysubsubsection{\texorpdfstring{ICM20948\_I2C\_SLV0\_CTRL\_BANK}{ICM20948\_I2C\_SLV0\_CTRL\_BANK}}
 {\footnotesize\ttfamily \#define ICM20948\+\_\+\+I2\+C\+\_\+\+SLV0\+\_\+\+CTRL\+\_\+\+BANK~3}
 
+
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8hpp_source_l00106}{106}} of file \mbox{\hyperlink{Icm20948driver_8hpp_source}{Icm20948driver.\+hpp}}.
+
 \Hypertarget{Icm20948driver_8hpp_aef18d3d697e584cae5236c7f32359f52}\label{Icm20948driver_8hpp_aef18d3d697e584cae5236c7f32359f52} 
 \index{Icm20948driver.hpp@{Icm20948driver.hpp}!ICM20948\_I2C\_SLV0\_REG\_ADDR@{ICM20948\_I2C\_SLV0\_REG\_ADDR}}
 \index{ICM20948\_I2C\_SLV0\_REG\_ADDR@{ICM20948\_I2C\_SLV0\_REG\_ADDR}!Icm20948driver.hpp@{Icm20948driver.hpp}}
 \doxysubsubsection{\texorpdfstring{ICM20948\_I2C\_SLV0\_REG\_ADDR}{ICM20948\_I2C\_SLV0\_REG\_ADDR}}
 {\footnotesize\ttfamily \#define ICM20948\+\_\+\+I2\+C\+\_\+\+SLV0\+\_\+\+REG\+\_\+\+ADDR~0x04}
+
+
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8hpp_source_l00094}{94}} of file \mbox{\hyperlink{Icm20948driver_8hpp_source}{Icm20948driver.\+hpp}}.
 
 \Hypertarget{Icm20948driver_8hpp_a24466cbcfc388a324d99bbcee2db5476}\label{Icm20948driver_8hpp_a24466cbcfc388a324d99bbcee2db5476} 
 \index{Icm20948driver.hpp@{Icm20948driver.hpp}!ICM20948\_I2C\_SLV0\_REG\_BANK@{ICM20948\_I2C\_SLV0\_REG\_BANK}}
@@ -489,11 +667,19 @@ std\+::string \mbox{\hyperlink{namespaceicm20948_a4e2db8332ee3f51602d9032468ec2b
 \doxysubsubsection{\texorpdfstring{ICM20948\_I2C\_SLV0\_REG\_BANK}{ICM20948\_I2C\_SLV0\_REG\_BANK}}
 {\footnotesize\ttfamily \#define ICM20948\+\_\+\+I2\+C\+\_\+\+SLV0\+\_\+\+REG\+\_\+\+BANK~3}
 
+
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8hpp_source_l00105}{105}} of file \mbox{\hyperlink{Icm20948driver_8hpp_source}{Icm20948driver.\+hpp}}.
+
 \Hypertarget{Icm20948driver_8hpp_a2edc7717316afb62c49e774c966e3481}\label{Icm20948driver_8hpp_a2edc7717316afb62c49e774c966e3481} 
 \index{Icm20948driver.hpp@{Icm20948driver.hpp}!ICM20948\_I2C\_SLV4\_ADDR\_ADDR@{ICM20948\_I2C\_SLV4\_ADDR\_ADDR}}
 \index{ICM20948\_I2C\_SLV4\_ADDR\_ADDR@{ICM20948\_I2C\_SLV4\_ADDR\_ADDR}!Icm20948driver.hpp@{Icm20948driver.hpp}}
 \doxysubsubsection{\texorpdfstring{ICM20948\_I2C\_SLV4\_ADDR\_ADDR}{ICM20948\_I2C\_SLV4\_ADDR\_ADDR}}
 {\footnotesize\ttfamily \#define ICM20948\+\_\+\+I2\+C\+\_\+\+SLV4\+\_\+\+ADDR\+\_\+\+ADDR~0x13}
+
+
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8hpp_source_l00096}{96}} of file \mbox{\hyperlink{Icm20948driver_8hpp_source}{Icm20948driver.\+hpp}}.
 
 \Hypertarget{Icm20948driver_8hpp_af31b79db818bce75a9e340f5dd1eb933}\label{Icm20948driver_8hpp_af31b79db818bce75a9e340f5dd1eb933} 
 \index{Icm20948driver.hpp@{Icm20948driver.hpp}!ICM20948\_I2C\_SLV4\_ADDR\_BANK@{ICM20948\_I2C\_SLV4\_ADDR\_BANK}}
@@ -501,11 +687,19 @@ std\+::string \mbox{\hyperlink{namespaceicm20948_a4e2db8332ee3f51602d9032468ec2b
 \doxysubsubsection{\texorpdfstring{ICM20948\_I2C\_SLV4\_ADDR\_BANK}{ICM20948\_I2C\_SLV4\_ADDR\_BANK}}
 {\footnotesize\ttfamily \#define ICM20948\+\_\+\+I2\+C\+\_\+\+SLV4\+\_\+\+ADDR\+\_\+\+BANK~3}
 
+
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8hpp_source_l00107}{107}} of file \mbox{\hyperlink{Icm20948driver_8hpp_source}{Icm20948driver.\+hpp}}.
+
 \Hypertarget{Icm20948driver_8hpp_ae56ce54ac7321ce7af2e160d5c54da58}\label{Icm20948driver_8hpp_ae56ce54ac7321ce7af2e160d5c54da58} 
 \index{Icm20948driver.hpp@{Icm20948driver.hpp}!ICM20948\_I2C\_SLV4\_CTRL\_ADDR@{ICM20948\_I2C\_SLV4\_CTRL\_ADDR}}
 \index{ICM20948\_I2C\_SLV4\_CTRL\_ADDR@{ICM20948\_I2C\_SLV4\_CTRL\_ADDR}!Icm20948driver.hpp@{Icm20948driver.hpp}}
 \doxysubsubsection{\texorpdfstring{ICM20948\_I2C\_SLV4\_CTRL\_ADDR}{ICM20948\_I2C\_SLV4\_CTRL\_ADDR}}
 {\footnotesize\ttfamily \#define ICM20948\+\_\+\+I2\+C\+\_\+\+SLV4\+\_\+\+CTRL\+\_\+\+ADDR~0x15}
+
+
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8hpp_source_l00098}{98}} of file \mbox{\hyperlink{Icm20948driver_8hpp_source}{Icm20948driver.\+hpp}}.
 
 \Hypertarget{Icm20948driver_8hpp_af627695dd3d1c1c5a71a262a54e8029c}\label{Icm20948driver_8hpp_af627695dd3d1c1c5a71a262a54e8029c} 
 \index{Icm20948driver.hpp@{Icm20948driver.hpp}!ICM20948\_I2C\_SLV4\_CTRL\_BANK@{ICM20948\_I2C\_SLV4\_CTRL\_BANK}}
@@ -513,11 +707,19 @@ std\+::string \mbox{\hyperlink{namespaceicm20948_a4e2db8332ee3f51602d9032468ec2b
 \doxysubsubsection{\texorpdfstring{ICM20948\_I2C\_SLV4\_CTRL\_BANK}{ICM20948\_I2C\_SLV4\_CTRL\_BANK}}
 {\footnotesize\ttfamily \#define ICM20948\+\_\+\+I2\+C\+\_\+\+SLV4\+\_\+\+CTRL\+\_\+\+BANK~3}
 
+
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8hpp_source_l00109}{109}} of file \mbox{\hyperlink{Icm20948driver_8hpp_source}{Icm20948driver.\+hpp}}.
+
 \Hypertarget{Icm20948driver_8hpp_a711dcddb3ed57b86ef4d01778077c117}\label{Icm20948driver_8hpp_a711dcddb3ed57b86ef4d01778077c117} 
 \index{Icm20948driver.hpp@{Icm20948driver.hpp}!ICM20948\_I2C\_SLV4\_DI\_ADDR@{ICM20948\_I2C\_SLV4\_DI\_ADDR}}
 \index{ICM20948\_I2C\_SLV4\_DI\_ADDR@{ICM20948\_I2C\_SLV4\_DI\_ADDR}!Icm20948driver.hpp@{Icm20948driver.hpp}}
 \doxysubsubsection{\texorpdfstring{ICM20948\_I2C\_SLV4\_DI\_ADDR}{ICM20948\_I2C\_SLV4\_DI\_ADDR}}
 {\footnotesize\ttfamily \#define ICM20948\+\_\+\+I2\+C\+\_\+\+SLV4\+\_\+\+DI\+\_\+\+ADDR~0x17}
+
+
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8hpp_source_l00100}{100}} of file \mbox{\hyperlink{Icm20948driver_8hpp_source}{Icm20948driver.\+hpp}}.
 
 \Hypertarget{Icm20948driver_8hpp_a516f6090c4c7afbdf6863a2fafa96f40}\label{Icm20948driver_8hpp_a516f6090c4c7afbdf6863a2fafa96f40} 
 \index{Icm20948driver.hpp@{Icm20948driver.hpp}!ICM20948\_I2C\_SLV4\_DI\_BANK@{ICM20948\_I2C\_SLV4\_DI\_BANK}}
@@ -525,11 +727,19 @@ std\+::string \mbox{\hyperlink{namespaceicm20948_a4e2db8332ee3f51602d9032468ec2b
 \doxysubsubsection{\texorpdfstring{ICM20948\_I2C\_SLV4\_DI\_BANK}{ICM20948\_I2C\_SLV4\_DI\_BANK}}
 {\footnotesize\ttfamily \#define ICM20948\+\_\+\+I2\+C\+\_\+\+SLV4\+\_\+\+DI\+\_\+\+BANK~3}
 
+
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8hpp_source_l00111}{111}} of file \mbox{\hyperlink{Icm20948driver_8hpp_source}{Icm20948driver.\+hpp}}.
+
 \Hypertarget{Icm20948driver_8hpp_a038095babc6a5b205fcc7a13e591a27e}\label{Icm20948driver_8hpp_a038095babc6a5b205fcc7a13e591a27e} 
 \index{Icm20948driver.hpp@{Icm20948driver.hpp}!ICM20948\_I2C\_SLV4\_DO\_ADDR@{ICM20948\_I2C\_SLV4\_DO\_ADDR}}
 \index{ICM20948\_I2C\_SLV4\_DO\_ADDR@{ICM20948\_I2C\_SLV4\_DO\_ADDR}!Icm20948driver.hpp@{Icm20948driver.hpp}}
 \doxysubsubsection{\texorpdfstring{ICM20948\_I2C\_SLV4\_DO\_ADDR}{ICM20948\_I2C\_SLV4\_DO\_ADDR}}
 {\footnotesize\ttfamily \#define ICM20948\+\_\+\+I2\+C\+\_\+\+SLV4\+\_\+\+DO\+\_\+\+ADDR~0x16}
+
+
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8hpp_source_l00099}{99}} of file \mbox{\hyperlink{Icm20948driver_8hpp_source}{Icm20948driver.\+hpp}}.
 
 \Hypertarget{Icm20948driver_8hpp_a2ac23a236afe7df45f0cb508422f3ceb}\label{Icm20948driver_8hpp_a2ac23a236afe7df45f0cb508422f3ceb} 
 \index{Icm20948driver.hpp@{Icm20948driver.hpp}!ICM20948\_I2C\_SLV4\_DO\_BANK@{ICM20948\_I2C\_SLV4\_DO\_BANK}}
@@ -537,11 +747,19 @@ std\+::string \mbox{\hyperlink{namespaceicm20948_a4e2db8332ee3f51602d9032468ec2b
 \doxysubsubsection{\texorpdfstring{ICM20948\_I2C\_SLV4\_DO\_BANK}{ICM20948\_I2C\_SLV4\_DO\_BANK}}
 {\footnotesize\ttfamily \#define ICM20948\+\_\+\+I2\+C\+\_\+\+SLV4\+\_\+\+DO\+\_\+\+BANK~3}
 
+
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8hpp_source_l00110}{110}} of file \mbox{\hyperlink{Icm20948driver_8hpp_source}{Icm20948driver.\+hpp}}.
+
 \Hypertarget{Icm20948driver_8hpp_a810162a382b33cadb0f98e6512214711}\label{Icm20948driver_8hpp_a810162a382b33cadb0f98e6512214711} 
 \index{Icm20948driver.hpp@{Icm20948driver.hpp}!ICM20948\_I2C\_SLV4\_REG\_ADDR@{ICM20948\_I2C\_SLV4\_REG\_ADDR}}
 \index{ICM20948\_I2C\_SLV4\_REG\_ADDR@{ICM20948\_I2C\_SLV4\_REG\_ADDR}!Icm20948driver.hpp@{Icm20948driver.hpp}}
 \doxysubsubsection{\texorpdfstring{ICM20948\_I2C\_SLV4\_REG\_ADDR}{ICM20948\_I2C\_SLV4\_REG\_ADDR}}
 {\footnotesize\ttfamily \#define ICM20948\+\_\+\+I2\+C\+\_\+\+SLV4\+\_\+\+REG\+\_\+\+ADDR~0x14}
+
+
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8hpp_source_l00097}{97}} of file \mbox{\hyperlink{Icm20948driver_8hpp_source}{Icm20948driver.\+hpp}}.
 
 \Hypertarget{Icm20948driver_8hpp_af3ee009b5a68a855fe3a218d6c9a0bba}\label{Icm20948driver_8hpp_af3ee009b5a68a855fe3a218d6c9a0bba} 
 \index{Icm20948driver.hpp@{Icm20948driver.hpp}!ICM20948\_I2C\_SLV4\_REG\_BANK@{ICM20948\_I2C\_SLV4\_REG\_BANK}}
@@ -549,11 +767,19 @@ std\+::string \mbox{\hyperlink{namespaceicm20948_a4e2db8332ee3f51602d9032468ec2b
 \doxysubsubsection{\texorpdfstring{ICM20948\_I2C\_SLV4\_REG\_BANK}{ICM20948\_I2C\_SLV4\_REG\_BANK}}
 {\footnotesize\ttfamily \#define ICM20948\+\_\+\+I2\+C\+\_\+\+SLV4\+\_\+\+REG\+\_\+\+BANK~3}
 
+
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8hpp_source_l00108}{108}} of file \mbox{\hyperlink{Icm20948driver_8hpp_source}{Icm20948driver.\+hpp}}.
+
 \Hypertarget{Icm20948driver_8hpp_ad8bf99534ec1e09528cd17075f09c640}\label{Icm20948driver_8hpp_ad8bf99534ec1e09528cd17075f09c640} 
 \index{Icm20948driver.hpp@{Icm20948driver.hpp}!ICM20948\_INT\_ENABLE\_1\_ADDR@{ICM20948\_INT\_ENABLE\_1\_ADDR}}
 \index{ICM20948\_INT\_ENABLE\_1\_ADDR@{ICM20948\_INT\_ENABLE\_1\_ADDR}!Icm20948driver.hpp@{Icm20948driver.hpp}}
 \doxysubsubsection{\texorpdfstring{ICM20948\_INT\_ENABLE\_1\_ADDR}{ICM20948\_INT\_ENABLE\_1\_ADDR}}
 {\footnotesize\ttfamily \#define ICM20948\+\_\+\+INT\+\_\+\+ENABLE\+\_\+1\+\_\+\+ADDR~0x11}
+
+
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8hpp_source_l00042}{42}} of file \mbox{\hyperlink{Icm20948driver_8hpp_source}{Icm20948driver.\+hpp}}.
 
 \Hypertarget{Icm20948driver_8hpp_a24664e77307b791bdacf3babefb2e1f6}\label{Icm20948driver_8hpp_a24664e77307b791bdacf3babefb2e1f6} 
 \index{Icm20948driver.hpp@{Icm20948driver.hpp}!ICM20948\_INT\_ENABLE\_1\_BANK@{ICM20948\_INT\_ENABLE\_1\_BANK}}
@@ -561,11 +787,19 @@ std\+::string \mbox{\hyperlink{namespaceicm20948_a4e2db8332ee3f51602d9032468ec2b
 \doxysubsubsection{\texorpdfstring{ICM20948\_INT\_ENABLE\_1\_BANK}{ICM20948\_INT\_ENABLE\_1\_BANK}}
 {\footnotesize\ttfamily \#define ICM20948\+\_\+\+INT\+\_\+\+ENABLE\+\_\+1\+\_\+\+BANK~0}
 
+
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8hpp_source_l00067}{67}} of file \mbox{\hyperlink{Icm20948driver_8hpp_source}{Icm20948driver.\+hpp}}.
+
 \Hypertarget{Icm20948driver_8hpp_a37df37dbbb8ac44d8c2f9cd00e650113}\label{Icm20948driver_8hpp_a37df37dbbb8ac44d8c2f9cd00e650113} 
 \index{Icm20948driver.hpp@{Icm20948driver.hpp}!ICM20948\_INT\_PIN\_CFG\_ADDR@{ICM20948\_INT\_PIN\_CFG\_ADDR}}
 \index{ICM20948\_INT\_PIN\_CFG\_ADDR@{ICM20948\_INT\_PIN\_CFG\_ADDR}!Icm20948driver.hpp@{Icm20948driver.hpp}}
 \doxysubsubsection{\texorpdfstring{ICM20948\_INT\_PIN\_CFG\_ADDR}{ICM20948\_INT\_PIN\_CFG\_ADDR}}
 {\footnotesize\ttfamily \#define ICM20948\+\_\+\+INT\+\_\+\+PIN\+\_\+\+CFG\+\_\+\+ADDR~0x0F}
+
+
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8hpp_source_l00041}{41}} of file \mbox{\hyperlink{Icm20948driver_8hpp_source}{Icm20948driver.\+hpp}}.
 
 \Hypertarget{Icm20948driver_8hpp_a7e8f68c3e1e05dc79d780837b4da6431}\label{Icm20948driver_8hpp_a7e8f68c3e1e05dc79d780837b4da6431} 
 \index{Icm20948driver.hpp@{Icm20948driver.hpp}!ICM20948\_INT\_PIN\_CFG\_BANK@{ICM20948\_INT\_PIN\_CFG\_BANK}}
@@ -573,11 +807,19 @@ std\+::string \mbox{\hyperlink{namespaceicm20948_a4e2db8332ee3f51602d9032468ec2b
 \doxysubsubsection{\texorpdfstring{ICM20948\_INT\_PIN\_CFG\_BANK}{ICM20948\_INT\_PIN\_CFG\_BANK}}
 {\footnotesize\ttfamily \#define ICM20948\+\_\+\+INT\+\_\+\+PIN\+\_\+\+CFG\+\_\+\+BANK~0}
 
+
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8hpp_source_l00066}{66}} of file \mbox{\hyperlink{Icm20948driver_8hpp_source}{Icm20948driver.\+hpp}}.
+
 \Hypertarget{Icm20948driver_8hpp_a8a8793d87ae4682c53c73b85f1bcaa7e}\label{Icm20948driver_8hpp_a8a8793d87ae4682c53c73b85f1bcaa7e} 
 \index{Icm20948driver.hpp@{Icm20948driver.hpp}!ICM20948\_INT\_STATUS\_1\_ADDR@{ICM20948\_INT\_STATUS\_1\_ADDR}}
 \index{ICM20948\_INT\_STATUS\_1\_ADDR@{ICM20948\_INT\_STATUS\_1\_ADDR}!Icm20948driver.hpp@{Icm20948driver.hpp}}
 \doxysubsubsection{\texorpdfstring{ICM20948\_INT\_STATUS\_1\_ADDR}{ICM20948\_INT\_STATUS\_1\_ADDR}}
 {\footnotesize\ttfamily \#define ICM20948\+\_\+\+INT\+\_\+\+STATUS\+\_\+1\+\_\+\+ADDR~0x1A}
+
+
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8hpp_source_l00125}{125}} of file \mbox{\hyperlink{Icm20948driver_8hpp_source}{Icm20948driver.\+hpp}}.
 
 \Hypertarget{Icm20948driver_8hpp_ab5683645c770cc73b41ed952e1bc6f69}\label{Icm20948driver_8hpp_ab5683645c770cc73b41ed952e1bc6f69} 
 \index{Icm20948driver.hpp@{Icm20948driver.hpp}!ICM20948\_INT\_STATUS\_1\_BANK@{ICM20948\_INT\_STATUS\_1\_BANK}}
@@ -585,11 +827,19 @@ std\+::string \mbox{\hyperlink{namespaceicm20948_a4e2db8332ee3f51602d9032468ec2b
 \doxysubsubsection{\texorpdfstring{ICM20948\_INT\_STATUS\_1\_BANK}{ICM20948\_INT\_STATUS\_1\_BANK}}
 {\footnotesize\ttfamily \#define ICM20948\+\_\+\+INT\+\_\+\+STATUS\+\_\+1\+\_\+\+BANK~0}
 
+
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8hpp_source_l00122}{122}} of file \mbox{\hyperlink{Icm20948driver_8hpp_source}{Icm20948driver.\+hpp}}.
+
 \Hypertarget{Icm20948driver_8hpp_ae4f312a81137bb971dac4455ae3c0def}\label{Icm20948driver_8hpp_ae4f312a81137bb971dac4455ae3c0def} 
 \index{Icm20948driver.hpp@{Icm20948driver.hpp}!ICM20948\_INT\_STATUS\_ADDR@{ICM20948\_INT\_STATUS\_ADDR}}
 \index{ICM20948\_INT\_STATUS\_ADDR@{ICM20948\_INT\_STATUS\_ADDR}!Icm20948driver.hpp@{Icm20948driver.hpp}}
 \doxysubsubsection{\texorpdfstring{ICM20948\_INT\_STATUS\_ADDR}{ICM20948\_INT\_STATUS\_ADDR}}
 {\footnotesize\ttfamily \#define ICM20948\+\_\+\+INT\+\_\+\+STATUS\+\_\+\+ADDR~0x19}
+
+
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8hpp_source_l00124}{124}} of file \mbox{\hyperlink{Icm20948driver_8hpp_source}{Icm20948driver.\+hpp}}.
 
 \Hypertarget{Icm20948driver_8hpp_a616a9125ea56646e442d2f9a32317711}\label{Icm20948driver_8hpp_a616a9125ea56646e442d2f9a32317711} 
 \index{Icm20948driver.hpp@{Icm20948driver.hpp}!ICM20948\_INT\_STATUS\_BANK@{ICM20948\_INT\_STATUS\_BANK}}
@@ -597,11 +847,19 @@ std\+::string \mbox{\hyperlink{namespaceicm20948_a4e2db8332ee3f51602d9032468ec2b
 \doxysubsubsection{\texorpdfstring{ICM20948\_INT\_STATUS\_BANK}{ICM20948\_INT\_STATUS\_BANK}}
 {\footnotesize\ttfamily \#define ICM20948\+\_\+\+INT\+\_\+\+STATUS\+\_\+\+BANK~0}
 
+Interrupt status registers. These support event-\/driven sampling by allowing higher-\/level code to check whether new data is ready before attempting a read. 
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8hpp_source_l00121}{121}} of file \mbox{\hyperlink{Icm20948driver_8hpp_source}{Icm20948driver.\+hpp}}.
+
 \Hypertarget{Icm20948driver_8hpp_ab1f3382b47abfad1bf2bcd79041e8ef8}\label{Icm20948driver_8hpp_ab1f3382b47abfad1bf2bcd79041e8ef8} 
 \index{Icm20948driver.hpp@{Icm20948driver.hpp}!ICM20948\_MAGN\_I2C\_ADDR@{ICM20948\_MAGN\_I2C\_ADDR}}
 \index{ICM20948\_MAGN\_I2C\_ADDR@{ICM20948\_MAGN\_I2C\_ADDR}!Icm20948driver.hpp@{Icm20948driver.hpp}}
 \doxysubsubsection{\texorpdfstring{ICM20948\_MAGN\_I2C\_ADDR}{ICM20948\_MAGN\_I2C\_ADDR}}
 {\footnotesize\ttfamily \#define ICM20948\+\_\+\+MAGN\+\_\+\+I2\+C\+\_\+\+ADDR~0x0C}
+
+
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8hpp_source_l00025}{25}} of file \mbox{\hyperlink{Icm20948driver_8hpp_source}{Icm20948driver.\+hpp}}.
 
 \Hypertarget{Icm20948driver_8hpp_a6258467df6916233045eb4760629df8b}\label{Icm20948driver_8hpp_a6258467df6916233045eb4760629df8b} 
 \index{Icm20948driver.hpp@{Icm20948driver.hpp}!ICM20948\_PWR\_MGMT\_1\_ADDR@{ICM20948\_PWR\_MGMT\_1\_ADDR}}
@@ -609,11 +867,19 @@ std\+::string \mbox{\hyperlink{namespaceicm20948_a4e2db8332ee3f51602d9032468ec2b
 \doxysubsubsection{\texorpdfstring{ICM20948\_PWR\_MGMT\_1\_ADDR}{ICM20948\_PWR\_MGMT\_1\_ADDR}}
 {\footnotesize\ttfamily \#define ICM20948\+\_\+\+PWR\+\_\+\+MGMT\+\_\+1\+\_\+\+ADDR~0x06}
 
+
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8hpp_source_l00040}{40}} of file \mbox{\hyperlink{Icm20948driver_8hpp_source}{Icm20948driver.\+hpp}}.
+
 \Hypertarget{Icm20948driver_8hpp_a77d09e874f9137b1c1cc4af56f854297}\label{Icm20948driver_8hpp_a77d09e874f9137b1c1cc4af56f854297} 
 \index{Icm20948driver.hpp@{Icm20948driver.hpp}!ICM20948\_PWR\_MGMT\_1\_BANK@{ICM20948\_PWR\_MGMT\_1\_BANK}}
 \index{ICM20948\_PWR\_MGMT\_1\_BANK@{ICM20948\_PWR\_MGMT\_1\_BANK}!Icm20948driver.hpp@{Icm20948driver.hpp}}
 \doxysubsubsection{\texorpdfstring{ICM20948\_PWR\_MGMT\_1\_BANK}{ICM20948\_PWR\_MGMT\_1\_BANK}}
 {\footnotesize\ttfamily \#define ICM20948\+\_\+\+PWR\+\_\+\+MGMT\+\_\+1\+\_\+\+BANK~0}
+
+
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8hpp_source_l00065}{65}} of file \mbox{\hyperlink{Icm20948driver_8hpp_source}{Icm20948driver.\+hpp}}.
 
 \Hypertarget{Icm20948driver_8hpp_a32e3877bf2cbcbd9a60924180790dd2c}\label{Icm20948driver_8hpp_a32e3877bf2cbcbd9a60924180790dd2c} 
 \index{Icm20948driver.hpp@{Icm20948driver.hpp}!ICM20948\_REG\_BANK\_SEL\_ADDR@{ICM20948\_REG\_BANK\_SEL\_ADDR}}
@@ -621,11 +887,19 @@ std\+::string \mbox{\hyperlink{namespaceicm20948_a4e2db8332ee3f51602d9032468ec2b
 \doxysubsubsection{\texorpdfstring{ICM20948\_REG\_BANK\_SEL\_ADDR}{ICM20948\_REG\_BANK\_SEL\_ADDR}}
 {\footnotesize\ttfamily \#define ICM20948\+\_\+\+REG\+\_\+\+BANK\+\_\+\+SEL\+\_\+\+ADDR~0x7F}
 
+Bank-\/select register and encoded bank values. These constants isolate device-\/specific magic numbers from the driver logic. 
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8hpp_source_l00029}{29}} of file \mbox{\hyperlink{Icm20948driver_8hpp_source}{Icm20948driver.\+hpp}}.
+
 \Hypertarget{Icm20948driver_8hpp_a3cc7196a809362f9d91b29bb628e35ec}\label{Icm20948driver_8hpp_a3cc7196a809362f9d91b29bb628e35ec} 
 \index{Icm20948driver.hpp@{Icm20948driver.hpp}!ICM20948\_REG\_BANK\_SEL\_BANK0\_VALUE@{ICM20948\_REG\_BANK\_SEL\_BANK0\_VALUE}}
 \index{ICM20948\_REG\_BANK\_SEL\_BANK0\_VALUE@{ICM20948\_REG\_BANK\_SEL\_BANK0\_VALUE}!Icm20948driver.hpp@{Icm20948driver.hpp}}
 \doxysubsubsection{\texorpdfstring{ICM20948\_REG\_BANK\_SEL\_BANK0\_VALUE}{ICM20948\_REG\_BANK\_SEL\_BANK0\_VALUE}}
 {\footnotesize\ttfamily \#define ICM20948\+\_\+\+REG\+\_\+\+BANK\+\_\+\+SEL\+\_\+\+BANK0\+\_\+\+VALUE~0x00}
+
+
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8hpp_source_l00030}{30}} of file \mbox{\hyperlink{Icm20948driver_8hpp_source}{Icm20948driver.\+hpp}}.
 
 \Hypertarget{Icm20948driver_8hpp_ac2aee8b221ac88e7dccbd298e60e2b1a}\label{Icm20948driver_8hpp_ac2aee8b221ac88e7dccbd298e60e2b1a} 
 \index{Icm20948driver.hpp@{Icm20948driver.hpp}!ICM20948\_REG\_BANK\_SEL\_BANK1\_VALUE@{ICM20948\_REG\_BANK\_SEL\_BANK1\_VALUE}}
@@ -633,11 +907,19 @@ std\+::string \mbox{\hyperlink{namespaceicm20948_a4e2db8332ee3f51602d9032468ec2b
 \doxysubsubsection{\texorpdfstring{ICM20948\_REG\_BANK\_SEL\_BANK1\_VALUE}{ICM20948\_REG\_BANK\_SEL\_BANK1\_VALUE}}
 {\footnotesize\ttfamily \#define ICM20948\+\_\+\+REG\+\_\+\+BANK\+\_\+\+SEL\+\_\+\+BANK1\+\_\+\+VALUE~0x10}
 
+
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8hpp_source_l00031}{31}} of file \mbox{\hyperlink{Icm20948driver_8hpp_source}{Icm20948driver.\+hpp}}.
+
 \Hypertarget{Icm20948driver_8hpp_ad0eb51eea9094eb222c243397116fab9}\label{Icm20948driver_8hpp_ad0eb51eea9094eb222c243397116fab9} 
 \index{Icm20948driver.hpp@{Icm20948driver.hpp}!ICM20948\_REG\_BANK\_SEL\_BANK2\_VALUE@{ICM20948\_REG\_BANK\_SEL\_BANK2\_VALUE}}
 \index{ICM20948\_REG\_BANK\_SEL\_BANK2\_VALUE@{ICM20948\_REG\_BANK\_SEL\_BANK2\_VALUE}!Icm20948driver.hpp@{Icm20948driver.hpp}}
 \doxysubsubsection{\texorpdfstring{ICM20948\_REG\_BANK\_SEL\_BANK2\_VALUE}{ICM20948\_REG\_BANK\_SEL\_BANK2\_VALUE}}
 {\footnotesize\ttfamily \#define ICM20948\+\_\+\+REG\+\_\+\+BANK\+\_\+\+SEL\+\_\+\+BANK2\+\_\+\+VALUE~0x20}
+
+
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8hpp_source_l00032}{32}} of file \mbox{\hyperlink{Icm20948driver_8hpp_source}{Icm20948driver.\+hpp}}.
 
 \Hypertarget{Icm20948driver_8hpp_a08a2de2a34ff50d72beadab152028b71}\label{Icm20948driver_8hpp_a08a2de2a34ff50d72beadab152028b71} 
 \index{Icm20948driver.hpp@{Icm20948driver.hpp}!ICM20948\_REG\_BANK\_SEL\_BANK3\_VALUE@{ICM20948\_REG\_BANK\_SEL\_BANK3\_VALUE}}
@@ -645,11 +927,19 @@ std\+::string \mbox{\hyperlink{namespaceicm20948_a4e2db8332ee3f51602d9032468ec2b
 \doxysubsubsection{\texorpdfstring{ICM20948\_REG\_BANK\_SEL\_BANK3\_VALUE}{ICM20948\_REG\_BANK\_SEL\_BANK3\_VALUE}}
 {\footnotesize\ttfamily \#define ICM20948\+\_\+\+REG\+\_\+\+BANK\+\_\+\+SEL\+\_\+\+BANK3\+\_\+\+VALUE~0x30}
 
+
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8hpp_source_l00033}{33}} of file \mbox{\hyperlink{Icm20948driver_8hpp_source}{Icm20948driver.\+hpp}}.
+
 \Hypertarget{Icm20948driver_8hpp_ae1fa7e7d1caa0816dbd0538a8343885c}\label{Icm20948driver_8hpp_ae1fa7e7d1caa0816dbd0538a8343885c} 
 \index{Icm20948driver.hpp@{Icm20948driver.hpp}!ICM20948\_TEMP\_OUT\_H\_ADDR@{ICM20948\_TEMP\_OUT\_H\_ADDR}}
 \index{ICM20948\_TEMP\_OUT\_H\_ADDR@{ICM20948\_TEMP\_OUT\_H\_ADDR}!Icm20948driver.hpp@{Icm20948driver.hpp}}
 \doxysubsubsection{\texorpdfstring{ICM20948\_TEMP\_OUT\_H\_ADDR}{ICM20948\_TEMP\_OUT\_H\_ADDR}}
 {\footnotesize\ttfamily \#define ICM20948\+\_\+\+TEMP\+\_\+\+OUT\+\_\+\+H\+\_\+\+ADDR~0x39}
+
+
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8hpp_source_l00056}{56}} of file \mbox{\hyperlink{Icm20948driver_8hpp_source}{Icm20948driver.\+hpp}}.
 
 \Hypertarget{Icm20948driver_8hpp_ab44db65e29d1e6ec71c28108d4a0b3d3}\label{Icm20948driver_8hpp_ab44db65e29d1e6ec71c28108d4a0b3d3} 
 \index{Icm20948driver.hpp@{Icm20948driver.hpp}!ICM20948\_TEMP\_OUT\_L\_ADDR@{ICM20948\_TEMP\_OUT\_L\_ADDR}}
@@ -657,11 +947,19 @@ std\+::string \mbox{\hyperlink{namespaceicm20948_a4e2db8332ee3f51602d9032468ec2b
 \doxysubsubsection{\texorpdfstring{ICM20948\_TEMP\_OUT\_L\_ADDR}{ICM20948\_TEMP\_OUT\_L\_ADDR}}
 {\footnotesize\ttfamily \#define ICM20948\+\_\+\+TEMP\+\_\+\+OUT\+\_\+\+L\+\_\+\+ADDR~0x3A}
 
+
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8hpp_source_l00057}{57}} of file \mbox{\hyperlink{Icm20948driver_8hpp_source}{Icm20948driver.\+hpp}}.
+
 \Hypertarget{Icm20948driver_8hpp_abead790a1cacf6c6578de7440ead57a7}\label{Icm20948driver_8hpp_abead790a1cacf6c6578de7440ead57a7} 
 \index{Icm20948driver.hpp@{Icm20948driver.hpp}!ICM20948\_USER\_CTRL\_ADDR@{ICM20948\_USER\_CTRL\_ADDR}}
 \index{ICM20948\_USER\_CTRL\_ADDR@{ICM20948\_USER\_CTRL\_ADDR}!Icm20948driver.hpp@{Icm20948driver.hpp}}
 \doxysubsubsection{\texorpdfstring{ICM20948\_USER\_CTRL\_ADDR}{ICM20948\_USER\_CTRL\_ADDR}}
 {\footnotesize\ttfamily \#define ICM20948\+\_\+\+USER\+\_\+\+CTRL\+\_\+\+ADDR~0x03}
+
+
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8hpp_source_l00039}{39}} of file \mbox{\hyperlink{Icm20948driver_8hpp_source}{Icm20948driver.\+hpp}}.
 
 \Hypertarget{Icm20948driver_8hpp_a0b1e61b45c7f9417f9303303d1c7d3af}\label{Icm20948driver_8hpp_a0b1e61b45c7f9417f9303303d1c7d3af} 
 \index{Icm20948driver.hpp@{Icm20948driver.hpp}!ICM20948\_USER\_CTRL\_BANK@{ICM20948\_USER\_CTRL\_BANK}}
@@ -669,15 +967,27 @@ std\+::string \mbox{\hyperlink{namespaceicm20948_a4e2db8332ee3f51602d9032468ec2b
 \doxysubsubsection{\texorpdfstring{ICM20948\_USER\_CTRL\_BANK}{ICM20948\_USER\_CTRL\_BANK}}
 {\footnotesize\ttfamily \#define ICM20948\+\_\+\+USER\+\_\+\+CTRL\+\_\+\+BANK~0}
 
+
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8hpp_source_l00064}{64}} of file \mbox{\hyperlink{Icm20948driver_8hpp_source}{Icm20948driver.\+hpp}}.
+
 \Hypertarget{Icm20948driver_8hpp_a75a97e0d07c6949c8e610efb5070cbd6}\label{Icm20948driver_8hpp_a75a97e0d07c6949c8e610efb5070cbd6} 
 \index{Icm20948driver.hpp@{Icm20948driver.hpp}!ICM20948\_WHO\_AM\_I\_ADDR@{ICM20948\_WHO\_AM\_I\_ADDR}}
 \index{ICM20948\_WHO\_AM\_I\_ADDR@{ICM20948\_WHO\_AM\_I\_ADDR}!Icm20948driver.hpp@{Icm20948driver.hpp}}
 \doxysubsubsection{\texorpdfstring{ICM20948\_WHO\_AM\_I\_ADDR}{ICM20948\_WHO\_AM\_I\_ADDR}}
 {\footnotesize\ttfamily \#define ICM20948\+\_\+\+WHO\+\_\+\+AM\+\_\+\+I\+\_\+\+ADDR~0x00}
 
+Bank 0 Output and control registers used for identity, power, interrupts, and reading decoded sensor data. 
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8hpp_source_l00038}{38}} of file \mbox{\hyperlink{Icm20948driver_8hpp_source}{Icm20948driver.\+hpp}}.
+
 \Hypertarget{Icm20948driver_8hpp_a367b16d86f331668e4f9c2ebc9d73065}\label{Icm20948driver_8hpp_a367b16d86f331668e4f9c2ebc9d73065} 
 \index{Icm20948driver.hpp@{Icm20948driver.hpp}!ICM20948\_WHO\_AM\_I\_BANK@{ICM20948\_WHO\_AM\_I\_BANK}}
 \index{ICM20948\_WHO\_AM\_I\_BANK@{ICM20948\_WHO\_AM\_I\_BANK}!Icm20948driver.hpp@{Icm20948driver.hpp}}
 \doxysubsubsection{\texorpdfstring{ICM20948\_WHO\_AM\_I\_BANK}{ICM20948\_WHO\_AM\_I\_BANK}}
 {\footnotesize\ttfamily \#define ICM20948\+\_\+\+WHO\+\_\+\+AM\+\_\+\+I\+\_\+\+BANK~0}
+
+Bank IDs for the corresponding registers above. Keeping bank IDs alongside register definitions reduces the chance of mismatched bank/register access in the implementation. 
+
+Definition at line \mbox{\hyperlink{Icm20948driver_8hpp_source_l00063}{63}} of file \mbox{\hyperlink{Icm20948driver_8hpp_source}{Icm20948driver.\+hpp}}.
 

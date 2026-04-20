@@ -2,46 +2,57 @@
 \hypertarget{classSwingFeedback}{}\label{classSwingFeedback}\index{SwingFeedback@{SwingFeedback}}
 
 
+Drives PWM feedback from detected swing levels.  
+
+
+
+
 {\ttfamily \#include $<$swingfeedback.\+h$>$}
 
 
 
 Collaboration diagram for Swing\+Feedback\+:
-% FIG 0
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=172pt]{classSwingFeedback__coll__graph}
+\end{center}
+\end{figure}
 \doxysubsubsection*{Public Types}
 \begin{DoxyCompactItemize}
 \item 
 using \mbox{\hyperlink{classSwingFeedback_afe26c04487150b3d6d458e06b0a1742e}{Reset\+Callback}} = std\+::function$<$ void()$>$
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Fired when the feedback cycle times out and needs a reset. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{classSwingFeedback_aa020d3d8547ba16c5c2e7b6f3169f189}{Swing\+Feedback}} (\mbox{\hyperlink{classRPI__PWM}{RPI\+\_\+\+PWM}} \&pwm)
-\item 
+\begin{DoxyCompactList}\small\item\em Initialises the feedback object and sets the PWM output to off. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classSwingFeedback_ad1acada36c94a13292b71c4495ce7474}{set\+Reset\+Callback}} (\mbox{\hyperlink{classSwingFeedback_afe26c04487150b3d6d458e06b0a1742e}{Reset\+Callback}} cb)
-\item 
+\begin{DoxyCompactList}\small\item\em Stores the callback used when the feedback state is reset. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classSwingFeedback_af26c1985c1eac2d9031958c46ec13f39}{check\+Timeout}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Checks whether the feedback has been active for too long and forces it off if needed. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classSwingFeedback_a869d9a4be1e27ce382e6f95d6a11f989}{on\+Level}} (const char \texorpdfstring{$\ast$}{*}level)
-\item 
+\begin{DoxyCompactList}\small\item\em Receives a feedback level, stores the highest pending level, and starts the worker if needed. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classSwingFeedback_a966b6904fc774204125e5e5dc07fc322}{force\+Off}} ()
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Forces the PWM output off, clears the busy state, and triggers the reset callback. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{classSwingFeedback_a2f0ecec3b79f40207b84fa9d34680b19}{worker}} ()
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Internal worker for applying queued feedback updates. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{classRPI__PWM}{RPI\+\_\+\+PWM}} \& \mbox{\hyperlink{classSwingFeedback_add2ef007e5a95f4b59f1941a272ee0ca}{pwm\+\_\+}}
-\item 
+\begin{DoxyCompactList}\small\item\em PWM output owned externally. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classSwingFeedback_afe26c04487150b3d6d458e06b0a1742e}{Reset\+Callback}} \mbox{\hyperlink{classSwingFeedback_abdce37fdb856ee889bc17d7a1b488016}{reset\+\_\+cb\+\_\+}}
-\item 
+\begin{DoxyCompactList}\small\item\em Optional callback for timeout/reset handling. \end{DoxyCompactList}\item 
 std\+::atomic$<$ bool $>$ \mbox{\hyperlink{classSwingFeedback_a34091e66500508702fa74af4cd013f39}{busy\+\_\+}} \{false\}
-\item 
+\begin{DoxyCompactList}\small\item\em True while a feedback cycle is active. \end{DoxyCompactList}\item 
 std\+::atomic$<$ int $>$ \mbox{\hyperlink{classSwingFeedback_a18a0795df67442f2281435e4ce818205}{pending\+\_\+level\+\_\+}} \{0\}
-\item 
+\begin{DoxyCompactList}\small\item\em Pending duty-\/cycle level to apply. \end{DoxyCompactList}\item 
 std\+::atomic$<$ int64\+\_\+t $>$ \mbox{\hyperlink{classSwingFeedback_a956a5e871448c96876a9c4e4dd7f1ae8}{busy\+\_\+since\+\_\+ms\+\_\+}} \{0\}
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Static Private Attributes}
@@ -51,12 +62,27 @@ static constexpr int64\+\_\+t \mbox{\hyperlink{classSwingFeedback_a8e1ebec717fb8
 \end{DoxyCompactItemize}
 
 
+\doxysubsection{Detailed Description}
+Drives PWM feedback from detected swing levels. 
+
+Definition at line \mbox{\hyperlink{swingfeedback_8h_source_l00017}{17}} of file \mbox{\hyperlink{swingfeedback_8h_source}{swingfeedback.\+h}}.
+
+
+
 \doxysubsection{Member Typedef Documentation}
 \Hypertarget{classSwingFeedback_afe26c04487150b3d6d458e06b0a1742e}\label{classSwingFeedback_afe26c04487150b3d6d458e06b0a1742e} 
 \index{SwingFeedback@{SwingFeedback}!ResetCallback@{ResetCallback}}
 \index{ResetCallback@{ResetCallback}!SwingFeedback@{SwingFeedback}}
 \doxysubsubsection{\texorpdfstring{ResetCallback}{ResetCallback}}
 {\footnotesize\ttfamily using \mbox{\hyperlink{classSwingFeedback_afe26c04487150b3d6d458e06b0a1742e}{Swing\+Feedback\+::\+Reset\+Callback}} =  std\+::function$<$void()$>$}
+
+
+
+Fired when the feedback cycle times out and needs a reset. 
+
+
+
+Definition at line \mbox{\hyperlink{swingfeedback_8h_source_l00020}{20}} of file \mbox{\hyperlink{swingfeedback_8h_source}{swingfeedback.\+h}}.
 
 
 
@@ -69,6 +95,14 @@ static constexpr int64\+\_\+t \mbox{\hyperlink{classSwingFeedback_a8e1ebec717fb8
 
 
 
+Initialises the feedback object and sets the PWM output to off. 
+
+
+
+Definition at line \mbox{\hyperlink{swingfeedback_8cpp_source_l00102}{102}} of file \mbox{\hyperlink{swingfeedback_8cpp_source}{swingfeedback.\+cpp}}.
+
+
+
 \doxysubsection{Member Function Documentation}
 \Hypertarget{classSwingFeedback_af26c1985c1eac2d9031958c46ec13f39}\label{classSwingFeedback_af26c1985c1eac2d9031958c46ec13f39} 
 \index{SwingFeedback@{SwingFeedback}!checkTimeout@{checkTimeout}}
@@ -76,11 +110,27 @@ static constexpr int64\+\_\+t \mbox{\hyperlink{classSwingFeedback_a8e1ebec717fb8
 \doxysubsubsection{\texorpdfstring{checkTimeout()}{checkTimeout()}}
 {\footnotesize\ttfamily void Swing\+Feedback\+::check\+Timeout (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+
+
+Checks whether the feedback has been active for too long and forces it off if needed. 
+
+
+
+Definition at line \mbox{\hyperlink{swingfeedback_8cpp_source_l00114}{114}} of file \mbox{\hyperlink{swingfeedback_8cpp_source}{swingfeedback.\+cpp}}.
+
 \Hypertarget{classSwingFeedback_a966b6904fc774204125e5e5dc07fc322}\label{classSwingFeedback_a966b6904fc774204125e5e5dc07fc322} 
 \index{SwingFeedback@{SwingFeedback}!forceOff@{forceOff}}
 \index{forceOff@{forceOff}!SwingFeedback@{SwingFeedback}}
 \doxysubsubsection{\texorpdfstring{forceOff()}{forceOff()}}
 {\footnotesize\ttfamily void Swing\+Feedback\+::force\+Off (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Forces the PWM output off, clears the busy state, and triggers the reset callback. 
+
+
+
+Definition at line \mbox{\hyperlink{swingfeedback_8cpp_source_l00172}{172}} of file \mbox{\hyperlink{swingfeedback_8cpp_source}{swingfeedback.\+cpp}}.
 
 \Hypertarget{classSwingFeedback_a869d9a4be1e27ce382e6f95d6a11f989}\label{classSwingFeedback_a869d9a4be1e27ce382e6f95d6a11f989} 
 \index{SwingFeedback@{SwingFeedback}!onLevel@{onLevel}}
@@ -88,17 +138,43 @@ static constexpr int64\+\_\+t \mbox{\hyperlink{classSwingFeedback_a8e1ebec717fb8
 \doxysubsubsection{\texorpdfstring{onLevel()}{onLevel()}}
 {\footnotesize\ttfamily void Swing\+Feedback\+::on\+Level (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{level }\end{DoxyParamCaption})}
 
+
+
+Receives a feedback level, stores the highest pending level, and starts the worker if needed. 
+
+Level dropped to zero — swing has ended. Fire the worker now so it plays the actual peak that was accumulated, not just the first edge.
+
+Accumulate the highest level reached during the swing. Do NOT spawn the worker yet — wait for the swing to end (rank == 0 above).
+
+Definition at line \mbox{\hyperlink{swingfeedback_8cpp_source_l00149}{149}} of file \mbox{\hyperlink{swingfeedback_8cpp_source}{swingfeedback.\+cpp}}.
+
 \Hypertarget{classSwingFeedback_ad1acada36c94a13292b71c4495ce7474}\label{classSwingFeedback_ad1acada36c94a13292b71c4495ce7474} 
 \index{SwingFeedback@{SwingFeedback}!setResetCallback@{setResetCallback}}
 \index{setResetCallback@{setResetCallback}!SwingFeedback@{SwingFeedback}}
 \doxysubsubsection{\texorpdfstring{setResetCallback()}{setResetCallback()}}
 {\footnotesize\ttfamily void Swing\+Feedback\+::set\+Reset\+Callback (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSwingFeedback_afe26c04487150b3d6d458e06b0a1742e}{Reset\+Callback}}}]{cb }\end{DoxyParamCaption})}
 
+
+
+Stores the callback used when the feedback state is reset. 
+
+
+
+Definition at line \mbox{\hyperlink{swingfeedback_8cpp_source_l00109}{109}} of file \mbox{\hyperlink{swingfeedback_8cpp_source}{swingfeedback.\+cpp}}.
+
 \Hypertarget{classSwingFeedback_a2f0ecec3b79f40207b84fa9d34680b19}\label{classSwingFeedback_a2f0ecec3b79f40207b84fa9d34680b19} 
 \index{SwingFeedback@{SwingFeedback}!worker@{worker}}
 \index{worker@{worker}!SwingFeedback@{SwingFeedback}}
 \doxysubsubsection{\texorpdfstring{worker()}{worker()}}
 {\footnotesize\ttfamily void Swing\+Feedback\+::worker (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Internal worker for applying queued feedback updates. 
+
+Runs the feedback output, updates the busy state, and calls the reset callback when finished. Clear any level that accumulated during playback so it doesn\textquotesingle{}t contaminate the next swing.
+
+Definition at line \mbox{\hyperlink{swingfeedback_8cpp_source_l00125}{125}} of file \mbox{\hyperlink{swingfeedback_8cpp_source}{swingfeedback.\+cpp}}.
 
 
 
@@ -109,11 +185,23 @@ static constexpr int64\+\_\+t \mbox{\hyperlink{classSwingFeedback_a8e1ebec717fb8
 \doxysubsubsection{\texorpdfstring{busy\_}{busy\_}}
 {\footnotesize\ttfamily std\+::atomic$<$bool$>$ Swing\+Feedback\+::busy\+\_\+ \{false\}\hspace{0.3cm}{\ttfamily [private]}}
 
+
+
+True while a feedback cycle is active. 
+
+
+
+Definition at line \mbox{\hyperlink{swingfeedback_8h_source_l00040}{40}} of file \mbox{\hyperlink{swingfeedback_8h_source}{swingfeedback.\+h}}.
+
 \Hypertarget{classSwingFeedback_a956a5e871448c96876a9c4e4dd7f1ae8}\label{classSwingFeedback_a956a5e871448c96876a9c4e4dd7f1ae8} 
 \index{SwingFeedback@{SwingFeedback}!busy\_since\_ms\_@{busy\_since\_ms\_}}
 \index{busy\_since\_ms\_@{busy\_since\_ms\_}!SwingFeedback@{SwingFeedback}}
 \doxysubsubsection{\texorpdfstring{busy\_since\_ms\_}{busy\_since\_ms\_}}
 {\footnotesize\ttfamily std\+::atomic$<$int64\+\_\+t$>$ Swing\+Feedback\+::busy\+\_\+since\+\_\+ms\+\_\+ \{0\}\hspace{0.3cm}{\ttfamily [private]}}
+
+Start time of the active feedback cycle in ms since epoch. Zero means idle. 
+
+Definition at line \mbox{\hyperlink{swingfeedback_8h_source_l00047}{47}} of file \mbox{\hyperlink{swingfeedback_8h_source}{swingfeedback.\+h}}.
 
 \Hypertarget{classSwingFeedback_a18a0795df67442f2281435e4ce818205}\label{classSwingFeedback_a18a0795df67442f2281435e4ce818205} 
 \index{SwingFeedback@{SwingFeedback}!pending\_level\_@{pending\_level\_}}
@@ -121,11 +209,27 @@ static constexpr int64\+\_\+t \mbox{\hyperlink{classSwingFeedback_a8e1ebec717fb8
 \doxysubsubsection{\texorpdfstring{pending\_level\_}{pending\_level\_}}
 {\footnotesize\ttfamily std\+::atomic$<$int$>$ Swing\+Feedback\+::pending\+\_\+level\+\_\+ \{0\}\hspace{0.3cm}{\ttfamily [private]}}
 
+
+
+Pending duty-\/cycle level to apply. 
+
+
+
+Definition at line \mbox{\hyperlink{swingfeedback_8h_source_l00043}{43}} of file \mbox{\hyperlink{swingfeedback_8h_source}{swingfeedback.\+h}}.
+
 \Hypertarget{classSwingFeedback_add2ef007e5a95f4b59f1941a272ee0ca}\label{classSwingFeedback_add2ef007e5a95f4b59f1941a272ee0ca} 
 \index{SwingFeedback@{SwingFeedback}!pwm\_@{pwm\_}}
 \index{pwm\_@{pwm\_}!SwingFeedback@{SwingFeedback}}
 \doxysubsubsection{\texorpdfstring{pwm\_}{pwm\_}}
 {\footnotesize\ttfamily \mbox{\hyperlink{classRPI__PWM}{RPI\+\_\+\+PWM}}\& Swing\+Feedback\+::pwm\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+PWM output owned externally. 
+
+
+
+Definition at line \mbox{\hyperlink{swingfeedback_8h_source_l00034}{34}} of file \mbox{\hyperlink{swingfeedback_8h_source}{swingfeedback.\+h}}.
 
 \Hypertarget{classSwingFeedback_abdce37fdb856ee889bc17d7a1b488016}\label{classSwingFeedback_abdce37fdb856ee889bc17d7a1b488016} 
 \index{SwingFeedback@{SwingFeedback}!reset\_cb\_@{reset\_cb\_}}
@@ -133,11 +237,23 @@ static constexpr int64\+\_\+t \mbox{\hyperlink{classSwingFeedback_a8e1ebec717fb8
 \doxysubsubsection{\texorpdfstring{reset\_cb\_}{reset\_cb\_}}
 {\footnotesize\ttfamily \mbox{\hyperlink{classSwingFeedback_afe26c04487150b3d6d458e06b0a1742e}{Reset\+Callback}} Swing\+Feedback\+::reset\+\_\+cb\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
 
+
+
+Optional callback for timeout/reset handling. 
+
+
+
+Definition at line \mbox{\hyperlink{swingfeedback_8h_source_l00037}{37}} of file \mbox{\hyperlink{swingfeedback_8h_source}{swingfeedback.\+h}}.
+
 \Hypertarget{classSwingFeedback_a8e1ebec717fb857ec33b5d0bd5a9a539}\label{classSwingFeedback_a8e1ebec717fb857ec33b5d0bd5a9a539} 
 \index{SwingFeedback@{SwingFeedback}!TIMEOUT\_MS@{TIMEOUT\_MS}}
 \index{TIMEOUT\_MS@{TIMEOUT\_MS}!SwingFeedback@{SwingFeedback}}
 \doxysubsubsection{\texorpdfstring{TIMEOUT\_MS}{TIMEOUT\_MS}}
 {\footnotesize\ttfamily constexpr int64\+\_\+t Swing\+Feedback\+::\+TIMEOUT\+\_\+\+MS = 3000\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{swingfeedback_8h_source_l00049}{49}} of file \mbox{\hyperlink{swingfeedback_8h_source}{swingfeedback.\+h}}.
 
 
 

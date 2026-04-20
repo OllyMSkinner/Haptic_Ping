@@ -1,518 +1,655 @@
 \@ifundefined {etoctocstyle}{\let \etoc@startlocaltoc \@gobble \let \etoc@settocdepth \@gobble \let \etoc@depthtag \@gobble \let \etoc@setlocaltop \@gobble }{}
-\contentsline {chapter}{\numberline {1}ADS1115 Pin connection list\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}:}{1}{chapter.1}%
-\contentsline {section}{\numberline {1.1}Piezo pin connection}{1}{section.1.1}%
-\contentsline {chapter}{\numberline {2}Namespace Index}{3}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Namespace List}{3}{section.2.1}%
-\contentsline {chapter}{\numberline {3}Hierarchical Index}{5}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Class Hierarchy}{5}{section.3.1}%
-\contentsline {chapter}{\numberline {4}Class Index}{7}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Class List}{7}{section.4.1}%
-\contentsline {chapter}{\numberline {5}File Index}{9}{chapter.5}%
-\contentsline {section}{\numberline {5.1}File List}{9}{section.5.1}%
-\contentsline {chapter}{\numberline {6}Namespace Documentation}{11}{chapter.6}%
-\contentsline {section}{\numberline {6.1}icm20948 Namespace Reference}{11}{section.6.1}%
-\contentsline {subsection}{\numberline {6.1.1}Typedef Documentation}{12}{subsection.6.1.1}%
-\contentsline {subsubsection}{\numberline {6.1.1.1}accel\_settings}{12}{subsubsection.6.1.1.1}%
-\contentsline {subsubsection}{\numberline {6.1.1.2}gyro\_settings}{12}{subsubsection.6.1.1.2}%
-\contentsline {subsubsection}{\numberline {6.1.1.3}magn\_settings}{12}{subsubsection.6.1.1.3}%
-\contentsline {subsubsection}{\numberline {6.1.1.4}settings}{12}{subsubsection.6.1.1.4}%
-\contentsline {subsection}{\numberline {6.1.2}Enumeration Type Documentation}{12}{subsection.6.1.2}%
-\contentsline {subsubsection}{\numberline {6.1.2.1}accel\_dlpf\_config}{12}{subsubsection.6.1.2.1}%
-\contentsline {subsubsection}{\numberline {6.1.2.2}accel\_scale}{13}{subsubsection.6.1.2.2}%
-\contentsline {subsubsection}{\numberline {6.1.2.3}gyro\_dlpf\_config}{13}{subsubsection.6.1.2.3}%
-\contentsline {subsubsection}{\numberline {6.1.2.4}gyro\_scale}{13}{subsubsection.6.1.2.4}%
-\contentsline {subsubsection}{\numberline {6.1.2.5}magn\_mode}{13}{subsubsection.6.1.2.5}%
-\contentsline {subsection}{\numberline {6.1.3}Function Documentation}{14}{subsection.6.1.3}%
-\contentsline {subsubsection}{\numberline {6.1.3.1}accel\_dlpf\_config\_to\_str()}{14}{subsubsection.6.1.3.1}%
-\contentsline {subsubsection}{\numberline {6.1.3.2}accel\_scale\_factor()}{14}{subsubsection.6.1.3.2}%
-\contentsline {subsubsection}{\numberline {6.1.3.3}accel\_scale\_to\_str()}{14}{subsubsection.6.1.3.3}%
-\contentsline {subsubsection}{\numberline {6.1.3.4}gyro\_dlpf\_config\_to\_str()}{14}{subsubsection.6.1.3.4}%
-\contentsline {subsubsection}{\numberline {6.1.3.5}gyro\_scale\_factor()}{14}{subsubsection.6.1.3.5}%
-\contentsline {subsubsection}{\numberline {6.1.3.6}gyro\_scale\_to\_str()}{14}{subsubsection.6.1.3.6}%
-\contentsline {subsubsection}{\numberline {6.1.3.7}magn\_mode\_to\_str()}{14}{subsubsection.6.1.3.7}%
-\contentsline {chapter}{\numberline {7}Class Documentation}{15}{chapter.7}%
-\contentsline {section}{\numberline {7.1}icm20948\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::accel\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}settings Struct Reference}{15}{section.7.1}%
-\contentsline {subsection}{\numberline {7.1.1}Constructor \& Destructor Documentation}{15}{subsection.7.1.1}%
-\contentsline {subsubsection}{\numberline {7.1.1.1}accel\_settings()}{15}{subsubsection.7.1.1.1}%
-\contentsline {subsection}{\numberline {7.1.2}Member Data Documentation}{15}{subsection.7.1.2}%
-\contentsline {subsubsection}{\numberline {7.1.2.1}dlpf\_config}{15}{subsubsection.7.1.2.1}%
-\contentsline {subsubsection}{\numberline {7.1.2.2}dlpf\_enable}{16}{subsubsection.7.1.2.2}%
-\contentsline {subsubsection}{\numberline {7.1.2.3}sample\_rate\_div}{16}{subsubsection.7.1.2.3}%
-\contentsline {subsubsection}{\numberline {7.1.2.4}scale}{16}{subsubsection.7.1.2.4}%
-\contentsline {section}{\numberline {7.2}ADS1115rpi Class Reference}{16}{section.7.2}%
-\contentsline {subsection}{\numberline {7.2.1}Member Typedef Documentation}{17}{subsection.7.2.1}%
-\contentsline {subsubsection}{\numberline {7.2.1.1}ADSCallbackInterface}{17}{subsubsection.7.2.1.1}%
-\contentsline {subsection}{\numberline {7.2.2}Constructor \& Destructor Documentation}{17}{subsection.7.2.2}%
-\contentsline {subsubsection}{\numberline {7.2.2.1}$\sim $ADS1115rpi()}{17}{subsubsection.7.2.2.1}%
-\contentsline {subsection}{\numberline {7.2.3}Member Function Documentation}{17}{subsection.7.2.3}%
-\contentsline {subsubsection}{\numberline {7.2.3.1}dataReady()}{17}{subsubsection.7.2.3.1}%
-\contentsline {subsubsection}{\numberline {7.2.3.2}fullScaleVoltage()}{17}{subsubsection.7.2.3.2}%
-\contentsline {subsubsection}{\numberline {7.2.3.3}getADS1115settings()}{17}{subsubsection.7.2.3.3}%
-\contentsline {subsubsection}{\numberline {7.2.3.4}i2c\_readConversion()}{18}{subsubsection.7.2.3.4}%
-\contentsline {subsubsection}{\numberline {7.2.3.5}i2c\_readWord()}{18}{subsubsection.7.2.3.5}%
-\contentsline {subsubsection}{\numberline {7.2.3.6}i2c\_selectDevice()}{18}{subsubsection.7.2.3.6}%
-\contentsline {subsubsection}{\numberline {7.2.3.7}i2c\_writeWord()}{18}{subsubsection.7.2.3.7}%
-\contentsline {subsubsection}{\numberline {7.2.3.8}readOnce()}{18}{subsubsection.7.2.3.8}%
-\contentsline {subsubsection}{\numberline {7.2.3.9}registerCallback()}{18}{subsubsection.7.2.3.9}%
-\contentsline {subsubsection}{\numberline {7.2.3.10}setChannel()}{18}{subsubsection.7.2.3.10}%
-\contentsline {subsubsection}{\numberline {7.2.3.11}setRetryEnabled()}{18}{subsubsection.7.2.3.11}%
-\contentsline {subsubsection}{\numberline {7.2.3.12}start()}{18}{subsubsection.7.2.3.12}%
-\contentsline {subsubsection}{\numberline {7.2.3.13}stop()}{19}{subsubsection.7.2.3.13}%
-\contentsline {subsubsection}{\numberline {7.2.3.14}worker()}{19}{subsubsection.7.2.3.14}%
-\contentsline {subsection}{\numberline {7.2.4}Member Data Documentation}{19}{subsection.7.2.4}%
-\contentsline {subsubsection}{\numberline {7.2.4.1}ads1115settings}{19}{subsubsection.7.2.4.1}%
-\contentsline {subsubsection}{\numberline {7.2.4.2}adsCallbackInterface}{19}{subsubsection.7.2.4.2}%
-\contentsline {subsubsection}{\numberline {7.2.4.3}chip}{19}{subsubsection.7.2.4.3}%
-\contentsline {subsubsection}{\numberline {7.2.4.4}fd\_i2c}{19}{subsubsection.7.2.4.4}%
-\contentsline {subsubsection}{\numberline {7.2.4.5}ISR\_TIMEOUT\_MS}{19}{subsubsection.7.2.4.5}%
-\contentsline {subsubsection}{\numberline {7.2.4.6}reg\_config}{19}{subsubsection.7.2.4.6}%
-\contentsline {subsubsection}{\numberline {7.2.4.7}reg\_hi\_thres}{19}{subsubsection.7.2.4.7}%
-\contentsline {subsubsection}{\numberline {7.2.4.8}reg\_lo\_thres}{19}{subsubsection.7.2.4.8}%
-\contentsline {subsubsection}{\numberline {7.2.4.9}request}{20}{subsubsection.7.2.4.9}%
-\contentsline {subsubsection}{\numberline {7.2.4.10}retry\_enabled\_}{20}{subsubsection.7.2.4.10}%
-\contentsline {subsubsection}{\numberline {7.2.4.11}running}{20}{subsubsection.7.2.4.11}%
-\contentsline {subsubsection}{\numberline {7.2.4.12}thr}{20}{subsubsection.7.2.4.12}%
-\contentsline {section}{\numberline {7.3}ADS1115settings Struct Reference}{20}{section.7.3}%
-\contentsline {subsection}{\numberline {7.3.1}Member Enumeration Documentation}{21}{subsection.7.3.1}%
-\contentsline {subsubsection}{\numberline {7.3.1.1}Input}{21}{subsubsection.7.3.1.1}%
-\contentsline {subsubsection}{\numberline {7.3.1.2}PGA}{21}{subsubsection.7.3.1.2}%
-\contentsline {subsubsection}{\numberline {7.3.1.3}SamplingRates}{21}{subsubsection.7.3.1.3}%
-\contentsline {subsection}{\numberline {7.3.2}Member Function Documentation}{22}{subsection.7.3.2}%
-\contentsline {subsubsection}{\numberline {7.3.2.1}getSamplingRate()}{22}{subsubsection.7.3.2.1}%
-\contentsline {subsection}{\numberline {7.3.3}Member Data Documentation}{22}{subsection.7.3.3}%
-\contentsline {subsubsection}{\numberline {7.3.3.1}address}{22}{subsubsection.7.3.3.1}%
-\contentsline {subsubsection}{\numberline {7.3.3.2}channel}{22}{subsubsection.7.3.3.2}%
-\contentsline {subsubsection}{\numberline {7.3.3.3}DEFAULT\_ADS1115\_ADDRESS}{22}{subsubsection.7.3.3.3}%
-\contentsline {subsubsection}{\numberline {7.3.3.4}DEFAULT\_ALERT\_RDY\_TO\_GPIO}{22}{subsubsection.7.3.3.4}%
-\contentsline {subsubsection}{\numberline {7.3.3.5}drdy\_chip}{22}{subsubsection.7.3.3.5}%
-\contentsline {subsubsection}{\numberline {7.3.3.6}drdy\_gpio}{22}{subsubsection.7.3.3.6}%
-\contentsline {subsubsection}{\numberline {7.3.3.7}i2c\_bus}{22}{subsubsection.7.3.3.7}%
-\contentsline {subsubsection}{\numberline {7.3.3.8}pgaGain}{22}{subsubsection.7.3.3.8}%
-\contentsline {subsubsection}{\numberline {7.3.3.9}samplingRate}{23}{subsubsection.7.3.3.9}%
-\contentsline {section}{\numberline {7.4}Position\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Detector\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Config Struct Reference}{23}{section.7.4}%
-\contentsline {subsection}{\numberline {7.4.1}Member Data Documentation}{23}{subsection.7.4.1}%
-\contentsline {subsubsection}{\numberline {7.4.1.1}headingToleranceDeg}{23}{subsubsection.7.4.1.1}%
-\contentsline {subsubsection}{\numberline {7.4.1.2}maxG}{23}{subsubsection.7.4.1.2}%
-\contentsline {subsubsection}{\numberline {7.4.1.3}minDot}{23}{subsubsection.7.4.1.3}%
-\contentsline {subsubsection}{\numberline {7.4.1.4}minG}{23}{subsubsection.7.4.1.4}%
-\contentsline {subsubsection}{\numberline {7.4.1.5}refHeadingDeg}{24}{subsubsection.7.4.1.5}%
-\contentsline {subsubsection}{\numberline {7.4.1.6}refX}{24}{subsubsection.7.4.1.6}%
-\contentsline {subsubsection}{\numberline {7.4.1.7}refY}{24}{subsubsection.7.4.1.7}%
-\contentsline {subsubsection}{\numberline {7.4.1.8}refZ}{24}{subsubsection.7.4.1.8}%
-\contentsline {subsubsection}{\numberline {7.4.1.9}stabilitySamples}{24}{subsubsection.7.4.1.9}%
-\contentsline {section}{\numberline {7.5}icm20948\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::gyro\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}settings Struct Reference}{24}{section.7.5}%
-\contentsline {subsection}{\numberline {7.5.1}Constructor \& Destructor Documentation}{25}{subsection.7.5.1}%
-\contentsline {subsubsection}{\numberline {7.5.1.1}gyro\_settings()}{25}{subsubsection.7.5.1.1}%
-\contentsline {subsection}{\numberline {7.5.2}Member Data Documentation}{25}{subsection.7.5.2}%
-\contentsline {subsubsection}{\numberline {7.5.2.1}dlpf\_config}{25}{subsubsection.7.5.2.1}%
-\contentsline {subsubsection}{\numberline {7.5.2.2}dlpf\_enable}{25}{subsubsection.7.5.2.2}%
-\contentsline {subsubsection}{\numberline {7.5.2.3}sample\_rate\_div}{25}{subsubsection.7.5.2.3}%
-\contentsline {subsubsection}{\numberline {7.5.2.4}scale}{25}{subsubsection.7.5.2.4}%
-\contentsline {section}{\numberline {7.6}icm20948\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::ICM20948\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}I2C Class Reference}{25}{section.7.6}%
-\contentsline {subsection}{\numberline {7.6.1}Constructor \& Destructor Documentation}{26}{subsection.7.6.1}%
-\contentsline {subsubsection}{\numberline {7.6.1.1}ICM20948\_I2C()}{26}{subsubsection.7.6.1.1}%
-\contentsline {subsection}{\numberline {7.6.2}Member Function Documentation}{27}{subsection.7.6.2}%
-\contentsline {subsubsection}{\numberline {7.6.2.1}\_chip\_i2c\_master\_reset()}{27}{subsubsection.7.6.2.1}%
-\contentsline {subsubsection}{\numberline {7.6.2.2}\_enable\_data\_ready\_interrupt()}{27}{subsubsection.7.6.2.2}%
-\contentsline {subsubsection}{\numberline {7.6.2.3}\_magnetometer\_configured()}{27}{subsubsection.7.6.2.3}%
-\contentsline {subsubsection}{\numberline {7.6.2.4}\_magnetometer\_enable()}{27}{subsubsection.7.6.2.4}%
-\contentsline {subsubsection}{\numberline {7.6.2.5}\_magnetometer\_init()}{27}{subsubsection.7.6.2.5}%
-\contentsline {subsubsection}{\numberline {7.6.2.6}\_magnetometer\_set\_mode()}{27}{subsubsection.7.6.2.6}%
-\contentsline {subsubsection}{\numberline {7.6.2.7}\_magnetometer\_set\_readout()}{27}{subsubsection.7.6.2.7}%
-\contentsline {subsubsection}{\numberline {7.6.2.8}\_read\_bit()}{27}{subsubsection.7.6.2.8}%
-\contentsline {subsubsection}{\numberline {7.6.2.9}\_read\_block\_bytes()}{27}{subsubsection.7.6.2.9}%
-\contentsline {subsubsection}{\numberline {7.6.2.10}\_read\_byte()}{28}{subsubsection.7.6.2.10}%
-\contentsline {subsubsection}{\numberline {7.6.2.11}\_read\_mag\_byte()}{28}{subsubsection.7.6.2.11}%
-\contentsline {subsubsection}{\numberline {7.6.2.12}\_set\_accel\_range\_dlpf()}{28}{subsubsection.7.6.2.12}%
-\contentsline {subsubsection}{\numberline {7.6.2.13}\_set\_accel\_sample\_rate\_div()}{28}{subsubsection.7.6.2.13}%
-\contentsline {subsubsection}{\numberline {7.6.2.14}\_set\_bank()}{28}{subsubsection.7.6.2.14}%
-\contentsline {subsubsection}{\numberline {7.6.2.15}\_set\_gyro\_range\_dlpf()}{28}{subsubsection.7.6.2.15}%
-\contentsline {subsubsection}{\numberline {7.6.2.16}\_set\_gyro\_sample\_rate\_div()}{28}{subsubsection.7.6.2.16}%
-\contentsline {subsubsection}{\numberline {7.6.2.17}\_write\_bit()}{28}{subsubsection.7.6.2.17}%
-\contentsline {subsubsection}{\numberline {7.6.2.18}\_write\_byte()}{29}{subsubsection.7.6.2.18}%
-\contentsline {subsubsection}{\numberline {7.6.2.19}\_write\_mag\_byte()}{29}{subsubsection.7.6.2.19}%
-\contentsline {subsubsection}{\numberline {7.6.2.20}check\_DRDY\_INT()}{29}{subsubsection.7.6.2.20}%
-\contentsline {subsubsection}{\numberline {7.6.2.21}init()}{29}{subsubsection.7.6.2.21}%
-\contentsline {subsubsection}{\numberline {7.6.2.22}read\_accel\_gyro()}{29}{subsubsection.7.6.2.22}%
-\contentsline {subsubsection}{\numberline {7.6.2.23}read\_magn()}{29}{subsubsection.7.6.2.23}%
-\contentsline {subsubsection}{\numberline {7.6.2.24}read\_sample()}{29}{subsubsection.7.6.2.24}%
-\contentsline {subsubsection}{\numberline {7.6.2.25}reset()}{29}{subsubsection.7.6.2.25}%
-\contentsline {subsubsection}{\numberline {7.6.2.26}set\_settings()}{29}{subsubsection.7.6.2.26}%
-\contentsline {subsubsection}{\numberline {7.6.2.27}wake()}{30}{subsubsection.7.6.2.27}%
-\contentsline {subsection}{\numberline {7.6.3}Member Data Documentation}{30}{subsection.7.6.3}%
-\contentsline {subsubsection}{\numberline {7.6.3.1}\_accel\_scale\_factor}{30}{subsubsection.7.6.3.1}%
-\contentsline {subsubsection}{\numberline {7.6.3.2}\_current\_bank}{30}{subsubsection.7.6.3.2}%
-\contentsline {subsubsection}{\numberline {7.6.3.3}\_gyro\_scale\_factor}{30}{subsubsection.7.6.3.3}%
-\contentsline {subsubsection}{\numberline {7.6.3.4}\_i2c\_address}{30}{subsubsection.7.6.3.4}%
-\contentsline {subsubsection}{\numberline {7.6.3.5}\_i2c\_bus}{30}{subsubsection.7.6.3.5}%
-\contentsline {subsubsection}{\numberline {7.6.3.6}\_i2c\_fd}{30}{subsubsection.7.6.3.6}%
-\contentsline {subsubsection}{\numberline {7.6.3.7}\_magn\_scale\_factor}{30}{subsubsection.7.6.3.7}%
-\contentsline {subsubsection}{\numberline {7.6.3.8}accel}{30}{subsubsection.7.6.3.8}%
-\contentsline {subsubsection}{\numberline {7.6.3.9}gyro}{30}{subsubsection.7.6.3.9}%
-\contentsline {subsubsection}{\numberline {7.6.3.10}magn}{31}{subsubsection.7.6.3.10}%
-\contentsline {subsubsection}{\numberline {7.6.3.11}settings}{31}{subsubsection.7.6.3.11}%
-\contentsline {section}{\numberline {7.7}IMUReader Class Reference}{31}{section.7.7}%
-\contentsline {subsection}{\numberline {7.7.1}Member Typedef Documentation}{32}{subsection.7.7.1}%
-\contentsline {subsubsection}{\numberline {7.7.1.1}SampleCallback}{32}{subsubsection.7.7.1.1}%
-\contentsline {subsection}{\numberline {7.7.2}Constructor \& Destructor Documentation}{32}{subsection.7.7.2}%
-\contentsline {subsubsection}{\numberline {7.7.2.1}IMUReader()}{32}{subsubsection.7.7.2.1}%
-\contentsline {subsubsection}{\numberline {7.7.2.2}$\sim $IMUReader()}{32}{subsubsection.7.7.2.2}%
-\contentsline {subsection}{\numberline {7.7.3}Member Function Documentation}{32}{subsection.7.7.3}%
-\contentsline {subsubsection}{\numberline {7.7.3.1}getIMU()}{32}{subsubsection.7.7.3.1}%
-\contentsline {subsubsection}{\numberline {7.7.3.2}init()}{32}{subsubsection.7.7.3.2}%
-\contentsline {subsubsection}{\numberline {7.7.3.3}setCallback()}{32}{subsubsection.7.7.3.3}%
-\contentsline {subsubsection}{\numberline {7.7.3.4}start()}{32}{subsubsection.7.7.3.4}%
-\contentsline {subsubsection}{\numberline {7.7.3.5}stop()}{32}{subsubsection.7.7.3.5}%
-\contentsline {subsubsection}{\numberline {7.7.3.6}worker()}{33}{subsubsection.7.7.3.6}%
-\contentsline {subsection}{\numberline {7.7.4}Member Data Documentation}{33}{subsection.7.7.4}%
-\contentsline {subsubsection}{\numberline {7.7.4.1}callback\_}{33}{subsubsection.7.7.4.1}%
-\contentsline {subsubsection}{\numberline {7.7.4.2}chip\_}{33}{subsubsection.7.7.4.2}%
-\contentsline {subsubsection}{\numberline {7.7.4.3}gpio\_fd\_}{33}{subsubsection.7.7.4.3}%
-\contentsline {subsubsection}{\numberline {7.7.4.4}gpiochip\_path\_}{33}{subsubsection.7.7.4.4}%
-\contentsline {subsubsection}{\numberline {7.7.4.5}imu\_}{33}{subsubsection.7.7.4.5}%
-\contentsline {subsubsection}{\numberline {7.7.4.6}rdy\_line\_}{33}{subsubsection.7.7.4.6}%
-\contentsline {subsubsection}{\numberline {7.7.4.7}request\_}{33}{subsubsection.7.7.4.7}%
-\contentsline {subsubsection}{\numberline {7.7.4.8}running\_}{33}{subsubsection.7.7.4.8}%
-\contentsline {subsubsection}{\numberline {7.7.4.9}stop\_fd\_}{33}{subsubsection.7.7.4.9}%
-\contentsline {subsubsection}{\numberline {7.7.4.10}worker\_thread\_}{34}{subsubsection.7.7.4.10}%
-\contentsline {section}{\numberline {7.8}icm20948\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::IMUSample Struct Reference}{34}{section.7.8}%
-\contentsline {subsection}{\numberline {7.8.1}Member Data Documentation}{34}{subsection.7.8.1}%
-\contentsline {subsubsection}{\numberline {7.8.1.1}ax}{34}{subsubsection.7.8.1.1}%
-\contentsline {subsubsection}{\numberline {7.8.1.2}ay}{34}{subsubsection.7.8.1.2}%
-\contentsline {subsubsection}{\numberline {7.8.1.3}az}{34}{subsubsection.7.8.1.3}%
-\contentsline {subsubsection}{\numberline {7.8.1.4}gx}{34}{subsubsection.7.8.1.4}%
-\contentsline {subsubsection}{\numberline {7.8.1.5}gy}{35}{subsubsection.7.8.1.5}%
-\contentsline {subsubsection}{\numberline {7.8.1.6}gz}{35}{subsubsection.7.8.1.6}%
-\contentsline {subsubsection}{\numberline {7.8.1.7}mx}{35}{subsubsection.7.8.1.7}%
-\contentsline {subsubsection}{\numberline {7.8.1.8}my}{35}{subsubsection.7.8.1.8}%
-\contentsline {subsubsection}{\numberline {7.8.1.9}mz}{35}{subsubsection.7.8.1.9}%
-\contentsline {section}{\numberline {7.9}LEDController Class Reference}{35}{section.7.9}%
-\contentsline {subsection}{\numberline {7.9.1}Detailed Description}{36}{subsection.7.9.1}%
-\contentsline {subsection}{\numberline {7.9.2}Constructor \& Destructor Documentation}{36}{subsection.7.9.2}%
-\contentsline {subsubsection}{\numberline {7.9.2.1}LEDController()}{36}{subsubsection.7.9.2.1}%
-\contentsline {subsubsection}{\numberline {7.9.2.2}$\sim $LEDController()}{37}{subsubsection.7.9.2.2}%
-\contentsline {subsection}{\numberline {7.9.3}Member Function Documentation}{37}{subsection.7.9.3}%
-\contentsline {subsubsection}{\numberline {7.9.3.1}allOff()}{37}{subsubsection.7.9.3.1}%
-\contentsline {subsubsection}{\numberline {7.9.3.2}flashGreen()}{37}{subsubsection.7.9.3.2}%
-\contentsline {subsubsection}{\numberline {7.9.3.3}greenOff()}{37}{subsubsection.7.9.3.3}%
-\contentsline {subsubsection}{\numberline {7.9.3.4}greenOn()}{37}{subsubsection.7.9.3.4}%
-\contentsline {subsubsection}{\numberline {7.9.3.5}service()}{37}{subsubsection.7.9.3.5}%
-\contentsline {subsubsection}{\numberline {7.9.3.6}set()}{38}{subsubsection.7.9.3.6}%
-\contentsline {subsubsection}{\numberline {7.9.3.7}updateOutputs()}{38}{subsubsection.7.9.3.7}%
-\contentsline {subsection}{\numberline {7.9.4}Member Data Documentation}{38}{subsection.7.9.4}%
-\contentsline {subsubsection}{\numberline {7.9.4.1}greenActive\_}{38}{subsubsection.7.9.4.1}%
-\contentsline {subsubsection}{\numberline {7.9.4.2}greenOffTime\_}{38}{subsubsection.7.9.4.2}%
-\contentsline {section}{\numberline {7.10}LEDController\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Settings Struct Reference}{38}{section.7.10}%
-\contentsline {subsection}{\numberline {7.10.1}Detailed Description}{39}{subsection.7.10.1}%
-\contentsline {subsection}{\numberline {7.10.2}Member Data Documentation}{39}{subsection.7.10.2}%
-\contentsline {subsubsection}{\numberline {7.10.2.1}chipNumber}{39}{subsubsection.7.10.2.1}%
-\contentsline {subsubsection}{\numberline {7.10.2.2}greenGpio}{39}{subsubsection.7.10.2.2}%
-\contentsline {section}{\numberline {7.11}icm20948\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::magn\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}settings Struct Reference}{39}{section.7.11}%
-\contentsline {subsection}{\numberline {7.11.1}Constructor \& Destructor Documentation}{39}{subsection.7.11.1}%
-\contentsline {subsubsection}{\numberline {7.11.1.1}magn\_settings()}{39}{subsubsection.7.11.1.1}%
-\contentsline {subsection}{\numberline {7.11.2}Member Data Documentation}{40}{subsection.7.11.2}%
-\contentsline {subsubsection}{\numberline {7.11.2.1}mode}{40}{subsubsection.7.11.2.1}%
-\contentsline {section}{\numberline {7.12}Piezo\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Event\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Detector Class Reference}{40}{section.7.12}%
-\contentsline {subsection}{\numberline {7.12.1}Member Typedef Documentation}{40}{subsection.7.12.1}%
-\contentsline {subsubsection}{\numberline {7.12.1.1}ForceCallback}{40}{subsubsection.7.12.1.1}%
-\contentsline {subsection}{\numberline {7.12.2}Constructor \& Destructor Documentation}{41}{subsection.7.12.2}%
-\contentsline {subsubsection}{\numberline {7.12.2.1}PiezoEventDetector()}{41}{subsubsection.7.12.2.1}%
-\contentsline {subsection}{\numberline {7.12.3}Member Function Documentation}{41}{subsection.7.12.3}%
-\contentsline {subsubsection}{\numberline {7.12.3.1}processSample()}{41}{subsubsection.7.12.3.1}%
-\contentsline {subsubsection}{\numberline {7.12.3.2}reset()}{41}{subsubsection.7.12.3.2}%
-\contentsline {subsubsection}{\numberline {7.12.3.3}setForceCallback()}{41}{subsubsection.7.12.3.3}%
-\contentsline {subsection}{\numberline {7.12.4}Member Data Documentation}{41}{subsection.7.12.4}%
-\contentsline {subsubsection}{\numberline {7.12.4.1}filter\_init\_}{41}{subsubsection.7.12.4.1}%
-\contentsline {subsubsection}{\numberline {7.12.4.2}filtered\_v\_}{41}{subsubsection.7.12.4.2}%
-\contentsline {subsubsection}{\numberline {7.12.4.3}forceCallback\_}{41}{subsubsection.7.12.4.3}%
-\contentsline {subsubsection}{\numberline {7.12.4.4}led\_}{41}{subsubsection.7.12.4.4}%
-\contentsline {subsubsection}{\numberline {7.12.4.5}pressed\_}{42}{subsubsection.7.12.4.5}%
-\contentsline {subsubsection}{\numberline {7.12.4.6}settings\_}{42}{subsubsection.7.12.4.6}%
-\contentsline {section}{\numberline {7.13}Piezo\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Event\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Detector\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Settings Struct Reference}{42}{section.7.13}%
-\contentsline {subsection}{\numberline {7.13.1}Member Data Documentation}{42}{subsection.7.13.1}%
-\contentsline {subsubsection}{\numberline {7.13.1.1}enableDebugPrints}{42}{subsubsection.7.13.1.1}%
-\contentsline {subsubsection}{\numberline {7.13.1.2}pressThreshold}{42}{subsubsection.7.13.1.2}%
-\contentsline {subsubsection}{\numberline {7.13.1.3}releaseThreshold}{42}{subsubsection.7.13.1.3}%
-\contentsline {section}{\numberline {7.14}Position\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Detector Class Reference}{43}{section.7.14}%
-\contentsline {subsection}{\numberline {7.14.1}Member Typedef Documentation}{43}{subsection.7.14.1}%
-\contentsline {subsubsection}{\numberline {7.14.1.1}StateCallback}{43}{subsubsection.7.14.1.1}%
-\contentsline {subsection}{\numberline {7.14.2}Constructor \& Destructor Documentation}{44}{subsection.7.14.2}%
-\contentsline {subsubsection}{\numberline {7.14.2.1}PositionDetector()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{44}{subsubsection.7.14.2.1}%
-\contentsline {subsubsection}{\numberline {7.14.2.2}PositionDetector()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{44}{subsubsection.7.14.2.2}%
-\contentsline {subsubsection}{\numberline {7.14.2.3}$\sim $PositionDetector()}{44}{subsubsection.7.14.2.3}%
-\contentsline {subsection}{\numberline {7.14.3}Member Function Documentation}{44}{subsection.7.14.3}%
-\contentsline {subsubsection}{\numberline {7.14.3.1}onSample()}{44}{subsubsection.7.14.3.1}%
-\contentsline {subsubsection}{\numberline {7.14.3.2}resetState()}{44}{subsubsection.7.14.3.2}%
-\contentsline {subsubsection}{\numberline {7.14.3.3}setCallback()}{44}{subsubsection.7.14.3.3}%
-\contentsline {subsubsection}{\numberline {7.14.3.4}wrapAngleDeg()}{44}{subsubsection.7.14.3.4}%
-\contentsline {subsection}{\numberline {7.14.4}Member Data Documentation}{45}{subsection.7.14.4}%
-\contentsline {subsubsection}{\numberline {7.14.4.1}callback}{45}{subsubsection.7.14.4.1}%
-\contentsline {subsubsection}{\numberline {7.14.4.2}cfg}{45}{subsubsection.7.14.4.2}%
-\contentsline {subsubsection}{\numberline {7.14.4.3}confirmed}{45}{subsubsection.7.14.4.3}%
-\contentsline {subsubsection}{\numberline {7.14.4.4}nRefX}{45}{subsubsection.7.14.4.4}%
-\contentsline {subsubsection}{\numberline {7.14.4.5}nRefY}{45}{subsubsection.7.14.4.5}%
-\contentsline {subsubsection}{\numberline {7.14.4.6}nRefZ}{45}{subsubsection.7.14.4.6}%
-\contentsline {subsubsection}{\numberline {7.14.4.7}stableCount}{45}{subsubsection.7.14.4.7}%
-\contentsline {section}{\numberline {7.15}RPI\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}PWM Class Reference}{45}{section.7.15}%
-\contentsline {subsection}{\numberline {7.15.1}Constructor \& Destructor Documentation}{46}{subsection.7.15.1}%
-\contentsline {subsubsection}{\numberline {7.15.1.1}RPI\_PWM()}{46}{subsubsection.7.15.1.1}%
-\contentsline {subsubsection}{\numberline {7.15.1.2}$\sim $RPI\_PWM()}{46}{subsubsection.7.15.1.2}%
-\contentsline {subsection}{\numberline {7.15.2}Member Function Documentation}{46}{subsection.7.15.2}%
-\contentsline {subsubsection}{\numberline {7.15.2.1}getDutyCycle()}{46}{subsubsection.7.15.2.1}%
-\contentsline {subsubsection}{\numberline {7.15.2.2}loop()}{46}{subsubsection.7.15.2.2}%
-\contentsline {subsubsection}{\numberline {7.15.2.3}setDutyCycle()}{47}{subsubsection.7.15.2.3}%
-\contentsline {subsubsection}{\numberline {7.15.2.4}start()}{47}{subsubsection.7.15.2.4}%
-\contentsline {subsubsection}{\numberline {7.15.2.5}stop()}{47}{subsubsection.7.15.2.5}%
-\contentsline {subsubsection}{\numberline {7.15.2.6}usToTimerspec()}{47}{subsubsection.7.15.2.6}%
-\contentsline {subsubsection}{\numberline {7.15.2.7}waitUs()}{47}{subsubsection.7.15.2.7}%
-\contentsline {subsection}{\numberline {7.15.3}Member Data Documentation}{47}{subsection.7.15.3}%
-\contentsline {subsubsection}{\numberline {7.15.3.1}chip\_}{47}{subsubsection.7.15.3.1}%
-\contentsline {subsubsection}{\numberline {7.15.3.2}duty\_}{47}{subsubsection.7.15.3.2}%
-\contentsline {subsubsection}{\numberline {7.15.3.3}request\_}{47}{subsubsection.7.15.3.3}%
-\contentsline {subsubsection}{\numberline {7.15.3.4}running\_}{47}{subsubsection.7.15.3.4}%
-\contentsline {subsubsection}{\numberline {7.15.3.5}thread\_}{48}{subsubsection.7.15.3.5}%
-\contentsline {section}{\numberline {7.16}icm20948\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::settings Struct Reference}{48}{section.7.16}%
-\contentsline {subsection}{\numberline {7.16.1}Constructor \& Destructor Documentation}{48}{subsection.7.16.1}%
-\contentsline {subsubsection}{\numberline {7.16.1.1}settings()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{48}{subsubsection.7.16.1.1}%
-\contentsline {subsubsection}{\numberline {7.16.1.2}settings()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{48}{subsubsection.7.16.1.2}%
-\contentsline {subsection}{\numberline {7.16.2}Member Data Documentation}{48}{subsection.7.16.2}%
-\contentsline {subsubsection}{\numberline {7.16.2.1}accel}{48}{subsubsection.7.16.2.1}%
-\contentsline {subsubsection}{\numberline {7.16.2.2}gyro}{49}{subsubsection.7.16.2.2}%
-\contentsline {subsubsection}{\numberline {7.16.2.3}magn}{49}{subsubsection.7.16.2.3}%
-\contentsline {section}{\numberline {7.17}Simple\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}LEDController Class Reference}{49}{section.7.17}%
-\contentsline {subsection}{\numberline {7.17.1}Detailed Description}{50}{subsection.7.17.1}%
-\contentsline {subsection}{\numberline {7.17.2}Constructor \& Destructor Documentation}{51}{subsection.7.17.2}%
-\contentsline {subsubsection}{\numberline {7.17.2.1}SimpleLEDController()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{51}{subsubsection.7.17.2.1}%
-\contentsline {subsubsection}{\numberline {7.17.2.2}$\sim $SimpleLEDController()}{51}{subsubsection.7.17.2.2}%
-\contentsline {subsubsection}{\numberline {7.17.2.3}SimpleLEDController()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{51}{subsubsection.7.17.2.3}%
-\contentsline {subsection}{\numberline {7.17.3}Member Function Documentation}{51}{subsection.7.17.3}%
-\contentsline {subsubsection}{\numberline {7.17.3.1}flashGreen()}{51}{subsubsection.7.17.3.1}%
-\contentsline {subsubsection}{\numberline {7.17.3.2}service()}{52}{subsubsection.7.17.3.2}%
-\contentsline {subsubsection}{\numberline {7.17.3.3}set()}{52}{subsubsection.7.17.3.3}%
-\contentsline {subsection}{\numberline {7.17.4}Member Data Documentation}{52}{subsection.7.17.4}%
-\contentsline {subsubsection}{\numberline {7.17.4.1}chip}{52}{subsubsection.7.17.4.1}%
-\contentsline {subsubsection}{\numberline {7.17.4.2}chipNumber}{52}{subsubsection.7.17.4.2}%
-\contentsline {subsubsection}{\numberline {7.17.4.3}pin}{52}{subsubsection.7.17.4.3}%
-\contentsline {subsubsection}{\numberline {7.17.4.4}request}{53}{subsubsection.7.17.4.4}%
-\contentsline {section}{\numberline {7.18}Swing\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Calibrator Class Reference}{53}{section.7.18}%
-\contentsline {subsection}{\numberline {7.18.1}Detailed Description}{54}{subsection.7.18.1}%
-\contentsline {subsection}{\numberline {7.18.2}Member Typedef Documentation}{54}{subsection.7.18.2}%
-\contentsline {subsubsection}{\numberline {7.18.2.1}DoneCallback}{54}{subsubsection.7.18.2.1}%
-\contentsline {subsection}{\numberline {7.18.3}Member Enumeration Documentation}{54}{subsection.7.18.3}%
-\contentsline {subsubsection}{\numberline {7.18.3.1}State}{54}{subsubsection.7.18.3.1}%
-\contentsline {subsection}{\numberline {7.18.4}Constructor \& Destructor Documentation}{54}{subsection.7.18.4}%
-\contentsline {subsubsection}{\numberline {7.18.4.1}SwingCalibrator()}{54}{subsubsection.7.18.4.1}%
-\contentsline {subsection}{\numberline {7.18.5}Member Function Documentation}{54}{subsection.7.18.5}%
-\contentsline {subsubsection}{\numberline {7.18.5.1}accumulate()}{54}{subsubsection.7.18.5.1}%
-\contentsline {subsubsection}{\numberline {7.18.5.2}biasX()}{55}{subsubsection.7.18.5.2}%
-\contentsline {subsubsection}{\numberline {7.18.5.3}biasY()}{55}{subsubsection.7.18.5.3}%
-\contentsline {subsubsection}{\numberline {7.18.5.4}biasZ()}{55}{subsubsection.7.18.5.4}%
-\contentsline {subsubsection}{\numberline {7.18.5.5}feed()}{55}{subsubsection.7.18.5.5}%
-\contentsline {subsubsection}{\numberline {7.18.5.6}isReady()}{55}{subsubsection.7.18.5.6}%
-\contentsline {subsubsection}{\numberline {7.18.5.7}setCallback()}{55}{subsubsection.7.18.5.7}%
-\contentsline {subsubsection}{\numberline {7.18.5.8}triggerRecal()}{55}{subsubsection.7.18.5.8}%
-\contentsline {subsection}{\numberline {7.18.6}Member Data Documentation}{55}{subsection.7.18.6}%
-\contentsline {subsubsection}{\numberline {7.18.6.1}bias\_x\_}{55}{subsubsection.7.18.6.1}%
-\contentsline {subsubsection}{\numberline {7.18.6.2}bias\_y\_}{56}{subsubsection.7.18.6.2}%
-\contentsline {subsubsection}{\numberline {7.18.6.3}bias\_z\_}{56}{subsubsection.7.18.6.3}%
-\contentsline {subsubsection}{\numberline {7.18.6.4}callback\_}{56}{subsubsection.7.18.6.4}%
-\contentsline {subsubsection}{\numberline {7.18.6.5}count\_}{56}{subsubsection.7.18.6.5}%
-\contentsline {subsubsection}{\numberline {7.18.6.6}initial\_samples\_}{56}{subsubsection.7.18.6.6}%
-\contentsline {subsubsection}{\numberline {7.18.6.7}recal\_samples\_}{56}{subsubsection.7.18.6.7}%
-\contentsline {subsubsection}{\numberline {7.18.6.8}state\_}{56}{subsubsection.7.18.6.8}%
-\contentsline {subsubsection}{\numberline {7.18.6.9}sum\_x\_}{56}{subsubsection.7.18.6.9}%
-\contentsline {subsubsection}{\numberline {7.18.6.10}sum\_y\_}{56}{subsubsection.7.18.6.10}%
-\contentsline {subsubsection}{\numberline {7.18.6.11}sum\_z\_}{57}{subsubsection.7.18.6.11}%
-\contentsline {section}{\numberline {7.19}Swing\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Detector Class Reference}{57}{section.7.19}%
-\contentsline {subsection}{\numberline {7.19.1}Member Typedef Documentation}{57}{subsection.7.19.1}%
-\contentsline {subsubsection}{\numberline {7.19.1.1}EventCallback}{57}{subsubsection.7.19.1.1}%
-\contentsline {subsection}{\numberline {7.19.2}Member Enumeration Documentation}{57}{subsection.7.19.2}%
-\contentsline {subsubsection}{\numberline {7.19.2.1}Level}{57}{subsubsection.7.19.2.1}%
-\contentsline {subsection}{\numberline {7.19.3}Constructor \& Destructor Documentation}{58}{subsection.7.19.3}%
-\contentsline {subsubsection}{\numberline {7.19.3.1}SwingDetector()}{58}{subsubsection.7.19.3.1}%
-\contentsline {subsection}{\numberline {7.19.4}Member Function Documentation}{58}{subsection.7.19.4}%
-\contentsline {subsubsection}{\numberline {7.19.4.1}classify()}{58}{subsubsection.7.19.4.1}%
-\contentsline {subsubsection}{\numberline {7.19.4.2}detect()}{58}{subsubsection.7.19.4.2}%
-\contentsline {subsubsection}{\numberline {7.19.4.3}label()}{58}{subsubsection.7.19.4.3}%
-\contentsline {subsubsection}{\numberline {7.19.4.4}reset()}{58}{subsubsection.7.19.4.4}%
-\contentsline {subsubsection}{\numberline {7.19.4.5}setCallback()}{58}{subsubsection.7.19.4.5}%
-\contentsline {subsection}{\numberline {7.19.5}Member Data Documentation}{58}{subsection.7.19.5}%
-\contentsline {subsubsection}{\numberline {7.19.5.1}callback\_}{58}{subsubsection.7.19.5.1}%
-\contentsline {subsubsection}{\numberline {7.19.5.2}last\_level\_}{59}{subsubsection.7.19.5.2}%
-\contentsline {section}{\numberline {7.20}Swing\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Feedback Class Reference}{59}{section.7.20}%
-\contentsline {subsection}{\numberline {7.20.1}Member Typedef Documentation}{60}{subsection.7.20.1}%
-\contentsline {subsubsection}{\numberline {7.20.1.1}ResetCallback}{60}{subsubsection.7.20.1.1}%
-\contentsline {subsection}{\numberline {7.20.2}Constructor \& Destructor Documentation}{60}{subsection.7.20.2}%
-\contentsline {subsubsection}{\numberline {7.20.2.1}SwingFeedback()}{60}{subsubsection.7.20.2.1}%
-\contentsline {subsection}{\numberline {7.20.3}Member Function Documentation}{60}{subsection.7.20.3}%
-\contentsline {subsubsection}{\numberline {7.20.3.1}checkTimeout()}{60}{subsubsection.7.20.3.1}%
-\contentsline {subsubsection}{\numberline {7.20.3.2}forceOff()}{60}{subsubsection.7.20.3.2}%
-\contentsline {subsubsection}{\numberline {7.20.3.3}onLevel()}{60}{subsubsection.7.20.3.3}%
-\contentsline {subsubsection}{\numberline {7.20.3.4}setResetCallback()}{60}{subsubsection.7.20.3.4}%
-\contentsline {subsubsection}{\numberline {7.20.3.5}worker()}{60}{subsubsection.7.20.3.5}%
-\contentsline {subsection}{\numberline {7.20.4}Member Data Documentation}{60}{subsection.7.20.4}%
-\contentsline {subsubsection}{\numberline {7.20.4.1}busy\_}{60}{subsubsection.7.20.4.1}%
-\contentsline {subsubsection}{\numberline {7.20.4.2}busy\_since\_ms\_}{61}{subsubsection.7.20.4.2}%
-\contentsline {subsubsection}{\numberline {7.20.4.3}pending\_level\_}{61}{subsubsection.7.20.4.3}%
-\contentsline {subsubsection}{\numberline {7.20.4.4}pwm\_}{61}{subsubsection.7.20.4.4}%
-\contentsline {subsubsection}{\numberline {7.20.4.5}reset\_cb\_}{61}{subsubsection.7.20.4.5}%
-\contentsline {subsubsection}{\numberline {7.20.4.6}TIMEOUT\_MS}{61}{subsubsection.7.20.4.6}%
-\contentsline {section}{\numberline {7.21}Swing\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Processor Class Reference}{61}{section.7.21}%
-\contentsline {subsection}{\numberline {7.21.1}Member Typedef Documentation}{62}{subsection.7.21.1}%
-\contentsline {subsubsection}{\numberline {7.21.1.1}MagnitudeCallback}{62}{subsubsection.7.21.1.1}%
-\contentsline {subsubsection}{\numberline {7.21.1.2}PositionStateCallback}{62}{subsubsection.7.21.1.2}%
-\contentsline {subsection}{\numberline {7.21.2}Constructor \& Destructor Documentation}{63}{subsection.7.21.2}%
-\contentsline {subsubsection}{\numberline {7.21.2.1}SwingProcessor()}{63}{subsubsection.7.21.2.1}%
-\contentsline {subsection}{\numberline {7.21.3}Member Function Documentation}{63}{subsection.7.21.3}%
-\contentsline {subsubsection}{\numberline {7.21.3.1}isActive()}{63}{subsubsection.7.21.3.1}%
-\contentsline {subsubsection}{\numberline {7.21.3.2}onForceReady()}{63}{subsubsection.7.21.3.2}%
-\contentsline {subsubsection}{\numberline {7.21.3.3}onPositionReady()}{63}{subsubsection.7.21.3.3}%
-\contentsline {subsubsection}{\numberline {7.21.3.4}onSample()}{63}{subsubsection.7.21.3.4}%
-\contentsline {subsubsection}{\numberline {7.21.3.5}operator()()}{63}{subsubsection.7.21.3.5}%
-\contentsline {subsubsection}{\numberline {7.21.3.6}reset()}{64}{subsubsection.7.21.3.6}%
-\contentsline {subsubsection}{\numberline {7.21.3.7}setMagnitudeCallback()}{64}{subsubsection.7.21.3.7}%
-\contentsline {subsubsection}{\numberline {7.21.3.8}setPositionCallback()}{64}{subsubsection.7.21.3.8}%
-\contentsline {subsection}{\numberline {7.21.4}Member Data Documentation}{64}{subsection.7.21.4}%
-\contentsline {subsubsection}{\numberline {7.21.4.1}accel\_deadband\_}{64}{subsubsection.7.21.4.1}%
-\contentsline {subsubsection}{\numberline {7.21.4.2}calibrator\_}{64}{subsubsection.7.21.4.2}%
-\contentsline {subsubsection}{\numberline {7.21.4.3}COOLDOWN\_MS}{64}{subsubsection.7.21.4.3}%
-\contentsline {subsubsection}{\numberline {7.21.4.4}isActive\_}{64}{subsubsection.7.21.4.4}%
-\contentsline {subsubsection}{\numberline {7.21.4.5}isArmed\_}{64}{subsubsection.7.21.4.5}%
-\contentsline {subsubsection}{\numberline {7.21.4.6}mag\_callback\_}{64}{subsubsection.7.21.4.6}%
-\contentsline {subsubsection}{\numberline {7.21.4.7}pos\_callback\_}{64}{subsubsection.7.21.4.7}%
-\contentsline {subsubsection}{\numberline {7.21.4.8}reset\_time\_}{64}{subsubsection.7.21.4.8}%
-\contentsline {chapter}{\numberline {8}File Documentation}{65}{chapter.8}%
-\contentsline {section}{\numberline {8.1}src/libs/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}IMU/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Icm20948driver.cpp File Reference}{65}{section.8.1}%
-\contentsline {section}{\numberline {8.2}src/libs/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}IMU/imureader.cpp File Reference}{65}{section.8.2}%
-\contentsline {section}{\numberline {8.3}src/libs/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}IMU/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Include/i2c\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}mutex.hpp File Reference}{65}{section.8.3}%
-\contentsline {subsection}{\numberline {8.3.1}Function Documentation}{66}{subsection.8.3.1}%
-\contentsline {subsubsection}{\numberline {8.3.1.1}i2c1\_mutex()}{66}{subsubsection.8.3.1.1}%
-\contentsline {section}{\numberline {8.4}i2c\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}mutex.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{66}{section.8.4}%
-\contentsline {section}{\numberline {8.5}src/libs/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}IMU/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Include/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Icm20948driver.hpp File Reference}{66}{section.8.5}%
-\contentsline {subsection}{\numberline {8.5.1}Macro Definition Documentation}{69}{subsection.8.5.1}%
-\contentsline {subsubsection}{\numberline {8.5.1.1}AK09916\_CNTL2\_ADDR}{69}{subsubsection.8.5.1.1}%
-\contentsline {subsubsection}{\numberline {8.5.1.2}ICM20948\_ACCEL\_CONFIG\_1\_ADDR}{69}{subsubsection.8.5.1.2}%
-\contentsline {subsubsection}{\numberline {8.5.1.3}ICM20948\_ACCEL\_CONFIG\_1\_BANK}{69}{subsubsection.8.5.1.3}%
-\contentsline {subsubsection}{\numberline {8.5.1.4}ICM20948\_ACCEL\_OUT\_BANK}{69}{subsubsection.8.5.1.4}%
-\contentsline {subsubsection}{\numberline {8.5.1.5}ICM20948\_ACCEL\_SMPLRT\_DIV\_1\_ADDR}{69}{subsubsection.8.5.1.5}%
-\contentsline {subsubsection}{\numberline {8.5.1.6}ICM20948\_ACCEL\_SMPLRT\_DIV\_1\_BANK}{69}{subsubsection.8.5.1.6}%
-\contentsline {subsubsection}{\numberline {8.5.1.7}ICM20948\_ACCEL\_SMPLRT\_DIV\_2\_ADDR}{69}{subsubsection.8.5.1.7}%
-\contentsline {subsubsection}{\numberline {8.5.1.8}ICM20948\_ACCEL\_SMPLRT\_DIV\_2\_BANK}{69}{subsubsection.8.5.1.8}%
-\contentsline {subsubsection}{\numberline {8.5.1.9}ICM20948\_ACCEL\_XOUT\_H\_ADDR}{70}{subsubsection.8.5.1.9}%
-\contentsline {subsubsection}{\numberline {8.5.1.10}ICM20948\_ACCEL\_XOUT\_L\_ADDR}{70}{subsubsection.8.5.1.10}%
-\contentsline {subsubsection}{\numberline {8.5.1.11}ICM20948\_ACCEL\_YOUT\_H\_ADDR}{70}{subsubsection.8.5.1.11}%
-\contentsline {subsubsection}{\numberline {8.5.1.12}ICM20948\_ACCEL\_YOUT\_L\_ADDR}{70}{subsubsection.8.5.1.12}%
-\contentsline {subsubsection}{\numberline {8.5.1.13}ICM20948\_ACCEL\_ZOUT\_H\_ADDR}{70}{subsubsection.8.5.1.13}%
-\contentsline {subsubsection}{\numberline {8.5.1.14}ICM20948\_ACCEL\_ZOUT\_L\_ADDR}{70}{subsubsection.8.5.1.14}%
-\contentsline {subsubsection}{\numberline {8.5.1.15}ICM20948\_BANK0\_WHO\_AM\_I\_VALUE}{70}{subsubsection.8.5.1.15}%
-\contentsline {subsubsection}{\numberline {8.5.1.16}ICM20948\_EXT\_SLV\_SENS\_DATA\_00\_ADDR}{70}{subsubsection.8.5.1.16}%
-\contentsline {subsubsection}{\numberline {8.5.1.17}ICM20948\_EXT\_SLV\_SENS\_DATA\_00\_BANK}{70}{subsubsection.8.5.1.17}%
-\contentsline {subsubsection}{\numberline {8.5.1.18}ICM20948\_GYRO\_CONFIG\_1\_ADDR}{70}{subsubsection.8.5.1.18}%
-\contentsline {subsubsection}{\numberline {8.5.1.19}ICM20948\_GYRO\_CONFIG\_1\_BANK}{71}{subsubsection.8.5.1.19}%
-\contentsline {subsubsection}{\numberline {8.5.1.20}ICM20948\_GYRO\_OUT\_BANK}{71}{subsubsection.8.5.1.20}%
-\contentsline {subsubsection}{\numberline {8.5.1.21}ICM20948\_GYRO\_SMPLRT\_DIV\_ADDR}{71}{subsubsection.8.5.1.21}%
-\contentsline {subsubsection}{\numberline {8.5.1.22}ICM20948\_GYRO\_SMPLRT\_DIV\_BANK}{71}{subsubsection.8.5.1.22}%
-\contentsline {subsubsection}{\numberline {8.5.1.23}ICM20948\_GYRO\_XOUT\_H\_ADDR}{71}{subsubsection.8.5.1.23}%
-\contentsline {subsubsection}{\numberline {8.5.1.24}ICM20948\_GYRO\_XOUT\_L\_ADDR}{71}{subsubsection.8.5.1.24}%
-\contentsline {subsubsection}{\numberline {8.5.1.25}ICM20948\_GYRO\_YOUT\_H\_ADDR}{71}{subsubsection.8.5.1.25}%
-\contentsline {subsubsection}{\numberline {8.5.1.26}ICM20948\_GYRO\_YOUT\_L\_ADDR}{71}{subsubsection.8.5.1.26}%
-\contentsline {subsubsection}{\numberline {8.5.1.27}ICM20948\_GYRO\_ZOUT\_H\_ADDR}{71}{subsubsection.8.5.1.27}%
-\contentsline {subsubsection}{\numberline {8.5.1.28}ICM20948\_GYRO\_ZOUT\_L\_ADDR}{71}{subsubsection.8.5.1.28}%
-\contentsline {subsubsection}{\numberline {8.5.1.29}ICM20948\_I2C\_ADDR}{72}{subsubsection.8.5.1.29}%
-\contentsline {subsubsection}{\numberline {8.5.1.30}ICM20948\_I2C\_MST\_CTRL\_ADDR}{72}{subsubsection.8.5.1.30}%
-\contentsline {subsubsection}{\numberline {8.5.1.31}ICM20948\_I2C\_MST\_CTRL\_BANK}{72}{subsubsection.8.5.1.31}%
-\contentsline {subsubsection}{\numberline {8.5.1.32}ICM20948\_I2C\_MST\_STATUS\_ADDR}{72}{subsubsection.8.5.1.32}%
-\contentsline {subsubsection}{\numberline {8.5.1.33}ICM20948\_I2C\_MST\_STATUS\_BANK}{72}{subsubsection.8.5.1.33}%
-\contentsline {subsubsection}{\numberline {8.5.1.34}ICM20948\_I2C\_SLV0\_ADDR\_ADDR}{72}{subsubsection.8.5.1.34}%
-\contentsline {subsubsection}{\numberline {8.5.1.35}ICM20948\_I2C\_SLV0\_ADDR\_BANK}{72}{subsubsection.8.5.1.35}%
-\contentsline {subsubsection}{\numberline {8.5.1.36}ICM20948\_I2C\_SLV0\_CTRL\_ADDR}{72}{subsubsection.8.5.1.36}%
-\contentsline {subsubsection}{\numberline {8.5.1.37}ICM20948\_I2C\_SLV0\_CTRL\_BANK}{72}{subsubsection.8.5.1.37}%
-\contentsline {subsubsection}{\numberline {8.5.1.38}ICM20948\_I2C\_SLV0\_REG\_ADDR}{72}{subsubsection.8.5.1.38}%
-\contentsline {subsubsection}{\numberline {8.5.1.39}ICM20948\_I2C\_SLV0\_REG\_BANK}{73}{subsubsection.8.5.1.39}%
-\contentsline {subsubsection}{\numberline {8.5.1.40}ICM20948\_I2C\_SLV4\_ADDR\_ADDR}{73}{subsubsection.8.5.1.40}%
-\contentsline {subsubsection}{\numberline {8.5.1.41}ICM20948\_I2C\_SLV4\_ADDR\_BANK}{73}{subsubsection.8.5.1.41}%
-\contentsline {subsubsection}{\numberline {8.5.1.42}ICM20948\_I2C\_SLV4\_CTRL\_ADDR}{73}{subsubsection.8.5.1.42}%
-\contentsline {subsubsection}{\numberline {8.5.1.43}ICM20948\_I2C\_SLV4\_CTRL\_BANK}{73}{subsubsection.8.5.1.43}%
-\contentsline {subsubsection}{\numberline {8.5.1.44}ICM20948\_I2C\_SLV4\_DI\_ADDR}{73}{subsubsection.8.5.1.44}%
-\contentsline {subsubsection}{\numberline {8.5.1.45}ICM20948\_I2C\_SLV4\_DI\_BANK}{73}{subsubsection.8.5.1.45}%
-\contentsline {subsubsection}{\numberline {8.5.1.46}ICM20948\_I2C\_SLV4\_DO\_ADDR}{73}{subsubsection.8.5.1.46}%
-\contentsline {subsubsection}{\numberline {8.5.1.47}ICM20948\_I2C\_SLV4\_DO\_BANK}{73}{subsubsection.8.5.1.47}%
-\contentsline {subsubsection}{\numberline {8.5.1.48}ICM20948\_I2C\_SLV4\_REG\_ADDR}{73}{subsubsection.8.5.1.48}%
-\contentsline {subsubsection}{\numberline {8.5.1.49}ICM20948\_I2C\_SLV4\_REG\_BANK}{74}{subsubsection.8.5.1.49}%
-\contentsline {subsubsection}{\numberline {8.5.1.50}ICM20948\_INT\_ENABLE\_1\_ADDR}{74}{subsubsection.8.5.1.50}%
-\contentsline {subsubsection}{\numberline {8.5.1.51}ICM20948\_INT\_ENABLE\_1\_BANK}{74}{subsubsection.8.5.1.51}%
-\contentsline {subsubsection}{\numberline {8.5.1.52}ICM20948\_INT\_PIN\_CFG\_ADDR}{74}{subsubsection.8.5.1.52}%
-\contentsline {subsubsection}{\numberline {8.5.1.53}ICM20948\_INT\_PIN\_CFG\_BANK}{74}{subsubsection.8.5.1.53}%
-\contentsline {subsubsection}{\numberline {8.5.1.54}ICM20948\_INT\_STATUS\_1\_ADDR}{74}{subsubsection.8.5.1.54}%
-\contentsline {subsubsection}{\numberline {8.5.1.55}ICM20948\_INT\_STATUS\_1\_BANK}{74}{subsubsection.8.5.1.55}%
-\contentsline {subsubsection}{\numberline {8.5.1.56}ICM20948\_INT\_STATUS\_ADDR}{74}{subsubsection.8.5.1.56}%
-\contentsline {subsubsection}{\numberline {8.5.1.57}ICM20948\_INT\_STATUS\_BANK}{74}{subsubsection.8.5.1.57}%
-\contentsline {subsubsection}{\numberline {8.5.1.58}ICM20948\_MAGN\_I2C\_ADDR}{74}{subsubsection.8.5.1.58}%
-\contentsline {subsubsection}{\numberline {8.5.1.59}ICM20948\_PWR\_MGMT\_1\_ADDR}{75}{subsubsection.8.5.1.59}%
-\contentsline {subsubsection}{\numberline {8.5.1.60}ICM20948\_PWR\_MGMT\_1\_BANK}{75}{subsubsection.8.5.1.60}%
-\contentsline {subsubsection}{\numberline {8.5.1.61}ICM20948\_REG\_BANK\_SEL\_ADDR}{75}{subsubsection.8.5.1.61}%
-\contentsline {subsubsection}{\numberline {8.5.1.62}ICM20948\_REG\_BANK\_SEL\_BANK0\_VALUE}{75}{subsubsection.8.5.1.62}%
-\contentsline {subsubsection}{\numberline {8.5.1.63}ICM20948\_REG\_BANK\_SEL\_BANK1\_VALUE}{75}{subsubsection.8.5.1.63}%
-\contentsline {subsubsection}{\numberline {8.5.1.64}ICM20948\_REG\_BANK\_SEL\_BANK2\_VALUE}{75}{subsubsection.8.5.1.64}%
-\contentsline {subsubsection}{\numberline {8.5.1.65}ICM20948\_REG\_BANK\_SEL\_BANK3\_VALUE}{75}{subsubsection.8.5.1.65}%
-\contentsline {subsubsection}{\numberline {8.5.1.66}ICM20948\_TEMP\_OUT\_H\_ADDR}{75}{subsubsection.8.5.1.66}%
-\contentsline {subsubsection}{\numberline {8.5.1.67}ICM20948\_TEMP\_OUT\_L\_ADDR}{75}{subsubsection.8.5.1.67}%
-\contentsline {subsubsection}{\numberline {8.5.1.68}ICM20948\_USER\_CTRL\_ADDR}{75}{subsubsection.8.5.1.68}%
-\contentsline {subsubsection}{\numberline {8.5.1.69}ICM20948\_USER\_CTRL\_BANK}{76}{subsubsection.8.5.1.69}%
-\contentsline {subsubsection}{\numberline {8.5.1.70}ICM20948\_WHO\_AM\_I\_ADDR}{76}{subsubsection.8.5.1.70}%
-\contentsline {subsubsection}{\numberline {8.5.1.71}ICM20948\_WHO\_AM\_I\_BANK}{76}{subsubsection.8.5.1.71}%
-\contentsline {section}{\numberline {8.6}Icm20948driver.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{76}{section.8.6}%
-\contentsline {section}{\numberline {8.7}src/libs/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}IMU/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Include/imureader.hpp File Reference}{80}{section.8.7}%
-\contentsline {section}{\numberline {8.8}imureader.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{80}{section.8.8}%
-\contentsline {section}{\numberline {8.9}src/libs/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}IMU\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}math/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Include/positiondetector.hpp File Reference}{82}{section.8.9}%
-\contentsline {section}{\numberline {8.10}positiondetector.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{82}{section.8.10}%
-\contentsline {section}{\numberline {8.11}src/libs/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}IMU\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}math/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Include/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Swing\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Calibrator.hpp File Reference}{83}{section.8.11}%
-\contentsline {section}{\numberline {8.12}Swing\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Calibrator.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{83}{section.8.12}%
-\contentsline {section}{\numberline {8.13}src/libs/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}IMU\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}math/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Include/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Swing\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Detector.hpp File Reference}{84}{section.8.13}%
-\contentsline {section}{\numberline {8.14}Swing\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Detector.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{84}{section.8.14}%
-\contentsline {section}{\numberline {8.15}src/libs/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}IMU\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}math/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Include/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Swing\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Processor.hpp File Reference}{84}{section.8.15}%
-\contentsline {subsection}{\numberline {8.15.1}Variable Documentation}{85}{subsection.8.15.1}%
-\contentsline {subsubsection}{\numberline {8.15.1.1}ACCEL\_DEADBAND}{85}{subsubsection.8.15.1.1}%
-\contentsline {subsubsection}{\numberline {8.15.1.2}CALIB\_SAMPLES}{85}{subsubsection.8.15.1.2}%
-\contentsline {subsubsection}{\numberline {8.15.1.3}I2C\_BUS}{85}{subsubsection.8.15.1.3}%
-\contentsline {subsubsection}{\numberline {8.15.1.4}RECAL\_SAMPLES}{85}{subsubsection.8.15.1.4}%
-\contentsline {section}{\numberline {8.16}Swing\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Processor.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{85}{section.8.16}%
-\contentsline {section}{\numberline {8.17}src/libs/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}IMU\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}math/positiondetector.cpp File Reference}{86}{section.8.17}%
-\contentsline {section}{\numberline {8.18}src/libs/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}IMU\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}math/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Swing\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Calibrator.cpp File Reference}{86}{section.8.18}%
-\contentsline {section}{\numberline {8.19}src/libs/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}IMU\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}math/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Swing\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Detector.cpp File Reference}{86}{section.8.19}%
-\contentsline {section}{\numberline {8.20}src/libs/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}IMU\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}math/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Swing\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Processor.cpp File Reference}{87}{section.8.20}%
-\contentsline {section}{\numberline {8.21}src/libs/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}LEDs/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Include/led\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}controller.h File Reference}{87}{section.8.21}%
-\contentsline {section}{\numberline {8.22}led\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}controller.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{87}{section.8.22}%
-\contentsline {section}{\numberline {8.23}src/libs/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}LEDs/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Include/ledcallback.hpp File Reference}{88}{section.8.23}%
-\contentsline {section}{\numberline {8.24}ledcallback.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{88}{section.8.24}%
-\contentsline {section}{\numberline {8.25}src/libs/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}LEDs/led\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}controller.cpp File Reference}{88}{section.8.25}%
-\contentsline {section}{\numberline {8.26}src/libs/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}LEDs/ledcallback.cpp File Reference}{89}{section.8.26}%
-\contentsline {section}{\numberline {8.27}src/libs/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Motor/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Include/rpi\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}pwm.h File Reference}{89}{section.8.27}%
-\contentsline {subsection}{\numberline {8.27.1}Variable Documentation}{89}{subsection.8.27.1}%
-\contentsline {subsubsection}{\numberline {8.27.1.1}PWM\_FREQ\_HZ}{89}{subsubsection.8.27.1.1}%
-\contentsline {subsubsection}{\numberline {8.27.1.2}PWM\_GPIO\_LINE}{89}{subsubsection.8.27.1.2}%
-\contentsline {section}{\numberline {8.28}rpi\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}pwm.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{90}{section.8.28}%
-\contentsline {section}{\numberline {8.29}src/libs/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Motor/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Include/swingfeedback.h File Reference}{91}{section.8.29}%
-\contentsline {section}{\numberline {8.30}swingfeedback.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{91}{section.8.30}%
-\contentsline {section}{\numberline {8.31}src/libs/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Motor/swingfeedback.cpp File Reference}{92}{section.8.31}%
-\contentsline {subsection}{\numberline {8.31.1}Function Documentation}{92}{subsection.8.31.1}%
-\contentsline {subsubsection}{\numberline {8.31.1.1}nowMs()}{92}{subsubsection.8.31.1.1}%
-\contentsline {section}{\numberline {8.32}src/libs/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Piezo/ads1115rpi.cpp File Reference}{93}{section.8.32}%
-\contentsline {subsection}{\numberline {8.32.1}Function Documentation}{93}{subsection.8.32.1}%
-\contentsline {subsubsection}{\numberline {8.32.1.1}makeDefaultADS1115Settings()}{93}{subsubsection.8.32.1.1}%
-\contentsline {section}{\numberline {8.33}src/libs/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Piezo/event\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}detector.cpp File Reference}{93}{section.8.33}%
-\contentsline {section}{\numberline {8.34}src/libs/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Piezo/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Include/ads1115rpi.h File Reference}{93}{section.8.34}%
-\contentsline {subsection}{\numberline {8.34.1}Macro Definition Documentation}{94}{subsection.8.34.1}%
-\contentsline {subsubsection}{\numberline {8.34.1.1}DEBUG}{94}{subsubsection.8.34.1.1}%
-\contentsline {subsection}{\numberline {8.34.2}Function Documentation}{94}{subsection.8.34.2}%
-\contentsline {subsubsection}{\numberline {8.34.2.1}makeDefaultADS1115Settings()}{94}{subsubsection.8.34.2.1}%
-\contentsline {section}{\numberline {8.35}ads1115rpi.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{94}{section.8.35}%
-\contentsline {section}{\numberline {8.36}src/libs/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Piezo/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Include/event\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}detector.h File Reference}{96}{section.8.36}%
-\contentsline {section}{\numberline {8.37}event\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}detector.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{96}{section.8.37}%
-\contentsline {section}{\numberline {8.38}src/libs/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Piezo/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Read\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Me.md File Reference}{97}{section.8.38}%
-\contentsline {section}{\numberline {8.39}src/main.cpp File Reference}{97}{section.8.39}%
-\contentsline {subsection}{\numberline {8.39.1}Function Documentation}{98}{subsection.8.39.1}%
-\contentsline {subsubsection}{\numberline {8.39.1.1}handle\_signal()}{98}{subsubsection.8.39.1.1}%
-\contentsline {subsubsection}{\numberline {8.39.1.2}main()}{98}{subsubsection.8.39.1.2}%
-\contentsline {subsubsection}{\numberline {8.39.1.3}running()}{98}{subsubsection.8.39.1.3}%
-\contentsline {chapter}{Index}{99}{section*.102}%
+\contentsline {chapter}{\numberline {1}IMU -\/ ICM-\/20948}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Pin Connection List}{1}{section.1.1}%
+\contentsline {subsection}{\numberline {1.1.1}ICM-\/20948 Pin Connections}{1}{subsection.1.1.1}%
+\contentsline {section}{\numberline {1.2}I2\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}C Configuration}{1}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Sensor Settings}{1}{section.1.3}%
+\contentsline {section}{\numberline {1.4}Data-\/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Ready Interrupt}{1}{section.1.4}%
+\contentsline {section}{\numberline {1.5}Hardware Assembly}{1}{section.1.5}%
+\contentsline {section}{\numberline {1.6}Acknowledgements}{1}{section.1.6}%
+\contentsline {chapter}{\numberline {2}ERM Vibration Motor}{3}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Pin Connection List}{3}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}Motor Circuit Connections}{3}{subsection.2.1.1}%
+\contentsline {section}{\numberline {2.2}PWM Configuration}{3}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Motor Specifications}{3}{section.2.3}%
+\contentsline {section}{\numberline {2.4}Driver Circuit}{3}{section.2.4}%
+\contentsline {section}{\numberline {2.5}the Raspberry Pi supply to avoid voltage dips on the Pi rail.}{4}{section.2.5}%
+\contentsline {section}{\numberline {2.6}Hardware Assembly}{4}{section.2.6}%
+\contentsline {chapter}{\numberline {3}ADS1115 Pin Connection List}{5}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Piezo Pin Connection}{5}{section.3.1}%
+\contentsline {section}{\numberline {3.2}ADS1115 Settings}{5}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Piezo Event Detector Settings}{5}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Hardware Assembly}{5}{section.3.4}%
+\contentsline {section}{\numberline {3.5}Acknowledgements}{5}{section.3.5}%
+\contentsline {chapter}{\numberline {4}README}{7}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Haptic Ping}{7}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Hardware Components}{7}{subsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.1.2}GPIO Pin Assignments}{7}{subsection.4.1.2}%
+\contentsline {subsection}{\numberline {4.1.3}Wiring Diagram}{8}{subsection.4.1.3}%
+\contentsline {subsection}{\numberline {4.1.4}Hardware Assembly}{8}{subsection.4.1.4}%
+\contentsline {subsection}{\numberline {4.1.5}$<$img src="{}images/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}IMU.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}jpeg"{} alt="{}\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}IMU LOCATION"{}/$>$}{8}{subsection.4.1.5}%
+\contentsline {subsection}{\numberline {4.1.6}How It Works}{8}{subsection.4.1.6}%
+\contentsline {subsection}{\numberline {4.1.7}Realtime Design}{8}{subsection.4.1.7}%
+\contentsline {subsection}{\numberline {4.1.8}Maximum Latency}{9}{subsection.4.1.8}%
+\contentsline {subsubsection}{\numberline {4.1.8.1}IMU -\/ ICM20948}{9}{subsubsection.4.1.8.1}%
+\contentsline {subsubsection}{\numberline {4.1.8.2}Piezo -\/ ADS1115}{9}{subsubsection.4.1.8.2}%
+\contentsline {subsection}{\numberline {4.1.9}Prerequisites}{9}{subsection.4.1.9}%
+\contentsline {subsubsection}{\numberline {4.1.9.1}Enable I2C}{9}{subsubsection.4.1.9.1}%
+\contentsline {subsubsection}{\numberline {4.1.9.2}Install dependencies}{9}{subsubsection.4.1.9.2}%
+\contentsline {subsection}{\numberline {4.1.10}Libraries}{9}{subsection.4.1.10}%
+\contentsline {subsubsection}{\numberline {4.1.10.1}libgpiod}{9}{subsubsection.4.1.10.1}%
+\contentsline {subsubsection}{\numberline {4.1.10.2}PWM}{9}{subsubsection.4.1.10.2}%
+\contentsline {subsubsection}{\numberline {4.1.10.3}yaml-\/cpp}{9}{subsubsection.4.1.10.3}%
+\contentsline {subsection}{\numberline {4.1.11}Compilation from Source}{10}{subsection.4.1.11}%
+\contentsline {subsection}{\numberline {4.1.12}Usage}{10}{subsection.4.1.12}%
+\contentsline {subsection}{\numberline {4.1.13}Running Tests}{10}{subsection.4.1.13}%
+\contentsline {subsection}{\numberline {4.1.14}Documentation}{10}{subsection.4.1.14}%
+\contentsline {subsection}{\numberline {4.1.15}Project Structure}{10}{subsection.4.1.15}%
+\contentsline {subsection}{\numberline {4.1.16}Authors}{10}{subsection.4.1.16}%
+\contentsline {subsection}{\numberline {4.1.17}Individual Contributions}{11}{subsection.4.1.17}%
+\contentsline {subsection}{\numberline {4.1.18}Media}{11}{subsection.4.1.18}%
+\contentsline {subsection}{\numberline {4.1.19}License}{11}{subsection.4.1.19}%
+\contentsline {subsection}{\numberline {4.1.20}Acknowledgements}{11}{subsection.4.1.20}%
+\contentsline {chapter}{\numberline {5}Namespace Index}{13}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Namespace List}{13}{section.5.1}%
+\contentsline {chapter}{\numberline {6}Hierarchical Index}{15}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Class Hierarchy}{15}{section.6.1}%
+\contentsline {chapter}{\numberline {7}Class Index}{17}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Class List}{17}{section.7.1}%
+\contentsline {chapter}{\numberline {8}File Index}{19}{chapter.8}%
+\contentsline {section}{\numberline {8.1}File List}{19}{section.8.1}%
+\contentsline {chapter}{\numberline {9}Namespace Documentation}{21}{chapter.9}%
+\contentsline {section}{\numberline {9.1}icm20948 Namespace Reference}{21}{section.9.1}%
+\contentsline {subsection}{\numberline {9.1.1}Detailed Description}{22}{subsection.9.1.1}%
+\contentsline {subsection}{\numberline {9.1.2}Typedef Documentation}{22}{subsection.9.1.2}%
+\contentsline {subsubsection}{\numberline {9.1.2.1}accel\_settings}{22}{subsubsection.9.1.2.1}%
+\contentsline {subsubsection}{\numberline {9.1.2.2}gyro\_settings}{22}{subsubsection.9.1.2.2}%
+\contentsline {subsubsection}{\numberline {9.1.2.3}magn\_settings}{22}{subsubsection.9.1.2.3}%
+\contentsline {subsubsection}{\numberline {9.1.2.4}settings}{22}{subsubsection.9.1.2.4}%
+\contentsline {subsection}{\numberline {9.1.3}Enumeration Type Documentation}{22}{subsection.9.1.3}%
+\contentsline {subsubsection}{\numberline {9.1.3.1}accel\_dlpf\_config}{22}{subsubsection.9.1.3.1}%
+\contentsline {subsubsection}{\numberline {9.1.3.2}accel\_scale}{23}{subsubsection.9.1.3.2}%
+\contentsline {subsubsection}{\numberline {9.1.3.3}gyro\_dlpf\_config}{23}{subsubsection.9.1.3.3}%
+\contentsline {subsubsection}{\numberline {9.1.3.4}gyro\_scale}{23}{subsubsection.9.1.3.4}%
+\contentsline {subsubsection}{\numberline {9.1.3.5}magn\_mode}{24}{subsubsection.9.1.3.5}%
+\contentsline {subsection}{\numberline {9.1.4}Function Documentation}{24}{subsection.9.1.4}%
+\contentsline {subsubsection}{\numberline {9.1.4.1}accel\_dlpf\_config\_to\_str()}{24}{subsubsection.9.1.4.1}%
+\contentsline {subsubsection}{\numberline {9.1.4.2}accel\_scale\_factor()}{24}{subsubsection.9.1.4.2}%
+\contentsline {subsubsection}{\numberline {9.1.4.3}accel\_scale\_to\_str()}{24}{subsubsection.9.1.4.3}%
+\contentsline {subsubsection}{\numberline {9.1.4.4}gyro\_dlpf\_config\_to\_str()}{24}{subsubsection.9.1.4.4}%
+\contentsline {subsubsection}{\numberline {9.1.4.5}gyro\_scale\_factor()}{24}{subsubsection.9.1.4.5}%
+\contentsline {subsubsection}{\numberline {9.1.4.6}gyro\_scale\_to\_str()}{24}{subsubsection.9.1.4.6}%
+\contentsline {subsubsection}{\numberline {9.1.4.7}magn\_mode\_to\_str()}{25}{subsubsection.9.1.4.7}%
+\contentsline {chapter}{\numberline {10}Class Documentation}{27}{chapter.10}%
+\contentsline {section}{\numberline {10.1}icm20948\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::accel\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}settings Struct Reference}{27}{section.10.1}%
+\contentsline {subsection}{\numberline {10.1.1}Detailed Description}{27}{subsection.10.1.1}%
+\contentsline {subsection}{\numberline {10.1.2}Constructor \& Destructor Documentation}{27}{subsection.10.1.2}%
+\contentsline {subsubsection}{\numberline {10.1.2.1}accel\_settings()}{27}{subsubsection.10.1.2.1}%
+\contentsline {subsection}{\numberline {10.1.3}Member Data Documentation}{27}{subsection.10.1.3}%
+\contentsline {subsubsection}{\numberline {10.1.3.1}dlpf\_config}{27}{subsubsection.10.1.3.1}%
+\contentsline {subsubsection}{\numberline {10.1.3.2}dlpf\_enable}{27}{subsubsection.10.1.3.2}%
+\contentsline {subsubsection}{\numberline {10.1.3.3}sample\_rate\_div}{28}{subsubsection.10.1.3.3}%
+\contentsline {subsubsection}{\numberline {10.1.3.4}scale}{28}{subsubsection.10.1.3.4}%
+\contentsline {section}{\numberline {10.2}ADS1115rpi Class Reference}{28}{section.10.2}%
+\contentsline {subsection}{\numberline {10.2.1}Detailed Description}{29}{subsection.10.2.1}%
+\contentsline {subsection}{\numberline {10.2.2}Member Typedef Documentation}{29}{subsection.10.2.2}%
+\contentsline {subsubsection}{\numberline {10.2.2.1}ADSCallbackInterface}{29}{subsubsection.10.2.2.1}%
+\contentsline {subsection}{\numberline {10.2.3}Constructor \& Destructor Documentation}{29}{subsection.10.2.3}%
+\contentsline {subsubsection}{\numberline {10.2.3.1}$\sim $ADS1115rpi()}{29}{subsubsection.10.2.3.1}%
+\contentsline {subsection}{\numberline {10.2.4}Member Function Documentation}{29}{subsection.10.2.4}%
+\contentsline {subsubsection}{\numberline {10.2.4.1}dataReady()}{29}{subsubsection.10.2.4.1}%
+\contentsline {subsubsection}{\numberline {10.2.4.2}fullScaleVoltage()}{30}{subsubsection.10.2.4.2}%
+\contentsline {subsubsection}{\numberline {10.2.4.3}getADS1115settings()}{30}{subsubsection.10.2.4.3}%
+\contentsline {subsubsection}{\numberline {10.2.4.4}i2c\_readConversion()}{30}{subsubsection.10.2.4.4}%
+\contentsline {subsubsection}{\numberline {10.2.4.5}i2c\_readWord()}{30}{subsubsection.10.2.4.5}%
+\contentsline {subsubsection}{\numberline {10.2.4.6}i2c\_selectDevice()}{30}{subsubsection.10.2.4.6}%
+\contentsline {subsubsection}{\numberline {10.2.4.7}i2c\_writeWord()}{30}{subsubsection.10.2.4.7}%
+\contentsline {subsubsection}{\numberline {10.2.4.8}registerCallback()}{30}{subsubsection.10.2.4.8}%
+\contentsline {subsubsection}{\numberline {10.2.4.9}setChannel()}{30}{subsubsection.10.2.4.9}%
+\contentsline {subsubsection}{\numberline {10.2.4.10}setRetryEnabled()}{30}{subsubsection.10.2.4.10}%
+\contentsline {subsubsection}{\numberline {10.2.4.11}start()}{31}{subsubsection.10.2.4.11}%
+\contentsline {subsubsection}{\numberline {10.2.4.12}stop()}{31}{subsubsection.10.2.4.12}%
+\contentsline {subsubsection}{\numberline {10.2.4.13}worker()}{31}{subsubsection.10.2.4.13}%
+\contentsline {subsection}{\numberline {10.2.5}Member Data Documentation}{31}{subsection.10.2.5}%
+\contentsline {subsubsection}{\numberline {10.2.5.1}ads1115settings}{31}{subsubsection.10.2.5.1}%
+\contentsline {subsubsection}{\numberline {10.2.5.2}adsCallbackInterface}{31}{subsubsection.10.2.5.2}%
+\contentsline {subsubsection}{\numberline {10.2.5.3}chip}{31}{subsubsection.10.2.5.3}%
+\contentsline {subsubsection}{\numberline {10.2.5.4}fd\_i2c}{31}{subsubsection.10.2.5.4}%
+\contentsline {subsubsection}{\numberline {10.2.5.5}ISR\_TIMEOUT\_MS}{31}{subsubsection.10.2.5.5}%
+\contentsline {subsubsection}{\numberline {10.2.5.6}reg\_config}{31}{subsubsection.10.2.5.6}%
+\contentsline {subsubsection}{\numberline {10.2.5.7}reg\_hi\_thres}{31}{subsubsection.10.2.5.7}%
+\contentsline {subsubsection}{\numberline {10.2.5.8}reg\_lo\_thres}{31}{subsubsection.10.2.5.8}%
+\contentsline {subsubsection}{\numberline {10.2.5.9}request}{32}{subsubsection.10.2.5.9}%
+\contentsline {subsubsection}{\numberline {10.2.5.10}retry\_enabled\_}{32}{subsubsection.10.2.5.10}%
+\contentsline {subsubsection}{\numberline {10.2.5.11}running}{32}{subsubsection.10.2.5.11}%
+\contentsline {subsubsection}{\numberline {10.2.5.12}thr}{32}{subsubsection.10.2.5.12}%
+\contentsline {section}{\numberline {10.3}ADS1115settings Struct Reference}{32}{section.10.3}%
+\contentsline {subsection}{\numberline {10.3.1}Detailed Description}{33}{subsection.10.3.1}%
+\contentsline {subsection}{\numberline {10.3.2}Member Enumeration Documentation}{33}{subsection.10.3.2}%
+\contentsline {subsubsection}{\numberline {10.3.2.1}Input}{33}{subsubsection.10.3.2.1}%
+\contentsline {subsubsection}{\numberline {10.3.2.2}PGA}{33}{subsubsection.10.3.2.2}%
+\contentsline {subsubsection}{\numberline {10.3.2.3}SamplingRates}{33}{subsubsection.10.3.2.3}%
+\contentsline {subsection}{\numberline {10.3.3}Member Function Documentation}{33}{subsection.10.3.3}%
+\contentsline {subsubsection}{\numberline {10.3.3.1}getSamplingRate()}{33}{subsubsection.10.3.3.1}%
+\contentsline {subsection}{\numberline {10.3.4}Member Data Documentation}{34}{subsection.10.3.4}%
+\contentsline {subsubsection}{\numberline {10.3.4.1}address}{34}{subsubsection.10.3.4.1}%
+\contentsline {subsubsection}{\numberline {10.3.4.2}channel}{34}{subsubsection.10.3.4.2}%
+\contentsline {subsubsection}{\numberline {10.3.4.3}DEFAULT\_ADS1115\_ADDRESS}{34}{subsubsection.10.3.4.3}%
+\contentsline {subsubsection}{\numberline {10.3.4.4}DEFAULT\_ALERT\_RDY\_TO\_GPIO}{34}{subsubsection.10.3.4.4}%
+\contentsline {subsubsection}{\numberline {10.3.4.5}drdy\_chip}{34}{subsubsection.10.3.4.5}%
+\contentsline {subsubsection}{\numberline {10.3.4.6}drdy\_gpio}{34}{subsubsection.10.3.4.6}%
+\contentsline {subsubsection}{\numberline {10.3.4.7}i2c\_bus}{34}{subsubsection.10.3.4.7}%
+\contentsline {subsubsection}{\numberline {10.3.4.8}pgaGain}{34}{subsubsection.10.3.4.8}%
+\contentsline {subsubsection}{\numberline {10.3.4.9}samplingRate}{34}{subsubsection.10.3.4.9}%
+\contentsline {section}{\numberline {10.4}Position\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Detector\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Config Struct Reference}{34}{section.10.4}%
+\contentsline {subsection}{\numberline {10.4.1}Detailed Description}{35}{subsection.10.4.1}%
+\contentsline {subsection}{\numberline {10.4.2}Member Data Documentation}{35}{subsection.10.4.2}%
+\contentsline {subsubsection}{\numberline {10.4.2.1}headingToleranceDeg}{35}{subsubsection.10.4.2.1}%
+\contentsline {subsubsection}{\numberline {10.4.2.2}maxG}{35}{subsubsection.10.4.2.2}%
+\contentsline {subsubsection}{\numberline {10.4.2.3}minDot}{35}{subsubsection.10.4.2.3}%
+\contentsline {subsubsection}{\numberline {10.4.2.4}minG}{35}{subsubsection.10.4.2.4}%
+\contentsline {subsubsection}{\numberline {10.4.2.5}refHeadingDeg}{35}{subsubsection.10.4.2.5}%
+\contentsline {subsubsection}{\numberline {10.4.2.6}refX}{35}{subsubsection.10.4.2.6}%
+\contentsline {subsubsection}{\numberline {10.4.2.7}refY}{35}{subsubsection.10.4.2.7}%
+\contentsline {subsubsection}{\numberline {10.4.2.8}refZ}{35}{subsubsection.10.4.2.8}%
+\contentsline {subsubsection}{\numberline {10.4.2.9}stabilitySamples}{35}{subsubsection.10.4.2.9}%
+\contentsline {section}{\numberline {10.5}icm20948\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::gyro\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}settings Struct Reference}{36}{section.10.5}%
+\contentsline {subsection}{\numberline {10.5.1}Detailed Description}{36}{subsection.10.5.1}%
+\contentsline {subsection}{\numberline {10.5.2}Constructor \& Destructor Documentation}{36}{subsection.10.5.2}%
+\contentsline {subsubsection}{\numberline {10.5.2.1}gyro\_settings()}{36}{subsubsection.10.5.2.1}%
+\contentsline {subsection}{\numberline {10.5.3}Member Data Documentation}{36}{subsection.10.5.3}%
+\contentsline {subsubsection}{\numberline {10.5.3.1}dlpf\_config}{36}{subsubsection.10.5.3.1}%
+\contentsline {subsubsection}{\numberline {10.5.3.2}dlpf\_enable}{36}{subsubsection.10.5.3.2}%
+\contentsline {subsubsection}{\numberline {10.5.3.3}sample\_rate\_div}{36}{subsubsection.10.5.3.3}%
+\contentsline {subsubsection}{\numberline {10.5.3.4}scale}{36}{subsubsection.10.5.3.4}%
+\contentsline {section}{\numberline {10.6}icm20948\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::ICM20948\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}I2C Class Reference}{37}{section.10.6}%
+\contentsline {subsection}{\numberline {10.6.1}Detailed Description}{38}{subsection.10.6.1}%
+\contentsline {subsection}{\numberline {10.6.2}Constructor \& Destructor Documentation}{38}{subsection.10.6.2}%
+\contentsline {subsubsection}{\numberline {10.6.2.1}ICM20948\_I2C()}{38}{subsubsection.10.6.2.1}%
+\contentsline {subsubsection}{\numberline {10.6.2.2}$\sim $ICM20948\_I2C()}{38}{subsubsection.10.6.2.2}%
+\contentsline {subsection}{\numberline {10.6.3}Member Function Documentation}{38}{subsection.10.6.3}%
+\contentsline {subsubsection}{\numberline {10.6.3.1}\_chip\_i2c\_master\_reset()}{38}{subsubsection.10.6.3.1}%
+\contentsline {subsubsection}{\numberline {10.6.3.2}\_enable\_data\_ready\_interrupt()}{38}{subsubsection.10.6.3.2}%
+\contentsline {subsubsection}{\numberline {10.6.3.3}\_magnetometer\_configured()}{39}{subsubsection.10.6.3.3}%
+\contentsline {subsubsection}{\numberline {10.6.3.4}\_magnetometer\_enable()}{39}{subsubsection.10.6.3.4}%
+\contentsline {subsubsection}{\numberline {10.6.3.5}\_magnetometer\_init()}{39}{subsubsection.10.6.3.5}%
+\contentsline {subsubsection}{\numberline {10.6.3.6}\_magnetometer\_set\_mode()}{39}{subsubsection.10.6.3.6}%
+\contentsline {subsubsection}{\numberline {10.6.3.7}\_magnetometer\_set\_readout()}{39}{subsubsection.10.6.3.7}%
+\contentsline {subsubsection}{\numberline {10.6.3.8}\_read\_bit()}{39}{subsubsection.10.6.3.8}%
+\contentsline {subsubsection}{\numberline {10.6.3.9}\_read\_block\_bytes()}{39}{subsubsection.10.6.3.9}%
+\contentsline {subsubsection}{\numberline {10.6.3.10}\_read\_byte()}{39}{subsubsection.10.6.3.10}%
+\contentsline {subsubsection}{\numberline {10.6.3.11}\_read\_mag\_byte()}{40}{subsubsection.10.6.3.11}%
+\contentsline {subsubsection}{\numberline {10.6.3.12}\_set\_accel\_range\_dlpf()}{40}{subsubsection.10.6.3.12}%
+\contentsline {subsubsection}{\numberline {10.6.3.13}\_set\_accel\_sample\_rate\_div()}{40}{subsubsection.10.6.3.13}%
+\contentsline {subsubsection}{\numberline {10.6.3.14}\_set\_bank()}{40}{subsubsection.10.6.3.14}%
+\contentsline {subsubsection}{\numberline {10.6.3.15}\_set\_gyro\_range\_dlpf()}{40}{subsubsection.10.6.3.15}%
+\contentsline {subsubsection}{\numberline {10.6.3.16}\_set\_gyro\_sample\_rate\_div()}{40}{subsubsection.10.6.3.16}%
+\contentsline {subsubsection}{\numberline {10.6.3.17}\_write\_bit()}{40}{subsubsection.10.6.3.17}%
+\contentsline {subsubsection}{\numberline {10.6.3.18}\_write\_byte()}{40}{subsubsection.10.6.3.18}%
+\contentsline {subsubsection}{\numberline {10.6.3.19}\_write\_mag\_byte()}{41}{subsubsection.10.6.3.19}%
+\contentsline {subsubsection}{\numberline {10.6.3.20}check\_DRDY\_INT()}{41}{subsubsection.10.6.3.20}%
+\contentsline {subsubsection}{\numberline {10.6.3.21}init()}{41}{subsubsection.10.6.3.21}%
+\contentsline {subsubsection}{\numberline {10.6.3.22}read\_accel\_gyro()}{41}{subsubsection.10.6.3.22}%
+\contentsline {subsubsection}{\numberline {10.6.3.23}read\_magn()}{41}{subsubsection.10.6.3.23}%
+\contentsline {subsubsection}{\numberline {10.6.3.24}read\_sample()}{41}{subsubsection.10.6.3.24}%
+\contentsline {subsubsection}{\numberline {10.6.3.25}reset()}{41}{subsubsection.10.6.3.25}%
+\contentsline {subsubsection}{\numberline {10.6.3.26}set\_settings()}{41}{subsubsection.10.6.3.26}%
+\contentsline {subsubsection}{\numberline {10.6.3.27}wake()}{41}{subsubsection.10.6.3.27}%
+\contentsline {subsection}{\numberline {10.6.4}Member Data Documentation}{42}{subsection.10.6.4}%
+\contentsline {subsubsection}{\numberline {10.6.4.1}\_accel\_scale\_factor}{42}{subsubsection.10.6.4.1}%
+\contentsline {subsubsection}{\numberline {10.6.4.2}\_current\_bank}{42}{subsubsection.10.6.4.2}%
+\contentsline {subsubsection}{\numberline {10.6.4.3}\_gyro\_scale\_factor}{42}{subsubsection.10.6.4.3}%
+\contentsline {subsubsection}{\numberline {10.6.4.4}\_i2c\_address}{42}{subsubsection.10.6.4.4}%
+\contentsline {subsubsection}{\numberline {10.6.4.5}\_i2c\_bus}{42}{subsubsection.10.6.4.5}%
+\contentsline {subsubsection}{\numberline {10.6.4.6}\_i2c\_fd}{42}{subsubsection.10.6.4.6}%
+\contentsline {subsubsection}{\numberline {10.6.4.7}\_magn\_scale\_factor}{42}{subsubsection.10.6.4.7}%
+\contentsline {subsubsection}{\numberline {10.6.4.8}accel}{42}{subsubsection.10.6.4.8}%
+\contentsline {subsubsection}{\numberline {10.6.4.9}gyro}{42}{subsubsection.10.6.4.9}%
+\contentsline {subsubsection}{\numberline {10.6.4.10}magn}{42}{subsubsection.10.6.4.10}%
+\contentsline {subsubsection}{\numberline {10.6.4.11}settings}{43}{subsubsection.10.6.4.11}%
+\contentsline {section}{\numberline {10.7}IMUReader Class Reference}{43}{section.10.7}%
+\contentsline {subsection}{\numberline {10.7.1}Detailed Description}{44}{subsection.10.7.1}%
+\contentsline {subsection}{\numberline {10.7.2}Member Typedef Documentation}{44}{subsection.10.7.2}%
+\contentsline {subsubsection}{\numberline {10.7.2.1}SampleCallback}{44}{subsubsection.10.7.2.1}%
+\contentsline {subsection}{\numberline {10.7.3}Constructor \& Destructor Documentation}{44}{subsection.10.7.3}%
+\contentsline {subsubsection}{\numberline {10.7.3.1}IMUReader()}{44}{subsubsection.10.7.3.1}%
+\contentsline {subsubsection}{\numberline {10.7.3.2}$\sim $IMUReader()}{44}{subsubsection.10.7.3.2}%
+\contentsline {subsection}{\numberline {10.7.4}Member Function Documentation}{44}{subsection.10.7.4}%
+\contentsline {subsubsection}{\numberline {10.7.4.1}getIMU()}{44}{subsubsection.10.7.4.1}%
+\contentsline {subsubsection}{\numberline {10.7.4.2}init()}{45}{subsubsection.10.7.4.2}%
+\contentsline {subsubsection}{\numberline {10.7.4.3}setCallback()}{45}{subsubsection.10.7.4.3}%
+\contentsline {subsubsection}{\numberline {10.7.4.4}start()}{45}{subsubsection.10.7.4.4}%
+\contentsline {subsubsection}{\numberline {10.7.4.5}stop()}{45}{subsubsection.10.7.4.5}%
+\contentsline {subsubsection}{\numberline {10.7.4.6}worker()}{45}{subsubsection.10.7.4.6}%
+\contentsline {subsection}{\numberline {10.7.5}Member Data Documentation}{45}{subsection.10.7.5}%
+\contentsline {subsubsection}{\numberline {10.7.5.1}callback\_}{45}{subsubsection.10.7.5.1}%
+\contentsline {subsubsection}{\numberline {10.7.5.2}chip\_}{46}{subsubsection.10.7.5.2}%
+\contentsline {subsubsection}{\numberline {10.7.5.3}gpio\_fd\_}{46}{subsubsection.10.7.5.3}%
+\contentsline {subsubsection}{\numberline {10.7.5.4}gpiochip\_path\_}{46}{subsubsection.10.7.5.4}%
+\contentsline {subsubsection}{\numberline {10.7.5.5}imu\_}{46}{subsubsection.10.7.5.5}%
+\contentsline {subsubsection}{\numberline {10.7.5.6}rdy\_line\_}{46}{subsubsection.10.7.5.6}%
+\contentsline {subsubsection}{\numberline {10.7.5.7}request\_}{46}{subsubsection.10.7.5.7}%
+\contentsline {subsubsection}{\numberline {10.7.5.8}running\_}{46}{subsubsection.10.7.5.8}%
+\contentsline {subsubsection}{\numberline {10.7.5.9}stop\_fd\_}{46}{subsubsection.10.7.5.9}%
+\contentsline {subsubsection}{\numberline {10.7.5.10}worker\_thread\_}{46}{subsubsection.10.7.5.10}%
+\contentsline {section}{\numberline {10.8}icm20948\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::IMUSample Struct Reference}{47}{section.10.8}%
+\contentsline {subsection}{\numberline {10.8.1}Detailed Description}{47}{subsection.10.8.1}%
+\contentsline {subsection}{\numberline {10.8.2}Member Data Documentation}{47}{subsection.10.8.2}%
+\contentsline {subsubsection}{\numberline {10.8.2.1}ax}{47}{subsubsection.10.8.2.1}%
+\contentsline {subsubsection}{\numberline {10.8.2.2}ay}{47}{subsubsection.10.8.2.2}%
+\contentsline {subsubsection}{\numberline {10.8.2.3}az}{47}{subsubsection.10.8.2.3}%
+\contentsline {subsubsection}{\numberline {10.8.2.4}gx}{47}{subsubsection.10.8.2.4}%
+\contentsline {subsubsection}{\numberline {10.8.2.5}gy}{47}{subsubsection.10.8.2.5}%
+\contentsline {subsubsection}{\numberline {10.8.2.6}gz}{47}{subsubsection.10.8.2.6}%
+\contentsline {subsubsection}{\numberline {10.8.2.7}mx}{47}{subsubsection.10.8.2.7}%
+\contentsline {subsubsection}{\numberline {10.8.2.8}my}{48}{subsubsection.10.8.2.8}%
+\contentsline {subsubsection}{\numberline {10.8.2.9}mz}{48}{subsubsection.10.8.2.9}%
+\contentsline {section}{\numberline {10.9}LEDController Class Reference}{48}{section.10.9}%
+\contentsline {subsection}{\numberline {10.9.1}Detailed Description}{49}{subsection.10.9.1}%
+\contentsline {subsection}{\numberline {10.9.2}Constructor \& Destructor Documentation}{49}{subsection.10.9.2}%
+\contentsline {subsubsection}{\numberline {10.9.2.1}LEDController()}{49}{subsubsection.10.9.2.1}%
+\contentsline {subsubsection}{\numberline {10.9.2.2}$\sim $LEDController()}{50}{subsubsection.10.9.2.2}%
+\contentsline {subsection}{\numberline {10.9.3}Member Function Documentation}{50}{subsection.10.9.3}%
+\contentsline {subsubsection}{\numberline {10.9.3.1}allOff()}{50}{subsubsection.10.9.3.1}%
+\contentsline {subsubsection}{\numberline {10.9.3.2}flashGreen()}{50}{subsubsection.10.9.3.2}%
+\contentsline {subsubsection}{\numberline {10.9.3.3}greenOff()}{50}{subsubsection.10.9.3.3}%
+\contentsline {subsubsection}{\numberline {10.9.3.4}greenOn()}{50}{subsubsection.10.9.3.4}%
+\contentsline {subsubsection}{\numberline {10.9.3.5}service()}{50}{subsubsection.10.9.3.5}%
+\contentsline {subsubsection}{\numberline {10.9.3.6}set()}{50}{subsubsection.10.9.3.6}%
+\contentsline {subsubsection}{\numberline {10.9.3.7}updateOutputs()}{50}{subsubsection.10.9.3.7}%
+\contentsline {subsection}{\numberline {10.9.4}Member Data Documentation}{50}{subsection.10.9.4}%
+\contentsline {subsubsection}{\numberline {10.9.4.1}greenActive\_}{50}{subsubsection.10.9.4.1}%
+\contentsline {subsubsection}{\numberline {10.9.4.2}greenOffTime\_}{51}{subsubsection.10.9.4.2}%
+\contentsline {section}{\numberline {10.10}LEDController\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Settings Struct Reference}{51}{section.10.10}%
+\contentsline {subsection}{\numberline {10.10.1}Detailed Description}{51}{subsection.10.10.1}%
+\contentsline {subsection}{\numberline {10.10.2}Member Data Documentation}{51}{subsection.10.10.2}%
+\contentsline {subsubsection}{\numberline {10.10.2.1}chipNumber}{51}{subsubsection.10.10.2.1}%
+\contentsline {subsubsection}{\numberline {10.10.2.2}greenGpio}{51}{subsubsection.10.10.2.2}%
+\contentsline {section}{\numberline {10.11}icm20948\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::magn\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}settings Struct Reference}{51}{section.10.11}%
+\contentsline {subsection}{\numberline {10.11.1}Detailed Description}{52}{subsection.10.11.1}%
+\contentsline {subsection}{\numberline {10.11.2}Constructor \& Destructor Documentation}{52}{subsection.10.11.2}%
+\contentsline {subsubsection}{\numberline {10.11.2.1}magn\_settings()}{52}{subsubsection.10.11.2.1}%
+\contentsline {subsection}{\numberline {10.11.3}Member Data Documentation}{52}{subsection.10.11.3}%
+\contentsline {subsubsection}{\numberline {10.11.3.1}mode}{52}{subsubsection.10.11.3.1}%
+\contentsline {section}{\numberline {10.12}Piezo\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Event\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Detector Class Reference}{52}{section.10.12}%
+\contentsline {subsection}{\numberline {10.12.1}Detailed Description}{53}{subsection.10.12.1}%
+\contentsline {subsection}{\numberline {10.12.2}Member Typedef Documentation}{53}{subsection.10.12.2}%
+\contentsline {subsubsection}{\numberline {10.12.2.1}ForceCallback}{53}{subsubsection.10.12.2.1}%
+\contentsline {subsection}{\numberline {10.12.3}Constructor \& Destructor Documentation}{53}{subsection.10.12.3}%
+\contentsline {subsubsection}{\numberline {10.12.3.1}PiezoEventDetector()}{53}{subsubsection.10.12.3.1}%
+\contentsline {subsection}{\numberline {10.12.4}Member Function Documentation}{53}{subsection.10.12.4}%
+\contentsline {subsubsection}{\numberline {10.12.4.1}processSample()}{53}{subsubsection.10.12.4.1}%
+\contentsline {subsubsection}{\numberline {10.12.4.2}reset()}{54}{subsubsection.10.12.4.2}%
+\contentsline {subsubsection}{\numberline {10.12.4.3}setForceCallback()}{54}{subsubsection.10.12.4.3}%
+\contentsline {subsection}{\numberline {10.12.5}Member Data Documentation}{54}{subsection.10.12.5}%
+\contentsline {subsubsection}{\numberline {10.12.5.1}filter\_init\_}{54}{subsubsection.10.12.5.1}%
+\contentsline {subsubsection}{\numberline {10.12.5.2}filtered\_v\_}{54}{subsubsection.10.12.5.2}%
+\contentsline {subsubsection}{\numberline {10.12.5.3}forceCallback\_}{54}{subsubsection.10.12.5.3}%
+\contentsline {subsubsection}{\numberline {10.12.5.4}led\_}{54}{subsubsection.10.12.5.4}%
+\contentsline {subsubsection}{\numberline {10.12.5.5}pressed\_}{54}{subsubsection.10.12.5.5}%
+\contentsline {subsubsection}{\numberline {10.12.5.6}settings\_}{54}{subsubsection.10.12.5.6}%
+\contentsline {section}{\numberline {10.13}Piezo\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Event\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Detector\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Settings Struct Reference}{54}{section.10.13}%
+\contentsline {subsection}{\numberline {10.13.1}Detailed Description}{55}{subsection.10.13.1}%
+\contentsline {subsection}{\numberline {10.13.2}Member Data Documentation}{55}{subsection.10.13.2}%
+\contentsline {subsubsection}{\numberline {10.13.2.1}enableDebugPrints}{55}{subsubsection.10.13.2.1}%
+\contentsline {subsubsection}{\numberline {10.13.2.2}pressThreshold}{55}{subsubsection.10.13.2.2}%
+\contentsline {subsubsection}{\numberline {10.13.2.3}releaseThreshold}{55}{subsubsection.10.13.2.3}%
+\contentsline {section}{\numberline {10.14}Position\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Detector Class Reference}{55}{section.10.14}%
+\contentsline {subsection}{\numberline {10.14.1}Detailed Description}{57}{subsection.10.14.1}%
+\contentsline {subsection}{\numberline {10.14.2}Member Typedef Documentation}{57}{subsection.10.14.2}%
+\contentsline {subsubsection}{\numberline {10.14.2.1}StateCallback}{57}{subsubsection.10.14.2.1}%
+\contentsline {subsection}{\numberline {10.14.3}Constructor \& Destructor Documentation}{57}{subsection.10.14.3}%
+\contentsline {subsubsection}{\numberline {10.14.3.1}PositionDetector()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{57}{subsubsection.10.14.3.1}%
+\contentsline {subsubsection}{\numberline {10.14.3.2}PositionDetector()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{57}{subsubsection.10.14.3.2}%
+\contentsline {subsubsection}{\numberline {10.14.3.3}$\sim $PositionDetector()}{57}{subsubsection.10.14.3.3}%
+\contentsline {subsection}{\numberline {10.14.4}Member Function Documentation}{57}{subsection.10.14.4}%
+\contentsline {subsubsection}{\numberline {10.14.4.1}onSample()}{57}{subsubsection.10.14.4.1}%
+\contentsline {subsubsection}{\numberline {10.14.4.2}resetState()}{58}{subsubsection.10.14.4.2}%
+\contentsline {subsubsection}{\numberline {10.14.4.3}setCallback()}{58}{subsubsection.10.14.4.3}%
+\contentsline {subsubsection}{\numberline {10.14.4.4}wrapAngleDeg()}{58}{subsubsection.10.14.4.4}%
+\contentsline {subsection}{\numberline {10.14.5}Member Data Documentation}{58}{subsection.10.14.5}%
+\contentsline {subsubsection}{\numberline {10.14.5.1}callback}{58}{subsubsection.10.14.5.1}%
+\contentsline {subsubsection}{\numberline {10.14.5.2}cfg}{58}{subsubsection.10.14.5.2}%
+\contentsline {subsubsection}{\numberline {10.14.5.3}confirmed}{58}{subsubsection.10.14.5.3}%
+\contentsline {subsubsection}{\numberline {10.14.5.4}nRefX}{58}{subsubsection.10.14.5.4}%
+\contentsline {subsubsection}{\numberline {10.14.5.5}nRefY}{58}{subsubsection.10.14.5.5}%
+\contentsline {subsubsection}{\numberline {10.14.5.6}nRefZ}{58}{subsubsection.10.14.5.6}%
+\contentsline {subsubsection}{\numberline {10.14.5.7}stableCount}{59}{subsubsection.10.14.5.7}%
+\contentsline {section}{\numberline {10.15}RPI\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}PWM Class Reference}{59}{section.10.15}%
+\contentsline {subsection}{\numberline {10.15.1}Detailed Description}{59}{subsection.10.15.1}%
+\contentsline {subsection}{\numberline {10.15.2}Constructor \& Destructor Documentation}{59}{subsection.10.15.2}%
+\contentsline {subsubsection}{\numberline {10.15.2.1}RPI\_PWM()}{59}{subsubsection.10.15.2.1}%
+\contentsline {subsubsection}{\numberline {10.15.2.2}$\sim $RPI\_PWM()}{60}{subsubsection.10.15.2.2}%
+\contentsline {subsection}{\numberline {10.15.3}Member Function Documentation}{60}{subsection.10.15.3}%
+\contentsline {subsubsection}{\numberline {10.15.3.1}getDutyCycle()}{60}{subsubsection.10.15.3.1}%
+\contentsline {subsubsection}{\numberline {10.15.3.2}loop()}{60}{subsubsection.10.15.3.2}%
+\contentsline {subsubsection}{\numberline {10.15.3.3}setDutyCycle()}{60}{subsubsection.10.15.3.3}%
+\contentsline {subsubsection}{\numberline {10.15.3.4}start()}{60}{subsubsection.10.15.3.4}%
+\contentsline {subsubsection}{\numberline {10.15.3.5}stop()}{60}{subsubsection.10.15.3.5}%
+\contentsline {subsubsection}{\numberline {10.15.3.6}usToTimerspec()}{61}{subsubsection.10.15.3.6}%
+\contentsline {subsubsection}{\numberline {10.15.3.7}waitUs()}{61}{subsubsection.10.15.3.7}%
+\contentsline {subsection}{\numberline {10.15.4}Member Data Documentation}{61}{subsection.10.15.4}%
+\contentsline {subsubsection}{\numberline {10.15.4.1}chip\_}{61}{subsubsection.10.15.4.1}%
+\contentsline {subsubsection}{\numberline {10.15.4.2}duty\_}{61}{subsubsection.10.15.4.2}%
+\contentsline {subsubsection}{\numberline {10.15.4.3}request\_}{61}{subsubsection.10.15.4.3}%
+\contentsline {subsubsection}{\numberline {10.15.4.4}running\_}{61}{subsubsection.10.15.4.4}%
+\contentsline {subsubsection}{\numberline {10.15.4.5}thread\_}{61}{subsubsection.10.15.4.5}%
+\contentsline {section}{\numberline {10.16}icm20948\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::settings Struct Reference}{61}{section.10.16}%
+\contentsline {subsection}{\numberline {10.16.1}Detailed Description}{62}{subsection.10.16.1}%
+\contentsline {subsection}{\numberline {10.16.2}Constructor \& Destructor Documentation}{62}{subsection.10.16.2}%
+\contentsline {subsubsection}{\numberline {10.16.2.1}settings()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{62}{subsubsection.10.16.2.1}%
+\contentsline {subsubsection}{\numberline {10.16.2.2}settings()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{62}{subsubsection.10.16.2.2}%
+\contentsline {subsection}{\numberline {10.16.3}Member Data Documentation}{62}{subsection.10.16.3}%
+\contentsline {subsubsection}{\numberline {10.16.3.1}accel}{62}{subsubsection.10.16.3.1}%
+\contentsline {subsubsection}{\numberline {10.16.3.2}gyro}{63}{subsubsection.10.16.3.2}%
+\contentsline {subsubsection}{\numberline {10.16.3.3}magn}{63}{subsubsection.10.16.3.3}%
+\contentsline {section}{\numberline {10.17}Simple\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}LEDController Class Reference}{63}{section.10.17}%
+\contentsline {subsection}{\numberline {10.17.1}Detailed Description}{64}{subsection.10.17.1}%
+\contentsline {subsection}{\numberline {10.17.2}Constructor \& Destructor Documentation}{64}{subsection.10.17.2}%
+\contentsline {subsubsection}{\numberline {10.17.2.1}SimpleLEDController()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{64}{subsubsection.10.17.2.1}%
+\contentsline {subsubsection}{\numberline {10.17.2.2}$\sim $SimpleLEDController()}{64}{subsubsection.10.17.2.2}%
+\contentsline {subsubsection}{\numberline {10.17.2.3}SimpleLEDController()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{64}{subsubsection.10.17.2.3}%
+\contentsline {subsection}{\numberline {10.17.3}Member Function Documentation}{64}{subsection.10.17.3}%
+\contentsline {subsubsection}{\numberline {10.17.3.1}flashGreen()}{64}{subsubsection.10.17.3.1}%
+\contentsline {subsubsection}{\numberline {10.17.3.2}service()}{64}{subsubsection.10.17.3.2}%
+\contentsline {subsubsection}{\numberline {10.17.3.3}set()}{65}{subsubsection.10.17.3.3}%
+\contentsline {subsection}{\numberline {10.17.4}Member Data Documentation}{65}{subsection.10.17.4}%
+\contentsline {subsubsection}{\numberline {10.17.4.1}chip}{65}{subsubsection.10.17.4.1}%
+\contentsline {subsubsection}{\numberline {10.17.4.2}chipNumber}{65}{subsubsection.10.17.4.2}%
+\contentsline {subsubsection}{\numberline {10.17.4.3}pin}{65}{subsubsection.10.17.4.3}%
+\contentsline {subsubsection}{\numberline {10.17.4.4}request}{65}{subsubsection.10.17.4.4}%
+\contentsline {section}{\numberline {10.18}Swing\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Calibrator Class Reference}{65}{section.10.18}%
+\contentsline {subsection}{\numberline {10.18.1}Detailed Description}{66}{subsection.10.18.1}%
+\contentsline {subsection}{\numberline {10.18.2}Member Typedef Documentation}{66}{subsection.10.18.2}%
+\contentsline {subsubsection}{\numberline {10.18.2.1}DoneCallback}{66}{subsubsection.10.18.2.1}%
+\contentsline {subsection}{\numberline {10.18.3}Member Enumeration Documentation}{66}{subsection.10.18.3}%
+\contentsline {subsubsection}{\numberline {10.18.3.1}State}{66}{subsubsection.10.18.3.1}%
+\contentsline {subsection}{\numberline {10.18.4}Constructor \& Destructor Documentation}{67}{subsection.10.18.4}%
+\contentsline {subsubsection}{\numberline {10.18.4.1}SwingCalibrator()}{67}{subsubsection.10.18.4.1}%
+\contentsline {subsection}{\numberline {10.18.5}Member Function Documentation}{67}{subsection.10.18.5}%
+\contentsline {subsubsection}{\numberline {10.18.5.1}accumulate()}{67}{subsubsection.10.18.5.1}%
+\contentsline {subsubsection}{\numberline {10.18.5.2}biasX()}{67}{subsubsection.10.18.5.2}%
+\contentsline {subsubsection}{\numberline {10.18.5.3}biasY()}{67}{subsubsection.10.18.5.3}%
+\contentsline {subsubsection}{\numberline {10.18.5.4}biasZ()}{67}{subsubsection.10.18.5.4}%
+\contentsline {subsubsection}{\numberline {10.18.5.5}feed()}{67}{subsubsection.10.18.5.5}%
+\contentsline {subsubsection}{\numberline {10.18.5.6}isReady()}{68}{subsubsection.10.18.5.6}%
+\contentsline {subsubsection}{\numberline {10.18.5.7}setCallback()}{68}{subsubsection.10.18.5.7}%
+\contentsline {subsubsection}{\numberline {10.18.5.8}triggerRecal()}{68}{subsubsection.10.18.5.8}%
+\contentsline {subsection}{\numberline {10.18.6}Member Data Documentation}{68}{subsection.10.18.6}%
+\contentsline {subsubsection}{\numberline {10.18.6.1}bias\_x\_}{68}{subsubsection.10.18.6.1}%
+\contentsline {subsubsection}{\numberline {10.18.6.2}bias\_y\_}{68}{subsubsection.10.18.6.2}%
+\contentsline {subsubsection}{\numberline {10.18.6.3}bias\_z\_}{68}{subsubsection.10.18.6.3}%
+\contentsline {subsubsection}{\numberline {10.18.6.4}callback\_}{68}{subsubsection.10.18.6.4}%
+\contentsline {subsubsection}{\numberline {10.18.6.5}count\_}{68}{subsubsection.10.18.6.5}%
+\contentsline {subsubsection}{\numberline {10.18.6.6}initial\_samples\_}{68}{subsubsection.10.18.6.6}%
+\contentsline {subsubsection}{\numberline {10.18.6.7}recal\_samples\_}{69}{subsubsection.10.18.6.7}%
+\contentsline {subsubsection}{\numberline {10.18.6.8}state\_}{69}{subsubsection.10.18.6.8}%
+\contentsline {subsubsection}{\numberline {10.18.6.9}sum\_x\_}{69}{subsubsection.10.18.6.9}%
+\contentsline {subsubsection}{\numberline {10.18.6.10}sum\_y\_}{69}{subsubsection.10.18.6.10}%
+\contentsline {subsubsection}{\numberline {10.18.6.11}sum\_z\_}{69}{subsubsection.10.18.6.11}%
+\contentsline {section}{\numberline {10.19}Swing\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Detector Class Reference}{69}{section.10.19}%
+\contentsline {subsection}{\numberline {10.19.1}Detailed Description}{70}{subsection.10.19.1}%
+\contentsline {subsection}{\numberline {10.19.2}Member Typedef Documentation}{70}{subsection.10.19.2}%
+\contentsline {subsubsection}{\numberline {10.19.2.1}EventCallback}{70}{subsubsection.10.19.2.1}%
+\contentsline {subsection}{\numberline {10.19.3}Member Enumeration Documentation}{70}{subsection.10.19.3}%
+\contentsline {subsubsection}{\numberline {10.19.3.1}Level}{70}{subsubsection.10.19.3.1}%
+\contentsline {subsection}{\numberline {10.19.4}Constructor \& Destructor Documentation}{70}{subsection.10.19.4}%
+\contentsline {subsubsection}{\numberline {10.19.4.1}SwingDetector()}{70}{subsubsection.10.19.4.1}%
+\contentsline {subsection}{\numberline {10.19.5}Member Function Documentation}{70}{subsection.10.19.5}%
+\contentsline {subsubsection}{\numberline {10.19.5.1}classify()}{70}{subsubsection.10.19.5.1}%
+\contentsline {subsubsection}{\numberline {10.19.5.2}detect()}{70}{subsubsection.10.19.5.2}%
+\contentsline {subsubsection}{\numberline {10.19.5.3}label()}{71}{subsubsection.10.19.5.3}%
+\contentsline {subsubsection}{\numberline {10.19.5.4}reset()}{71}{subsubsection.10.19.5.4}%
+\contentsline {subsubsection}{\numberline {10.19.5.5}setCallback()}{71}{subsubsection.10.19.5.5}%
+\contentsline {subsection}{\numberline {10.19.6}Member Data Documentation}{71}{subsection.10.19.6}%
+\contentsline {subsubsection}{\numberline {10.19.6.1}callback\_}{71}{subsubsection.10.19.6.1}%
+\contentsline {subsubsection}{\numberline {10.19.6.2}last\_level\_}{71}{subsubsection.10.19.6.2}%
+\contentsline {section}{\numberline {10.20}Swing\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Feedback Class Reference}{71}{section.10.20}%
+\contentsline {subsection}{\numberline {10.20.1}Detailed Description}{73}{subsection.10.20.1}%
+\contentsline {subsection}{\numberline {10.20.2}Member Typedef Documentation}{73}{subsection.10.20.2}%
+\contentsline {subsubsection}{\numberline {10.20.2.1}ResetCallback}{73}{subsubsection.10.20.2.1}%
+\contentsline {subsection}{\numberline {10.20.3}Constructor \& Destructor Documentation}{73}{subsection.10.20.3}%
+\contentsline {subsubsection}{\numberline {10.20.3.1}SwingFeedback()}{73}{subsubsection.10.20.3.1}%
+\contentsline {subsection}{\numberline {10.20.4}Member Function Documentation}{73}{subsection.10.20.4}%
+\contentsline {subsubsection}{\numberline {10.20.4.1}checkTimeout()}{73}{subsubsection.10.20.4.1}%
+\contentsline {subsubsection}{\numberline {10.20.4.2}forceOff()}{73}{subsubsection.10.20.4.2}%
+\contentsline {subsubsection}{\numberline {10.20.4.3}onLevel()}{73}{subsubsection.10.20.4.3}%
+\contentsline {subsubsection}{\numberline {10.20.4.4}setResetCallback()}{73}{subsubsection.10.20.4.4}%
+\contentsline {subsubsection}{\numberline {10.20.4.5}worker()}{73}{subsubsection.10.20.4.5}%
+\contentsline {subsection}{\numberline {10.20.5}Member Data Documentation}{74}{subsection.10.20.5}%
+\contentsline {subsubsection}{\numberline {10.20.5.1}busy\_}{74}{subsubsection.10.20.5.1}%
+\contentsline {subsubsection}{\numberline {10.20.5.2}busy\_since\_ms\_}{74}{subsubsection.10.20.5.2}%
+\contentsline {subsubsection}{\numberline {10.20.5.3}pending\_level\_}{74}{subsubsection.10.20.5.3}%
+\contentsline {subsubsection}{\numberline {10.20.5.4}pwm\_}{74}{subsubsection.10.20.5.4}%
+\contentsline {subsubsection}{\numberline {10.20.5.5}reset\_cb\_}{74}{subsubsection.10.20.5.5}%
+\contentsline {subsubsection}{\numberline {10.20.5.6}TIMEOUT\_MS}{74}{subsubsection.10.20.5.6}%
+\contentsline {section}{\numberline {10.21}Swing\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Processor Class Reference}{74}{section.10.21}%
+\contentsline {subsection}{\numberline {10.21.1}Detailed Description}{76}{subsection.10.21.1}%
+\contentsline {subsection}{\numberline {10.21.2}Member Typedef Documentation}{76}{subsection.10.21.2}%
+\contentsline {subsubsection}{\numberline {10.21.2.1}MagnitudeCallback}{76}{subsubsection.10.21.2.1}%
+\contentsline {subsubsection}{\numberline {10.21.2.2}PositionStateCallback}{77}{subsubsection.10.21.2.2}%
+\contentsline {subsection}{\numberline {10.21.3}Constructor \& Destructor Documentation}{77}{subsection.10.21.3}%
+\contentsline {subsubsection}{\numberline {10.21.3.1}SwingProcessor()}{77}{subsubsection.10.21.3.1}%
+\contentsline {subsection}{\numberline {10.21.4}Member Function Documentation}{77}{subsection.10.21.4}%
+\contentsline {subsubsection}{\numberline {10.21.4.1}isActive()}{77}{subsubsection.10.21.4.1}%
+\contentsline {subsubsection}{\numberline {10.21.4.2}onForceReady()}{77}{subsubsection.10.21.4.2}%
+\contentsline {subsubsection}{\numberline {10.21.4.3}onPositionReady()}{77}{subsubsection.10.21.4.3}%
+\contentsline {subsubsection}{\numberline {10.21.4.4}onSample()}{77}{subsubsection.10.21.4.4}%
+\contentsline {subsubsection}{\numberline {10.21.4.5}operator()()}{78}{subsubsection.10.21.4.5}%
+\contentsline {subsubsection}{\numberline {10.21.4.6}reset()}{78}{subsubsection.10.21.4.6}%
+\contentsline {subsubsection}{\numberline {10.21.4.7}setMagnitudeCallback()}{78}{subsubsection.10.21.4.7}%
+\contentsline {subsubsection}{\numberline {10.21.4.8}setPositionCallback()}{78}{subsubsection.10.21.4.8}%
+\contentsline {subsection}{\numberline {10.21.5}Member Data Documentation}{78}{subsection.10.21.5}%
+\contentsline {subsubsection}{\numberline {10.21.5.1}accel\_deadband\_}{78}{subsubsection.10.21.5.1}%
+\contentsline {subsubsection}{\numberline {10.21.5.2}calibrator\_}{78}{subsubsection.10.21.5.2}%
+\contentsline {subsubsection}{\numberline {10.21.5.3}COOLDOWN\_MS}{78}{subsubsection.10.21.5.3}%
+\contentsline {subsubsection}{\numberline {10.21.5.4}hasLeftStart\_}{79}{subsubsection.10.21.5.4}%
+\contentsline {subsubsection}{\numberline {10.21.5.5}isActive\_}{79}{subsubsection.10.21.5.5}%
+\contentsline {subsubsection}{\numberline {10.21.5.6}isArmed\_}{79}{subsubsection.10.21.5.6}%
+\contentsline {subsubsection}{\numberline {10.21.5.7}mag\_callback\_}{79}{subsubsection.10.21.5.7}%
+\contentsline {subsubsection}{\numberline {10.21.5.8}pos\_callback\_}{79}{subsubsection.10.21.5.8}%
+\contentsline {subsubsection}{\numberline {10.21.5.9}reset\_time\_}{79}{subsubsection.10.21.5.9}%
+\contentsline {chapter}{\numberline {11}File Documentation}{81}{chapter.11}%
+\contentsline {section}{\numberline {11.1}src/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}CMake\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Files/3.31.6/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Compiler\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Id\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}CXX/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}CMake\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}CXXCompiler\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Id.cpp File Reference}{81}{section.11.1}%
+\contentsline {subsection}{\numberline {11.1.1}Macro Definition Documentation}{81}{subsection.11.1.1}%
+\contentsline {subsubsection}{\numberline {11.1.1.1}\_\_has\_include}{81}{subsubsection.11.1.1.1}%
+\contentsline {subsubsection}{\numberline {11.1.1.2}ARCHITECTURE\_ID}{82}{subsubsection.11.1.1.2}%
+\contentsline {subsubsection}{\numberline {11.1.1.3}COMPILER\_ID}{82}{subsubsection.11.1.1.3}%
+\contentsline {subsubsection}{\numberline {11.1.1.4}CXX\_STD}{82}{subsubsection.11.1.1.4}%
+\contentsline {subsubsection}{\numberline {11.1.1.5}CXX\_STD\_11}{82}{subsubsection.11.1.1.5}%
+\contentsline {subsubsection}{\numberline {11.1.1.6}CXX\_STD\_14}{82}{subsubsection.11.1.1.6}%
+\contentsline {subsubsection}{\numberline {11.1.1.7}CXX\_STD\_17}{82}{subsubsection.11.1.1.7}%
+\contentsline {subsubsection}{\numberline {11.1.1.8}CXX\_STD\_20}{82}{subsubsection.11.1.1.8}%
+\contentsline {subsubsection}{\numberline {11.1.1.9}CXX\_STD\_23}{82}{subsubsection.11.1.1.9}%
+\contentsline {subsubsection}{\numberline {11.1.1.10}CXX\_STD\_98}{82}{subsubsection.11.1.1.10}%
+\contentsline {subsubsection}{\numberline {11.1.1.11}DEC}{82}{subsubsection.11.1.1.11}%
+\contentsline {subsubsection}{\numberline {11.1.1.12}HEX}{83}{subsubsection.11.1.1.12}%
+\contentsline {subsubsection}{\numberline {11.1.1.13}PLATFORM\_ID}{83}{subsubsection.11.1.1.13}%
+\contentsline {subsubsection}{\numberline {11.1.1.14}STRINGIFY}{83}{subsubsection.11.1.1.14}%
+\contentsline {subsubsection}{\numberline {11.1.1.15}STRINGIFY\_HELPER}{83}{subsubsection.11.1.1.15}%
+\contentsline {subsection}{\numberline {11.1.2}Function Documentation}{83}{subsection.11.1.2}%
+\contentsline {subsubsection}{\numberline {11.1.2.1}main()}{83}{subsubsection.11.1.2.1}%
+\contentsline {subsection}{\numberline {11.1.3}Variable Documentation}{83}{subsection.11.1.3}%
+\contentsline {subsubsection}{\numberline {11.1.3.1}info\_arch}{83}{subsubsection.11.1.3.1}%
+\contentsline {subsubsection}{\numberline {11.1.3.2}info\_compiler}{83}{subsubsection.11.1.3.2}%
+\contentsline {subsubsection}{\numberline {11.1.3.3}info\_language\_extensions\_default}{83}{subsubsection.11.1.3.3}%
+\contentsline {subsubsection}{\numberline {11.1.3.4}info\_language\_standard\_default}{84}{subsubsection.11.1.3.4}%
+\contentsline {subsubsection}{\numberline {11.1.3.5}info\_platform}{84}{subsubsection.11.1.3.5}%
+\contentsline {section}{\numberline {11.2}CMake\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}CXXCompiler\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Id.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{84}{section.11.2}%
+\contentsline {section}{\numberline {11.3}src/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}CMake\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Files/rtes\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}main.dir/link.d File Reference}{95}{section.11.3}%
+\contentsline {section}{\numberline {11.4}link.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}d}{95}{section.11.4}%
+\contentsline {section}{\numberline {11.5}src/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}CMake\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Files/rtes\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}main.dir/main.cpp.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}o.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}d File Reference}{96}{section.11.5}%
+\contentsline {section}{\numberline {11.6}main.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}o.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}d}{96}{section.11.6}%
+\contentsline {section}{\numberline {11.7}src/libs/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}IMU/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}CMake\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Files/imu\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}lib.dir/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Icm20948driver.cpp.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}o.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}d File Reference}{101}{section.11.7}%
+\contentsline {section}{\numberline {11.8}Icm20948driver.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}o.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}d}{101}{section.11.8}%
+\contentsline {section}{\numberline {11.9}src/libs/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}IMU/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}CMake\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Files/imu\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}lib.dir/imureader.cpp.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}o.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}d File Reference}{105}{section.11.9}%
+\contentsline {section}{\numberline {11.10}imureader.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}o.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}d}{105}{section.11.10}%
+\contentsline {section}{\numberline {11.11}src/libs/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}IMU/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Icm20948driver.cpp File Reference}{108}{section.11.11}%
+\contentsline {subsection}{\numberline {11.11.1}Macro Definition Documentation}{109}{subsection.11.11.1}%
+\contentsline {subsubsection}{\numberline {11.11.1.1}DEG2RAD}{109}{subsubsection.11.11.1.1}%
+\contentsline {subsubsection}{\numberline {11.11.1.2}G2MSQR}{109}{subsubsection.11.11.1.2}%
+\contentsline {subsubsection}{\numberline {11.11.1.3}MAGN\_SCALE\_FACTOR}{110}{subsubsection.11.11.1.3}%
+\contentsline {section}{\numberline {11.12}Icm20948driver.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{110}{section.11.12}%
+\contentsline {section}{\numberline {11.13}src/libs/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}IMU/imureader.cpp File Reference}{117}{section.11.13}%
+\contentsline {section}{\numberline {11.14}imureader.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{117}{section.11.14}%
+\contentsline {section}{\numberline {11.15}src/libs/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}IMU/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Include/i2c\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}mutex.hpp File Reference}{119}{section.11.15}%
+\contentsline {subsection}{\numberline {11.15.1}Function Documentation}{120}{subsection.11.15.1}%
+\contentsline {subsubsection}{\numberline {11.15.1.1}i2c1\_mutex()}{120}{subsubsection.11.15.1.1}%
+\contentsline {section}{\numberline {11.16}i2c\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}mutex.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{120}{section.11.16}%
+\contentsline {section}{\numberline {11.17}src/libs/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}IMU/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Include/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Icm20948driver.hpp File Reference}{120}{section.11.17}%
+\contentsline {subsection}{\numberline {11.17.1}Macro Definition Documentation}{124}{subsection.11.17.1}%
+\contentsline {subsubsection}{\numberline {11.17.1.1}AK09916\_CNTL2\_ADDR}{124}{subsubsection.11.17.1.1}%
+\contentsline {subsubsection}{\numberline {11.17.1.2}ICM20948\_ACCEL\_CONFIG\_1\_ADDR}{124}{subsubsection.11.17.1.2}%
+\contentsline {subsubsection}{\numberline {11.17.1.3}ICM20948\_ACCEL\_CONFIG\_1\_BANK}{124}{subsubsection.11.17.1.3}%
+\contentsline {subsubsection}{\numberline {11.17.1.4}ICM20948\_ACCEL\_OUT\_BANK}{124}{subsubsection.11.17.1.4}%
+\contentsline {subsubsection}{\numberline {11.17.1.5}ICM20948\_ACCEL\_SMPLRT\_DIV\_1\_ADDR}{124}{subsubsection.11.17.1.5}%
+\contentsline {subsubsection}{\numberline {11.17.1.6}ICM20948\_ACCEL\_SMPLRT\_DIV\_1\_BANK}{124}{subsubsection.11.17.1.6}%
+\contentsline {subsubsection}{\numberline {11.17.1.7}ICM20948\_ACCEL\_SMPLRT\_DIV\_2\_ADDR}{124}{subsubsection.11.17.1.7}%
+\contentsline {subsubsection}{\numberline {11.17.1.8}ICM20948\_ACCEL\_SMPLRT\_DIV\_2\_BANK}{124}{subsubsection.11.17.1.8}%
+\contentsline {subsubsection}{\numberline {11.17.1.9}ICM20948\_ACCEL\_XOUT\_H\_ADDR}{124}{subsubsection.11.17.1.9}%
+\contentsline {subsubsection}{\numberline {11.17.1.10}ICM20948\_ACCEL\_XOUT\_L\_ADDR}{125}{subsubsection.11.17.1.10}%
+\contentsline {subsubsection}{\numberline {11.17.1.11}ICM20948\_ACCEL\_YOUT\_H\_ADDR}{125}{subsubsection.11.17.1.11}%
+\contentsline {subsubsection}{\numberline {11.17.1.12}ICM20948\_ACCEL\_YOUT\_L\_ADDR}{125}{subsubsection.11.17.1.12}%
+\contentsline {subsubsection}{\numberline {11.17.1.13}ICM20948\_ACCEL\_ZOUT\_H\_ADDR}{125}{subsubsection.11.17.1.13}%
+\contentsline {subsubsection}{\numberline {11.17.1.14}ICM20948\_ACCEL\_ZOUT\_L\_ADDR}{125}{subsubsection.11.17.1.14}%
+\contentsline {subsubsection}{\numberline {11.17.1.15}ICM20948\_BANK0\_WHO\_AM\_I\_VALUE}{125}{subsubsection.11.17.1.15}%
+\contentsline {subsubsection}{\numberline {11.17.1.16}ICM20948\_EXT\_SLV\_SENS\_DATA\_00\_ADDR}{125}{subsubsection.11.17.1.16}%
+\contentsline {subsubsection}{\numberline {11.17.1.17}ICM20948\_EXT\_SLV\_SENS\_DATA\_00\_BANK}{125}{subsubsection.11.17.1.17}%
+\contentsline {subsubsection}{\numberline {11.17.1.18}ICM20948\_GYRO\_CONFIG\_1\_ADDR}{125}{subsubsection.11.17.1.18}%
+\contentsline {subsubsection}{\numberline {11.17.1.19}ICM20948\_GYRO\_CONFIG\_1\_BANK}{125}{subsubsection.11.17.1.19}%
+\contentsline {subsubsection}{\numberline {11.17.1.20}ICM20948\_GYRO\_OUT\_BANK}{125}{subsubsection.11.17.1.20}%
+\contentsline {subsubsection}{\numberline {11.17.1.21}ICM20948\_GYRO\_SMPLRT\_DIV\_ADDR}{125}{subsubsection.11.17.1.21}%
+\contentsline {subsubsection}{\numberline {11.17.1.22}ICM20948\_GYRO\_SMPLRT\_DIV\_BANK}{126}{subsubsection.11.17.1.22}%
+\contentsline {subsubsection}{\numberline {11.17.1.23}ICM20948\_GYRO\_XOUT\_H\_ADDR}{126}{subsubsection.11.17.1.23}%
+\contentsline {subsubsection}{\numberline {11.17.1.24}ICM20948\_GYRO\_XOUT\_L\_ADDR}{126}{subsubsection.11.17.1.24}%
+\contentsline {subsubsection}{\numberline {11.17.1.25}ICM20948\_GYRO\_YOUT\_H\_ADDR}{126}{subsubsection.11.17.1.25}%
+\contentsline {subsubsection}{\numberline {11.17.1.26}ICM20948\_GYRO\_YOUT\_L\_ADDR}{126}{subsubsection.11.17.1.26}%
+\contentsline {subsubsection}{\numberline {11.17.1.27}ICM20948\_GYRO\_ZOUT\_H\_ADDR}{126}{subsubsection.11.17.1.27}%
+\contentsline {subsubsection}{\numberline {11.17.1.28}ICM20948\_GYRO\_ZOUT\_L\_ADDR}{126}{subsubsection.11.17.1.28}%
+\contentsline {subsubsection}{\numberline {11.17.1.29}ICM20948\_I2C\_ADDR}{126}{subsubsection.11.17.1.29}%
+\contentsline {subsubsection}{\numberline {11.17.1.30}ICM20948\_I2C\_MST\_CTRL\_ADDR}{126}{subsubsection.11.17.1.30}%
+\contentsline {subsubsection}{\numberline {11.17.1.31}ICM20948\_I2C\_MST\_CTRL\_BANK}{126}{subsubsection.11.17.1.31}%
+\contentsline {subsubsection}{\numberline {11.17.1.32}ICM20948\_I2C\_MST\_STATUS\_ADDR}{127}{subsubsection.11.17.1.32}%
+\contentsline {subsubsection}{\numberline {11.17.1.33}ICM20948\_I2C\_MST\_STATUS\_BANK}{127}{subsubsection.11.17.1.33}%
+\contentsline {subsubsection}{\numberline {11.17.1.34}ICM20948\_I2C\_SLV0\_ADDR\_ADDR}{127}{subsubsection.11.17.1.34}%
+\contentsline {subsubsection}{\numberline {11.17.1.35}ICM20948\_I2C\_SLV0\_ADDR\_BANK}{127}{subsubsection.11.17.1.35}%
+\contentsline {subsubsection}{\numberline {11.17.1.36}ICM20948\_I2C\_SLV0\_CTRL\_ADDR}{127}{subsubsection.11.17.1.36}%
+\contentsline {subsubsection}{\numberline {11.17.1.37}ICM20948\_I2C\_SLV0\_CTRL\_BANK}{127}{subsubsection.11.17.1.37}%
+\contentsline {subsubsection}{\numberline {11.17.1.38}ICM20948\_I2C\_SLV0\_REG\_ADDR}{127}{subsubsection.11.17.1.38}%
+\contentsline {subsubsection}{\numberline {11.17.1.39}ICM20948\_I2C\_SLV0\_REG\_BANK}{127}{subsubsection.11.17.1.39}%
+\contentsline {subsubsection}{\numberline {11.17.1.40}ICM20948\_I2C\_SLV4\_ADDR\_ADDR}{127}{subsubsection.11.17.1.40}%
+\contentsline {subsubsection}{\numberline {11.17.1.41}ICM20948\_I2C\_SLV4\_ADDR\_BANK}{127}{subsubsection.11.17.1.41}%
+\contentsline {subsubsection}{\numberline {11.17.1.42}ICM20948\_I2C\_SLV4\_CTRL\_ADDR}{127}{subsubsection.11.17.1.42}%
+\contentsline {subsubsection}{\numberline {11.17.1.43}ICM20948\_I2C\_SLV4\_CTRL\_BANK}{127}{subsubsection.11.17.1.43}%
+\contentsline {subsubsection}{\numberline {11.17.1.44}ICM20948\_I2C\_SLV4\_DI\_ADDR}{128}{subsubsection.11.17.1.44}%
+\contentsline {subsubsection}{\numberline {11.17.1.45}ICM20948\_I2C\_SLV4\_DI\_BANK}{128}{subsubsection.11.17.1.45}%
+\contentsline {subsubsection}{\numberline {11.17.1.46}ICM20948\_I2C\_SLV4\_DO\_ADDR}{128}{subsubsection.11.17.1.46}%
+\contentsline {subsubsection}{\numberline {11.17.1.47}ICM20948\_I2C\_SLV4\_DO\_BANK}{128}{subsubsection.11.17.1.47}%
+\contentsline {subsubsection}{\numberline {11.17.1.48}ICM20948\_I2C\_SLV4\_REG\_ADDR}{128}{subsubsection.11.17.1.48}%
+\contentsline {subsubsection}{\numberline {11.17.1.49}ICM20948\_I2C\_SLV4\_REG\_BANK}{128}{subsubsection.11.17.1.49}%
+\contentsline {subsubsection}{\numberline {11.17.1.50}ICM20948\_INT\_ENABLE\_1\_ADDR}{128}{subsubsection.11.17.1.50}%
+\contentsline {subsubsection}{\numberline {11.17.1.51}ICM20948\_INT\_ENABLE\_1\_BANK}{128}{subsubsection.11.17.1.51}%
+\contentsline {subsubsection}{\numberline {11.17.1.52}ICM20948\_INT\_PIN\_CFG\_ADDR}{128}{subsubsection.11.17.1.52}%
+\contentsline {subsubsection}{\numberline {11.17.1.53}ICM20948\_INT\_PIN\_CFG\_BANK}{128}{subsubsection.11.17.1.53}%
+\contentsline {subsubsection}{\numberline {11.17.1.54}ICM20948\_INT\_STATUS\_1\_ADDR}{128}{subsubsection.11.17.1.54}%
+\contentsline {subsubsection}{\numberline {11.17.1.55}ICM20948\_INT\_STATUS\_1\_BANK}{128}{subsubsection.11.17.1.55}%
+\contentsline {subsubsection}{\numberline {11.17.1.56}ICM20948\_INT\_STATUS\_ADDR}{129}{subsubsection.11.17.1.56}%
+\contentsline {subsubsection}{\numberline {11.17.1.57}ICM20948\_INT\_STATUS\_BANK}{129}{subsubsection.11.17.1.57}%
+\contentsline {subsubsection}{\numberline {11.17.1.58}ICM20948\_MAGN\_I2C\_ADDR}{129}{subsubsection.11.17.1.58}%
+\contentsline {subsubsection}{\numberline {11.17.1.59}ICM20948\_PWR\_MGMT\_1\_ADDR}{129}{subsubsection.11.17.1.59}%
+\contentsline {subsubsection}{\numberline {11.17.1.60}ICM20948\_PWR\_MGMT\_1\_BANK}{129}{subsubsection.11.17.1.60}%
+\contentsline {subsubsection}{\numberline {11.17.1.61}ICM20948\_REG\_BANK\_SEL\_ADDR}{129}{subsubsection.11.17.1.61}%
+\contentsline {subsubsection}{\numberline {11.17.1.62}ICM20948\_REG\_BANK\_SEL\_BANK0\_VALUE}{129}{subsubsection.11.17.1.62}%
+\contentsline {subsubsection}{\numberline {11.17.1.63}ICM20948\_REG\_BANK\_SEL\_BANK1\_VALUE}{129}{subsubsection.11.17.1.63}%
+\contentsline {subsubsection}{\numberline {11.17.1.64}ICM20948\_REG\_BANK\_SEL\_BANK2\_VALUE}{129}{subsubsection.11.17.1.64}%
+\contentsline {subsubsection}{\numberline {11.17.1.65}ICM20948\_REG\_BANK\_SEL\_BANK3\_VALUE}{129}{subsubsection.11.17.1.65}%
+\contentsline {subsubsection}{\numberline {11.17.1.66}ICM20948\_TEMP\_OUT\_H\_ADDR}{129}{subsubsection.11.17.1.66}%
+\contentsline {subsubsection}{\numberline {11.17.1.67}ICM20948\_TEMP\_OUT\_L\_ADDR}{130}{subsubsection.11.17.1.67}%
+\contentsline {subsubsection}{\numberline {11.17.1.68}ICM20948\_USER\_CTRL\_ADDR}{130}{subsubsection.11.17.1.68}%
+\contentsline {subsubsection}{\numberline {11.17.1.69}ICM20948\_USER\_CTRL\_BANK}{130}{subsubsection.11.17.1.69}%
+\contentsline {subsubsection}{\numberline {11.17.1.70}ICM20948\_WHO\_AM\_I\_ADDR}{130}{subsubsection.11.17.1.70}%
+\contentsline {subsubsection}{\numberline {11.17.1.71}ICM20948\_WHO\_AM\_I\_BANK}{130}{subsubsection.11.17.1.71}%
+\contentsline {section}{\numberline {11.18}Icm20948driver.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{130}{section.11.18}%
+\contentsline {section}{\numberline {11.19}src/libs/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}IMU/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Include/imureader.hpp File Reference}{133}{section.11.19}%
+\contentsline {section}{\numberline {11.20}imureader.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{134}{section.11.20}%
+\contentsline {section}{\numberline {11.21}README.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}md File Reference}{135}{section.11.21}%
+\contentsline {section}{\numberline {11.22}src/libs/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}IMU/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}README.md File Reference}{135}{section.11.22}%
+\contentsline {section}{\numberline {11.23}src/libs/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Motor/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}README.md File Reference}{135}{section.11.23}%
+\contentsline {section}{\numberline {11.24}src/libs/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}IMU\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}math/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}CMake\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Files/imu\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}math\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}lib.dir/positiondetector.cpp.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}o.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}d File Reference}{135}{section.11.24}%
+\contentsline {section}{\numberline {11.25}positiondetector.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}o.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}d}{135}{section.11.25}%
+\contentsline {section}{\numberline {11.26}src/libs/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}IMU\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}math/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}CMake\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Files/imu\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}math\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}lib.dir/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Swing\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Calibrator.cpp.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}o.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}d File Reference}{136}{section.11.26}%
+\contentsline {section}{\numberline {11.27}Swing\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Calibrator.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}o.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}d}{136}{section.11.27}%
+\contentsline {section}{\numberline {11.28}src/libs/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}IMU\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}math/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}CMake\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Files/imu\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}math\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}lib.dir/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Swing\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Detector.cpp.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}o.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}d File Reference}{137}{section.11.28}%
+\contentsline {section}{\numberline {11.29}Swing\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Detector.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}o.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}d}{137}{section.11.29}%
+\contentsline {section}{\numberline {11.30}src/libs/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}IMU\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}math/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}CMake\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Files/imu\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}math\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}lib.dir/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Swing\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Processor.cpp.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}o.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}d File Reference}{138}{section.11.30}%
+\contentsline {section}{\numberline {11.31}Swing\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Processor.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}o.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}d}{138}{section.11.31}%
+\contentsline {section}{\numberline {11.32}src/libs/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}IMU\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}math/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Include/positiondetector.hpp File Reference}{141}{section.11.32}%
+\contentsline {section}{\numberline {11.33}positiondetector.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{142}{section.11.33}%
+\contentsline {section}{\numberline {11.34}src/libs/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}IMU\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}math/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Include/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Swing\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Calibrator.hpp File Reference}{143}{section.11.34}%
+\contentsline {section}{\numberline {11.35}Swing\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Calibrator.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{143}{section.11.35}%
+\contentsline {section}{\numberline {11.36}src/libs/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}IMU\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}math/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Include/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Swing\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Detector.hpp File Reference}{144}{section.11.36}%
+\contentsline {section}{\numberline {11.37}Swing\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Detector.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{144}{section.11.37}%
+\contentsline {section}{\numberline {11.38}src/libs/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}IMU\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}math/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Include/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Swing\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Processor.hpp File Reference}{145}{section.11.38}%
+\contentsline {subsection}{\numberline {11.38.1}Variable Documentation}{146}{subsection.11.38.1}%
+\contentsline {subsubsection}{\numberline {11.38.1.1}ACCEL\_DEADBAND}{146}{subsubsection.11.38.1.1}%
+\contentsline {subsubsection}{\numberline {11.38.1.2}CALIB\_SAMPLES}{146}{subsubsection.11.38.1.2}%
+\contentsline {subsubsection}{\numberline {11.38.1.3}I2C\_BUS}{146}{subsubsection.11.38.1.3}%
+\contentsline {subsubsection}{\numberline {11.38.1.4}RECAL\_SAMPLES}{146}{subsubsection.11.38.1.4}%
+\contentsline {section}{\numberline {11.39}Swing\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Processor.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{147}{section.11.39}%
+\contentsline {section}{\numberline {11.40}src/libs/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}IMU\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}math/positiondetector.cpp File Reference}{148}{section.11.40}%
+\contentsline {section}{\numberline {11.41}positiondetector.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{148}{section.11.41}%
+\contentsline {section}{\numberline {11.42}src/libs/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}IMU\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}math/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Swing\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Calibrator.cpp File Reference}{149}{section.11.42}%
+\contentsline {section}{\numberline {11.43}Swing\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Calibrator.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{149}{section.11.43}%
+\contentsline {section}{\numberline {11.44}src/libs/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}IMU\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}math/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Swing\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Detector.cpp File Reference}{150}{section.11.44}%
+\contentsline {section}{\numberline {11.45}Swing\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Detector.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{151}{section.11.45}%
+\contentsline {section}{\numberline {11.46}src/libs/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}IMU\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}math/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Swing\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Processor.cpp File Reference}{151}{section.11.46}%
+\contentsline {section}{\numberline {11.47}Swing\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Processor.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{152}{section.11.47}%
+\contentsline {section}{\numberline {11.48}src/libs/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}LEDs/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}CMake\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Files/leds\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}lib.dir/led\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}controller.cpp.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}o.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}d File Reference}{153}{section.11.48}%
+\contentsline {section}{\numberline {11.49}led\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}controller.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}o.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}d}{153}{section.11.49}%
+\contentsline {section}{\numberline {11.50}src/libs/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}LEDs/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}CMake\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Files/leds\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}lib.dir/ledcallback.cpp.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}o.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}d File Reference}{156}{section.11.50}%
+\contentsline {section}{\numberline {11.51}ledcallback.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}o.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}d}{156}{section.11.51}%
+\contentsline {section}{\numberline {11.52}src/libs/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}LEDs/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Include/led\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}controller.h File Reference}{159}{section.11.52}%
+\contentsline {section}{\numberline {11.53}led\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}controller.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{160}{section.11.53}%
+\contentsline {section}{\numberline {11.54}src/libs/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}LEDs/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Include/ledcallback.hpp File Reference}{161}{section.11.54}%
+\contentsline {section}{\numberline {11.55}ledcallback.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{161}{section.11.55}%
+\contentsline {section}{\numberline {11.56}src/libs/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}LEDs/led\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}controller.cpp File Reference}{162}{section.11.56}%
+\contentsline {section}{\numberline {11.57}led\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}controller.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{162}{section.11.57}%
+\contentsline {section}{\numberline {11.58}src/libs/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}LEDs/ledcallback.cpp File Reference}{163}{section.11.58}%
+\contentsline {section}{\numberline {11.59}ledcallback.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{164}{section.11.59}%
+\contentsline {section}{\numberline {11.60}src/libs/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Motor/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}CMake\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Files/motor\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}lib.dir/swingfeedback.cpp.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}o.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}d File Reference}{165}{section.11.60}%
+\contentsline {section}{\numberline {11.61}swingfeedback.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}o.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}d}{165}{section.11.61}%
+\contentsline {section}{\numberline {11.62}src/libs/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Motor/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Include/rpi\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}pwm.h File Reference}{168}{section.11.62}%
+\contentsline {subsection}{\numberline {11.62.1}Variable Documentation}{169}{subsection.11.62.1}%
+\contentsline {subsubsection}{\numberline {11.62.1.1}PWM\_FREQ\_HZ}{169}{subsubsection.11.62.1.1}%
+\contentsline {subsubsection}{\numberline {11.62.1.2}PWM\_GPIO\_LINE}{169}{subsubsection.11.62.1.2}%
+\contentsline {section}{\numberline {11.63}rpi\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}pwm.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{169}{section.11.63}%
+\contentsline {section}{\numberline {11.64}src/libs/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Motor/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Include/swingfeedback.h File Reference}{171}{section.11.64}%
+\contentsline {section}{\numberline {11.65}swingfeedback.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{171}{section.11.65}%
+\contentsline {section}{\numberline {11.66}src/libs/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Motor/swingfeedback.cpp File Reference}{172}{section.11.66}%
+\contentsline {subsection}{\numberline {11.66.1}Function Documentation}{172}{subsection.11.66.1}%
+\contentsline {subsubsection}{\numberline {11.66.1.1}nowMs()}{172}{subsubsection.11.66.1.1}%
+\contentsline {section}{\numberline {11.67}swingfeedback.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{173}{section.11.67}%
+\contentsline {section}{\numberline {11.68}src/libs/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Piezo/ads1115rpi.cpp File Reference}{174}{section.11.68}%
+\contentsline {subsection}{\numberline {11.68.1}Function Documentation}{175}{subsection.11.68.1}%
+\contentsline {subsubsection}{\numberline {11.68.1.1}makeDefaultADS1115Settings()}{175}{subsubsection.11.68.1.1}%
+\contentsline {section}{\numberline {11.69}ads1115rpi.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{175}{section.11.69}%
+\contentsline {section}{\numberline {11.70}src/libs/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Piezo/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}CMake\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Files/piezo\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}lib.dir/ads1115rpi.cpp.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}o.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}d File Reference}{178}{section.11.70}%
+\contentsline {section}{\numberline {11.71}ads1115rpi.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}o.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}d}{178}{section.11.71}%
+\contentsline {section}{\numberline {11.72}src/libs/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Piezo/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}CMake\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Files/piezo\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}lib.dir/event\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}detector.cpp.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}o.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}d File Reference}{182}{section.11.72}%
+\contentsline {section}{\numberline {11.73}event\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}detector.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}o.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}d}{182}{section.11.73}%
+\contentsline {section}{\numberline {11.74}src/libs/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Piezo/event\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}detector.cpp File Reference}{185}{section.11.74}%
+\contentsline {section}{\numberline {11.75}event\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}detector.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{185}{section.11.75}%
+\contentsline {section}{\numberline {11.76}src/libs/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Piezo/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Include/ads1115rpi.h File Reference}{186}{section.11.76}%
+\contentsline {subsection}{\numberline {11.76.1}Macro Definition Documentation}{187}{subsection.11.76.1}%
+\contentsline {subsubsection}{\numberline {11.76.1.1}DEBUG}{187}{subsubsection.11.76.1.1}%
+\contentsline {subsection}{\numberline {11.76.2}Function Documentation}{188}{subsection.11.76.2}%
+\contentsline {subsubsection}{\numberline {11.76.2.1}makeDefaultADS1115Settings()}{188}{subsubsection.11.76.2.1}%
+\contentsline {section}{\numberline {11.77}ads1115rpi.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{188}{section.11.77}%
+\contentsline {section}{\numberline {11.78}src/libs/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Piezo/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Include/event\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}detector.h File Reference}{189}{section.11.78}%
+\contentsline {section}{\numberline {11.79}event\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}detector.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{190}{section.11.79}%
+\contentsline {section}{\numberline {11.80}src/libs/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Piezo/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Read\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Me.md File Reference}{191}{section.11.80}%
+\contentsline {section}{\numberline {11.81}src/main.cpp File Reference}{191}{section.11.81}%
+\contentsline {subsection}{\numberline {11.81.1}Function Documentation}{192}{subsection.11.81.1}%
+\contentsline {subsubsection}{\numberline {11.81.1.1}main()}{192}{subsubsection.11.81.1.1}%
+\contentsline {section}{\numberline {11.82}main.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{192}{section.11.82}%
+\contentsline {chapter}{Index}{195}{section*.159}%

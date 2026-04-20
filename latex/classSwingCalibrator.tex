@@ -13,13 +13,13 @@ using \mbox{\hyperlink{classSwingCalibrator_a0fca1042381a3eadca5a037139dbd138}{D
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{classSwingCalibrator_aeb1e6f5064053a8a615d5cf9cf7984a5}{Swing\+Calibrator}} (int initial\+\_\+samples=200, int recal\+\_\+samples=50)
-\item 
+\begin{DoxyCompactList}\small\item\em Start in initial-\/calibration mode with empty accumulators and zero bias. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classSwingCalibrator_afd6852187a46e5972281b3c74d424ed3}{set\+Callback}} (\mbox{\hyperlink{classSwingCalibrator_a0fca1042381a3eadca5a037139dbd138}{Done\+Callback}} cb)
-\item 
+\begin{DoxyCompactList}\small\item\em Register the callback fired when a calibration pass completes. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classSwingCalibrator_a763b2ac04244cc6246a8b011e6727754}{feed}} (float ax, float ay, float az)
 \item 
 void \mbox{\hyperlink{classSwingCalibrator_af3698c7f929fb86fe97e7c8337b6213d}{trigger\+Recal}} ()
-\begin{DoxyCompactList}\small\item\em Start a recalibration pass if not already calibrating. \end{DoxyCompactList}\item 
+\item 
 bool \mbox{\hyperlink{classSwingCalibrator_a84d50a34a58f080273020db7eb5af699}{is\+Ready}} () const
 \item 
 float \mbox{\hyperlink{classSwingCalibrator_a9f36426aa293cc3b0478b3f992ee3e64}{biasX}} () const
@@ -69,7 +69,22 @@ float \mbox{\hyperlink{classSwingCalibrator_a8b5ce7eab9c8fa8e43ab14ff7462e15b}{b
 
 
 \doxysubsection{Detailed Description}
-Gravity-\/bias calibrator for the swing detector. Feed IMU samples continuously; while calibrating, \doxylink{classSwingCalibrator_a763b2ac04244cc6246a8b011e6727754}{feed()} returns true. Once ready, bias\+X/\+Y/Z() hold the current bias estimate. \doxylink{classSwingCalibrator_af3698c7f929fb86fe97e7c8337b6213d}{trigger\+Recal()} starts a short recalibration window. 
+SOLID Principles\+: S -\/ This file has exactly one function -\/ to remove the gravitational bias from the acceleration value of each axis. I -\/ The \doxylink{classSwingCalibrator_a7965dffc00c681bf30ec0ac24a652f2c}{accumulate()} is kept private as it is only used for moving average calibration, other caller doesn\textquotesingle{}t need it. D -\/ The std\+::function, which is an abstraction, allows the \doxylink{classSwingCalibrator}{Swing\+Calibrator} to do its job without needing to know the caller or the results. Manages gravity-\/bias calibration for the swing detector.
+
+Usage\+:
+\begin{DoxyEnumerate}
+\item Construct and set a callback.
+\item Call \doxylink{classSwingCalibrator_a763b2ac04244cc6246a8b011e6727754}{feed()} on every IMU sample.
+\begin{DoxyItemize}
+\item While calibrating, \doxylink{classSwingCalibrator_a763b2ac04244cc6246a8b011e6727754}{feed()} returns true (caller should skip measurement).
+\item Once done, \doxylink{classSwingCalibrator_a763b2ac04244cc6246a8b011e6727754}{feed()} returns false and the bias is ready via bias\+X/\+Y/Z().
+\end{DoxyItemize}
+\item Call \doxylink{classSwingCalibrator_af3698c7f929fb86fe97e7c8337b6213d}{trigger\+Recal()} whenever the position detector confirms the start position. The next RECAL\+\_\+\+SAMPLES samples will be used to refresh the bias. 
+\end{DoxyEnumerate}
+
+Definition at line \mbox{\hyperlink{SwingCalibrator_8hpp_source_l00024}{24}} of file \mbox{\hyperlink{SwingCalibrator_8hpp_source}{Swing\+Calibrator.\+hpp}}.
+
+
 
 \doxysubsection{Member Typedef Documentation}
 \Hypertarget{classSwingCalibrator_a0fca1042381a3eadca5a037139dbd138}\label{classSwingCalibrator_a0fca1042381a3eadca5a037139dbd138} 
@@ -78,7 +93,11 @@ Gravity-\/bias calibrator for the swing detector. Feed IMU samples continuously;
 \doxysubsubsection{\texorpdfstring{DoneCallback}{DoneCallback}}
 {\footnotesize\ttfamily using \mbox{\hyperlink{classSwingCalibrator_a0fca1042381a3eadca5a037139dbd138}{Swing\+Calibrator\+::\+Done\+Callback}} =  std\+::function$<$void(float bx, float by, float bz, bool initial)$>$}
 
-Called when a calibration pass completes. initial == true for startup calibration, false for recalibration. 
+Fired when a calibration phase completes. bx/by/bz – new gravity bias (m/s²) initial – true for the first calibration, false for recalibrations 
+
+Definition at line \mbox{\hyperlink{SwingCalibrator_8hpp_source_l00030}{30}} of file \mbox{\hyperlink{SwingCalibrator_8hpp_source}{Swing\+Calibrator.\+hpp}}.
+
+
 
 \doxysubsection{Member Enumeration Documentation}
 \Hypertarget{classSwingCalibrator_a60655018cdf737f15a57baf3f778d66d}\label{classSwingCalibrator_a60655018cdf737f15a57baf3f778d66d} 
@@ -103,12 +122,24 @@ RECAL&\\
 \end{DoxyEnumFields}
 
 
+Definition at line \mbox{\hyperlink{SwingCalibrator_8hpp_source_l00052}{52}} of file \mbox{\hyperlink{SwingCalibrator_8hpp_source}{Swing\+Calibrator.\+hpp}}.
+
+
+
 \doxysubsection{Constructor \& Destructor Documentation}
 \Hypertarget{classSwingCalibrator_aeb1e6f5064053a8a615d5cf9cf7984a5}\label{classSwingCalibrator_aeb1e6f5064053a8a615d5cf9cf7984a5} 
 \index{SwingCalibrator@{SwingCalibrator}!SwingCalibrator@{SwingCalibrator}}
 \index{SwingCalibrator@{SwingCalibrator}!SwingCalibrator@{SwingCalibrator}}
 \doxysubsubsection{\texorpdfstring{SwingCalibrator()}{SwingCalibrator()}}
 {\footnotesize\ttfamily Swing\+Calibrator\+::\+Swing\+Calibrator (\begin{DoxyParamCaption}\item[{int}]{initial\+\_\+samples = {\ttfamily 200},  }\item[{int}]{recal\+\_\+samples = {\ttfamily 50} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Start in initial-\/calibration mode with empty accumulators and zero bias. 
+
+
+
+Definition at line \mbox{\hyperlink{SwingCalibrator_8cpp_source_l00004}{4}} of file \mbox{\hyperlink{SwingCalibrator_8cpp_source}{Swing\+Calibrator.\+cpp}}.
 
 
 
@@ -123,11 +154,25 @@ RECAL&\\
 
 Accumulate one sample and finalise when target samples are reached. 
 
+Update running sums for the current calibration window.
+
+Finalise once the target sample count is reached.
+
+Reset state for normal operation.
+
+Notify caller that a new bias is available.
+
+Definition at line \mbox{\hyperlink{SwingCalibrator_8cpp_source_l00058}{58}} of file \mbox{\hyperlink{SwingCalibrator_8cpp_source}{Swing\+Calibrator.\+cpp}}.
+
 \Hypertarget{classSwingCalibrator_a9f36426aa293cc3b0478b3f992ee3e64}\label{classSwingCalibrator_a9f36426aa293cc3b0478b3f992ee3e64} 
 \index{SwingCalibrator@{SwingCalibrator}!biasX@{biasX}}
 \index{biasX@{biasX}!SwingCalibrator@{SwingCalibrator}}
 \doxysubsubsection{\texorpdfstring{biasX()}{biasX()}}
 {\footnotesize\ttfamily float Swing\+Calibrator\+::biasX (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{SwingCalibrator_8hpp_source_l00047}{47}} of file \mbox{\hyperlink{SwingCalibrator_8hpp_source}{Swing\+Calibrator.\+hpp}}.
 
 \Hypertarget{classSwingCalibrator_ac27c181bc1d256754daeacb98a3b6b97}\label{classSwingCalibrator_ac27c181bc1d256754daeacb98a3b6b97} 
 \index{SwingCalibrator@{SwingCalibrator}!biasY@{biasY}}
@@ -135,11 +180,19 @@ Accumulate one sample and finalise when target samples are reached.
 \doxysubsubsection{\texorpdfstring{biasY()}{biasY()}}
 {\footnotesize\ttfamily float Swing\+Calibrator\+::biasY (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
+
+
+Definition at line \mbox{\hyperlink{SwingCalibrator_8hpp_source_l00048}{48}} of file \mbox{\hyperlink{SwingCalibrator_8hpp_source}{Swing\+Calibrator.\+hpp}}.
+
 \Hypertarget{classSwingCalibrator_ad3c989d555515464ffb0d5d3655d3a75}\label{classSwingCalibrator_ad3c989d555515464ffb0d5d3655d3a75} 
 \index{SwingCalibrator@{SwingCalibrator}!biasZ@{biasZ}}
 \index{biasZ@{biasZ}!SwingCalibrator@{SwingCalibrator}}
 \doxysubsubsection{\texorpdfstring{biasZ()}{biasZ()}}
 {\footnotesize\ttfamily float Swing\+Calibrator\+::biasZ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{SwingCalibrator_8hpp_source_l00049}{49}} of file \mbox{\hyperlink{SwingCalibrator_8hpp_source}{Swing\+Calibrator.\+hpp}}.
 
 \Hypertarget{classSwingCalibrator_a763b2ac04244cc6246a8b011e6727754}\label{classSwingCalibrator_a763b2ac04244cc6246a8b011e6727754} 
 \index{SwingCalibrator@{SwingCalibrator}!feed@{feed}}
@@ -147,11 +200,23 @@ Accumulate one sample and finalise when target samples are reached.
 \doxysubsubsection{\texorpdfstring{feed()}{feed()}}
 {\footnotesize\ttfamily bool Swing\+Calibrator\+::feed (\begin{DoxyParamCaption}\item[{float}]{ax,  }\item[{float}]{ay,  }\item[{float}]{az }\end{DoxyParamCaption})}
 
-Push one accel sample. Returns true if the sample was consumed for calibration. \Hypertarget{classSwingCalibrator_a84d50a34a58f080273020db7eb5af699}\label{classSwingCalibrator_a84d50a34a58f080273020db7eb5af699} 
+Feed one raw accel sample (m/s²). Returns true → sample was consumed for calibration; skip measurement output. Returns false → calibration is idle; use bias\+X/\+Y/Z() to correct the sample. Consume samples for initial calibration.
+
+Consume samples for recalibration.
+
+Calibration idle; caller can use the current bias.
+
+Definition at line \mbox{\hyperlink{SwingCalibrator_8cpp_source_l00020}{20}} of file \mbox{\hyperlink{SwingCalibrator_8cpp_source}{Swing\+Calibrator.\+cpp}}.
+
+\Hypertarget{classSwingCalibrator_a84d50a34a58f080273020db7eb5af699}\label{classSwingCalibrator_a84d50a34a58f080273020db7eb5af699} 
 \index{SwingCalibrator@{SwingCalibrator}!isReady@{isReady}}
 \index{isReady@{isReady}!SwingCalibrator@{SwingCalibrator}}
 \doxysubsubsection{\texorpdfstring{isReady()}{isReady()}}
 {\footnotesize\ttfamily bool Swing\+Calibrator\+::is\+Ready (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line \mbox{\hyperlink{SwingCalibrator_8cpp_source_l00053}{53}} of file \mbox{\hyperlink{SwingCalibrator_8cpp_source}{Swing\+Calibrator.\+cpp}}.
 
 \Hypertarget{classSwingCalibrator_afd6852187a46e5972281b3c74d424ed3}\label{classSwingCalibrator_afd6852187a46e5972281b3c74d424ed3} 
 \index{SwingCalibrator@{SwingCalibrator}!setCallback@{setCallback}}
@@ -159,15 +224,27 @@ Push one accel sample. Returns true if the sample was consumed for calibration. 
 \doxysubsubsection{\texorpdfstring{setCallback()}{setCallback()}}
 {\footnotesize\ttfamily void Swing\+Calibrator\+::set\+Callback (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSwingCalibrator_a0fca1042381a3eadca5a037139dbd138}{Done\+Callback}}}]{cb }\end{DoxyParamCaption})}
 
+
+
+Register the callback fired when a calibration pass completes. 
+
+Register completion callback.
+
+Definition at line \mbox{\hyperlink{SwingCalibrator_8cpp_source_l00014}{14}} of file \mbox{\hyperlink{SwingCalibrator_8cpp_source}{Swing\+Calibrator.\+cpp}}.
+
 \Hypertarget{classSwingCalibrator_af3698c7f929fb86fe97e7c8337b6213d}\label{classSwingCalibrator_af3698c7f929fb86fe97e7c8337b6213d} 
 \index{SwingCalibrator@{SwingCalibrator}!triggerRecal@{triggerRecal}}
 \index{triggerRecal@{triggerRecal}!SwingCalibrator@{SwingCalibrator}}
 \doxysubsubsection{\texorpdfstring{triggerRecal()}{triggerRecal()}}
 {\footnotesize\ttfamily void Swing\+Calibrator\+::trigger\+Recal (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+Request a recalibration burst (e.\+g. triggered by the position detector). Ignored if a calibration phase is already in progress. Ignore if a calibration pass is already in progress.
 
+already calibrating
 
-Start a recalibration pass if not already calibrating. 
+Reset accumulators and enter recalibration state.
+
+Definition at line \mbox{\hyperlink{SwingCalibrator_8cpp_source_l00041}{41}} of file \mbox{\hyperlink{SwingCalibrator_8cpp_source}{Swing\+Calibrator.\+cpp}}.
 
 
 
@@ -182,11 +259,19 @@ Start a recalibration pass if not already calibrating.
 
 Latest completed bias estimate. 
 
+
+
+Definition at line \mbox{\hyperlink{SwingCalibrator_8hpp_source_l00063}{63}} of file \mbox{\hyperlink{SwingCalibrator_8hpp_source}{Swing\+Calibrator.\+hpp}}.
+
 \Hypertarget{classSwingCalibrator_a7427c2b5d5abab9d671a09ab00a8f3ea}\label{classSwingCalibrator_a7427c2b5d5abab9d671a09ab00a8f3ea} 
 \index{SwingCalibrator@{SwingCalibrator}!bias\_y\_@{bias\_y\_}}
 \index{bias\_y\_@{bias\_y\_}!SwingCalibrator@{SwingCalibrator}}
 \doxysubsubsection{\texorpdfstring{bias\_y\_}{bias\_y\_}}
 {\footnotesize\ttfamily float Swing\+Calibrator\+::bias\+\_\+y\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{SwingCalibrator_8hpp_source_l00063}{63}} of file \mbox{\hyperlink{SwingCalibrator_8hpp_source}{Swing\+Calibrator.\+hpp}}.
 
 \Hypertarget{classSwingCalibrator_a8b5ce7eab9c8fa8e43ab14ff7462e15b}\label{classSwingCalibrator_a8b5ce7eab9c8fa8e43ab14ff7462e15b} 
 \index{SwingCalibrator@{SwingCalibrator}!bias\_z\_@{bias\_z\_}}
@@ -194,11 +279,19 @@ Latest completed bias estimate.
 \doxysubsubsection{\texorpdfstring{bias\_z\_}{bias\_z\_}}
 {\footnotesize\ttfamily float Swing\+Calibrator\+::bias\+\_\+z\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
 
+
+
+Definition at line \mbox{\hyperlink{SwingCalibrator_8hpp_source_l00063}{63}} of file \mbox{\hyperlink{SwingCalibrator_8hpp_source}{Swing\+Calibrator.\+hpp}}.
+
 \Hypertarget{classSwingCalibrator_af76597aa114ecd2641500e7043a0ea8f}\label{classSwingCalibrator_af76597aa114ecd2641500e7043a0ea8f} 
 \index{SwingCalibrator@{SwingCalibrator}!callback\_@{callback\_}}
 \index{callback\_@{callback\_}!SwingCalibrator@{SwingCalibrator}}
 \doxysubsubsection{\texorpdfstring{callback\_}{callback\_}}
 {\footnotesize\ttfamily \mbox{\hyperlink{classSwingCalibrator_a0fca1042381a3eadca5a037139dbd138}{Done\+Callback}} Swing\+Calibrator\+::callback\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{SwingCalibrator_8hpp_source_l00065}{65}} of file \mbox{\hyperlink{SwingCalibrator_8hpp_source}{Swing\+Calibrator.\+hpp}}.
 
 \Hypertarget{classSwingCalibrator_a820cd0cd2692d593d5ce249c79583163}\label{classSwingCalibrator_a820cd0cd2692d593d5ce249c79583163} 
 \index{SwingCalibrator@{SwingCalibrator}!count\_@{count\_}}
@@ -206,11 +299,19 @@ Latest completed bias estimate.
 \doxysubsubsection{\texorpdfstring{count\_}{count\_}}
 {\footnotesize\ttfamily int Swing\+Calibrator\+::count\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
 
+
+
+Definition at line \mbox{\hyperlink{SwingCalibrator_8hpp_source_l00057}{57}} of file \mbox{\hyperlink{SwingCalibrator_8hpp_source}{Swing\+Calibrator.\+hpp}}.
+
 \Hypertarget{classSwingCalibrator_a3cae138c1fd68fdbf67f9959123a2477}\label{classSwingCalibrator_a3cae138c1fd68fdbf67f9959123a2477} 
 \index{SwingCalibrator@{SwingCalibrator}!initial\_samples\_@{initial\_samples\_}}
 \index{initial\_samples\_@{initial\_samples\_}!SwingCalibrator@{SwingCalibrator}}
 \doxysubsubsection{\texorpdfstring{initial\_samples\_}{initial\_samples\_}}
 {\footnotesize\ttfamily int Swing\+Calibrator\+::initial\+\_\+samples\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{SwingCalibrator_8hpp_source_l00054}{54}} of file \mbox{\hyperlink{SwingCalibrator_8hpp_source}{Swing\+Calibrator.\+hpp}}.
 
 \Hypertarget{classSwingCalibrator_a4edab87b1d8ccf3eb86aa5e4472ab5c1}\label{classSwingCalibrator_a4edab87b1d8ccf3eb86aa5e4472ab5c1} 
 \index{SwingCalibrator@{SwingCalibrator}!recal\_samples\_@{recal\_samples\_}}
@@ -218,11 +319,19 @@ Latest completed bias estimate.
 \doxysubsubsection{\texorpdfstring{recal\_samples\_}{recal\_samples\_}}
 {\footnotesize\ttfamily int Swing\+Calibrator\+::recal\+\_\+samples\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
 
+
+
+Definition at line \mbox{\hyperlink{SwingCalibrator_8hpp_source_l00055}{55}} of file \mbox{\hyperlink{SwingCalibrator_8hpp_source}{Swing\+Calibrator.\+hpp}}.
+
 \Hypertarget{classSwingCalibrator_ad7f23ef33a2b888fedd541b76e1a6de6}\label{classSwingCalibrator_ad7f23ef33a2b888fedd541b76e1a6de6} 
 \index{SwingCalibrator@{SwingCalibrator}!state\_@{state\_}}
 \index{state\_@{state\_}!SwingCalibrator@{SwingCalibrator}}
 \doxysubsubsection{\texorpdfstring{state\_}{state\_}}
 {\footnotesize\ttfamily \mbox{\hyperlink{classSwingCalibrator_a60655018cdf737f15a57baf3f778d66d}{State}} Swing\+Calibrator\+::state\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{SwingCalibrator_8hpp_source_l00056}{56}} of file \mbox{\hyperlink{SwingCalibrator_8hpp_source}{Swing\+Calibrator.\+hpp}}.
 
 \Hypertarget{classSwingCalibrator_a0a1a91873989c8a019d7e1c0dda3ab14}\label{classSwingCalibrator_a0a1a91873989c8a019d7e1c0dda3ab14} 
 \index{SwingCalibrator@{SwingCalibrator}!sum\_x\_@{sum\_x\_}}
@@ -234,17 +343,29 @@ Latest completed bias estimate.
 
 Running sums for the current calibration window. 
 
+
+
+Definition at line \mbox{\hyperlink{SwingCalibrator_8hpp_source_l00060}{60}} of file \mbox{\hyperlink{SwingCalibrator_8hpp_source}{Swing\+Calibrator.\+hpp}}.
+
 \Hypertarget{classSwingCalibrator_adf7a3c10405f60a8922e32516c11470c}\label{classSwingCalibrator_adf7a3c10405f60a8922e32516c11470c} 
 \index{SwingCalibrator@{SwingCalibrator}!sum\_y\_@{sum\_y\_}}
 \index{sum\_y\_@{sum\_y\_}!SwingCalibrator@{SwingCalibrator}}
 \doxysubsubsection{\texorpdfstring{sum\_y\_}{sum\_y\_}}
 {\footnotesize\ttfamily float Swing\+Calibrator\+::sum\+\_\+y\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
 
+
+
+Definition at line \mbox{\hyperlink{SwingCalibrator_8hpp_source_l00060}{60}} of file \mbox{\hyperlink{SwingCalibrator_8hpp_source}{Swing\+Calibrator.\+hpp}}.
+
 \Hypertarget{classSwingCalibrator_a5b322f512206b6ef57266e8b3cc3d8b2}\label{classSwingCalibrator_a5b322f512206b6ef57266e8b3cc3d8b2} 
 \index{SwingCalibrator@{SwingCalibrator}!sum\_z\_@{sum\_z\_}}
 \index{sum\_z\_@{sum\_z\_}!SwingCalibrator@{SwingCalibrator}}
 \doxysubsubsection{\texorpdfstring{sum\_z\_}{sum\_z\_}}
 {\footnotesize\ttfamily float Swing\+Calibrator\+::sum\+\_\+z\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{SwingCalibrator_8hpp_source_l00060}{60}} of file \mbox{\hyperlink{SwingCalibrator_8hpp_source}{Swing\+Calibrator.\+hpp}}.
 
 
 

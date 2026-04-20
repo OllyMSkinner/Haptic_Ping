@@ -2,43 +2,46 @@
 \hypertarget{swingfeedback_8h_source}{}\label{swingfeedback_8h_source}\index{src/libs/Motor/Include/swingfeedback.h@{src/libs/Motor/Include/swingfeedback.h}}
 \mbox{\hyperlink{swingfeedback_8h}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
-\DoxyCodeLine{00002\ \textcolor{comment}{\ \ \ \ This\ header\ declares\ the\ swing\ feedback\ class.}}
-\DoxyCodeLine{00003\ \textcolor{comment}{\ \ \ \ It\ manages\ PWM\ feedback\ output,\ handles\ level\ changes,}}
-\DoxyCodeLine{00004\ \textcolor{comment}{\ \ \ \ checks\ for\ time-\/outs,\ and\ supports\ a\ reset\ callback.}}
-\DoxyCodeLine{00005\ \textcolor{comment}{*/}}
-\DoxyCodeLine{00006\ }
-\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#pragma\ once}}
-\DoxyCodeLine{00008\ }
-\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{rpi__pwm_8h}{rpi\_pwm.h}}"{}}}
-\DoxyCodeLine{00010\ }
-\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <atomic>}}
-\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <chrono>}}
-\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <functional>}}
-\DoxyCodeLine{00014\ }
-\DoxyCodeLine{00015\ \textcolor{comment}{//\ Declares\ the\ swing\ feedback\ class,\ including\ its\ callback\ type\ and\ main\ functions\ for\ handling\ feedback,\ time-\/outs,\ and\ reset\ behaviour.}}
-\DoxyCodeLine{00016\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classSwingFeedback}{SwingFeedback}}\ \{}
-\DoxyCodeLine{00017\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{classSwingFeedback_afe26c04487150b3d6d458e06b0a1742e}{ResetCallback}}\ =\ std::function<void()>;}
-\DoxyCodeLine{00019\ }
-\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{classSwingFeedback}{SwingFeedback}}(\mbox{\hyperlink{classRPI__PWM}{RPI\_PWM}}\&\ pwm);}
-\DoxyCodeLine{00021\ }
-\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSwingFeedback_ad1acada36c94a13292b71c4495ce7474}{setResetCallback}}(\mbox{\hyperlink{classSwingFeedback_afe26c04487150b3d6d458e06b0a1742e}{ResetCallback}}\ cb);}
-\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSwingFeedback_af26c1985c1eac2d9031958c46ec13f39}{checkTimeout}}();}
-\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSwingFeedback_a869d9a4be1e27ce382e6f95d6a11f989}{onLevel}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ level);}
-\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSwingFeedback_a966b6904fc774204125e5e5dc07fc322}{forceOff}}();}
-\DoxyCodeLine{00026\ }
-\DoxyCodeLine{00027\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00028\ \ \ \ \ \textcolor{comment}{//\ Declares\ the\ internal\ worker\ function\ and\ the\ private\ members\ used\ to\ track\ PWM\ output,\ callback\ state,\ pending\ level,\ and\ timeout\ timing.}}
-\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSwingFeedback_a2f0ecec3b79f40207b84fa9d34680b19}{worker}}();}
-\DoxyCodeLine{00030\ }
-\DoxyCodeLine{00031\ \ \ \ \ \mbox{\hyperlink{classRPI__PWM}{RPI\_PWM}}\&\ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSwingFeedback_add2ef007e5a95f4b59f1941a272ee0ca}{pwm\_}};}
-\DoxyCodeLine{00032\ \ \ \ \ \mbox{\hyperlink{classSwingFeedback_afe26c04487150b3d6d458e06b0a1742e}{ResetCallback}}\ \ \ \ \ \ \mbox{\hyperlink{classSwingFeedback_abdce37fdb856ee889bc17d7a1b488016}{reset\_cb\_}};}
-\DoxyCodeLine{00033\ \ \ \ \ std::atomic<bool>\ \ \mbox{\hyperlink{classSwingFeedback_a34091e66500508702fa74af4cd013f39}{busy\_}}\{\textcolor{keyword}{false}\};}
-\DoxyCodeLine{00034\ \ \ \ \ std::atomic<int>\ \ \ \mbox{\hyperlink{classSwingFeedback_a18a0795df67442f2281435e4ce818205}{pending\_level\_}}\{0\};}
-\DoxyCodeLine{00035\ \ \ \ \ std::atomic<int64\_t>\ \mbox{\hyperlink{classSwingFeedback_a956a5e871448c96876a9c4e4dd7f1ae8}{busy\_since\_ms\_}}\{0\};\ \ \textcolor{comment}{//\ ms\ since\ epoch;\ 0\ =\ idle}}
-\DoxyCodeLine{00036\ }
-\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ int64\_t\ \mbox{\hyperlink{classSwingFeedback_a8e1ebec717fb857ec33b5d0bd5a9a539}{TIMEOUT\_MS}}\ =\ 3000;}
-\DoxyCodeLine{00038\ \};}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8h_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8h_source_l00002}00002\ \textcolor{comment}{\ \ \ \ This\ header\ declares\ the\ swing\ feedback\ class.}}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8h_source_l00003}00003\ \textcolor{comment}{\ \ \ \ It\ manages\ PWM\ feedback\ output,\ handles\ level\ changes,}}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8h_source_l00004}00004\ \textcolor{comment}{\ \ \ \ checks\ for\ time-\/outs,\ and\ supports\ a\ reset\ callback.}}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8h_source_l00005}00005\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8h_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{swingfeedback_8h_source_l00007}00007\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8h_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{swingfeedback_8h_source_l00009}00009\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{rpi__pwm_8h}{rpi\_pwm.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8h_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{swingfeedback_8h_source_l00011}00011\ \textcolor{preprocessor}{\#include\ <atomic>}}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8h_source_l00012}00012\ \textcolor{preprocessor}{\#include\ <chrono>}}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8h_source_l00013}00013\ \textcolor{preprocessor}{\#include\ <functional>}}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8h_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{swingfeedback_8h_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{swingfeedback_8h_source_l00017}\mbox{\hyperlink{classSwingFeedback}{00017}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classSwingFeedback}{SwingFeedback}}\ \{}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8h_source_l00018}00018\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8h_source_l00020}\mbox{\hyperlink{classSwingFeedback_afe26c04487150b3d6d458e06b0a1742e}{00020}}\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{classSwingFeedback_afe26c04487150b3d6d458e06b0a1742e}{ResetCallback}}\ =\ std::function<void()>;}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8h_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{swingfeedback_8h_source_l00022}00022\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{classSwingFeedback}{SwingFeedback}}(\mbox{\hyperlink{classRPI__PWM}{RPI\_PWM}}\&\ pwm);}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8h_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{swingfeedback_8h_source_l00024}00024\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSwingFeedback_ad1acada36c94a13292b71c4495ce7474}{setResetCallback}}(\mbox{\hyperlink{classSwingFeedback_afe26c04487150b3d6d458e06b0a1742e}{ResetCallback}}\ cb);}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8h_source_l00025}00025\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSwingFeedback_af26c1985c1eac2d9031958c46ec13f39}{checkTimeout}}();}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8h_source_l00026}00026\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSwingFeedback_a869d9a4be1e27ce382e6f95d6a11f989}{onLevel}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ level);}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8h_source_l00027}00027\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSwingFeedback_a966b6904fc774204125e5e5dc07fc322}{forceOff}}();}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8h_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{swingfeedback_8h_source_l00029}00029\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8h_source_l00031}00031\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSwingFeedback_a2f0ecec3b79f40207b84fa9d34680b19}{worker}}();}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8h_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{swingfeedback_8h_source_l00034}\mbox{\hyperlink{classSwingFeedback_add2ef007e5a95f4b59f1941a272ee0ca}{00034}}\ \ \ \ \ \mbox{\hyperlink{classRPI__PWM}{RPI\_PWM}}\&\ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSwingFeedback_add2ef007e5a95f4b59f1941a272ee0ca}{pwm\_}};}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8h_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{swingfeedback_8h_source_l00037}\mbox{\hyperlink{classSwingFeedback_abdce37fdb856ee889bc17d7a1b488016}{00037}}\ \ \ \ \ \mbox{\hyperlink{classSwingFeedback_afe26c04487150b3d6d458e06b0a1742e}{ResetCallback}}\ \ \ \ \ \ \mbox{\hyperlink{classSwingFeedback_abdce37fdb856ee889bc17d7a1b488016}{reset\_cb\_}};}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8h_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{swingfeedback_8h_source_l00040}\mbox{\hyperlink{classSwingFeedback_a34091e66500508702fa74af4cd013f39}{00040}}\ \ \ \ \ std::atomic<bool>\ \ \mbox{\hyperlink{classSwingFeedback_a34091e66500508702fa74af4cd013f39}{busy\_}}\{\textcolor{keyword}{false}\};}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8h_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{swingfeedback_8h_source_l00043}\mbox{\hyperlink{classSwingFeedback_a18a0795df67442f2281435e4ce818205}{00043}}\ \ \ \ \ std::atomic<int>\ \ \ \mbox{\hyperlink{classSwingFeedback_a18a0795df67442f2281435e4ce818205}{pending\_level\_}}\{0\};}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8h_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{swingfeedback_8h_source_l00047}\mbox{\hyperlink{classSwingFeedback_a956a5e871448c96876a9c4e4dd7f1ae8}{00047}}\ \ \ \ \ std::atomic<int64\_t>\ \mbox{\hyperlink{classSwingFeedback_a956a5e871448c96876a9c4e4dd7f1ae8}{busy\_since\_ms\_}}\{0\};}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8h_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{swingfeedback_8h_source_l00049}\mbox{\hyperlink{classSwingFeedback_a8e1ebec717fb857ec33b5d0bd5a9a539}{00049}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ int64\_t\ \mbox{\hyperlink{classSwingFeedback_a8e1ebec717fb857ec33b5d0bd5a9a539}{TIMEOUT\_MS}}\ =\ 3000;}
+\DoxyCodeLine{\Hypertarget{swingfeedback_8h_source_l00050}00050\ \};}
 
 \end{DoxyCode}

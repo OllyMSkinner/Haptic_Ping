@@ -2,74 +2,59 @@
 \hypertarget{SwingProcessor_8hpp_source}{}\label{SwingProcessor_8hpp_source}\index{src/libs/IMU\_math/Include/SwingProcessor.hpp@{src/libs/IMU\_math/Include/SwingProcessor.hpp}}
 \mbox{\hyperlink{SwingProcessor_8hpp}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
-\DoxyCodeLine{00002\ \textcolor{comment}{\ \ \ \ This\ header\ declares\ the\ swing\ processor\ class.}}
-\DoxyCodeLine{00003\ \textcolor{comment}{\ \ \ \ It\ combines\ calibration,\ position\ detection,\ force\ input,}}
-\DoxyCodeLine{00004\ \textcolor{comment}{\ \ \ \ and\ sample\ processing\ to\ control\ when\ swing\ feedback\ becomes\ active.}}
-\DoxyCodeLine{00005\ \textcolor{comment}{*/}}
-\DoxyCodeLine{00006\ }
-\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#pragma\ once}}
-\DoxyCodeLine{00008\ }
-\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{SwingCalibrator_8hpp}{SwingCalibrator.hpp}}"{}}}
-\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{positiondetector_8hpp}{positiondetector.hpp}}"{}}}
-\DoxyCodeLine{00011\ }
-\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <chrono>}}
-\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <functional>}}
-\DoxyCodeLine{00014\ }
-\DoxyCodeLine{00015\ \textcolor{comment}{//\ Defines\ the\ I2C\ bus\ and\ the\ main\ constants\ used\ for\ calibration,\ recalibration,\ and\ acceleration\ deadband\ control.}}
-\DoxyCodeLine{00016\ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{SwingProcessor_8hpp_a08ea26a0b6d1252d3b6fb7f194ad6fd8}{I2C\_BUS}}\ \ \ \ \ \ \ \ =\ 1;}
-\DoxyCodeLine{00017\ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ \ \ \ \ \ \mbox{\hyperlink{SwingProcessor_8hpp_ac684e3b2eaf7d15239031ca404c88059}{CALIB\_SAMPLES}}\ \ =\ 50;\ \ \ }
-\DoxyCodeLine{00018\ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ \ \ \ \ \ \mbox{\hyperlink{SwingProcessor_8hpp_a244f60b18afb57444be7ad3ba6ec1f5a}{RECAL\_SAMPLES}}\ \ =\ 20;\ \ }
-\DoxyCodeLine{00019\ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ \ \ \ \mbox{\hyperlink{SwingProcessor_8hpp_ade41390a2c6011a23e8054df5621d231}{ACCEL\_DEADBAND}}\ =\ 1.0f;\ \ }
-\DoxyCodeLine{00020\ }
-\DoxyCodeLine{00021\ \textcolor{comment}{/*}}
-\DoxyCodeLine{00022\ \textcolor{comment}{\ \ \ \ Gate\ logic:}}
-\DoxyCodeLine{00023\ \textcolor{comment}{\ \ \ 1.\ When\ the\ correct\ start\ position\ is\ held,\ isArmed\_\ becomes\ true\ and\ the\ bias\ is\ recalibrated.}}
-\DoxyCodeLine{00024\ \textcolor{comment}{\ \ \ \ \ \ The\ system\ must\ still\ be\ in\ this\ valid\ position\ when\ the\ piezo\ is\ triggered.}}
-\DoxyCodeLine{00025\ \textcolor{comment}{\ \ \ 2.\ When\ the\ piezo\ is\ pressed\ while\ armed,\ isActive\_\ becomes\ true\ and\ the\ motor\ feedback\ starts.}}
-\DoxyCodeLine{00026\ \textcolor{comment}{\ \ \ \ \ \ Once\ active,\ any\ further\ piezo\ events\ are\ ignored\ to\ avoid\ false\ triggers\ caused\ by\ motor\ vibration.}}
-\DoxyCodeLine{00027\ \textcolor{comment}{\ \ \ 3.\ When\ the\ SwingFeedback\ timer\ ends,\ reset()\ is\ called\ to\ clear\ both\ state\ flags.}}
-\DoxyCodeLine{00028\ \textcolor{comment}{*/}}
-\DoxyCodeLine{00029\ \ \ \ \ }
-\DoxyCodeLine{00030\ \textcolor{comment}{//\ Declares\ the\ swing\ processor\ class,\ including\ its\ callback\ types\ and\ main\ functions\ for\ handling\ force,\ position,\ reset,\ and\ sensor\ sample\ processing.}}
-\DoxyCodeLine{00031\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classSwingProcessor}{SwingProcessor}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classPositionDetector}{PositionDetector}}\ \{}
-\DoxyCodeLine{00032\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{classSwingProcessor_a31d9c6aafec669291604f8e47ce9edfc}{MagnitudeCallback}}\ \ \ \ \ =\ std::function<void(\textcolor{keywordtype}{float}\ accel\_mag)>;}
-\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{classSwingProcessor_acf988060044887b7be3153ab982bc50c}{PositionStateCallback}}\ =\ std::function<void(\textcolor{keywordtype}{bool}\ upright)>;}
-\DoxyCodeLine{00035\ }
-\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{classSwingProcessor}{SwingProcessor}}(\textcolor{keywordtype}{float}\ accel\_deadband\ =\ \mbox{\hyperlink{SwingProcessor_8hpp_ade41390a2c6011a23e8054df5621d231}{ACCEL\_DEADBAND}},}
-\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ calib\_samples\ \ =\ \mbox{\hyperlink{SwingProcessor_8hpp_ac684e3b2eaf7d15239031ca404c88059}{CALIB\_SAMPLES}},}
-\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ recal\_samples\ \ =\ \mbox{\hyperlink{SwingProcessor_8hpp_a244f60b18afb57444be7ad3ba6ec1f5a}{RECAL\_SAMPLES}});}
-\DoxyCodeLine{00039\ }
-\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSwingProcessor_a84a26a132fa3a5003d2896086e6e6cdf}{setMagnitudeCallback}}(\mbox{\hyperlink{classSwingProcessor_a31d9c6aafec669291604f8e47ce9edfc}{MagnitudeCallback}}\ cb);}
-\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSwingProcessor_a3f8acb3098e0478d10211b3b1923fe87}{setPositionCallback}}(\mbox{\hyperlink{classSwingProcessor_acf988060044887b7be3153ab982bc50c}{PositionStateCallback}}\ cb);}
-\DoxyCodeLine{00042\ }
-\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSwingProcessor_a4b5d83fac0c5bec9a287f54424da5434}{onForceReady}}(\textcolor{keywordtype}{bool}\ correctForce);}
-\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classSwingProcessor_a19c8b87ea43e973bf6aa5a55f8789037}{isActive}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classSwingProcessor_a3184c4f9d59ac9495d41009694fcb423}{isActive\_}};\ \}}
-\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSwingProcessor_a36f8bd0212f937bbb9ef9f50583cb034}{onPositionReady}}(\textcolor{keywordtype}{bool}\ upright);}
-\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSwingProcessor_aea9cf6f18b80fb71de6eb85e570ccf3e}{reset}}();}
-\DoxyCodeLine{00047\ }
-\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSwingProcessor_a8e4fbc5ebea519acf8744fefa8f64baa}{onSample}}(\textcolor{keywordtype}{float}\ ax,\ \textcolor{keywordtype}{float}\ ay,\ \textcolor{keywordtype}{float}\ az,}
-\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ mx,\ \textcolor{keywordtype}{float}\ my)\ \textcolor{keyword}{override};}
-\DoxyCodeLine{00050\ }
-\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSwingProcessor_a5fa909917ce884a6f519d1abc22e940a}{operator()}}(\textcolor{keywordtype}{float}\ ax,\ \textcolor{keywordtype}{float}\ ay,\ \textcolor{keywordtype}{float}\ az,}
-\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ gx,\ \textcolor{keywordtype}{float}\ gy,\ \textcolor{keywordtype}{float}\ gz,}
-\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ mx,\ \textcolor{keywordtype}{float}\ my);}
-\DoxyCodeLine{00054\ }
-\DoxyCodeLine{00055\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00056\ \ \ \ \ \textcolor{comment}{//\ Declares\ the\ private\ members\ used\ to\ store\ thresholds,\ calibration,\ callbacks,\ activity\ state,\ and\ reset\ timing.}}
-\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSwingProcessor_ac5180a9b337ef6e73f367989d13f1a35}{accel\_deadband\_}};}
-\DoxyCodeLine{00058\ \ \ \ \ \mbox{\hyperlink{classSwingCalibrator}{SwingCalibrator}}\ \ \ \ \ \ \ \mbox{\hyperlink{classSwingProcessor_aec1740512208f2c203c1b2510f80fa2e}{calibrator\_}};}
-\DoxyCodeLine{00059\ \ \ \ \ \mbox{\hyperlink{classSwingProcessor_a31d9c6aafec669291604f8e47ce9edfc}{MagnitudeCallback}}\ \ \ \ \ \mbox{\hyperlink{classSwingProcessor_a8360c8e9302e099edd84818eff147957}{mag\_callback\_}};}
-\DoxyCodeLine{00060\ \ \ \ \ \mbox{\hyperlink{classSwingProcessor_acf988060044887b7be3153ab982bc50c}{PositionStateCallback}}\ \mbox{\hyperlink{classSwingProcessor_ae75af54e0ae803c94f5cefb3d272bd28}{pos\_callback\_}};}
-\DoxyCodeLine{00061\ }
-\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classSwingProcessor_a38fca6543939d74d4945e817b11ea69f}{isArmed\_}}\ \ =\ \textcolor{keyword}{false};\ \ \ \textcolor{comment}{//\ position\ confirmed,\ ready\ for\ piezo}}
-\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classSwingProcessor_a3184c4f9d59ac9495d41009694fcb423}{isActive\_}}\ =\ \textcolor{keyword}{false};\ \ \ \textcolor{comment}{//\ gate\ open,\ motor\ feedback\ running}}
-\DoxyCodeLine{00064\ }
-\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classSwingProcessor_a6715d31c5e6bfa2b927de00ce6b8e181}{COOLDOWN\_MS}}\ =\ 500;}
-\DoxyCodeLine{00066\ \ \ \ \ std::chrono::steady\_clock::time\_point\ \mbox{\hyperlink{classSwingProcessor_aea2a21e4d6b577842d80ba059b0130f4}{reset\_time\_}}\{\};}
-\DoxyCodeLine{00067\ }
-\DoxyCodeLine{00068\ }
-\DoxyCodeLine{00069\ \};}
+\DoxyCodeLine{\Hypertarget{SwingProcessor_8hpp_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{SwingProcessor_8hpp_source_l00005}00005\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{SwingProcessor_8hpp_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{SwingProcessor_8hpp_source_l00010}00010\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{SwingCalibrator_8hpp}{SwingCalibrator.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{SwingProcessor_8hpp_source_l00011}00011\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{positiondetector_8hpp}{positiondetector.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{SwingProcessor_8hpp_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{SwingProcessor_8hpp_source_l00013}00013\ \textcolor{preprocessor}{\#include\ <chrono>}}
+\DoxyCodeLine{\Hypertarget{SwingProcessor_8hpp_source_l00014}00014\ \textcolor{preprocessor}{\#include\ <functional>}}
+\DoxyCodeLine{\Hypertarget{SwingProcessor_8hpp_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{SwingProcessor_8hpp_source_l00017}\mbox{\hyperlink{SwingProcessor_8hpp_a08ea26a0b6d1252d3b6fb7f194ad6fd8}{00017}}\ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{SwingProcessor_8hpp_a08ea26a0b6d1252d3b6fb7f194ad6fd8}{I2C\_BUS}}\ \ \ \ \ \ \ \ =\ 1;}
+\DoxyCodeLine{\Hypertarget{SwingProcessor_8hpp_source_l00018}\mbox{\hyperlink{SwingProcessor_8hpp_ac684e3b2eaf7d15239031ca404c88059}{00018}}\ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ \ \ \ \ \ \mbox{\hyperlink{SwingProcessor_8hpp_ac684e3b2eaf7d15239031ca404c88059}{CALIB\_SAMPLES}}\ \ =\ 50;\ \ \ }
+\DoxyCodeLine{\Hypertarget{SwingProcessor_8hpp_source_l00019}\mbox{\hyperlink{SwingProcessor_8hpp_a244f60b18afb57444be7ad3ba6ec1f5a}{00019}}\ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ \ \ \ \ \ \mbox{\hyperlink{SwingProcessor_8hpp_a244f60b18afb57444be7ad3ba6ec1f5a}{RECAL\_SAMPLES}}\ \ =\ 20;\ \ \ }
+\DoxyCodeLine{\Hypertarget{SwingProcessor_8hpp_source_l00020}\mbox{\hyperlink{SwingProcessor_8hpp_ade41390a2c6011a23e8054df5621d231}{00020}}\ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ \ \ \ \mbox{\hyperlink{SwingProcessor_8hpp_ade41390a2c6011a23e8054df5621d231}{ACCEL\_DEADBAND}}\ =\ 1.0f;\ \ }
+\DoxyCodeLine{\Hypertarget{SwingProcessor_8hpp_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{SwingProcessor_8hpp_source_l00031}\mbox{\hyperlink{classSwingProcessor}{00031}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classSwingProcessor}{SwingProcessor}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classPositionDetector}{PositionDetector}}\ \{}
+\DoxyCodeLine{\Hypertarget{SwingProcessor_8hpp_source_l00032}00032\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{SwingProcessor_8hpp_source_l00033}\mbox{\hyperlink{classSwingProcessor_a31d9c6aafec669291604f8e47ce9edfc}{00033}}\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{classSwingProcessor_a31d9c6aafec669291604f8e47ce9edfc}{MagnitudeCallback}}\ \ \ \ \ =\ std::function<void(\textcolor{keywordtype}{float}\ accel\_mag)>;}
+\DoxyCodeLine{\Hypertarget{SwingProcessor_8hpp_source_l00034}\mbox{\hyperlink{classSwingProcessor_acf988060044887b7be3153ab982bc50c}{00034}}\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{classSwingProcessor_acf988060044887b7be3153ab982bc50c}{PositionStateCallback}}\ =\ std::function<void(\textcolor{keywordtype}{bool}\ upright)>;}
+\DoxyCodeLine{\Hypertarget{SwingProcessor_8hpp_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{SwingProcessor_8hpp_source_l00036}00036\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{classSwingProcessor}{SwingProcessor}}(\textcolor{keywordtype}{float}\ accel\_deadband\ =\ \mbox{\hyperlink{SwingProcessor_8hpp_ade41390a2c6011a23e8054df5621d231}{ACCEL\_DEADBAND}},}
+\DoxyCodeLine{\Hypertarget{SwingProcessor_8hpp_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ calib\_samples\ \ =\ \mbox{\hyperlink{SwingProcessor_8hpp_ac684e3b2eaf7d15239031ca404c88059}{CALIB\_SAMPLES}},}
+\DoxyCodeLine{\Hypertarget{SwingProcessor_8hpp_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ recal\_samples\ \ =\ \mbox{\hyperlink{SwingProcessor_8hpp_a244f60b18afb57444be7ad3ba6ec1f5a}{RECAL\_SAMPLES}});}
+\DoxyCodeLine{\Hypertarget{SwingProcessor_8hpp_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{SwingProcessor_8hpp_source_l00040}00040\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSwingProcessor_a84a26a132fa3a5003d2896086e6e6cdf}{setMagnitudeCallback}}(\mbox{\hyperlink{classSwingProcessor_a31d9c6aafec669291604f8e47ce9edfc}{MagnitudeCallback}}\ cb);}
+\DoxyCodeLine{\Hypertarget{SwingProcessor_8hpp_source_l00041}00041\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSwingProcessor_a3f8acb3098e0478d10211b3b1923fe87}{setPositionCallback}}(\mbox{\hyperlink{classSwingProcessor_acf988060044887b7be3153ab982bc50c}{PositionStateCallback}}\ cb);}
+\DoxyCodeLine{\Hypertarget{SwingProcessor_8hpp_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{SwingProcessor_8hpp_source_l00043}00043\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSwingProcessor_a4b5d83fac0c5bec9a287f54424da5434}{onForceReady}}(\textcolor{keywordtype}{bool}\ correctForce);}
+\DoxyCodeLine{\Hypertarget{SwingProcessor_8hpp_source_l00044}\mbox{\hyperlink{classSwingProcessor_a19c8b87ea43e973bf6aa5a55f8789037}{00044}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classSwingProcessor_a19c8b87ea43e973bf6aa5a55f8789037}{isActive}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classSwingProcessor_a3184c4f9d59ac9495d41009694fcb423}{isActive\_}};\ \}}
+\DoxyCodeLine{\Hypertarget{SwingProcessor_8hpp_source_l00045}00045\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSwingProcessor_a36f8bd0212f937bbb9ef9f50583cb034}{onPositionReady}}(\textcolor{keywordtype}{bool}\ upright);}
+\DoxyCodeLine{\Hypertarget{SwingProcessor_8hpp_source_l00046}00046\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSwingProcessor_aea9cf6f18b80fb71de6eb85e570ccf3e}{reset}}();}
+\DoxyCodeLine{\Hypertarget{SwingProcessor_8hpp_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{SwingProcessor_8hpp_source_l00048}00048\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSwingProcessor_a8e4fbc5ebea519acf8744fefa8f64baa}{onSample}}(\textcolor{keywordtype}{float}\ ax,\ \textcolor{keywordtype}{float}\ ay,\ \textcolor{keywordtype}{float}\ az,}
+\DoxyCodeLine{\Hypertarget{SwingProcessor_8hpp_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ mx,\ \textcolor{keywordtype}{float}\ my)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{SwingProcessor_8hpp_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{SwingProcessor_8hpp_source_l00051}00051\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSwingProcessor_a5fa909917ce884a6f519d1abc22e940a}{operator()}}(\textcolor{keywordtype}{float}\ ax,\ \textcolor{keywordtype}{float}\ ay,\ \textcolor{keywordtype}{float}\ az,}
+\DoxyCodeLine{\Hypertarget{SwingProcessor_8hpp_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ gx,\ \textcolor{keywordtype}{float}\ gy,\ \textcolor{keywordtype}{float}\ gz,}
+\DoxyCodeLine{\Hypertarget{SwingProcessor_8hpp_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ mx,\ \textcolor{keywordtype}{float}\ my);}
+\DoxyCodeLine{\Hypertarget{SwingProcessor_8hpp_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{SwingProcessor_8hpp_source_l00055}00055\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{SwingProcessor_8hpp_source_l00057}\mbox{\hyperlink{classSwingProcessor_ac5180a9b337ef6e73f367989d13f1a35}{00057}}\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSwingProcessor_ac5180a9b337ef6e73f367989d13f1a35}{accel\_deadband\_}};}
+\DoxyCodeLine{\Hypertarget{SwingProcessor_8hpp_source_l00058}\mbox{\hyperlink{classSwingProcessor_aec1740512208f2c203c1b2510f80fa2e}{00058}}\ \ \ \ \ \mbox{\hyperlink{classSwingCalibrator}{SwingCalibrator}}\ \ \ \ \ \ \ \mbox{\hyperlink{classSwingProcessor_aec1740512208f2c203c1b2510f80fa2e}{calibrator\_}};}
+\DoxyCodeLine{\Hypertarget{SwingProcessor_8hpp_source_l00059}\mbox{\hyperlink{classSwingProcessor_a8360c8e9302e099edd84818eff147957}{00059}}\ \ \ \ \ \mbox{\hyperlink{classSwingProcessor_a31d9c6aafec669291604f8e47ce9edfc}{MagnitudeCallback}}\ \ \ \ \ \mbox{\hyperlink{classSwingProcessor_a8360c8e9302e099edd84818eff147957}{mag\_callback\_}};}
+\DoxyCodeLine{\Hypertarget{SwingProcessor_8hpp_source_l00060}\mbox{\hyperlink{classSwingProcessor_ae75af54e0ae803c94f5cefb3d272bd28}{00060}}\ \ \ \ \ \mbox{\hyperlink{classSwingProcessor_acf988060044887b7be3153ab982bc50c}{PositionStateCallback}}\ \mbox{\hyperlink{classSwingProcessor_ae75af54e0ae803c94f5cefb3d272bd28}{pos\_callback\_}};}
+\DoxyCodeLine{\Hypertarget{SwingProcessor_8hpp_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{SwingProcessor_8hpp_source_l00062}\mbox{\hyperlink{classSwingProcessor_a38fca6543939d74d4945e817b11ea69f}{00062}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classSwingProcessor_a38fca6543939d74d4945e817b11ea69f}{isArmed\_}}\ \ \ \ \ \ =\ \textcolor{keyword}{false};\ \ }
+\DoxyCodeLine{\Hypertarget{SwingProcessor_8hpp_source_l00063}\mbox{\hyperlink{classSwingProcessor_a3184c4f9d59ac9495d41009694fcb423}{00063}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classSwingProcessor_a3184c4f9d59ac9495d41009694fcb423}{isActive\_}}\ \ \ \ \ =\ \textcolor{keyword}{false};\ \ }
+\DoxyCodeLine{\Hypertarget{SwingProcessor_8hpp_source_l00064}\mbox{\hyperlink{classSwingProcessor_a9365323ebee862a6d615c08696dc63e4}{00064}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classSwingProcessor_a9365323ebee862a6d615c08696dc63e4}{hasLeftStart\_}}\ =\ \textcolor{keyword}{false};\ \ }
+\DoxyCodeLine{\Hypertarget{SwingProcessor_8hpp_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{SwingProcessor_8hpp_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{SwingProcessor_8hpp_source_l00067}\mbox{\hyperlink{classSwingProcessor_a6715d31c5e6bfa2b927de00ce6b8e181}{00067}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classSwingProcessor_a6715d31c5e6bfa2b927de00ce6b8e181}{COOLDOWN\_MS}}\ =\ 500;}
+\DoxyCodeLine{\Hypertarget{SwingProcessor_8hpp_source_l00068}\mbox{\hyperlink{classSwingProcessor_aea2a21e4d6b577842d80ba059b0130f4}{00068}}\ \ \ \ \ std::chrono::steady\_clock::time\_point\ \mbox{\hyperlink{classSwingProcessor_aea2a21e4d6b577842d80ba059b0130f4}{reset\_time\_}}\{\};}
+\DoxyCodeLine{\Hypertarget{SwingProcessor_8hpp_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{SwingProcessor_8hpp_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{SwingProcessor_8hpp_source_l00071}00071\ \};}
 
 \end{DoxyCode}

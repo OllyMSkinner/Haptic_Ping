@@ -86,6 +86,15 @@ $(function() {
 Collaboration diagram for icm20948::settings:</div>
 <div class="dyncontent">
 <div class="center"><img src="structicm20948_1_1settings__coll__graph.png" border="0" usemap="#aicm20948_1_1settings_coll__map" alt="Collaboration graph"/></div>
+<map name="aicm20948_1_1settings_coll__map" id="aicm20948_1_1settings_coll__map">
+<area shape="rect" title=" " alt="" coords="235,93,381,119"/>
+<area shape="rect" href="structicm20948_1_1accel__settings.html" title=" " alt="" coords="5,5,192,31"/>
+<area shape="poly" title=" " alt="" coords="141,34,281,91,279,96,139,38"/>
+<area shape="rect" href="structicm20948_1_1gyro__settings.html" title="Gyroscope runtime configuration." alt="" coords="217,5,399,31"/>
+<area shape="poly" title=" " alt="" coords="311,45,311,93,305,93,305,45"/>
+<area shape="rect" href="structicm20948_1_1magn__settings.html" title="Magnetometer runtime configuration." alt="" coords="423,5,614,31"/>
+<area shape="poly" title=" " alt="" coords="479,38,337,96,335,91,477,34"/>
+</map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -93,6 +102,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a10a11e4c131120c7d473aa97376505df" id="r_a10a11e4c131120c7d473aa97376505df"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structicm20948_1_1settings.html#a10a11e4c131120c7d473aa97376505df">settings</a> (<a class="el" href="structicm20948_1_1accel__settings.html">accel_settings</a> <a class="el" href="structicm20948_1_1settings.html#ab4b40ef5ec0c6cd305df73dcb17ea781">accel</a>=<a class="el" href="structicm20948_1_1accel__settings.html">accel_settings</a>(), <a class="el" href="structicm20948_1_1gyro__settings.html">gyro_settings</a> <a class="el" href="structicm20948_1_1settings.html#a0c2485a146323219f03a06177ced80d9">gyro</a>=<a class="el" href="structicm20948_1_1gyro__settings.html">gyro_settings</a>(), <a class="el" href="structicm20948_1_1magn__settings.html">magn_settings</a> <a class="el" href="structicm20948_1_1settings.html#a1e7c191c05324ae009daa9edca4b5b86">magn</a>=<a class="el" href="structicm20948_1_1magn__settings.html">magn_settings</a>())</td></tr>
 <tr class="separator:a10a11e4c131120c7d473aa97376505df"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae7fa4079f4d7dbe03aa4454b6a3749c8" id="r_ae7fa4079f4d7dbe03aa4454b6a3749c8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structicm20948_1_1settings.html#ae7fa4079f4d7dbe03aa4454b6a3749c8">settings</a> (YAML::Node config_file_node)</td></tr>
+<tr class="memdesc:ae7fa4079f4d7dbe03aa4454b6a3749c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse driver settings from YAML.  <br /></td></tr>
 <tr class="separator:ae7fa4079f4d7dbe03aa4454b6a3749c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
@@ -104,7 +114,11 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a1e7c191c05324ae009daa9edca4b5b86" id="r_a1e7c191c05324ae009daa9edca4b5b86"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structicm20948_1_1magn__settings.html">magn_settings</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structicm20948_1_1settings.html#a1e7c191c05324ae009daa9edca4b5b86">magn</a></td></tr>
 <tr class="separator:a1e7c191c05324ae009daa9edca4b5b86"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Aggregate device configuration. This gives client code a single configuration object, which improves readability and makes the driver easier to construct and reconfigure. </p>
+
+<p class="definition">Definition at line <a class="el" href="Icm20948driver_8hpp_source.html#l00226">226</a> of file <a class="el" href="Icm20948driver_8hpp_source.html">Icm20948driver.hpp</a>.</p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a10a11e4c131120c7d473aa97376505df" name="a10a11e4c131120c7d473aa97376505df"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a10a11e4c131120c7d473aa97376505df">&#9670;&#160;</a></span>settings() <span class="overload">[1/2]</span></h2>
 
@@ -145,6 +159,8 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="Icm20948driver_8hpp_source.html#l00231">231</a> of file <a class="el" href="Icm20948driver_8hpp_source.html">Icm20948driver.hpp</a>.</p>
+
 </div>
 </div>
 <a id="ae7fa4079f4d7dbe03aa4454b6a3749c8" name="ae7fa4079f4d7dbe03aa4454b6a3749c8"></a>
@@ -171,6 +187,12 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Parse driver settings from YAML. </p>
+<p>Construct settings from a YAML config node. This supports configuration-driven setup without hard-coding all parameters in application code. </p>
+<p>Magnetometer YAML config intentionally ignored for stability testing.</p>
+
+<p class="definition">Definition at line <a class="el" href="Icm20948driver_8cpp_source.html#l00118">118</a> of file <a class="el" href="Icm20948driver_8cpp_source.html">Icm20948driver.cpp</a>.</p>
+
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
@@ -186,6 +208,8 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="Icm20948driver_8hpp_source.html#l00227">227</a> of file <a class="el" href="Icm20948driver_8hpp_source.html">Icm20948driver.hpp</a>.</p>
+
 </div>
 </div>
 <a id="a0c2485a146323219f03a06177ced80d9" name="a0c2485a146323219f03a06177ced80d9"></a>
@@ -199,6 +223,8 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="Icm20948driver_8hpp_source.html#l00228">228</a> of file <a class="el" href="Icm20948driver_8hpp_source.html">Icm20948driver.hpp</a>.</p>
 
 </div>
 </div>
@@ -214,11 +240,13 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="Icm20948driver_8hpp_source.html#l00229">229</a> of file <a class="el" href="Icm20948driver_8hpp_source.html">Icm20948driver.hpp</a>.</p>
+
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following files:<ul>
 <li>src/libs/IMU/Include/<a class="el" href="Icm20948driver_8hpp_source.html">Icm20948driver.hpp</a></li>
-<li>src/libs/IMU/<a class="el" href="Icm20948driver_8cpp.html">Icm20948driver.cpp</a></li>
+<li>src/libs/IMU/<a class="el" href="Icm20948driver_8cpp_source.html">Icm20948driver.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

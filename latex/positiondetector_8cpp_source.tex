@@ -1,0 +1,73 @@
+\doxysection{positiondetector.\+cpp}
+\hypertarget{positiondetector_8cpp_source}{}\label{positiondetector_8cpp_source}\index{src/libs/IMU\_math/positiondetector.cpp@{src/libs/IMU\_math/positiondetector.cpp}}
+\mbox{\hyperlink{positiondetector_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{positiondetector_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{positiondetector_8hpp}{positiondetector.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{positiondetector_8cpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{positiondetector_8cpp_source_l00004}\mbox{\hyperlink{classPositionDetector_a14b40be880ad02568135c29134a62e56}{00004}}\ \mbox{\hyperlink{classPositionDetector_a14b40be880ad02568135c29134a62e56}{PositionDetector::PositionDetector}}()}
+\DoxyCodeLine{\Hypertarget{positiondetector_8cpp_source_l00005}00005\ \ \ \ \ :\ \mbox{\hyperlink{classPositionDetector}{PositionDetector}}(\mbox{\hyperlink{structPositionDetector_1_1Config}{Config}}\{\})\ \{\}}
+\DoxyCodeLine{\Hypertarget{positiondetector_8cpp_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{positiondetector_8cpp_source_l00007}\mbox{\hyperlink{classPositionDetector_ab0e54c6126a4a687ee54da1488b1a6ca}{00007}}\ \mbox{\hyperlink{classPositionDetector_a14b40be880ad02568135c29134a62e56}{PositionDetector::PositionDetector}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structPositionDetector_1_1Config}{Config}}\&\ c)}
+\DoxyCodeLine{\Hypertarget{positiondetector_8cpp_source_l00008}00008\ \ \ \ \ :\ cfg(c),\ stableCount(0),\ confirmed(false)}
+\DoxyCodeLine{\Hypertarget{positiondetector_8cpp_source_l00009}00009\ \{}
+\DoxyCodeLine{\Hypertarget{positiondetector_8cpp_source_l00011}00011\ \ \ \ \ \textcolor{keywordtype}{float}\ mag\ =\ std::sqrt(c.\mbox{\hyperlink{structPositionDetector_1_1Config_a063553abb0586e69dcdbb6d1128d554d}{refX}}*c.\mbox{\hyperlink{structPositionDetector_1_1Config_a063553abb0586e69dcdbb6d1128d554d}{refX}}\ +\ c.\mbox{\hyperlink{structPositionDetector_1_1Config_a609d2613543493c696721702a04573b5}{refY}}*c.\mbox{\hyperlink{structPositionDetector_1_1Config_a609d2613543493c696721702a04573b5}{refY}}\ +\ c.\mbox{\hyperlink{structPositionDetector_1_1Config_aa5aa39c8e4b9a73c99b70a985d01624d}{refZ}}*c.\mbox{\hyperlink{structPositionDetector_1_1Config_aa5aa39c8e4b9a73c99b70a985d01624d}{refZ}});}
+\DoxyCodeLine{\Hypertarget{positiondetector_8cpp_source_l00012}00012\ \ \ \ \ \mbox{\hyperlink{classPositionDetector_a938a212e42e110a7344429f2a65fe40f}{nRefX}}\ =\ c.\mbox{\hyperlink{structPositionDetector_1_1Config_a063553abb0586e69dcdbb6d1128d554d}{refX}}\ /\ mag;}
+\DoxyCodeLine{\Hypertarget{positiondetector_8cpp_source_l00013}00013\ \ \ \ \ \mbox{\hyperlink{classPositionDetector_ad1083c445fd76423838c90fed341a590}{nRefY}}\ =\ c.\mbox{\hyperlink{structPositionDetector_1_1Config_a609d2613543493c696721702a04573b5}{refY}}\ /\ mag;}
+\DoxyCodeLine{\Hypertarget{positiondetector_8cpp_source_l00014}00014\ \ \ \ \ \mbox{\hyperlink{classPositionDetector_a6303a331e34b61b49b7b3c6681355111}{nRefZ}}\ =\ c.\mbox{\hyperlink{structPositionDetector_1_1Config_aa5aa39c8e4b9a73c99b70a985d01624d}{refZ}}\ /\ mag;}
+\DoxyCodeLine{\Hypertarget{positiondetector_8cpp_source_l00015}00015\ \}}
+\DoxyCodeLine{\Hypertarget{positiondetector_8cpp_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{positiondetector_8cpp_source_l00017}\mbox{\hyperlink{classPositionDetector_a346d2194b0515bc47f4e03d186339ff9}{00017}}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classPositionDetector_a346d2194b0515bc47f4e03d186339ff9}{PositionDetector::wrapAngleDeg}}(\textcolor{keywordtype}{float}\ a)}
+\DoxyCodeLine{\Hypertarget{positiondetector_8cpp_source_l00018}00018\ \{}
+\DoxyCodeLine{\Hypertarget{positiondetector_8cpp_source_l00020}00020\ \ \ \ \ \textcolor{keywordflow}{while}\ (a\ >\ 180.0f)\ a\ -\/=\ 360.0f;}
+\DoxyCodeLine{\Hypertarget{positiondetector_8cpp_source_l00021}00021\ \ \ \ \ \textcolor{keywordflow}{while}\ (a\ <\ -\/180.0f)\ a\ +=\ 360.0f;}
+\DoxyCodeLine{\Hypertarget{positiondetector_8cpp_source_l00022}00022\ \ \ \ \ \textcolor{keywordflow}{return}\ a;}
+\DoxyCodeLine{\Hypertarget{positiondetector_8cpp_source_l00023}00023\ \}}
+\DoxyCodeLine{\Hypertarget{positiondetector_8cpp_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{positiondetector_8cpp_source_l00025}\mbox{\hyperlink{classPositionDetector_aa1219497239de86b59d8c88f6a60c876}{00025}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classPositionDetector_aa1219497239de86b59d8c88f6a60c876}{PositionDetector::resetState}}()}
+\DoxyCodeLine{\Hypertarget{positiondetector_8cpp_source_l00026}00026\ \{}
+\DoxyCodeLine{\Hypertarget{positiondetector_8cpp_source_l00028}00028\ \ \ \ \ \mbox{\hyperlink{classPositionDetector_af56e669264fd7441de6ae3343d8e5245}{stableCount}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{positiondetector_8cpp_source_l00029}00029\ \ \ \ \ \mbox{\hyperlink{classPositionDetector_a890b67cd6046e11042bd7ba0214571cb}{confirmed}}\ \ \ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{positiondetector_8cpp_source_l00030}00030\ \}}
+\DoxyCodeLine{\Hypertarget{positiondetector_8cpp_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{positiondetector_8cpp_source_l00032}\mbox{\hyperlink{classPositionDetector_aff71ff748fddc6e18c1303a0aafc9dcf}{00032}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classPositionDetector_aff71ff748fddc6e18c1303a0aafc9dcf}{PositionDetector::onSample}}(\textcolor{keywordtype}{float}\ ax,\ \textcolor{keywordtype}{float}\ ay,\ \textcolor{keywordtype}{float}\ az,\ \textcolor{keywordtype}{float}\ mx,\ \textcolor{keywordtype}{float}\ my)}
+\DoxyCodeLine{\Hypertarget{positiondetector_8cpp_source_l00033}00033\ \{}
+\DoxyCodeLine{\Hypertarget{positiondetector_8cpp_source_l00035}00035\ \ \ \ \ \textcolor{keywordtype}{float}\ g\ =\ std::sqrt(ax\ *\ ax\ +\ ay\ *\ ay\ +\ az\ *\ az);}
+\DoxyCodeLine{\Hypertarget{positiondetector_8cpp_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{positiondetector_8cpp_source_l00037}00037\ \ \ \ \ \textcolor{keywordtype}{bool}\ accelOK\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{positiondetector_8cpp_source_l00038}00038\ \ \ \ \ \textcolor{keywordtype}{bool}\ headingOK\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{positiondetector_8cpp_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{positiondetector_8cpp_source_l00041}00041\ \ \ \ \ \textcolor{keywordtype}{float}\ headingDeg\ =\ std::atan2(my,\ mx)\ *\ 180.0f\ /\ 3.14159265f;}
+\DoxyCodeLine{\Hypertarget{positiondetector_8cpp_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{positiondetector_8cpp_source_l00044}00044\ \ \ \ \ \textcolor{keywordtype}{float}\ headingError\ =\ \mbox{\hyperlink{classPositionDetector_a346d2194b0515bc47f4e03d186339ff9}{wrapAngleDeg}}(headingDeg\ -\/\ \mbox{\hyperlink{classPositionDetector_a3d1ce96b906dab1b6b43d7fe71dab89e}{cfg}}.\mbox{\hyperlink{structPositionDetector_1_1Config_afb6e988d2a360f24dc814494cbb4eac3}{refHeadingDeg}});}
+\DoxyCodeLine{\Hypertarget{positiondetector_8cpp_source_l00045}00045\ \ \ \ \ headingOK\ =\ (std::fabs(headingError)\ <=\ \mbox{\hyperlink{classPositionDetector_a3d1ce96b906dab1b6b43d7fe71dab89e}{cfg}}.\mbox{\hyperlink{structPositionDetector_1_1Config_a8c4fcea4449a9db770d2d5bf4a654107}{headingToleranceDeg}});}
+\DoxyCodeLine{\Hypertarget{positiondetector_8cpp_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{positiondetector_8cpp_source_l00048}00048\ \ \ \ \ \textcolor{keywordflow}{if}\ (g\ >=\ \mbox{\hyperlink{classPositionDetector_a3d1ce96b906dab1b6b43d7fe71dab89e}{cfg}}.\mbox{\hyperlink{structPositionDetector_1_1Config_a5bc3ba0437fcbee5fbbc074033763558}{minG}}\ \&\&\ g\ <=\ \mbox{\hyperlink{classPositionDetector_a3d1ce96b906dab1b6b43d7fe71dab89e}{cfg}}.\mbox{\hyperlink{structPositionDetector_1_1Config_a7b5fc9c011fe6d3e1a17ed4501da1abf}{maxG}})\ \{}
+\DoxyCodeLine{\Hypertarget{positiondetector_8cpp_source_l00050}00050\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ nx\ =\ ax\ /\ g;}
+\DoxyCodeLine{\Hypertarget{positiondetector_8cpp_source_l00051}00051\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ ny\ =\ ay\ /\ g;}
+\DoxyCodeLine{\Hypertarget{positiondetector_8cpp_source_l00052}00052\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ nz\ =\ az\ /\ g;}
+\DoxyCodeLine{\Hypertarget{positiondetector_8cpp_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{positiondetector_8cpp_source_l00055}00055\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ dot\ =\ nx\ *\ \mbox{\hyperlink{classPositionDetector_a938a212e42e110a7344429f2a65fe40f}{nRefX}}\ +\ ny\ *\ \mbox{\hyperlink{classPositionDetector_ad1083c445fd76423838c90fed341a590}{nRefY}}\ +\ nz\ *\ \mbox{\hyperlink{classPositionDetector_a6303a331e34b61b49b7b3c6681355111}{nRefZ}};}
+\DoxyCodeLine{\Hypertarget{positiondetector_8cpp_source_l00056}00056\ \ \ \ \ \ \ \ \ accelOK\ =\ (dot\ >=\ \mbox{\hyperlink{classPositionDetector_a3d1ce96b906dab1b6b43d7fe71dab89e}{cfg}}.\mbox{\hyperlink{structPositionDetector_1_1Config_a6d8656fb0bde8819a205e8f967fe65f0}{minDot}});}
+\DoxyCodeLine{\Hypertarget{positiondetector_8cpp_source_l00057}00057\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{positiondetector_8cpp_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{positiondetector_8cpp_source_l00060}00060\ \ \ \ \ \textcolor{keywordtype}{bool}\ ok\ =\ accelOK\ \&\&\ headingOK;}
+\DoxyCodeLine{\Hypertarget{positiondetector_8cpp_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{positiondetector_8cpp_source_l00062}00062\ \ \ \ \ \textcolor{keywordflow}{if}\ (ok)\ \{}
+\DoxyCodeLine{\Hypertarget{positiondetector_8cpp_source_l00064}00064\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classPositionDetector_af56e669264fd7441de6ae3343d8e5245}{stableCount}}\ <\ \mbox{\hyperlink{classPositionDetector_a3d1ce96b906dab1b6b43d7fe71dab89e}{cfg}}.\mbox{\hyperlink{structPositionDetector_1_1Config_aa40d0403625f7ed84ad15bedaa16048b}{stabilitySamples}})\ \{}
+\DoxyCodeLine{\Hypertarget{positiondetector_8cpp_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ ++\mbox{\hyperlink{classPositionDetector_af56e669264fd7441de6ae3343d8e5245}{stableCount}};}
+\DoxyCodeLine{\Hypertarget{positiondetector_8cpp_source_l00066}00066\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{positiondetector_8cpp_source_l00067}00067\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{positiondetector_8cpp_source_l00069}00069\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classPositionDetector_af56e669264fd7441de6ae3343d8e5245}{stableCount}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{positiondetector_8cpp_source_l00070}00070\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{positiondetector_8cpp_source_l00071}00071\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{positiondetector_8cpp_source_l00073}00073\ \ \ \ \ \textcolor{keywordtype}{bool}\ nowConfirmed\ =\ (\mbox{\hyperlink{classPositionDetector_af56e669264fd7441de6ae3343d8e5245}{stableCount}}\ >=\ \mbox{\hyperlink{classPositionDetector_a3d1ce96b906dab1b6b43d7fe71dab89e}{cfg}}.\mbox{\hyperlink{structPositionDetector_1_1Config_aa40d0403625f7ed84ad15bedaa16048b}{stabilitySamples}});}
+\DoxyCodeLine{\Hypertarget{positiondetector_8cpp_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{positiondetector_8cpp_source_l00076}00076\ \ \ \ \ \textcolor{keywordflow}{if}\ (nowConfirmed\ !=\ \mbox{\hyperlink{classPositionDetector_a890b67cd6046e11042bd7ba0214571cb}{confirmed}})\ \{}
+\DoxyCodeLine{\Hypertarget{positiondetector_8cpp_source_l00077}00077\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classPositionDetector_a890b67cd6046e11042bd7ba0214571cb}{confirmed}}\ =\ nowConfirmed;}
+\DoxyCodeLine{\Hypertarget{positiondetector_8cpp_source_l00078}00078\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classPositionDetector_aae56d9e61b2afb80a07003ba59fbb318}{callback}})\ \{}
+\DoxyCodeLine{\Hypertarget{positiondetector_8cpp_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classPositionDetector_aae56d9e61b2afb80a07003ba59fbb318}{callback}}(\mbox{\hyperlink{classPositionDetector_a890b67cd6046e11042bd7ba0214571cb}{confirmed}});}
+\DoxyCodeLine{\Hypertarget{positiondetector_8cpp_source_l00080}00080\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{positiondetector_8cpp_source_l00081}00081\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{positiondetector_8cpp_source_l00082}00082\ \}}
+
+\end{DoxyCode}

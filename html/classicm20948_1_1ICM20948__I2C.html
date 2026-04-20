@@ -88,12 +88,26 @@ $(function() {
 Collaboration diagram for icm20948::ICM20948_I2C:</div>
 <div class="dyncontent">
 <div class="center"><img src="classicm20948_1_1ICM20948__I2C__coll__graph.png" border="0" usemap="#aicm20948_1_1ICM20948__I2C_coll__map" alt="Collaboration graph"/></div>
+<map name="aicm20948_1_1ICM20948__I2C_coll__map" id="aicm20948_1_1ICM20948__I2C_coll__map">
+<area shape="rect" title=" " alt="" coords="215,181,401,207"/>
+<area shape="rect" href="structicm20948_1_1settings.html" title=" " alt="" coords="235,93,381,119"/>
+<area shape="poly" title=" " alt="" coords="311,133,311,181,305,181,305,133"/>
+<area shape="rect" href="structicm20948_1_1accel__settings.html" title=" " alt="" coords="5,5,192,31"/>
+<area shape="poly" title=" " alt="" coords="141,34,281,91,279,96,139,38"/>
+<area shape="rect" href="structicm20948_1_1gyro__settings.html" title="Gyroscope runtime configuration." alt="" coords="217,5,399,31"/>
+<area shape="poly" title=" " alt="" coords="311,45,311,93,305,93,305,45"/>
+<area shape="rect" href="structicm20948_1_1magn__settings.html" title="Magnetometer runtime configuration." alt="" coords="423,5,614,31"/>
+<area shape="poly" title=" " alt="" coords="479,38,337,96,335,91,477,34"/>
+</map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a33ea17e32b496ab9358dcef69d8c3b5c" id="r_a33ea17e32b496ab9358dcef69d8c3b5c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classicm20948_1_1ICM20948__I2C.html#a33ea17e32b496ab9358dcef69d8c3b5c">ICM20948_I2C</a> (unsigned i2c_bus, unsigned i2c_address=<a class="el" href="Icm20948driver_8hpp.html#ad2332082f2390f86f6d6ee09acf1e259">ICM20948_I2C_ADDR</a>, <a class="el" href="structicm20948_1_1settings.html">icm20948::settings</a> <a class="el" href="structicm20948_1_1settings.html">settings</a>=<a class="el" href="structicm20948_1_1settings.html">icm20948::settings</a>())</td></tr>
+<tr class="memdesc:a33ea17e32b496ab9358dcef69d8c3b5c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Open the I2C device and initialise cached driver state.  <br /></td></tr>
 <tr class="separator:a33ea17e32b496ab9358dcef69d8c3b5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a213bb7cdf5c8e3894c730ddc1cd971bc" id="r_a213bb7cdf5c8e3894c730ddc1cd971bc"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classicm20948_1_1ICM20948__I2C.html#a213bb7cdf5c8e3894c730ddc1cd971bc">~ICM20948_I2C</a> ()</td></tr>
+<tr class="separator:a213bb7cdf5c8e3894c730ddc1cd971bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0ed48078a426d7d43d93aa8d0bd72b92" id="r_a0ed48078a426d7d43d93aa8d0bd72b92"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classicm20948_1_1ICM20948__I2C.html#a0ed48078a426d7d43d93aa8d0bd72b92">init</a> ()</td></tr>
 <tr class="separator:a0ed48078a426d7d43d93aa8d0bd72b92"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9730db34affbddeb85298eaeb9322a6f" id="r_a9730db34affbddeb85298eaeb9322a6f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classicm20948_1_1ICM20948__I2C.html#a9730db34affbddeb85298eaeb9322a6f">reset</a> ()</td></tr>
@@ -180,7 +194,12 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:aa8e9f9d91270dd262a36beb5057a1c82" id="r_aa8e9f9d91270dd262a36beb5057a1c82"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classicm20948_1_1ICM20948__I2C.html#aa8e9f9d91270dd262a36beb5057a1c82">_magn_scale_factor</a></td></tr>
 <tr class="separator:aa8e9f9d91270dd262a36beb5057a1c82"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><a class="el" href="classicm20948_1_1ICM20948__I2C.html">ICM20948_I2C</a> encapsulates the device driver for the IMU over Linux I2C.</p>
+<p>SOLID principles: S - This class focuses on IMU communication, configuration, and conversion of raw register data into decoded sensor values. O - Client code interacts through configuration objects and high-level methods, allowing internal implementation details to evolve without forcing changes on users of the class. </p>
+
+<p class="definition">Definition at line <a class="el" href="Icm20948driver_8hpp_source.html#l00274">274</a> of file <a class="el" href="Icm20948driver_8hpp_source.html">Icm20948driver.hpp</a>.</p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a33ea17e32b496ab9358dcef69d8c3b5c" name="a33ea17e32b496ab9358dcef69d8c3b5c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a33ea17e32b496ab9358dcef69d8c3b5c">&#9670;&#160;</a></span>ICM20948_I2C()</h2>
 
@@ -213,6 +232,32 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Open the I2C device and initialise cached driver state. </p>
+<p>Set a kernel-side I2C timeout.</p>
+<p>Bind this fd to the IMU slave address.</p>
+<p>Zero cached sensor outputs.</p>
+
+<p class="definition">Definition at line <a class="el" href="Icm20948driver_8cpp_source.html#l00163">163</a> of file <a class="el" href="Icm20948driver_8cpp_source.html">Icm20948driver.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a213bb7cdf5c8e3894c730ddc1cd971bc" name="a213bb7cdf5c8e3894c730ddc1cd971bc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a213bb7cdf5c8e3894c730ddc1cd971bc">&#9670;&#160;</a></span>~ICM20948_I2C()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">icm20948::ICM20948_I2C::~ICM20948_I2C </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="Icm20948driver_8cpp_source.html#l00200">200</a> of file <a class="el" href="Icm20948driver_8cpp_source.html">Icm20948driver.cpp</a>.</p>
+
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -238,6 +283,9 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Reset the chip's internal I2C master controller.</p>
+
+<p class="definition">Definition at line <a class="el" href="Icm20948driver_8cpp_source.html#l00495">495</a> of file <a class="el" href="Icm20948driver_8cpp_source.html">Icm20948driver.cpp</a>.</p>
 
 </div>
 </div>
@@ -263,6 +311,10 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Device setup helpers. These methods isolate configuration subtasks, which keeps the public interface small and the implementation more maintainable. </p>
+<p>Enable raw-data-ready interrupt.</p>
+
+<p class="definition">Definition at line <a class="el" href="Icm20948driver_8cpp_source.html#l00276">276</a> of file <a class="el" href="Icm20948driver_8cpp_source.html">Icm20948driver.cpp</a>.</p>
 
 </div>
 </div>
@@ -288,6 +340,9 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Probe the magnetometer and reset the internal master on failure.</p>
+
+<p class="definition">Definition at line <a class="el" href="Icm20948driver_8cpp_source.html#l00467">467</a> of file <a class="el" href="Icm20948driver_8cpp_source.html">Icm20948driver.cpp</a>.</p>
 
 </div>
 </div>
@@ -313,6 +368,9 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Enable the chip's internal I2C master path for magnetometer access.</p>
+
+<p class="definition">Definition at line <a class="el" href="Icm20948driver_8cpp_source.html#l00439">439</a> of file <a class="el" href="Icm20948driver_8cpp_source.html">Icm20948driver.cpp</a>.</p>
 
 </div>
 </div>
@@ -338,6 +396,10 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Magnetometer setup via the ICM-20948 internal I2C master. This complexity is hidden from callers so they can treat the driver as a single IMU abstraction. </p>
+<p>Bring up the internal AK09916 through the chip's I2C master.</p>
+
+<p class="definition">Definition at line <a class="el" href="Icm20948driver_8cpp_source.html#l00424">424</a> of file <a class="el" href="Icm20948driver_8cpp_source.html">Icm20948driver.cpp</a>.</p>
 
 </div>
 </div>
@@ -363,6 +425,9 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Switch through shutdown before applying target mode.</p>
+
+<p class="definition">Definition at line <a class="el" href="Icm20948driver_8cpp_source.html#l00457">457</a> of file <a class="el" href="Icm20948driver_8cpp_source.html">Icm20948driver.cpp</a>.</p>
 
 </div>
 </div>
@@ -388,6 +453,9 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Configure SLV0 to continuously fetch magnetometer data into EXT_SLV_SENS_DATA.</p>
+
+<p class="definition">Definition at line <a class="el" href="Icm20948driver_8cpp_source.html#l00480">480</a> of file <a class="el" href="Icm20948driver_8cpp_source.html">Icm20948driver.cpp</a>.</p>
 
 </div>
 </div>
@@ -436,6 +504,9 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Extract one bit from a register.</p>
+
+<p class="definition">Definition at line <a class="el" href="Icm20948driver_8cpp_source.html#l00550">550</a> of file <a class="el" href="Icm20948driver_8cpp_source.html">Icm20948driver.cpp</a>.</p>
 
 </div>
 </div>
@@ -484,6 +555,9 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Sequential block read starting at start_reg.</p>
+
+<p class="definition">Definition at line <a class="el" href="Icm20948driver_8cpp_source.html#l00560">560</a> of file <a class="el" href="Icm20948driver_8cpp_source.html">Icm20948driver.cpp</a>.</p>
 
 </div>
 </div>
@@ -527,6 +601,8 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="Icm20948driver_8cpp_source.html#l00511">511</a> of file <a class="el" href="Icm20948driver_8cpp_source.html">Icm20948driver.cpp</a>.</p>
+
 </div>
 </div>
 <a id="a7f2f8dbfed2281c99909e65edc4d25b6" name="a7f2f8dbfed2281c99909e65edc4d25b6"></a>
@@ -562,6 +638,10 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Route a read from the external magnetometer via SLV4.</p>
+<p>Poll for completion/ACK.</p>
+
+<p class="definition">Definition at line <a class="el" href="Icm20948driver_8cpp_source.html#l00612">612</a> of file <a class="el" href="Icm20948driver_8cpp_source.html">Icm20948driver.cpp</a>.</p>
 
 </div>
 </div>
@@ -587,6 +667,9 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Pack accel DLPF enable, range, and cutoff into CONFIG_1.</p>
+
+<p class="definition">Definition at line <a class="el" href="Icm20948driver_8cpp_source.html#l00389">389</a> of file <a class="el" href="Icm20948driver_8cpp_source.html">Icm20948driver.cpp</a>.</p>
 
 </div>
 </div>
@@ -612,6 +695,9 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Sample-rate divider is split across MSB/LSB registers.</p>
+
+<p class="definition">Definition at line <a class="el" href="Icm20948driver_8cpp_source.html#l00376">376</a> of file <a class="el" href="Icm20948driver_8cpp_source.html">Icm20948driver.cpp</a>.</p>
 
 </div>
 </div>
@@ -638,6 +724,9 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Skip the write if the requested bank is already selected.</p>
+
+<p class="definition">Definition at line <a class="el" href="Icm20948driver_8cpp_source.html#l00351">351</a> of file <a class="el" href="Icm20948driver_8cpp_source.html">Icm20948driver.cpp</a>.</p>
 
 </div>
 </div>
@@ -663,6 +752,9 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Pack gyro DLPF enable, range, and cutoff into CONFIG_1.</p>
+
+<p class="definition">Definition at line <a class="el" href="Icm20948driver_8cpp_source.html#l00410">410</a> of file <a class="el" href="Icm20948driver_8cpp_source.html">Icm20948driver.cpp</a>.</p>
 
 </div>
 </div>
@@ -688,6 +780,8 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="Icm20948driver_8cpp_source.html#l00403">403</a> of file <a class="el" href="Icm20948driver_8cpp_source.html">Icm20948driver.cpp</a>.</p>
 
 </div>
 </div>
@@ -736,6 +830,9 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Read-modify-write a single register bit.</p>
+
+<p class="definition">Definition at line <a class="el" href="Icm20948driver_8cpp_source.html#l00535">535</a> of file <a class="el" href="Icm20948driver_8cpp_source.html">Icm20948driver.cpp</a>.</p>
 
 </div>
 </div>
@@ -778,6 +875,10 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Low-level register access helpers. These centralise raw byte/bit operations so direct register handling is not scattered across the driver implementation. </p>
+<p>Select bank, then write one register byte.</p>
+
+<p class="definition">Definition at line <a class="el" href="Icm20948driver_8cpp_source.html#l00502">502</a> of file <a class="el" href="Icm20948driver_8cpp_source.html">Icm20948driver.cpp</a>.</p>
 
 </div>
 </div>
@@ -814,6 +915,10 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Route a write to the external magnetometer via SLV4.</p>
+<p>Poll for completion/ACK.</p>
+
+<p class="definition">Definition at line <a class="el" href="Icm20948driver_8cpp_source.html#l00586">586</a> of file <a class="el" href="Icm20948driver_8cpp_source.html">Icm20948driver.cpp</a>.</p>
 
 </div>
 </div>
@@ -832,6 +937,8 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="Icm20948driver_8cpp_source.html#l00640">640</a> of file <a class="el" href="Icm20948driver_8cpp_source.html">Icm20948driver.cpp</a>.</p>
+
 </div>
 </div>
 <a id="a0ed48078a426d7d43d93aa8d0bd72b92" name="a0ed48078a426d7d43d93aa8d0bd72b92"></a>
@@ -848,6 +955,10 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Public API for device lifecycle and sensor access. Higher-level code interacts through these methods rather than directly manipulating device registers. </p>
+<p>Basic bring-up: identify device, reset, wake, configure, enable DRDY.</p>
+
+<p class="definition">Definition at line <a class="el" href="Icm20948driver_8cpp_source.html#l00208">208</a> of file <a class="el" href="Icm20948driver_8cpp_source.html">Icm20948driver.cpp</a>.</p>
 
 </div>
 </div>
@@ -865,6 +976,10 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Read accel and gyro output block in one transaction.</p>
+<p>Convert raw counts to SI units.</p>
+
+<p class="definition">Definition at line <a class="el" href="Icm20948driver_8cpp_source.html#l00283">283</a> of file <a class="el" href="Icm20948driver_8cpp_source.html">Icm20948driver.cpp</a>.</p>
 
 </div>
 </div>
@@ -882,6 +997,10 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Read magnetometer data staged through the IMU external-sensor window.</p>
+<p>Convert raw magnetometer counts using fixed scale factor.</p>
+
+<p class="definition">Definition at line <a class="el" href="Icm20948driver_8cpp_source.html#l00311">311</a> of file <a class="el" href="Icm20948driver_8cpp_source.html">Icm20948driver.cpp</a>.</p>
 
 </div>
 </div>
@@ -900,6 +1019,10 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Accel/gyro are required for a valid sample.</p>
+<p>Magnetometer intentionally disabled for stability testing. if (!read_magn()) magn[0] = magn[1] = magn[2] = 0.0f;</p>
+
+<p class="definition">Definition at line <a class="el" href="Icm20948driver_8cpp_source.html#l00332">332</a> of file <a class="el" href="Icm20948driver_8cpp_source.html">Icm20948driver.cpp</a>.</p>
 
 </div>
 </div>
@@ -917,6 +1040,10 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Trigger device reset via PWR_MGMT_1.</p>
+<p>Poll until the reset bit clears.</p>
+
+<p class="definition">Definition at line <a class="el" href="Icm20948driver_8cpp_source.html#l00235">235</a> of file <a class="el" href="Icm20948driver_8cpp_source.html">Icm20948driver.cpp</a>.</p>
 
 </div>
 </div>
@@ -934,6 +1061,9 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Push cached accel/gyro settings to the device.</p>
+
+<p class="definition">Definition at line <a class="el" href="Icm20948driver_8cpp_source.html#l00265">265</a> of file <a class="el" href="Icm20948driver_8cpp_source.html">Icm20948driver.cpp</a>.</p>
 
 </div>
 </div>
@@ -951,6 +1081,9 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Clear sleep bit.</p>
+
+<p class="definition">Definition at line <a class="el" href="Icm20948driver_8cpp_source.html#l00256">256</a> of file <a class="el" href="Icm20948driver_8cpp_source.html">Icm20948driver.cpp</a>.</p>
 
 </div>
 </div>
@@ -974,6 +1107,9 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Cached conversion factors from raw counts to physical units. Keeping these values private prevents duplication of conversion logic. </p>
+
+<p class="definition">Definition at line <a class="el" href="Icm20948driver_8hpp_source.html#l00319">319</a> of file <a class="el" href="Icm20948driver_8hpp_source.html">Icm20948driver.hpp</a>.</p>
 
 </div>
 </div>
@@ -996,6 +1132,9 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Cached register bank to avoid redundant bank switches. This is a performance and consistency optimisation internal to the driver. </p>
+
+<p class="definition">Definition at line <a class="el" href="Icm20948driver_8hpp_source.html#l00315">315</a> of file <a class="el" href="Icm20948driver_8hpp_source.html">Icm20948driver.hpp</a>.</p>
 
 </div>
 </div>
@@ -1019,6 +1158,8 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="Icm20948driver_8hpp_source.html#l00320">320</a> of file <a class="el" href="Icm20948driver_8hpp_source.html">Icm20948driver.hpp</a>.</p>
+
 </div>
 </div>
 <a id="ab045aab8c66f970c7ece2c2fd1bfb1d4" name="ab045aab8c66f970c7ece2c2fd1bfb1d4"></a>
@@ -1040,6 +1181,8 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="Icm20948driver_8hpp_source.html#l00311">311</a> of file <a class="el" href="Icm20948driver_8hpp_source.html">Icm20948driver.hpp</a>.</p>
 
 </div>
 </div>
@@ -1063,6 +1206,8 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="Icm20948driver_8hpp_source.html#l00310">310</a> of file <a class="el" href="Icm20948driver_8hpp_source.html">Icm20948driver.hpp</a>.</p>
+
 </div>
 </div>
 <a id="aa7658b444c44a4a1599f2c00a84446d5" name="aa7658b444c44a4a1599f2c00a84446d5"></a>
@@ -1084,6 +1229,9 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Linux I2C file descriptor and device identity. These implementation details are kept private so the transport layer remains hidden from the rest of the application. </p>
+
+<p class="definition">Definition at line <a class="el" href="Icm20948driver_8hpp_source.html#l00309">309</a> of file <a class="el" href="Icm20948driver_8hpp_source.html">Icm20948driver.hpp</a>.</p>
 
 </div>
 </div>
@@ -1107,6 +1255,8 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="Icm20948driver_8hpp_source.html#l00321">321</a> of file <a class="el" href="Icm20948driver_8hpp_source.html">Icm20948driver.hpp</a>.</p>
+
 </div>
 </div>
 <a id="af6e029b6c6a94da5496894c50daedb66" name="af6e029b6c6a94da5496894c50daedb66"></a>
@@ -1120,6 +1270,9 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Most recent decoded sensor values. These cached arrays provide direct access to the latest successful reading while keeping raw register handling internal to the class. </p>
+
+<p class="definition">Definition at line <a class="el" href="Icm20948driver_8hpp_source.html#l00280">280</a> of file <a class="el" href="Icm20948driver_8hpp_source.html">Icm20948driver.hpp</a>.</p>
 
 </div>
 </div>
@@ -1135,6 +1288,8 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="Icm20948driver_8hpp_source.html#l00281">281</a> of file <a class="el" href="Icm20948driver_8hpp_source.html">Icm20948driver.hpp</a>.</p>
+
 </div>
 </div>
 <a id="addde200e41d649c72927102e67790105" name="addde200e41d649c72927102e67790105"></a>
@@ -1149,6 +1304,8 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="Icm20948driver_8hpp_source.html#l00282">282</a> of file <a class="el" href="Icm20948driver_8hpp_source.html">Icm20948driver.hpp</a>.</p>
+
 </div>
 </div>
 <a id="a3eec16c908bc6a52a8d190cfdd66bf55" name="a3eec16c908bc6a52a8d190cfdd66bf55"></a>
@@ -1162,12 +1319,15 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Active driver settings. Storing settings here keeps configuration tied to the device instance. </p>
+
+<p class="definition">Definition at line <a class="el" href="Icm20948driver_8hpp_source.html#l00286">286</a> of file <a class="el" href="Icm20948driver_8hpp_source.html">Icm20948driver.hpp</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/libs/IMU/Include/<a class="el" href="Icm20948driver_8hpp_source.html">Icm20948driver.hpp</a></li>
-<li>src/libs/IMU/<a class="el" href="Icm20948driver_8cpp.html">Icm20948driver.cpp</a></li>
+<li>src/libs/IMU/<a class="el" href="Icm20948driver_8cpp_source.html">Icm20948driver.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

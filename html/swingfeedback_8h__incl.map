@@ -1,0 +1,23 @@
+<map id="src/libs/Motor/Include/swingfeedback.h" name="src/libs/Motor/Include/swingfeedback.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="103,5,265,45"/>
+<area shape="rect" id="Node000002" href="$rpi__pwm_8h.html" title=" " alt="" coords="181,93,272,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="197,44,216,80,212,83,192,47"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,167,72,192"/>
+<area shape="poly" id="edge9_Node000001_Node000003" title=" " alt="" coords="168,48,61,158,57,155,164,44"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="96,167,163,192"/>
+<area shape="poly" id="edge10_Node000001_Node000004" title=" " alt="" coords="180,47,141,154,136,153,175,45"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="297,93,383,119"/>
+<area shape="poly" id="edge11_Node000001_Node000010" title=" " alt="" coords="223,43,306,85,304,89,220,48"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="197,121,83,164,81,159,196,116"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="213,121,158,160,155,156,209,117"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="611,167,682,192"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="273,114,286,116,440,139,598,164,597,169,439,144,285,121,272,119"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="187,167,267,192"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="229,119,229,153,224,153,224,119"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="291,167,399,192"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="247,116,315,157,313,162,244,121"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="424,167,488,192"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="264,116,411,161,410,167,263,121"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="512,167,587,192"/>
+<area shape="poly" id="edge8_Node000002_Node000009" title=" " alt="" coords="273,114,499,164,498,169,272,120"/>
+</map>

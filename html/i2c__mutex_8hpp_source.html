@@ -81,33 +81,18 @@ $(document).ready(function() { init_codefold(0); });
   <div class="headertitle"><div class="title">i2c_mutex.hpp</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="i2c__mutex_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">// Shared mutex protecting access to the /dev/i2c-1 bus.</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment">//</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment">// SOLID principles:</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment">//   S - This helper provides one shared synchronisation point for I2C bus access.</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment">//   D - Centralising the bus lock in one place avoids duplicating global mutex</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment">//       definitions across multiple modules and makes cross-thread I2C ownership</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment">//       easier to reason about.</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
+<a href="i2c__mutex_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#pragma once</span></div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &lt;mutex&gt;</span></div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment">// Shared mutex for the I2C-1 bus.</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment">// IMUReader (ICM20948) and ADS1115rpi run on separate threads and both</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="comment">// access /dev/i2c-1. Without this lock, their ioctl(I2C_SLAVE) and</span></div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="comment">// read/write sequences can interleave, causing transactions to target</span></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="comment">// the wrong device and triggering the ADC retry failures seen in logs.</span></div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
 <div class="foldopen" id="foldopen00018" data-start="{" data-end="}">
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="i2c__mutex_8hpp.html#a805ab45f56a66c4ded90843783a93b15">   18</a></span><span class="keyword">inline</span> std::mutex&amp; <a class="code hl_function" href="i2c__mutex_8hpp.html#a805ab45f56a66c4ded90843783a93b15">i2c1_mutex</a>()</div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>{</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <span class="comment">// Function-local static storage gives one shared mutex instance for the</span></div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="comment">// whole process while keeping the global namespace clean.</span></div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <span class="keyword">static</span> std::mutex m;</div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <span class="keywordflow">return</span> m;</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>}</div>
 </div>
-<div class="ttc" id="ai2c__mutex_8hpp_html_a805ab45f56a66c4ded90843783a93b15"><div class="ttname"><a href="i2c__mutex_8hpp.html#a805ab45f56a66c4ded90843783a93b15">i2c1_mutex</a></div><div class="ttdeci">std::mutex &amp; i2c1_mutex()</div><div class="ttdef"><b>Definition</b> i2c_mutex.hpp:18</div></div>
+<div class="ttc" id="ai2c__mutex_8hpp_html_a805ab45f56a66c4ded90843783a93b15"><div class="ttname"><a href="i2c__mutex_8hpp.html#a805ab45f56a66c4ded90843783a93b15">i2c1_mutex</a></div><div class="ttdeci">std::mutex &amp; i2c1_mutex()</div><div class="ttdef"><b>Definition</b> <a href="i2c__mutex_8hpp_source.html#l00018">i2c_mutex.hpp:18</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>My Project: ADS1115 Pin connection list:</title>
+<title>My Project: ADS1115 Pin Connection List</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -69,28 +69,59 @@ $(function() {
 
 </div><!-- top -->
 <div><div class="header">
-  <div class="headertitle"><div class="title">ADS1115 Pin connection list:</div></div>
+  <div class="headertitle"><div class="title">ADS1115 Pin Connection List</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="autotoc_md0"></a> </p><pre class="fragment">* VDD - Pin 1
-* SDA - Pin 3
-* SCL - Pin 5
-* A0 - Pin 11
-* ADDR - GND
-* GND - GND
-* ALRT - positive piezo
-</pre> <h1><a class="anchor" id="autotoc_md1"></a>
-Piezo pin connection</h1>
+<div class="textblock"><p><a class="anchor" id="autotoc_md20"></a></p><table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">ADC Connections   </th><th class="markdownTableHeadNone">GPIO Pin   </th><th class="markdownTableHeadNone">Physical Pin    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">VDD   </td><td class="markdownTableBodyNone">3.3v   </td><td class="markdownTableBodyNone">17    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">SDA   </td><td class="markdownTableBodyNone">GPIO 2   </td><td class="markdownTableBodyNone">3    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">SCL   </td><td class="markdownTableBodyNone">GPIO 3   </td><td class="markdownTableBodyNone">5    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">A0   </td><td class="markdownTableBodyNone">Positive Piezo   </td><td class="markdownTableBodyNone">N/A    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">ADDR   </td><td class="markdownTableBodyNone">GND   </td><td class="markdownTableBodyNone">6    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">GND   </td><td class="markdownTableBodyNone">GND   </td><td class="markdownTableBodyNone">6    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">ALRT   </td><td class="markdownTableBodyNone">GPIO 26   </td><td class="markdownTableBodyNone">37   </td></tr>
+</table>
+<h1><a class="anchor" id="autotoc_md21"></a>
+Piezo Pin Connection</h1>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Piezo   </th><th class="markdownTableHeadNone">Connections    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Positive   </td><td class="markdownTableBodyNone">A0    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Negative   </td><td class="markdownTableBodyNone">GND    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Both   </td><td class="markdownTableBodyNone">330&Omega; Resistor   </td></tr>
+</table>
+<h1><a class="anchor" id="autotoc_md22"></a>
+ADS1115 Settings</h1>
 <ul>
-<li>Negative - GND</li>
-<li>Positive - ALRT</li>
-<li>Both - connect to resistor</li>
+<li>I2C bus: 1</li>
+<li>I2C address: 0x48</li>
+<li>Sampling rate: 128Hz</li>
+<li>Gain/full-scale range: +/-2.048V</li>
 </ul>
-<p><img src="https://github.com/user-attachments/assets/49c670d4-f157-440a-8665-079937c49ddb" alt="WhatsApp Image 2026-03-04 at 10 28 51" class="inline"/> Connections to the rasbperry pi</p>
-<p><img src="https://github.com/user-attachments/assets/51917ca0-08df-449b-b3f5-30f666c41521" alt="WhatsApp Image 2026-03-04 at 10 28 52 (3)" class="inline"/> breadboard wire connections (birds eye view)</p>
-<p><img src="https://github.com/user-attachments/assets/e63c794c-c207-4a87-b1c6-5dec9c3d0403" alt="WhatsApp Image 2026-03-04 at 10 28 52 (2)" class="inline"/> breadboard wire connections (side view)</p>
-<p><img src="https://github.com/user-attachments/assets/7adb5629-3bb4-4386-9ad8-1cc27b1e60f9" alt="WhatsApp Image 2026-03-04 at 10 28 52 (1)" class="inline"/> breadborad wire connection (3rd view)</p>
-<p><img src="https://github.com/user-attachments/assets/61ae62c1-8d0e-423f-92f7-c9e7cae7c96a" alt="WhatsApp Image 2026-03-04 at 10 28 52" class="inline"/> ADS1115 Wire connections </p>
+<h1><a class="anchor" id="autotoc_md23"></a>
+Piezo Event Detector Settings</h1>
+<ul>
+<li>Press threshold: 0.95V</li>
+<li>Release threshold: 0.70V</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md24"></a>
+Hardware Assembly</h1>
+<p><img src="https://github.com/user-attachments/assets/905d2ba3-e871-4899-8160-cf823f02477e" alt="bat with piezo image" width="1536" height="2048" class="inline"/> <img src="https://github.com/user-attachments/assets/44e4d61b-a571-47fa-87b1-4d7ba9cb8323" alt="ads1115 front view" width="1536" height="2048" class="inline"/></p>
+<h1><a class="anchor" id="autotoc_md25"></a>
+Acknowledgements</h1>
+<p>The <a class="el" href="classADS1115rpi.html" title="Declares the ADS1115 Raspberry Pi interface, including callback support and the main functions for st...">ADS1115rpi</a> ADC was adapted from the implementation, rpi_ads1115, written by the Bernd Porr (University of Glasgow, 2025), available at: [(<a href="https://github.com/berndporr/rpi_ads1115">https://github.com/berndporr/rpi_ads1115</a>)] </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 <!-- start footer part -->

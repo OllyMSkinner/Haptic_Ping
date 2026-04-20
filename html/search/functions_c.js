@@ -1,8 +1,6 @@
 var searchData=
 [
-  ['onforceready_0',['onForceReady',['../classSwingProcessor.html#a4b5d83fac0c5bec9a287f54424da5434',1,'SwingProcessor']]],
-  ['onlevel_1',['onLevel',['../classSwingFeedback.html#a869d9a4be1e27ce382e6f95d6a11f989',1,'SwingFeedback']]],
-  ['onpositionready_2',['onPositionReady',['../classSwingProcessor.html#a36f8bd0212f937bbb9ef9f50583cb034',1,'SwingProcessor']]],
-  ['onsample_3',['onsample',['../classPositionDetector.html#aff71ff748fddc6e18c1303a0aafc9dcf',1,'PositionDetector::onSample()'],['../classSwingProcessor.html#a8e4fbc5ebea519acf8744fefa8f64baa',1,'SwingProcessor::onSample(float ax, float ay, float az, float mx, float my) override']]],
-  ['operator_28_29_4',['operator()',['../classSwingProcessor.html#a5fa909917ce884a6f519d1abc22e940a',1,'SwingProcessor']]]
+  ['piezoeventdetector_0',['PiezoEventDetector',['../classPiezoEventDetector.html#a1f43faa8c3c3dd97b0ac77c650b0eb68',1,'PiezoEventDetector']]],
+  ['positiondetector_1',['positiondetector',['../classPositionDetector.html#a14b40be880ad02568135c29134a62e56',1,'PositionDetector::PositionDetector()'],['../classPositionDetector.html#ab0e54c6126a4a687ee54da1488b1a6ca',1,'PositionDetector::PositionDetector(const Config &amp;c)']]],
+  ['processsample_2',['processSample',['../classPiezoEventDetector.html#add56f49efcc31886e095fa94139d47fc',1,'PiezoEventDetector']]]
 ];

@@ -1,0 +1,166 @@
+\doxysection{imureader.\+cpp}
+\hypertarget{imureader_8cpp_source}{}\label{imureader_8cpp_source}\index{src/libs/IMU/imureader.cpp@{src/libs/IMU/imureader.cpp}}
+\mbox{\hyperlink{imureader_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{imureader_8hpp}{imureader.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00002}00002\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{i2c__mutex_8hpp}{i2c\_mutex.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <unistd.h>}}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00005}00005\ \textcolor{preprocessor}{\#include\ <sys/epoll.h>}}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00006}00006\ \textcolor{preprocessor}{\#include\ <sys/eventfd.h>}}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00007}00007\ \textcolor{preprocessor}{\#include\ <gpiod.h>}}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00009}\mbox{\hyperlink{classIMUReader_aca24d4697bfbe14b6f4cf55a47829117}{00009}}\ \mbox{\hyperlink{classIMUReader_aca24d4697bfbe14b6f4cf55a47829117}{IMUReader::IMUReader}}(\textcolor{keywordtype}{unsigned}\ \ \ \ \ \ \ \ \ \ \ i2c\_bus,}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00010}00010\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \ \ \ \ \ \ \ \ \ \ i2c\_address,}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00011}00011\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \ \ \ \ \ \ \ gpiochip,}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00012}00012\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \ \ \ \ \ \ \ \ \ \ rdy\_line,}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00013}00013\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structicm20948_1_1settings}{icm20948::settings}}\ settings)}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00014}00014\ \ \ \ \ :\ imu\_(i2c\_bus,\ i2c\_address,\ settings),}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00015}00015\ \ \ \ \ \ \ running\_(false),}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00016}00016\ \ \ \ \ \ \ gpiochip\_path\_(gpiochip),}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00017}00017\ \ \ \ \ \ \ rdy\_line\_(rdy\_line),}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00018}00018\ \ \ \ \ \ \ chip\_(nullptr),}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00019}00019\ \ \ \ \ \ \ request\_(nullptr),}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00020}00020\ \ \ \ \ \ \ gpio\_fd\_(-\/1),}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00021}00021\ \ \ \ \ \ \ stop\_fd\_(-\/1)}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00022}00022\ \{}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00023}00023\ \}}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00025}\mbox{\hyperlink{classIMUReader_a6e5ef4ece5cb263ae22232c5663bd2bd}{00025}}\ \mbox{\hyperlink{classIMUReader_a6e5ef4ece5cb263ae22232c5663bd2bd}{IMUReader::\string~IMUReader}}()}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00026}00026\ \{}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00028}00028\ \ \ \ \ \mbox{\hyperlink{classIMUReader_a67813c8a075b3924f31a252a640e5835}{stop}}();}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00029}00029\ \}}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00031}\mbox{\hyperlink{classIMUReader_a24ab7b7e245e69c9c80504fe7742709c}{00031}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classIMUReader_a24ab7b7e245e69c9c80504fe7742709c}{IMUReader::init}}()}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00032}00032\ \{}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00034}00034\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classIMUReader_ae49e6fb530bf32e8f641cdde9bd8ae07}{imu\_}}.\mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a0ed48078a426d7d43d93aa8d0bd72b92}{init}}();}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00035}00035\ \}}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00037}\mbox{\hyperlink{classIMUReader_a485530ce689d8e7c952d70c69818eb6e}{00037}}\ \mbox{\hyperlink{classicm20948_1_1ICM20948__I2C}{icm20948::ICM20948\_I2C}}\&\ \mbox{\hyperlink{classIMUReader_a485530ce689d8e7c952d70c69818eb6e}{IMUReader::getIMU}}()}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00038}00038\ \{}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00039}00039\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classIMUReader_ae49e6fb530bf32e8f641cdde9bd8ae07}{imu\_}};}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00040}00040\ \}}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00042}\mbox{\hyperlink{classIMUReader_ae64c4dd5d68588f2e2bcee026d0d36d6}{00042}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classIMUReader_ae64c4dd5d68588f2e2bcee026d0d36d6}{IMUReader::setCallback}}(\mbox{\hyperlink{classIMUReader_a6d87e7661de8325bf78fcd4f5a102de7}{SampleCallback}}\ cb)}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00043}00043\ \{}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00045}00045\ \ \ \ \ \mbox{\hyperlink{classIMUReader_ac86aa179a0fa60ead4562ba9ffbd7a0a}{callback\_}}\ =\ std::move(cb);}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00046}00046\ \}}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00048}\mbox{\hyperlink{classIMUReader_a90708a193abfcb088d7375eb0cecb767}{00048}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classIMUReader_a90708a193abfcb088d7375eb0cecb767}{IMUReader::start}}()}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00049}00049\ \{}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00051}00051\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classIMUReader_afc74b0a28841ad9481a55af987222c6c}{running\_}})\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00054}00054\ \ \ \ \ \mbox{\hyperlink{classIMUReader_aca9a855e11f4f753eb219e2318e57160}{chip\_}}\ =\ gpiod\_chip\_open(\mbox{\hyperlink{classIMUReader_aa9b451f364d559feb317c891d26435f3}{gpiochip\_path\_}});}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00055}00055\ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classIMUReader_aca9a855e11f4f753eb219e2318e57160}{chip\_}})\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00058}00058\ \ \ \ \ gpiod\_line\_settings*\ line\_settings\ =\ gpiod\_line\_settings\_new();}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00059}00059\ \ \ \ \ gpiod\_line\_settings\_set\_direction(line\_settings,\ GPIOD\_LINE\_DIRECTION\_INPUT);}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00060}00060\ \ \ \ \ gpiod\_line\_settings\_set\_edge\_detection(line\_settings,\ GPIOD\_LINE\_EDGE\_RISING);}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00062}00062\ \ \ \ \ gpiod\_line\_config*\ line\_cfg\ =\ gpiod\_line\_config\_new();}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00063}00063\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ offset\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\textcolor{keyword}{>}(\mbox{\hyperlink{classIMUReader_a629839d6a645c8b3f8ccaee606974488}{rdy\_line\_}});}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00064}00064\ \ \ \ \ gpiod\_line\_config\_add\_line\_settings(line\_cfg,\ \&offset,\ 1,\ line\_settings);}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00067}00067\ \ \ \ \ gpiod\_request\_config*\ req\_cfg\ =\ gpiod\_request\_config\_new();}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00068}00068\ \ \ \ \ gpiod\_request\_config\_set\_consumer(req\_cfg,\ \textcolor{stringliteral}{"{}imu-\/rdy"{}});}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00071}00071\ \ \ \ \ \mbox{\hyperlink{classIMUReader_a90da6413c5913a16c4cfec1752f8ec4e}{request\_}}\ =\ gpiod\_chip\_request\_lines(\mbox{\hyperlink{classIMUReader_aca9a855e11f4f753eb219e2318e57160}{chip\_}},\ req\_cfg,\ line\_cfg);}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00073}00073\ \ \ \ \ gpiod\_request\_config\_free(req\_cfg);}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00074}00074\ \ \ \ \ gpiod\_line\_config\_free(line\_cfg);}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00075}00075\ \ \ \ \ gpiod\_line\_settings\_free(line\_settings);}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00077}00077\ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classIMUReader_a90da6413c5913a16c4cfec1752f8ec4e}{request\_}})\ \{}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00078}00078\ \ \ \ \ \ \ \ \ gpiod\_chip\_close(\mbox{\hyperlink{classIMUReader_aca9a855e11f4f753eb219e2318e57160}{chip\_}});}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00079}00079\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00080}00080\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00083}00083\ \ \ \ \ \mbox{\hyperlink{classIMUReader_a5561cf166a78419f1c0c3dd0a50d32b5}{gpio\_fd\_}}\ =\ gpiod\_line\_request\_get\_fd(\mbox{\hyperlink{classIMUReader_a90da6413c5913a16c4cfec1752f8ec4e}{request\_}});}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00084}00084\ \ \ \ \ \mbox{\hyperlink{classIMUReader_acc882703f542a2e3118462178388b3bb}{stop\_fd\_}}\ =\ eventfd(0,\ EFD\_NONBLOCK);}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00085}00085\ }
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00087}00087\ \ \ \ \ \mbox{\hyperlink{classIMUReader_afc74b0a28841ad9481a55af987222c6c}{running\_}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00088}00088\ \ \ \ \ \mbox{\hyperlink{classIMUReader_a1a69762ebad2714b8a1d884e961210d8}{worker\_thread\_}}\ =\ std::thread(\&\mbox{\hyperlink{classIMUReader_a9334b3420c3d2d1e790dbfb753f7a8cb}{IMUReader::worker}},\ \textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00089}00089\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00090}00090\ \}}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00091}00091\ }
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00092}\mbox{\hyperlink{classIMUReader_a67813c8a075b3924f31a252a640e5835}{00092}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classIMUReader_a67813c8a075b3924f31a252a640e5835}{IMUReader::stop}}()}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00093}00093\ \{}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00095}00095\ \ \ \ \ \mbox{\hyperlink{classIMUReader_afc74b0a28841ad9481a55af987222c6c}{running\_}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00096}00096\ }
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00098}00098\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classIMUReader_acc882703f542a2e3118462178388b3bb}{stop\_fd\_}}\ >=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00099}00099\ \ \ \ \ \ \ \ \ uint64\_t\ val\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00100}00100\ \ \ \ \ \ \ \ \ write(\mbox{\hyperlink{classIMUReader_acc882703f542a2e3118462178388b3bb}{stop\_fd\_}},\ \&val,\ \textcolor{keyword}{sizeof}(val));}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00101}00101\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00102}00102\ }
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00104}00104\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classIMUReader_a1a69762ebad2714b8a1d884e961210d8}{worker\_thread\_}}.joinable())\ \mbox{\hyperlink{classIMUReader_a1a69762ebad2714b8a1d884e961210d8}{worker\_thread\_}}.join();}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00105}00105\ }
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00107}00107\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classIMUReader_a90da6413c5913a16c4cfec1752f8ec4e}{request\_}})\ \{}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00108}00108\ \ \ \ \ \ \ \ \ gpiod\_line\_request\_release(\mbox{\hyperlink{classIMUReader_a90da6413c5913a16c4cfec1752f8ec4e}{request\_}});}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00109}00109\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classIMUReader_a90da6413c5913a16c4cfec1752f8ec4e}{request\_}}\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00110}00110\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00111}00111\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classIMUReader_aca9a855e11f4f753eb219e2318e57160}{chip\_}})\ \{}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00112}00112\ \ \ \ \ \ \ \ \ gpiod\_chip\_close(\mbox{\hyperlink{classIMUReader_aca9a855e11f4f753eb219e2318e57160}{chip\_}});}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00113}00113\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classIMUReader_aca9a855e11f4f753eb219e2318e57160}{chip\_}}\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00114}00114\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00115}00115\ }
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00117}00117\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classIMUReader_acc882703f542a2e3118462178388b3bb}{stop\_fd\_}}\ >=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00118}00118\ \ \ \ \ \ \ \ \ close(\mbox{\hyperlink{classIMUReader_acc882703f542a2e3118462178388b3bb}{stop\_fd\_}});}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00119}00119\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classIMUReader_acc882703f542a2e3118462178388b3bb}{stop\_fd\_}}\ =\ -\/1;}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00120}00120\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00121}00121\ \}}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00122}00122\ }
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00123}\mbox{\hyperlink{classIMUReader_a9334b3420c3d2d1e790dbfb753f7a8cb}{00123}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classIMUReader_a9334b3420c3d2d1e790dbfb753f7a8cb}{IMUReader::worker}}()}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00124}00124\ \{}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00126}00126\ \ \ \ \ \textcolor{keywordtype}{int}\ epoll\_fd\ =\ epoll\_create1(0);}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00127}00127\ }
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00128}00128\ \ \ \ \ epoll\_event\ gpio\_ev\{\};}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00129}00129\ \ \ \ \ gpio\_ev.events\ \ =\ EPOLLIN\ |\ EPOLLET;}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00130}00130\ \ \ \ \ gpio\_ev.data.fd\ =\ \mbox{\hyperlink{classIMUReader_a5561cf166a78419f1c0c3dd0a50d32b5}{gpio\_fd\_}};}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00131}00131\ \ \ \ \ epoll\_ctl(epoll\_fd,\ EPOLL\_CTL\_ADD,\ \mbox{\hyperlink{classIMUReader_a5561cf166a78419f1c0c3dd0a50d32b5}{gpio\_fd\_}},\ \&gpio\_ev);}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00132}00132\ }
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00133}00133\ \ \ \ \ epoll\_event\ stop\_ev\{\};}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00134}00134\ \ \ \ \ stop\_ev.events\ \ =\ EPOLLIN;}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00135}00135\ \ \ \ \ stop\_ev.data.fd\ =\ \mbox{\hyperlink{classIMUReader_acc882703f542a2e3118462178388b3bb}{stop\_fd\_}};}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00136}00136\ \ \ \ \ epoll\_ctl(epoll\_fd,\ EPOLL\_CTL\_ADD,\ \mbox{\hyperlink{classIMUReader_acc882703f542a2e3118462178388b3bb}{stop\_fd\_}},\ \&stop\_ev);}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00137}00137\ }
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00139}00139\ \ \ \ \ gpiod\_edge\_event\_buffer*\ buffer\ =\ gpiod\_edge\_event\_buffer\_new(1);}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00140}00140\ }
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00141}00141\ \ \ \ \ epoll\_event\ fired\{\};}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00142}00142\ \ \ \ \ \textcolor{keywordflow}{while}\ (\mbox{\hyperlink{classIMUReader_afc74b0a28841ad9481a55af987222c6c}{running\_}})\ \{}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00143}00143\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ n\ =\ epoll\_wait(epoll\_fd,\ \&fired,\ 1,\ -\/1);}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00144}00144\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (n\ <=\ 0\ ||\ !\mbox{\hyperlink{classIMUReader_afc74b0a28841ad9481a55af987222c6c}{running\_}})\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00145}00145\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (fired.data.fd\ ==\ \mbox{\hyperlink{classIMUReader_acc882703f542a2e3118462178388b3bb}{stop\_fd\_}})\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00146}00146\ }
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00147}00147\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (fired.data.fd\ ==\ \mbox{\hyperlink{classIMUReader_a5561cf166a78419f1c0c3dd0a50d32b5}{gpio\_fd\_}})\ \{}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00148}00148\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ got\ =\ gpiod\_line\_request\_read\_edge\_events(\mbox{\hyperlink{classIMUReader_a90da6413c5913a16c4cfec1752f8ec4e}{request\_}},\ buffer,\ 1);}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00149}00149\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (got\ >\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00150}00150\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ gpiod\_edge\_event*\ \textcolor{keyword}{event}\ =\ gpiod\_edge\_event\_buffer\_get\_event(buffer,\ 0);}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00151}00151\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (gpiod\_edge\_event\_get\_event\_type(event)\ ==\ GPIOD\_EDGE\_EVENT\_RISING\_EDGE)\ \{}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00152}00152\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structicm20948_1_1IMUSample}{icm20948::IMUSample}}\ sample\{\};}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00153}00153\ }
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00157}00157\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ ok\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00158}00158\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00159}00159\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::lock\_guard<std::mutex>\ lk(\mbox{\hyperlink{i2c__mutex_8hpp_a805ab45f56a66c4ded90843783a93b15}{i2c1\_mutex}}());}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00160}00160\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ok\ =\ \mbox{\hyperlink{classIMUReader_ae49e6fb530bf32e8f641cdde9bd8ae07}{imu\_}}.\mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a09867a9d1a1103e357407a022627d682}{read\_sample}}(sample);}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00161}00161\ }
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00163}00163\ }
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00164}00164\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ok)\ \{}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00165}00165\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classIMUReader_ae49e6fb530bf32e8f641cdde9bd8ae07}{imu\_}}.\mbox{\hyperlink{classicm20948_1_1ICM20948__I2C_a16f60f1416acbe9d214578467df09d35}{check\_DRDY\_INT}}();}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00166}00166\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00167}00167\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00168}00168\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00170}00170\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ok\ \&\&\ \mbox{\hyperlink{classIMUReader_ac86aa179a0fa60ead4562ba9ffbd7a0a}{callback\_}})\ \{}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00171}00171\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classIMUReader_ac86aa179a0fa60ead4562ba9ffbd7a0a}{callback\_}}(sample.ax,\ sample.ay,\ sample.az,}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00172}00172\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sample.gx,\ sample.gy,\ sample.gz,}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00173}00173\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sample.mx,\ sample.my);}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00174}00174\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00175}00175\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00176}00176\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00177}00177\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00178}00178\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00179}00179\ }
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00180}00180\ \ \ \ \ gpiod\_edge\_event\_buffer\_free(buffer);}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00181}00181\ \ \ \ \ close(epoll\_fd);}
+\DoxyCodeLine{\Hypertarget{imureader_8cpp_source_l00182}00182\ \}}
+
+\end{DoxyCode}

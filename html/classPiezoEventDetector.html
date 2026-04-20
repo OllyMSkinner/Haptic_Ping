@@ -78,45 +78,68 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>Declares the detector class and its public interface.  
+ <a href="classPiezoEventDetector.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="event__detector_8h_source.html">event_detector.h</a>&gt;</code></p>
 <div class="dynheader">
 Collaboration diagram for PiezoEventDetector:</div>
 <div class="dyncontent">
 <div class="center"><img src="classPiezoEventDetector__coll__graph.png" border="0" usemap="#aPiezoEventDetector_coll__map" alt="Collaboration graph"/></div>
+<map name="aPiezoEventDetector_coll__map" id="aPiezoEventDetector_coll__map">
+<area shape="rect" title="Declares the detector class and its public interface." alt="" coords="109,93,260,119"/>
+<area shape="rect" href="classSimpleLEDController.html" title=" " alt="" coords="5,5,161,31"/>
+<area shape="poly" title=" " alt="" coords="109,38,172,91,169,95,106,42"/>
+<area shape="rect" href="structPiezoEventDetectorSettings.html" title="Stores the threshold and debug settings for the detector." alt="" coords="186,5,389,31"/>
+<area shape="poly" title=" " alt="" coords="264,42,201,95,197,91,261,38"/>
+</map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
 Public Types</h2></td></tr>
 <tr class="memitem:a6654a5fee70b051fa4a469ed25a53fd1" id="r_a6654a5fee70b051fa4a469ed25a53fd1"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPiezoEventDetector.html#a6654a5fee70b051fa4a469ed25a53fd1">ForceCallback</a> = std::function&lt; void(bool)&gt;</td></tr>
+<tr class="memdesc:a6654a5fee70b051fa4a469ed25a53fd1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines the callback type used for press state changes.  <br /></td></tr>
 <tr class="separator:a6654a5fee70b051fa4a469ed25a53fd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a1f43faa8c3c3dd97b0ac77c650b0eb68" id="r_a1f43faa8c3c3dd97b0ac77c650b0eb68"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPiezoEventDetector.html#a1f43faa8c3c3dd97b0ac77c650b0eb68">PiezoEventDetector</a> (<a class="el" href="classSimpleLEDController.html">SimpleLEDController</a> &amp;ledRef, <a class="el" href="structPiezoEventDetectorSettings.html">PiezoEventDetectorSettings</a> settings)</td></tr>
+<tr class="memdesc:a1f43faa8c3c3dd97b0ac77c650b0eb68"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates the detector with an LED reference and settings.  <br /></td></tr>
 <tr class="separator:a1f43faa8c3c3dd97b0ac77c650b0eb68"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6591347b0c88fc41e844d2423aadfebe" id="r_a6591347b0c88fc41e844d2423aadfebe"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPiezoEventDetector.html#a6591347b0c88fc41e844d2423aadfebe">setForceCallback</a> (<a class="el" href="classPiezoEventDetector.html#a6654a5fee70b051fa4a469ed25a53fd1">ForceCallback</a> cb)</td></tr>
+<tr class="memdesc:a6591347b0c88fc41e844d2423aadfebe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the callback used when the press state changes.  <br /></td></tr>
 <tr class="separator:a6591347b0c88fc41e844d2423aadfebe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:add56f49efcc31886e095fa94139d47fc" id="r_add56f49efcc31886e095fa94139d47fc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPiezoEventDetector.html#add56f49efcc31886e095fa94139d47fc">processSample</a> (float v)</td></tr>
+<tr class="memdesc:add56f49efcc31886e095fa94139d47fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the callback function for state changes.  <br /></td></tr>
 <tr class="separator:add56f49efcc31886e095fa94139d47fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af73f0c9c0bb0b747d62fa338182d7fe8" id="r_af73f0c9c0bb0b747d62fa338182d7fe8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPiezoEventDetector.html#af73f0c9c0bb0b747d62fa338182d7fe8">reset</a> ()</td></tr>
+<tr class="memdesc:af73f0c9c0bb0b747d62fa338182d7fe8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Processes a new sensor sample.  <br /></td></tr>
 <tr class="separator:af73f0c9c0bb0b747d62fa338182d7fe8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:ac83a1585f92dc0383f69027a24580b89" id="r_ac83a1585f92dc0383f69027a24580b89"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSimpleLEDController.html">SimpleLEDController</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPiezoEventDetector.html#ac83a1585f92dc0383f69027a24580b89">led_</a></td></tr>
+<tr class="memdesc:ac83a1585f92dc0383f69027a24580b89"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resets the detector state.  <br /></td></tr>
 <tr class="separator:ac83a1585f92dc0383f69027a24580b89"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aba0bb473afc51c47b3d26567625d6e0a" id="r_aba0bb473afc51c47b3d26567625d6e0a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structPiezoEventDetectorSettings.html">PiezoEventDetectorSettings</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPiezoEventDetector.html#aba0bb473afc51c47b3d26567625d6e0a">settings_</a></td></tr>
+<tr class="memdesc:aba0bb473afc51c47b3d26567625d6e0a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reference to the LED controller.  <br /></td></tr>
 <tr class="separator:aba0bb473afc51c47b3d26567625d6e0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a60a16063c0cf74b5a18e726cbe1f9c64" id="r_a60a16063c0cf74b5a18e726cbe1f9c64"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classPiezoEventDetector.html#a6654a5fee70b051fa4a469ed25a53fd1">ForceCallback</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPiezoEventDetector.html#a60a16063c0cf74b5a18e726cbe1f9c64">forceCallback_</a></td></tr>
+<tr class="memdesc:a60a16063c0cf74b5a18e726cbe1f9c64"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stores the detector settings.  <br /></td></tr>
 <tr class="separator:a60a16063c0cf74b5a18e726cbe1f9c64"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a36b0a529dda9a6ee5d92a28be400c1f0" id="r_a36b0a529dda9a6ee5d92a28be400c1f0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPiezoEventDetector.html#a36b0a529dda9a6ee5d92a28be400c1f0">pressed_</a> = false</td></tr>
+<tr class="memdesc:a36b0a529dda9a6ee5d92a28be400c1f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stores the callback function.  <br /></td></tr>
 <tr class="separator:a36b0a529dda9a6ee5d92a28be400c1f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a901691233dfad6c7c0d9e867f71871ec" id="r_a901691233dfad6c7c0d9e867f71871ec"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPiezoEventDetector.html#a901691233dfad6c7c0d9e867f71871ec">filter_init_</a> = false</td></tr>
 <tr class="separator:a901691233dfad6c7c0d9e867f71871ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a47e4ed983ad88f90de6842fe8d15746d" id="r_a47e4ed983ad88f90de6842fe8d15746d"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPiezoEventDetector.html#a47e4ed983ad88f90de6842fe8d15746d">filtered_v_</a> = 0.0f</td></tr>
 <tr class="separator:a47e4ed983ad88f90de6842fe8d15746d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Typedef Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Declares the detector class and its public interface. </p>
+
+<p class="definition">Definition at line <a class="el" href="event__detector_8h_source.html#l00030">30</a> of file <a class="el" href="event__detector_8h_source.html">event_detector.h</a>.</p>
+</div><h2 class="groupheader">Member Typedef Documentation</h2>
 <a id="a6654a5fee70b051fa4a469ed25a53fd1" name="a6654a5fee70b051fa4a469ed25a53fd1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6654a5fee70b051fa4a469ed25a53fd1">&#9670;&#160;</a></span>ForceCallback</h2>
 
@@ -128,6 +151,10 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Defines the callback type used for press state changes. </p>
+
+<p class="definition">Definition at line <a class="el" href="event__detector_8h_source.html#l00034">34</a> of file <a class="el" href="event__detector_8h_source.html">event_detector.h</a>.</p>
 
 </div>
 </div>
@@ -158,6 +185,12 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Creates the detector with an LED reference and settings. </p>
+<p>Stores the LED reference and detector settings.</p>
+<p>This class processes piezo sensor samples to detect press and release events. It smooths the input signal, compares it against press/release thresholds, updates the LED state, and triggers a callback when the state changes. </p>
+
+<p class="definition">Definition at line <a class="el" href="event__detector_8cpp_source.html#l00011">11</a> of file <a class="el" href="event__detector_8cpp_source.html">event_detector.cpp</a>.</p>
+
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -177,6 +210,11 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Sets the callback function for state changes. </p>
+<p>Filters the sample, checks thresholds, updates state, and triggers outputs. </p>
+
+<p class="definition">Definition at line <a class="el" href="event__detector_8cpp_source.html#l00033">33</a> of file <a class="el" href="event__detector_8cpp_source.html">event_detector.cpp</a>.</p>
+
 </div>
 </div>
 <a id="af73f0c9c0bb0b747d62fa338182d7fe8" name="af73f0c9c0bb0b747d62fa338182d7fe8"></a>
@@ -193,6 +231,11 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Processes a new sensor sample. </p>
+<p>Resets the detector state and turns the LED off. </p>
+
+<p class="definition">Definition at line <a class="el" href="event__detector_8cpp_source.html#l00024">24</a> of file <a class="el" href="event__detector_8cpp_source.html">event_detector.cpp</a>.</p>
 
 </div>
 </div>
@@ -211,6 +254,10 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Sets the callback used when the press state changes. </p>
+
+<p class="definition">Definition at line <a class="el" href="event__detector_8cpp_source.html#l00018">18</a> of file <a class="el" href="event__detector_8cpp_source.html">event_detector.cpp</a>.</p>
 
 </div>
 </div>
@@ -235,6 +282,8 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="event__detector_8h_source.html#l00051">51</a> of file <a class="el" href="event__detector_8h_source.html">event_detector.h</a>.</p>
+
 </div>
 </div>
 <a id="a47e4ed983ad88f90de6842fe8d15746d" name="a47e4ed983ad88f90de6842fe8d15746d"></a>
@@ -256,6 +305,8 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="event__detector_8h_source.html#l00052">52</a> of file <a class="el" href="event__detector_8h_source.html">event_detector.h</a>.</p>
 
 </div>
 </div>
@@ -279,6 +330,10 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Stores the detector settings. </p>
+
+<p class="definition">Definition at line <a class="el" href="event__detector_8h_source.html#l00047">47</a> of file <a class="el" href="event__detector_8h_source.html">event_detector.h</a>.</p>
+
 </div>
 </div>
 <a id="ac83a1585f92dc0383f69027a24580b89" name="ac83a1585f92dc0383f69027a24580b89"></a>
@@ -300,6 +355,10 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Resets the detector state. </p>
+
+<p class="definition">Definition at line <a class="el" href="event__detector_8h_source.html#l00045">45</a> of file <a class="el" href="event__detector_8h_source.html">event_detector.h</a>.</p>
 
 </div>
 </div>
@@ -323,6 +382,11 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Stores the callback function. </p>
+<p>Tracks whether the detector is currently pressed, whether the filter has been initialised and stores the current filtered sample value. </p>
+
+<p class="definition">Definition at line <a class="el" href="event__detector_8h_source.html#l00050">50</a> of file <a class="el" href="event__detector_8h_source.html">event_detector.h</a>.</p>
+
 </div>
 </div>
 <a id="aba0bb473afc51c47b3d26567625d6e0a" name="aba0bb473afc51c47b3d26567625d6e0a"></a>
@@ -345,11 +409,15 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Reference to the LED controller. </p>
+
+<p class="definition">Definition at line <a class="el" href="event__detector_8h_source.html#l00046">46</a> of file <a class="el" href="event__detector_8h_source.html">event_detector.h</a>.</p>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/libs/Piezo/Include/<a class="el" href="event__detector_8h_source.html">event_detector.h</a></li>
-<li>src/libs/Piezo/<a class="el" href="event__detector_8cpp.html">event_detector.cpp</a></li>
+<li>src/libs/Piezo/<a class="el" href="event__detector_8cpp_source.html">event_detector.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

@@ -79,16 +79,33 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>raised to reject motor EMI noise floor  
+ <a href="classSwingProcessor.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="SwingProcessor_8hpp_source.html">SwingProcessor.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for SwingProcessor:</div>
 <div class="dyncontent">
 <div class="center"><img src="classSwingProcessor__inherit__graph.png" border="0" usemap="#aSwingProcessor_inherit__map" alt="Inheritance graph"/></div>
+<map name="aSwingProcessor_inherit__map" id="aSwingProcessor_inherit__map">
+<area shape="rect" title="raised to reject motor EMI noise floor" alt="" coords="9,79,133,104"/>
+<area shape="rect" href="classPositionDetector.html" title="Declares the position detector class, including its callback type, configuration settings,..." alt="" coords="5,5,136,31"/>
+<area shape="poly" title=" " alt="" coords="73,44,73,79,68,79,68,44"/>
+</map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <div class="dynheader">
 Collaboration diagram for SwingProcessor:</div>
 <div class="dyncontent">
 <div class="center"><img src="classSwingProcessor__coll__graph.png" border="0" usemap="#aSwingProcessor_coll__map" alt="Collaboration graph"/></div>
+<map name="aSwingProcessor_coll__map" id="aSwingProcessor_coll__map">
+<area shape="rect" title="raised to reject motor EMI noise floor" alt="" coords="146,181,270,207"/>
+<area shape="rect" href="classPositionDetector.html" title="Declares the position detector class, including its callback type, configuration settings,..." alt="" coords="29,93,160,119"/>
+<area shape="poly" title=" " alt="" coords="122,125,194,179,191,183,119,129"/>
+<area shape="rect" href="structPositionDetector_1_1Config.html" title=" " alt="" coords="5,5,184,31"/>
+<area shape="poly" title=" " alt="" coords="97,45,97,93,92,93,92,45"/>
+<area shape="rect" href="classSwingCalibrator.html" title=" " alt="" coords="184,93,309,119"/>
+<area shape="poly" title=" " alt="" coords="238,132,216,182,211,180,233,130"/>
+</map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
@@ -104,10 +121,13 @@ Public Types</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a576383fe618a02c0142e7073507deb65" id="r_a576383fe618a02c0142e7073507deb65"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSwingProcessor.html#a576383fe618a02c0142e7073507deb65">SwingProcessor</a> (float accel_deadband=<a class="el" href="SwingProcessor_8hpp.html#ade41390a2c6011a23e8054df5621d231">ACCEL_DEADBAND</a>, int calib_samples=<a class="el" href="SwingProcessor_8hpp.html#ac684e3b2eaf7d15239031ca404c88059">CALIB_SAMPLES</a>, int recal_samples=<a class="el" href="SwingProcessor_8hpp.html#a244f60b18afb57444be7ad3ba6ec1f5a">RECAL_SAMPLES</a>)</td></tr>
+<tr class="memdesc:a576383fe618a02c0142e7073507deb65"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise the deadband and embedded gravity-bias calibrator.  <br /></td></tr>
 <tr class="separator:a576383fe618a02c0142e7073507deb65"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a84a26a132fa3a5003d2896086e6e6cdf" id="r_a84a26a132fa3a5003d2896086e6e6cdf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSwingProcessor.html#a84a26a132fa3a5003d2896086e6e6cdf">setMagnitudeCallback</a> (<a class="el" href="classSwingProcessor.html#a31d9c6aafec669291604f8e47ce9edfc">MagnitudeCallback</a> cb)</td></tr>
+<tr class="memdesc:a84a26a132fa3a5003d2896086e6e6cdf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register callback for filtered linear-acceleration magnitude.  <br /></td></tr>
 <tr class="separator:a84a26a132fa3a5003d2896086e6e6cdf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3f8acb3098e0478d10211b3b1923fe87" id="r_a3f8acb3098e0478d10211b3b1923fe87"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSwingProcessor.html#a3f8acb3098e0478d10211b3b1923fe87">setPositionCallback</a> (<a class="el" href="classSwingProcessor.html#acf988060044887b7be3153ab982bc50c">PositionStateCallback</a> cb)</td></tr>
+<tr class="memdesc:a3f8acb3098e0478d10211b3b1923fe87"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register callback for upright/not-upright state changes.  <br /></td></tr>
 <tr class="separator:a3f8acb3098e0478d10211b3b1923fe87"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4b5d83fac0c5bec9a287f54424da5434" id="r_a4b5d83fac0c5bec9a287f54424da5434"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSwingProcessor.html#a4b5d83fac0c5bec9a287f54424da5434">onForceReady</a> (bool correctForce)</td></tr>
 <tr class="separator:a4b5d83fac0c5bec9a287f54424da5434"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -123,6 +143,7 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a5fa909917ce884a6f519d1abc22e940a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classPositionDetector"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classPositionDetector')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classPositionDetector.html">PositionDetector</a></td></tr>
 <tr class="memitem:a14b40be880ad02568135c29134a62e56 inherit pub_methods_classPositionDetector" id="r_a14b40be880ad02568135c29134a62e56"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPositionDetector.html#a14b40be880ad02568135c29134a62e56">PositionDetector</a> ()</td></tr>
+<tr class="memdesc:a14b40be880ad02568135c29134a62e56 inherit pub_methods_classPositionDetector"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor delegates to config-based constructor.  <br /></td></tr>
 <tr class="separator:a14b40be880ad02568135c29134a62e56 inherit pub_methods_classPositionDetector"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab0e54c6126a4a687ee54da1488b1a6ca inherit pub_methods_classPositionDetector" id="r_ab0e54c6126a4a687ee54da1488b1a6ca"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPositionDetector.html#ab0e54c6126a4a687ee54da1488b1a6ca">PositionDetector</a> (const <a class="el" href="structPositionDetector_1_1Config.html">Config</a> &amp;c)</td></tr>
 <tr class="separator:ab0e54c6126a4a687ee54da1488b1a6ca inherit pub_methods_classPositionDetector"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -136,6 +157,7 @@ Public Member Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:ac5180a9b337ef6e73f367989d13f1a35" id="r_ac5180a9b337ef6e73f367989d13f1a35"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSwingProcessor.html#ac5180a9b337ef6e73f367989d13f1a35">accel_deadband_</a></td></tr>
+<tr class="memdesc:ac5180a9b337ef6e73f367989d13f1a35"><td class="mdescLeft">&#160;</td><td class="mdescRight">Declares the private members used to store thresholds, calibration, callbacks, activity state, and reset timing.  <br /></td></tr>
 <tr class="separator:ac5180a9b337ef6e73f367989d13f1a35"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aec1740512208f2c203c1b2510f80fa2e" id="r_aec1740512208f2c203c1b2510f80fa2e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSwingCalibrator.html">SwingCalibrator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSwingProcessor.html#aec1740512208f2c203c1b2510f80fa2e">calibrator_</a></td></tr>
 <tr class="separator:aec1740512208f2c203c1b2510f80fa2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -146,16 +168,30 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a38fca6543939d74d4945e817b11ea69f" id="r_a38fca6543939d74d4945e817b11ea69f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSwingProcessor.html#a38fca6543939d74d4945e817b11ea69f">isArmed_</a> = false</td></tr>
 <tr class="separator:a38fca6543939d74d4945e817b11ea69f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3184c4f9d59ac9495d41009694fcb423" id="r_a3184c4f9d59ac9495d41009694fcb423"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSwingProcessor.html#a3184c4f9d59ac9495d41009694fcb423">isActive_</a> = false</td></tr>
+<tr class="memdesc:a3184c4f9d59ac9495d41009694fcb423"><td class="mdescLeft">&#160;</td><td class="mdescRight">position confirmed, ready for piezo  <br /></td></tr>
 <tr class="separator:a3184c4f9d59ac9495d41009694fcb423"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9365323ebee862a6d615c08696dc63e4" id="r_a9365323ebee862a6d615c08696dc63e4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSwingProcessor.html#a9365323ebee862a6d615c08696dc63e4">hasLeftStart_</a> = false</td></tr>
+<tr class="memdesc:a9365323ebee862a6d615c08696dc63e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">gate open, motor feedback running  <br /></td></tr>
+<tr class="separator:a9365323ebee862a6d615c08696dc63e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aea2a21e4d6b577842d80ba059b0130f4" id="r_aea2a21e4d6b577842d80ba059b0130f4"><td class="memItemLeft" align="right" valign="top">std::chrono::steady_clock::time_point&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSwingProcessor.html#aea2a21e4d6b577842d80ba059b0130f4">reset_time_</a> {}</td></tr>
 <tr class="separator:aea2a21e4d6b577842d80ba059b0130f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
 Static Private Attributes</h2></td></tr>
 <tr class="memitem:a6715d31c5e6bfa2b927de00ce6b8e181" id="r_a6715d31c5e6bfa2b927de00ce6b8e181"><td class="memItemLeft" align="right" valign="top">static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSwingProcessor.html#a6715d31c5e6bfa2b927de00ce6b8e181">COOLDOWN_MS</a> = 500</td></tr>
+<tr class="memdesc:a6715d31c5e6bfa2b927de00ce6b8e181"><td class="mdescLeft">&#160;</td><td class="mdescRight">paddle has left the starting position since activation  <br /></td></tr>
 <tr class="separator:a6715d31c5e6bfa2b927de00ce6b8e181"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Typedef Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>raised to reject motor EMI noise floor </p>
+<p>Gate logic:</p><ol type="1">
+<li>When the correct start position is held, isArmed_ becomes true and the bias is recalibrated. The system must still be in this valid position when the piezo is triggered.</li>
+<li>When the piezo is pressed while armed, isActive_ becomes true and the motor feedback starts. Once active, any further piezo events are ignored to avoid false triggers caused by motor vibration.</li>
+<li>When the <a class="el" href="classSwingFeedback.html" title="Drives PWM feedback from detected swing levels.">SwingFeedback</a> timer ends, <a class="el" href="classSwingProcessor.html#aea9cf6f18b80fb71de6eb85e570ccf3e">reset()</a> is called to clear both state flags. Declares the swing processor class, including its callback types and main functions for handling force, position, reset, and sensor sample processing. </li>
+</ol>
+
+<p class="definition">Definition at line <a class="el" href="SwingProcessor_8hpp_source.html#l00031">31</a> of file <a class="el" href="SwingProcessor_8hpp_source.html">SwingProcessor.hpp</a>.</p>
+</div><h2 class="groupheader">Member Typedef Documentation</h2>
 <a id="a31d9c6aafec669291604f8e47ce9edfc" name="a31d9c6aafec669291604f8e47ce9edfc"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a31d9c6aafec669291604f8e47ce9edfc">&#9670;&#160;</a></span>MagnitudeCallback</h2>
 
@@ -167,6 +203,8 @@ Static Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="SwingProcessor_8hpp_source.html#l00033">33</a> of file <a class="el" href="SwingProcessor_8hpp_source.html">SwingProcessor.hpp</a>.</p>
 
 </div>
 </div>
@@ -181,6 +219,8 @@ Static Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="SwingProcessor_8hpp_source.html#l00034">34</a> of file <a class="el" href="SwingProcessor_8hpp_source.html">SwingProcessor.hpp</a>.</p>
 
 </div>
 </div>
@@ -225,6 +265,12 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Initialise the deadband and embedded gravity-bias calibrator. </p>
+<p>Default no-op calibration callback.</p>
+<p>Forward position events to any external callback, then update swing state.</p>
+
+<p class="definition">Definition at line <a class="el" href="SwingProcessor_8cpp_source.html#l00006">6</a> of file <a class="el" href="SwingProcessor_8cpp_source.html">SwingProcessor.cpp</a>.</p>
+
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -251,6 +297,8 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="SwingProcessor_8hpp_source.html#l00044">44</a> of file <a class="el" href="SwingProcessor_8hpp_source.html">SwingProcessor.hpp</a>.</p>
+
 </div>
 </div>
 <a id="a4b5d83fac0c5bec9a287f54424da5434" name="a4b5d83fac0c5bec9a287f54424da5434"></a>
@@ -268,6 +316,13 @@ Static Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Drop output to zero if force is lost mid-swing.</p>
+<p>Ignore force events unless the system is armed from the start position.</p>
+<p>Ignore duplicate triggers while already active.</p>
+<p>Force confirmation starts the swing.</p>
+<p>must leave start position before magnitude is measured</p>
+
+<p class="definition">Definition at line <a class="el" href="SwingProcessor_8cpp_source.html#l00054">54</a> of file <a class="el" href="SwingProcessor_8cpp_source.html">SwingProcessor.cpp</a>.</p>
 
 </div>
 </div>
@@ -286,6 +341,14 @@ Static Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Ignore position events during the post-reset cooldown.</p>
+<p>Reaching the start position arms the swing and refreshes bias.</p>
+<p>Left the start position before force confirmation; cancel arming.</p>
+<p>Left position before piezo — disarm</p>
+<p>Left position after piezo — swing has begun</p>
+<p>If already active, leaving the start position is expected.</p>
+
+<p class="definition">Definition at line <a class="el" href="SwingProcessor_8cpp_source.html#l00032">32</a> of file <a class="el" href="SwingProcessor_8cpp_source.html">SwingProcessor.cpp</a>.</p>
 
 </div>
 </div>
@@ -340,8 +403,17 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Feed the sample into the position detector first.</p>
+<p>Only process magnitude while a swing is active.</p>
+<p>don't measure until bat leaves start position</p>
+<p>Hold output until the current calibration window completes.</p>
+<p>Remove gravity bias to estimate linear acceleration.</p>
+<p>Collapse 3D linear acceleration into a scalar magnitude.</p>
+<p>Clamp small values to zero to suppress noise.</p>
 
 <p>Reimplemented from <a class="el" href="classPositionDetector.html#aff71ff748fddc6e18c1303a0aafc9dcf">PositionDetector</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="SwingProcessor_8cpp_source.html#l00085">85</a> of file <a class="el" href="SwingProcessor_8cpp_source.html">SwingProcessor.cpp</a>.</p>
 
 </div>
 </div>
@@ -406,6 +478,9 @@ Static Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Adapter for callback-style IMU interfaces.</p>
+
+<p class="definition">Definition at line <a class="el" href="SwingProcessor_8cpp_source.html#l00113">113</a> of file <a class="el" href="SwingProcessor_8cpp_source.html">SwingProcessor.cpp</a>.</p>
 
 </div>
 </div>
@@ -423,6 +498,9 @@ Static Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Clear swing state and restart cooldown.</p>
+
+<p class="definition">Definition at line <a class="el" href="SwingProcessor_8cpp_source.html#l00076">76</a> of file <a class="el" href="SwingProcessor_8cpp_source.html">SwingProcessor.cpp</a>.</p>
 
 </div>
 </div>
@@ -442,6 +520,10 @@ Static Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Register callback for filtered linear-acceleration magnitude. </p>
+
+<p class="definition">Definition at line <a class="el" href="SwingProcessor_8cpp_source.html#l00020">20</a> of file <a class="el" href="SwingProcessor_8cpp_source.html">SwingProcessor.cpp</a>.</p>
+
 </div>
 </div>
 <a id="a3f8acb3098e0478d10211b3b1923fe87" name="a3f8acb3098e0478d10211b3b1923fe87"></a>
@@ -459,6 +541,10 @@ Static Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Register callback for upright/not-upright state changes. </p>
+
+<p class="definition">Definition at line <a class="el" href="SwingProcessor_8cpp_source.html#l00026">26</a> of file <a class="el" href="SwingProcessor_8cpp_source.html">SwingProcessor.cpp</a>.</p>
 
 </div>
 </div>
@@ -483,6 +569,10 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Declares the private members used to store thresholds, calibration, callbacks, activity state, and reset timing. </p>
+
+<p class="definition">Definition at line <a class="el" href="SwingProcessor_8hpp_source.html#l00057">57</a> of file <a class="el" href="SwingProcessor_8hpp_source.html">SwingProcessor.hpp</a>.</p>
+
 </div>
 </div>
 <a id="aec1740512208f2c203c1b2510f80fa2e" name="aec1740512208f2c203c1b2510f80fa2e"></a>
@@ -504,6 +594,8 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="SwingProcessor_8hpp_source.html#l00058">58</a> of file <a class="el" href="SwingProcessor_8hpp_source.html">SwingProcessor.hpp</a>.</p>
 
 </div>
 </div>
@@ -527,6 +619,36 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>paddle has left the starting position since activation </p>
+
+<p class="definition">Definition at line <a class="el" href="SwingProcessor_8hpp_source.html#l00067">67</a> of file <a class="el" href="SwingProcessor_8hpp_source.html">SwingProcessor.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a9365323ebee862a6d615c08696dc63e4" name="a9365323ebee862a6d615c08696dc63e4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9365323ebee862a6d615c08696dc63e4">&#9670;&#160;</a></span>hasLeftStart_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool SwingProcessor::hasLeftStart_ = false</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>gate open, motor feedback running </p>
+
+<p class="definition">Definition at line <a class="el" href="SwingProcessor_8hpp_source.html#l00064">64</a> of file <a class="el" href="SwingProcessor_8hpp_source.html">SwingProcessor.hpp</a>.</p>
+
 </div>
 </div>
 <a id="a3184c4f9d59ac9495d41009694fcb423" name="a3184c4f9d59ac9495d41009694fcb423"></a>
@@ -548,6 +670,10 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>position confirmed, ready for piezo </p>
+
+<p class="definition">Definition at line <a class="el" href="SwingProcessor_8hpp_source.html#l00063">63</a> of file <a class="el" href="SwingProcessor_8hpp_source.html">SwingProcessor.hpp</a>.</p>
 
 </div>
 </div>
@@ -571,6 +697,8 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="SwingProcessor_8hpp_source.html#l00062">62</a> of file <a class="el" href="SwingProcessor_8hpp_source.html">SwingProcessor.hpp</a>.</p>
+
 </div>
 </div>
 <a id="a8360c8e9302e099edd84818eff147957" name="a8360c8e9302e099edd84818eff147957"></a>
@@ -592,6 +720,8 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="SwingProcessor_8hpp_source.html#l00059">59</a> of file <a class="el" href="SwingProcessor_8hpp_source.html">SwingProcessor.hpp</a>.</p>
 
 </div>
 </div>
@@ -615,6 +745,8 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="SwingProcessor_8hpp_source.html#l00060">60</a> of file <a class="el" href="SwingProcessor_8hpp_source.html">SwingProcessor.hpp</a>.</p>
+
 </div>
 </div>
 <a id="aea2a21e4d6b577842d80ba059b0130f4" name="aea2a21e4d6b577842d80ba059b0130f4"></a>
@@ -637,11 +769,13 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="SwingProcessor_8hpp_source.html#l00068">68</a> of file <a class="el" href="SwingProcessor_8hpp_source.html">SwingProcessor.hpp</a>.</p>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/libs/IMU_math/Include/<a class="el" href="SwingProcessor_8hpp_source.html">SwingProcessor.hpp</a></li>
-<li>src/libs/IMU_math/<a class="el" href="SwingProcessor_8cpp.html">SwingProcessor.cpp</a></li>
+<li>src/libs/IMU_math/<a class="el" href="SwingProcessor_8cpp_source.html">SwingProcessor.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

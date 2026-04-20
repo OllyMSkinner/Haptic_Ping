@@ -80,11 +80,19 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>Declares the ADS1115 Raspberry Pi interface, including callback support and the main functions for starting, stopping, configuring, and reading the device.  
+ <a href="classADS1115rpi.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="ads1115rpi_8h_source.html">ads1115rpi.h</a>&gt;</code></p>
 <div class="dynheader">
 Collaboration diagram for ADS1115rpi:</div>
 <div class="dyncontent">
 <div class="center"><img src="classADS1115rpi__coll__graph.png" border="0" usemap="#aADS1115rpi_coll__map" alt="Collaboration graph"/></div>
+<map name="aADS1115rpi_coll__map" id="aADS1115rpi_coll__map">
+<area shape="rect" title="Declares the ADS1115 Raspberry Pi interface, including callback support and the main functions for st..." alt="" coords="23,93,121,119"/>
+<area shape="rect" href="structADS1115settings.html" title="Stores the ADS1115 configuration values, including I2C settings, sampling rate, gain,..." alt="" coords="5,5,139,31"/>
+<area shape="poly" title=" " alt="" coords="75,45,75,93,69,93,69,45"/>
+</map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
@@ -99,34 +107,42 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a720c2d3b7151367221af969ab436f299" id="r_a720c2d3b7151367221af969ab436f299"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classADS1115rpi.html#a720c2d3b7151367221af969ab436f299">registerCallback</a> (<a class="el" href="classADS1115rpi.html#a69806d343269487c97e5d34c9c13902c">ADSCallbackInterface</a> ci)</td></tr>
 <tr class="separator:a720c2d3b7151367221af969ab436f299"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4f36d0cca6cbec106b5a626d9973e091" id="r_a4f36d0cca6cbec106b5a626d9973e091"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classADS1115rpi.html#a4f36d0cca6cbec106b5a626d9973e091">setChannel</a> (<a class="el" href="structADS1115settings.html#a17845a1a94f94bb7d2406dbe13bc560d">ADS1115settings::Input</a> channel)</td></tr>
+<tr class="memdesc:a4f36d0cca6cbec106b5a626d9973e091"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the input channel used by the ADS1115.  <br /></td></tr>
 <tr class="separator:a4f36d0cca6cbec106b5a626d9973e091"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a827e9df153aee3522f1d2c90eed9eb64" id="r_a827e9df153aee3522f1d2c90eed9eb64"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classADS1115rpi.html#a827e9df153aee3522f1d2c90eed9eb64">start</a> (<a class="el" href="structADS1115settings.html">ADS1115settings</a> settings=<a class="el" href="structADS1115settings.html">ADS1115settings</a>(), bool spawn_worker=true)</td></tr>
-<tr class="separator:a827e9df153aee3522f1d2c90eed9eb64"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a401e626b6afed688a9b0518c0316b2a9" id="r_a401e626b6afed688a9b0518c0316b2a9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classADS1115rpi.html#a401e626b6afed688a9b0518c0316b2a9">start</a> (<a class="el" href="structADS1115settings.html">ADS1115settings</a> settings=<a class="el" href="structADS1115settings.html">ADS1115settings</a>())</td></tr>
+<tr class="memdesc:a401e626b6afed688a9b0518c0316b2a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opens I2C, configures the ADS1115, sets up the GPIO ready pin, and starts the worker thread.  <br /></td></tr>
+<tr class="separator:a401e626b6afed688a9b0518c0316b2a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad8f096a3061f19cda469efe0eee60510" id="r_ad8f096a3061f19cda469efe0eee60510"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structADS1115settings.html">ADS1115settings</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classADS1115rpi.html#ad8f096a3061f19cda469efe0eee60510">getADS1115settings</a> () const</td></tr>
 <tr class="separator:ad8f096a3061f19cda469efe0eee60510"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a910b9735f8bef69a0844a821fda06baf" id="r_a910b9735f8bef69a0844a821fda06baf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classADS1115rpi.html#a910b9735f8bef69a0844a821fda06baf">stop</a> ()</td></tr>
+<tr class="memdesc:a910b9735f8bef69a0844a821fda06baf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stops the worker thread and releases GPIO and I2C resources.  <br /></td></tr>
 <tr class="separator:a910b9735f8bef69a0844a821fda06baf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaaa6d9f5f8e527a3c75d9fa4226fe2d3" id="r_aaaa6d9f5f8e527a3c75d9fa4226fe2d3"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classADS1115rpi.html#aaaa6d9f5f8e527a3c75d9fa4226fe2d3">readOnce</a> ()</td></tr>
-<tr class="separator:aaaa6d9f5f8e527a3c75d9fa4226fe2d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8ceeb0356792ea4bce69a4c4297779bb" id="r_a8ceeb0356792ea4bce69a4c4297779bb"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classADS1115rpi.html#a8ceeb0356792ea4bce69a4c4297779bb">fullScaleVoltage</a> () const</td></tr>
-<tr class="separator:a8ceeb0356792ea4bce69a4c4297779bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8251b174905f14917414cef510122aae" id="r_a8251b174905f14917414cef510122aae"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classADS1115rpi.html#a8251b174905f14917414cef510122aae">setRetryEnabled</a> (bool enabled)</td></tr>
 <tr class="separator:a8251b174905f14917414cef510122aae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
 <tr class="memitem:a6121577f14b54e21777281cbb56d3e91" id="r_a6121577f14b54e21777281cbb56d3e91"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classADS1115rpi.html#a6121577f14b54e21777281cbb56d3e91">dataReady</a> ()</td></tr>
+<tr class="memdesc:a6121577f14b54e21777281cbb56d3e91"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads the latest conversion result, converts it to a voltage, and sends it to the callback.  <br /></td></tr>
 <tr class="separator:a6121577f14b54e21777281cbb56d3e91"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0c68300f73409f5ad0645ec727cb5699" id="r_a0c68300f73409f5ad0645ec727cb5699"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classADS1115rpi.html#a0c68300f73409f5ad0645ec727cb5699">worker</a> ()</td></tr>
+<tr class="memdesc:a0c68300f73409f5ad0645ec727cb5699"><td class="mdescLeft">&#160;</td><td class="mdescRight">Waits for ready interrupts and triggers a read when conversion data is available.  <br /></td></tr>
 <tr class="separator:a0c68300f73409f5ad0645ec727cb5699"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac055ed01593f326bfa1c8804a6d0808a" id="r_ac055ed01593f326bfa1c8804a6d0808a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classADS1115rpi.html#ac055ed01593f326bfa1c8804a6d0808a">i2c_selectDevice</a> ()</td></tr>
+<tr class="memdesc:ac055ed01593f326bfa1c8804a6d0808a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Selects the ADS1115 device on the I2C bus.  <br /></td></tr>
 <tr class="separator:ac055ed01593f326bfa1c8804a6d0808a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acb305bcbf5e54a803e2b3b81b9a7b014" id="r_acb305bcbf5e54a803e2b3b81b9a7b014"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classADS1115rpi.html#acb305bcbf5e54a803e2b3b81b9a7b014">i2c_writeWord</a> (uint8_t reg, unsigned data)</td></tr>
+<tr class="memdesc:acb305bcbf5e54a803e2b3b81b9a7b014"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes a 16-bit value to the specified ADS1115 register.  <br /></td></tr>
 <tr class="separator:acb305bcbf5e54a803e2b3b81b9a7b014"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afa0cee2d3c8219ef5414e36d9f24c84a" id="r_afa0cee2d3c8219ef5414e36d9f24c84a"><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classADS1115rpi.html#afa0cee2d3c8219ef5414e36d9f24c84a">i2c_readWord</a> (uint8_t reg)</td></tr>
+<tr class="memdesc:afa0cee2d3c8219ef5414e36d9f24c84a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads a 16-bit value from the specified ADS1115 register.  <br /></td></tr>
 <tr class="separator:afa0cee2d3c8219ef5414e36d9f24c84a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a18336fb9a3fde4cc379e2a7474aeceab" id="r_a18336fb9a3fde4cc379e2a7474aeceab"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classADS1115rpi.html#a18336fb9a3fde4cc379e2a7474aeceab">i2c_readConversion</a> ()</td></tr>
+<tr class="memdesc:a18336fb9a3fde4cc379e2a7474aeceab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads the latest conversion value using an atomic I2C transaction, with retries on failure.  <br /></td></tr>
 <tr class="separator:a18336fb9a3fde4cc379e2a7474aeceab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b18b7666cdeea2c10387ec90ae8a40f" id="r_a5b18b7666cdeea2c10387ec90ae8a40f"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classADS1115rpi.html#a5b18b7666cdeea2c10387ec90ae8a40f">fullScaleVoltage</a> ()</td></tr>
+<tr class="memdesc:a5b18b7666cdeea2c10387ec90ae8a40f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the full-scale voltage based on the selected gain setting.  <br /></td></tr>
+<tr class="separator:a5b18b7666cdeea2c10387ec90ae8a40f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -158,7 +174,11 @@ Static Private Attributes</h2></td></tr>
 <tr class="memitem:a32ead9aea16fe6867b8c61938c3e5a59" id="r_a32ead9aea16fe6867b8c61938c3e5a59"><td class="memItemLeft" align="right" valign="top">static constexpr int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classADS1115rpi.html#a32ead9aea16fe6867b8c61938c3e5a59">ISR_TIMEOUT_MS</a> = 500</td></tr>
 <tr class="separator:a32ead9aea16fe6867b8c61938c3e5a59"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Typedef Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Declares the ADS1115 Raspberry Pi interface, including callback support and the main functions for starting, stopping, configuring, and reading the device. </p>
+
+<p class="definition">Definition at line <a class="el" href="ads1115rpi_8h_source.html#l00095">95</a> of file <a class="el" href="ads1115rpi_8h_source.html">ads1115rpi.h</a>.</p>
+</div><h2 class="groupheader">Member Typedef Documentation</h2>
 <a id="a69806d343269487c97e5d34c9c13902c" name="a69806d343269487c97e5d34c9c13902c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a69806d343269487c97e5d34c9c13902c">&#9670;&#160;</a></span>ADSCallbackInterface</h2>
 
@@ -170,6 +190,8 @@ Static Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="ads1115rpi_8h_source.html#l00103">103</a> of file <a class="el" href="ads1115rpi_8h_source.html">ads1115rpi.h</a>.</p>
 
 </div>
 </div>
@@ -197,6 +219,8 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="ads1115rpi_8h_source.html#l00098">98</a> of file <a class="el" href="ads1115rpi_8h_source.html">ads1115rpi.h</a>.</p>
+
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -223,10 +247,15 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Reads the latest conversion result, converts it to a voltage, and sends it to the callback. </p>
+<p>silent skip — retries already logged inside i2c_readConversion</p>
+
+<p class="definition">Definition at line <a class="el" href="ads1115rpi_8cpp_source.html#l00127">127</a> of file <a class="el" href="ads1115rpi_8cpp_source.html">ads1115rpi.cpp</a>.</p>
+
 </div>
 </div>
-<a id="a8ceeb0356792ea4bce69a4c4297779bb" name="a8ceeb0356792ea4bce69a4c4297779bb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8ceeb0356792ea4bce69a4c4297779bb">&#9670;&#160;</a></span>fullScaleVoltage()</h2>
+<a id="a5b18b7666cdeea2c10387ec90ae8a40f" name="a5b18b7666cdeea2c10387ec90ae8a40f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5b18b7666cdeea2c10387ec90ae8a40f">&#9670;&#160;</a></span>fullScaleVoltage()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -238,15 +267,19 @@ Static Private Attributes</h2></td></tr>
           <td class="memname">float ADS1115rpi::fullScaleVoltage </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td> const</td>
+          <td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Returns the full-scale voltage based on the selected gain setting. </p>
+
+<p class="definition">Definition at line <a class="el" href="ads1115rpi_8h_source.html#l00138">138</a> of file <a class="el" href="ads1115rpi_8h_source.html">ads1115rpi.h</a>.</p>
 
 </div>
 </div>
@@ -273,6 +306,8 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="ads1115rpi_8h_source.html#l00112">112</a> of file <a class="el" href="ads1115rpi_8h_source.html">ads1115rpi.h</a>.</p>
+
 </div>
 </div>
 <a id="a18336fb9a3fde4cc379e2a7474aeceab" name="a18336fb9a3fde4cc379e2a7474aeceab"></a>
@@ -297,6 +332,10 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Reads the latest conversion value using an atomic I2C transaction, with retries on failure. </p>
+
+<p class="definition">Definition at line <a class="el" href="ads1115rpi_8cpp_source.html#l00250">250</a> of file <a class="el" href="ads1115rpi_8cpp_source.html">ads1115rpi.cpp</a>.</p>
 
 </div>
 </div>
@@ -324,6 +363,10 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Reads a 16-bit value from the specified ADS1115 register. </p>
+
+<p class="definition">Definition at line <a class="el" href="ads1115rpi_8cpp_source.html#l00228">228</a> of file <a class="el" href="ads1115rpi_8cpp_source.html">ads1115rpi.cpp</a>.</p>
+
 </div>
 </div>
 <a id="ac055ed01593f326bfa1c8804a6d0808a" name="ac055ed01593f326bfa1c8804a6d0808a"></a>
@@ -348,6 +391,10 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Selects the ADS1115 device on the I2C bus. </p>
+
+<p class="definition">Definition at line <a class="el" href="ads1115rpi_8cpp_source.html#l00203">203</a> of file <a class="el" href="ads1115rpi_8cpp_source.html">ads1115rpi.cpp</a>.</p>
 
 </div>
 </div>
@@ -385,22 +432,9 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-</div>
-</div>
-<a id="aaaa6d9f5f8e527a3c75d9fa4226fe2d3" name="aaaa6d9f5f8e527a3c75d9fa4226fe2d3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aaaa6d9f5f8e527a3c75d9fa4226fe2d3">&#9670;&#160;</a></span>readOnce()</h2>
+<p>Writes a 16-bit value to the specified ADS1115 register. </p>
 
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int ADS1115rpi::readOnce </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
+<p class="definition">Definition at line <a class="el" href="ads1115rpi_8cpp_source.html#l00211">211</a> of file <a class="el" href="ads1115rpi_8cpp_source.html">ads1115rpi.cpp</a>.</p>
 
 </div>
 </div>
@@ -428,6 +462,8 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="ads1115rpi_8h_source.html#l00105">105</a> of file <a class="el" href="ads1115rpi_8h_source.html">ads1115rpi.h</a>.</p>
+
 </div>
 </div>
 <a id="a4f36d0cca6cbec106b5a626d9973e091" name="a4f36d0cca6cbec106b5a626d9973e091"></a>
@@ -445,6 +481,10 @@ Static Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Updates the input channel used by the ADS1115. </p>
+
+<p class="definition">Definition at line <a class="el" href="ads1115rpi_8cpp_source.html#l00117">117</a> of file <a class="el" href="ads1115rpi_8cpp_source.html">ads1115rpi.cpp</a>.</p>
 
 </div>
 </div>
@@ -471,11 +511,14 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Enable retries on I2C read failure. Safe to call from any thread. Default: disabled. Enable only when highest duty cycle is active. </p>
+
+<p class="definition">Definition at line <a class="el" href="ads1115rpi_8h_source.html#l00120">120</a> of file <a class="el" href="ads1115rpi_8h_source.html">ads1115rpi.h</a>.</p>
 
 </div>
 </div>
-<a id="a827e9df153aee3522f1d2c90eed9eb64" name="a827e9df153aee3522f1d2c90eed9eb64"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a827e9df153aee3522f1d2c90eed9eb64">&#9670;&#160;</a></span>start()</h2>
+<a id="a401e626b6afed688a9b0518c0316b2a9" name="a401e626b6afed688a9b0518c0316b2a9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a401e626b6afed688a9b0518c0316b2a9">&#9670;&#160;</a></span>start()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -484,21 +527,15 @@ Static Private Attributes</h2></td></tr>
           <td class="memname">void ADS1115rpi::start </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structADS1115settings.html">ADS1115settings</a>&#160;</td>
-          <td class="paramname"><em>settings</em> = <code><a class="el" href="structADS1115settings.html">ADS1115settings</a>()</code>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramname"><em>settings</em> = <code><a class="el" href="structADS1115settings.html">ADS1115settings</a>()</code></td><td>)</td>
           <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>spawn_worker</em> = <code>true</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Opens I2C, configures the ADS1115, sets up the GPIO ready pin, and starts the worker thread. </p>
+
+<p class="definition">Definition at line <a class="el" href="ads1115rpi_8cpp_source.html#l00037">37</a> of file <a class="el" href="ads1115rpi_8cpp_source.html">ads1115rpi.cpp</a>.</p>
 
 </div>
 </div>
@@ -516,6 +553,10 @@ Static Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Stops the worker thread and releases GPIO and I2C resources. </p>
+
+<p class="definition">Definition at line <a class="el" href="ads1115rpi_8cpp_source.html#l00176">176</a> of file <a class="el" href="ads1115rpi_8cpp_source.html">ads1115rpi.cpp</a>.</p>
 
 </div>
 </div>
@@ -542,6 +583,10 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Waits for ready interrupts and triggers a read when conversion data is available. </p>
+
+<p class="definition">Definition at line <a class="el" href="ads1115rpi_8cpp_source.html#l00143">143</a> of file <a class="el" href="ads1115rpi_8cpp_source.html">ads1115rpi.cpp</a>.</p>
+
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
@@ -565,6 +610,8 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="ads1115rpi_8h_source.html#l00123">123</a> of file <a class="el" href="ads1115rpi_8h_source.html">ads1115rpi.h</a>.</p>
+
 </div>
 </div>
 <a id="a2efd347497b549a84e7c2ccc624883c4" name="a2efd347497b549a84e7c2ccc624883c4"></a>
@@ -586,6 +633,8 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="ads1115rpi_8h_source.html#l00160">160</a> of file <a class="el" href="ads1115rpi_8h_source.html">ads1115rpi.h</a>.</p>
 
 </div>
 </div>
@@ -609,6 +658,8 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="ads1115rpi_8h_source.html#l00155">155</a> of file <a class="el" href="ads1115rpi_8h_source.html">ads1115rpi.h</a>.</p>
+
 </div>
 </div>
 <a id="aeff3281ccb623732a77361bcc6baa1d7" name="aeff3281ccb623732a77361bcc6baa1d7"></a>
@@ -630,6 +681,8 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="ads1115rpi_8h_source.html#l00158">158</a> of file <a class="el" href="ads1115rpi_8h_source.html">ads1115rpi.h</a>.</p>
 
 </div>
 </div>
@@ -653,6 +706,8 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="ads1115rpi_8h_source.html#l00163">163</a> of file <a class="el" href="ads1115rpi_8h_source.html">ads1115rpi.h</a>.</p>
+
 </div>
 </div>
 <a id="a7800b618e5fef37f4d8a8ce1e13a094f" name="a7800b618e5fef37f4d8a8ce1e13a094f"></a>
@@ -674,6 +729,8 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="ads1115rpi_8h_source.html#l00133">133</a> of file <a class="el" href="ads1115rpi_8h_source.html">ads1115rpi.h</a>.</p>
 
 </div>
 </div>
@@ -697,6 +754,8 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="ads1115rpi_8h_source.html#l00135">135</a> of file <a class="el" href="ads1115rpi_8h_source.html">ads1115rpi.h</a>.</p>
+
 </div>
 </div>
 <a id="ab80533eb7df95e3117857507a3fcdd55" name="ab80533eb7df95e3117857507a3fcdd55"></a>
@@ -718,6 +777,8 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="ads1115rpi_8h_source.html#l00134">134</a> of file <a class="el" href="ads1115rpi_8h_source.html">ads1115rpi.h</a>.</p>
 
 </div>
 </div>
@@ -741,6 +802,8 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="ads1115rpi_8h_source.html#l00156">156</a> of file <a class="el" href="ads1115rpi_8h_source.html">ads1115rpi.h</a>.</p>
+
 </div>
 </div>
 <a id="a6ecd0d8a5c01b199263021de625fb8f0" name="a6ecd0d8a5c01b199263021de625fb8f0"></a>
@@ -762,6 +825,8 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="ads1115rpi_8h_source.html#l00161">161</a> of file <a class="el" href="ads1115rpi_8h_source.html">ads1115rpi.h</a>.</p>
 
 </div>
 </div>
@@ -785,6 +850,8 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="ads1115rpi_8h_source.html#l00159">159</a> of file <a class="el" href="ads1115rpi_8h_source.html">ads1115rpi.h</a>.</p>
+
 </div>
 </div>
 <a id="af49796d06bc0556073bae758f21029b5" name="af49796d06bc0556073bae758f21029b5"></a>
@@ -807,11 +874,13 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="ads1115rpi_8h_source.html#l00157">157</a> of file <a class="el" href="ads1115rpi_8h_source.html">ads1115rpi.h</a>.</p>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/libs/Piezo/Include/<a class="el" href="ads1115rpi_8h_source.html">ads1115rpi.h</a></li>
-<li>src/libs/Piezo/<a class="el" href="ads1115rpi_8cpp.html">ads1115rpi.cpp</a></li>
+<li>src/libs/Piezo/<a class="el" href="ads1115rpi_8cpp_source.html">ads1115rpi.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

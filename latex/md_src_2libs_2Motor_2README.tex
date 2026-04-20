@@ -1,0 +1,80 @@
+\chapter{ERM Vibration Motor}
+\hypertarget{md_src_2libs_2Motor_2README}{}\label{md_src_2libs_2Motor_2README}\index{ERM Vibration Motor@{ERM Vibration Motor}}
+\label{md_src_2libs_2Motor_2README_autotoc_md8}%
+\Hypertarget{md_src_2libs_2Motor_2README_autotoc_md8}%
+ A ERM (Eccentric Rotating Mass) vibration motor used to deliver haptic feedback proportional to swing intensity.
+
+\DoxyHorRuler{0}
+\hypertarget{md_src_2libs_2Motor_2README_autotoc_md10}{}\doxysection{\texorpdfstring{Pin Connection List}{Pin Connection List}}\label{md_src_2libs_2Motor_2README_autotoc_md10}
+\hypertarget{md_src_2libs_2Motor_2README_autotoc_md11}{}\doxysubsection{\texorpdfstring{Motor Circuit Connections}{Motor Circuit Connections}}\label{md_src_2libs_2Motor_2README_autotoc_md11}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Component   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Connection    }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Component   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Connection    }\\\cline{1-2}
+\endhead
+Motor +   &5V (4x AA battery pack)    \\\cline{1-2}
+Motor -\/   &NPN transistor collector    \\\cline{1-2}
+Transistor base   &GPIO 18 via 220Ohm resistor    \\\cline{1-2}
+Transistor emitter   &GND    \\\cline{1-2}
+Flyback diode   &Across motor terminals (GND to +)   \\\cline{1-2}
+\end{longtabu}
+
+
+\DoxyHorRuler{0}
+\hypertarget{md_src_2libs_2Motor_2README_autotoc_md13}{}\doxysection{\texorpdfstring{PWM Configuration}{PWM Configuration}}\label{md_src_2libs_2Motor_2README_autotoc_md13}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Parameter   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Value    }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Parameter   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Value    }\\\cline{1-2}
+\endhead
+PWM GPIO   &GPIO 18    \\\cline{1-2}
+PWM Frequency   &30 Hz    \\\cline{1-2}
+Max Duty Cycle   &80\%    \\\cline{1-2}
+PWM Type   &Software PWM   \\\cline{1-2}
+\end{longtabu}
+
+
+\DoxyHorRuler{0}
+\hypertarget{md_src_2libs_2Motor_2README_autotoc_md15}{}\doxysection{\texorpdfstring{Motor Specifications}{Motor Specifications}}\label{md_src_2libs_2Motor_2README_autotoc_md15}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Parameter   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Value    }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Parameter   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Value    }\\\cline{1-2}
+\endhead
+Operating Voltage   &2V -\/ 5V    \\\cline{1-2}
+Dimensions   &10mm x 2.\+7mm    \\\cline{1-2}
+Current at 5V   &100 mA    \\\cline{1-2}
+Current at 4V   &80 mA    \\\cline{1-2}
+Current at 3V   &60 mA    \\\cline{1-2}
+Current at 2V   &40 mA    \\\cline{1-2}
+Weight   &\texorpdfstring{$<$}{<} 1 gram   \\\cline{1-2}
+\end{longtabu}
+
+
+\DoxyHorRuler{0}
+\hypertarget{md_src_2libs_2Motor_2README_autotoc_md17}{}\doxysection{\texorpdfstring{Driver Circuit}{Driver Circuit}}\label{md_src_2libs_2Motor_2README_autotoc_md17}
+The motor is driven by an NPN transistor switch controlled by the Raspberry Pi GPIO 18 software PWM output\+:
+
+
+\begin{DoxyItemize}
+\item A {\bfseries{220Ohm resistor}} on the transistor base limits the base current from GPIO 18.
+\item The {\bfseries{flyback diodes}} across the motor terminals suppress the back-\/\+EMF spike when the motor is switched off.
+\item Power is supplied by a {\bfseries{4x AA battery pack (\texorpdfstring{$\sim$}{\string~}5V)}} separate from 
+\end{DoxyItemize}\hypertarget{md_src_2libs_2Motor_2README_autotoc_md18}{}\doxysection{\texorpdfstring{the Raspberry Pi supply to avoid voltage dips on the Pi rail.}{the Raspberry Pi supply to avoid voltage dips on the Pi rail.}}\label{md_src_2libs_2Motor_2README_autotoc_md18}
+\hypertarget{md_src_2libs_2Motor_2README_autotoc_md19}{}\doxysection{\texorpdfstring{Hardware Assembly}{Hardware Assembly}}\label{md_src_2libs_2Motor_2README_autotoc_md19}
+  

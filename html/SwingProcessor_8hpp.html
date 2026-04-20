@@ -87,11 +87,33 @@ $(function() {
 Include dependency graph for SwingProcessor.hpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="SwingProcessor_8hpp__incl.png" border="0" usemap="#asrc_2libs_2IMU__math_2Include_2SwingProcessor_8hpp" alt=""/></div>
+<map name="asrc_2libs_2IMU__math_2Include_2SwingProcessor_8hpp" id="asrc_2libs_2IMU__math_2Include_2SwingProcessor_8hpp">
+<area shape="rect" title=" " alt="" coords="157,5,347,45"/>
+<area shape="rect" href="SwingCalibrator_8hpp.html" title=" " alt="" coords="5,93,157,119"/>
+<area shape="poly" title=" " alt="" coords="212,48,120,90,118,85,210,43"/>
+<area shape="rect" title=" " alt="" coords="151,167,238,192"/>
+<area shape="poly" title=" " alt="" coords="244,47,222,94,204,154,198,152,218,92,240,44"/>
+<area shape="rect" href="positiondetector_8hpp.html" title=" " alt="" coords="232,93,387,119"/>
+<area shape="poly" title=" " alt="" coords="268,44,295,80,291,84,264,47"/>
+<area shape="rect" title=" " alt="" coords="411,93,477,119"/>
+<area shape="poly" title=" " alt="" coords="299,43,404,86,402,91,297,48"/>
+<area shape="poly" title=" " alt="" coords="101,116,166,157,163,162,98,121"/>
+<area shape="poly" title=" " alt="" coords="292,121,226,162,224,157,290,116"/>
+<area shape="rect" title=" " alt="" coords="278,167,341,192"/>
+<area shape="poly" title=" " alt="" coords="312,119,312,153,307,153,307,119"/>
+</map>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="SwingProcessor_8hpp__dep__incl.png" border="0" usemap="#asrc_2libs_2IMU__math_2Include_2SwingProcessor_8hppdep" alt=""/></div>
+<map name="asrc_2libs_2IMU__math_2Include_2SwingProcessor_8hppdep" id="asrc_2libs_2IMU__math_2Include_2SwingProcessor_8hppdep">
+<area shape="rect" title=" " alt="" coords="151,5,341,45"/>
+<area shape="rect" href="SwingProcessor_8cpp.html" title=" " alt="" coords="5,93,276,119"/>
+<area shape="poly" title=" " alt="" coords="211,56,158,95,155,91,208,51"/>
+<area shape="rect" href="main_8cpp.html" title=" " alt="" coords="300,93,405,119"/>
+<area shape="poly" title=" " alt="" coords="284,51,338,91,335,95,281,56"/>
+</map>
 </div>
 </div>
 <p><a href="SwingProcessor_8hpp_source.html">Go to the source code of this file.</a></p>
@@ -99,17 +121,21 @@ This graph shows which files directly or indirectly include this file:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSwingProcessor.html">SwingProcessor</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">raised to reject motor EMI noise floor  <a href="classSwingProcessor.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
 <tr class="memitem:a08ea26a0b6d1252d3b6fb7f194ad6fd8" id="r_a08ea26a0b6d1252d3b6fb7f194ad6fd8"><td class="memItemLeft" align="right" valign="top">static constexpr unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="SwingProcessor_8hpp.html#a08ea26a0b6d1252d3b6fb7f194ad6fd8">I2C_BUS</a> = 1</td></tr>
+<tr class="memdesc:a08ea26a0b6d1252d3b6fb7f194ad6fd8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines the I2C bus and the main constants used for calibration, recalibration, and acceleration deadband control.  <br /></td></tr>
 <tr class="separator:a08ea26a0b6d1252d3b6fb7f194ad6fd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac684e3b2eaf7d15239031ca404c88059" id="r_ac684e3b2eaf7d15239031ca404c88059"><td class="memItemLeft" align="right" valign="top">static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="SwingProcessor_8hpp.html#ac684e3b2eaf7d15239031ca404c88059">CALIB_SAMPLES</a> = 50</td></tr>
 <tr class="separator:ac684e3b2eaf7d15239031ca404c88059"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a244f60b18afb57444be7ad3ba6ec1f5a" id="r_a244f60b18afb57444be7ad3ba6ec1f5a"><td class="memItemLeft" align="right" valign="top">static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="SwingProcessor_8hpp.html#a244f60b18afb57444be7ad3ba6ec1f5a">RECAL_SAMPLES</a> = 20</td></tr>
+<tr class="memdesc:a244f60b18afb57444be7ad3ba6ec1f5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">~0.5s at 100Hz — startup bias  <br /></td></tr>
 <tr class="separator:a244f60b18afb57444be7ad3ba6ec1f5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ade41390a2c6011a23e8054df5621d231" id="r_ade41390a2c6011a23e8054df5621d231"><td class="memItemLeft" align="right" valign="top">static constexpr float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="SwingProcessor_8hpp.html#ade41390a2c6011a23e8054df5621d231">ACCEL_DEADBAND</a> = 1.0f</td></tr>
+<tr class="memdesc:ade41390a2c6011a23e8054df5621d231"><td class="mdescLeft">&#160;</td><td class="mdescRight">~0.2s recal on position confirm  <br /></td></tr>
 <tr class="separator:ade41390a2c6011a23e8054df5621d231"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Variable Documentation</h2>
@@ -133,6 +159,10 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>~0.2s recal on position confirm </p>
+
+<p class="definition">Definition at line <a class="el" href="SwingProcessor_8hpp_source.html#l00020">20</a> of file <a class="el" href="SwingProcessor_8hpp_source.html">SwingProcessor.hpp</a>.</p>
+
 </div>
 </div>
 <a id="ac684e3b2eaf7d15239031ca404c88059" name="ac684e3b2eaf7d15239031ca404c88059"></a>
@@ -154,6 +184,8 @@ Variables</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="SwingProcessor_8hpp_source.html#l00018">18</a> of file <a class="el" href="SwingProcessor_8hpp_source.html">SwingProcessor.hpp</a>.</p>
 
 </div>
 </div>
@@ -177,6 +209,11 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Defines the I2C bus and the main constants used for calibration, recalibration, and acceleration deadband control. </p>
+<p>This header declares the swing processor class. It combines calibration, position detection, force input, and sample processing to control when swing feedback becomes active. SOLID Principles: D - MagnitudeCallback and PositionStateCallback are std::function output abstractions. </p>
+
+<p class="definition">Definition at line <a class="el" href="SwingProcessor_8hpp_source.html#l00017">17</a> of file <a class="el" href="SwingProcessor_8hpp_source.html">SwingProcessor.hpp</a>.</p>
+
 </div>
 </div>
 <a id="a244f60b18afb57444be7ad3ba6ec1f5a" name="a244f60b18afb57444be7ad3ba6ec1f5a"></a>
@@ -198,6 +235,10 @@ Variables</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>~0.5s at 100Hz — startup bias </p>
+
+<p class="definition">Definition at line <a class="el" href="SwingProcessor_8hpp_source.html#l00019">19</a> of file <a class="el" href="SwingProcessor_8hpp_source.html">SwingProcessor.hpp</a>.</p>
 
 </div>
 </div>

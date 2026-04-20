@@ -1,0 +1,73 @@
+\doxysection{Swing\+Calibrator.\+cpp}
+\hypertarget{SwingCalibrator_8cpp_source}{}\label{SwingCalibrator_8cpp_source}\index{src/libs/IMU\_math/SwingCalibrator.cpp@{src/libs/IMU\_math/SwingCalibrator.cpp}}
+\mbox{\hyperlink{SwingCalibrator_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{SwingCalibrator_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{SwingCalibrator_8hpp}{SwingCalibrator.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{SwingCalibrator_8cpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{SwingCalibrator_8cpp_source_l00004}\mbox{\hyperlink{classSwingCalibrator_aeb1e6f5064053a8a615d5cf9cf7984a5}{00004}}\ \mbox{\hyperlink{classSwingCalibrator_aeb1e6f5064053a8a615d5cf9cf7984a5}{SwingCalibrator::SwingCalibrator}}(\textcolor{keywordtype}{int}\ initial\_samples,\ \textcolor{keywordtype}{int}\ recal\_samples)}
+\DoxyCodeLine{\Hypertarget{SwingCalibrator_8cpp_source_l00005}00005\ \ \ \ \ :\ initial\_samples\_(initial\_samples),}
+\DoxyCodeLine{\Hypertarget{SwingCalibrator_8cpp_source_l00006}00006\ \ \ \ \ \ \ recal\_samples\_(recal\_samples),}
+\DoxyCodeLine{\Hypertarget{SwingCalibrator_8cpp_source_l00007}00007\ \ \ \ \ \ \ state\_(\mbox{\hyperlink{classSwingCalibrator_a60655018cdf737f15a57baf3f778d66d}{State}}::INITIAL),}
+\DoxyCodeLine{\Hypertarget{SwingCalibrator_8cpp_source_l00008}00008\ \ \ \ \ \ \ count\_(0),}
+\DoxyCodeLine{\Hypertarget{SwingCalibrator_8cpp_source_l00009}00009\ \ \ \ \ \ \ sum\_x\_(0.f),\ sum\_y\_(0.f),\ sum\_z\_(0.f),}
+\DoxyCodeLine{\Hypertarget{SwingCalibrator_8cpp_source_l00010}00010\ \ \ \ \ \ \ bias\_x\_(0.f),\ bias\_y\_(0.f),\ bias\_z\_(0.f)}
+\DoxyCodeLine{\Hypertarget{SwingCalibrator_8cpp_source_l00011}00011\ \{\}}
+\DoxyCodeLine{\Hypertarget{SwingCalibrator_8cpp_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{SwingCalibrator_8cpp_source_l00014}\mbox{\hyperlink{classSwingCalibrator_afd6852187a46e5972281b3c74d424ed3}{00014}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSwingCalibrator_afd6852187a46e5972281b3c74d424ed3}{SwingCalibrator::setCallback}}(\mbox{\hyperlink{classSwingCalibrator_a0fca1042381a3eadca5a037139dbd138}{DoneCallback}}\ cb)}
+\DoxyCodeLine{\Hypertarget{SwingCalibrator_8cpp_source_l00015}00015\ \{}
+\DoxyCodeLine{\Hypertarget{SwingCalibrator_8cpp_source_l00017}00017\ \ \ \ \ \mbox{\hyperlink{classSwingCalibrator_af76597aa114ecd2641500e7043a0ea8f}{callback\_}}\ =\ std::move(cb);}
+\DoxyCodeLine{\Hypertarget{SwingCalibrator_8cpp_source_l00018}00018\ \}}
+\DoxyCodeLine{\Hypertarget{SwingCalibrator_8cpp_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{SwingCalibrator_8cpp_source_l00020}\mbox{\hyperlink{classSwingCalibrator_a763b2ac04244cc6246a8b011e6727754}{00020}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classSwingCalibrator_a763b2ac04244cc6246a8b011e6727754}{SwingCalibrator::feed}}(\textcolor{keywordtype}{float}\ ax,\ \textcolor{keywordtype}{float}\ ay,\ \textcolor{keywordtype}{float}\ az)}
+\DoxyCodeLine{\Hypertarget{SwingCalibrator_8cpp_source_l00021}00021\ \{}
+\DoxyCodeLine{\Hypertarget{SwingCalibrator_8cpp_source_l00022}00022\ \ \ \ \ \textcolor{keywordflow}{switch}\ (\mbox{\hyperlink{classSwingCalibrator_ad7f23ef33a2b888fedd541b76e1a6de6}{state\_}})\ \{}
+\DoxyCodeLine{\Hypertarget{SwingCalibrator_8cpp_source_l00023}00023\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{classSwingCalibrator_a60655018cdf737f15a57baf3f778d66da91d26e4b2b105c74655093c9becd30b7}{State::INITIAL}}:}
+\DoxyCodeLine{\Hypertarget{SwingCalibrator_8cpp_source_l00025}00025\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSwingCalibrator_a7965dffc00c681bf30ec0ac24a652f2c}{accumulate}}(ax,\ ay,\ az,\ \mbox{\hyperlink{classSwingCalibrator_a3cae138c1fd68fdbf67f9959123a2477}{initial\_samples\_}},\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{SwingCalibrator_8cpp_source_l00026}00026\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{SwingCalibrator_8cpp_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{SwingCalibrator_8cpp_source_l00028}00028\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{classSwingCalibrator_a60655018cdf737f15a57baf3f778d66da521c8f6b3fc11cf1c89cc03783fc2c25}{State::RECAL}}:}
+\DoxyCodeLine{\Hypertarget{SwingCalibrator_8cpp_source_l00030}00030\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSwingCalibrator_a7965dffc00c681bf30ec0ac24a652f2c}{accumulate}}(ax,\ ay,\ az,\ \mbox{\hyperlink{classSwingCalibrator_a4edab87b1d8ccf3eb86aa5e4472ab5c1}{recal\_samples\_}},\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{SwingCalibrator_8cpp_source_l00031}00031\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{SwingCalibrator_8cpp_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{SwingCalibrator_8cpp_source_l00033}00033\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{classSwingCalibrator_a60655018cdf737f15a57baf3f778d66da2baa69eafc7204f3bd8648eba580c489}{State::READY}}:}
+\DoxyCodeLine{\Hypertarget{SwingCalibrator_8cpp_source_l00035}00035\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{SwingCalibrator_8cpp_source_l00036}00036\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{SwingCalibrator_8cpp_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{SwingCalibrator_8cpp_source_l00038}00038\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{SwingCalibrator_8cpp_source_l00039}00039\ \}}
+\DoxyCodeLine{\Hypertarget{SwingCalibrator_8cpp_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{SwingCalibrator_8cpp_source_l00041}\mbox{\hyperlink{classSwingCalibrator_af3698c7f929fb86fe97e7c8337b6213d}{00041}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSwingCalibrator_af3698c7f929fb86fe97e7c8337b6213d}{SwingCalibrator::triggerRecal}}()}
+\DoxyCodeLine{\Hypertarget{SwingCalibrator_8cpp_source_l00042}00042\ \{}
+\DoxyCodeLine{\Hypertarget{SwingCalibrator_8cpp_source_l00044}00044\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classSwingCalibrator_ad7f23ef33a2b888fedd541b76e1a6de6}{state\_}}\ !=\ \mbox{\hyperlink{classSwingCalibrator_a60655018cdf737f15a57baf3f778d66da2baa69eafc7204f3bd8648eba580c489}{State::READY}})\ \textcolor{keywordflow}{return};\ \ }
+\DoxyCodeLine{\Hypertarget{SwingCalibrator_8cpp_source_l00046}00046\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{SwingCalibrator_8cpp_source_l00048}00048\ \ \ \ \ \mbox{\hyperlink{classSwingCalibrator_ad7f23ef33a2b888fedd541b76e1a6de6}{state\_}}\ =\ \mbox{\hyperlink{classSwingCalibrator_a60655018cdf737f15a57baf3f778d66da521c8f6b3fc11cf1c89cc03783fc2c25}{State::RECAL}};}
+\DoxyCodeLine{\Hypertarget{SwingCalibrator_8cpp_source_l00049}00049\ \ \ \ \ \mbox{\hyperlink{classSwingCalibrator_a820cd0cd2692d593d5ce249c79583163}{count\_}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{SwingCalibrator_8cpp_source_l00050}00050\ \ \ \ \ \mbox{\hyperlink{classSwingCalibrator_a0a1a91873989c8a019d7e1c0dda3ab14}{sum\_x\_}}\ =\ \mbox{\hyperlink{classSwingCalibrator_adf7a3c10405f60a8922e32516c11470c}{sum\_y\_}}\ =\ \mbox{\hyperlink{classSwingCalibrator_a5b322f512206b6ef57266e8b3cc3d8b2}{sum\_z\_}}\ =\ 0.f;}
+\DoxyCodeLine{\Hypertarget{SwingCalibrator_8cpp_source_l00051}00051\ \}}
+\DoxyCodeLine{\Hypertarget{SwingCalibrator_8cpp_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{SwingCalibrator_8cpp_source_l00053}\mbox{\hyperlink{classSwingCalibrator_a84d50a34a58f080273020db7eb5af699}{00053}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classSwingCalibrator_a84d50a34a58f080273020db7eb5af699}{SwingCalibrator::isReady}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{SwingCalibrator_8cpp_source_l00054}00054\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{SwingCalibrator_8cpp_source_l00055}00055\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classSwingCalibrator_ad7f23ef33a2b888fedd541b76e1a6de6}{state\_}}\ ==\ \mbox{\hyperlink{classSwingCalibrator_a60655018cdf737f15a57baf3f778d66da2baa69eafc7204f3bd8648eba580c489}{State::READY}};}
+\DoxyCodeLine{\Hypertarget{SwingCalibrator_8cpp_source_l00056}00056\ \}}
+\DoxyCodeLine{\Hypertarget{SwingCalibrator_8cpp_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{SwingCalibrator_8cpp_source_l00058}\mbox{\hyperlink{classSwingCalibrator_a7965dffc00c681bf30ec0ac24a652f2c}{00058}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSwingCalibrator_a7965dffc00c681bf30ec0ac24a652f2c}{SwingCalibrator::accumulate}}(\textcolor{keywordtype}{float}\ ax,\ \textcolor{keywordtype}{float}\ ay,\ \textcolor{keywordtype}{float}\ az,\ \textcolor{keywordtype}{int}\ target,\ \textcolor{keywordtype}{bool}\ initial)}
+\DoxyCodeLine{\Hypertarget{SwingCalibrator_8cpp_source_l00059}00059\ \{}
+\DoxyCodeLine{\Hypertarget{SwingCalibrator_8cpp_source_l00061}00061\ \ \ \ \ \mbox{\hyperlink{classSwingCalibrator_a0a1a91873989c8a019d7e1c0dda3ab14}{sum\_x\_}}\ +=\ ax;}
+\DoxyCodeLine{\Hypertarget{SwingCalibrator_8cpp_source_l00062}00062\ \ \ \ \ \mbox{\hyperlink{classSwingCalibrator_adf7a3c10405f60a8922e32516c11470c}{sum\_y\_}}\ +=\ ay;}
+\DoxyCodeLine{\Hypertarget{SwingCalibrator_8cpp_source_l00063}00063\ \ \ \ \ \mbox{\hyperlink{classSwingCalibrator_a5b322f512206b6ef57266e8b3cc3d8b2}{sum\_z\_}}\ +=\ az;}
+\DoxyCodeLine{\Hypertarget{SwingCalibrator_8cpp_source_l00064}00064\ \ \ \ \ ++\mbox{\hyperlink{classSwingCalibrator_a820cd0cd2692d593d5ce249c79583163}{count\_}};}
+\DoxyCodeLine{\Hypertarget{SwingCalibrator_8cpp_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{SwingCalibrator_8cpp_source_l00067}00067\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classSwingCalibrator_a820cd0cd2692d593d5ce249c79583163}{count\_}}\ ==\ target)\ \{}
+\DoxyCodeLine{\Hypertarget{SwingCalibrator_8cpp_source_l00068}00068\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSwingCalibrator_aa8ea5ac83ac37dbdff3774710568903b}{bias\_x\_}}\ =\ \mbox{\hyperlink{classSwingCalibrator_a0a1a91873989c8a019d7e1c0dda3ab14}{sum\_x\_}}\ /\ target;}
+\DoxyCodeLine{\Hypertarget{SwingCalibrator_8cpp_source_l00069}00069\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSwingCalibrator_a7427c2b5d5abab9d671a09ab00a8f3ea}{bias\_y\_}}\ =\ \mbox{\hyperlink{classSwingCalibrator_adf7a3c10405f60a8922e32516c11470c}{sum\_y\_}}\ /\ target;}
+\DoxyCodeLine{\Hypertarget{SwingCalibrator_8cpp_source_l00070}00070\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSwingCalibrator_a8b5ce7eab9c8fa8e43ab14ff7462e15b}{bias\_z\_}}\ =\ \mbox{\hyperlink{classSwingCalibrator_a5b322f512206b6ef57266e8b3cc3d8b2}{sum\_z\_}}\ /\ target;}
+\DoxyCodeLine{\Hypertarget{SwingCalibrator_8cpp_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{SwingCalibrator_8cpp_source_l00073}00073\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSwingCalibrator_ad7f23ef33a2b888fedd541b76e1a6de6}{state\_}}\ \ =\ \mbox{\hyperlink{classSwingCalibrator_a60655018cdf737f15a57baf3f778d66da2baa69eafc7204f3bd8648eba580c489}{State::READY}};}
+\DoxyCodeLine{\Hypertarget{SwingCalibrator_8cpp_source_l00074}00074\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSwingCalibrator_a820cd0cd2692d593d5ce249c79583163}{count\_}}\ \ =\ 0;}
+\DoxyCodeLine{\Hypertarget{SwingCalibrator_8cpp_source_l00075}00075\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSwingCalibrator_a0a1a91873989c8a019d7e1c0dda3ab14}{sum\_x\_}}\ \ =\ \mbox{\hyperlink{classSwingCalibrator_adf7a3c10405f60a8922e32516c11470c}{sum\_y\_}}\ =\ \mbox{\hyperlink{classSwingCalibrator_a5b322f512206b6ef57266e8b3cc3d8b2}{sum\_z\_}}\ =\ 0.f;}
+\DoxyCodeLine{\Hypertarget{SwingCalibrator_8cpp_source_l00076}00076\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{SwingCalibrator_8cpp_source_l00078}00078\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classSwingCalibrator_af76597aa114ecd2641500e7043a0ea8f}{callback\_}})\ \mbox{\hyperlink{classSwingCalibrator_af76597aa114ecd2641500e7043a0ea8f}{callback\_}}(\mbox{\hyperlink{classSwingCalibrator_aa8ea5ac83ac37dbdff3774710568903b}{bias\_x\_}},\ \mbox{\hyperlink{classSwingCalibrator_a7427c2b5d5abab9d671a09ab00a8f3ea}{bias\_y\_}},\ \mbox{\hyperlink{classSwingCalibrator_a8b5ce7eab9c8fa8e43ab14ff7462e15b}{bias\_z\_}},\ initial);}
+\DoxyCodeLine{\Hypertarget{SwingCalibrator_8cpp_source_l00079}00079\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{SwingCalibrator_8cpp_source_l00080}00080\ \}}
+
+\end{DoxyCode}

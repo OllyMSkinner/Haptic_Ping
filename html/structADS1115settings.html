@@ -79,6 +79,9 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>Stores the ADS1115 configuration values, including I2C settings, sampling rate, gain, input channel, and GPIO settings.  
+ <a href="structADS1115settings.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="ads1115rpi_8h_source.html">ads1115rpi.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
@@ -112,6 +115,7 @@ Public Types</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ab4314bdcd3638815129e97458ca43950" id="r_ab4314bdcd3638815129e97458ca43950"><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structADS1115settings.html#ab4314bdcd3638815129e97458ca43950">getSamplingRate</a> () const</td></tr>
+<tr class="memdesc:ab4314bdcd3638815129e97458ca43950"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the sampling rate value that matches the selected enum setting.  <br /></td></tr>
 <tr class="separator:ab4314bdcd3638815129e97458ca43950"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
@@ -138,7 +142,11 @@ Static Public Attributes</h2></td></tr>
 <tr class="memitem:a2d2bfcac34bf116790df8b08001dcb66" id="r_a2d2bfcac34bf116790df8b08001dcb66"><td class="memItemLeft" align="right" valign="top">static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structADS1115settings.html#a2d2bfcac34bf116790df8b08001dcb66">DEFAULT_ALERT_RDY_TO_GPIO</a> = 26</td></tr>
 <tr class="separator:a2d2bfcac34bf116790df8b08001dcb66"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Enumeration Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Stores the ADS1115 configuration values, including I2C settings, sampling rate, gain, input channel, and GPIO settings. </p>
+
+<p class="definition">Definition at line <a class="el" href="ads1115rpi_8h_source.html#l00037">37</a> of file <a class="el" href="ads1115rpi_8h_source.html">ads1115rpi.h</a>.</p>
+</div><h2 class="groupheader">Member Enumeration Documentation</h2>
 <a id="a17845a1a94f94bb7d2406dbe13bc560d" name="a17845a1a94f94bb7d2406dbe13bc560d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a17845a1a94f94bb7d2406dbe13bc560d">&#9670;&#160;</a></span>Input</h2>
 
@@ -156,6 +164,8 @@ Static Public Attributes</h2></td></tr>
 <tr><td class="fieldname"><a id="a17845a1a94f94bb7d2406dbe13bc560dab4ed82e9f524b9cd347fa8878afcf49c" name="a17845a1a94f94bb7d2406dbe13bc560dab4ed82e9f524b9cd347fa8878afcf49c"></a>AIN2&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a17845a1a94f94bb7d2406dbe13bc560daf41398bedce7b5ce208abf29e788ba92" name="a17845a1a94f94bb7d2406dbe13bc560daf41398bedce7b5ce208abf29e788ba92"></a>AIN3&#160;</td><td class="fielddoc"></td></tr>
 </table>
+
+<p class="definition">Definition at line <a class="el" href="ads1115rpi_8h_source.html#l00075">75</a> of file <a class="el" href="ads1115rpi_8h_source.html">ads1115rpi.h</a>.</p>
 
 </div>
 </div>
@@ -176,6 +186,8 @@ Static Public Attributes</h2></td></tr>
 <tr><td class="fieldname"><a id="a831970032a15754ead970931dd25ac5faa52ee8e28cfbc6882b5fb52fcfaf049b" name="a831970032a15754ead970931dd25ac5faa52ee8e28cfbc6882b5fb52fcfaf049b"></a>FSR0_512&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a831970032a15754ead970931dd25ac5fa66050b0b2dfa108d0fe262c156ee12dc" name="a831970032a15754ead970931dd25ac5fa66050b0b2dfa108d0fe262c156ee12dc"></a>FSR0_256&#160;</td><td class="fielddoc"></td></tr>
 </table>
+
+<p class="definition">Definition at line <a class="el" href="ads1115rpi_8h_source.html#l00065">65</a> of file <a class="el" href="ads1115rpi_8h_source.html">ads1115rpi.h</a>.</p>
 
 </div>
 </div>
@@ -200,6 +212,8 @@ Static Public Attributes</h2></td></tr>
 <tr><td class="fieldname"><a id="aa3a33d5f6c7f14bb708a70499a225357a7fea2393497d03736ca6bf96b3ae55b2" name="aa3a33d5f6c7f14bb708a70499a225357a7fea2393497d03736ca6bf96b3ae55b2"></a>FS475HZ&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="aa3a33d5f6c7f14bb708a70499a225357a84398c434b3b9427990fafb9fae98093" name="aa3a33d5f6c7f14bb708a70499a225357a84398c434b3b9427990fafb9fae98093"></a>FS860HZ&#160;</td><td class="fielddoc"></td></tr>
 </table>
+
+<p class="definition">Definition at line <a class="el" href="ads1115rpi_8h_source.html#l00044">44</a> of file <a class="el" href="ads1115rpi_8h_source.html">ads1115rpi.h</a>.</p>
 
 </div>
 </div>
@@ -227,6 +241,10 @@ Static Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Returns the sampling rate value that matches the selected enum setting. </p>
+
+<p class="definition">Definition at line <a class="el" href="ads1115rpi_8h_source.html#l00056">56</a> of file <a class="el" href="ads1115rpi_8h_source.html">ads1115rpi.h</a>.</p>
+
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
@@ -242,6 +260,8 @@ Static Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="ads1115rpi_8h_source.html#l00042">42</a> of file <a class="el" href="ads1115rpi_8h_source.html">ads1115rpi.h</a>.</p>
+
 </div>
 </div>
 <a id="a3f4f9b2d8b6f0ef724bd4e4a68b75245" name="a3f4f9b2d8b6f0ef724bd4e4a68b75245"></a>
@@ -255,6 +275,8 @@ Static Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="ads1115rpi_8h_source.html#l00083">83</a> of file <a class="el" href="ads1115rpi_8h_source.html">ads1115rpi.h</a>.</p>
 
 </div>
 </div>
@@ -278,6 +300,8 @@ Static Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="ads1115rpi_8h_source.html#l00041">41</a> of file <a class="el" href="ads1115rpi_8h_source.html">ads1115rpi.h</a>.</p>
+
 </div>
 </div>
 <a id="a2d2bfcac34bf116790df8b08001dcb66" name="a2d2bfcac34bf116790df8b08001dcb66"></a>
@@ -300,6 +324,8 @@ Static Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="ads1115rpi_8h_source.html#l00087">87</a> of file <a class="el" href="ads1115rpi_8h_source.html">ads1115rpi.h</a>.</p>
+
 </div>
 </div>
 <a id="a5b764c1300798718106d83bf76bd2608" name="a5b764c1300798718106d83bf76bd2608"></a>
@@ -313,6 +339,8 @@ Static Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="ads1115rpi_8h_source.html#l00085">85</a> of file <a class="el" href="ads1115rpi_8h_source.html">ads1115rpi.h</a>.</p>
 
 </div>
 </div>
@@ -328,6 +356,8 @@ Static Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="ads1115rpi_8h_source.html#l00088">88</a> of file <a class="el" href="ads1115rpi_8h_source.html">ads1115rpi.h</a>.</p>
+
 </div>
 </div>
 <a id="ae0f3b1d6ef8068fed5e580fd4d7123b3" name="ae0f3b1d6ef8068fed5e580fd4d7123b3"></a>
@@ -341,6 +371,8 @@ Static Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="ads1115rpi_8h_source.html#l00039">39</a> of file <a class="el" href="ads1115rpi_8h_source.html">ads1115rpi.h</a>.</p>
 
 </div>
 </div>
@@ -356,6 +388,8 @@ Static Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="ads1115rpi_8h_source.html#l00073">73</a> of file <a class="el" href="ads1115rpi_8h_source.html">ads1115rpi.h</a>.</p>
+
 </div>
 </div>
 <a id="aab5ef57bb9aef08aac7a7fd7de33a451" name="aab5ef57bb9aef08aac7a7fd7de33a451"></a>
@@ -369,6 +403,8 @@ Static Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="ads1115rpi_8h_source.html#l00063">63</a> of file <a class="el" href="ads1115rpi_8h_source.html">ads1115rpi.h</a>.</p>
 
 </div>
 </div>

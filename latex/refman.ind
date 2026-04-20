@@ -1,1317 +1,1426 @@
 \begin{theindex}
 
+  \item {\_\_has\_include}
+    \subitem {CMakeCXXCompilerId.cpp}, \hyperpage{81}
   \item {\_accel\_scale\_factor}
-    \subitem {icm20948::ICM20948\_I2C}, \hyperpage{30}
+    \subitem {icm20948::ICM20948\_I2C}, \hyperpage{42}
   \item {\_chip\_i2c\_master\_reset}
-    \subitem {icm20948::ICM20948\_I2C}, \hyperpage{27}
+    \subitem {icm20948::ICM20948\_I2C}, \hyperpage{38}
   \item {\_current\_bank}
-    \subitem {icm20948::ICM20948\_I2C}, \hyperpage{30}
+    \subitem {icm20948::ICM20948\_I2C}, \hyperpage{42}
   \item {\_enable\_data\_ready\_interrupt}
-    \subitem {icm20948::ICM20948\_I2C}, \hyperpage{27}
+    \subitem {icm20948::ICM20948\_I2C}, \hyperpage{38}
   \item {\_gyro\_scale\_factor}
-    \subitem {icm20948::ICM20948\_I2C}, \hyperpage{30}
+    \subitem {icm20948::ICM20948\_I2C}, \hyperpage{42}
   \item {\_i2c\_address}
-    \subitem {icm20948::ICM20948\_I2C}, \hyperpage{30}
+    \subitem {icm20948::ICM20948\_I2C}, \hyperpage{42}
   \item {\_i2c\_bus}
-    \subitem {icm20948::ICM20948\_I2C}, \hyperpage{30}
+    \subitem {icm20948::ICM20948\_I2C}, \hyperpage{42}
   \item {\_i2c\_fd}
-    \subitem {icm20948::ICM20948\_I2C}, \hyperpage{30}
+    \subitem {icm20948::ICM20948\_I2C}, \hyperpage{42}
   \item {\_magn\_scale\_factor}
-    \subitem {icm20948::ICM20948\_I2C}, \hyperpage{30}
+    \subitem {icm20948::ICM20948\_I2C}, \hyperpage{42}
   \item {\_magnetometer\_configured}
-    \subitem {icm20948::ICM20948\_I2C}, \hyperpage{27}
+    \subitem {icm20948::ICM20948\_I2C}, \hyperpage{38}
   \item {\_magnetometer\_enable}
-    \subitem {icm20948::ICM20948\_I2C}, \hyperpage{27}
+    \subitem {icm20948::ICM20948\_I2C}, \hyperpage{39}
   \item {\_magnetometer\_init}
-    \subitem {icm20948::ICM20948\_I2C}, \hyperpage{27}
+    \subitem {icm20948::ICM20948\_I2C}, \hyperpage{39}
   \item {\_magnetometer\_set\_mode}
-    \subitem {icm20948::ICM20948\_I2C}, \hyperpage{27}
+    \subitem {icm20948::ICM20948\_I2C}, \hyperpage{39}
   \item {\_magnetometer\_set\_readout}
-    \subitem {icm20948::ICM20948\_I2C}, \hyperpage{27}
+    \subitem {icm20948::ICM20948\_I2C}, \hyperpage{39}
   \item {\_read\_bit}
-    \subitem {icm20948::ICM20948\_I2C}, \hyperpage{27}
+    \subitem {icm20948::ICM20948\_I2C}, \hyperpage{39}
   \item {\_read\_block\_bytes}
-    \subitem {icm20948::ICM20948\_I2C}, \hyperpage{27}
+    \subitem {icm20948::ICM20948\_I2C}, \hyperpage{39}
   \item {\_read\_byte}
-    \subitem {icm20948::ICM20948\_I2C}, \hyperpage{27}
+    \subitem {icm20948::ICM20948\_I2C}, \hyperpage{39}
   \item {\_read\_mag\_byte}
-    \subitem {icm20948::ICM20948\_I2C}, \hyperpage{28}
+    \subitem {icm20948::ICM20948\_I2C}, \hyperpage{39}
   \item {\_set\_accel\_range\_dlpf}
-    \subitem {icm20948::ICM20948\_I2C}, \hyperpage{28}
+    \subitem {icm20948::ICM20948\_I2C}, \hyperpage{40}
   \item {\_set\_accel\_sample\_rate\_div}
-    \subitem {icm20948::ICM20948\_I2C}, \hyperpage{28}
+    \subitem {icm20948::ICM20948\_I2C}, \hyperpage{40}
   \item {\_set\_bank}
-    \subitem {icm20948::ICM20948\_I2C}, \hyperpage{28}
+    \subitem {icm20948::ICM20948\_I2C}, \hyperpage{40}
   \item {\_set\_gyro\_range\_dlpf}
-    \subitem {icm20948::ICM20948\_I2C}, \hyperpage{28}
+    \subitem {icm20948::ICM20948\_I2C}, \hyperpage{40}
   \item {\_set\_gyro\_sample\_rate\_div}
-    \subitem {icm20948::ICM20948\_I2C}, \hyperpage{28}
+    \subitem {icm20948::ICM20948\_I2C}, \hyperpage{40}
   \item {\_write\_bit}
-    \subitem {icm20948::ICM20948\_I2C}, \hyperpage{28}
+    \subitem {icm20948::ICM20948\_I2C}, \hyperpage{40}
   \item {\_write\_byte}
-    \subitem {icm20948::ICM20948\_I2C}, \hyperpage{28}
+    \subitem {icm20948::ICM20948\_I2C}, \hyperpage{40}
   \item {\_write\_mag\_byte}
-    \subitem {icm20948::ICM20948\_I2C}, \hyperpage{29}
+    \subitem {icm20948::ICM20948\_I2C}, \hyperpage{40}
   \item {\texorpdfstring{$\sim$}{\string~}ADS1115rpi}
-    \subitem {ADS1115rpi}, \hyperpage{17}
+    \subitem {ADS1115rpi}, \hyperpage{29}
+  \item {\texorpdfstring{$\sim$}{\string~}ICM20948\_I2C}
+    \subitem {icm20948::ICM20948\_I2C}, \hyperpage{38}
   \item {\texorpdfstring{$\sim$}{\string~}IMUReader}
-    \subitem {IMUReader}, \hyperpage{32}
+    \subitem {IMUReader}, \hyperpage{44}
   \item {\texorpdfstring{$\sim$}{\string~}LEDController}
-    \subitem {LEDController}, \hyperpage{36}
+    \subitem {LEDController}, \hyperpage{49}
   \item {\texorpdfstring{$\sim$}{\string~}PositionDetector}
-    \subitem {PositionDetector}, \hyperpage{44}
+    \subitem {PositionDetector}, \hyperpage{57}
   \item {\texorpdfstring{$\sim$}{\string~}RPI\_PWM}
-    \subitem {RPI\_PWM}, \hyperpage{46}
+    \subitem {RPI\_PWM}, \hyperpage{59}
   \item {\texorpdfstring{$\sim$}{\string~}SimpleLEDController}
-    \subitem {SimpleLEDController}, \hyperpage{51}
+    \subitem {SimpleLEDController}, \hyperpage{64}
 
   \indexspace
 
   \item {accel}
-    \subitem {icm20948::ICM20948\_I2C}, \hyperpage{30}
-    \subitem {icm20948::settings}, \hyperpage{48}
+    \subitem {icm20948::ICM20948\_I2C}, \hyperpage{42}
+    \subitem {icm20948::settings}, \hyperpage{62}
   \item {ACCEL\_16G}
-    \subitem {icm20948}, \hyperpage{13}
+    \subitem {icm20948}, \hyperpage{23}
   \item {ACCEL\_2G}
-    \subitem {icm20948}, \hyperpage{13}
+    \subitem {icm20948}, \hyperpage{23}
   \item {ACCEL\_4G}
-    \subitem {icm20948}, \hyperpage{13}
+    \subitem {icm20948}, \hyperpage{23}
   \item {ACCEL\_8G}
-    \subitem {icm20948}, \hyperpage{13}
+    \subitem {icm20948}, \hyperpage{23}
   \item {ACCEL\_DEADBAND}
-    \subitem {SwingProcessor.hpp}, \hyperpage{85}
+    \subitem {SwingProcessor.hpp}, \hyperpage{146}
   \item {accel\_deadband\_}
-    \subitem {SwingProcessor}, \hyperpage{64}
+    \subitem {SwingProcessor}, \hyperpage{78}
   \item {ACCEL\_DLPF\_111\_4HZ}
-    \subitem {icm20948}, \hyperpage{12}
+    \subitem {icm20948}, \hyperpage{22}
   \item {ACCEL\_DLPF\_11\_5HZ}
-    \subitem {icm20948}, \hyperpage{12}
+    \subitem {icm20948}, \hyperpage{23}
   \item {ACCEL\_DLPF\_23\_9HZ}
-    \subitem {icm20948}, \hyperpage{12}
+    \subitem {icm20948}, \hyperpage{23}
   \item {ACCEL\_DLPF\_246HZ}
-    \subitem {icm20948}, \hyperpage{12}
+    \subitem {icm20948}, \hyperpage{22}
   \item {ACCEL\_DLPF\_246HZ\_2}
-    \subitem {icm20948}, \hyperpage{12}
+    \subitem {icm20948}, \hyperpage{22}
   \item {ACCEL\_DLPF\_473HZ}
-    \subitem {icm20948}, \hyperpage{12}
+    \subitem {icm20948}, \hyperpage{23}
   \item {ACCEL\_DLPF\_50\_4HZ}
-    \subitem {icm20948}, \hyperpage{12}
+    \subitem {icm20948}, \hyperpage{22}
   \item {ACCEL\_DLPF\_5\_7HZ}
-    \subitem {icm20948}, \hyperpage{12}
+    \subitem {icm20948}, \hyperpage{23}
   \item {accel\_dlpf\_config}
-    \subitem {icm20948}, \hyperpage{12}
+    \subitem {icm20948}, \hyperpage{22}
   \item {accel\_dlpf\_config\_to\_str}
-    \subitem {icm20948}, \hyperpage{14}
+    \subitem {icm20948}, \hyperpage{24}
   \item {accel\_scale}
-    \subitem {icm20948}, \hyperpage{13}
+    \subitem {icm20948}, \hyperpage{23}
   \item {accel\_scale\_factor}
-    \subitem {icm20948}, \hyperpage{14}
+    \subitem {icm20948}, \hyperpage{24}
   \item {accel\_scale\_to\_str}
-    \subitem {icm20948}, \hyperpage{14}
+    \subitem {icm20948}, \hyperpage{24}
   \item {accel\_settings}
-    \subitem {icm20948}, \hyperpage{12}
-    \subitem {icm20948::accel\_settings}, \hyperpage{15}
+    \subitem {icm20948}, \hyperpage{22}
+    \subitem {icm20948::accel\_settings}, \hyperpage{27}
   \item {accumulate}
-    \subitem {SwingCalibrator}, \hyperpage{54}
+    \subitem {SwingCalibrator}, \hyperpage{67}
   \item {address}
-    \subitem {ADS1115settings}, \hyperpage{22}
-  \item {ADS1115 Pin connection list:}, \hyperpage{1}
-  \item {ADS1115rpi}, \hyperpage{16}
+    \subitem {ADS1115settings}, \hyperpage{34}
+  \item {ADS1115 Pin Connection List}, \hyperpage{5}
+  \item {ADS1115rpi}, \hyperpage{28}
     \subitem {\texorpdfstring{$\sim$}{\string~}ADS1115rpi}, 
-		\hyperpage{17}
-    \subitem {ads1115settings}, \hyperpage{19}
-    \subitem {ADSCallbackInterface}, \hyperpage{17}
-    \subitem {adsCallbackInterface}, \hyperpage{19}
-    \subitem {chip}, \hyperpage{19}
-    \subitem {dataReady}, \hyperpage{17}
-    \subitem {fd\_i2c}, \hyperpage{19}
-    \subitem {fullScaleVoltage}, \hyperpage{17}
-    \subitem {getADS1115settings}, \hyperpage{17}
-    \subitem {i2c\_readConversion}, \hyperpage{17}
-    \subitem {i2c\_readWord}, \hyperpage{18}
-    \subitem {i2c\_selectDevice}, \hyperpage{18}
-    \subitem {i2c\_writeWord}, \hyperpage{18}
-    \subitem {ISR\_TIMEOUT\_MS}, \hyperpage{19}
-    \subitem {readOnce}, \hyperpage{18}
-    \subitem {reg\_config}, \hyperpage{19}
-    \subitem {reg\_hi\_thres}, \hyperpage{19}
-    \subitem {reg\_lo\_thres}, \hyperpage{19}
-    \subitem {registerCallback}, \hyperpage{18}
-    \subitem {request}, \hyperpage{19}
-    \subitem {retry\_enabled\_}, \hyperpage{20}
-    \subitem {running}, \hyperpage{20}
-    \subitem {setChannel}, \hyperpage{18}
-    \subitem {setRetryEnabled}, \hyperpage{18}
-    \subitem {start}, \hyperpage{18}
-    \subitem {stop}, \hyperpage{18}
-    \subitem {thr}, \hyperpage{20}
-    \subitem {worker}, \hyperpage{19}
+		\hyperpage{29}
+    \subitem {ads1115settings}, \hyperpage{31}
+    \subitem {ADSCallbackInterface}, \hyperpage{29}
+    \subitem {adsCallbackInterface}, \hyperpage{31}
+    \subitem {chip}, \hyperpage{31}
+    \subitem {dataReady}, \hyperpage{29}
+    \subitem {fd\_i2c}, \hyperpage{31}
+    \subitem {fullScaleVoltage}, \hyperpage{29}
+    \subitem {getADS1115settings}, \hyperpage{30}
+    \subitem {i2c\_readConversion}, \hyperpage{30}
+    \subitem {i2c\_readWord}, \hyperpage{30}
+    \subitem {i2c\_selectDevice}, \hyperpage{30}
+    \subitem {i2c\_writeWord}, \hyperpage{30}
+    \subitem {ISR\_TIMEOUT\_MS}, \hyperpage{31}
+    \subitem {reg\_config}, \hyperpage{31}
+    \subitem {reg\_hi\_thres}, \hyperpage{31}
+    \subitem {reg\_lo\_thres}, \hyperpage{31}
+    \subitem {registerCallback}, \hyperpage{30}
+    \subitem {request}, \hyperpage{31}
+    \subitem {retry\_enabled\_}, \hyperpage{32}
+    \subitem {running}, \hyperpage{32}
+    \subitem {setChannel}, \hyperpage{30}
+    \subitem {setRetryEnabled}, \hyperpage{30}
+    \subitem {start}, \hyperpage{30}
+    \subitem {stop}, \hyperpage{31}
+    \subitem {thr}, \hyperpage{32}
+    \subitem {worker}, \hyperpage{31}
   \item {ads1115rpi.cpp}
-    \subitem {makeDefaultADS1115Settings}, \hyperpage{93}
+    \subitem {makeDefaultADS1115Settings}, \hyperpage{175}
   \item {ads1115rpi.h}
-    \subitem {DEBUG}, \hyperpage{94}
-    \subitem {makeDefaultADS1115Settings}, \hyperpage{94}
-  \item {ADS1115settings}, \hyperpage{20}
-    \subitem {address}, \hyperpage{22}
-    \subitem {AIN0}, \hyperpage{21}
-    \subitem {AIN1}, \hyperpage{21}
-    \subitem {AIN2}, \hyperpage{21}
-    \subitem {AIN3}, \hyperpage{21}
-    \subitem {channel}, \hyperpage{22}
-    \subitem {DEFAULT\_ADS1115\_ADDRESS}, \hyperpage{22}
-    \subitem {DEFAULT\_ALERT\_RDY\_TO\_GPIO}, \hyperpage{22}
-    \subitem {drdy\_chip}, \hyperpage{22}
-    \subitem {drdy\_gpio}, \hyperpage{22}
-    \subitem {FS128HZ}, \hyperpage{21}
-    \subitem {FS16HZ}, \hyperpage{21}
-    \subitem {FS250HZ}, \hyperpage{21}
-    \subitem {FS32HZ}, \hyperpage{21}
-    \subitem {FS475HZ}, \hyperpage{21}
-    \subitem {FS64HZ}, \hyperpage{21}
-    \subitem {FS860HZ}, \hyperpage{21}
-    \subitem {FS8HZ}, \hyperpage{21}
-    \subitem {FSR0\_256}, \hyperpage{21}
-    \subitem {FSR0\_512}, \hyperpage{21}
-    \subitem {FSR1\_024}, \hyperpage{21}
-    \subitem {FSR2\_048}, \hyperpage{21}
-    \subitem {getSamplingRate}, \hyperpage{22}
-    \subitem {i2c\_bus}, \hyperpage{22}
-    \subitem {Input}, \hyperpage{21}
-    \subitem {PGA}, \hyperpage{21}
-    \subitem {pgaGain}, \hyperpage{22}
-    \subitem {samplingRate}, \hyperpage{22}
-    \subitem {SamplingRates}, \hyperpage{21}
+    \subitem {DEBUG}, \hyperpage{187}
+    \subitem {makeDefaultADS1115Settings}, \hyperpage{188}
+  \item {ADS1115settings}, \hyperpage{32}
+    \subitem {address}, \hyperpage{34}
+    \subitem {AIN0}, \hyperpage{33}
+    \subitem {AIN1}, \hyperpage{33}
+    \subitem {AIN2}, \hyperpage{33}
+    \subitem {AIN3}, \hyperpage{33}
+    \subitem {channel}, \hyperpage{34}
+    \subitem {DEFAULT\_ADS1115\_ADDRESS}, \hyperpage{34}
+    \subitem {DEFAULT\_ALERT\_RDY\_TO\_GPIO}, \hyperpage{34}
+    \subitem {drdy\_chip}, \hyperpage{34}
+    \subitem {drdy\_gpio}, \hyperpage{34}
+    \subitem {FS128HZ}, \hyperpage{33}
+    \subitem {FS16HZ}, \hyperpage{33}
+    \subitem {FS250HZ}, \hyperpage{33}
+    \subitem {FS32HZ}, \hyperpage{33}
+    \subitem {FS475HZ}, \hyperpage{33}
+    \subitem {FS64HZ}, \hyperpage{33}
+    \subitem {FS860HZ}, \hyperpage{33}
+    \subitem {FS8HZ}, \hyperpage{33}
+    \subitem {FSR0\_256}, \hyperpage{33}
+    \subitem {FSR0\_512}, \hyperpage{33}
+    \subitem {FSR1\_024}, \hyperpage{33}
+    \subitem {FSR2\_048}, \hyperpage{33}
+    \subitem {getSamplingRate}, \hyperpage{33}
+    \subitem {i2c\_bus}, \hyperpage{34}
+    \subitem {Input}, \hyperpage{33}
+    \subitem {PGA}, \hyperpage{33}
+    \subitem {pgaGain}, \hyperpage{34}
+    \subitem {samplingRate}, \hyperpage{34}
+    \subitem {SamplingRates}, \hyperpage{33}
   \item {ads1115settings}
-    \subitem {ADS1115rpi}, \hyperpage{19}
+    \subitem {ADS1115rpi}, \hyperpage{31}
   \item {ADSCallbackInterface}
-    \subitem {ADS1115rpi}, \hyperpage{17}
+    \subitem {ADS1115rpi}, \hyperpage{29}
   \item {adsCallbackInterface}
-    \subitem {ADS1115rpi}, \hyperpage{19}
+    \subitem {ADS1115rpi}, \hyperpage{31}
   \item {AIN0}
-    \subitem {ADS1115settings}, \hyperpage{21}
+    \subitem {ADS1115settings}, \hyperpage{33}
   \item {AIN1}
-    \subitem {ADS1115settings}, \hyperpage{21}
+    \subitem {ADS1115settings}, \hyperpage{33}
   \item {AIN2}
-    \subitem {ADS1115settings}, \hyperpage{21}
+    \subitem {ADS1115settings}, \hyperpage{33}
   \item {AIN3}
-    \subitem {ADS1115settings}, \hyperpage{21}
+    \subitem {ADS1115settings}, \hyperpage{33}
   \item {AK09916\_CNTL2\_ADDR}
-    \subitem {Icm20948driver.hpp}, \hyperpage{69}
+    \subitem {Icm20948driver.hpp}, \hyperpage{124}
   \item {allOff}
-    \subitem {LEDController}, \hyperpage{37}
+    \subitem {LEDController}, \hyperpage{50}
+  \item {ARCHITECTURE\_ID}
+    \subitem {CMakeCXXCompilerId.cpp}, \hyperpage{81}
   \item {ax}
-    \subitem {icm20948::IMUSample}, \hyperpage{34}
+    \subitem {icm20948::IMUSample}, \hyperpage{47}
   \item {ay}
-    \subitem {icm20948::IMUSample}, \hyperpage{34}
+    \subitem {icm20948::IMUSample}, \hyperpage{47}
   \item {az}
-    \subitem {icm20948::IMUSample}, \hyperpage{34}
+    \subitem {icm20948::IMUSample}, \hyperpage{47}
 
   \indexspace
 
   \item {bias\_x\_}
-    \subitem {SwingCalibrator}, \hyperpage{55}
+    \subitem {SwingCalibrator}, \hyperpage{68}
   \item {bias\_y\_}
-    \subitem {SwingCalibrator}, \hyperpage{55}
+    \subitem {SwingCalibrator}, \hyperpage{68}
   \item {bias\_z\_}
-    \subitem {SwingCalibrator}, \hyperpage{56}
+    \subitem {SwingCalibrator}, \hyperpage{68}
   \item {biasX}
-    \subitem {SwingCalibrator}, \hyperpage{54}
+    \subitem {SwingCalibrator}, \hyperpage{67}
   \item {biasY}
-    \subitem {SwingCalibrator}, \hyperpage{55}
+    \subitem {SwingCalibrator}, \hyperpage{67}
   \item {biasZ}
-    \subitem {SwingCalibrator}, \hyperpage{55}
+    \subitem {SwingCalibrator}, \hyperpage{67}
   \item {busy\_}
-    \subitem {SwingFeedback}, \hyperpage{60}
+    \subitem {SwingFeedback}, \hyperpage{74}
   \item {busy\_since\_ms\_}
-    \subitem {SwingFeedback}, \hyperpage{60}
+    \subitem {SwingFeedback}, \hyperpage{74}
 
   \indexspace
 
   \item {CALIB\_SAMPLES}
-    \subitem {SwingProcessor.hpp}, \hyperpage{85}
+    \subitem {SwingProcessor.hpp}, \hyperpage{146}
   \item {calibrator\_}
-    \subitem {SwingProcessor}, \hyperpage{64}
+    \subitem {SwingProcessor}, \hyperpage{78}
   \item {callback}
-    \subitem {PositionDetector}, \hyperpage{45}
+    \subitem {PositionDetector}, \hyperpage{58}
   \item {callback\_}
-    \subitem {IMUReader}, \hyperpage{33}
-    \subitem {SwingCalibrator}, \hyperpage{56}
-    \subitem {SwingDetector}, \hyperpage{58}
+    \subitem {IMUReader}, \hyperpage{45}
+    \subitem {SwingCalibrator}, \hyperpage{68}
+    \subitem {SwingDetector}, \hyperpage{71}
   \item {cfg}
-    \subitem {PositionDetector}, \hyperpage{45}
+    \subitem {PositionDetector}, \hyperpage{58}
   \item {channel}
-    \subitem {ADS1115settings}, \hyperpage{22}
+    \subitem {ADS1115settings}, \hyperpage{34}
   \item {check\_DRDY\_INT}
-    \subitem {icm20948::ICM20948\_I2C}, \hyperpage{29}
+    \subitem {icm20948::ICM20948\_I2C}, \hyperpage{41}
   \item {checkTimeout}
-    \subitem {SwingFeedback}, \hyperpage{60}
+    \subitem {SwingFeedback}, \hyperpage{73}
   \item {chip}
-    \subitem {ADS1115rpi}, \hyperpage{19}
-    \subitem {SimpleLEDController}, \hyperpage{52}
+    \subitem {ADS1115rpi}, \hyperpage{31}
+    \subitem {SimpleLEDController}, \hyperpage{65}
   \item {chip\_}
-    \subitem {IMUReader}, \hyperpage{33}
-    \subitem {RPI\_PWM}, \hyperpage{47}
+    \subitem {IMUReader}, \hyperpage{45}
+    \subitem {RPI\_PWM}, \hyperpage{61}
   \item {chipNumber}
-    \subitem {LEDControllerSettings}, \hyperpage{39}
-    \subitem {SimpleLEDController}, \hyperpage{52}
+    \subitem {LEDControllerSettings}, \hyperpage{51}
+    \subitem {SimpleLEDController}, \hyperpage{65}
   \item {classify}
-    \subitem {SwingDetector}, \hyperpage{58}
+    \subitem {SwingDetector}, \hyperpage{70}
+  \item {CMakeCXXCompilerId.cpp}
+    \subitem {\_\_has\_include}, \hyperpage{81}
+    \subitem {ARCHITECTURE\_ID}, \hyperpage{81}
+    \subitem {COMPILER\_ID}, \hyperpage{82}
+    \subitem {CXX\_STD}, \hyperpage{82}
+    \subitem {CXX\_STD\_11}, \hyperpage{82}
+    \subitem {CXX\_STD\_14}, \hyperpage{82}
+    \subitem {CXX\_STD\_17}, \hyperpage{82}
+    \subitem {CXX\_STD\_20}, \hyperpage{82}
+    \subitem {CXX\_STD\_23}, \hyperpage{82}
+    \subitem {CXX\_STD\_98}, \hyperpage{82}
+    \subitem {DEC}, \hyperpage{82}
+    \subitem {HEX}, \hyperpage{82}
+    \subitem {info\_arch}, \hyperpage{83}
+    \subitem {info\_compiler}, \hyperpage{83}
+    \subitem {info\_language\_extensions\_default}, \hyperpage{83}
+    \subitem {info\_language\_standard\_default}, \hyperpage{84}
+    \subitem {info\_platform}, \hyperpage{84}
+    \subitem {main}, \hyperpage{83}
+    \subitem {PLATFORM\_ID}, \hyperpage{83}
+    \subitem {STRINGIFY}, \hyperpage{83}
+    \subitem {STRINGIFY\_HELPER}, \hyperpage{83}
+  \item {COMPILER\_ID}
+    \subitem {CMakeCXXCompilerId.cpp}, \hyperpage{82}
   \item {confirmed}
-    \subitem {PositionDetector}, \hyperpage{45}
+    \subitem {PositionDetector}, \hyperpage{58}
   \item {COOLDOWN\_MS}
-    \subitem {SwingProcessor}, \hyperpage{64}
+    \subitem {SwingProcessor}, \hyperpage{78}
   \item {count\_}
-    \subitem {SwingCalibrator}, \hyperpage{56}
+    \subitem {SwingCalibrator}, \hyperpage{68}
+  \item {CXX\_STD}
+    \subitem {CMakeCXXCompilerId.cpp}, \hyperpage{82}
+  \item {CXX\_STD\_11}
+    \subitem {CMakeCXXCompilerId.cpp}, \hyperpage{82}
+  \item {CXX\_STD\_14}
+    \subitem {CMakeCXXCompilerId.cpp}, \hyperpage{82}
+  \item {CXX\_STD\_17}
+    \subitem {CMakeCXXCompilerId.cpp}, \hyperpage{82}
+  \item {CXX\_STD\_20}
+    \subitem {CMakeCXXCompilerId.cpp}, \hyperpage{82}
+  \item {CXX\_STD\_23}
+    \subitem {CMakeCXXCompilerId.cpp}, \hyperpage{82}
+  \item {CXX\_STD\_98}
+    \subitem {CMakeCXXCompilerId.cpp}, \hyperpage{82}
 
   \indexspace
 
   \item {dataReady}
-    \subitem {ADS1115rpi}, \hyperpage{17}
+    \subitem {ADS1115rpi}, \hyperpage{29}
   \item {DEBUG}
-    \subitem {ads1115rpi.h}, \hyperpage{94}
+    \subitem {ads1115rpi.h}, \hyperpage{187}
+  \item {DEC}
+    \subitem {CMakeCXXCompilerId.cpp}, \hyperpage{82}
   \item {DEFAULT\_ADS1115\_ADDRESS}
-    \subitem {ADS1115settings}, \hyperpage{22}
+    \subitem {ADS1115settings}, \hyperpage{34}
   \item {DEFAULT\_ALERT\_RDY\_TO\_GPIO}
-    \subitem {ADS1115settings}, \hyperpage{22}
+    \subitem {ADS1115settings}, \hyperpage{34}
+  \item {DEG2RAD}
+    \subitem {Icm20948driver.cpp}, \hyperpage{109}
   \item {detect}
-    \subitem {SwingDetector}, \hyperpage{58}
+    \subitem {SwingDetector}, \hyperpage{70}
   \item {dlpf\_config}
-    \subitem {icm20948::accel\_settings}, \hyperpage{15}
-    \subitem {icm20948::gyro\_settings}, \hyperpage{25}
+    \subitem {icm20948::accel\_settings}, \hyperpage{27}
+    \subitem {icm20948::gyro\_settings}, \hyperpage{36}
   \item {dlpf\_enable}
-    \subitem {icm20948::accel\_settings}, \hyperpage{15}
-    \subitem {icm20948::gyro\_settings}, \hyperpage{25}
+    \subitem {icm20948::accel\_settings}, \hyperpage{27}
+    \subitem {icm20948::gyro\_settings}, \hyperpage{36}
   \item {DoneCallback}
-    \subitem {SwingCalibrator}, \hyperpage{54}
+    \subitem {SwingCalibrator}, \hyperpage{66}
   \item {drdy\_chip}
-    \subitem {ADS1115settings}, \hyperpage{22}
+    \subitem {ADS1115settings}, \hyperpage{34}
   \item {drdy\_gpio}
-    \subitem {ADS1115settings}, \hyperpage{22}
+    \subitem {ADS1115settings}, \hyperpage{34}
   \item {duty\_}
-    \subitem {RPI\_PWM}, \hyperpage{47}
+    \subitem {RPI\_PWM}, \hyperpage{61}
 
   \indexspace
 
   \item {enableDebugPrints}
-    \subitem {PiezoEventDetectorSettings}, \hyperpage{42}
+    \subitem {PiezoEventDetectorSettings}, \hyperpage{55}
+  \item {ERM Vibration Motor}, \hyperpage{3}
   \item {EventCallback}
-    \subitem {SwingDetector}, \hyperpage{57}
+    \subitem {SwingDetector}, \hyperpage{70}
 
   \indexspace
 
   \item {fd\_i2c}
-    \subitem {ADS1115rpi}, \hyperpage{19}
+    \subitem {ADS1115rpi}, \hyperpage{31}
   \item {feed}
-    \subitem {SwingCalibrator}, \hyperpage{55}
+    \subitem {SwingCalibrator}, \hyperpage{67}
   \item {filter\_init\_}
-    \subitem {PiezoEventDetector}, \hyperpage{41}
+    \subitem {PiezoEventDetector}, \hyperpage{54}
   \item {filtered\_v\_}
-    \subitem {PiezoEventDetector}, \hyperpage{41}
+    \subitem {PiezoEventDetector}, \hyperpage{54}
   \item {flashGreen}
-    \subitem {LEDController}, \hyperpage{37}
-    \subitem {SimpleLEDController}, \hyperpage{51}
+    \subitem {LEDController}, \hyperpage{50}
+    \subitem {SimpleLEDController}, \hyperpage{64}
   \item {ForceCallback}
-    \subitem {PiezoEventDetector}, \hyperpage{40}
+    \subitem {PiezoEventDetector}, \hyperpage{53}
   \item {forceCallback\_}
-    \subitem {PiezoEventDetector}, \hyperpage{41}
+    \subitem {PiezoEventDetector}, \hyperpage{54}
   \item {forceOff}
-    \subitem {SwingFeedback}, \hyperpage{60}
+    \subitem {SwingFeedback}, \hyperpage{73}
   \item {FS128HZ}
-    \subitem {ADS1115settings}, \hyperpage{21}
+    \subitem {ADS1115settings}, \hyperpage{33}
   \item {FS16HZ}
-    \subitem {ADS1115settings}, \hyperpage{21}
+    \subitem {ADS1115settings}, \hyperpage{33}
   \item {FS250HZ}
-    \subitem {ADS1115settings}, \hyperpage{21}
+    \subitem {ADS1115settings}, \hyperpage{33}
   \item {FS32HZ}
-    \subitem {ADS1115settings}, \hyperpage{21}
+    \subitem {ADS1115settings}, \hyperpage{33}
   \item {FS475HZ}
-    \subitem {ADS1115settings}, \hyperpage{21}
+    \subitem {ADS1115settings}, \hyperpage{33}
   \item {FS64HZ}
-    \subitem {ADS1115settings}, \hyperpage{21}
+    \subitem {ADS1115settings}, \hyperpage{33}
   \item {FS860HZ}
-    \subitem {ADS1115settings}, \hyperpage{21}
+    \subitem {ADS1115settings}, \hyperpage{33}
   \item {FS8HZ}
-    \subitem {ADS1115settings}, \hyperpage{21}
+    \subitem {ADS1115settings}, \hyperpage{33}
   \item {FSR0\_256}
-    \subitem {ADS1115settings}, \hyperpage{21}
+    \subitem {ADS1115settings}, \hyperpage{33}
   \item {FSR0\_512}
-    \subitem {ADS1115settings}, \hyperpage{21}
+    \subitem {ADS1115settings}, \hyperpage{33}
   \item {FSR1\_024}
-    \subitem {ADS1115settings}, \hyperpage{21}
+    \subitem {ADS1115settings}, \hyperpage{33}
   \item {FSR2\_048}
-    \subitem {ADS1115settings}, \hyperpage{21}
+    \subitem {ADS1115settings}, \hyperpage{33}
   \item {fullScaleVoltage}
-    \subitem {ADS1115rpi}, \hyperpage{17}
+    \subitem {ADS1115rpi}, \hyperpage{29}
 
   \indexspace
 
+  \item {G2MSQR}
+    \subitem {Icm20948driver.cpp}, \hyperpage{109}
   \item {getADS1115settings}
-    \subitem {ADS1115rpi}, \hyperpage{17}
+    \subitem {ADS1115rpi}, \hyperpage{30}
   \item {getDutyCycle}
-    \subitem {RPI\_PWM}, \hyperpage{46}
+    \subitem {RPI\_PWM}, \hyperpage{60}
   \item {getIMU}
-    \subitem {IMUReader}, \hyperpage{32}
+    \subitem {IMUReader}, \hyperpage{44}
   \item {getSamplingRate}
-    \subitem {ADS1115settings}, \hyperpage{22}
+    \subitem {ADS1115settings}, \hyperpage{33}
   \item {gpio\_fd\_}
-    \subitem {IMUReader}, \hyperpage{33}
+    \subitem {IMUReader}, \hyperpage{46}
   \item {gpiochip\_path\_}
-    \subitem {IMUReader}, \hyperpage{33}
+    \subitem {IMUReader}, \hyperpage{46}
   \item {greenActive\_}
-    \subitem {LEDController}, \hyperpage{38}
+    \subitem {LEDController}, \hyperpage{50}
   \item {greenGpio}
-    \subitem {LEDControllerSettings}, \hyperpage{39}
+    \subitem {LEDControllerSettings}, \hyperpage{51}
   \item {greenOff}
-    \subitem {LEDController}, \hyperpage{37}
+    \subitem {LEDController}, \hyperpage{50}
   \item {greenOffTime\_}
-    \subitem {LEDController}, \hyperpage{38}
+    \subitem {LEDController}, \hyperpage{51}
   \item {greenOn}
-    \subitem {LEDController}, \hyperpage{37}
+    \subitem {LEDController}, \hyperpage{50}
   \item {gx}
-    \subitem {icm20948::IMUSample}, \hyperpage{34}
+    \subitem {icm20948::IMUSample}, \hyperpage{47}
   \item {gy}
-    \subitem {icm20948::IMUSample}, \hyperpage{34}
+    \subitem {icm20948::IMUSample}, \hyperpage{47}
   \item {gyro}
-    \subitem {icm20948::ICM20948\_I2C}, \hyperpage{30}
-    \subitem {icm20948::settings}, \hyperpage{48}
+    \subitem {icm20948::ICM20948\_I2C}, \hyperpage{42}
+    \subitem {icm20948::settings}, \hyperpage{62}
   \item {GYRO\_1000DPS}
-    \subitem {icm20948}, \hyperpage{13}
+    \subitem {icm20948}, \hyperpage{23}
   \item {GYRO\_2000DPS}
-    \subitem {icm20948}, \hyperpage{13}
+    \subitem {icm20948}, \hyperpage{23}
   \item {GYRO\_250DPS}
-    \subitem {icm20948}, \hyperpage{13}
+    \subitem {icm20948}, \hyperpage{23}
   \item {GYRO\_500DPS}
-    \subitem {icm20948}, \hyperpage{13}
+    \subitem {icm20948}, \hyperpage{23}
   \item {GYRO\_DLPF\_119\_5HZ}
-    \subitem {icm20948}, \hyperpage{13}
+    \subitem {icm20948}, \hyperpage{23}
   \item {GYRO\_DLPF\_11\_6HZ}
-    \subitem {icm20948}, \hyperpage{13}
+    \subitem {icm20948}, \hyperpage{23}
   \item {GYRO\_DLPF\_151\_8HZ}
-    \subitem {icm20948}, \hyperpage{13}
+    \subitem {icm20948}, \hyperpage{23}
   \item {GYRO\_DLPF\_196\_6HZ}
-    \subitem {icm20948}, \hyperpage{13}
+    \subitem {icm20948}, \hyperpage{23}
   \item {GYRO\_DLPF\_23\_9HZ}
-    \subitem {icm20948}, \hyperpage{13}
+    \subitem {icm20948}, \hyperpage{23}
   \item {GYRO\_DLPF\_361\_4HZ}
-    \subitem {icm20948}, \hyperpage{13}
+    \subitem {icm20948}, \hyperpage{23}
   \item {GYRO\_DLPF\_51\_2HZ}
-    \subitem {icm20948}, \hyperpage{13}
+    \subitem {icm20948}, \hyperpage{23}
   \item {GYRO\_DLPF\_5\_7HZ}
-    \subitem {icm20948}, \hyperpage{13}
+    \subitem {icm20948}, \hyperpage{23}
   \item {gyro\_dlpf\_config}
-    \subitem {icm20948}, \hyperpage{13}
+    \subitem {icm20948}, \hyperpage{23}
   \item {gyro\_dlpf\_config\_to\_str}
-    \subitem {icm20948}, \hyperpage{14}
+    \subitem {icm20948}, \hyperpage{24}
   \item {gyro\_scale}
-    \subitem {icm20948}, \hyperpage{13}
+    \subitem {icm20948}, \hyperpage{23}
   \item {gyro\_scale\_factor}
-    \subitem {icm20948}, \hyperpage{14}
+    \subitem {icm20948}, \hyperpage{24}
   \item {gyro\_scale\_to\_str}
-    \subitem {icm20948}, \hyperpage{14}
+    \subitem {icm20948}, \hyperpage{24}
   \item {gyro\_settings}
-    \subitem {icm20948}, \hyperpage{12}
-    \subitem {icm20948::gyro\_settings}, \hyperpage{25}
+    \subitem {icm20948}, \hyperpage{22}
+    \subitem {icm20948::gyro\_settings}, \hyperpage{36}
   \item {gz}
-    \subitem {icm20948::IMUSample}, \hyperpage{35}
+    \subitem {icm20948::IMUSample}, \hyperpage{47}
 
   \indexspace
 
-  \item {handle\_signal}
-    \subitem {main.cpp}, \hyperpage{98}
+  \item {hasLeftStart\_}
+    \subitem {SwingProcessor}, \hyperpage{78}
   \item {headingToleranceDeg}
-    \subitem {PositionDetector::Config}, \hyperpage{23}
+    \subitem {PositionDetector::Config}, \hyperpage{35}
+  \item {HEX}
+    \subitem {CMakeCXXCompilerId.cpp}, \hyperpage{82}
   \item {HIGH}
-    \subitem {SwingDetector}, \hyperpage{58}
+    \subitem {SwingDetector}, \hyperpage{70}
 
   \indexspace
 
   \item {i2c1\_mutex}
-    \subitem {i2c\_mutex.hpp}, \hyperpage{66}
+    \subitem {i2c\_mutex.hpp}, \hyperpage{120}
   \item {I2C\_BUS}
-    \subitem {SwingProcessor.hpp}, \hyperpage{85}
+    \subitem {SwingProcessor.hpp}, \hyperpage{146}
   \item {i2c\_bus}
-    \subitem {ADS1115settings}, \hyperpage{22}
+    \subitem {ADS1115settings}, \hyperpage{34}
   \item {i2c\_mutex.hpp}
-    \subitem {i2c1\_mutex}, \hyperpage{66}
+    \subitem {i2c1\_mutex}, \hyperpage{120}
   \item {i2c\_readConversion}
-    \subitem {ADS1115rpi}, \hyperpage{17}
+    \subitem {ADS1115rpi}, \hyperpage{30}
   \item {i2c\_readWord}
-    \subitem {ADS1115rpi}, \hyperpage{18}
+    \subitem {ADS1115rpi}, \hyperpage{30}
   \item {i2c\_selectDevice}
-    \subitem {ADS1115rpi}, \hyperpage{18}
+    \subitem {ADS1115rpi}, \hyperpage{30}
   \item {i2c\_writeWord}
-    \subitem {ADS1115rpi}, \hyperpage{18}
-  \item {icm20948}, \hyperpage{11}
-    \subitem {ACCEL\_16G}, \hyperpage{13}
-    \subitem {ACCEL\_2G}, \hyperpage{13}
-    \subitem {ACCEL\_4G}, \hyperpage{13}
-    \subitem {ACCEL\_8G}, \hyperpage{13}
-    \subitem {ACCEL\_DLPF\_111\_4HZ}, \hyperpage{12}
-    \subitem {ACCEL\_DLPF\_11\_5HZ}, \hyperpage{12}
-    \subitem {ACCEL\_DLPF\_23\_9HZ}, \hyperpage{12}
-    \subitem {ACCEL\_DLPF\_246HZ}, \hyperpage{12}
-    \subitem {ACCEL\_DLPF\_246HZ\_2}, \hyperpage{12}
-    \subitem {ACCEL\_DLPF\_473HZ}, \hyperpage{12}
-    \subitem {ACCEL\_DLPF\_50\_4HZ}, \hyperpage{12}
-    \subitem {ACCEL\_DLPF\_5\_7HZ}, \hyperpage{12}
-    \subitem {accel\_dlpf\_config}, \hyperpage{12}
-    \subitem {accel\_dlpf\_config\_to\_str}, \hyperpage{14}
-    \subitem {accel\_scale}, \hyperpage{13}
-    \subitem {accel\_scale\_factor}, \hyperpage{14}
-    \subitem {accel\_scale\_to\_str}, \hyperpage{14}
-    \subitem {accel\_settings}, \hyperpage{12}
-    \subitem {GYRO\_1000DPS}, \hyperpage{13}
-    \subitem {GYRO\_2000DPS}, \hyperpage{13}
-    \subitem {GYRO\_250DPS}, \hyperpage{13}
-    \subitem {GYRO\_500DPS}, \hyperpage{13}
-    \subitem {GYRO\_DLPF\_119\_5HZ}, \hyperpage{13}
-    \subitem {GYRO\_DLPF\_11\_6HZ}, \hyperpage{13}
-    \subitem {GYRO\_DLPF\_151\_8HZ}, \hyperpage{13}
-    \subitem {GYRO\_DLPF\_196\_6HZ}, \hyperpage{13}
-    \subitem {GYRO\_DLPF\_23\_9HZ}, \hyperpage{13}
-    \subitem {GYRO\_DLPF\_361\_4HZ}, \hyperpage{13}
-    \subitem {GYRO\_DLPF\_51\_2HZ}, \hyperpage{13}
-    \subitem {GYRO\_DLPF\_5\_7HZ}, \hyperpage{13}
-    \subitem {gyro\_dlpf\_config}, \hyperpage{13}
-    \subitem {gyro\_dlpf\_config\_to\_str}, \hyperpage{14}
-    \subitem {gyro\_scale}, \hyperpage{13}
-    \subitem {gyro\_scale\_factor}, \hyperpage{14}
-    \subitem {gyro\_scale\_to\_str}, \hyperpage{14}
-    \subitem {gyro\_settings}, \hyperpage{12}
-    \subitem {MAGN\_100HZ}, \hyperpage{14}
-    \subitem {MAGN\_10HZ}, \hyperpage{13}
-    \subitem {MAGN\_20HZ}, \hyperpage{14}
-    \subitem {MAGN\_50HZ}, \hyperpage{14}
-    \subitem {magn\_mode}, \hyperpage{13}
-    \subitem {magn\_mode\_to\_str}, \hyperpage{14}
-    \subitem {MAGN\_SELF\_TEST}, \hyperpage{14}
-    \subitem {magn\_settings}, \hyperpage{12}
-    \subitem {MAGN\_SHUTDOWN}, \hyperpage{13}
-    \subitem {MAGN\_SINGLE}, \hyperpage{13}
-    \subitem {settings}, \hyperpage{12}
-  \item {icm20948::accel\_settings}, \hyperpage{15}
-    \subitem {accel\_settings}, \hyperpage{15}
-    \subitem {dlpf\_config}, \hyperpage{15}
-    \subitem {dlpf\_enable}, \hyperpage{15}
-    \subitem {sample\_rate\_div}, \hyperpage{16}
-    \subitem {scale}, \hyperpage{16}
-  \item {icm20948::gyro\_settings}, \hyperpage{24}
-    \subitem {dlpf\_config}, \hyperpage{25}
-    \subitem {dlpf\_enable}, \hyperpage{25}
-    \subitem {gyro\_settings}, \hyperpage{25}
-    \subitem {sample\_rate\_div}, \hyperpage{25}
-    \subitem {scale}, \hyperpage{25}
-  \item {icm20948::ICM20948\_I2C}, \hyperpage{25}
-    \subitem {\_accel\_scale\_factor}, \hyperpage{30}
-    \subitem {\_chip\_i2c\_master\_reset}, \hyperpage{27}
-    \subitem {\_current\_bank}, \hyperpage{30}
-    \subitem {\_enable\_data\_ready\_interrupt}, \hyperpage{27}
-    \subitem {\_gyro\_scale\_factor}, \hyperpage{30}
-    \subitem {\_i2c\_address}, \hyperpage{30}
-    \subitem {\_i2c\_bus}, \hyperpage{30}
-    \subitem {\_i2c\_fd}, \hyperpage{30}
-    \subitem {\_magn\_scale\_factor}, \hyperpage{30}
-    \subitem {\_magnetometer\_configured}, \hyperpage{27}
-    \subitem {\_magnetometer\_enable}, \hyperpage{27}
-    \subitem {\_magnetometer\_init}, \hyperpage{27}
-    \subitem {\_magnetometer\_set\_mode}, \hyperpage{27}
-    \subitem {\_magnetometer\_set\_readout}, \hyperpage{27}
-    \subitem {\_read\_bit}, \hyperpage{27}
-    \subitem {\_read\_block\_bytes}, \hyperpage{27}
-    \subitem {\_read\_byte}, \hyperpage{27}
-    \subitem {\_read\_mag\_byte}, \hyperpage{28}
-    \subitem {\_set\_accel\_range\_dlpf}, \hyperpage{28}
-    \subitem {\_set\_accel\_sample\_rate\_div}, \hyperpage{28}
-    \subitem {\_set\_bank}, \hyperpage{28}
-    \subitem {\_set\_gyro\_range\_dlpf}, \hyperpage{28}
-    \subitem {\_set\_gyro\_sample\_rate\_div}, \hyperpage{28}
-    \subitem {\_write\_bit}, \hyperpage{28}
-    \subitem {\_write\_byte}, \hyperpage{28}
-    \subitem {\_write\_mag\_byte}, \hyperpage{29}
-    \subitem {accel}, \hyperpage{30}
-    \subitem {check\_DRDY\_INT}, \hyperpage{29}
-    \subitem {gyro}, \hyperpage{30}
-    \subitem {ICM20948\_I2C}, \hyperpage{26}
-    \subitem {init}, \hyperpage{29}
-    \subitem {magn}, \hyperpage{30}
-    \subitem {read\_accel\_gyro}, \hyperpage{29}
-    \subitem {read\_magn}, \hyperpage{29}
-    \subitem {read\_sample}, \hyperpage{29}
-    \subitem {reset}, \hyperpage{29}
-    \subitem {set\_settings}, \hyperpage{29}
-    \subitem {settings}, \hyperpage{31}
-    \subitem {wake}, \hyperpage{29}
-  \item {icm20948::IMUSample}, \hyperpage{34}
-    \subitem {ax}, \hyperpage{34}
-    \subitem {ay}, \hyperpage{34}
-    \subitem {az}, \hyperpage{34}
-    \subitem {gx}, \hyperpage{34}
-    \subitem {gy}, \hyperpage{34}
-    \subitem {gz}, \hyperpage{35}
-    \subitem {mx}, \hyperpage{35}
-    \subitem {my}, \hyperpage{35}
-    \subitem {mz}, \hyperpage{35}
-  \item {icm20948::magn\_settings}, \hyperpage{39}
-    \subitem {magn\_settings}, \hyperpage{39}
-    \subitem {mode}, \hyperpage{40}
-  \item {icm20948::settings}, \hyperpage{48}
-    \subitem {accel}, \hyperpage{48}
-    \subitem {gyro}, \hyperpage{48}
-    \subitem {magn}, \hyperpage{49}
-    \subitem {settings}, \hyperpage{48}
+    \subitem {ADS1115rpi}, \hyperpage{30}
+  \item {icm20948}, \hyperpage{21}
+    \subitem {ACCEL\_16G}, \hyperpage{23}
+    \subitem {ACCEL\_2G}, \hyperpage{23}
+    \subitem {ACCEL\_4G}, \hyperpage{23}
+    \subitem {ACCEL\_8G}, \hyperpage{23}
+    \subitem {ACCEL\_DLPF\_111\_4HZ}, \hyperpage{22}
+    \subitem {ACCEL\_DLPF\_11\_5HZ}, \hyperpage{23}
+    \subitem {ACCEL\_DLPF\_23\_9HZ}, \hyperpage{23}
+    \subitem {ACCEL\_DLPF\_246HZ}, \hyperpage{22}
+    \subitem {ACCEL\_DLPF\_246HZ\_2}, \hyperpage{22}
+    \subitem {ACCEL\_DLPF\_473HZ}, \hyperpage{23}
+    \subitem {ACCEL\_DLPF\_50\_4HZ}, \hyperpage{22}
+    \subitem {ACCEL\_DLPF\_5\_7HZ}, \hyperpage{23}
+    \subitem {accel\_dlpf\_config}, \hyperpage{22}
+    \subitem {accel\_dlpf\_config\_to\_str}, \hyperpage{24}
+    \subitem {accel\_scale}, \hyperpage{23}
+    \subitem {accel\_scale\_factor}, \hyperpage{24}
+    \subitem {accel\_scale\_to\_str}, \hyperpage{24}
+    \subitem {accel\_settings}, \hyperpage{22}
+    \subitem {GYRO\_1000DPS}, \hyperpage{23}
+    \subitem {GYRO\_2000DPS}, \hyperpage{23}
+    \subitem {GYRO\_250DPS}, \hyperpage{23}
+    \subitem {GYRO\_500DPS}, \hyperpage{23}
+    \subitem {GYRO\_DLPF\_119\_5HZ}, \hyperpage{23}
+    \subitem {GYRO\_DLPF\_11\_6HZ}, \hyperpage{23}
+    \subitem {GYRO\_DLPF\_151\_8HZ}, \hyperpage{23}
+    \subitem {GYRO\_DLPF\_196\_6HZ}, \hyperpage{23}
+    \subitem {GYRO\_DLPF\_23\_9HZ}, \hyperpage{23}
+    \subitem {GYRO\_DLPF\_361\_4HZ}, \hyperpage{23}
+    \subitem {GYRO\_DLPF\_51\_2HZ}, \hyperpage{23}
+    \subitem {GYRO\_DLPF\_5\_7HZ}, \hyperpage{23}
+    \subitem {gyro\_dlpf\_config}, \hyperpage{23}
+    \subitem {gyro\_dlpf\_config\_to\_str}, \hyperpage{24}
+    \subitem {gyro\_scale}, \hyperpage{23}
+    \subitem {gyro\_scale\_factor}, \hyperpage{24}
+    \subitem {gyro\_scale\_to\_str}, \hyperpage{24}
+    \subitem {gyro\_settings}, \hyperpage{22}
+    \subitem {MAGN\_100HZ}, \hyperpage{24}
+    \subitem {MAGN\_10HZ}, \hyperpage{24}
+    \subitem {MAGN\_20HZ}, \hyperpage{24}
+    \subitem {MAGN\_50HZ}, \hyperpage{24}
+    \subitem {magn\_mode}, \hyperpage{23}
+    \subitem {magn\_mode\_to\_str}, \hyperpage{25}
+    \subitem {MAGN\_SELF\_TEST}, \hyperpage{24}
+    \subitem {magn\_settings}, \hyperpage{22}
+    \subitem {MAGN\_SHUTDOWN}, \hyperpage{24}
+    \subitem {MAGN\_SINGLE}, \hyperpage{24}
+    \subitem {settings}, \hyperpage{22}
+  \item {icm20948::accel\_settings}, \hyperpage{27}
+    \subitem {accel\_settings}, \hyperpage{27}
+    \subitem {dlpf\_config}, \hyperpage{27}
+    \subitem {dlpf\_enable}, \hyperpage{27}
+    \subitem {sample\_rate\_div}, \hyperpage{27}
+    \subitem {scale}, \hyperpage{28}
+  \item {icm20948::gyro\_settings}, \hyperpage{36}
+    \subitem {dlpf\_config}, \hyperpage{36}
+    \subitem {dlpf\_enable}, \hyperpage{36}
+    \subitem {gyro\_settings}, \hyperpage{36}
+    \subitem {sample\_rate\_div}, \hyperpage{36}
+    \subitem {scale}, \hyperpage{36}
+  \item {icm20948::ICM20948\_I2C}, \hyperpage{37}
+    \subitem {\_accel\_scale\_factor}, \hyperpage{42}
+    \subitem {\_chip\_i2c\_master\_reset}, \hyperpage{38}
+    \subitem {\_current\_bank}, \hyperpage{42}
+    \subitem {\_enable\_data\_ready\_interrupt}, \hyperpage{38}
+    \subitem {\_gyro\_scale\_factor}, \hyperpage{42}
+    \subitem {\_i2c\_address}, \hyperpage{42}
+    \subitem {\_i2c\_bus}, \hyperpage{42}
+    \subitem {\_i2c\_fd}, \hyperpage{42}
+    \subitem {\_magn\_scale\_factor}, \hyperpage{42}
+    \subitem {\_magnetometer\_configured}, \hyperpage{38}
+    \subitem {\_magnetometer\_enable}, \hyperpage{39}
+    \subitem {\_magnetometer\_init}, \hyperpage{39}
+    \subitem {\_magnetometer\_set\_mode}, \hyperpage{39}
+    \subitem {\_magnetometer\_set\_readout}, \hyperpage{39}
+    \subitem {\_read\_bit}, \hyperpage{39}
+    \subitem {\_read\_block\_bytes}, \hyperpage{39}
+    \subitem {\_read\_byte}, \hyperpage{39}
+    \subitem {\_read\_mag\_byte}, \hyperpage{39}
+    \subitem {\_set\_accel\_range\_dlpf}, \hyperpage{40}
+    \subitem {\_set\_accel\_sample\_rate\_div}, \hyperpage{40}
+    \subitem {\_set\_bank}, \hyperpage{40}
+    \subitem {\_set\_gyro\_range\_dlpf}, \hyperpage{40}
+    \subitem {\_set\_gyro\_sample\_rate\_div}, \hyperpage{40}
+    \subitem {\_write\_bit}, \hyperpage{40}
+    \subitem {\_write\_byte}, \hyperpage{40}
+    \subitem {\_write\_mag\_byte}, \hyperpage{40}
+    \subitem {\texorpdfstring{$\sim$}{\string~}ICM20948\_I2C}, 
+		\hyperpage{38}
+    \subitem {accel}, \hyperpage{42}
+    \subitem {check\_DRDY\_INT}, \hyperpage{41}
+    \subitem {gyro}, \hyperpage{42}
+    \subitem {ICM20948\_I2C}, \hyperpage{38}
+    \subitem {init}, \hyperpage{41}
+    \subitem {magn}, \hyperpage{42}
+    \subitem {read\_accel\_gyro}, \hyperpage{41}
+    \subitem {read\_magn}, \hyperpage{41}
+    \subitem {read\_sample}, \hyperpage{41}
+    \subitem {reset}, \hyperpage{41}
+    \subitem {set\_settings}, \hyperpage{41}
+    \subitem {settings}, \hyperpage{42}
+    \subitem {wake}, \hyperpage{41}
+  \item {icm20948::IMUSample}, \hyperpage{47}
+    \subitem {ax}, \hyperpage{47}
+    \subitem {ay}, \hyperpage{47}
+    \subitem {az}, \hyperpage{47}
+    \subitem {gx}, \hyperpage{47}
+    \subitem {gy}, \hyperpage{47}
+    \subitem {gz}, \hyperpage{47}
+    \subitem {mx}, \hyperpage{47}
+    \subitem {my}, \hyperpage{47}
+    \subitem {mz}, \hyperpage{48}
+  \item {icm20948::magn\_settings}, \hyperpage{51}
+    \subitem {magn\_settings}, \hyperpage{52}
+    \subitem {mode}, \hyperpage{52}
+  \item {icm20948::settings}, \hyperpage{61}
+    \subitem {accel}, \hyperpage{62}
+    \subitem {gyro}, \hyperpage{62}
+    \subitem {magn}, \hyperpage{63}
+    \subitem {settings}, \hyperpage{62}
   \item {ICM20948\_ACCEL\_CONFIG\_1\_ADDR}
-    \subitem {Icm20948driver.hpp}, \hyperpage{69}
+    \subitem {Icm20948driver.hpp}, \hyperpage{124}
   \item {ICM20948\_ACCEL\_CONFIG\_1\_BANK}
-    \subitem {Icm20948driver.hpp}, \hyperpage{69}
+    \subitem {Icm20948driver.hpp}, \hyperpage{124}
   \item {ICM20948\_ACCEL\_OUT\_BANK}
-    \subitem {Icm20948driver.hpp}, \hyperpage{69}
+    \subitem {Icm20948driver.hpp}, \hyperpage{124}
   \item {ICM20948\_ACCEL\_SMPLRT\_DIV\_1\_ADDR}
-    \subitem {Icm20948driver.hpp}, \hyperpage{69}
+    \subitem {Icm20948driver.hpp}, \hyperpage{124}
   \item {ICM20948\_ACCEL\_SMPLRT\_DIV\_1\_BANK}
-    \subitem {Icm20948driver.hpp}, \hyperpage{69}
+    \subitem {Icm20948driver.hpp}, \hyperpage{124}
   \item {ICM20948\_ACCEL\_SMPLRT\_DIV\_2\_ADDR}
-    \subitem {Icm20948driver.hpp}, \hyperpage{69}
+    \subitem {Icm20948driver.hpp}, \hyperpage{124}
   \item {ICM20948\_ACCEL\_SMPLRT\_DIV\_2\_BANK}
-    \subitem {Icm20948driver.hpp}, \hyperpage{69}
+    \subitem {Icm20948driver.hpp}, \hyperpage{124}
   \item {ICM20948\_ACCEL\_XOUT\_H\_ADDR}
-    \subitem {Icm20948driver.hpp}, \hyperpage{69}
+    \subitem {Icm20948driver.hpp}, \hyperpage{124}
   \item {ICM20948\_ACCEL\_XOUT\_L\_ADDR}
-    \subitem {Icm20948driver.hpp}, \hyperpage{70}
+    \subitem {Icm20948driver.hpp}, \hyperpage{124}
   \item {ICM20948\_ACCEL\_YOUT\_H\_ADDR}
-    \subitem {Icm20948driver.hpp}, \hyperpage{70}
+    \subitem {Icm20948driver.hpp}, \hyperpage{125}
   \item {ICM20948\_ACCEL\_YOUT\_L\_ADDR}
-    \subitem {Icm20948driver.hpp}, \hyperpage{70}
+    \subitem {Icm20948driver.hpp}, \hyperpage{125}
   \item {ICM20948\_ACCEL\_ZOUT\_H\_ADDR}
-    \subitem {Icm20948driver.hpp}, \hyperpage{70}
+    \subitem {Icm20948driver.hpp}, \hyperpage{125}
   \item {ICM20948\_ACCEL\_ZOUT\_L\_ADDR}
-    \subitem {Icm20948driver.hpp}, \hyperpage{70}
+    \subitem {Icm20948driver.hpp}, \hyperpage{125}
   \item {ICM20948\_BANK0\_WHO\_AM\_I\_VALUE}
-    \subitem {Icm20948driver.hpp}, \hyperpage{70}
+    \subitem {Icm20948driver.hpp}, \hyperpage{125}
   \item {ICM20948\_EXT\_SLV\_SENS\_DATA\_00\_ADDR}
-    \subitem {Icm20948driver.hpp}, \hyperpage{70}
+    \subitem {Icm20948driver.hpp}, \hyperpage{125}
   \item {ICM20948\_EXT\_SLV\_SENS\_DATA\_00\_BANK}
-    \subitem {Icm20948driver.hpp}, \hyperpage{70}
+    \subitem {Icm20948driver.hpp}, \hyperpage{125}
   \item {ICM20948\_GYRO\_CONFIG\_1\_ADDR}
-    \subitem {Icm20948driver.hpp}, \hyperpage{70}
+    \subitem {Icm20948driver.hpp}, \hyperpage{125}
   \item {ICM20948\_GYRO\_CONFIG\_1\_BANK}
-    \subitem {Icm20948driver.hpp}, \hyperpage{70}
+    \subitem {Icm20948driver.hpp}, \hyperpage{125}
   \item {ICM20948\_GYRO\_OUT\_BANK}
-    \subitem {Icm20948driver.hpp}, \hyperpage{71}
+    \subitem {Icm20948driver.hpp}, \hyperpage{125}
   \item {ICM20948\_GYRO\_SMPLRT\_DIV\_ADDR}
-    \subitem {Icm20948driver.hpp}, \hyperpage{71}
+    \subitem {Icm20948driver.hpp}, \hyperpage{125}
   \item {ICM20948\_GYRO\_SMPLRT\_DIV\_BANK}
-    \subitem {Icm20948driver.hpp}, \hyperpage{71}
+    \subitem {Icm20948driver.hpp}, \hyperpage{125}
   \item {ICM20948\_GYRO\_XOUT\_H\_ADDR}
-    \subitem {Icm20948driver.hpp}, \hyperpage{71}
+    \subitem {Icm20948driver.hpp}, \hyperpage{126}
   \item {ICM20948\_GYRO\_XOUT\_L\_ADDR}
-    \subitem {Icm20948driver.hpp}, \hyperpage{71}
+    \subitem {Icm20948driver.hpp}, \hyperpage{126}
   \item {ICM20948\_GYRO\_YOUT\_H\_ADDR}
-    \subitem {Icm20948driver.hpp}, \hyperpage{71}
+    \subitem {Icm20948driver.hpp}, \hyperpage{126}
   \item {ICM20948\_GYRO\_YOUT\_L\_ADDR}
-    \subitem {Icm20948driver.hpp}, \hyperpage{71}
+    \subitem {Icm20948driver.hpp}, \hyperpage{126}
   \item {ICM20948\_GYRO\_ZOUT\_H\_ADDR}
-    \subitem {Icm20948driver.hpp}, \hyperpage{71}
+    \subitem {Icm20948driver.hpp}, \hyperpage{126}
   \item {ICM20948\_GYRO\_ZOUT\_L\_ADDR}
-    \subitem {Icm20948driver.hpp}, \hyperpage{71}
+    \subitem {Icm20948driver.hpp}, \hyperpage{126}
   \item {ICM20948\_I2C}
-    \subitem {icm20948::ICM20948\_I2C}, \hyperpage{26}
+    \subitem {icm20948::ICM20948\_I2C}, \hyperpage{38}
   \item {ICM20948\_I2C\_ADDR}
-    \subitem {Icm20948driver.hpp}, \hyperpage{71}
+    \subitem {Icm20948driver.hpp}, \hyperpage{126}
   \item {ICM20948\_I2C\_MST\_CTRL\_ADDR}
-    \subitem {Icm20948driver.hpp}, \hyperpage{72}
+    \subitem {Icm20948driver.hpp}, \hyperpage{126}
   \item {ICM20948\_I2C\_MST\_CTRL\_BANK}
-    \subitem {Icm20948driver.hpp}, \hyperpage{72}
+    \subitem {Icm20948driver.hpp}, \hyperpage{126}
   \item {ICM20948\_I2C\_MST\_STATUS\_ADDR}
-    \subitem {Icm20948driver.hpp}, \hyperpage{72}
+    \subitem {Icm20948driver.hpp}, \hyperpage{126}
   \item {ICM20948\_I2C\_MST\_STATUS\_BANK}
-    \subitem {Icm20948driver.hpp}, \hyperpage{72}
+    \subitem {Icm20948driver.hpp}, \hyperpage{127}
   \item {ICM20948\_I2C\_SLV0\_ADDR\_ADDR}
-    \subitem {Icm20948driver.hpp}, \hyperpage{72}
+    \subitem {Icm20948driver.hpp}, \hyperpage{127}
   \item {ICM20948\_I2C\_SLV0\_ADDR\_BANK}
-    \subitem {Icm20948driver.hpp}, \hyperpage{72}
+    \subitem {Icm20948driver.hpp}, \hyperpage{127}
   \item {ICM20948\_I2C\_SLV0\_CTRL\_ADDR}
-    \subitem {Icm20948driver.hpp}, \hyperpage{72}
+    \subitem {Icm20948driver.hpp}, \hyperpage{127}
   \item {ICM20948\_I2C\_SLV0\_CTRL\_BANK}
-    \subitem {Icm20948driver.hpp}, \hyperpage{72}
+    \subitem {Icm20948driver.hpp}, \hyperpage{127}
   \item {ICM20948\_I2C\_SLV0\_REG\_ADDR}
-    \subitem {Icm20948driver.hpp}, \hyperpage{72}
+    \subitem {Icm20948driver.hpp}, \hyperpage{127}
   \item {ICM20948\_I2C\_SLV0\_REG\_BANK}
-    \subitem {Icm20948driver.hpp}, \hyperpage{72}
+    \subitem {Icm20948driver.hpp}, \hyperpage{127}
   \item {ICM20948\_I2C\_SLV4\_ADDR\_ADDR}
-    \subitem {Icm20948driver.hpp}, \hyperpage{73}
+    \subitem {Icm20948driver.hpp}, \hyperpage{127}
   \item {ICM20948\_I2C\_SLV4\_ADDR\_BANK}
-    \subitem {Icm20948driver.hpp}, \hyperpage{73}
+    \subitem {Icm20948driver.hpp}, \hyperpage{127}
   \item {ICM20948\_I2C\_SLV4\_CTRL\_ADDR}
-    \subitem {Icm20948driver.hpp}, \hyperpage{73}
+    \subitem {Icm20948driver.hpp}, \hyperpage{127}
   \item {ICM20948\_I2C\_SLV4\_CTRL\_BANK}
-    \subitem {Icm20948driver.hpp}, \hyperpage{73}
+    \subitem {Icm20948driver.hpp}, \hyperpage{127}
   \item {ICM20948\_I2C\_SLV4\_DI\_ADDR}
-    \subitem {Icm20948driver.hpp}, \hyperpage{73}
+    \subitem {Icm20948driver.hpp}, \hyperpage{127}
   \item {ICM20948\_I2C\_SLV4\_DI\_BANK}
-    \subitem {Icm20948driver.hpp}, \hyperpage{73}
+    \subitem {Icm20948driver.hpp}, \hyperpage{128}
   \item {ICM20948\_I2C\_SLV4\_DO\_ADDR}
-    \subitem {Icm20948driver.hpp}, \hyperpage{73}
+    \subitem {Icm20948driver.hpp}, \hyperpage{128}
   \item {ICM20948\_I2C\_SLV4\_DO\_BANK}
-    \subitem {Icm20948driver.hpp}, \hyperpage{73}
+    \subitem {Icm20948driver.hpp}, \hyperpage{128}
   \item {ICM20948\_I2C\_SLV4\_REG\_ADDR}
-    \subitem {Icm20948driver.hpp}, \hyperpage{73}
+    \subitem {Icm20948driver.hpp}, \hyperpage{128}
   \item {ICM20948\_I2C\_SLV4\_REG\_BANK}
-    \subitem {Icm20948driver.hpp}, \hyperpage{73}
+    \subitem {Icm20948driver.hpp}, \hyperpage{128}
   \item {ICM20948\_INT\_ENABLE\_1\_ADDR}
-    \subitem {Icm20948driver.hpp}, \hyperpage{74}
+    \subitem {Icm20948driver.hpp}, \hyperpage{128}
   \item {ICM20948\_INT\_ENABLE\_1\_BANK}
-    \subitem {Icm20948driver.hpp}, \hyperpage{74}
+    \subitem {Icm20948driver.hpp}, \hyperpage{128}
   \item {ICM20948\_INT\_PIN\_CFG\_ADDR}
-    \subitem {Icm20948driver.hpp}, \hyperpage{74}
+    \subitem {Icm20948driver.hpp}, \hyperpage{128}
   \item {ICM20948\_INT\_PIN\_CFG\_BANK}
-    \subitem {Icm20948driver.hpp}, \hyperpage{74}
+    \subitem {Icm20948driver.hpp}, \hyperpage{128}
   \item {ICM20948\_INT\_STATUS\_1\_ADDR}
-    \subitem {Icm20948driver.hpp}, \hyperpage{74}
+    \subitem {Icm20948driver.hpp}, \hyperpage{128}
   \item {ICM20948\_INT\_STATUS\_1\_BANK}
-    \subitem {Icm20948driver.hpp}, \hyperpage{74}
+    \subitem {Icm20948driver.hpp}, \hyperpage{128}
   \item {ICM20948\_INT\_STATUS\_ADDR}
-    \subitem {Icm20948driver.hpp}, \hyperpage{74}
+    \subitem {Icm20948driver.hpp}, \hyperpage{128}
   \item {ICM20948\_INT\_STATUS\_BANK}
-    \subitem {Icm20948driver.hpp}, \hyperpage{74}
+    \subitem {Icm20948driver.hpp}, \hyperpage{129}
   \item {ICM20948\_MAGN\_I2C\_ADDR}
-    \subitem {Icm20948driver.hpp}, \hyperpage{74}
+    \subitem {Icm20948driver.hpp}, \hyperpage{129}
   \item {ICM20948\_PWR\_MGMT\_1\_ADDR}
-    \subitem {Icm20948driver.hpp}, \hyperpage{74}
+    \subitem {Icm20948driver.hpp}, \hyperpage{129}
   \item {ICM20948\_PWR\_MGMT\_1\_BANK}
-    \subitem {Icm20948driver.hpp}, \hyperpage{75}
+    \subitem {Icm20948driver.hpp}, \hyperpage{129}
   \item {ICM20948\_REG\_BANK\_SEL\_ADDR}
-    \subitem {Icm20948driver.hpp}, \hyperpage{75}
+    \subitem {Icm20948driver.hpp}, \hyperpage{129}
   \item {ICM20948\_REG\_BANK\_SEL\_BANK0\_VALUE}
-    \subitem {Icm20948driver.hpp}, \hyperpage{75}
+    \subitem {Icm20948driver.hpp}, \hyperpage{129}
   \item {ICM20948\_REG\_BANK\_SEL\_BANK1\_VALUE}
-    \subitem {Icm20948driver.hpp}, \hyperpage{75}
+    \subitem {Icm20948driver.hpp}, \hyperpage{129}
   \item {ICM20948\_REG\_BANK\_SEL\_BANK2\_VALUE}
-    \subitem {Icm20948driver.hpp}, \hyperpage{75}
+    \subitem {Icm20948driver.hpp}, \hyperpage{129}
   \item {ICM20948\_REG\_BANK\_SEL\_BANK3\_VALUE}
-    \subitem {Icm20948driver.hpp}, \hyperpage{75}
+    \subitem {Icm20948driver.hpp}, \hyperpage{129}
   \item {ICM20948\_TEMP\_OUT\_H\_ADDR}
-    \subitem {Icm20948driver.hpp}, \hyperpage{75}
+    \subitem {Icm20948driver.hpp}, \hyperpage{129}
   \item {ICM20948\_TEMP\_OUT\_L\_ADDR}
-    \subitem {Icm20948driver.hpp}, \hyperpage{75}
+    \subitem {Icm20948driver.hpp}, \hyperpage{129}
   \item {ICM20948\_USER\_CTRL\_ADDR}
-    \subitem {Icm20948driver.hpp}, \hyperpage{75}
+    \subitem {Icm20948driver.hpp}, \hyperpage{130}
   \item {ICM20948\_USER\_CTRL\_BANK}
-    \subitem {Icm20948driver.hpp}, \hyperpage{75}
+    \subitem {Icm20948driver.hpp}, \hyperpage{130}
   \item {ICM20948\_WHO\_AM\_I\_ADDR}
-    \subitem {Icm20948driver.hpp}, \hyperpage{76}
+    \subitem {Icm20948driver.hpp}, \hyperpage{130}
   \item {ICM20948\_WHO\_AM\_I\_BANK}
-    \subitem {Icm20948driver.hpp}, \hyperpage{76}
+    \subitem {Icm20948driver.hpp}, \hyperpage{130}
+  \item {Icm20948driver.cpp}
+    \subitem {DEG2RAD}, \hyperpage{109}
+    \subitem {G2MSQR}, \hyperpage{109}
+    \subitem {MAGN\_SCALE\_FACTOR}, \hyperpage{109}
   \item {Icm20948driver.hpp}
-    \subitem {AK09916\_CNTL2\_ADDR}, \hyperpage{69}
-    \subitem {ICM20948\_ACCEL\_CONFIG\_1\_ADDR}, \hyperpage{69}
-    \subitem {ICM20948\_ACCEL\_CONFIG\_1\_BANK}, \hyperpage{69}
-    \subitem {ICM20948\_ACCEL\_OUT\_BANK}, \hyperpage{69}
-    \subitem {ICM20948\_ACCEL\_SMPLRT\_DIV\_1\_ADDR}, \hyperpage{69}
-    \subitem {ICM20948\_ACCEL\_SMPLRT\_DIV\_1\_BANK}, \hyperpage{69}
-    \subitem {ICM20948\_ACCEL\_SMPLRT\_DIV\_2\_ADDR}, \hyperpage{69}
-    \subitem {ICM20948\_ACCEL\_SMPLRT\_DIV\_2\_BANK}, \hyperpage{69}
-    \subitem {ICM20948\_ACCEL\_XOUT\_H\_ADDR}, \hyperpage{69}
-    \subitem {ICM20948\_ACCEL\_XOUT\_L\_ADDR}, \hyperpage{70}
-    \subitem {ICM20948\_ACCEL\_YOUT\_H\_ADDR}, \hyperpage{70}
-    \subitem {ICM20948\_ACCEL\_YOUT\_L\_ADDR}, \hyperpage{70}
-    \subitem {ICM20948\_ACCEL\_ZOUT\_H\_ADDR}, \hyperpage{70}
-    \subitem {ICM20948\_ACCEL\_ZOUT\_L\_ADDR}, \hyperpage{70}
-    \subitem {ICM20948\_BANK0\_WHO\_AM\_I\_VALUE}, \hyperpage{70}
-    \subitem {ICM20948\_EXT\_SLV\_SENS\_DATA\_00\_ADDR}, \hyperpage{70}
-    \subitem {ICM20948\_EXT\_SLV\_SENS\_DATA\_00\_BANK}, \hyperpage{70}
-    \subitem {ICM20948\_GYRO\_CONFIG\_1\_ADDR}, \hyperpage{70}
-    \subitem {ICM20948\_GYRO\_CONFIG\_1\_BANK}, \hyperpage{70}
-    \subitem {ICM20948\_GYRO\_OUT\_BANK}, \hyperpage{71}
-    \subitem {ICM20948\_GYRO\_SMPLRT\_DIV\_ADDR}, \hyperpage{71}
-    \subitem {ICM20948\_GYRO\_SMPLRT\_DIV\_BANK}, \hyperpage{71}
-    \subitem {ICM20948\_GYRO\_XOUT\_H\_ADDR}, \hyperpage{71}
-    \subitem {ICM20948\_GYRO\_XOUT\_L\_ADDR}, \hyperpage{71}
-    \subitem {ICM20948\_GYRO\_YOUT\_H\_ADDR}, \hyperpage{71}
-    \subitem {ICM20948\_GYRO\_YOUT\_L\_ADDR}, \hyperpage{71}
-    \subitem {ICM20948\_GYRO\_ZOUT\_H\_ADDR}, \hyperpage{71}
-    \subitem {ICM20948\_GYRO\_ZOUT\_L\_ADDR}, \hyperpage{71}
-    \subitem {ICM20948\_I2C\_ADDR}, \hyperpage{71}
-    \subitem {ICM20948\_I2C\_MST\_CTRL\_ADDR}, \hyperpage{72}
-    \subitem {ICM20948\_I2C\_MST\_CTRL\_BANK}, \hyperpage{72}
-    \subitem {ICM20948\_I2C\_MST\_STATUS\_ADDR}, \hyperpage{72}
-    \subitem {ICM20948\_I2C\_MST\_STATUS\_BANK}, \hyperpage{72}
-    \subitem {ICM20948\_I2C\_SLV0\_ADDR\_ADDR}, \hyperpage{72}
-    \subitem {ICM20948\_I2C\_SLV0\_ADDR\_BANK}, \hyperpage{72}
-    \subitem {ICM20948\_I2C\_SLV0\_CTRL\_ADDR}, \hyperpage{72}
-    \subitem {ICM20948\_I2C\_SLV0\_CTRL\_BANK}, \hyperpage{72}
-    \subitem {ICM20948\_I2C\_SLV0\_REG\_ADDR}, \hyperpage{72}
-    \subitem {ICM20948\_I2C\_SLV0\_REG\_BANK}, \hyperpage{72}
-    \subitem {ICM20948\_I2C\_SLV4\_ADDR\_ADDR}, \hyperpage{73}
-    \subitem {ICM20948\_I2C\_SLV4\_ADDR\_BANK}, \hyperpage{73}
-    \subitem {ICM20948\_I2C\_SLV4\_CTRL\_ADDR}, \hyperpage{73}
-    \subitem {ICM20948\_I2C\_SLV4\_CTRL\_BANK}, \hyperpage{73}
-    \subitem {ICM20948\_I2C\_SLV4\_DI\_ADDR}, \hyperpage{73}
-    \subitem {ICM20948\_I2C\_SLV4\_DI\_BANK}, \hyperpage{73}
-    \subitem {ICM20948\_I2C\_SLV4\_DO\_ADDR}, \hyperpage{73}
-    \subitem {ICM20948\_I2C\_SLV4\_DO\_BANK}, \hyperpage{73}
-    \subitem {ICM20948\_I2C\_SLV4\_REG\_ADDR}, \hyperpage{73}
-    \subitem {ICM20948\_I2C\_SLV4\_REG\_BANK}, \hyperpage{73}
-    \subitem {ICM20948\_INT\_ENABLE\_1\_ADDR}, \hyperpage{74}
-    \subitem {ICM20948\_INT\_ENABLE\_1\_BANK}, \hyperpage{74}
-    \subitem {ICM20948\_INT\_PIN\_CFG\_ADDR}, \hyperpage{74}
-    \subitem {ICM20948\_INT\_PIN\_CFG\_BANK}, \hyperpage{74}
-    \subitem {ICM20948\_INT\_STATUS\_1\_ADDR}, \hyperpage{74}
-    \subitem {ICM20948\_INT\_STATUS\_1\_BANK}, \hyperpage{74}
-    \subitem {ICM20948\_INT\_STATUS\_ADDR}, \hyperpage{74}
-    \subitem {ICM20948\_INT\_STATUS\_BANK}, \hyperpage{74}
-    \subitem {ICM20948\_MAGN\_I2C\_ADDR}, \hyperpage{74}
-    \subitem {ICM20948\_PWR\_MGMT\_1\_ADDR}, \hyperpage{74}
-    \subitem {ICM20948\_PWR\_MGMT\_1\_BANK}, \hyperpage{75}
-    \subitem {ICM20948\_REG\_BANK\_SEL\_ADDR}, \hyperpage{75}
-    \subitem {ICM20948\_REG\_BANK\_SEL\_BANK0\_VALUE}, \hyperpage{75}
-    \subitem {ICM20948\_REG\_BANK\_SEL\_BANK1\_VALUE}, \hyperpage{75}
-    \subitem {ICM20948\_REG\_BANK\_SEL\_BANK2\_VALUE}, \hyperpage{75}
-    \subitem {ICM20948\_REG\_BANK\_SEL\_BANK3\_VALUE}, \hyperpage{75}
-    \subitem {ICM20948\_TEMP\_OUT\_H\_ADDR}, \hyperpage{75}
-    \subitem {ICM20948\_TEMP\_OUT\_L\_ADDR}, \hyperpage{75}
-    \subitem {ICM20948\_USER\_CTRL\_ADDR}, \hyperpage{75}
-    \subitem {ICM20948\_USER\_CTRL\_BANK}, \hyperpage{75}
-    \subitem {ICM20948\_WHO\_AM\_I\_ADDR}, \hyperpage{76}
-    \subitem {ICM20948\_WHO\_AM\_I\_BANK}, \hyperpage{76}
+    \subitem {AK09916\_CNTL2\_ADDR}, \hyperpage{124}
+    \subitem {ICM20948\_ACCEL\_CONFIG\_1\_ADDR}, \hyperpage{124}
+    \subitem {ICM20948\_ACCEL\_CONFIG\_1\_BANK}, \hyperpage{124}
+    \subitem {ICM20948\_ACCEL\_OUT\_BANK}, \hyperpage{124}
+    \subitem {ICM20948\_ACCEL\_SMPLRT\_DIV\_1\_ADDR}, \hyperpage{124}
+    \subitem {ICM20948\_ACCEL\_SMPLRT\_DIV\_1\_BANK}, \hyperpage{124}
+    \subitem {ICM20948\_ACCEL\_SMPLRT\_DIV\_2\_ADDR}, \hyperpage{124}
+    \subitem {ICM20948\_ACCEL\_SMPLRT\_DIV\_2\_BANK}, \hyperpage{124}
+    \subitem {ICM20948\_ACCEL\_XOUT\_H\_ADDR}, \hyperpage{124}
+    \subitem {ICM20948\_ACCEL\_XOUT\_L\_ADDR}, \hyperpage{124}
+    \subitem {ICM20948\_ACCEL\_YOUT\_H\_ADDR}, \hyperpage{125}
+    \subitem {ICM20948\_ACCEL\_YOUT\_L\_ADDR}, \hyperpage{125}
+    \subitem {ICM20948\_ACCEL\_ZOUT\_H\_ADDR}, \hyperpage{125}
+    \subitem {ICM20948\_ACCEL\_ZOUT\_L\_ADDR}, \hyperpage{125}
+    \subitem {ICM20948\_BANK0\_WHO\_AM\_I\_VALUE}, \hyperpage{125}
+    \subitem {ICM20948\_EXT\_SLV\_SENS\_DATA\_00\_ADDR}, 
+		\hyperpage{125}
+    \subitem {ICM20948\_EXT\_SLV\_SENS\_DATA\_00\_BANK}, 
+		\hyperpage{125}
+    \subitem {ICM20948\_GYRO\_CONFIG\_1\_ADDR}, \hyperpage{125}
+    \subitem {ICM20948\_GYRO\_CONFIG\_1\_BANK}, \hyperpage{125}
+    \subitem {ICM20948\_GYRO\_OUT\_BANK}, \hyperpage{125}
+    \subitem {ICM20948\_GYRO\_SMPLRT\_DIV\_ADDR}, \hyperpage{125}
+    \subitem {ICM20948\_GYRO\_SMPLRT\_DIV\_BANK}, \hyperpage{125}
+    \subitem {ICM20948\_GYRO\_XOUT\_H\_ADDR}, \hyperpage{126}
+    \subitem {ICM20948\_GYRO\_XOUT\_L\_ADDR}, \hyperpage{126}
+    \subitem {ICM20948\_GYRO\_YOUT\_H\_ADDR}, \hyperpage{126}
+    \subitem {ICM20948\_GYRO\_YOUT\_L\_ADDR}, \hyperpage{126}
+    \subitem {ICM20948\_GYRO\_ZOUT\_H\_ADDR}, \hyperpage{126}
+    \subitem {ICM20948\_GYRO\_ZOUT\_L\_ADDR}, \hyperpage{126}
+    \subitem {ICM20948\_I2C\_ADDR}, \hyperpage{126}
+    \subitem {ICM20948\_I2C\_MST\_CTRL\_ADDR}, \hyperpage{126}
+    \subitem {ICM20948\_I2C\_MST\_CTRL\_BANK}, \hyperpage{126}
+    \subitem {ICM20948\_I2C\_MST\_STATUS\_ADDR}, \hyperpage{126}
+    \subitem {ICM20948\_I2C\_MST\_STATUS\_BANK}, \hyperpage{127}
+    \subitem {ICM20948\_I2C\_SLV0\_ADDR\_ADDR}, \hyperpage{127}
+    \subitem {ICM20948\_I2C\_SLV0\_ADDR\_BANK}, \hyperpage{127}
+    \subitem {ICM20948\_I2C\_SLV0\_CTRL\_ADDR}, \hyperpage{127}
+    \subitem {ICM20948\_I2C\_SLV0\_CTRL\_BANK}, \hyperpage{127}
+    \subitem {ICM20948\_I2C\_SLV0\_REG\_ADDR}, \hyperpage{127}
+    \subitem {ICM20948\_I2C\_SLV0\_REG\_BANK}, \hyperpage{127}
+    \subitem {ICM20948\_I2C\_SLV4\_ADDR\_ADDR}, \hyperpage{127}
+    \subitem {ICM20948\_I2C\_SLV4\_ADDR\_BANK}, \hyperpage{127}
+    \subitem {ICM20948\_I2C\_SLV4\_CTRL\_ADDR}, \hyperpage{127}
+    \subitem {ICM20948\_I2C\_SLV4\_CTRL\_BANK}, \hyperpage{127}
+    \subitem {ICM20948\_I2C\_SLV4\_DI\_ADDR}, \hyperpage{127}
+    \subitem {ICM20948\_I2C\_SLV4\_DI\_BANK}, \hyperpage{128}
+    \subitem {ICM20948\_I2C\_SLV4\_DO\_ADDR}, \hyperpage{128}
+    \subitem {ICM20948\_I2C\_SLV4\_DO\_BANK}, \hyperpage{128}
+    \subitem {ICM20948\_I2C\_SLV4\_REG\_ADDR}, \hyperpage{128}
+    \subitem {ICM20948\_I2C\_SLV4\_REG\_BANK}, \hyperpage{128}
+    \subitem {ICM20948\_INT\_ENABLE\_1\_ADDR}, \hyperpage{128}
+    \subitem {ICM20948\_INT\_ENABLE\_1\_BANK}, \hyperpage{128}
+    \subitem {ICM20948\_INT\_PIN\_CFG\_ADDR}, \hyperpage{128}
+    \subitem {ICM20948\_INT\_PIN\_CFG\_BANK}, \hyperpage{128}
+    \subitem {ICM20948\_INT\_STATUS\_1\_ADDR}, \hyperpage{128}
+    \subitem {ICM20948\_INT\_STATUS\_1\_BANK}, \hyperpage{128}
+    \subitem {ICM20948\_INT\_STATUS\_ADDR}, \hyperpage{128}
+    \subitem {ICM20948\_INT\_STATUS\_BANK}, \hyperpage{129}
+    \subitem {ICM20948\_MAGN\_I2C\_ADDR}, \hyperpage{129}
+    \subitem {ICM20948\_PWR\_MGMT\_1\_ADDR}, \hyperpage{129}
+    \subitem {ICM20948\_PWR\_MGMT\_1\_BANK}, \hyperpage{129}
+    \subitem {ICM20948\_REG\_BANK\_SEL\_ADDR}, \hyperpage{129}
+    \subitem {ICM20948\_REG\_BANK\_SEL\_BANK0\_VALUE}, \hyperpage{129}
+    \subitem {ICM20948\_REG\_BANK\_SEL\_BANK1\_VALUE}, \hyperpage{129}
+    \subitem {ICM20948\_REG\_BANK\_SEL\_BANK2\_VALUE}, \hyperpage{129}
+    \subitem {ICM20948\_REG\_BANK\_SEL\_BANK3\_VALUE}, \hyperpage{129}
+    \subitem {ICM20948\_TEMP\_OUT\_H\_ADDR}, \hyperpage{129}
+    \subitem {ICM20948\_TEMP\_OUT\_L\_ADDR}, \hyperpage{129}
+    \subitem {ICM20948\_USER\_CTRL\_ADDR}, \hyperpage{130}
+    \subitem {ICM20948\_USER\_CTRL\_BANK}, \hyperpage{130}
+    \subitem {ICM20948\_WHO\_AM\_I\_ADDR}, \hyperpage{130}
+    \subitem {ICM20948\_WHO\_AM\_I\_BANK}, \hyperpage{130}
+  \item {IMU -\/ ICM-\/20948}, \hyperpage{1}
   \item {imu\_}
-    \subitem {IMUReader}, \hyperpage{33}
-  \item {IMUReader}, \hyperpage{31}
+    \subitem {IMUReader}, \hyperpage{46}
+  \item {IMUReader}, \hyperpage{43}
     \subitem {\texorpdfstring{$\sim$}{\string~}IMUReader}, 
-		\hyperpage{32}
-    \subitem {callback\_}, \hyperpage{33}
-    \subitem {chip\_}, \hyperpage{33}
-    \subitem {getIMU}, \hyperpage{32}
-    \subitem {gpio\_fd\_}, \hyperpage{33}
-    \subitem {gpiochip\_path\_}, \hyperpage{33}
-    \subitem {imu\_}, \hyperpage{33}
-    \subitem {IMUReader}, \hyperpage{32}
-    \subitem {init}, \hyperpage{32}
-    \subitem {rdy\_line\_}, \hyperpage{33}
-    \subitem {request\_}, \hyperpage{33}
-    \subitem {running\_}, \hyperpage{33}
-    \subitem {SampleCallback}, \hyperpage{32}
-    \subitem {setCallback}, \hyperpage{32}
-    \subitem {start}, \hyperpage{32}
-    \subitem {stop}, \hyperpage{32}
-    \subitem {stop\_fd\_}, \hyperpage{33}
-    \subitem {worker}, \hyperpage{32}
-    \subitem {worker\_thread\_}, \hyperpage{33}
+		\hyperpage{44}
+    \subitem {callback\_}, \hyperpage{45}
+    \subitem {chip\_}, \hyperpage{45}
+    \subitem {getIMU}, \hyperpage{44}
+    \subitem {gpio\_fd\_}, \hyperpage{46}
+    \subitem {gpiochip\_path\_}, \hyperpage{46}
+    \subitem {imu\_}, \hyperpage{46}
+    \subitem {IMUReader}, \hyperpage{44}
+    \subitem {init}, \hyperpage{44}
+    \subitem {rdy\_line\_}, \hyperpage{46}
+    \subitem {request\_}, \hyperpage{46}
+    \subitem {running\_}, \hyperpage{46}
+    \subitem {SampleCallback}, \hyperpage{44}
+    \subitem {setCallback}, \hyperpage{45}
+    \subitem {start}, \hyperpage{45}
+    \subitem {stop}, \hyperpage{45}
+    \subitem {stop\_fd\_}, \hyperpage{46}
+    \subitem {worker}, \hyperpage{45}
+    \subitem {worker\_thread\_}, \hyperpage{46}
+  \item {info\_arch}
+    \subitem {CMakeCXXCompilerId.cpp}, \hyperpage{83}
+  \item {info\_compiler}
+    \subitem {CMakeCXXCompilerId.cpp}, \hyperpage{83}
+  \item {info\_language\_extensions\_default}
+    \subitem {CMakeCXXCompilerId.cpp}, \hyperpage{83}
+  \item {info\_language\_standard\_default}
+    \subitem {CMakeCXXCompilerId.cpp}, \hyperpage{84}
+  \item {info\_platform}
+    \subitem {CMakeCXXCompilerId.cpp}, \hyperpage{84}
   \item {init}
-    \subitem {icm20948::ICM20948\_I2C}, \hyperpage{29}
-    \subitem {IMUReader}, \hyperpage{32}
+    \subitem {icm20948::ICM20948\_I2C}, \hyperpage{41}
+    \subitem {IMUReader}, \hyperpage{44}
   \item {INITIAL}
-    \subitem {SwingCalibrator}, \hyperpage{54}
+    \subitem {SwingCalibrator}, \hyperpage{67}
   \item {initial\_samples\_}
-    \subitem {SwingCalibrator}, \hyperpage{56}
+    \subitem {SwingCalibrator}, \hyperpage{68}
   \item {Input}
-    \subitem {ADS1115settings}, \hyperpage{21}
+    \subitem {ADS1115settings}, \hyperpage{33}
   \item {isActive}
-    \subitem {SwingProcessor}, \hyperpage{63}
+    \subitem {SwingProcessor}, \hyperpage{77}
   \item {isActive\_}
-    \subitem {SwingProcessor}, \hyperpage{64}
+    \subitem {SwingProcessor}, \hyperpage{79}
   \item {isArmed\_}
-    \subitem {SwingProcessor}, \hyperpage{64}
+    \subitem {SwingProcessor}, \hyperpage{79}
   \item {ISR\_TIMEOUT\_MS}
-    \subitem {ADS1115rpi}, \hyperpage{19}
+    \subitem {ADS1115rpi}, \hyperpage{31}
   \item {isReady}
-    \subitem {SwingCalibrator}, \hyperpage{55}
+    \subitem {SwingCalibrator}, \hyperpage{68}
 
   \indexspace
 
   \item {label}
-    \subitem {SwingDetector}, \hyperpage{58}
+    \subitem {SwingDetector}, \hyperpage{71}
   \item {last\_level\_}
-    \subitem {SwingDetector}, \hyperpage{58}
+    \subitem {SwingDetector}, \hyperpage{71}
   \item {led\_}
-    \subitem {PiezoEventDetector}, \hyperpage{41}
-  \item {LEDController}, \hyperpage{35}
+    \subitem {PiezoEventDetector}, \hyperpage{54}
+  \item {LEDController}, \hyperpage{48}
     \subitem {\texorpdfstring{$\sim$}{\string~}LEDController}, 
-		\hyperpage{36}
-    \subitem {allOff}, \hyperpage{37}
-    \subitem {flashGreen}, \hyperpage{37}
-    \subitem {greenActive\_}, \hyperpage{38}
-    \subitem {greenOff}, \hyperpage{37}
-    \subitem {greenOffTime\_}, \hyperpage{38}
-    \subitem {greenOn}, \hyperpage{37}
-    \subitem {LEDController}, \hyperpage{36}
-    \subitem {service}, \hyperpage{37}
-    \subitem {set}, \hyperpage{37}
-    \subitem {updateOutputs}, \hyperpage{38}
-  \item {LEDControllerSettings}, \hyperpage{38}
-    \subitem {chipNumber}, \hyperpage{39}
-    \subitem {greenGpio}, \hyperpage{39}
+		\hyperpage{49}
+    \subitem {allOff}, \hyperpage{50}
+    \subitem {flashGreen}, \hyperpage{50}
+    \subitem {greenActive\_}, \hyperpage{50}
+    \subitem {greenOff}, \hyperpage{50}
+    \subitem {greenOffTime\_}, \hyperpage{51}
+    \subitem {greenOn}, \hyperpage{50}
+    \subitem {LEDController}, \hyperpage{49}
+    \subitem {service}, \hyperpage{50}
+    \subitem {set}, \hyperpage{50}
+    \subitem {updateOutputs}, \hyperpage{50}
+  \item {LEDControllerSettings}, \hyperpage{51}
+    \subitem {chipNumber}, \hyperpage{51}
+    \subitem {greenGpio}, \hyperpage{51}
   \item {Level}
-    \subitem {SwingDetector}, \hyperpage{57}
+    \subitem {SwingDetector}, \hyperpage{70}
   \item {loop}
-    \subitem {RPI\_PWM}, \hyperpage{46}
+    \subitem {RPI\_PWM}, \hyperpage{60}
   \item {LOW}
-    \subitem {SwingDetector}, \hyperpage{58}
+    \subitem {SwingDetector}, \hyperpage{70}
 
   \indexspace
 
   \item {mag\_callback\_}
-    \subitem {SwingProcessor}, \hyperpage{64}
+    \subitem {SwingProcessor}, \hyperpage{79}
   \item {magn}
-    \subitem {icm20948::ICM20948\_I2C}, \hyperpage{30}
-    \subitem {icm20948::settings}, \hyperpage{49}
+    \subitem {icm20948::ICM20948\_I2C}, \hyperpage{42}
+    \subitem {icm20948::settings}, \hyperpage{63}
   \item {MAGN\_100HZ}
-    \subitem {icm20948}, \hyperpage{14}
+    \subitem {icm20948}, \hyperpage{24}
   \item {MAGN\_10HZ}
-    \subitem {icm20948}, \hyperpage{13}
+    \subitem {icm20948}, \hyperpage{24}
   \item {MAGN\_20HZ}
-    \subitem {icm20948}, \hyperpage{14}
+    \subitem {icm20948}, \hyperpage{24}
   \item {MAGN\_50HZ}
-    \subitem {icm20948}, \hyperpage{14}
+    \subitem {icm20948}, \hyperpage{24}
   \item {magn\_mode}
-    \subitem {icm20948}, \hyperpage{13}
+    \subitem {icm20948}, \hyperpage{23}
   \item {magn\_mode\_to\_str}
-    \subitem {icm20948}, \hyperpage{14}
+    \subitem {icm20948}, \hyperpage{25}
+  \item {MAGN\_SCALE\_FACTOR}
+    \subitem {Icm20948driver.cpp}, \hyperpage{109}
   \item {MAGN\_SELF\_TEST}
-    \subitem {icm20948}, \hyperpage{14}
+    \subitem {icm20948}, \hyperpage{24}
   \item {magn\_settings}
-    \subitem {icm20948}, \hyperpage{12}
-    \subitem {icm20948::magn\_settings}, \hyperpage{39}
+    \subitem {icm20948}, \hyperpage{22}
+    \subitem {icm20948::magn\_settings}, \hyperpage{52}
   \item {MAGN\_SHUTDOWN}
-    \subitem {icm20948}, \hyperpage{13}
+    \subitem {icm20948}, \hyperpage{24}
   \item {MAGN\_SINGLE}
-    \subitem {icm20948}, \hyperpage{13}
+    \subitem {icm20948}, \hyperpage{24}
   \item {MagnitudeCallback}
-    \subitem {SwingProcessor}, \hyperpage{62}
+    \subitem {SwingProcessor}, \hyperpage{76}
   \item {main}
-    \subitem {main.cpp}, \hyperpage{98}
+    \subitem {CMakeCXXCompilerId.cpp}, \hyperpage{83}
+    \subitem {main.cpp}, \hyperpage{192}
   \item {main.cpp}
-    \subitem {handle\_signal}, \hyperpage{98}
-    \subitem {main}, \hyperpage{98}
-    \subitem {running}, \hyperpage{98}
+    \subitem {main}, \hyperpage{192}
   \item {makeDefaultADS1115Settings}
-    \subitem {ads1115rpi.cpp}, \hyperpage{93}
-    \subitem {ads1115rpi.h}, \hyperpage{94}
+    \subitem {ads1115rpi.cpp}, \hyperpage{175}
+    \subitem {ads1115rpi.h}, \hyperpage{188}
   \item {maxG}
-    \subitem {PositionDetector::Config}, \hyperpage{23}
+    \subitem {PositionDetector::Config}, \hyperpage{35}
   \item {MEDIUM}
-    \subitem {SwingDetector}, \hyperpage{58}
+    \subitem {SwingDetector}, \hyperpage{70}
   \item {minDot}
-    \subitem {PositionDetector::Config}, \hyperpage{23}
+    \subitem {PositionDetector::Config}, \hyperpage{35}
   \item {minG}
-    \subitem {PositionDetector::Config}, \hyperpage{23}
+    \subitem {PositionDetector::Config}, \hyperpage{35}
   \item {mode}
-    \subitem {icm20948::magn\_settings}, \hyperpage{40}
+    \subitem {icm20948::magn\_settings}, \hyperpage{52}
   \item {mx}
-    \subitem {icm20948::IMUSample}, \hyperpage{35}
+    \subitem {icm20948::IMUSample}, \hyperpage{47}
   \item {my}
-    \subitem {icm20948::IMUSample}, \hyperpage{35}
+    \subitem {icm20948::IMUSample}, \hyperpage{47}
   \item {mz}
-    \subitem {icm20948::IMUSample}, \hyperpage{35}
+    \subitem {icm20948::IMUSample}, \hyperpage{48}
 
   \indexspace
 
   \item {NONE}
-    \subitem {SwingDetector}, \hyperpage{58}
+    \subitem {SwingDetector}, \hyperpage{70}
   \item {nowMs}
-    \subitem {swingfeedback.cpp}, \hyperpage{92}
+    \subitem {swingfeedback.cpp}, \hyperpage{172}
   \item {nRefX}
-    \subitem {PositionDetector}, \hyperpage{45}
+    \subitem {PositionDetector}, \hyperpage{58}
   \item {nRefY}
-    \subitem {PositionDetector}, \hyperpage{45}
+    \subitem {PositionDetector}, \hyperpage{58}
   \item {nRefZ}
-    \subitem {PositionDetector}, \hyperpage{45}
+    \subitem {PositionDetector}, \hyperpage{58}
 
   \indexspace
 
   \item {onForceReady}
-    \subitem {SwingProcessor}, \hyperpage{63}
+    \subitem {SwingProcessor}, \hyperpage{77}
   \item {onLevel}
-    \subitem {SwingFeedback}, \hyperpage{60}
+    \subitem {SwingFeedback}, \hyperpage{73}
   \item {onPositionReady}
-    \subitem {SwingProcessor}, \hyperpage{63}
+    \subitem {SwingProcessor}, \hyperpage{77}
   \item {onSample}
-    \subitem {PositionDetector}, \hyperpage{44}
-    \subitem {SwingProcessor}, \hyperpage{63}
+    \subitem {PositionDetector}, \hyperpage{57}
+    \subitem {SwingProcessor}, \hyperpage{77}
   \item {operator()}
-    \subitem {SwingProcessor}, \hyperpage{63}
+    \subitem {SwingProcessor}, \hyperpage{78}
 
   \indexspace
 
   \item {pending\_level\_}
-    \subitem {SwingFeedback}, \hyperpage{61}
+    \subitem {SwingFeedback}, \hyperpage{74}
   \item {PGA}
-    \subitem {ADS1115settings}, \hyperpage{21}
+    \subitem {ADS1115settings}, \hyperpage{33}
   \item {pgaGain}
-    \subitem {ADS1115settings}, \hyperpage{22}
-  \item {PiezoEventDetector}, \hyperpage{40}
-    \subitem {filter\_init\_}, \hyperpage{41}
-    \subitem {filtered\_v\_}, \hyperpage{41}
-    \subitem {ForceCallback}, \hyperpage{40}
-    \subitem {forceCallback\_}, \hyperpage{41}
-    \subitem {led\_}, \hyperpage{41}
-    \subitem {PiezoEventDetector}, \hyperpage{41}
-    \subitem {pressed\_}, \hyperpage{41}
-    \subitem {processSample}, \hyperpage{41}
-    \subitem {reset}, \hyperpage{41}
-    \subitem {setForceCallback}, \hyperpage{41}
-    \subitem {settings\_}, \hyperpage{42}
-  \item {PiezoEventDetectorSettings}, \hyperpage{42}
-    \subitem {enableDebugPrints}, \hyperpage{42}
-    \subitem {pressThreshold}, \hyperpage{42}
-    \subitem {releaseThreshold}, \hyperpage{42}
+    \subitem {ADS1115settings}, \hyperpage{34}
+  \item {PiezoEventDetector}, \hyperpage{52}
+    \subitem {filter\_init\_}, \hyperpage{54}
+    \subitem {filtered\_v\_}, \hyperpage{54}
+    \subitem {ForceCallback}, \hyperpage{53}
+    \subitem {forceCallback\_}, \hyperpage{54}
+    \subitem {led\_}, \hyperpage{54}
+    \subitem {PiezoEventDetector}, \hyperpage{53}
+    \subitem {pressed\_}, \hyperpage{54}
+    \subitem {processSample}, \hyperpage{53}
+    \subitem {reset}, \hyperpage{53}
+    \subitem {setForceCallback}, \hyperpage{54}
+    \subitem {settings\_}, \hyperpage{54}
+  \item {PiezoEventDetectorSettings}, \hyperpage{54}
+    \subitem {enableDebugPrints}, \hyperpage{55}
+    \subitem {pressThreshold}, \hyperpage{55}
+    \subitem {releaseThreshold}, \hyperpage{55}
   \item {pin}
-    \subitem {SimpleLEDController}, \hyperpage{52}
+    \subitem {SimpleLEDController}, \hyperpage{65}
+  \item {PLATFORM\_ID}
+    \subitem {CMakeCXXCompilerId.cpp}, \hyperpage{83}
   \item {pos\_callback\_}
-    \subitem {SwingProcessor}, \hyperpage{64}
-  \item {PositionDetector}, \hyperpage{43}
+    \subitem {SwingProcessor}, \hyperpage{79}
+  \item {PositionDetector}, \hyperpage{55}
     \subitem {\texorpdfstring{$\sim$}{\string~}PositionDetector}, 
-		\hyperpage{44}
-    \subitem {callback}, \hyperpage{45}
-    \subitem {cfg}, \hyperpage{45}
-    \subitem {confirmed}, \hyperpage{45}
-    \subitem {nRefX}, \hyperpage{45}
-    \subitem {nRefY}, \hyperpage{45}
-    \subitem {nRefZ}, \hyperpage{45}
-    \subitem {onSample}, \hyperpage{44}
-    \subitem {PositionDetector}, \hyperpage{44}
-    \subitem {resetState}, \hyperpage{44}
-    \subitem {setCallback}, \hyperpage{44}
-    \subitem {stableCount}, \hyperpage{45}
-    \subitem {StateCallback}, \hyperpage{43}
-    \subitem {wrapAngleDeg}, \hyperpage{44}
-  \item {PositionDetector::Config}, \hyperpage{23}
-    \subitem {headingToleranceDeg}, \hyperpage{23}
-    \subitem {maxG}, \hyperpage{23}
-    \subitem {minDot}, \hyperpage{23}
-    \subitem {minG}, \hyperpage{23}
-    \subitem {refHeadingDeg}, \hyperpage{23}
-    \subitem {refX}, \hyperpage{24}
-    \subitem {refY}, \hyperpage{24}
-    \subitem {refZ}, \hyperpage{24}
-    \subitem {stabilitySamples}, \hyperpage{24}
+		\hyperpage{57}
+    \subitem {callback}, \hyperpage{58}
+    \subitem {cfg}, \hyperpage{58}
+    \subitem {confirmed}, \hyperpage{58}
+    \subitem {nRefX}, \hyperpage{58}
+    \subitem {nRefY}, \hyperpage{58}
+    \subitem {nRefZ}, \hyperpage{58}
+    \subitem {onSample}, \hyperpage{57}
+    \subitem {PositionDetector}, \hyperpage{57}
+    \subitem {resetState}, \hyperpage{58}
+    \subitem {setCallback}, \hyperpage{58}
+    \subitem {stableCount}, \hyperpage{58}
+    \subitem {StateCallback}, \hyperpage{57}
+    \subitem {wrapAngleDeg}, \hyperpage{58}
+  \item {PositionDetector::Config}, \hyperpage{34}
+    \subitem {headingToleranceDeg}, \hyperpage{35}
+    \subitem {maxG}, \hyperpage{35}
+    \subitem {minDot}, \hyperpage{35}
+    \subitem {minG}, \hyperpage{35}
+    \subitem {refHeadingDeg}, \hyperpage{35}
+    \subitem {refX}, \hyperpage{35}
+    \subitem {refY}, \hyperpage{35}
+    \subitem {refZ}, \hyperpage{35}
+    \subitem {stabilitySamples}, \hyperpage{35}
   \item {PositionStateCallback}
-    \subitem {SwingProcessor}, \hyperpage{62}
+    \subitem {SwingProcessor}, \hyperpage{76}
   \item {pressed\_}
-    \subitem {PiezoEventDetector}, \hyperpage{41}
+    \subitem {PiezoEventDetector}, \hyperpage{54}
   \item {pressThreshold}
-    \subitem {PiezoEventDetectorSettings}, \hyperpage{42}
+    \subitem {PiezoEventDetectorSettings}, \hyperpage{55}
   \item {processSample}
-    \subitem {PiezoEventDetector}, \hyperpage{41}
+    \subitem {PiezoEventDetector}, \hyperpage{53}
   \item {pwm\_}
-    \subitem {SwingFeedback}, \hyperpage{61}
+    \subitem {SwingFeedback}, \hyperpage{74}
   \item {PWM\_FREQ\_HZ}
-    \subitem {rpi\_pwm.h}, \hyperpage{89}
+    \subitem {rpi\_pwm.h}, \hyperpage{169}
   \item {PWM\_GPIO\_LINE}
-    \subitem {rpi\_pwm.h}, \hyperpage{89}
+    \subitem {rpi\_pwm.h}, \hyperpage{169}
 
   \indexspace
 
   \item {rdy\_line\_}
-    \subitem {IMUReader}, \hyperpage{33}
+    \subitem {IMUReader}, \hyperpage{46}
   \item {read\_accel\_gyro}
-    \subitem {icm20948::ICM20948\_I2C}, \hyperpage{29}
+    \subitem {icm20948::ICM20948\_I2C}, \hyperpage{41}
   \item {read\_magn}
-    \subitem {icm20948::ICM20948\_I2C}, \hyperpage{29}
+    \subitem {icm20948::ICM20948\_I2C}, \hyperpage{41}
   \item {read\_sample}
-    \subitem {icm20948::ICM20948\_I2C}, \hyperpage{29}
-  \item {readOnce}
-    \subitem {ADS1115rpi}, \hyperpage{18}
+    \subitem {icm20948::ICM20948\_I2C}, \hyperpage{41}
+  \item {README}, \hyperpage{7}
+  \item {README.md}, \hyperpage{135}
   \item {READY}
-    \subitem {SwingCalibrator}, \hyperpage{54}
+    \subitem {SwingCalibrator}, \hyperpage{67}
   \item {RECAL}
-    \subitem {SwingCalibrator}, \hyperpage{54}
+    \subitem {SwingCalibrator}, \hyperpage{67}
   \item {RECAL\_SAMPLES}
-    \subitem {SwingProcessor.hpp}, \hyperpage{85}
+    \subitem {SwingProcessor.hpp}, \hyperpage{146}
   \item {recal\_samples\_}
-    \subitem {SwingCalibrator}, \hyperpage{56}
+    \subitem {SwingCalibrator}, \hyperpage{68}
   \item {refHeadingDeg}
-    \subitem {PositionDetector::Config}, \hyperpage{23}
+    \subitem {PositionDetector::Config}, \hyperpage{35}
   \item {refX}
-    \subitem {PositionDetector::Config}, \hyperpage{24}
+    \subitem {PositionDetector::Config}, \hyperpage{35}
   \item {refY}
-    \subitem {PositionDetector::Config}, \hyperpage{24}
+    \subitem {PositionDetector::Config}, \hyperpage{35}
   \item {refZ}
-    \subitem {PositionDetector::Config}, \hyperpage{24}
+    \subitem {PositionDetector::Config}, \hyperpage{35}
   \item {reg\_config}
-    \subitem {ADS1115rpi}, \hyperpage{19}
+    \subitem {ADS1115rpi}, \hyperpage{31}
   \item {reg\_hi\_thres}
-    \subitem {ADS1115rpi}, \hyperpage{19}
+    \subitem {ADS1115rpi}, \hyperpage{31}
   \item {reg\_lo\_thres}
-    \subitem {ADS1115rpi}, \hyperpage{19}
+    \subitem {ADS1115rpi}, \hyperpage{31}
   \item {registerCallback}
-    \subitem {ADS1115rpi}, \hyperpage{18}
+    \subitem {ADS1115rpi}, \hyperpage{30}
   \item {releaseThreshold}
-    \subitem {PiezoEventDetectorSettings}, \hyperpage{42}
+    \subitem {PiezoEventDetectorSettings}, \hyperpage{55}
   \item {request}
-    \subitem {ADS1115rpi}, \hyperpage{19}
-    \subitem {SimpleLEDController}, \hyperpage{52}
+    \subitem {ADS1115rpi}, \hyperpage{31}
+    \subitem {SimpleLEDController}, \hyperpage{65}
   \item {request\_}
-    \subitem {IMUReader}, \hyperpage{33}
-    \subitem {RPI\_PWM}, \hyperpage{47}
+    \subitem {IMUReader}, \hyperpage{46}
+    \subitem {RPI\_PWM}, \hyperpage{61}
   \item {reset}
-    \subitem {icm20948::ICM20948\_I2C}, \hyperpage{29}
-    \subitem {PiezoEventDetector}, \hyperpage{41}
-    \subitem {SwingDetector}, \hyperpage{58}
-    \subitem {SwingProcessor}, \hyperpage{63}
+    \subitem {icm20948::ICM20948\_I2C}, \hyperpage{41}
+    \subitem {PiezoEventDetector}, \hyperpage{53}
+    \subitem {SwingDetector}, \hyperpage{71}
+    \subitem {SwingProcessor}, \hyperpage{78}
   \item {reset\_cb\_}
-    \subitem {SwingFeedback}, \hyperpage{61}
+    \subitem {SwingFeedback}, \hyperpage{74}
   \item {reset\_time\_}
-    \subitem {SwingProcessor}, \hyperpage{64}
+    \subitem {SwingProcessor}, \hyperpage{79}
   \item {ResetCallback}
-    \subitem {SwingFeedback}, \hyperpage{60}
+    \subitem {SwingFeedback}, \hyperpage{73}
   \item {resetState}
-    \subitem {PositionDetector}, \hyperpage{44}
+    \subitem {PositionDetector}, \hyperpage{58}
   \item {retry\_enabled\_}
-    \subitem {ADS1115rpi}, \hyperpage{20}
-  \item {RPI\_PWM}, \hyperpage{45}
+    \subitem {ADS1115rpi}, \hyperpage{32}
+  \item {RPI\_PWM}, \hyperpage{59}
     \subitem {\texorpdfstring{$\sim$}{\string~}RPI\_PWM}, 
-		\hyperpage{46}
-    \subitem {chip\_}, \hyperpage{47}
-    \subitem {duty\_}, \hyperpage{47}
-    \subitem {getDutyCycle}, \hyperpage{46}
-    \subitem {loop}, \hyperpage{46}
-    \subitem {request\_}, \hyperpage{47}
-    \subitem {RPI\_PWM}, \hyperpage{46}
-    \subitem {running\_}, \hyperpage{47}
-    \subitem {setDutyCycle}, \hyperpage{46}
-    \subitem {start}, \hyperpage{47}
-    \subitem {stop}, \hyperpage{47}
-    \subitem {thread\_}, \hyperpage{47}
-    \subitem {usToTimerspec}, \hyperpage{47}
-    \subitem {waitUs}, \hyperpage{47}
+		\hyperpage{59}
+    \subitem {chip\_}, \hyperpage{61}
+    \subitem {duty\_}, \hyperpage{61}
+    \subitem {getDutyCycle}, \hyperpage{60}
+    \subitem {loop}, \hyperpage{60}
+    \subitem {request\_}, \hyperpage{61}
+    \subitem {RPI\_PWM}, \hyperpage{59}
+    \subitem {running\_}, \hyperpage{61}
+    \subitem {setDutyCycle}, \hyperpage{60}
+    \subitem {start}, \hyperpage{60}
+    \subitem {stop}, \hyperpage{60}
+    \subitem {thread\_}, \hyperpage{61}
+    \subitem {usToTimerspec}, \hyperpage{61}
+    \subitem {waitUs}, \hyperpage{61}
   \item {rpi\_pwm.h}
-    \subitem {PWM\_FREQ\_HZ}, \hyperpage{89}
-    \subitem {PWM\_GPIO\_LINE}, \hyperpage{89}
+    \subitem {PWM\_FREQ\_HZ}, \hyperpage{169}
+    \subitem {PWM\_GPIO\_LINE}, \hyperpage{169}
   \item {running}
-    \subitem {ADS1115rpi}, \hyperpage{20}
-    \subitem {main.cpp}, \hyperpage{98}
+    \subitem {ADS1115rpi}, \hyperpage{32}
   \item {running\_}
-    \subitem {IMUReader}, \hyperpage{33}
-    \subitem {RPI\_PWM}, \hyperpage{47}
+    \subitem {IMUReader}, \hyperpage{46}
+    \subitem {RPI\_PWM}, \hyperpage{61}
 
   \indexspace
 
   \item {sample\_rate\_div}
-    \subitem {icm20948::accel\_settings}, \hyperpage{16}
-    \subitem {icm20948::gyro\_settings}, \hyperpage{25}
+    \subitem {icm20948::accel\_settings}, \hyperpage{27}
+    \subitem {icm20948::gyro\_settings}, \hyperpage{36}
   \item {SampleCallback}
-    \subitem {IMUReader}, \hyperpage{32}
+    \subitem {IMUReader}, \hyperpage{44}
   \item {samplingRate}
-    \subitem {ADS1115settings}, \hyperpage{22}
+    \subitem {ADS1115settings}, \hyperpage{34}
   \item {SamplingRates}
-    \subitem {ADS1115settings}, \hyperpage{21}
+    \subitem {ADS1115settings}, \hyperpage{33}
   \item {scale}
-    \subitem {icm20948::accel\_settings}, \hyperpage{16}
-    \subitem {icm20948::gyro\_settings}, \hyperpage{25}
+    \subitem {icm20948::accel\_settings}, \hyperpage{28}
+    \subitem {icm20948::gyro\_settings}, \hyperpage{36}
   \item {service}
-    \subitem {LEDController}, \hyperpage{37}
-    \subitem {SimpleLEDController}, \hyperpage{51}
+    \subitem {LEDController}, \hyperpage{50}
+    \subitem {SimpleLEDController}, \hyperpage{64}
   \item {set}
-    \subitem {LEDController}, \hyperpage{37}
-    \subitem {SimpleLEDController}, \hyperpage{52}
+    \subitem {LEDController}, \hyperpage{50}
+    \subitem {SimpleLEDController}, \hyperpage{64}
   \item {set\_settings}
-    \subitem {icm20948::ICM20948\_I2C}, \hyperpage{29}
+    \subitem {icm20948::ICM20948\_I2C}, \hyperpage{41}
   \item {setCallback}
-    \subitem {IMUReader}, \hyperpage{32}
-    \subitem {PositionDetector}, \hyperpage{44}
-    \subitem {SwingCalibrator}, \hyperpage{55}
-    \subitem {SwingDetector}, \hyperpage{58}
+    \subitem {IMUReader}, \hyperpage{45}
+    \subitem {PositionDetector}, \hyperpage{58}
+    \subitem {SwingCalibrator}, \hyperpage{68}
+    \subitem {SwingDetector}, \hyperpage{71}
   \item {setChannel}
-    \subitem {ADS1115rpi}, \hyperpage{18}
+    \subitem {ADS1115rpi}, \hyperpage{30}
   \item {setDutyCycle}
-    \subitem {RPI\_PWM}, \hyperpage{46}
+    \subitem {RPI\_PWM}, \hyperpage{60}
   \item {setForceCallback}
-    \subitem {PiezoEventDetector}, \hyperpage{41}
+    \subitem {PiezoEventDetector}, \hyperpage{54}
   \item {setMagnitudeCallback}
-    \subitem {SwingProcessor}, \hyperpage{64}
+    \subitem {SwingProcessor}, \hyperpage{78}
   \item {setPositionCallback}
-    \subitem {SwingProcessor}, \hyperpage{64}
+    \subitem {SwingProcessor}, \hyperpage{78}
   \item {setResetCallback}
-    \subitem {SwingFeedback}, \hyperpage{60}
+    \subitem {SwingFeedback}, \hyperpage{73}
   \item {setRetryEnabled}
-    \subitem {ADS1115rpi}, \hyperpage{18}
+    \subitem {ADS1115rpi}, \hyperpage{30}
   \item {settings}
-    \subitem {icm20948}, \hyperpage{12}
-    \subitem {icm20948::ICM20948\_I2C}, \hyperpage{31}
-    \subitem {icm20948::settings}, \hyperpage{48}
+    \subitem {icm20948}, \hyperpage{22}
+    \subitem {icm20948::ICM20948\_I2C}, \hyperpage{42}
+    \subitem {icm20948::settings}, \hyperpage{62}
   \item {settings\_}
-    \subitem {PiezoEventDetector}, \hyperpage{42}
-  \item {SimpleLEDController}, \hyperpage{49}
+    \subitem {PiezoEventDetector}, \hyperpage{54}
+  \item {SimpleLEDController}, \hyperpage{63}
     \subitem {\texorpdfstring{$\sim$}{\string~}SimpleLEDController}, 
-		\hyperpage{51}
-    \subitem {chip}, \hyperpage{52}
-    \subitem {chipNumber}, \hyperpage{52}
-    \subitem {flashGreen}, \hyperpage{51}
-    \subitem {pin}, \hyperpage{52}
-    \subitem {request}, \hyperpage{52}
-    \subitem {service}, \hyperpage{51}
-    \subitem {set}, \hyperpage{52}
-    \subitem {SimpleLEDController}, \hyperpage{51}
-  \item {src/libs/IMU/Icm20948driver.cpp}, \hyperpage{65}
-  \item {src/libs/IMU/imureader.cpp}, \hyperpage{65}
-  \item {src/libs/IMU/Include/i2c\_mutex.hpp}, \hyperpage{65, 66}
-  \item {src/libs/IMU/Include/Icm20948driver.hpp}, \hyperpage{66}, 
-		\hyperpage{76}
-  \item {src/libs/IMU/Include/imureader.hpp}, \hyperpage{80}
+		\hyperpage{64}
+    \subitem {chip}, \hyperpage{65}
+    \subitem {chipNumber}, \hyperpage{65}
+    \subitem {flashGreen}, \hyperpage{64}
+    \subitem {pin}, \hyperpage{65}
+    \subitem {request}, \hyperpage{65}
+    \subitem {service}, \hyperpage{64}
+    \subitem {set}, \hyperpage{64}
+    \subitem {SimpleLEDController}, \hyperpage{64}
+  \item {src/CMakeFiles/3.31.6/CompilerIdCXX/CMakeCXXCompilerId.cpp}, 
+		\hyperpage{81}, \hyperpage{84}
+  \item {src/CMakeFiles/rtes\_main.dir/link.d}, \hyperpage{95}
+  \item {src/CMakeFiles/rtes\_main.dir/main.cpp.o.d}, \hyperpage{96}
+  \item {src/libs/IMU/CMakeFiles/imu\_lib.dir/Icm20948driver.cpp.o.d}, 
+		\hyperpage{101}
+  \item {src/libs/IMU/CMakeFiles/imu\_lib.dir/imureader.cpp.o.d}, 
+		\hyperpage{105}
+  \item {src/libs/IMU/Icm20948driver.cpp}, \hyperpage{108}, 
+		\hyperpage{110}
+  \item {src/libs/IMU/imureader.cpp}, \hyperpage{117}
+  \item {src/libs/IMU/Include/i2c\_mutex.hpp}, \hyperpage{119, 120}
+  \item {src/libs/IMU/Include/Icm20948driver.hpp}, \hyperpage{120}, 
+		\hyperpage{130}
+  \item {src/libs/IMU/Include/imureader.hpp}, \hyperpage{133, 134}
+  \item {src/libs/IMU/README.md}, \hyperpage{135}
+  \item {src/libs/IMU\_math/CMakeFiles/imu\_math\_lib.dir/positiondetector.cpp.o.d}, 
+		\hyperpage{135}
+  \item {src/libs/IMU\_math/CMakeFiles/imu\_math\_lib.dir/SwingCalibrator.cpp.o.d}, 
+		\hyperpage{136}
+  \item {src/libs/IMU\_math/CMakeFiles/imu\_math\_lib.dir/SwingDetector.cpp.o.d}, 
+		\hyperpage{137}
+  \item {src/libs/IMU\_math/CMakeFiles/imu\_math\_lib.dir/SwingProcessor.cpp.o.d}, 
+		\hyperpage{138}
   \item {src/libs/IMU\_math/Include/positiondetector.hpp}, 
-		\hyperpage{82}
+		\hyperpage{141, 142}
   \item {src/libs/IMU\_math/Include/SwingCalibrator.hpp}, 
-		\hyperpage{83}
-  \item {src/libs/IMU\_math/Include/SwingDetector.hpp}, \hyperpage{84}
+		\hyperpage{143}
+  \item {src/libs/IMU\_math/Include/SwingDetector.hpp}, \hyperpage{144}
   \item {src/libs/IMU\_math/Include/SwingProcessor.hpp}, 
-		\hyperpage{84, 85}
-  \item {src/libs/IMU\_math/positiondetector.cpp}, \hyperpage{86}
-  \item {src/libs/IMU\_math/SwingCalibrator.cpp}, \hyperpage{86}
-  \item {src/libs/IMU\_math/SwingDetector.cpp}, \hyperpage{86}
-  \item {src/libs/IMU\_math/SwingProcessor.cpp}, \hyperpage{87}
-  \item {src/libs/LEDs/Include/led\_controller.h}, \hyperpage{87}
-  \item {src/libs/LEDs/Include/ledcallback.hpp}, \hyperpage{88}
-  \item {src/libs/LEDs/led\_controller.cpp}, \hyperpage{88}
-  \item {src/libs/LEDs/ledcallback.cpp}, \hyperpage{89}
-  \item {src/libs/Motor/Include/rpi\_pwm.h}, \hyperpage{89, 90}
-  \item {src/libs/Motor/Include/swingfeedback.h}, \hyperpage{91}
-  \item {src/libs/Motor/swingfeedback.cpp}, \hyperpage{92}
-  \item {src/libs/Piezo/ads1115rpi.cpp}, \hyperpage{93}
-  \item {src/libs/Piezo/event\_detector.cpp}, \hyperpage{93}
-  \item {src/libs/Piezo/Include/ads1115rpi.h}, \hyperpage{93, 94}
-  \item {src/libs/Piezo/Include/event\_detector.h}, \hyperpage{96}
-  \item {src/libs/Piezo/ReadMe.md}, \hyperpage{97}
-  \item {src/main.cpp}, \hyperpage{97}
+		\hyperpage{145}, \hyperpage{147}
+  \item {src/libs/IMU\_math/positiondetector.cpp}, \hyperpage{148}
+  \item {src/libs/IMU\_math/SwingCalibrator.cpp}, \hyperpage{149}
+  \item {src/libs/IMU\_math/SwingDetector.cpp}, \hyperpage{150, 151}
+  \item {src/libs/IMU\_math/SwingProcessor.cpp}, \hyperpage{151, 152}
+  \item {src/libs/LEDs/CMakeFiles/leds\_lib.dir/led\_controller.cpp.o.d}, 
+		\hyperpage{153}
+  \item {src/libs/LEDs/CMakeFiles/leds\_lib.dir/ledcallback.cpp.o.d}, 
+		\hyperpage{156}
+  \item {src/libs/LEDs/Include/led\_controller.h}, \hyperpage{159, 160}
+  \item {src/libs/LEDs/Include/ledcallback.hpp}, \hyperpage{161}
+  \item {src/libs/LEDs/led\_controller.cpp}, \hyperpage{162}
+  \item {src/libs/LEDs/ledcallback.cpp}, \hyperpage{163, 164}
+  \item {src/libs/Motor/CMakeFiles/motor\_lib.dir/swingfeedback.cpp.o.d}, 
+		\hyperpage{165}
+  \item {src/libs/Motor/Include/rpi\_pwm.h}, \hyperpage{168, 169}
+  \item {src/libs/Motor/Include/swingfeedback.h}, \hyperpage{171}
+  \item {src/libs/Motor/README.md}, \hyperpage{135}
+  \item {src/libs/Motor/swingfeedback.cpp}, \hyperpage{172, 173}
+  \item {src/libs/Piezo/ads1115rpi.cpp}, \hyperpage{174, 175}
+  \item {src/libs/Piezo/CMakeFiles/piezo\_lib.dir/ads1115rpi.cpp.o.d}, 
+		\hyperpage{178}
+  \item {src/libs/Piezo/CMakeFiles/piezo\_lib.dir/event\_detector.cpp.o.d}, 
+		\hyperpage{182}
+  \item {src/libs/Piezo/event\_detector.cpp}, \hyperpage{185}
+  \item {src/libs/Piezo/Include/ads1115rpi.h}, \hyperpage{186}, 
+		\hyperpage{188}
+  \item {src/libs/Piezo/Include/event\_detector.h}, 
+		\hyperpage{189, 190}
+  \item {src/libs/Piezo/ReadMe.md}, \hyperpage{191}
+  \item {src/main.cpp}, \hyperpage{191, 192}
   \item {stabilitySamples}
-    \subitem {PositionDetector::Config}, \hyperpage{24}
+    \subitem {PositionDetector::Config}, \hyperpage{35}
   \item {stableCount}
-    \subitem {PositionDetector}, \hyperpage{45}
+    \subitem {PositionDetector}, \hyperpage{58}
   \item {start}
-    \subitem {ADS1115rpi}, \hyperpage{18}
-    \subitem {IMUReader}, \hyperpage{32}
-    \subitem {RPI\_PWM}, \hyperpage{47}
+    \subitem {ADS1115rpi}, \hyperpage{30}
+    \subitem {IMUReader}, \hyperpage{45}
+    \subitem {RPI\_PWM}, \hyperpage{60}
   \item {State}
-    \subitem {SwingCalibrator}, \hyperpage{54}
+    \subitem {SwingCalibrator}, \hyperpage{66}
   \item {state\_}
-    \subitem {SwingCalibrator}, \hyperpage{56}
+    \subitem {SwingCalibrator}, \hyperpage{69}
   \item {StateCallback}
-    \subitem {PositionDetector}, \hyperpage{43}
+    \subitem {PositionDetector}, \hyperpage{57}
   \item {stop}
-    \subitem {ADS1115rpi}, \hyperpage{18}
-    \subitem {IMUReader}, \hyperpage{32}
-    \subitem {RPI\_PWM}, \hyperpage{47}
+    \subitem {ADS1115rpi}, \hyperpage{31}
+    \subitem {IMUReader}, \hyperpage{45}
+    \subitem {RPI\_PWM}, \hyperpage{60}
   \item {stop\_fd\_}
-    \subitem {IMUReader}, \hyperpage{33}
+    \subitem {IMUReader}, \hyperpage{46}
+  \item {STRINGIFY}
+    \subitem {CMakeCXXCompilerId.cpp}, \hyperpage{83}
+  \item {STRINGIFY\_HELPER}
+    \subitem {CMakeCXXCompilerId.cpp}, \hyperpage{83}
   \item {sum\_x\_}
-    \subitem {SwingCalibrator}, \hyperpage{56}
+    \subitem {SwingCalibrator}, \hyperpage{69}
   \item {sum\_y\_}
-    \subitem {SwingCalibrator}, \hyperpage{56}
+    \subitem {SwingCalibrator}, \hyperpage{69}
   \item {sum\_z\_}
-    \subitem {SwingCalibrator}, \hyperpage{56}
-  \item {SwingCalibrator}, \hyperpage{53}
-    \subitem {accumulate}, \hyperpage{54}
-    \subitem {bias\_x\_}, \hyperpage{55}
-    \subitem {bias\_y\_}, \hyperpage{55}
-    \subitem {bias\_z\_}, \hyperpage{56}
-    \subitem {biasX}, \hyperpage{54}
-    \subitem {biasY}, \hyperpage{55}
-    \subitem {biasZ}, \hyperpage{55}
-    \subitem {callback\_}, \hyperpage{56}
-    \subitem {count\_}, \hyperpage{56}
-    \subitem {DoneCallback}, \hyperpage{54}
-    \subitem {feed}, \hyperpage{55}
-    \subitem {INITIAL}, \hyperpage{54}
-    \subitem {initial\_samples\_}, \hyperpage{56}
-    \subitem {isReady}, \hyperpage{55}
-    \subitem {READY}, \hyperpage{54}
-    \subitem {RECAL}, \hyperpage{54}
-    \subitem {recal\_samples\_}, \hyperpage{56}
-    \subitem {setCallback}, \hyperpage{55}
-    \subitem {State}, \hyperpage{54}
-    \subitem {state\_}, \hyperpage{56}
-    \subitem {sum\_x\_}, \hyperpage{56}
-    \subitem {sum\_y\_}, \hyperpage{56}
-    \subitem {sum\_z\_}, \hyperpage{56}
-    \subitem {SwingCalibrator}, \hyperpage{54}
-    \subitem {triggerRecal}, \hyperpage{55}
-  \item {SwingDetector}, \hyperpage{57}
-    \subitem {callback\_}, \hyperpage{58}
-    \subitem {classify}, \hyperpage{58}
-    \subitem {detect}, \hyperpage{58}
-    \subitem {EventCallback}, \hyperpage{57}
-    \subitem {HIGH}, \hyperpage{58}
-    \subitem {label}, \hyperpage{58}
-    \subitem {last\_level\_}, \hyperpage{58}
-    \subitem {Level}, \hyperpage{57}
-    \subitem {LOW}, \hyperpage{58}
-    \subitem {MEDIUM}, \hyperpage{58}
-    \subitem {NONE}, \hyperpage{58}
-    \subitem {reset}, \hyperpage{58}
-    \subitem {setCallback}, \hyperpage{58}
-    \subitem {SwingDetector}, \hyperpage{58}
-  \item {SwingFeedback}, \hyperpage{59}
-    \subitem {busy\_}, \hyperpage{60}
-    \subitem {busy\_since\_ms\_}, \hyperpage{60}
-    \subitem {checkTimeout}, \hyperpage{60}
-    \subitem {forceOff}, \hyperpage{60}
-    \subitem {onLevel}, \hyperpage{60}
-    \subitem {pending\_level\_}, \hyperpage{61}
-    \subitem {pwm\_}, \hyperpage{61}
-    \subitem {reset\_cb\_}, \hyperpage{61}
-    \subitem {ResetCallback}, \hyperpage{60}
-    \subitem {setResetCallback}, \hyperpage{60}
-    \subitem {SwingFeedback}, \hyperpage{60}
-    \subitem {TIMEOUT\_MS}, \hyperpage{61}
-    \subitem {worker}, \hyperpage{60}
+    \subitem {SwingCalibrator}, \hyperpage{69}
+  \item {SwingCalibrator}, \hyperpage{65}
+    \subitem {accumulate}, \hyperpage{67}
+    \subitem {bias\_x\_}, \hyperpage{68}
+    \subitem {bias\_y\_}, \hyperpage{68}
+    \subitem {bias\_z\_}, \hyperpage{68}
+    \subitem {biasX}, \hyperpage{67}
+    \subitem {biasY}, \hyperpage{67}
+    \subitem {biasZ}, \hyperpage{67}
+    \subitem {callback\_}, \hyperpage{68}
+    \subitem {count\_}, \hyperpage{68}
+    \subitem {DoneCallback}, \hyperpage{66}
+    \subitem {feed}, \hyperpage{67}
+    \subitem {INITIAL}, \hyperpage{67}
+    \subitem {initial\_samples\_}, \hyperpage{68}
+    \subitem {isReady}, \hyperpage{68}
+    \subitem {READY}, \hyperpage{67}
+    \subitem {RECAL}, \hyperpage{67}
+    \subitem {recal\_samples\_}, \hyperpage{68}
+    \subitem {setCallback}, \hyperpage{68}
+    \subitem {State}, \hyperpage{66}
+    \subitem {state\_}, \hyperpage{69}
+    \subitem {sum\_x\_}, \hyperpage{69}
+    \subitem {sum\_y\_}, \hyperpage{69}
+    \subitem {sum\_z\_}, \hyperpage{69}
+    \subitem {SwingCalibrator}, \hyperpage{67}
+    \subitem {triggerRecal}, \hyperpage{68}
+  \item {SwingDetector}, \hyperpage{69}
+    \subitem {callback\_}, \hyperpage{71}
+    \subitem {classify}, \hyperpage{70}
+    \subitem {detect}, \hyperpage{70}
+    \subitem {EventCallback}, \hyperpage{70}
+    \subitem {HIGH}, \hyperpage{70}
+    \subitem {label}, \hyperpage{71}
+    \subitem {last\_level\_}, \hyperpage{71}
+    \subitem {Level}, \hyperpage{70}
+    \subitem {LOW}, \hyperpage{70}
+    \subitem {MEDIUM}, \hyperpage{70}
+    \subitem {NONE}, \hyperpage{70}
+    \subitem {reset}, \hyperpage{71}
+    \subitem {setCallback}, \hyperpage{71}
+    \subitem {SwingDetector}, \hyperpage{70}
+  \item {SwingFeedback}, \hyperpage{71}
+    \subitem {busy\_}, \hyperpage{74}
+    \subitem {busy\_since\_ms\_}, \hyperpage{74}
+    \subitem {checkTimeout}, \hyperpage{73}
+    \subitem {forceOff}, \hyperpage{73}
+    \subitem {onLevel}, \hyperpage{73}
+    \subitem {pending\_level\_}, \hyperpage{74}
+    \subitem {pwm\_}, \hyperpage{74}
+    \subitem {reset\_cb\_}, \hyperpage{74}
+    \subitem {ResetCallback}, \hyperpage{73}
+    \subitem {setResetCallback}, \hyperpage{73}
+    \subitem {SwingFeedback}, \hyperpage{73}
+    \subitem {TIMEOUT\_MS}, \hyperpage{74}
+    \subitem {worker}, \hyperpage{73}
   \item {swingfeedback.cpp}
-    \subitem {nowMs}, \hyperpage{92}
-  \item {SwingProcessor}, \hyperpage{61}
-    \subitem {accel\_deadband\_}, \hyperpage{64}
-    \subitem {calibrator\_}, \hyperpage{64}
-    \subitem {COOLDOWN\_MS}, \hyperpage{64}
-    \subitem {isActive}, \hyperpage{63}
-    \subitem {isActive\_}, \hyperpage{64}
-    \subitem {isArmed\_}, \hyperpage{64}
-    \subitem {mag\_callback\_}, \hyperpage{64}
-    \subitem {MagnitudeCallback}, \hyperpage{62}
-    \subitem {onForceReady}, \hyperpage{63}
-    \subitem {onPositionReady}, \hyperpage{63}
-    \subitem {onSample}, \hyperpage{63}
-    \subitem {operator()}, \hyperpage{63}
-    \subitem {pos\_callback\_}, \hyperpage{64}
-    \subitem {PositionStateCallback}, \hyperpage{62}
-    \subitem {reset}, \hyperpage{63}
-    \subitem {reset\_time\_}, \hyperpage{64}
-    \subitem {setMagnitudeCallback}, \hyperpage{64}
-    \subitem {setPositionCallback}, \hyperpage{64}
-    \subitem {SwingProcessor}, \hyperpage{63}
+    \subitem {nowMs}, \hyperpage{172}
+  \item {SwingProcessor}, \hyperpage{74}
+    \subitem {accel\_deadband\_}, \hyperpage{78}
+    \subitem {calibrator\_}, \hyperpage{78}
+    \subitem {COOLDOWN\_MS}, \hyperpage{78}
+    \subitem {hasLeftStart\_}, \hyperpage{78}
+    \subitem {isActive}, \hyperpage{77}
+    \subitem {isActive\_}, \hyperpage{79}
+    \subitem {isArmed\_}, \hyperpage{79}
+    \subitem {mag\_callback\_}, \hyperpage{79}
+    \subitem {MagnitudeCallback}, \hyperpage{76}
+    \subitem {onForceReady}, \hyperpage{77}
+    \subitem {onPositionReady}, \hyperpage{77}
+    \subitem {onSample}, \hyperpage{77}
+    \subitem {operator()}, \hyperpage{78}
+    \subitem {pos\_callback\_}, \hyperpage{79}
+    \subitem {PositionStateCallback}, \hyperpage{76}
+    \subitem {reset}, \hyperpage{78}
+    \subitem {reset\_time\_}, \hyperpage{79}
+    \subitem {setMagnitudeCallback}, \hyperpage{78}
+    \subitem {setPositionCallback}, \hyperpage{78}
+    \subitem {SwingProcessor}, \hyperpage{77}
   \item {SwingProcessor.hpp}
-    \subitem {ACCEL\_DEADBAND}, \hyperpage{85}
-    \subitem {CALIB\_SAMPLES}, \hyperpage{85}
-    \subitem {I2C\_BUS}, \hyperpage{85}
-    \subitem {RECAL\_SAMPLES}, \hyperpage{85}
+    \subitem {ACCEL\_DEADBAND}, \hyperpage{146}
+    \subitem {CALIB\_SAMPLES}, \hyperpage{146}
+    \subitem {I2C\_BUS}, \hyperpage{146}
+    \subitem {RECAL\_SAMPLES}, \hyperpage{146}
 
   \indexspace
 
   \item {thr}
-    \subitem {ADS1115rpi}, \hyperpage{20}
+    \subitem {ADS1115rpi}, \hyperpage{32}
   \item {thread\_}
-    \subitem {RPI\_PWM}, \hyperpage{47}
+    \subitem {RPI\_PWM}, \hyperpage{61}
   \item {TIMEOUT\_MS}
-    \subitem {SwingFeedback}, \hyperpage{61}
+    \subitem {SwingFeedback}, \hyperpage{74}
   \item {triggerRecal}
-    \subitem {SwingCalibrator}, \hyperpage{55}
+    \subitem {SwingCalibrator}, \hyperpage{68}
 
   \indexspace
 
   \item {updateOutputs}
-    \subitem {LEDController}, \hyperpage{38}
+    \subitem {LEDController}, \hyperpage{50}
   \item {usToTimerspec}
-    \subitem {RPI\_PWM}, \hyperpage{47}
+    \subitem {RPI\_PWM}, \hyperpage{61}
 
   \indexspace
 
   \item {waitUs}
-    \subitem {RPI\_PWM}, \hyperpage{47}
+    \subitem {RPI\_PWM}, \hyperpage{61}
   \item {wake}
-    \subitem {icm20948::ICM20948\_I2C}, \hyperpage{29}
+    \subitem {icm20948::ICM20948\_I2C}, \hyperpage{41}
   \item {worker}
-    \subitem {ADS1115rpi}, \hyperpage{19}
-    \subitem {IMUReader}, \hyperpage{32}
-    \subitem {SwingFeedback}, \hyperpage{60}
+    \subitem {ADS1115rpi}, \hyperpage{31}
+    \subitem {IMUReader}, \hyperpage{45}
+    \subitem {SwingFeedback}, \hyperpage{73}
   \item {worker\_thread\_}
-    \subitem {IMUReader}, \hyperpage{33}
+    \subitem {IMUReader}, \hyperpage{46}
   \item {wrapAngleDeg}
-    \subitem {PositionDetector}, \hyperpage{44}
+    \subitem {PositionDetector}, \hyperpage{58}
 
 \end{theindex}

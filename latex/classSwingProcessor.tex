@@ -2,16 +2,32 @@
 \hypertarget{classSwingProcessor}{}\label{classSwingProcessor}\index{SwingProcessor@{SwingProcessor}}
 
 
+raised to reject motor EMI noise floor  
+
+
+
+
 {\ttfamily \#include $<$Swing\+Processor.\+hpp$>$}
 
 
 
-Inheritance diagram for Swing\+Processor\+:
-% FIG 0
+Inheritance diagram for Swing\+Processor\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=178pt]{classSwingProcessor__inherit__graph}
+\end{center}
+\end{figure}
 
 
 Collaboration diagram for Swing\+Processor\+:
-% FIG 1
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=308pt]{classSwingProcessor__coll__graph}
+\end{center}
+\end{figure}
 \doxysubsubsection*{Public Types}
 \begin{DoxyCompactItemize}
 \item 
@@ -28,11 +44,11 @@ using \mbox{\hyperlink{classPositionDetector_a6cecc4adffa3f995348529f94c1db498}{
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{classSwingProcessor_a576383fe618a02c0142e7073507deb65}{Swing\+Processor}} (float accel\+\_\+deadband=\mbox{\hyperlink{SwingProcessor_8hpp_ade41390a2c6011a23e8054df5621d231}{ACCEL\+\_\+\+DEADBAND}}, int calib\+\_\+samples=\mbox{\hyperlink{SwingProcessor_8hpp_ac684e3b2eaf7d15239031ca404c88059}{CALIB\+\_\+\+SAMPLES}}, int recal\+\_\+samples=\mbox{\hyperlink{SwingProcessor_8hpp_a244f60b18afb57444be7ad3ba6ec1f5a}{RECAL\+\_\+\+SAMPLES}})
-\item 
+\begin{DoxyCompactList}\small\item\em Initialise the deadband and embedded gravity-\/bias calibrator. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classSwingProcessor_a84a26a132fa3a5003d2896086e6e6cdf}{set\+Magnitude\+Callback}} (\mbox{\hyperlink{classSwingProcessor_a31d9c6aafec669291604f8e47ce9edfc}{Magnitude\+Callback}} cb)
-\item 
+\begin{DoxyCompactList}\small\item\em Register callback for filtered linear-\/acceleration magnitude. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classSwingProcessor_a3f8acb3098e0478d10211b3b1923fe87}{set\+Position\+Callback}} (\mbox{\hyperlink{classSwingProcessor_acf988060044887b7be3153ab982bc50c}{Position\+State\+Callback}} cb)
-\item 
+\begin{DoxyCompactList}\small\item\em Register callback for upright/not-\/upright state changes. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classSwingProcessor_a4b5d83fac0c5bec9a287f54424da5434}{on\+Force\+Ready}} (bool correct\+Force)
 \item 
 bool \mbox{\hyperlink{classSwingProcessor_a19c8b87ea43e973bf6aa5a55f8789037}{is\+Active}} () const
@@ -49,7 +65,7 @@ void \mbox{\hyperlink{classSwingProcessor_a5fa909917ce884a6f519d1abc22e940a}{ope
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{classPositionDetector_a14b40be880ad02568135c29134a62e56}{Position\+Detector}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Default constructor delegates to config-\/based constructor. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classPositionDetector_ab0e54c6126a4a687ee54da1488b1a6ca}{Position\+Detector}} (const \mbox{\hyperlink{structPositionDetector_1_1Config}{Config}} \&c)
 \item 
 virtual \mbox{\hyperlink{classPositionDetector_a46e8f76935189768ed661b5aa868490c}{\texorpdfstring{$\sim$}{\string~}\+Position\+Detector}} ()=default
@@ -62,7 +78,7 @@ void \mbox{\hyperlink{classPositionDetector_aa1219497239de86b59d8c88f6a60c876}{r
 \begin{DoxyCompactItemize}
 \item 
 float \mbox{\hyperlink{classSwingProcessor_ac5180a9b337ef6e73f367989d13f1a35}{accel\+\_\+deadband\+\_\+}}
-\item 
+\begin{DoxyCompactList}\small\item\em Declares the private members used to store thresholds, calibration, callbacks, activity state, and reset timing. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classSwingCalibrator}{Swing\+Calibrator}} \mbox{\hyperlink{classSwingProcessor_aec1740512208f2c203c1b2510f80fa2e}{calibrator\+\_\+}}
 \item 
 \mbox{\hyperlink{classSwingProcessor_a31d9c6aafec669291604f8e47ce9edfc}{Magnitude\+Callback}} \mbox{\hyperlink{classSwingProcessor_a8360c8e9302e099edd84818eff147957}{mag\+\_\+callback\+\_\+}}
@@ -72,14 +88,30 @@ float \mbox{\hyperlink{classSwingProcessor_ac5180a9b337ef6e73f367989d13f1a35}{ac
 bool \mbox{\hyperlink{classSwingProcessor_a38fca6543939d74d4945e817b11ea69f}{is\+Armed\+\_\+}} = false
 \item 
 bool \mbox{\hyperlink{classSwingProcessor_a3184c4f9d59ac9495d41009694fcb423}{is\+Active\+\_\+}} = false
-\item 
+\begin{DoxyCompactList}\small\item\em position confirmed, ready for piezo \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classSwingProcessor_a9365323ebee862a6d615c08696dc63e4}{has\+Left\+Start\+\_\+}} = false
+\begin{DoxyCompactList}\small\item\em gate open, motor feedback running \end{DoxyCompactList}\item 
 std\+::chrono\+::steady\+\_\+clock\+::time\+\_\+point \mbox{\hyperlink{classSwingProcessor_aea2a21e4d6b577842d80ba059b0130f4}{reset\+\_\+time\+\_\+}} \{\}
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Static Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
 static constexpr int \mbox{\hyperlink{classSwingProcessor_a6715d31c5e6bfa2b927de00ce6b8e181}{COOLDOWN\+\_\+\+MS}} = 500
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em paddle has left the starting position since activation \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+raised to reject motor EMI noise floor 
+
+Gate logic\+:
+\begin{DoxyEnumerate}
+\item When the correct start position is held, is\+Armed\+\_\+ becomes true and the bias is recalibrated. The system must still be in this valid position when the piezo is triggered.
+\item When the piezo is pressed while armed, is\+Active\+\_\+ becomes true and the motor feedback starts. Once active, any further piezo events are ignored to avoid false triggers caused by motor vibration.
+\item When the \doxylink{classSwingFeedback}{Swing\+Feedback} timer ends, \doxylink{classSwingProcessor_aea9cf6f18b80fb71de6eb85e570ccf3e}{reset()} is called to clear both state flags. Declares the swing processor class, including its callback types and main functions for handling force, position, reset, and sensor sample processing. 
+\end{DoxyEnumerate}
+
+Definition at line \mbox{\hyperlink{SwingProcessor_8hpp_source_l00031}{31}} of file \mbox{\hyperlink{SwingProcessor_8hpp_source}{Swing\+Processor.\+hpp}}.
+
 
 
 \doxysubsection{Member Typedef Documentation}
@@ -89,11 +121,19 @@ static constexpr int \mbox{\hyperlink{classSwingProcessor_a6715d31c5e6bfa2b927de
 \doxysubsubsection{\texorpdfstring{MagnitudeCallback}{MagnitudeCallback}}
 {\footnotesize\ttfamily using \mbox{\hyperlink{classSwingProcessor_a31d9c6aafec669291604f8e47ce9edfc}{Swing\+Processor\+::\+Magnitude\+Callback}} =  std\+::function$<$void(float accel\+\_\+mag)$>$}
 
+
+
+Definition at line \mbox{\hyperlink{SwingProcessor_8hpp_source_l00033}{33}} of file \mbox{\hyperlink{SwingProcessor_8hpp_source}{Swing\+Processor.\+hpp}}.
+
 \Hypertarget{classSwingProcessor_acf988060044887b7be3153ab982bc50c}\label{classSwingProcessor_acf988060044887b7be3153ab982bc50c} 
 \index{SwingProcessor@{SwingProcessor}!PositionStateCallback@{PositionStateCallback}}
 \index{PositionStateCallback@{PositionStateCallback}!SwingProcessor@{SwingProcessor}}
 \doxysubsubsection{\texorpdfstring{PositionStateCallback}{PositionStateCallback}}
 {\footnotesize\ttfamily using \mbox{\hyperlink{classSwingProcessor_acf988060044887b7be3153ab982bc50c}{Swing\+Processor\+::\+Position\+State\+Callback}} =  std\+::function$<$void(bool upright)$>$}
+
+
+
+Definition at line \mbox{\hyperlink{SwingProcessor_8hpp_source_l00034}{34}} of file \mbox{\hyperlink{SwingProcessor_8hpp_source}{Swing\+Processor.\+hpp}}.
 
 
 
@@ -106,6 +146,16 @@ static constexpr int \mbox{\hyperlink{classSwingProcessor_a6715d31c5e6bfa2b927de
 
 
 
+Initialise the deadband and embedded gravity-\/bias calibrator. 
+
+Default no-\/op calibration callback.
+
+Forward position events to any external callback, then update swing state.
+
+Definition at line \mbox{\hyperlink{SwingProcessor_8cpp_source_l00006}{6}} of file \mbox{\hyperlink{SwingProcessor_8cpp_source}{Swing\+Processor.\+cpp}}.
+
+
+
 \doxysubsection{Member Function Documentation}
 \Hypertarget{classSwingProcessor_a19c8b87ea43e973bf6aa5a55f8789037}\label{classSwingProcessor_a19c8b87ea43e973bf6aa5a55f8789037} 
 \index{SwingProcessor@{SwingProcessor}!isActive@{isActive}}
@@ -113,11 +163,27 @@ static constexpr int \mbox{\hyperlink{classSwingProcessor_a6715d31c5e6bfa2b927de
 \doxysubsubsection{\texorpdfstring{isActive()}{isActive()}}
 {\footnotesize\ttfamily bool Swing\+Processor\+::is\+Active (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
+
+
+Definition at line \mbox{\hyperlink{SwingProcessor_8hpp_source_l00044}{44}} of file \mbox{\hyperlink{SwingProcessor_8hpp_source}{Swing\+Processor.\+hpp}}.
+
 \Hypertarget{classSwingProcessor_a4b5d83fac0c5bec9a287f54424da5434}\label{classSwingProcessor_a4b5d83fac0c5bec9a287f54424da5434} 
 \index{SwingProcessor@{SwingProcessor}!onForceReady@{onForceReady}}
 \index{onForceReady@{onForceReady}!SwingProcessor@{SwingProcessor}}
 \doxysubsubsection{\texorpdfstring{onForceReady()}{onForceReady()}}
 {\footnotesize\ttfamily void Swing\+Processor\+::on\+Force\+Ready (\begin{DoxyParamCaption}\item[{bool}]{correct\+Force }\end{DoxyParamCaption})}
+
+Drop output to zero if force is lost mid-\/swing.
+
+Ignore force events unless the system is armed from the start position.
+
+Ignore duplicate triggers while already active.
+
+Force confirmation starts the swing.
+
+must leave start position before magnitude is measured
+
+Definition at line \mbox{\hyperlink{SwingProcessor_8cpp_source_l00054}{54}} of file \mbox{\hyperlink{SwingProcessor_8cpp_source}{Swing\+Processor.\+cpp}}.
 
 \Hypertarget{classSwingProcessor_a36f8bd0212f937bbb9ef9f50583cb034}\label{classSwingProcessor_a36f8bd0212f937bbb9ef9f50583cb034} 
 \index{SwingProcessor@{SwingProcessor}!onPositionReady@{onPositionReady}}
@@ -125,15 +191,45 @@ static constexpr int \mbox{\hyperlink{classSwingProcessor_a6715d31c5e6bfa2b927de
 \doxysubsubsection{\texorpdfstring{onPositionReady()}{onPositionReady()}}
 {\footnotesize\ttfamily void Swing\+Processor\+::on\+Position\+Ready (\begin{DoxyParamCaption}\item[{bool}]{upright }\end{DoxyParamCaption})}
 
+Ignore position events during the post-\/reset cooldown.
+
+Reaching the start position arms the swing and refreshes bias.
+
+Left the start position before force confirmation; cancel arming.
+
+Left position before piezo — disarm
+
+Left position after piezo — swing has begun
+
+If already active, leaving the start position is expected.
+
+Definition at line \mbox{\hyperlink{SwingProcessor_8cpp_source_l00032}{32}} of file \mbox{\hyperlink{SwingProcessor_8cpp_source}{Swing\+Processor.\+cpp}}.
+
 \Hypertarget{classSwingProcessor_a8e4fbc5ebea519acf8744fefa8f64baa}\label{classSwingProcessor_a8e4fbc5ebea519acf8744fefa8f64baa} 
 \index{SwingProcessor@{SwingProcessor}!onSample@{onSample}}
 \index{onSample@{onSample}!SwingProcessor@{SwingProcessor}}
 \doxysubsubsection{\texorpdfstring{onSample()}{onSample()}}
 {\footnotesize\ttfamily void Swing\+Processor\+::on\+Sample (\begin{DoxyParamCaption}\item[{float}]{ax,  }\item[{float}]{ay,  }\item[{float}]{az,  }\item[{float}]{mx,  }\item[{float}]{my }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
 
+Feed the sample into the position detector first.
 
+Only process magnitude while a swing is active.
+
+don\textquotesingle{}t measure until bat leaves start position
+
+Hold output until the current calibration window completes.
+
+Remove gravity bias to estimate linear acceleration.
+
+Collapse 3D linear acceleration into a scalar magnitude.
+
+Clamp small values to zero to suppress noise.
 
 Reimplemented from \mbox{\hyperlink{classPositionDetector_aff71ff748fddc6e18c1303a0aafc9dcf}{Position\+Detector}}.
+
+
+
+Definition at line \mbox{\hyperlink{SwingProcessor_8cpp_source_l00085}{85}} of file \mbox{\hyperlink{SwingProcessor_8cpp_source}{Swing\+Processor.\+cpp}}.
 
 \Hypertarget{classSwingProcessor_a5fa909917ce884a6f519d1abc22e940a}\label{classSwingProcessor_a5fa909917ce884a6f519d1abc22e940a} 
 \index{SwingProcessor@{SwingProcessor}!operator()@{operator()}}
@@ -141,11 +237,19 @@ Reimplemented from \mbox{\hyperlink{classPositionDetector_aff71ff748fddc6e18c130
 \doxysubsubsection{\texorpdfstring{operator()()}{operator()()}}
 {\footnotesize\ttfamily void Swing\+Processor\+::operator() (\begin{DoxyParamCaption}\item[{float}]{ax,  }\item[{float}]{ay,  }\item[{float}]{az,  }\item[{float}]{gx,  }\item[{float}]{gy,  }\item[{float}]{gz,  }\item[{float}]{mx,  }\item[{float}]{my }\end{DoxyParamCaption})}
 
+Adapter for callback-\/style IMU interfaces.
+
+Definition at line \mbox{\hyperlink{SwingProcessor_8cpp_source_l00113}{113}} of file \mbox{\hyperlink{SwingProcessor_8cpp_source}{Swing\+Processor.\+cpp}}.
+
 \Hypertarget{classSwingProcessor_aea9cf6f18b80fb71de6eb85e570ccf3e}\label{classSwingProcessor_aea9cf6f18b80fb71de6eb85e570ccf3e} 
 \index{SwingProcessor@{SwingProcessor}!reset@{reset}}
 \index{reset@{reset}!SwingProcessor@{SwingProcessor}}
 \doxysubsubsection{\texorpdfstring{reset()}{reset()}}
 {\footnotesize\ttfamily void Swing\+Processor\+::reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Clear swing state and restart cooldown.
+
+Definition at line \mbox{\hyperlink{SwingProcessor_8cpp_source_l00076}{76}} of file \mbox{\hyperlink{SwingProcessor_8cpp_source}{Swing\+Processor.\+cpp}}.
 
 \Hypertarget{classSwingProcessor_a84a26a132fa3a5003d2896086e6e6cdf}\label{classSwingProcessor_a84a26a132fa3a5003d2896086e6e6cdf} 
 \index{SwingProcessor@{SwingProcessor}!setMagnitudeCallback@{setMagnitudeCallback}}
@@ -153,11 +257,27 @@ Reimplemented from \mbox{\hyperlink{classPositionDetector_aff71ff748fddc6e18c130
 \doxysubsubsection{\texorpdfstring{setMagnitudeCallback()}{setMagnitudeCallback()}}
 {\footnotesize\ttfamily void Swing\+Processor\+::set\+Magnitude\+Callback (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSwingProcessor_a31d9c6aafec669291604f8e47ce9edfc}{Magnitude\+Callback}}}]{cb }\end{DoxyParamCaption})}
 
+
+
+Register callback for filtered linear-\/acceleration magnitude. 
+
+
+
+Definition at line \mbox{\hyperlink{SwingProcessor_8cpp_source_l00020}{20}} of file \mbox{\hyperlink{SwingProcessor_8cpp_source}{Swing\+Processor.\+cpp}}.
+
 \Hypertarget{classSwingProcessor_a3f8acb3098e0478d10211b3b1923fe87}\label{classSwingProcessor_a3f8acb3098e0478d10211b3b1923fe87} 
 \index{SwingProcessor@{SwingProcessor}!setPositionCallback@{setPositionCallback}}
 \index{setPositionCallback@{setPositionCallback}!SwingProcessor@{SwingProcessor}}
 \doxysubsubsection{\texorpdfstring{setPositionCallback()}{setPositionCallback()}}
 {\footnotesize\ttfamily void Swing\+Processor\+::set\+Position\+Callback (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSwingProcessor_acf988060044887b7be3153ab982bc50c}{Position\+State\+Callback}}}]{cb }\end{DoxyParamCaption})}
+
+
+
+Register callback for upright/not-\/upright state changes. 
+
+
+
+Definition at line \mbox{\hyperlink{SwingProcessor_8cpp_source_l00026}{26}} of file \mbox{\hyperlink{SwingProcessor_8cpp_source}{Swing\+Processor.\+cpp}}.
 
 
 
@@ -168,11 +288,23 @@ Reimplemented from \mbox{\hyperlink{classPositionDetector_aff71ff748fddc6e18c130
 \doxysubsubsection{\texorpdfstring{accel\_deadband\_}{accel\_deadband\_}}
 {\footnotesize\ttfamily float Swing\+Processor\+::accel\+\_\+deadband\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
 
+
+
+Declares the private members used to store thresholds, calibration, callbacks, activity state, and reset timing. 
+
+
+
+Definition at line \mbox{\hyperlink{SwingProcessor_8hpp_source_l00057}{57}} of file \mbox{\hyperlink{SwingProcessor_8hpp_source}{Swing\+Processor.\+hpp}}.
+
 \Hypertarget{classSwingProcessor_aec1740512208f2c203c1b2510f80fa2e}\label{classSwingProcessor_aec1740512208f2c203c1b2510f80fa2e} 
 \index{SwingProcessor@{SwingProcessor}!calibrator\_@{calibrator\_}}
 \index{calibrator\_@{calibrator\_}!SwingProcessor@{SwingProcessor}}
 \doxysubsubsection{\texorpdfstring{calibrator\_}{calibrator\_}}
 {\footnotesize\ttfamily \mbox{\hyperlink{classSwingCalibrator}{Swing\+Calibrator}} Swing\+Processor\+::calibrator\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{SwingProcessor_8hpp_source_l00058}{58}} of file \mbox{\hyperlink{SwingProcessor_8hpp_source}{Swing\+Processor.\+hpp}}.
 
 \Hypertarget{classSwingProcessor_a6715d31c5e6bfa2b927de00ce6b8e181}\label{classSwingProcessor_a6715d31c5e6bfa2b927de00ce6b8e181} 
 \index{SwingProcessor@{SwingProcessor}!COOLDOWN\_MS@{COOLDOWN\_MS}}
@@ -180,11 +312,41 @@ Reimplemented from \mbox{\hyperlink{classPositionDetector_aff71ff748fddc6e18c130
 \doxysubsubsection{\texorpdfstring{COOLDOWN\_MS}{COOLDOWN\_MS}}
 {\footnotesize\ttfamily constexpr int Swing\+Processor\+::\+COOLDOWN\+\_\+\+MS = 500\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [private]}}
 
+
+
+paddle has left the starting position since activation 
+
+
+
+Definition at line \mbox{\hyperlink{SwingProcessor_8hpp_source_l00067}{67}} of file \mbox{\hyperlink{SwingProcessor_8hpp_source}{Swing\+Processor.\+hpp}}.
+
+\Hypertarget{classSwingProcessor_a9365323ebee862a6d615c08696dc63e4}\label{classSwingProcessor_a9365323ebee862a6d615c08696dc63e4} 
+\index{SwingProcessor@{SwingProcessor}!hasLeftStart\_@{hasLeftStart\_}}
+\index{hasLeftStart\_@{hasLeftStart\_}!SwingProcessor@{SwingProcessor}}
+\doxysubsubsection{\texorpdfstring{hasLeftStart\_}{hasLeftStart\_}}
+{\footnotesize\ttfamily bool Swing\+Processor\+::has\+Left\+Start\+\_\+ = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+gate open, motor feedback running 
+
+
+
+Definition at line \mbox{\hyperlink{SwingProcessor_8hpp_source_l00064}{64}} of file \mbox{\hyperlink{SwingProcessor_8hpp_source}{Swing\+Processor.\+hpp}}.
+
 \Hypertarget{classSwingProcessor_a3184c4f9d59ac9495d41009694fcb423}\label{classSwingProcessor_a3184c4f9d59ac9495d41009694fcb423} 
 \index{SwingProcessor@{SwingProcessor}!isActive\_@{isActive\_}}
 \index{isActive\_@{isActive\_}!SwingProcessor@{SwingProcessor}}
 \doxysubsubsection{\texorpdfstring{isActive\_}{isActive\_}}
 {\footnotesize\ttfamily bool Swing\+Processor\+::is\+Active\+\_\+ = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+position confirmed, ready for piezo 
+
+
+
+Definition at line \mbox{\hyperlink{SwingProcessor_8hpp_source_l00063}{63}} of file \mbox{\hyperlink{SwingProcessor_8hpp_source}{Swing\+Processor.\+hpp}}.
 
 \Hypertarget{classSwingProcessor_a38fca6543939d74d4945e817b11ea69f}\label{classSwingProcessor_a38fca6543939d74d4945e817b11ea69f} 
 \index{SwingProcessor@{SwingProcessor}!isArmed\_@{isArmed\_}}
@@ -192,11 +354,19 @@ Reimplemented from \mbox{\hyperlink{classPositionDetector_aff71ff748fddc6e18c130
 \doxysubsubsection{\texorpdfstring{isArmed\_}{isArmed\_}}
 {\footnotesize\ttfamily bool Swing\+Processor\+::is\+Armed\+\_\+ = false\hspace{0.3cm}{\ttfamily [private]}}
 
+
+
+Definition at line \mbox{\hyperlink{SwingProcessor_8hpp_source_l00062}{62}} of file \mbox{\hyperlink{SwingProcessor_8hpp_source}{Swing\+Processor.\+hpp}}.
+
 \Hypertarget{classSwingProcessor_a8360c8e9302e099edd84818eff147957}\label{classSwingProcessor_a8360c8e9302e099edd84818eff147957} 
 \index{SwingProcessor@{SwingProcessor}!mag\_callback\_@{mag\_callback\_}}
 \index{mag\_callback\_@{mag\_callback\_}!SwingProcessor@{SwingProcessor}}
 \doxysubsubsection{\texorpdfstring{mag\_callback\_}{mag\_callback\_}}
 {\footnotesize\ttfamily \mbox{\hyperlink{classSwingProcessor_a31d9c6aafec669291604f8e47ce9edfc}{Magnitude\+Callback}} Swing\+Processor\+::mag\+\_\+callback\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{SwingProcessor_8hpp_source_l00059}{59}} of file \mbox{\hyperlink{SwingProcessor_8hpp_source}{Swing\+Processor.\+hpp}}.
 
 \Hypertarget{classSwingProcessor_ae75af54e0ae803c94f5cefb3d272bd28}\label{classSwingProcessor_ae75af54e0ae803c94f5cefb3d272bd28} 
 \index{SwingProcessor@{SwingProcessor}!pos\_callback\_@{pos\_callback\_}}
@@ -204,11 +374,19 @@ Reimplemented from \mbox{\hyperlink{classPositionDetector_aff71ff748fddc6e18c130
 \doxysubsubsection{\texorpdfstring{pos\_callback\_}{pos\_callback\_}}
 {\footnotesize\ttfamily \mbox{\hyperlink{classSwingProcessor_acf988060044887b7be3153ab982bc50c}{Position\+State\+Callback}} Swing\+Processor\+::pos\+\_\+callback\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
 
+
+
+Definition at line \mbox{\hyperlink{SwingProcessor_8hpp_source_l00060}{60}} of file \mbox{\hyperlink{SwingProcessor_8hpp_source}{Swing\+Processor.\+hpp}}.
+
 \Hypertarget{classSwingProcessor_aea2a21e4d6b577842d80ba059b0130f4}\label{classSwingProcessor_aea2a21e4d6b577842d80ba059b0130f4} 
 \index{SwingProcessor@{SwingProcessor}!reset\_time\_@{reset\_time\_}}
 \index{reset\_time\_@{reset\_time\_}!SwingProcessor@{SwingProcessor}}
 \doxysubsubsection{\texorpdfstring{reset\_time\_}{reset\_time\_}}
 {\footnotesize\ttfamily std\+::chrono\+::steady\+\_\+clock\+::time\+\_\+point Swing\+Processor\+::reset\+\_\+time\+\_\+ \{\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{SwingProcessor_8hpp_source_l00068}{68}} of file \mbox{\hyperlink{SwingProcessor_8hpp_source}{Swing\+Processor.\+hpp}}.
 
 
 
