@@ -37,3 +37,4 @@
 
 
 ## Acknowledgements 
+The ADS1115rpi ADC was adapted from the implementation, rpi_ads1115, written by the Bernd Porr (University of Glasgow, 2025), available at: [https://github.com/alepgr/SnAIRbeats/tree/main](https://github.com/berndporr/rpi_ads1115)
