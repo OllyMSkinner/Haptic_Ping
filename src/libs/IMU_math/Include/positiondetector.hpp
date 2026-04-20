@@ -5,7 +5,7 @@
   *  when the required position has been confirmed. 
   *
   *
-  *  SOLID :
+  *  SOLID principles:
   *    S - This class is responsible for analysing incoming motion/orientation
   *        samples and deciding whether the required upright position has been
   *        stably detected.
