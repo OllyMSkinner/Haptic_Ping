@@ -1,0 +1,33 @@
+@startuml
+
+actor Piezo
+actor IMU
+
+participant "ADS1115" as ADS
+participant "IMUReader" as IMUR
+participant "SwingProcessor" as Proc
+participant "Motor" as Motor
+participant "GreenLED\n(GPIO25)" as GLED
+participant "YellowLED\n(GPIO22)" as YLED
+
+Piezo -> ADS : Voltage from pressure (GPIO26 ALERT)
+alt pressure >= threshold
+  ADS -> GLED : on
+  ADS -> Proc : onForceReady() [callback]
+else pressure < threshold
+  ADS -> GLED : off
+end
+
+IMU -> IMUR : Linear and angular acceleration (GPIO27 DRDY)
+IMUR -> Proc : sample(accel, gyro) [callback]
+alt paddle @ starting position
+  Proc -> YLED : on
+  alt swing magnitude >= threshold
+    Proc -> Motor : play haptic pattern
+    Motor --> Proc : reset() [callback]
+  end
+else paddle not @ starting position
+  Proc -> YLED : off
+end
+
+@enduml
