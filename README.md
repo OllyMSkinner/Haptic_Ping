@@ -26,7 +26,7 @@ University of Glasgow, 2026
 | Piezoelectric Sensor | 1× | [RS Online](https://uk.rs-online.com/web/p/piezo-buzzers/8377840) |
 | LEDs (green) | 2× | — |
 | Table Tennis Bat | 1× | — |
-
+| AA batteries | 3× | — |
 ---
 
 ## GPIO Pin Assignments
@@ -53,10 +53,12 @@ IMU I2C address: `0x69`, ADS1115 I2C address: `0x48`, I2C bus: `1`
 
 ## Hardware Assembly
 
-- The LED outputs and Raspberry Pi were housed at a secondary station positioned in front of the user for clear visibility.
-- The circuit board was affixed to the bat using Velcro to provide stability throughout the swing range of motion.
-- The IMU was mounted at the distal end of the bat inside a custom 3D-printed enclosure to ensure consistent placement and minimise sensor displacement during dynamic use.
-- Extended wiring (~1 metre) was fabricated by splicing female-to-female jumper cables with standard wire via soldering. Heat-shrink tubing was applied over each joint for insulation and mechanical reinforcement.
+- The IMU was mounted at the distal end of the bat using velcro (see FIGURE XYZ).
+- The matrix board shown in the Wiring Diagram was affixed to one side of the bat, as shown in the image below, using velcro.
+- The piezolelectric sensor was attached to the bat at the area that ensures appropriate index finger placement and therefore grip.
+- Extended wiring (~1 metre for ease of use) was created by splicing female-to-female jumper cables with standard wire via soldering. Heat-shrink tubing was applied over each joint for insulation and mechanical reinforcement.
+- The LED outputs were soldered to matrix boards with wire lengths tailored to suit the user’s preferred placement and positioned on a secondary station in front of the user to ensure clear visibility.
+- The battery holder wire lenght was also extended to ~1 metre for ease of use.
 
 ---
 
@@ -65,12 +67,12 @@ IMU I2C address: `0x69`, ADS1115 I2C address: `0x48`, I2C bus: `1`
 The system uses a gate logic sequence to ensure feedback is only triggered for a valid swing:
 
 1. **Grip detection** — The piezo sensor on the bat is sampled at 128 Hz by the ADS1115 ADC. An EMA filter smooths the signal and a threshold of 0.95V triggers a press event, illuminating the piezo LED.
-2. **Position confirmation** — The IMU data-ready interrupt (GPIO 27) wakes the reader thread at each sample. The position detector checks the acceleration vector against a reference orientation using a dot product. After 10 consecutive valid samples the system is considered in the correct starting position and the IMU LED illuminates.
-3. **Swing analysis** — Once both grip and position are confirmed, the swing processor gates through the IMU acceleration magnitude. Gravity bias is removed via a rolling calibration window. The net linear acceleration magnitude is classified into duty cycle levels:
+2. **Position confirmation** — The IMU data-ready interrupt (GPIO 27) wakes the reader thread for each sample. The position detector checks the acceleration vector against a reference orientation using a dot product. After 10 consecutive samples that meet the predetermined threshold for correct starting position, the system is considered to be in the correct starting position and the IMU LED illuminates.
+3. **Swing analysis** — Once both grip and position are confirmed, the swing processor categorises the swing vibration magnitude through the magnitude of the IMU acceleration. Gravity bias is removed via a rolling calibration window. The net linear acceleration magnitude is classified into duty cycle levels:
    - `>= 25 m/s²` → Highest Duty Cycle (long vibration burst)
    - `>= 15 m/s²` → Medium Duty Cycle (double burst)
    - `>= 10 m/s²` → Low Duty Cycle (short burst)
-4. **Haptic feedback** — The ERM motor is driven by software PWM on GPIO 18 ramping up to 80% duty cycle to avoid back-EMF spikes. The feedback pattern plays and the system resets for the next swing.
+4. **Haptic feedback** — The ERM motor is driven by software PWM on GPIO 18 ramping up to max 80% duty cycle. The feedback pattern plays and the system resets for the next swing.
 
 ---
 
@@ -89,7 +91,7 @@ The code is entirely event-driven with no polling loops:
 The sampling frequency is calculated by 
 - **Accelerometer**: 1.125 kHz/(1+ sample_rate_div)
 - **Gyrometer**: 1.1kHz/(1+ sample_rate_div)
-The maximum frequency for accelerometer is therefore 1.125 kHz and gyrometer is 1.1kHz. The maximum latency found for the accelerometer to work is at _____ (sample_rate_div = ), and ______ (sample_rate_div = ) for the gyrometer. 
+The maximum frequency for accelerometer is therefore 1.125 kHz and gyrometer is 1.1kHz. The maximum latency found for the accelerometer and gyrometer to work is at 18.75 Hz (sample_rate_div = 59).
 
 ### Piezo - ADS1115
 The available sample rate are 8Hz, 16Hz, 32Hz, 64Hz, 128Hz, 250Hz, 475Hz, and 860Hz. The maximum latency for the ADS1115 is at _________.
@@ -101,7 +103,10 @@ This can be adjusted in the main.cpp.
 
 ## Prerequisites
 
-This project runs on Linux (Raspberry Pi OS). Not compatible with Windows.
+Hpatic Ping runs on Linux (Raspberry Pi OS) and is not compatible with Windows.  
+Prior to installing the required libraries, the system package list should be updated using:  
+
+sudo apt update 
 
 ### Enable I2C
 ```bash
