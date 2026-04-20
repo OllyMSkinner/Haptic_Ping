@@ -1,5 +1,4 @@
 ## ADS1115 Pin Connection List
-
 | ADC Connections | GPIO Pin | Physical Pin |
 |---|---|---|
 | VDD | 3.3v | 17 |
@@ -12,12 +11,23 @@
 
 
 ## Piezo Pin Connection 
-
 | Piezo | Connections |
 |---|---|
 | Positive | A0 |
 | Negative | GND |
 | Both | 330&Omega; Resistor |
+
+
+## ADS1115 Settings
+- I2C bus: 1
+- I2C address: 0x48
+- Sampling rate: 128Hz
+- Gain/full-scale range: ±2.048V
+
+
+## Piezo Event Detector Settings
+- Press threshold: 0.95V
+- Release threshold: 0.70V
 
 
 ## Hardware Assembly
