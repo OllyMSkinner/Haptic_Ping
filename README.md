@@ -53,7 +53,42 @@ IMU I2C address: `0x69`, ADS1115 I2C address: `0x48`, I2C bus: `1`
 
 ## Hardware Assembly
 
+- The LED outputs and Raspberry Pi were housed at a secondary station positioned in front of the user for clear visibility.
+- The circuit board was affixed to the bat using Velcro to provide stability throughout the swing range of motion.
+- The IMU was mounted at the distal end of the bat inside a custom 3D-printed enclosure to ensure consistent placement and minimise sensor displacement during dynamic use.
+- Extended wiring (~1 metre) was fabricated by splicing female-to-female jumper cables with standard wire via soldering. Heat-shrink tubing was applied over each joint for insulation and mechanical reinforcement.
 
+---
+
+## How It Works
+
+The system uses a gate logic sequence to ensure feedback is only triggered for a valid swing:
+
+1. **Grip detection** — The piezo sensor on the bat is sampled at 128 Hz by the ADS1115 ADC. An EMA filter smooths the signal and a threshold of 0.95V triggers a press event, illuminating the piezo LED.
+2. **Position confirmation** — The IMU data-ready interrupt (GPIO 27) wakes the reader thread at each sample. The position detector checks the acceleration vector against a reference orientation using a dot product. After 10 consecutive valid samples the system is considered in the correct starting position and the IMU LED illuminates.
+3. **Swing analysis** — Once both grip and position are confirmed, the swing processor gates through the IMU acceleration magnitude. Gravity bias is removed via a rolling calibration window. The net linear acceleration magnitude is classified into duty cycle levels:
+   - `>= 25 m/s²` → Highest Duty Cycle (long vibration burst)
+   - `>= 15 m/s²` → Medium Duty Cycle (double burst)
+   - `>= 10 m/s²` → Low Duty Cycle (short burst)
+4. **Haptic feedback** — The ERM motor is driven by software PWM on GPIO 18 ramping up to 80% duty cycle to avoid back-EMF spikes. The feedback pattern plays and the system resets for the next swing.
+
+---
+
+## Realtime Design
+
+The code is entirely event-driven with no polling loops:
+
+- **IMU sampling** — driven by the data-ready GPIO interrupt via `epoll` + `eventfd`. The reader thread blocks on `epoll_wait` and wakes only when new data is available.
+- **ADS1115 sampling** — driven by the ALERT/RDY GPIO edge event via `libgpiodcxx`. The worker thread blocks on `wait_edge_events`.
+- **PWM generation** — runs in a dedicated thread using `timerfd` for precise on/off timing at 30 Hz. No `usleep` or busy-wait.
+- **Haptic patterns** — played in a detached worker thread using `timerfd`-based waits for each ramp step.
+- **Shutdown** — handled via `signalfd` blocking on `SIGINT`/`SIGHUP` rather than signal handlers.
+
+## Maximum Latency
+
+
+
+---
 
 ## Prerequisites
 
@@ -70,6 +105,19 @@ sudo raspi-config
 sudo apt update
 sudo apt install -y libgpiod-dev libgpiod2 libi2c-dev i2c-tools libyaml-cpp-dev cmake build-essential
 ```
+
+---
+
+## Libraries
+
+### libgpiod
+Used for all GPIO control on the Raspberry Pi via the Linux character device interface. In this project it is used in three places: the IMU reader configures the data-ready line (GPIO 27) as a rising-edge input and uses `epoll` on the GPIO file descriptor to wake the reader thread; the ADS1115 driver configures the ALERT/RDY line (GPIO 26) as a rising-edge input and blocks on `wait_edge_events`; and the LED controllers and PWM driver configure output lines to drive the LEDs and ERM motor.
+
+### Linux I2C
+Used to communicate with both the ICM-20948 IMU (address `0x69`) and the ADS1115 ADC (address `0x48`) over I2C bus 1. The IMU driver uses raw `ioctl(I2C_SLAVE)` and register-level read/write to initialise the sensor, configure accelerometer, gyroscope and magnetometer settings, and read decoded samples. The ADS1115 driver uses atomic `I2C_RDWR` transactions with retry logic to read conversion results. A shared `i2c1_mutex` coordinates access between the two threads to prevent interleaved bus transactions.
+
+### yaml-cpp
+Used by the ICM-20948 driver settings class to load sensor configuration parameters — accelerometer scale, gyroscope scale, sample rate divider, and digital low-pass filter settings — from a YAML file. This allows sensor tuning without recompiling.
 
 ---
 
@@ -96,7 +144,7 @@ The system will:
 1. Wait for correct grip detected by piezo sensor → **Piezo LED on**
 2. Wait for correct bat starting position detected by IMU → **IMU LED on**
 3. Analyse swing in real time
-4. Vibrate ERM motor on correct swing detection,one short buzz indicating low level, 2 pulse buzzes for medium level, and one strong buzz for High level, in terms of speed
+4. Vibrate ERM motor on correct swing detection
 
 Press `Ctrl+C` or `SIGHUP` to stop cleanly.
 
@@ -111,12 +159,15 @@ ctest --test-dir build --output-on-failure
 ```
 
 31 unit tests across 6 test suites covering:
-- `PiezoEventDetector` — EMA filter, press/release thresholds
-- `PositionDetector` — stability counter, orientation detection
-- `SwingCalibrator` — bias averaging, recalibration
-- `SwingDetector` — level classification, threshold boundaries
-- `SwingFeedback` — PWM ramp patterns, reset callback, timeout
-- `SwingProcessor` — gate logic, force/position interaction
+
+| Test Suite | What it tests |
+|---|---|
+| `PiezoEventDetector` | EMA filter, press/release thresholds, reset behaviour |
+| `PositionDetector` | Stability counter, orientation detection, state transitions |
+| `SwingCalibrator` | Bias averaging, recalibration trigger, callback firing |
+| `SwingDetector` | Level classification, threshold boundaries, reset |
+| `SwingFeedback` | PWM ramp patterns, reset callback, timeout guard |
+| `SwingProcessor` | Gate logic, force/position interaction, magnitude output |
 
 ---
 
@@ -135,7 +186,6 @@ RTES_Table_Tennis/
 ├── test/               # GTest unit tests
 └── images/
 ```
-
 ---
 
 ## Authors
@@ -150,11 +200,10 @@ RTES_Table_Tennis/
 
 ---
 
-## Version History
+## Media
 
-- **v1.0** — Final submission release
-- **v0.2** — Bug fixes and optimisations
-- **v0.1** — Initial release
+- [Instagram](https://www.instagram.com/hapticping)
+- [TikTok](https://www.tiktok.com/@hapticping)
 
 ---
 
