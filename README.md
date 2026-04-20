@@ -47,7 +47,7 @@ IMU I2C address: `0x69`, ADS1115 I2C address: `0x48`, I2C bus: `1`
 
 ## Wiring Diagram
 
-![Wiring Diagram](images/Diagram_fixed_wLabel.png)
+![Wiring Diagram](images/CORRECTED_WIRING.jpeg)
 
 ---
 
@@ -161,10 +161,10 @@ The system will:
 3. Analyse swing in real time
 4. Vibrate ERM motor on correct swing detection
 
-Press `Ctrl+C` or `SIGHUP` to stop cleanly.
+Press `Ctrl+C` or `SIGHUP` to stop cleanly.  
 
-A demo video is linked below (only accessible to UofG staff and students)
-[Usage Video - Haptic Ping](https://gla-my.sharepoint.com/my?id=%2Fpersonal%2F2661134m%5Fstudent%5Fgla%5Fac%5Fuk%2FDocuments%2FUsage%20Video%20%2D%20Haptic%20Ping)
+A demo video is linked [here](https://gla-my.sharepoint.com/my?id=%2Fpersonal%2F2661134m%5Fstudent%5Fgla%5Fac%5Fuk%2FDocuments%2FUsage%20Video%20%2D%20Haptic%20Ping) (only accessible to UofG staff and students)
+
 
 ---
 
@@ -219,11 +219,11 @@ RTES_Table_Tennis/
 ---
 ## Individual Contributions
 
-Despina Charalambous: Motor code, soldering
-Najaree Janjerdsak: Latency test, IMU math code, soldering
-Natalia McCoy: IMU code, main.cpp
-Olivia Skinner: piezo code
-Wiktoria Smolarek: piezo code
+Despina Charalambous: Motor code, soldering, organisation/clean-up  
+Najaree Janjerdsak: Latency test, IMU math code, soldering, organisation/clean-up  
+Natalia McCoy: IMU code, main.cpp,  organisation/clean-up  
+Olivia Skinner: piezo code,  organisation/clean-up  
+Wiktoria Smolarek: piezo code,  organisation/clean-up  
 
 ---
 
