@@ -1,7 +1,0 @@
-SwingDetector_GTest 7 0.000262008
-SwingCalibrator_GTest 7 0.000251064
-PiezoEventDetector_GTest 7 0.000298153
-SwingFeedback_GTest 6 0.717058
-PositionDetector_GTest 7 0.000279305
-SwingProcessor_GTest 7 0.000234472
----
