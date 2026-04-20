@@ -33,7 +33,7 @@ out/
 junk/ 
 html/
 latex/
-# uncomment junk/ when everything is done
+Makefile
 
 # Precompiled headers
 *.gch
